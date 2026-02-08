@@ -10,7 +10,7 @@
       "name": "Debug node",
       "skipFiles": ["<node_internals>/**"],
       "runtimeArgs": ["--experimental-strip-types"],
-      "program": "${workspaceFolder}/backend/index.ts",
+      "program": "${workspaceFolder}/node/index.ts",
       "outFiles": ["${workspaceFolder}/**/*.js"]
     }
   ]

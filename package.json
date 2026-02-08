@@ -8,9 +8,8 @@
     "ios": "npm run build:bare && expo run:ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "build:ts": "tsc -p bare/tsconfig.json",
-    "build:bare": "npm run build:ts && bare-pack --host ios-x86 --host ios-arm --host android-x86 --host android-arm --linked --format bundle.cjs -o ./app/bundle.js ./bare/index.js",
-    "node": "node --experimental-strip-types backend/index.ts"
+    "build:bare": "tsc -p bare/tsconfig.json && bare-pack --host ios-x86 --host ios-arm --host android-x86 --host android-arm --linked --format bundle.cjs -o ./app/bundle.js ./bare/dist/bare/index.js",
+    "node": "node --experimental-strip-types node/index.ts"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",

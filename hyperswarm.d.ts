@@ -11,6 +11,7 @@ declare module "hyperswarm" {
       options: { server: boolean; client: boolean }
     ): Promise<Discovery>;
     leave(topic: Buffer): Promise<void>;
+    on(event: "update", callback: () => void);
     suspended: boolean;
     connectin: number;
     destroyed: boolean;
@@ -22,6 +23,8 @@ declare module "hyperswarm" {
   }
   type Connection = {
     on(event: "data", callback: (data: Buffer) => void): void;
+    on(event: "close", callback: () => void): void;
+    on(event: "error", callback: (error: any) => void): void;
   };
   type PeerInfo = {
     publicKey: Buffer;
