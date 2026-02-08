@@ -4,10 +4,13 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
+    "android": "npm run build:bare && expo run:android",
+    "ios": "npm run build:bare && expo run:ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "build:ts": "tsc -p bare/tsconfig.json",
+    "build:bare": "npm run build:ts && bare-pack --host ios-x86 --host ios-arm --host android-x86 --host android-arm --linked --format bundle.cjs -o ./app/bundle.js ./bare/index.js",
+    "node": "node --experimental-strip-types backend/index.ts"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
@@ -15,7 +18,11 @@
     "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.8",
     "@types/b4a": "^1.6.5",
+    "@types/streamx": "^2.9.5",
     "b4a": "^1.7.3",
+    "bare": "^1.26.0",
+    "bare-buffer": "^3.4.2",
+    "bare-pack": "^2.0.0",
     "expo": "~54.0.33",
     "expo-build-properties": "^1.0.10",
     "expo-constants": "~18.0.13",
@@ -29,6 +36,7 @@
     "expo-symbols": "~1.0.8",
     "expo-system-ui": "~6.0.9",
     "expo-web-browser": "~15.0.10",
+    "hyperswarm": "^4.16.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.5",
