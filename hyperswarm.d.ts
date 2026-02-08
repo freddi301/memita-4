@@ -16,6 +16,7 @@ declare module "hyperswarm" {
     connectin: number;
     destroyed: boolean;
     connections: Set<Connection>;
+    peers: Map<Buffer, PeerInfo>;
     keyPair: {
       publicKey: Buffer;
       secretKey: Buffer;
