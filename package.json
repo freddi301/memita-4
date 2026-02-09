@@ -8,11 +8,12 @@
     "ios": "npm run build:bare && expo run:ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "build:bare": "tsc -p bare/tsconfig.json && bare-pack --host ios-x86 --host ios-arm --host android-x86 --host android-arm --linked --format bundle.cjs -o ./app/bundle.js ./bare/dist/bare/index.js",
+    "build:bare": "tsc -p bare/tsconfig.json && bare-pack --host ios-x86 --host ios-arm --host android-x86 --host android-arm --linked --format bundle.cjs -o ./components/bundle.js ./bare/dist/bare/index.js",
     "node": "node --experimental-strip-types node/index.ts"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
+    "@react-native-async-storage/async-storage": "2.2.0",
     "@react-navigation/bottom-tabs": "^7.4.0",
     "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.8",
@@ -30,6 +31,7 @@
     "expo-haptics": "~15.0.8",
     "expo-image": "~3.0.11",
     "expo-linking": "~8.0.11",
+    "expo-localization": "^17.0.8",
     "expo-router": "~6.0.23",
     "expo-splash-screen": "~31.0.13",
     "expo-status-bar": "~3.0.9",
