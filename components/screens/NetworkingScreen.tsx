@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { useData } from "./client";
+import { useData } from "../client";
 
 export function NetworkingScreen() {
   const myPublicKey = useData("myPublicKey") as string | undefined;
