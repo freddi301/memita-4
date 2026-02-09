@@ -74,6 +74,7 @@ function asyncStorageDataApi<Tables extends Record<string, DataSchemaShape>>(
       tableName,
       {
         async getAll() {
+          await new Promise((resolve) => setTimeout(resolve, 1000));
           const json = await AsyncStorage.getItem("data");
           const data = JSON.parse(json || "{}");
           return data[tableName] ?? [];

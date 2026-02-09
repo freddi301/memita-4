@@ -1,5 +1,5 @@
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { Image } from "expo-image";
-import { use, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import { createAccountId, dataApi } from "../dataApi";
 import { ScreenLink } from "../Routing";
@@ -11,8 +11,10 @@ import { AccountScreen } from "./AccountScreen";
 export function SelectAccountScreen() {
   const theme = useTheme();
   const { translate } = useTranslate();
-  const [accountsQuery] = useState(dataApi.accounts.getAll);
-  const accounts = use(accountsQuery);
+  const { data: accounts } = useSuspenseQuery({
+    queryKey: ["accounts"],
+    queryFn: dataApi.accounts.getAll,
+  });
   return (
     <View style={{ height: "100%" }}>
       <View style={{ alignItems: "center" }}>

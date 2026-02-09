@@ -1,6 +1,13 @@
 import { SelectAccountScreen } from "@/components/screens/SelectAccountScreen";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "../components/Routing";
 
+const queryClient = new QueryClient();
+
 export default function Index() {
-  return <RouterProvider initial={<SelectAccountScreen />} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider initial={<SelectAccountScreen />} />;
+    </QueryClientProvider>
+  );
 }
