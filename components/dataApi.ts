@@ -95,6 +95,8 @@ function asyncStorageDataApi<Tables extends Record<string, DataSchemaShape>>(
 const dataSchema = {
   accounts: object({
     id: string,
+    isActive: boolean,
+    timestamp: number,
   }),
 };
 

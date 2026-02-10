@@ -1,4 +1,8 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
+import {
+  useMutation,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import { Image } from "expo-image";
 import { FlatList, Text, View } from "react-native";
 import { createAccountId, dataApi } from "../dataApi";
@@ -11,16 +15,32 @@ import { AccountScreen } from "./AccountScreen";
 export function SelectAccountScreen() {
   const theme = useTheme();
   const { translate } = useTranslate();
-  const { data: accounts } = useSuspenseQuery({
+  const queryClient = useQueryClient();
+  const accountsQuery = useSuspenseQuery({
     queryKey: ["accounts"],
     queryFn: dataApi.accounts.getAll,
   });
+  const accounts = accountsQuery.data;
+  const { mutateAsync: createAccount } = useMutation({
+    async mutationFn() {
+      const newAccountId = createAccountId();
+      await dataApi.accounts.create({
+        id: newAccountId,
+        isActive: true,
+        timestamp: Date.now(),
+      });
+      return newAccountId;
+    },
+    async onSuccess() {
+      await queryClient.invalidateQueries({ queryKey: ["accounts"] });
+    },
+  });
   return (
     <View style={{ height: "100%" }}>
-      <View style={{ alignItems: "center" }}>
+      <View style={{ alignItems: "center", gap: 16, padding: 16 }}>
         <Image
           source={require("../../assets/images/icon.png")}
-          style={{ width: 100, height: 100, marginVertical: 20 }}
+          style={{ width: 100, height: 100 }}
         />
         <Text
           style={{
@@ -49,15 +69,17 @@ export function SelectAccountScreen() {
           </Text>
         }
         ItemSeparatorComponent={ListSeparator}
-        ListHeaderComponent={accounts.length ? ListSeparator : null}
-        ListFooterComponent={accounts.length ? ListSeparator : null}
+        style={{
+          borderTopWidth: 1,
+          borderBottomWidth: 1,
+          borderColor: theme.separatorColor,
+        }}
         contentContainerStyle={{ flexGrow: 1, justifyContent: "flex-end" }}
       />
       <View style={{ justifyContent: "center", flexDirection: "row" }}>
         <ScreenLink
           to={async () => {
-            const newAccountId = createAccountId();
-            await dataApi.accounts.create({ id: newAccountId });
+            const newAccountId = await createAccount();
             return <AccountScreen accountId={newAccountId} />;
           }}
           label={translate({
