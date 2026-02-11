@@ -114,12 +114,6 @@ export function ScreenLink({
 }
 
 function compareScreens(left: ReactNode, right: ReactNode): boolean {
-  console.log({
-    // @ts-ignore
-    left: left.type,
-    // @ts-ignore
-    right: right.type,
-  });
   if (
     typeof left === "object" &&
     left !== null &&

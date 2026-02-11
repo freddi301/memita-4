@@ -1,0 +1,224 @@
+import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
+import { Fragment, useEffect, useState } from "react";
+import { ScrollView, Text, TextInput, View } from "react-native";
+import { dataApi } from "../persistance/dataApi";
+import { allQueries } from "../persistance/Queries";
+import { queryClient } from "../queryClient";
+import { ScreenLink } from "../Routing";
+import { useTheme } from "../Theme";
+import { useTranslate } from "../Translate";
+import { DirectMessagesScreen } from "./DirectMessagesScreen";
+
+export function ContactScreen({
+  accountId,
+  contactId,
+}: {
+  accountId: string;
+  contactId?: string;
+}) {
+  const { translate } = useTranslate();
+  const theme = useTheme();
+
+  const contactQuery = useSuspenseQuery(
+    {
+      queryKey: ["contactLatest", { accountId, contactId }],
+      async queryFn() {
+        if (!contactId) {
+          return {
+            name: "",
+          };
+        }
+        return dataApi.read((root) =>
+          allQueries(root).contactLatest(accountId, contactId!)
+        );
+      },
+    },
+    queryClient
+  );
+
+  const { mutateAsync: updateContact } = useMutation(
+    {
+      async mutationFn({
+        accountId,
+        contactId,
+        name,
+        active,
+      }: {
+        accountId: string;
+        contactId: string;
+        name: string;
+        active: boolean;
+      }) {
+        await dataApi.write((root) =>
+          allQueries(root).updateContact({ accountId, contactId, name, active })
+        );
+      },
+      async onSuccess() {
+        await Promise.all([
+          queryClient.invalidateQueries({
+            queryKey: ["contacts", { accountId }],
+          }),
+          queryClient.invalidateQueries({
+            queryKey: ["contactLatest", { accountId, contactId }],
+          }),
+        ]);
+      },
+    },
+    queryClient
+  );
+
+  const [contactIdInput, setContactIdInput] = useState("");
+  const isContactIdValid = !contactId ? contactIdInput.length > 5 : true; // TODO
+
+  const [nameInput, setNameInput] = useState("");
+  const nameOriginal = contactQuery.data.name;
+  useEffect(() => {
+    setNameInput(nameOriginal);
+  }, [nameOriginal]);
+
+  const canSave = isContactIdValid && nameInput !== nameOriginal;
+
+  return (
+    <Fragment>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
+        <ScreenLink
+          to={<DirectMessagesScreen accountId={accountId} />}
+          icon="arrow-left"
+          hideLabel
+          label={translate({
+            en: "Go to direct messages",
+            it: "Vai ai messaggi diretti",
+          })}
+          enabled={!canSave}
+        />
+        <Text style={theme.textStyle}>
+          {translate({
+            en: "Contact",
+            it: "Contatto",
+          })}
+        </Text>
+      </View>
+      <ScrollView>
+        <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
+          <Text style={theme.secondaryTextStyle}>
+            {translate({
+              en: "Contact account id",
+              it: "Id dell'account del contatto",
+            })}
+          </Text>
+          {contactId ? (
+            <Text style={theme.textStyle}>{contactId}</Text>
+          ) : (
+            <Fragment>
+              <TextInput
+                value={contactIdInput}
+                onChangeText={setContactIdInput}
+                style={theme.textInputStyle}
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+              {!isContactIdValid ? (
+                <Text style={theme.validationErrorTextStyle}>
+                  {translate({
+                    en: "Not a valid account id",
+                    it: "Non è un id account valido",
+                  })}
+                </Text>
+              ) : null}
+            </Fragment>
+          )}
+        </View>
+        <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
+          <Text style={theme.secondaryTextStyle}>
+            {translate({
+              en: "Contact name",
+              it: "Nome del contatto",
+            })}
+          </Text>
+          <TextInput
+            value={nameInput}
+            onChangeText={setNameInput}
+            style={theme.textInputStyle}
+          />
+          {nameInput !== nameOriginal ? (
+            <Text
+              style={{
+                ...theme.secondaryTextStyle,
+                textDecorationLine: "line-through",
+              }}
+            >
+              {nameOriginal || " "}
+            </Text>
+          ) : null}
+        </View>
+      </ScrollView>
+      <View style={{ paddingVertical: 8 }}>
+        {contactId ? (
+          <ScreenLink
+            to={async () => {
+              await updateContact({
+                accountId,
+                contactId,
+                name: nameOriginal,
+                active: false,
+              });
+              return <DirectMessagesScreen accountId={accountId} />;
+            }}
+            icon="trash"
+            label={translate({
+              en: "Delete contact",
+              it: "Elimina contatto",
+            })}
+            enabled={!canSave}
+          />
+        ) : null}
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          {contactId ? (
+            <ScreenLink
+              to={async () => {
+                setNameInput(nameOriginal);
+              }}
+              icon="undo"
+              label={translate({
+                en: "Discard changes",
+                it: "Scarta modifiche",
+              })}
+              enabled={canSave}
+            />
+          ) : (
+            <View />
+          )}
+          <ScreenLink
+            to={async () => {
+              await updateContact({
+                accountId,
+                contactId: contactId || contactIdInput,
+                name: nameInput,
+                active: true,
+              });
+              if (!contactId) {
+                return (
+                  <ContactScreen
+                    accountId={accountId}
+                    contactId={contactIdInput}
+                  />
+                );
+              }
+            }}
+            icon="save"
+            label={translate({
+              en: "Save changes",
+              it: "Salva modifiche",
+            })}
+            enabled={canSave}
+          />
+        </View>
+      </View>
+    </Fragment>
+  );
+}

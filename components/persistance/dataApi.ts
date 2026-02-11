@@ -19,7 +19,7 @@ function inMemoryDataApi<Data extends Plain>(initial: Data): DataApi<Data> {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         return query(dataToQuery(data))[extract];
       };
-      const performed = perform();
+      const performed = last.then(perform);
       return performed;
     },
     write(query) {
@@ -31,14 +31,9 @@ function inMemoryDataApi<Data extends Plain>(initial: Data): DataApi<Data> {
       last = performed;
       return performed;
     },
-    wipe() {
-      const perform = async () => {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        data = initial;
-      };
-      const performed = last.then(perform);
-      last = performed;
-      return performed;
+    async wipe() {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      data = initial;
     },
   };
 }
@@ -48,17 +43,17 @@ function asyncStorageDataApi<Data extends Plain>(initial: Data): DataApi<Data> {
   return {
     async read(query) {
       const perform = async () => {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        // await new Promise((resolve) => setTimeout(resolve, 1000));
         const json = await AsyncStorage.getItem("data");
         const parsed = dataToQuery<Data>(json ? JSON.parse(json) : initial);
         return query(parsed)[extract];
       };
-      const performed = perform();
+      const performed = last.then(perform);
       return performed;
     },
     async write(query) {
       const perform = async () => {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        // await new Promise((resolve) => setTimeout(resolve, 1000));
         const json = await AsyncStorage.getItem("data");
         const parsed = dataToQuery<Data>(json ? JSON.parse(json) : initial);
         const updated = query(parsed);
@@ -68,18 +63,14 @@ function asyncStorageDataApi<Data extends Plain>(initial: Data): DataApi<Data> {
       last = performed;
     },
     async wipe() {
-      const perform = async () => {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        await AsyncStorage.removeItem("data");
-      };
-      const performed = last.then(perform);
-      last = performed;
+      await AsyncStorage.removeItem("data");
     },
   };
 }
 
 export const dataApi = asyncStorageDataApi<Root>({
   accounts: [],
+  contacts: [],
 });
 
 // dataApi.wipe();

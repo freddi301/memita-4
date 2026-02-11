@@ -7,34 +7,38 @@ import { queryClient } from "../queryClient";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
-import { ListSeparator } from "../ui/ListSeparator";
 import { AccountScreen } from "./AccountScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 
 export function SelectAccountScreen() {
   const theme = useTheme();
   const { translate } = useTranslate();
-  const accountsQuery = useSuspenseQuery(
+  const { data: accounts } = useSuspenseQuery(
     {
       queryKey: ["accounts"],
       queryFn: () => dataApi.read((root) => allQueries(root).accountList),
     },
     queryClient
   );
-  const accounts = accountsQuery.data;
   const { mutateAsync: createAccount } = useMutation(
     {
       async mutationFn() {
         const newAccountId = createAccountId();
         await dataApi.write((root) =>
-          allQueries(root).updateAccount(newAccountId, "", true)
+          allQueries(root).updateAccount({
+            id: newAccountId,
+            name: "",
+            active: true,
+          })
         );
         return newAccountId;
       },
       async onSuccess(accountId) {
         await Promise.all([
           queryClient.invalidateQueries({ queryKey: ["accounts"] }),
-          queryClient.invalidateQueries({ queryKey: ["history", accountId] }),
+          queryClient.invalidateQueries({
+            queryKey: ["accountLatest", { accountId }],
+          }),
         ]);
       },
     },
@@ -76,7 +80,6 @@ export function SelectAccountScreen() {
             })}
           </Text>
         }
-        ItemSeparatorComponent={ListSeparator}
         style={{
           borderTopWidth: 1,
           borderBottomWidth: 1,

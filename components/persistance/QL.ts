@@ -17,6 +17,9 @@ export type Query<Data extends Plain> = {
       map<NewItem extends Plain>(
         fn: (item: Query<Item>) => Query<NewItem>
       ): Query<Array<NewItem>>;
+      flatMap<NewItem extends Plain>(
+        fn: (item: Query<Item>) => Query<Array<NewItem>>
+      ): Query<Array<NewItem>>;
       uniqueBy(fn: (item: Query<Item>) => Query<string>): Query<Array<Item>>;
       maxBy(selector: (item: Query<Item>) => Query<number>): Query<Item>;
       orderBy(
@@ -72,6 +75,9 @@ export function array<Item extends Plain>(
     },
     map(fn: any) {
       return array(items.map((item) => fn(item)));
+    },
+    flatMap(fn: any) {
+      return array(items.flatMap((item) => fn(item).items));
     },
     uniqueBy(fn: any) {
       return array(

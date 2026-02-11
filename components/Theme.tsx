@@ -8,6 +8,7 @@ const darkTheme = {
   linkTextColor: "#60a0ff",
   pressedBackgroundColor: "#2a2a2a",
   activeActionBackgroundColor: "#1a2332",
+  validationErrorTextColor: "#d56514",
 };
 
 type ThemeProps = typeof darkTheme;
@@ -20,6 +21,7 @@ const lightTheme: ThemeProps = {
   linkTextColor: "#2d74df",
   pressedBackgroundColor: "#d0d0d0",
   activeActionBackgroundColor: "#9bb7e2",
+  validationErrorTextColor: "#dd7569",
 };
 
 export function useTheme() {
@@ -40,6 +42,10 @@ export function useTheme() {
     secondaryTextStyle: {
       ...textStyle,
       color: themeProps.secondaryTextColor,
+    },
+    validationErrorTextStyle: {
+      ...textStyle,
+      color: themeProps.validationErrorTextColor,
     },
     linkTextStyle: {
       ...textStyle,
