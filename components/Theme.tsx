@@ -6,6 +6,8 @@ const darkTheme = {
   separatorColor: "#4a4a4a",
   secondaryTextColor: "#939393",
   linkTextColor: "#60a0ff",
+  pressedBackgroundColor: "#2a2a2a",
+  activeActionBackgroundColor: "#1a2332",
 };
 
 type ThemeProps = typeof darkTheme;
@@ -16,6 +18,8 @@ const lightTheme: ThemeProps = {
   separatorColor: "#cecece",
   secondaryTextColor: "#838383",
   linkTextColor: "#2d74df",
+  pressedBackgroundColor: "#d0d0d0",
+  activeActionBackgroundColor: "#9bb7e2",
 };
 
 export function useTheme() {

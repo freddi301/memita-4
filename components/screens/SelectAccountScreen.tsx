@@ -9,6 +9,7 @@ import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { ListSeparator } from "../ui/ListSeparator";
 import { AccountScreen } from "./AccountScreen";
+import { DirectMessagesScreen } from "./DirectMessagesScreen";
 
 export function SelectAccountScreen() {
   const theme = useTheme();
@@ -61,8 +62,9 @@ export function SelectAccountScreen() {
         renderItem={({ item }) => (
           <View style={{ paddingVertical: 8 }}>
             <ScreenLink
-              to={<AccountScreen accountId={item.id} />}
-              label={`👤 ${item.name}`}
+              to={<DirectMessagesScreen accountId={item.id} />}
+              icon="user-circle"
+              label={item.name}
             />
           </View>
         )}
@@ -94,6 +96,7 @@ export function SelectAccountScreen() {
             const newAccountId = await createAccount();
             return <AccountScreen accountId={newAccountId} />;
           }}
+          icon="plus"
           label={translate({
             en: "Create new account",
             it: "Crea nuovo account",
