@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 import { ScreenLink } from "../Routing";
 import { AccountScreen } from "../screens/AccountScreen";
 import { DirectMessagesScreen } from "../screens/DirectMessagesScreen";
@@ -22,6 +22,7 @@ export function BottomTabNavigation({
         borderTopWidth: 1,
         borderColor: theme.separatorColor,
         paddingTop: 8,
+        paddingBottom: Platform.OS === "web" ? 8 : 0,
       }}
     >
       <ScreenLink
