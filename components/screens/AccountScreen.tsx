@@ -1,6 +1,12 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Text, View } from "react-native";
-import { dataApi } from "../dataApi";
+import {
+  useMutation,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import { Text, TextInput, View } from "react-native";
+import { dataApi } from "../persistance/dataApi";
+import { allQueries } from "../persistance/Queries";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
@@ -10,18 +16,31 @@ export function AccountScreen({ accountId }: { accountId: string }) {
   const { translate } = useTranslate();
   const theme = useTheme();
   const queryClient = useQueryClient();
-  const { mutateAsync: removeAccount } = useMutation({
-    async mutationFn() {
-      await dataApi.accounts.create({
-        id: accountId,
-        isActive: false,
-        timestamp: Date.now(),
-      });
+  const { data: history } = useSuspenseQuery({
+    queryKey: ["history", accountId],
+    queryFn: () =>
+      dataApi.read((root) => allQueries(root).accountHistory(accountId)),
+  });
+  const { mutateAsync: updateAccount } = useMutation({
+    async mutationFn({ name, active }: { name: string; active: boolean }) {
+      await dataApi.write((root) =>
+        allQueries(root).updateAccount(accountId, name, active)
+      );
     },
     async onSuccess() {
-      await queryClient.invalidateQueries({ queryKey: ["accounts"] });
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ["accounts"] }),
+        queryClient.invalidateQueries({ queryKey: ["history", accountId] }),
+      ]);
     },
   });
+
+  const nameOriginal = history[0].name;
+  const [nameInput, setNameInput] = useState("");
+  useEffect(() => {
+    setNameInput(nameOriginal);
+  }, [nameOriginal]);
+
   return (
     <View>
       <ScreenLink
@@ -32,9 +51,14 @@ export function AccountScreen({ accountId }: { accountId: string }) {
         })}
       />
       <Text style={theme.textStyle}>{accountId}</Text>
+      <TextInput
+        value={nameInput}
+        onChangeText={setNameInput}
+        style={theme.textInputStyle}
+      />
       <ScreenLink
         to={async () => {
-          await removeAccount();
+          await updateAccount({ name: nameOriginal, active: false });
           return <SelectAccountScreen />;
         }}
         label={translate({
@@ -42,6 +66,16 @@ export function AccountScreen({ accountId }: { accountId: string }) {
           it: "Rimuovi account da questo dispositivo",
         })}
       />
+      <ScreenLink
+        to={async () => {
+          await updateAccount({ name: nameInput, active: true });
+        }}
+        label={translate({
+          en: "Save changes",
+          it: "Salva modifiche",
+        })}
+      />
+      <Text style={theme.secondaryTextStyle}>{JSON.stringify(history)}</Text>
     </View>
   );
 }

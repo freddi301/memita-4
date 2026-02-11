@@ -5,7 +5,8 @@ import {
 } from "@tanstack/react-query";
 import { Image } from "expo-image";
 import { FlatList, Text, View } from "react-native";
-import { createAccountId, dataApi } from "../dataApi";
+import { dataApi } from "../persistance/dataApi";
+import { allQueries, createAccountId } from "../persistance/Queries";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
@@ -18,21 +19,22 @@ export function SelectAccountScreen() {
   const queryClient = useQueryClient();
   const accountsQuery = useSuspenseQuery({
     queryKey: ["accounts"],
-    queryFn: dataApi.accounts.getAll,
+    queryFn: () => dataApi.read((root) => allQueries(root).accountList),
   });
   const accounts = accountsQuery.data;
   const { mutateAsync: createAccount } = useMutation({
     async mutationFn() {
       const newAccountId = createAccountId();
-      await dataApi.accounts.create({
-        id: newAccountId,
-        isActive: true,
-        timestamp: Date.now(),
-      });
+      await dataApi.write((root) =>
+        allQueries(root).updateAccount(newAccountId, "", true)
+      );
       return newAccountId;
     },
-    async onSuccess() {
-      await queryClient.invalidateQueries({ queryKey: ["accounts"] });
+    async onSuccess(accountId) {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ["accounts"] }),
+        queryClient.invalidateQueries({ queryKey: ["history", accountId] }),
+      ]);
     },
   });
   return (
@@ -57,7 +59,7 @@ export function SelectAccountScreen() {
         renderItem={({ item }) => (
           <ScreenLink
             to={<AccountScreen accountId={item.id} />}
-            label={`👤 ${item.id}`}
+            label={`👤 ${item.name}`}
           />
         )}
         ListEmptyComponent={

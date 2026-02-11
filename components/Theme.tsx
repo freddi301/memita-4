@@ -1,19 +1,21 @@
 import { useColorScheme } from "react-native";
 
 const darkTheme = {
-  textColor: "#eeeeee",
-  separatorColor: "#999999",
-  secondaryTextColor: "#aaaaaa",
+  backgroundColor: "#1d1d1d",
+  textColor: "#e9e9e9",
+  separatorColor: "#4a4a4a",
+  secondaryTextColor: "#939393",
   linkTextColor: "#60a0ff",
 };
 
 type ThemeProps = typeof darkTheme;
 
 const lightTheme: ThemeProps = {
-  textColor: "#111111",
-  separatorColor: "#999999",
-  secondaryTextColor: "#aaaaaa",
-  linkTextColor: "#60a0ff",
+  backgroundColor: "#e8e8e8",
+  textColor: "#191919",
+  separatorColor: "#cecece",
+  secondaryTextColor: "#838383",
+  linkTextColor: "#2d74df",
 };
 
 export function useTheme() {
@@ -38,6 +40,9 @@ export function useTheme() {
     linkTextStyle: {
       ...textStyle,
       color: themeProps.linkTextColor,
+    },
+    textInputStyle: {
+      ...textStyle,
     },
   };
 }
