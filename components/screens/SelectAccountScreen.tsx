@@ -1,12 +1,9 @@
-import {
-  useMutation,
-  useQueryClient,
-  useSuspenseQuery,
-} from "@tanstack/react-query";
+import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { Image } from "expo-image";
 import { FlatList, Text, View } from "react-native";
 import { dataApi } from "../persistance/dataApi";
 import { allQueries, createAccountId } from "../persistance/Queries";
+import { queryClient } from "../queryClient";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
@@ -16,27 +13,32 @@ import { AccountScreen } from "./AccountScreen";
 export function SelectAccountScreen() {
   const theme = useTheme();
   const { translate } = useTranslate();
-  const queryClient = useQueryClient();
-  const accountsQuery = useSuspenseQuery({
-    queryKey: ["accounts"],
-    queryFn: () => dataApi.read((root) => allQueries(root).accountList),
-  });
+  const accountsQuery = useSuspenseQuery(
+    {
+      queryKey: ["accounts"],
+      queryFn: () => dataApi.read((root) => allQueries(root).accountList),
+    },
+    queryClient
+  );
   const accounts = accountsQuery.data;
-  const { mutateAsync: createAccount } = useMutation({
-    async mutationFn() {
-      const newAccountId = createAccountId();
-      await dataApi.write((root) =>
-        allQueries(root).updateAccount(newAccountId, "", true)
-      );
-      return newAccountId;
+  const { mutateAsync: createAccount } = useMutation(
+    {
+      async mutationFn() {
+        const newAccountId = createAccountId();
+        await dataApi.write((root) =>
+          allQueries(root).updateAccount(newAccountId, "", true)
+        );
+        return newAccountId;
+      },
+      async onSuccess(accountId) {
+        await Promise.all([
+          queryClient.invalidateQueries({ queryKey: ["accounts"] }),
+          queryClient.invalidateQueries({ queryKey: ["history", accountId] }),
+        ]);
+      },
     },
-    async onSuccess(accountId) {
-      await Promise.all([
-        queryClient.invalidateQueries({ queryKey: ["accounts"] }),
-        queryClient.invalidateQueries({ queryKey: ["history", accountId] }),
-      ]);
-    },
-  });
+    queryClient
+  );
   return (
     <View style={{ height: "100%" }}>
       <View style={{ alignItems: "center", gap: 16, padding: 16 }}>
@@ -57,10 +59,12 @@ export function SelectAccountScreen() {
       <FlatList
         data={accounts}
         renderItem={({ item }) => (
-          <ScreenLink
-            to={<AccountScreen accountId={item.id} />}
-            label={`👤 ${item.name}`}
-          />
+          <View style={{ paddingVertical: 8 }}>
+            <ScreenLink
+              to={<AccountScreen accountId={item.id} />}
+              label={`👤 ${item.name}`}
+            />
+          </View>
         )}
         ListEmptyComponent={
           <Text style={{ ...theme.secondaryTextStyle, padding: 16 }}>
@@ -78,7 +82,13 @@ export function SelectAccountScreen() {
         }}
         contentContainerStyle={{ flexGrow: 1, justifyContent: "flex-end" }}
       />
-      <View style={{ justifyContent: "center", flexDirection: "row" }}>
+      <View
+        style={{
+          justifyContent: "center",
+          flexDirection: "row",
+          paddingVertical: 8,
+        }}
+      >
         <ScreenLink
           to={async () => {
             const newAccountId = await createAccount();

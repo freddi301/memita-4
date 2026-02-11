@@ -7,9 +7,11 @@ type DataApi<Data extends Plain> = {
     query: (root: Query<Data>) => Query<Result>
   ): Promise<Result>;
   write(query: (root: Query<Data>) => Query<Data>): Promise<void>;
+  wipe(): Promise<void>;
 };
 
-function inMemoryDataApi<Data extends Plain>(data: Data): DataApi<Data> {
+function inMemoryDataApi<Data extends Plain>(initial: Data): DataApi<Data> {
+  let data = initial;
   let last: Promise<any> = Promise.resolve();
   return {
     read(query) {
@@ -24,6 +26,15 @@ function inMemoryDataApi<Data extends Plain>(data: Data): DataApi<Data> {
       const perform = async () => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         data = query(dataToQuery(data))[extract];
+      };
+      const performed = last.then(perform);
+      last = performed;
+      return performed;
+    },
+    wipe() {
+      const perform = async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        data = initial;
       };
       const performed = last.then(perform);
       last = performed;
@@ -56,9 +67,19 @@ function asyncStorageDataApi<Data extends Plain>(initial: Data): DataApi<Data> {
       const performed = last.then(perform);
       last = performed;
     },
+    async wipe() {
+      const perform = async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await AsyncStorage.removeItem("data");
+      };
+      const performed = last.then(perform);
+      last = performed;
+    },
   };
 }
 
-export const dataApi = inMemoryDataApi<Root>({
+export const dataApi = asyncStorageDataApi<Root>({
   accounts: [],
 });
+
+// dataApi.wipe();

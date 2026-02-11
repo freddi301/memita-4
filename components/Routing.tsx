@@ -1,49 +1,37 @@
-import {
-  createContext,
-  ReactNode,
-  startTransition,
-  use,
-  useState,
-} from "react";
+import { createContext, ReactNode, Suspense, use, useState } from "react";
 import { Pressable, Text } from "react-native";
 import { useTheme } from "./Theme";
 
 const RouterContext = createContext<RouterContextProps>(null as any);
 
 type RouterContextProps = {
-  currentScreen: React.ReactNode;
-  setCurrentScreen(screen: React.ReactNode): void;
+  navigate(screen: React.ReactNode): void;
   actionInProgress: boolean;
   setActionInProgress(inProgress: boolean): void;
 };
 
 export function RouterProvider({ initial }: { initial: React.ReactNode }) {
-  const [currentScreen, setCurrentScreen] = useState<React.ReactNode>(initial);
+  const [screens, setScreens] = useState<Array<React.ReactNode>>([
+    initial,
+    initial,
+  ]);
   const [actionInProgress, setActionInProgress] = useState(false);
+  const navigate = (screen: React.ReactNode) => {
+    setScreens((prev) => [prev[prev.length - 1], screen]);
+  };
   return (
     <RouterContext.Provider
       value={{
-        currentScreen,
-        setCurrentScreen,
+        navigate,
         actionInProgress,
         setActionInProgress,
       }}
     >
-      {currentScreen}
+      <Suspense fallback={screens[screens.length - 2]}>
+        {screens[screens.length - 1]}
+      </Suspense>
     </RouterContext.Provider>
   );
-}
-
-export function useRouting() {
-  const { setCurrentScreen, actionInProgress } = use(RouterContext);
-  return {
-    changeScreen(screen: React.ReactNode) {
-      startTransition(() => {
-        setCurrentScreen(screen);
-      });
-    },
-    actionInProgress,
-  };
 }
 
 export function ScreenLink({
@@ -54,8 +42,8 @@ export function ScreenLink({
   label: string;
 }) {
   const theme = useTheme();
-  const { changeScreen } = useRouting();
-  const { actionInProgress, setActionInProgress } = use(RouterContext);
+  const { actionInProgress, setActionInProgress, navigate } =
+    use(RouterContext);
   return (
     <Pressable
       onPress={() => {
@@ -67,15 +55,17 @@ export function ScreenLink({
           to().then((screen) => {
             setActionInProgress(false);
             if (screen) {
-              changeScreen(screen);
+              navigate(screen);
             }
           });
         } else {
-          changeScreen(to);
+          navigate(to);
         }
       }}
       style={{
-        padding: 16,
+        paddingVertical: 8,
+        paddingHorizontal: 16,
+        outline: "none",
       }}
     >
       <Text

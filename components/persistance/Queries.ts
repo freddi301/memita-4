@@ -23,7 +23,7 @@ export function allQueries(root: Query<Root>) {
   const accountHistories = accountIds.map((id) => {
     const history = accountUpdates
       .filter((update) => update.field("id").isEqual(id))
-      .orderBy((update) => update.field("timestamp"));
+      .orderBy((update) => update.field("timestamp"), "desc");
     const latest = history.maxBy((update) => update.field("timestamp"));
     return object({ id, history, latest });
   });

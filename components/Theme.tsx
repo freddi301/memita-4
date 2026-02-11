@@ -43,6 +43,10 @@ export function useTheme() {
     },
     textInputStyle: {
       ...textStyle,
+      borderColor: themeProps.linkTextColor,
+      borderBottomWidth: 1,
+      outline: "none" as const,
+      padding: 0,
     },
   };
 }
