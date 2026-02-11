@@ -35,6 +35,34 @@ export function BottomTabNavigation({
         enabled={enabled}
       />
       <ScreenLink
+        to={null}
+        icon="newspaper-o"
+        hideLabel
+        label="newspaper"
+        enabled={enabled}
+      />
+      <ScreenLink
+        to={null}
+        icon="calendar"
+        hideLabel
+        label="eventi"
+        enabled={enabled}
+      />
+      <ScreenLink
+        to={null}
+        icon="map-marker"
+        hideLabel
+        label="posti"
+        enabled={enabled}
+      />
+      <ScreenLink
+        to={null}
+        icon="bell"
+        hideLabel
+        label="notifiche"
+        enabled={enabled}
+      />
+      <ScreenLink
         to={<AccountScreen accountId={accountId} />}
         icon="user"
         hideLabel
