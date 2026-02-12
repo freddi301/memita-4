@@ -1,6 +1,6 @@
 import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { Fragment, useEffect, useState } from "react";
-import { Text, TextInput, View } from "react-native";
+import { ScrollView, Text, TextInput, View } from "react-native";
 import { dataApi } from "../persistance/dataApi";
 import { allQueries } from "../persistance/Queries";
 import { queryClient } from "../queryClient";
@@ -107,31 +107,34 @@ export function EditArticleScreen({
           </Text>
         ) : null}
       </View>
-      <View
-        style={{
-          gap: 2,
-          paddingHorizontal: 16,
-          paddingVertical: 8,
-          flexGrow: 1,
-        }}
-      >
-        <TextInput
-          value={contentInput}
-          onChangeText={setContentInput}
-          style={{ ...theme.textInputStyle, flexGrow: 1 }}
-          multiline
-        />
-        {contentInput !== contentOriginal ? (
-          <Text
-            style={{
-              ...theme.secondaryTextStyle,
-              textDecorationLine: "line-through",
-            }}
-          >
-            {contentOriginal || " "}
-          </Text>
-        ) : null}
-      </View>
+      <ScrollView style={{ flex: 1 }}>
+        <View
+          style={{
+            paddingHorizontal: 16,
+            paddingVertical: 8,
+            gap: 2,
+          }}
+        >
+          <TextInput
+            value={contentInput}
+            onChangeText={setContentInput}
+            style={{ ...theme.textInputStyle, height: 300 }}
+            multiline
+          />
+          {contentInput !== contentOriginal ? (
+            <ScrollView style={{ height: 300 }}>
+              <Text
+                style={{
+                  ...theme.secondaryTextStyle,
+                  textDecorationLine: "line-through",
+                }}
+              >
+                {contentOriginal || " "}
+              </Text>
+            </ScrollView>
+          ) : null}
+        </View>
+      </ScrollView>
       <View style={{ paddingVertical: 8 }}>
         {createdAt ? (
           <ScreenLink

@@ -1,5 +1,6 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { Image } from "expo-image";
+import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
 import { dataApi } from "../persistance/dataApi";
 import { allQueries } from "../persistance/Queries";
@@ -20,7 +21,7 @@ export function SelectAccountScreen() {
     queryClient
   );
   return (
-    <View style={{ height: "100%" }}>
+    <Fragment>
       <View style={{ alignItems: "center", gap: 16, padding: 16 }}>
         <Image
           source={require("../../assets/images/icon.png")}
@@ -62,9 +63,8 @@ export function SelectAccountScreen() {
           </Text>
         }
         style={{
-          borderTopWidth: 1,
-          borderBottomWidth: 1,
-          borderColor: theme.separatorColor,
+          flex: 1,
+          paddingVertical: 8,
         }}
         contentContainerStyle={{ flexGrow: 1, justifyContent: "flex-end" }}
       />
@@ -72,7 +72,6 @@ export function SelectAccountScreen() {
         style={{
           justifyContent: "center",
           flexDirection: "row",
-          paddingVertical: 8,
         }}
       >
         <ScreenLink
@@ -84,6 +83,6 @@ export function SelectAccountScreen() {
           })}
         />
       </View>
-    </View>
+    </Fragment>
   );
 }

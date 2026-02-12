@@ -108,7 +108,7 @@ export function ContactScreen({
           })}
         </Text>
       </View>
-      <ScrollView>
+      <ScrollView style={{ flex: 1 }}>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
             {translate({

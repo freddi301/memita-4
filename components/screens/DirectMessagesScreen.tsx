@@ -24,25 +24,6 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
   return (
     <Fragment>
       <View style={{ flexDirection: "row" }}>
-        {/* <View
-          style={{
-            flexDirection: "row",
-            paddingTop: 8,
-            flexGrow: 1,
-            paddingLeft: 16,
-          }}
-        >
-          <TextInput style={{ ...theme.textInputStyle, flexGrow: 1 }} />
-          <FontAwesome
-            name="search"
-            color={theme.linkTextColor}
-            style={{
-              paddingHorizontal: 8,
-              borderBottomWidth: 1,
-              borderBottomColor: theme.linkTextColor,
-            }}
-          />
-        </View> */}
         <View style={{ flexGrow: 1 }} />
         <ScreenLink
           to={<ContactScreen accountId={accountId} />}
@@ -62,7 +43,7 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
             icon="circle"
           />
         )}
-        style={{ flexGrow: 1, marginTop: 8 }}
+        style={{ flex: 1, marginVertical: 8 }}
       />
       <BottomTabNavigation accountId={accountId} />
     </Fragment>

@@ -1,7 +1,7 @@
-refactor three part layout and refactor all screens
 refactor text input
 refactor mutation and query as useMemitaQuery, useMemitaMutation
 finish direct mesages screen
+implement reactions (single character emoji)
 add device notification (max every 5 seconds)
 implement biography for accounts
 make event screen (add date to articles)
@@ -17,7 +17,12 @@ implement reply / mention previous
 implement attachments files/images/videos/audios
 implement videocall
 implment group chats
+implement where-i-left in audio and video and maybe others (for tv series for example)
+make website
 create more efficient database
 implement file sharing like in torrent
 implement text search
 implemnt settings screen with text search for settings items
+implemet cloud backup (ex google)
+make available for android,ios,windows,mac,linux,cloud, premise
+implement data quota managment

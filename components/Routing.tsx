@@ -89,7 +89,7 @@ export function ScreenLink({
           ? theme.activeActionBackgroundColor
           : isPerforming
           ? theme.activeActionBackgroundColor
-          : isPressing
+          : isPressing && enabled
           ? theme.pressedBackgroundColor
           : theme.backgroundColor,
         flexDirection: "row",

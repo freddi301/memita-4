@@ -3,7 +3,6 @@ import { ScreenLink } from "../Routing";
 import { AccountScreen } from "../screens/AccountScreen";
 import { ArticlesScreen } from "../screens/ArticlesScreen";
 import { DirectMessagesScreen } from "../screens/DirectMessagesScreen";
-import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 
 export function BottomTabNavigation({
@@ -14,14 +13,11 @@ export function BottomTabNavigation({
   enabled?: boolean;
 }) {
   const { translate } = useTranslate();
-  const theme = useTheme();
   return (
     <View
       style={{
         flexDirection: "row",
         justifyContent: "center",
-        borderTopWidth: 1,
-        borderColor: theme.separatorColor,
         paddingTop: 8,
         paddingBottom: Platform.OS === "web" ? 8 : 0,
       }}

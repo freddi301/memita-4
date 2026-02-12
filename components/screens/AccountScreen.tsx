@@ -75,7 +75,7 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
         })}
         enabled={!canSave}
       />
-      <ScrollView>
+      <ScrollView style={{ flex: 1 }}>
         {accountId ? (
           <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
             <Text style={theme.secondaryTextStyle}>
