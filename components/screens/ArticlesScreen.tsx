@@ -1,9 +1,7 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
-import { dataApi } from "../persistance/dataApi";
-import { allQueries } from "../queries/Queries";
-import { queryClient } from "../queryClient";
+import { useMemitaQuery } from "../persistance/dataApi";
+import { articleList } from "../queries/articles";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
@@ -13,14 +11,9 @@ import { EditArticleScreen } from "./EditArticleScreen";
 export function ArticlesScreen({ accountId }: { accountId: string }) {
   const { translate } = useTranslate();
   const theme = useTheme();
-  const { data: articles } = useSuspenseQuery(
-    {
-      queryKey: ["contacts", { accountId }],
-      queryFn: () =>
-        dataApi.read((root) => allQueries(root).articleList(accountId)),
-    },
-    queryClient
-  );
+
+  const articles = useMemitaQuery(articleList, { accountId });
+
   return (
     <Fragment>
       <View style={{ flexDirection: "row" }}>

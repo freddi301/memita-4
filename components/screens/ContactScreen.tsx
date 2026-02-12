@@ -1,9 +1,7 @@
-import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
-import { dataApi } from "../persistance/dataApi";
-import { allQueries } from "../queries/Queries";
-import { queryClient } from "../queryClient";
+import { useMemitaMutation, useMemitaQuery } from "../persistance/dataApi";
+import { contactLatest, updateContact } from "../queries/contacts";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
@@ -19,64 +17,15 @@ export function ContactScreen({
   const { translate } = useTranslate();
   const theme = useTheme();
 
-  const contactQuery = useSuspenseQuery(
-    {
-      queryKey: ["contactLatest", { accountId, contactId }],
-      async queryFn() {
-        if (!contactId) {
-          return {
-            name: "",
-          };
-        }
-        return dataApi.read((root) =>
-          allQueries(root).contactLatest(accountId, contactId!)
-        );
-      },
-    },
-    queryClient
-  );
+  const latest = useMemitaQuery(contactLatest, { accountId, contactId });
 
-  const { mutateAsync: updateContact } = useMutation(
-    {
-      async mutationFn({
-        accountId,
-        contactId,
-        name,
-        deleted,
-      }: {
-        accountId: string;
-        contactId: string;
-        name: string;
-        deleted: boolean;
-      }) {
-        await dataApi.write((root) =>
-          allQueries(root).updateContact({
-            accountId,
-            contactId,
-            name,
-            deleted,
-          })
-        );
-      },
-      async onSuccess() {
-        await Promise.all([
-          queryClient.invalidateQueries({
-            queryKey: ["contacts", { accountId }],
-          }),
-          queryClient.invalidateQueries({
-            queryKey: ["contactLatest", { accountId, contactId }],
-          }),
-        ]);
-      },
-    },
-    queryClient
-  );
+  const update = useMemitaMutation(updateContact);
 
   const [contactIdInput, setContactIdInput] = useState("");
   const isContactIdValid = !contactId ? contactIdInput.length > 5 : true; // TODO
 
   const [nameInput, setNameInput] = useState("");
-  const nameOriginal = contactQuery.data.name;
+  const nameOriginal = latest.name;
   useEffect(() => {
     setNameInput(nameOriginal);
   }, [nameOriginal]);
@@ -166,11 +115,11 @@ export function ContactScreen({
         {contactId ? (
           <ScreenLink
             to={async () => {
-              await updateContact({
+              await update({
                 accountId,
                 contactId,
                 name: nameOriginal,
-                deleted: false,
+                deleted: true,
               });
               return <DirectMessagesScreen accountId={accountId} />;
             }}
@@ -202,11 +151,11 @@ export function ContactScreen({
             )}
             <ScreenLink
               to={async () => {
-                await updateContact({
+                await update({
                   accountId,
                   contactId: contactId || contactIdInput,
                   name: nameInput,
-                  deleted: true,
+                  deleted: false,
                 });
                 if (!contactId) {
                   return (

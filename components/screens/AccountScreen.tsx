@@ -1,9 +1,11 @@
-import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
-import { dataApi } from "../persistance/dataApi";
-import { allQueries, createAccountId } from "../queries/Queries";
-import { queryClient } from "../queryClient";
+import { useMemitaMutation, useMemitaQuery } from "../persistance/dataApi";
+import {
+  accountLatest,
+  createAccountId,
+  updateAccount,
+} from "../queries/accounts";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
@@ -13,48 +15,9 @@ import { SelectAccountScreen } from "./SelectAccountScreen";
 export function AccountScreen({ accountId }: { accountId?: string }) {
   const { translate } = useTranslate();
   const theme = useTheme();
-  const { data: latest } = useSuspenseQuery(
-    {
-      queryKey: ["accountLatest", { accountId }],
-      async queryFn() {
-        if (!accountId) {
-          return {
-            name: "",
-          };
-        }
-        return dataApi.read((root) =>
-          allQueries(root).accountLatest(accountId)
-        );
-      },
-    },
-    queryClient
-  );
-  const { mutateAsync: updateAccount } = useMutation(
-    {
-      async mutationFn({
-        id,
-        name,
-        deleted,
-      }: {
-        id: string;
-        name: string;
-        deleted: boolean;
-      }) {
-        await dataApi.write((root) =>
-          allQueries(root).updateAccount({ id, name, deleted })
-        );
-      },
-      async onSuccess() {
-        await Promise.all([
-          queryClient.invalidateQueries({ queryKey: ["accounts"] }),
-          queryClient.invalidateQueries({
-            queryKey: ["accountLatest", { accountId }],
-          }),
-        ]);
-      },
-    },
-    queryClient
-  );
+
+  const latest = useMemitaQuery(accountLatest, { accountId });
+  const update = useMemitaMutation(updateAccount);
 
   const nameOriginal = latest.name;
   const [nameInput, setNameInput] = useState("");
@@ -115,10 +78,10 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
         {accountId ? (
           <ScreenLink
             to={async () => {
-              await updateAccount({
+              await update({
                 id: accountId,
                 name: nameOriginal,
-                deleted: false,
+                deleted: true,
               });
               return <SelectAccountScreen />;
             }}
@@ -152,10 +115,10 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
             <ScreenLink
               to={async () => {
                 const newAccountId = createAccountId();
-                await updateAccount({
+                await update({
                   id: accountId ?? newAccountId,
                   name: nameInput,
-                  deleted: true,
+                  deleted: false,
                 });
                 if (!accountId) {
                   return <AccountScreen accountId={newAccountId} />;

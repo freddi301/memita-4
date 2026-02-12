@@ -1,10 +1,8 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
 import { Image } from "expo-image";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
-import { dataApi } from "../persistance/dataApi";
-import { allQueries } from "../queries/Queries";
-import { queryClient } from "../queryClient";
+import { useMemitaQuery } from "../persistance/dataApi";
+import { accountList } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
@@ -13,13 +11,9 @@ import { AccountScreen } from "./AccountScreen";
 export function SelectAccountScreen() {
   const theme = useTheme();
   const { translate } = useTranslate();
-  const { data: accounts } = useSuspenseQuery(
-    {
-      queryKey: ["accounts"],
-      queryFn: () => dataApi.read((root) => allQueries(root).accountList),
-    },
-    queryClient
-  );
+
+  const accounts = useMemitaQuery(accountList, {});
+
   return (
     <Fragment>
       <View style={{ alignItems: "center", gap: 16, padding: 16 }}>

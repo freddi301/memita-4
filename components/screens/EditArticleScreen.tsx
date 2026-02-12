@@ -1,9 +1,7 @@
-import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
-import { dataApi } from "../persistance/dataApi";
-import { allQueries } from "../queries/Queries";
-import { queryClient } from "../queryClient";
+import { useMemitaMutation, useMemitaQuery } from "../persistance/dataApi";
+import { articleLatest, updateArticle } from "../queries/articles";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
@@ -19,58 +17,12 @@ export function EditArticleScreen({
   const { translate } = useTranslate();
   const theme = useTheme();
 
-  const articleQuery = useSuspenseQuery(
-    {
-      queryKey: ["articleLatest", { accountId, createdAt }],
-      async queryFn() {
-        if (!createdAt) {
-          return {
-            content: "",
-          };
-        }
-        return dataApi.read((root) =>
-          allQueries(root).articleLatest(accountId, createdAt)
-        );
-      },
-    },
-    queryClient
-  );
+  const latest = useMemitaQuery(articleLatest, { accountId, createdAt });
 
-  const { mutateAsync: updateArticle } = useMutation(
-    {
-      async mutationFn({
-        accountId,
-        createdAt,
-        content,
-      }: {
-        accountId: string;
-        createdAt: number;
-        content: string;
-      }) {
-        await dataApi.write((root) =>
-          allQueries(root).updateArticle({
-            accountId,
-            createdAt,
-            content,
-          })
-        );
-      },
-      async onSuccess() {
-        await Promise.all([
-          queryClient.invalidateQueries({
-            queryKey: ["articles", { accountId }],
-          }),
-          queryClient.invalidateQueries({
-            queryKey: ["articleLatest", { accountId, createdAt }],
-          }),
-        ]);
-      },
-    },
-    queryClient
-  );
+  const update = useMemitaMutation(updateArticle);
 
   const [contentInput, setContentInput] = useState("");
-  const contentOriginal = articleQuery.data.content;
+  const contentOriginal = latest.content;
   useEffect(() => {
     setContentInput(contentOriginal);
   }, [contentOriginal]);
@@ -139,7 +91,7 @@ export function EditArticleScreen({
         {createdAt ? (
           <ScreenLink
             to={async () => {
-              await updateArticle({
+              await update({
                 accountId,
                 createdAt,
                 content: "",
@@ -175,7 +127,7 @@ export function EditArticleScreen({
             <ScreenLink
               to={async () => {
                 const now = Date.now();
-                await updateArticle({
+                await update({
                   accountId,
                   createdAt: createdAt ?? now,
                   content: contentInput,
