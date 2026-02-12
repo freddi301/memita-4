@@ -1,7 +1,6 @@
-import { FontAwesome } from "@expo/vector-icons";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { Fragment } from "react";
-import { FlatList, TextInput, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { dataApi } from "../persistance/dataApi";
 import { allQueries } from "../persistance/Queries";
 import { queryClient } from "../queryClient";
@@ -25,7 +24,7 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
   return (
     <Fragment>
       <View style={{ flexDirection: "row" }}>
-        <View
+        {/* <View
           style={{
             flexDirection: "row",
             paddingTop: 8,
@@ -43,11 +42,11 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
               borderBottomColor: theme.linkTextColor,
             }}
           />
-        </View>
+        </View> */}
+        <View style={{ flexGrow: 1 }} />
         <ScreenLink
           to={<ContactScreen accountId={accountId} />}
           icon="user-plus"
-          hideLabel
           label={translate({
             en: "Create new contact",
             it: "Crea nuovo contatto",

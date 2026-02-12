@@ -1,14 +1,13 @@
-import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { Image } from "expo-image";
 import { FlatList, Text, View } from "react-native";
 import { dataApi } from "../persistance/dataApi";
-import { allQueries, createAccountId } from "../persistance/Queries";
+import { allQueries } from "../persistance/Queries";
 import { queryClient } from "../queryClient";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { AccountScreen } from "./AccountScreen";
-import { DirectMessagesScreen } from "./DirectMessagesScreen";
 
 export function SelectAccountScreen() {
   const theme = useTheme();
@@ -17,30 +16,6 @@ export function SelectAccountScreen() {
     {
       queryKey: ["accounts"],
       queryFn: () => dataApi.read((root) => allQueries(root).accountList),
-    },
-    queryClient
-  );
-  const { mutateAsync: createAccount } = useMutation(
-    {
-      async mutationFn() {
-        const newAccountId = createAccountId();
-        await dataApi.write((root) =>
-          allQueries(root).updateAccount({
-            id: newAccountId,
-            name: "",
-            active: true,
-          })
-        );
-        return newAccountId;
-      },
-      async onSuccess(accountId) {
-        await Promise.all([
-          queryClient.invalidateQueries({ queryKey: ["accounts"] }),
-          queryClient.invalidateQueries({
-            queryKey: ["accountLatest", { accountId }],
-          }),
-        ]);
-      },
     },
     queryClient
   );
@@ -66,14 +41,20 @@ export function SelectAccountScreen() {
         renderItem={({ item }) => (
           <View style={{ paddingVertical: 8 }}>
             <ScreenLink
-              to={<DirectMessagesScreen accountId={item.id} />}
+              to={<AccountScreen accountId={item.id} />}
               icon="user-circle"
               label={item.name}
             />
           </View>
         )}
         ListEmptyComponent={
-          <Text style={{ ...theme.secondaryTextStyle, padding: 16 }}>
+          <Text
+            style={{
+              ...theme.secondaryTextStyle,
+              padding: 16,
+              textAlign: "center",
+            }}
+          >
             {translate({
               en: "No accounts on this device",
               it: "Nessun account su questo dispositivo",
@@ -95,10 +76,7 @@ export function SelectAccountScreen() {
         }}
       >
         <ScreenLink
-          to={async () => {
-            const newAccountId = await createAccount();
-            return <AccountScreen accountId={newAccountId} />;
-          }}
+          to={<AccountScreen />}
           icon="plus"
           label={translate({
             en: "Create new account",

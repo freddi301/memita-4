@@ -42,15 +42,20 @@ export function ContactScreen({
         accountId,
         contactId,
         name,
-        active,
+        deleted,
       }: {
         accountId: string;
         contactId: string;
         name: string;
-        active: boolean;
+        deleted: boolean;
       }) {
         await dataApi.write((root) =>
-          allQueries(root).updateContact({ accountId, contactId, name, active })
+          allQueries(root).updateContact({
+            accountId,
+            contactId,
+            name,
+            deleted,
+          })
         );
       },
       async onSuccess() {
@@ -165,7 +170,7 @@ export function ContactScreen({
                 accountId,
                 contactId,
                 name: nameOriginal,
-                active: false,
+                deleted: false,
               });
               return <DirectMessagesScreen accountId={accountId} />;
             }}
@@ -177,47 +182,56 @@ export function ContactScreen({
             enabled={!canSave}
           />
         ) : null}
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          {contactId ? (
+        {canSave ? (
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            {contactId ? (
+              <ScreenLink
+                to={async () => {
+                  setNameInput(nameOriginal);
+                }}
+                icon="undo"
+                label={translate({
+                  en: "Discard changes",
+                  it: "Scarta modifiche",
+                })}
+              />
+            ) : (
+              <View />
+            )}
             <ScreenLink
               to={async () => {
-                setNameInput(nameOriginal);
+                await updateContact({
+                  accountId,
+                  contactId: contactId || contactIdInput,
+                  name: nameInput,
+                  deleted: true,
+                });
+                if (!contactId) {
+                  return (
+                    <ContactScreen
+                      accountId={accountId}
+                      contactId={contactIdInput}
+                    />
+                  );
+                }
               }}
-              icon="undo"
-              label={translate({
-                en: "Discard changes",
-                it: "Scarta modifiche",
-              })}
-              enabled={canSave}
-            />
-          ) : (
-            <View />
-          )}
-          <ScreenLink
-            to={async () => {
-              await updateContact({
-                accountId,
-                contactId: contactId || contactIdInput,
-                name: nameInput,
-                active: true,
-              });
-              if (!contactId) {
-                return (
-                  <ContactScreen
-                    accountId={accountId}
-                    contactId={contactIdInput}
-                  />
-                );
+              icon="save"
+              label={
+                contactId
+                  ? translate({
+                      en: "Save changes",
+                      it: "Salva modifiche",
+                    })
+                  : translate({
+                      en: "Create contact",
+                      it: "Crea contatto",
+                    })
               }
-            }}
-            icon="save"
-            label={translate({
-              en: "Save changes",
-              it: "Salva modifiche",
-            })}
-            enabled={canSave}
-          />
-        </View>
+            />
+          </View>
+        ) : null}
       </View>
     </Fragment>
   );

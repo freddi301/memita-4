@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { dataToQuery, extract, Plain, Query } from "./QL";
-import { Root } from "./Queries";
+import { initialRoot } from "./Queries";
 
 type DataApi<Data extends Plain> = {
   read<Result extends Plain>(
@@ -68,9 +68,6 @@ function asyncStorageDataApi<Data extends Plain>(initial: Data): DataApi<Data> {
   };
 }
 
-export const dataApi = asyncStorageDataApi<Root>({
-  accounts: [],
-  contacts: [],
-});
+export const dataApi = asyncStorageDataApi(initialRoot);
 
 // dataApi.wipe();

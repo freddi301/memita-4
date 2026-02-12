@@ -2,7 +2,7 @@ import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { dataApi } from "../persistance/dataApi";
-import { allQueries } from "../persistance/Queries";
+import { allQueries, createAccountId } from "../persistance/Queries";
 import { queryClient } from "../queryClient";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
@@ -10,22 +10,38 @@ import { useTranslate } from "../Translate";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { SelectAccountScreen } from "./SelectAccountScreen";
 
-export function AccountScreen({ accountId }: { accountId: string }) {
+export function AccountScreen({ accountId }: { accountId?: string }) {
   const { translate } = useTranslate();
   const theme = useTheme();
   const { data: latest } = useSuspenseQuery(
     {
       queryKey: ["accountLatest", { accountId }],
-      queryFn: () =>
-        dataApi.read((root) => allQueries(root).accountLatest(accountId)),
+      async queryFn() {
+        if (!accountId) {
+          return {
+            name: "",
+          };
+        }
+        return dataApi.read((root) =>
+          allQueries(root).accountLatest(accountId)
+        );
+      },
     },
     queryClient
   );
   const { mutateAsync: updateAccount } = useMutation(
     {
-      async mutationFn({ name, active }: { name: string; active: boolean }) {
+      async mutationFn({
+        id,
+        name,
+        deleted,
+      }: {
+        id: string;
+        name: string;
+        deleted: boolean;
+      }) {
         await dataApi.write((root) =>
-          allQueries(root).updateAccount({ id: accountId, name, active })
+          allQueries(root).updateAccount({ id, name, deleted })
         );
       },
       async onSuccess() {
@@ -60,15 +76,17 @@ export function AccountScreen({ accountId }: { accountId: string }) {
         enabled={!canSave}
       />
       <ScrollView>
-        <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={theme.secondaryTextStyle}>
-            {translate({
-              en: "Account ID",
-              it: "ID dell'account",
-            })}
-          </Text>
-          <Text style={theme.textStyle}>{accountId}</Text>
-        </View>
+        {accountId ? (
+          <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
+            <Text style={theme.secondaryTextStyle}>
+              {translate({
+                en: "Account ID",
+                it: "Id dell'account",
+              })}
+            </Text>
+            <Text style={theme.textStyle}>{accountId}</Text>
+          </View>
+        ) : null}
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
             {translate({
@@ -94,44 +112,74 @@ export function AccountScreen({ accountId }: { accountId: string }) {
         </View>
       </ScrollView>
       <View style={{ paddingVertical: 8 }}>
-        <ScreenLink
-          to={async () => {
-            await updateAccount({ name: nameOriginal, active: false });
-            return <SelectAccountScreen />;
-          }}
-          icon="trash"
-          label={translate({
-            en: "Remove account from this device",
-            it: "Rimuovi account da questo dispositivo",
-          })}
-          enabled={!canSave}
-        />
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        {accountId ? (
           <ScreenLink
             to={async () => {
-              setNameInput(nameOriginal);
+              await updateAccount({
+                id: accountId,
+                name: nameOriginal,
+                deleted: false,
+              });
+              return <SelectAccountScreen />;
             }}
-            icon="undo"
+            icon="trash"
             label={translate({
-              en: "Discard changes",
-              it: "Scarta modifiche",
+              en: "Remove account from this device",
+              it: "Rimuovi account da questo dispositivo",
             })}
-            enabled={canSave}
+            enabled={!canSave}
           />
-          <ScreenLink
-            to={async () => {
-              await updateAccount({ name: nameInput, active: true });
-            }}
-            icon="save"
-            label={translate({
-              en: "Save changes",
-              it: "Salva modifiche",
-            })}
-            enabled={canSave}
-          />
-        </View>
+        ) : null}
+        {canSave ? (
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            {accountId ? (
+              <ScreenLink
+                to={async () => {
+                  setNameInput(nameOriginal);
+                }}
+                icon="undo"
+                label={translate({
+                  en: "Discard changes",
+                  it: "Scarta modifiche",
+                })}
+                enabled={canSave}
+              />
+            ) : (
+              <View />
+            )}
+            <ScreenLink
+              to={async () => {
+                const newAccountId = createAccountId();
+                await updateAccount({
+                  id: accountId ?? newAccountId,
+                  name: nameInput,
+                  deleted: true,
+                });
+                if (!accountId) {
+                  return <AccountScreen accountId={newAccountId} />;
+                }
+              }}
+              icon="save"
+              label={
+                accountId
+                  ? translate({
+                      en: "Save changes",
+                      it: "Salva modifiche",
+                    })
+                  : translate({
+                      en: "Create account",
+                      it: "Crea account",
+                    })
+              }
+            />
+          </View>
+        ) : null}
       </View>
-      <BottomTabNavigation accountId={accountId} enabled={!canSave} />
+      {accountId ? (
+        <BottomTabNavigation accountId={accountId} enabled={!canSave} />
+      ) : null}
     </Fragment>
   );
 }

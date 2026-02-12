@@ -20,7 +20,9 @@ export type Query<Data extends Plain> = {
       flatMap<NewItem extends Plain>(
         fn: (item: Query<Item>) => Query<Array<NewItem>>
       ): Query<Array<NewItem>>;
-      uniqueBy(fn: (item: Query<Item>) => Query<string>): Query<Array<Item>>;
+      uniqueBy<Out extends Plain>(
+        fn: (item: Query<Item>) => Query<Out>
+      ): Query<Array<Item>>;
       maxBy(selector: (item: Query<Item>) => Query<number>): Query<Item>;
       orderBy(
         selector: (item: Query<Item>) => Query<number>,
@@ -30,15 +32,38 @@ export type Query<Data extends Plain> = {
     }
   : Data extends Record<string, Plain>
   ? { field<Key extends keyof Data>(key: Key): Query<Data[Key]> }
-  : {
+  : Data extends boolean
+  ? {
+      isEqual(other: Query<boolean>): Query<boolean>;
+      and(other: Query<boolean>): Query<boolean>;
+      or(other: Query<boolean>): Query<boolean>;
+      not(): Query<boolean>;
+    }
+  : Data extends number
+  ? {
       isEqual(other: Query<Data>): Query<boolean>;
-    });
+      toString(): Query<string>;
+    }
+  : Data extends string
+  ? {
+      isEqual(other: Query<Data>): Query<boolean>;
+    }
+  : {});
 
 export function boolean(value: boolean): Query<boolean> {
   return {
     [extract]: value,
     isEqual(other: { [extract]: boolean }) {
       return boolean(value === other[extract]);
+    },
+    and(other: any) {
+      return boolean(value && other[extract]);
+    },
+    or(other: any) {
+      return boolean(value || other[extract]);
+    },
+    not() {
+      return boolean(!value);
     },
   };
 }
@@ -48,6 +73,9 @@ export function number(value: number): Query<number> {
     [extract]: value,
     isEqual(other: { [extract]: number }) {
       return boolean(value === other[extract]);
+    },
+    toString() {
+      return string(value.toString());
     },
   };
 }
@@ -81,7 +109,9 @@ export function array<Item extends Plain>(
     },
     uniqueBy(fn: any) {
       return array(
-        Array.from(new Set(items.map((item) => fn(item)[extract]))).map(string)
+        Array.from(
+          new Set(items.map((item) => JSON.stringify(fn(item)[extract])))
+        ).map((serialized) => dataToQuery(JSON.parse(serialized)))
       );
     },
     maxBy(selector: any) {

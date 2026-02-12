@@ -3,7 +3,7 @@ import { array, boolean, extract, number, object, string } from "./QL";
 const accountUpdate = object({
   name: string("Alice"),
   timestamp: number(0),
-  active: boolean(false),
+  deleted: boolean(false),
 });
 
 const accountName = accountUpdate.field("name");
@@ -17,7 +17,7 @@ const accountUpdates = array([
   object({
     name: string("Bob"),
     timestamp: number(1),
-    active: boolean(true),
+    deleted: boolean(true),
   }),
 ]);
 
@@ -28,12 +28,12 @@ test("account update identity", () => {
     {
       name: "Alice",
       timestamp: 0,
-      active: false,
+      deleted: false,
     },
     {
       name: "Bob",
       timestamp: 1,
-      active: true,
+      deleted: true,
     },
   ]);
 });
@@ -55,7 +55,7 @@ const accountHistories = accountNames.map((name) => {
 });
 
 const accountList = accountHistories
-  .filter((account) => account.field("latest").field("active"))
+  .filter((account) => account.field("latest").field("deleted"))
   .map((account) => account.field("name"));
 
 test("account list", () => {

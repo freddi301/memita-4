@@ -1,6 +1,7 @@
 import { Platform, View } from "react-native";
 import { ScreenLink } from "../Routing";
 import { AccountScreen } from "../screens/AccountScreen";
+import { ArticlesScreen } from "../screens/ArticlesScreen";
 import { DirectMessagesScreen } from "../screens/DirectMessagesScreen";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
@@ -36,7 +37,7 @@ export function BottomTabNavigation({
         enabled={enabled}
       />
       <ScreenLink
-        to={null}
+        to={<ArticlesScreen accountId={accountId} />}
         icon="newspaper-o"
         hideLabel
         label="newspaper"
@@ -47,21 +48,21 @@ export function BottomTabNavigation({
         icon="calendar"
         hideLabel
         label="eventi"
-        enabled={enabled}
+        enabled={false}
       />
       <ScreenLink
         to={null}
         icon="map-marker"
         hideLabel
         label="posti"
-        enabled={enabled}
+        enabled={false}
       />
       <ScreenLink
         to={null}
         icon="bell"
         hideLabel
         label="notifiche"
-        enabled={enabled}
+        enabled={false}
       />
       <ScreenLink
         to={<AccountScreen accountId={accountId} />}
