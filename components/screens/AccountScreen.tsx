@@ -2,7 +2,7 @@ import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { dataApi } from "../persistance/dataApi";
-import { allQueries, createAccountId } from "../persistance/Queries";
+import { allQueries, createAccountId } from "../queries/Queries";
 import { queryClient } from "../queryClient";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";

@@ -1,25 +1,18 @@
-import { array, boolean, number, object, Query, string } from "./QL";
+import {
+  array,
+  boolean,
+  number,
+  object,
+  Query,
+  string,
+} from "../persistance/QL";
+import { AccountUpdate, ContactUpdate } from "./accounts";
+import { ArticleUpdate } from "./articles";
 
 export type Root = {
-  accounts: Array<{
-    id: string;
-    name: string;
-    deleted: boolean;
-    timestamp: number;
-  }>;
-  contacts: Array<{
-    accountId: string;
-    contactId: string;
-    name: string;
-    deleted: boolean;
-    timestamp: number;
-  }>;
-  articles: Array<{
-    accountId: string;
-    createdAt: number;
-    content: string;
-    timestamp: number;
-  }>;
+  accounts: Array<AccountUpdate>;
+  contacts: Array<ContactUpdate>;
+  articles: Array<ArticleUpdate>;
 };
 
 export const initialRoot: Root = {

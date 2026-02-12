@@ -3,7 +3,7 @@ import { Image } from "expo-image";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
 import { dataApi } from "../persistance/dataApi";
-import { allQueries } from "../persistance/Queries";
+import { allQueries } from "../queries/Queries";
 import { queryClient } from "../queryClient";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";

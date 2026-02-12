@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { initialRoot } from "../queries/Queries";
 import { dataToQuery, extract, Plain, Query } from "./QL";
-import { initialRoot } from "./Queries";
 
 type DataApi<Data extends Plain> = {
   read<Result extends Plain>(

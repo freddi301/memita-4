@@ -1,4 +1,3 @@
-refactor text input
 refactor mutation and query as useMemitaQuery, useMemitaMutation
 finish direct mesages screen
 implement reactions (single character emoji)
