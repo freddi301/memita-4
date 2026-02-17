@@ -41,13 +41,11 @@ export function ScreenLink({
   label,
   icon,
   hideLabel,
-  enabled = true,
 }: {
-  to: ReactNode | (() => Promise<ReactNode> | Promise<void>);
+  to: ReactNode | (() => Promise<ReactNode | void>);
   label: string;
   icon?: IconName;
   hideLabel?: boolean;
-  enabled?: boolean;
 }) {
   const theme = useTheme();
   const { actionInProgress, setActionInProgress, navigate, targetScreen } =
@@ -56,7 +54,7 @@ export function ScreenLink({
   const [isPerforming, setIsPerforming] = useState(false);
   const textColor = isPerforming
     ? theme.linkTextColor
-    : actionInProgress || !enabled
+    : actionInProgress || !to
     ? theme.secondaryTextColor
     : theme.linkTextColor;
   const navigationTriggereFromHere =
@@ -64,7 +62,7 @@ export function ScreenLink({
   return (
     <Pressable
       onPress={() => {
-        if (actionInProgress || !enabled) {
+        if (actionInProgress || !to) {
           return;
         }
         if (typeof to === "function") {
@@ -89,7 +87,7 @@ export function ScreenLink({
           ? theme.activeActionBackgroundColor
           : isPerforming
           ? theme.activeActionBackgroundColor
-          : isPressing && enabled
+          : isPressing && to
           ? theme.pressedBackgroundColor
           : theme.backgroundColor,
         flexDirection: "row",

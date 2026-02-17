@@ -1,3 +1,4 @@
+import * as Clipboard from "expo-clipboard";
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { useMemitaMutation, useMemitaQuery } from "../persistance/dataApi";
@@ -16,7 +17,9 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
-  const latest = useMemitaQuery(accountLatest, { accountId });
+  const latest = useMemitaQuery(accountLatest, {
+    accountId: accountId ?? "",
+  })[0] ?? { name: "" };
   const update = useMemitaMutation(updateAccount);
 
   const nameOriginal = latest.name;
@@ -29,17 +32,90 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
 
   return (
     <Fragment>
-      <ScreenLink
-        to={<SelectAccountScreen />}
-        icon="arrow-left"
-        label={translate({
-          en: "Select another account",
-          it: "Seleziona un altro account",
-        })}
-        enabled={!canSave}
-      />
-      <ScrollView style={{ flex: 1 }}>
-        {accountId ? (
+      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        <ScreenLink
+          to={!canSave ? <SelectAccountScreen /> : undefined}
+          label={translate({
+            en: "Use another account",
+            it: "Usa un altro account",
+          })}
+        />
+        <View style={{ flexDirection: "row" }}>
+          <ScreenLink
+            to={
+              !canSave && accountId !== undefined
+                ? async () => {
+                    await update({
+                      accountId,
+                      name: nameOriginal,
+                      deleted: true,
+                    });
+                    return <SelectAccountScreen />;
+                  }
+                : undefined
+            }
+            icon="trash"
+            hideLabel
+            label={translate({
+              en: "Remove account from this device",
+              it: "Rimuovi account da questo dispositivo",
+            })}
+          />
+          <ScreenLink
+            to={
+              canSave && accountId !== undefined
+                ? async () => {
+                    setNameInput(nameOriginal);
+                  }
+                : undefined
+            }
+            icon="undo"
+            hideLabel
+            label={translate({
+              en: "Discard changes",
+              it: "Scarta modifiche",
+            })}
+          />
+          <ScreenLink
+            to={
+              canSave
+                ? async () => {
+                    if (accountId) {
+                      await update({
+                        accountId,
+                        name: nameInput,
+                        deleted: false,
+                      });
+                    } else {
+                      const newAccountId = createAccountId();
+                      await update({
+                        accountId: newAccountId,
+                        name: nameInput,
+                        deleted: false,
+                      });
+                      return <AccountScreen accountId={newAccountId} />;
+                    }
+                  }
+                : undefined
+            }
+            icon="save"
+            hideLabel
+            label={
+              accountId
+                ? translate({
+                    en: "Save changes",
+                    it: "Salva modifiche",
+                  })
+                : translate({
+                    en: "Create account",
+                    it: "Crea account",
+                  })
+            }
+          />
+        </View>
+      </View>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
             <Text style={theme.secondaryTextStyle}>
               {translate({
@@ -47,9 +123,33 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
                 it: "Id dell'account",
               })}
             </Text>
-            <Text style={theme.textStyle}>{accountId}</Text>
+            {accountId ? (
+              <Text style={theme.textStyle}>{accountId}</Text>
+            ) : (
+              <Text style={theme.secondaryTextStyle}>
+                {translate({
+                  en: "Account id will be generated on save",
+                  it: "L'id dell'account sarà generato al salvataggio",
+                })}
+              </Text>
+            )}
           </View>
-        ) : null}
+          <ScreenLink
+            to={
+              accountId
+                ? async () => {
+                    await Clipboard.setStringAsync(accountId);
+                  }
+                : undefined
+            }
+            icon="copy"
+            hideLabel
+            label={translate({
+              en: "Copy account id to clipboard",
+              it: "Copia l'id dell'account negli appunti",
+            })}
+          />
+        </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
             {translate({
@@ -74,72 +174,6 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
           ) : null}
         </View>
       </ScrollView>
-      <View style={{ paddingVertical: 8 }}>
-        {accountId ? (
-          <ScreenLink
-            to={async () => {
-              await update({
-                id: accountId,
-                name: nameOriginal,
-                deleted: true,
-              });
-              return <SelectAccountScreen />;
-            }}
-            icon="trash"
-            label={translate({
-              en: "Remove account from this device",
-              it: "Rimuovi account da questo dispositivo",
-            })}
-            enabled={!canSave}
-          />
-        ) : null}
-        {canSave ? (
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            {accountId ? (
-              <ScreenLink
-                to={async () => {
-                  setNameInput(nameOriginal);
-                }}
-                icon="undo"
-                label={translate({
-                  en: "Discard changes",
-                  it: "Scarta modifiche",
-                })}
-                enabled={canSave}
-              />
-            ) : (
-              <View />
-            )}
-            <ScreenLink
-              to={async () => {
-                const newAccountId = createAccountId();
-                await update({
-                  id: accountId ?? newAccountId,
-                  name: nameInput,
-                  deleted: false,
-                });
-                if (!accountId) {
-                  return <AccountScreen accountId={newAccountId} />;
-                }
-              }}
-              icon="save"
-              label={
-                accountId
-                  ? translate({
-                      en: "Save changes",
-                      it: "Salva modifiche",
-                    })
-                  : translate({
-                      en: "Create account",
-                      it: "Crea account",
-                    })
-              }
-            />
-          </View>
-        ) : null}
-      </View>
       {accountId ? (
         <BottomTabNavigation accountId={accountId} enabled={!canSave} />
       ) : null}

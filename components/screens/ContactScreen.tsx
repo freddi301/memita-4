@@ -17,7 +17,10 @@ export function ContactScreen({
   const { translate } = useTranslate();
   const theme = useTheme();
 
-  const latest = useMemitaQuery(contactLatest, { accountId, contactId });
+  const latest = useMemitaQuery(contactLatest, {
+    accountId,
+    contactId: contactId || "",
+  })[0] ?? { name: "" };
 
   const update = useMemitaMutation(updateContact);
 
@@ -37,27 +40,97 @@ export function ContactScreen({
       <View
         style={{
           flexDirection: "row",
-          alignItems: "center",
+          justifyContent: "space-between",
         }}
       >
         <ScreenLink
-          to={<DirectMessagesScreen accountId={accountId} />}
+          to={
+            !canSave ? (
+              <DirectMessagesScreen accountId={accountId} />
+            ) : undefined
+          }
           icon="arrow-left"
           hideLabel
           label={translate({
             en: "Go to direct messages",
             it: "Vai ai messaggi diretti",
           })}
-          enabled={!canSave}
         />
-        <Text style={theme.textStyle}>
-          {translate({
-            en: "Contact",
-            it: "Contatto",
-          })}
-        </Text>
+        <View style={{ flexDirection: "row" }}>
+          <ScreenLink
+            to={
+              !canSave && contactId !== undefined
+                ? async () => {
+                    await update({
+                      accountId,
+                      contactId,
+                      name: nameOriginal,
+                      deleted: true,
+                    });
+                    return <DirectMessagesScreen accountId={accountId} />;
+                  }
+                : undefined
+            }
+            icon="trash"
+            hideLabel
+            label={translate({
+              en: "Delete contact",
+              it: "Elimina contatto",
+            })}
+          />
+          <ScreenLink
+            to={
+              canSave && contactId !== undefined
+                ? async () => {
+                    setNameInput(nameOriginal);
+                  }
+                : undefined
+            }
+            icon="undo"
+            hideLabel
+            label={translate({
+              en: "Discard changes",
+              it: "Scarta modifiche",
+            })}
+          />
+          <ScreenLink
+            to={
+              canSave
+                ? async () => {
+                    await update({
+                      accountId,
+                      contactId: contactId || contactIdInput,
+                      name: nameInput,
+                      deleted: false,
+                    });
+                    if (!contactId) {
+                      return (
+                        <ContactScreen
+                          accountId={accountId}
+                          contactId={contactIdInput}
+                        />
+                      );
+                    }
+                  }
+                : undefined
+            }
+            icon="save"
+            hideLabel
+            label={
+              contactId
+                ? translate({
+                    en: "Save changes",
+                    it: "Salva modifiche",
+                  })
+                : translate({
+                    en: "Create contact",
+                    it: "Crea contatto",
+                  })
+            }
+          />
+        </View>
       </View>
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
             {translate({
@@ -111,77 +184,6 @@ export function ContactScreen({
           ) : null}
         </View>
       </ScrollView>
-      <View style={{ paddingVertical: 8 }}>
-        {contactId ? (
-          <ScreenLink
-            to={async () => {
-              await update({
-                accountId,
-                contactId,
-                name: nameOriginal,
-                deleted: true,
-              });
-              return <DirectMessagesScreen accountId={accountId} />;
-            }}
-            icon="trash"
-            label={translate({
-              en: "Delete contact",
-              it: "Elimina contatto",
-            })}
-            enabled={!canSave}
-          />
-        ) : null}
-        {canSave ? (
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            {contactId ? (
-              <ScreenLink
-                to={async () => {
-                  setNameInput(nameOriginal);
-                }}
-                icon="undo"
-                label={translate({
-                  en: "Discard changes",
-                  it: "Scarta modifiche",
-                })}
-              />
-            ) : (
-              <View />
-            )}
-            <ScreenLink
-              to={async () => {
-                await update({
-                  accountId,
-                  contactId: contactId || contactIdInput,
-                  name: nameInput,
-                  deleted: false,
-                });
-                if (!contactId) {
-                  return (
-                    <ContactScreen
-                      accountId={accountId}
-                      contactId={contactIdInput}
-                    />
-                  );
-                }
-              }}
-              icon="save"
-              label={
-                contactId
-                  ? translate({
-                      en: "Save changes",
-                      it: "Salva modifiche",
-                    })
-                  : translate({
-                      en: "Create contact",
-                      it: "Crea contatto",
-                    })
-              }
-            />
-          </View>
-        ) : null}
-      </View>
     </Fragment>
   );
 }

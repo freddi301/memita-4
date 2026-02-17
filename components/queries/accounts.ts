@@ -1,13 +1,4 @@
-import { root } from "../persistance/dataApi";
-import {
-  array,
-  boolean,
-  dataToQuery,
-  number,
-  object,
-  Query,
-  string,
-} from "../persistance/QL";
+import { collection } from "../persistance/helpers";
 import { Root } from "./queries";
 
 export function createAccountId() {
@@ -15,72 +6,58 @@ export function createAccountId() {
 }
 
 export type AccountUpdate = {
-  id: string;
+  accountId: string;
   name: string;
   deleted: boolean;
   timestamp: number;
 };
 
 export function updateAccount({
-  id,
+  accountId,
   name,
   deleted,
 }: {
-  id: string;
+  accountId: string;
   name: string;
   deleted: boolean;
-}): Query<Root> {
-  return object({
-    accounts: root.field("accounts").concat(
-      array([
-        object({
-          id: string(id),
-          name: string(name),
-          deleted: boolean(deleted),
-          timestamp: number(Date.now()),
-        }),
-      ])
-    ),
-    contacts: root.field("contacts"),
-    articles: root.field("articles"),
-  });
-}
-
-export function accountIds() {
-  return root
-    .field("accounts")
-    .map((update) => update.field("id"))
-    .uniqueBy((id) => id);
-}
-
-function accountLatests() {
-  return accountIds().map((id) => {
-    return root
-      .field("accounts")
-      .filter((update) => update.field("id").isEqual(id))
-      .maxBy((update) => update.field("timestamp"));
-  });
+}) {
+  return (root: Root): Root => {
+    return {
+      ...root,
+      accounts: root.accounts.concat([
+        {
+          accountId,
+          name,
+          deleted,
+          timestamp: Date.now(),
+        },
+      ]),
+    };
+  };
 }
 
 export function accountList() {
-  return accountLatests()
-    .filter((update) => update.field("deleted").not())
-    .map((update) =>
-      object({
-        id: update.field("id"),
-        name: update.field("name"),
-      })
-    );
+  return (root: Root) => {
+    return collection(root.accounts)
+      .groupBy(
+        (update) => [update.accountId],
+        (updates) => updates.maxBy((update) => update.timestamp)
+      )
+      .filter((update) => !update.deleted)
+      .map((update) => ({
+        accountId: update.accountId,
+        name: update.name,
+      }));
+  };
 }
 
-export function accountLatest({ accountId }: { accountId?: string }) {
-  if (!accountId) {
-    return dataToQuery({ name: "" });
-  }
-  const latest = accountLatests().find((update) =>
-    update.field("id").isEqual(string(accountId))
-  );
-  return object({
-    name: latest.field("name"),
-  });
+export function accountLatest({ accountId }: { accountId: string }) {
+  return (root: Root) => {
+    return collection(root.accounts)
+      .filter((update) => update.accountId === accountId)
+      .maxBy((update) => update.timestamp)
+      .map((update) => ({
+        name: update.name,
+      }));
+  };
 }

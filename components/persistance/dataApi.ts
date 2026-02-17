@@ -1,80 +1,53 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { initialRoot, Root } from "../queries/queries";
 import { queryClient } from "../queryClient";
-import { dataToQuery, extract, Plain, Query } from "./QL";
+import { Collection } from "./helpers";
 
-// function asyncStorageDataApi<Data extends Plain>(initial: Data): DataApi<Data> {
-//   let last: Promise<any> = Promise.resolve();
-//   return {
-//     async read(query) {
-//       const perform = async () => {
-//         // await new Promise((resolve) => setTimeout(resolve, 1000));
-//         const json = await AsyncStorage.getItem("data");
-//         return json ? JSON.parse(json) : initial;
-//       };
-//       const performed = last.then(perform);
-//       return performed;
-//     },
-//     async write(query) {
-//       const perform = async () => {
-//         // await new Promise((resolve) => setTimeout(resolve, 1000));
-//         const json = await AsyncStorage.getItem("data");
-//         const updated = query(json ? JSON.parse(json) : initial);
-//         await AsyncStorage.setItem("data", JSON.stringify(updated));
-//       };
-//       const performed = last.then(perform);
-//       last = performed;
-//     },
-//     async wipe() {
-//       await AsyncStorage.removeItem("data");
-//     },
-//   };
-// }
+// AsyncStorage.removeItem("data");
 
-// const dataApi = asyncStorageDataApi(initialRoot);
+async function load(): Promise<Root> {
+  const data = await AsyncStorage.getItem("data");
+  if (data) {
+    return JSON.parse(data);
+  }
+  return initialRoot;
+}
 
-// dataApi.wipe();
+async function save(data: Root): Promise<void> {
+  await AsyncStorage.setItem("data", JSON.stringify(data));
+}
 
-export function useMemitaQuery<Params extends Plain, Result extends Plain>(
-  queryFactory: (params: Params) => Query<Result>,
+export function useMemitaQuery<Params, Result>(
+  queryFactory: (params: Params) => (root: Root) => Collection<Result>,
   params: Params
-): Result {
+): Array<Result> {
   return useSuspenseQuery(
     {
       queryKey: [queryFactory.name, params],
-      async queryFn() {
-        console.log(repo.data);
-        const result = queryFactory(params)[extract];
-        return result;
+      async queryFn(): Promise<Array<Result>> {
+        const data = await load();
+        return queryFactory(params)(data).__array;
       },
     },
     queryClient
-  ).data as Result;
+  ).data;
 }
 
-export function useMemitaMutation<Params extends Record<string, Plain>>(
-  mutationFactory: (params: Params) => Query<Root>
+export function useMemitaMutation<Params>(
+  mutationFactory: (params: Params) => (root: Root) => Root
 ): (params: Params) => Promise<void> {
   return useMutation(
     {
       async mutationFn(params: Params) {
-        const updated = mutationFactory(params)[extract];
-        repo.data = updated;
+        const data = await load();
+        const newData = mutationFactory(params)(data);
+        await save(newData);
+      },
+      async onSuccess() {
+        await queryClient.invalidateQueries();
       },
     },
     queryClient
   ).mutateAsync;
 }
-
-const repo = {
-  data: initialRoot,
-};
-
-export const root: Query<Root> = new Proxy(
-  {},
-  {
-    get(target, prop) {
-      return dataToQuery(repo.data)[prop as keyof Query<Root>];
-    },
-  }
-) as any;

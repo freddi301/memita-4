@@ -64,10 +64,21 @@ export function ArticlesScreen({ accountId }: { accountId: string }) {
             <Text style={{ ...theme.textStyle }}>{item.content}</Text>
           </View>
         )}
-        ItemSeparatorComponent={() => (
-          <View style={{ height: 1, backgroundColor: theme.separatorColor }} />
+        style={{ flex: 1, marginVertical: 8 }}
+        contentContainerStyle={{ flexGrow: 1 }}
+        ListEmptyComponent={() => (
+          <Text
+            style={{
+              ...theme.secondaryTextStyle,
+              textAlign: "center",
+            }}
+          >
+            {translate({
+              en: "No articles",
+              it: "Nessun articolo",
+            })}
+          </Text>
         )}
-        style={{ flex: 1 }}
       />
       <BottomTabNavigation accountId={accountId} />
     </Fragment>

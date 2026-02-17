@@ -34,13 +34,11 @@ export function SelectAccountScreen() {
       <FlatList
         data={accounts}
         renderItem={({ item }) => (
-          <View style={{ paddingVertical: 8 }}>
-            <ScreenLink
-              to={<AccountScreen accountId={item.id} />}
-              icon="user-circle"
-              label={item.name}
-            />
-          </View>
+          <ScreenLink
+            to={<AccountScreen accountId={item.accountId} />}
+            icon="user-circle"
+            label={item.name}
+          />
         )}
         ListEmptyComponent={
           <Text
