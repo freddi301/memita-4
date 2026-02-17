@@ -16,6 +16,21 @@ export function SelectAccountScreen() {
 
   return (
     <Fragment>
+      <View
+        style={{
+          justifyContent: "flex-end",
+          flexDirection: "row",
+        }}
+      >
+        <ScreenLink
+          to={<AccountScreen />}
+          icon="plus"
+          label={translate({
+            en: "Create new account",
+            it: "Crea nuovo account",
+          })}
+        />
+      </View>
       <View style={{ alignItems: "center", gap: 16, padding: 16 }}>
         <Image
           source={require("../../assets/images/icon.png")}
@@ -62,21 +77,6 @@ export function SelectAccountScreen() {
         refreshing={false}
         onRefresh={refreshMemitaQueries}
       />
-      <View
-        style={{
-          justifyContent: "center",
-          flexDirection: "row",
-        }}
-      >
-        <ScreenLink
-          to={<AccountScreen />}
-          icon="plus"
-          label={translate({
-            en: "Create new account",
-            it: "Crea nuovo account",
-          })}
-        />
-      </View>
     </Fragment>
   );
 }

@@ -151,20 +151,18 @@ export function EditArticleScreen({
           <TextInput
             value={contentInput}
             onChangeText={setContentInput}
-            style={{ ...theme.textInputStyle, height: 300 }}
+            style={{ ...theme.textInputStyle }}
             multiline
           />
           {contentInput !== contentOriginal ? (
-            <ScrollView style={{ height: 300 }}>
-              <Text
-                style={{
-                  ...theme.secondaryTextStyle,
-                  textDecorationLine: "line-through",
-                }}
-              >
-                {contentOriginal || " "}
-              </Text>
-            </ScrollView>
+            <Text
+              style={{
+                ...theme.secondaryTextStyle,
+                textDecorationLine: "line-through",
+              }}
+            >
+              {contentOriginal || " "}
+            </Text>
           ) : null}
         </View>
       </ScrollView>

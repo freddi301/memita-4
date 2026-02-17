@@ -2,17 +2,23 @@ import { AccountUpdate } from "./accounts";
 import { ArticleUpdate } from "./articles";
 import { ContactUpdate } from "./contacts";
 import { DirectMessageUpdate } from "./directMessages";
+import { GroupMessageUpdate } from "./groupMessages";
+import { GroupUpdate } from "./groups";
 
 export type Root = {
   accounts: Array<AccountUpdate>;
   contacts: Array<ContactUpdate>;
-  messages: Array<DirectMessageUpdate>;
+  directMessages: Array<DirectMessageUpdate>;
+  groups: Array<GroupUpdate>;
+  groupMessages: Array<GroupMessageUpdate>;
   articles: Array<ArticleUpdate>;
 };
 
 export const initialRoot: Root = {
   accounts: [],
   contacts: [],
-  messages: [],
+  directMessages: [],
+  groups: [],
+  groupMessages: [],
   articles: [],
 };

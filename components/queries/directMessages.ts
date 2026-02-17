@@ -24,7 +24,7 @@ export function updateDirectMessage({
   return (root: Root): Root => {
     return {
       ...root,
-      messages: root.messages.concat([
+      directMessages: root.directMessages.concat([
         {
           senderId,
           receiverId,
@@ -40,7 +40,7 @@ export function updateDirectMessage({
 export function directMessagesSummary({ accountId }: { accountId: string }) {
   return (root: Root) => {
     return contactList({ accountId })(root).flatMap((contact) => {
-      return collection(root.messages)
+      return collection(root.directMessages)
         .filter(
           (update) =>
             (update.senderId === accountId &&
@@ -88,7 +88,7 @@ export function directMessagesList({
   contactId: string;
 }) {
   return (root: Root) => {
-    return collection(root.messages)
+    return collection(root.directMessages)
       .filter(
         (update) =>
           (update.senderId === accountId && update.receiverId === contactId) ||

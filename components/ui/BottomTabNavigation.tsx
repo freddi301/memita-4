@@ -3,6 +3,7 @@ import { ScreenLink } from "../Routing";
 import { AccountScreen } from "../screens/AccountScreen";
 import { ArticlesScreen } from "../screens/ArticlesScreen";
 import { DirectMessagesScreen } from "../screens/DirectMessagesScreen";
+import { GroupMessagesScreen } from "../screens/GroupMessagesScreen";
 import { useTranslate } from "../Translate";
 
 export function BottomTabNavigation({
@@ -30,6 +31,15 @@ export function BottomTabNavigation({
         label={translate({
           en: "Direct messages",
           it: "Messaggi diretti",
+        })}
+      />
+      <ScreenLink
+        to={enabled ? <GroupMessagesScreen accountId={accountId} /> : undefined}
+        icon="group"
+        hideLabel
+        label={translate({
+          en: "Group messages",
+          it: "Messaggi di gruppo",
         })}
       />
       <ScreenLink

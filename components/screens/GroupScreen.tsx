@@ -6,32 +6,32 @@ import {
   useMemitaMutation,
   useMemitaQuery,
 } from "../persistance/dataApi";
-import { contactLatest, updateContact } from "../queries/contacts";
+import { groupLatest, updateGroup } from "../queries/groups";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
-import { DirectConversationScreen } from "./DirectConversationScreen";
-import { DirectMessagesScreen } from "./DirectMessagesScreen";
+import { GroupConversationScreen } from "./GroupConversationScreen";
+import { GroupMessagesScreen } from "./GroupMessagesScreen";
 
-export function ContactScreen({
+export function GroupScreen({
   accountId,
-  contactId,
+  groupId,
 }: {
   accountId: string;
-  contactId?: string;
+  groupId?: string;
 }) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
-  const latest = useMemitaQuery(contactLatest, {
+  const latest = useMemitaQuery(groupLatest, {
     accountId,
-    contactId: contactId || "",
+    groupId: groupId || "",
   })[0] ?? { name: "" };
 
-  const update = useMemitaMutation(updateContact);
+  const update = useMemitaMutation(updateGroup);
 
-  const [contactIdInput, setContactIdInput] = useState("");
-  const isContactIdValid = !contactId ? contactIdInput.length > 5 : true; // TODO
+  const [groupIdInput, setContactIdInput] = useState("");
+  const isGroupIdValid = !groupId ? groupIdInput.length > 5 : true; // TODO
 
   const [nameInput, setNameInput] = useState("");
   const nameOriginal = latest.name;
@@ -39,7 +39,7 @@ export function ContactScreen({
     setNameInput(nameOriginal);
   }, [nameOriginal]);
 
-  const canSave = isContactIdValid && nameInput !== nameOriginal;
+  const canSave = isGroupIdValid && nameInput !== nameOriginal;
 
   return (
     <Fragment>
@@ -51,10 +51,10 @@ export function ContactScreen({
       >
         <ScreenLink
           to={
-            !canSave && contactId ? (
-              <DirectConversationScreen
+            !canSave && groupId ? (
+              <GroupConversationScreen
                 accountId={accountId}
-                contactId={contactId}
+                groupId={groupId}
               />
             ) : undefined
           }
@@ -68,15 +68,15 @@ export function ContactScreen({
         <View style={{ flexDirection: "row" }}>
           <ScreenLink
             to={
-              !canSave && contactId !== undefined
+              !canSave && groupId !== undefined
                 ? async () => {
                     await update({
                       accountId,
-                      contactId,
+                      groupId,
                       name: nameOriginal,
                       deleted: true,
                     });
-                    return <DirectMessagesScreen accountId={accountId} />;
+                    return <GroupMessagesScreen accountId={accountId} />;
                   }
                 : undefined
             }
@@ -89,7 +89,7 @@ export function ContactScreen({
           />
           <ScreenLink
             to={
-              canSave && contactId !== undefined
+              canSave && groupId !== undefined
                 ? async () => {
                     setNameInput(nameOriginal);
                   }
@@ -106,24 +106,24 @@ export function ContactScreen({
             to={
               canSave
                 ? async () => {
-                    if (contactId) {
+                    if (groupId) {
                       await update({
                         accountId,
-                        contactId,
+                        groupId,
                         name: nameInput,
                         deleted: false,
                       });
                     } else {
                       await update({
                         accountId,
-                        contactId: contactIdInput,
+                        groupId: groupIdInput,
                         name: nameInput,
                         deleted: false,
                       });
                       return (
-                        <ContactScreen
+                        <GroupScreen
                           accountId={accountId}
-                          contactId={contactIdInput}
+                          groupId={groupIdInput}
                         />
                       );
                     }
@@ -133,7 +133,7 @@ export function ContactScreen({
             icon="save"
             hideLabel
             label={
-              contactId
+              groupId
                 ? translate({
                     en: "Save changes",
                     it: "Salva modifiche",
@@ -156,26 +156,26 @@ export function ContactScreen({
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
             {translate({
-              en: "Contact account id",
-              it: "Id dell'account del contatto",
+              en: "Group id",
+              it: "Id del gruppo",
             })}
           </Text>
-          {contactId ? (
-            <Text style={theme.textStyle}>{contactId}</Text>
+          {groupId ? (
+            <Text style={theme.textStyle}>{groupId}</Text>
           ) : (
             <Fragment>
               <TextInput
-                value={contactIdInput}
+                value={groupIdInput}
                 onChangeText={setContactIdInput}
                 style={theme.textInputStyle}
                 autoCapitalize="none"
                 autoCorrect={false}
               />
-              {!isContactIdValid ? (
+              {!isGroupIdValid ? (
                 <Text style={theme.validationErrorTextStyle}>
                   {translate({
-                    en: "Not a valid account id",
-                    it: "Non è un id account valido",
+                    en: "Not a valid group id",
+                    it: "Non è un id gruppo valido",
                   })}
                 </Text>
               ) : null}
@@ -185,8 +185,8 @@ export function ContactScreen({
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
             {translate({
-              en: "Contact name",
-              it: "Nome del contatto",
+              en: "Group name",
+              it: "Nome del gruppo",
             })}
           </Text>
           <TextInput

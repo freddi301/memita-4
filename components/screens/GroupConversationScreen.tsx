@@ -5,43 +5,41 @@ import {
   useMemitaMutation,
   useMemitaQuery,
 } from "../persistance/dataApi";
-import { accountLatest } from "../queries/accounts";
-import { contactLatest } from "../queries/contacts";
 import {
-  directMessagesList,
-  updateDirectMessage,
-} from "../queries/directMessages";
+  groupMessagesList,
+  updateGroupMessage,
+} from "../queries/groupMessages";
+import { groupLatest } from "../queries/groups";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { MessageCompose } from "../ui/MessageCompose";
-import { ContactScreen } from "./ContactScreen";
-import { DirectMessagesScreen } from "./DirectMessagesScreen";
+import { GroupMessagesScreen } from "./GroupMessagesScreen";
+import { GroupScreen } from "./GroupScreen";
 
-export function DirectConversationScreen({
+export function GroupConversationScreen({
   accountId,
-  contactId,
+  groupId,
 }: {
   accountId: string;
-  contactId: string;
+  groupId: string;
 }) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
-  const account = useMemitaQuery(accountLatest, { accountId })[0];
-  const contact = useMemitaQuery(contactLatest, { accountId, contactId })[0];
-  const conversation = useMemitaQuery(directMessagesList, {
+  const group = useMemitaQuery(groupLatest, { accountId, groupId })[0];
+  const conversation = useMemitaQuery(groupMessagesList, {
     accountId,
-    contactId,
+    groupId,
   });
 
-  const send = useMemitaMutation(updateDirectMessage);
+  const send = useMemitaMutation(updateGroupMessage);
 
   return (
     <Fragment>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <ScreenLink
-          to={<DirectMessagesScreen accountId={accountId} />}
+          to={<GroupMessagesScreen accountId={accountId} />}
           icon="arrow-left"
           hideLabel
           label={translate({
@@ -50,9 +48,9 @@ export function DirectConversationScreen({
           })}
         />
         <ScreenLink
-          to={<ContactScreen accountId={accountId} contactId={contactId} />}
+          to={<GroupScreen accountId={accountId} groupId={groupId} />}
           icon="user"
-          label={contact?.name ?? ""}
+          label={group?.name ?? ""}
           flexGrow1
         />
       </View>
@@ -68,11 +66,7 @@ export function DirectConversationScreen({
               }}
             >
               <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>
-                {item.senderId === accountId
-                  ? account?.name ?? ""
-                  : item.senderId === contactId
-                  ? contact?.name ?? ""
-                  : ""}
+                {item.senderName}
               </Text>
               <Text style={theme.secondaryTextStyle}>
                 {new Date(item.createdAt).toLocaleString()}
@@ -107,7 +101,7 @@ export function DirectConversationScreen({
           await send({
             createdAt: Date.now(),
             senderId: accountId,
-            receiverId: contactId,
+            groupId: groupId,
             content: text,
           });
         }}
