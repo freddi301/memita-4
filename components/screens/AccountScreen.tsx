@@ -1,7 +1,12 @@
 import * as Clipboard from "expo-clipboard";
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
-import { useMemitaMutation, useMemitaQuery } from "../persistance/dataApi";
+import { RefreshControl } from "react-native-web-refresh-control";
+import {
+  refreshMemitaQueries,
+  useMemitaMutation,
+  useMemitaQuery,
+} from "../persistance/dataApi";
 import {
   accountLatest,
   createAccountId,
@@ -114,7 +119,13 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
           />
         </View>
       </View>
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollView
+        style={{ flex: 1 }}
+        contentContainerStyle={{ flexGrow: 1 }}
+        refreshControl={
+          <RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />
+        }
+      >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
             <Text style={theme.secondaryTextStyle}>

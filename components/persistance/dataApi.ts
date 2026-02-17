@@ -34,6 +34,10 @@ export function useMemitaQuery<Params, Result>(
   ).data;
 }
 
+export async function refreshMemitaQueries() {
+  return queryClient.invalidateQueries();
+}
+
 export function useMemitaMutation<Params>(
   mutationFactory: (params: Params) => (root: Root) => Root
 ): (params: Params) => Promise<void> {

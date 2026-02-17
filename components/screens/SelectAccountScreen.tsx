@@ -1,7 +1,7 @@
 import { Image } from "expo-image";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
-import { useMemitaQuery } from "../persistance/dataApi";
+import { refreshMemitaQueries, useMemitaQuery } from "../persistance/dataApi";
 import { accountList } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
@@ -59,6 +59,8 @@ export function SelectAccountScreen() {
           paddingVertical: 8,
         }}
         contentContainerStyle={{ flexGrow: 1, justifyContent: "flex-end" }}
+        refreshing={false}
+        onRefresh={refreshMemitaQueries}
       />
       <View
         style={{

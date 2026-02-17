@@ -61,8 +61,10 @@ export function contactLatest({
 }) {
   return (root: Root) => {
     return collection(root.contacts)
-      .filter((update) => update.accountId === accountId)
-      .filter((update) => update.contactId === contactId)
+      .filter(
+        (update) =>
+          update.accountId === accountId && update.contactId === contactId
+      )
       .maxBy((update) => update.timestamp)
       .map((update) => ({
         name: update.name,

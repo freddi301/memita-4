@@ -1,4 +1,4 @@
-import { Platform, View } from "react-native";
+import { View } from "react-native";
 import { ScreenLink } from "../Routing";
 import { AccountScreen } from "../screens/AccountScreen";
 import { ArticlesScreen } from "../screens/ArticlesScreen";
@@ -19,56 +19,35 @@ export function BottomTabNavigation({
         flexDirection: "row",
         justifyContent: "center",
         paddingTop: 8,
-        paddingBottom: Platform.OS === "web" ? 8 : 0,
       }}
     >
       <ScreenLink
-        to={<DirectMessagesScreen accountId={accountId} />}
+        to={
+          enabled ? <DirectMessagesScreen accountId={accountId} /> : undefined
+        }
         icon="inbox"
         hideLabel
         label={translate({
           en: "Direct messages",
           it: "Messaggi diretti",
         })}
-        enabled={enabled}
       />
       <ScreenLink
-        to={<ArticlesScreen accountId={accountId} />}
+        to={enabled ? <ArticlesScreen accountId={accountId} /> : undefined}
         icon="newspaper-o"
         hideLabel
         label="newspaper"
-        enabled={enabled}
       />
+      <ScreenLink to={null} icon="calendar" hideLabel label="eventi" />
+      <ScreenLink to={null} icon="map-marker" hideLabel label="posti" />
       <ScreenLink
-        to={null}
-        icon="calendar"
-        hideLabel
-        label="eventi"
-        enabled={false}
-      />
-      <ScreenLink
-        to={null}
-        icon="map-marker"
-        hideLabel
-        label="posti"
-        enabled={false}
-      />
-      <ScreenLink
-        to={null}
-        icon="bell"
-        hideLabel
-        label="notifiche"
-        enabled={false}
-      />
-      <ScreenLink
-        to={<AccountScreen accountId={accountId} />}
+        to={enabled ? <AccountScreen accountId={accountId} /> : undefined}
         icon="user"
         hideLabel
         label={translate({
           en: "Account details",
           it: "Dettagli account",
         })}
-        enabled={enabled}
       />
     </View>
   );

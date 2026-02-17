@@ -41,11 +41,13 @@ export function ScreenLink({
   label,
   icon,
   hideLabel,
+  flexGrow1 = false,
 }: {
   to: ReactNode | (() => Promise<ReactNode | void>);
   label: string;
   icon?: IconName;
   hideLabel?: boolean;
+  flexGrow1?: boolean;
 }) {
   const theme = useTheme();
   const { actionInProgress, setActionInProgress, navigate, targetScreen } =
@@ -93,6 +95,7 @@ export function ScreenLink({
         flexDirection: "row",
         gap: 8,
         alignItems: "center",
+        flexGrow: flexGrow1 ? 1 : undefined,
       }}
       onPressIn={() => {
         setIsPressing(true);
@@ -116,12 +119,14 @@ function compareScreens(left: ReactNode, right: ReactNode): boolean {
     typeof left === "object" &&
     left !== null &&
     "type" in left &&
+    typeof left.type === "function" &&
     typeof right === "object" &&
     right !== null &&
-    "type" in right
+    "type" in right &&
+    typeof right.type === "function"
   ) {
     // TODO compare props too
-    return left.type === right.type;
+    return left.type.name === right.type.name;
   }
   return false;
 }

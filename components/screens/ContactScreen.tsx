@@ -1,6 +1,11 @@
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
-import { useMemitaMutation, useMemitaQuery } from "../persistance/dataApi";
+import { RefreshControl } from "react-native-web-refresh-control";
+import {
+  refreshMemitaQueries,
+  useMemitaMutation,
+  useMemitaQuery,
+} from "../persistance/dataApi";
 import { contactLatest, updateContact } from "../queries/contacts";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
@@ -130,7 +135,13 @@ export function ContactScreen({
           />
         </View>
       </View>
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollView
+        style={{ flex: 1 }}
+        contentContainerStyle={{ flexGrow: 1 }}
+        refreshControl={
+          <RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />
+        }
+      >
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
             {translate({

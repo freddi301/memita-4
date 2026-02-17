@@ -1,5 +1,3 @@
-refactor mutation and query as useMemitaQuery, useMemitaMutation
-finish direct mesages screen
 implement reactions (single character emoji)
 add device notification (max every 5 seconds)
 implement biography for accounts

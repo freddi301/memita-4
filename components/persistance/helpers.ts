@@ -10,6 +10,10 @@ export type Collection<Item> = {
     mapper: (group: Collection<Item>) => Collection<Result>
   ): Collection<Result>;
   maxBy(criteria: (item: Item) => number): Collection<Item>;
+  orderBy(
+    criteria: (item: Item) => number,
+    direction: "asc" | "desc"
+  ): Collection<Item>;
   concat(other: Collection<Item>): Collection<Item>;
 };
 
@@ -59,6 +63,15 @@ export function collection<Item>(array: Array<Item>): Collection<Item> {
     },
     concat(other) {
       return collection(array.concat(other.__array));
+    },
+    orderBy(criteria, direction) {
+      return collection(
+        [...array].sort((a, b) =>
+          direction === "asc"
+            ? criteria(a) - criteria(b)
+            : criteria(b) - criteria(a)
+        )
+      );
     },
   };
 }

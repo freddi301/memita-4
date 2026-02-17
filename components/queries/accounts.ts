@@ -5,12 +5,7 @@ export function createAccountId() {
   return Math.random().toString(36).slice(2);
 }
 
-export type AccountUpdate = {
-  accountId: string;
-  name: string;
-  deleted: boolean;
-  timestamp: number;
-};
+export type AccountUpdate = { accountId: string; accountSecret: string };
 
 export function updateAccount({
   accountId,
@@ -24,9 +19,10 @@ export function updateAccount({
   return (root: Root): Root => {
     return {
       ...root,
-      accounts: root.accounts.concat([
+      contacts: root.contacts.concat([
         {
           accountId,
+          contactId: accountId,
           name,
           deleted,
           timestamp: Date.now(),
@@ -38,7 +34,8 @@ export function updateAccount({
 
 export function accountList() {
   return (root: Root) => {
-    return collection(root.accounts)
+    return collection(root.contacts)
+      .filter((update) => update.accountId === update.contactId)
       .groupBy(
         (update) => [update.accountId],
         (updates) => updates.maxBy((update) => update.timestamp)
@@ -53,8 +50,11 @@ export function accountList() {
 
 export function accountLatest({ accountId }: { accountId: string }) {
   return (root: Root) => {
-    return collection(root.accounts)
-      .filter((update) => update.accountId === accountId)
+    return collection(root.contacts)
+      .filter(
+        (update) =>
+          update.accountId === accountId && update.contactId === accountId
+      )
       .maxBy((update) => update.timestamp)
       .map((update) => ({
         name: update.name,

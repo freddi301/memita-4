@@ -1,5 +1,4 @@
 import { collection } from "../persistance/helpers";
-import { accountLatest } from "./accounts";
 import { contactList } from "./contacts";
 import { Root } from "./queries";
 
@@ -43,8 +42,10 @@ export function articleLatest({
 }) {
   return (root: Root) => {
     return collection(root.articles)
-      .filter((update) => update.accountId === accountId)
-      .filter((update) => update.createdAt === createdAt)
+      .filter(
+        (update) =>
+          update.accountId === accountId && update.createdAt === createdAt
+      )
       .maxBy((update) => update.timestamp)
       .map((update) => ({
         content: update.content,
@@ -54,28 +55,21 @@ export function articleLatest({
 
 export function articleList({ accountId }: { accountId: string }) {
   return (root: Root) => {
-    return contactList({ accountId })(root)
-      .concat(
-        accountLatest({ accountId })(root).map((account) => ({
-          contactId: accountId,
-          name: account.name,
-        }))
-      )
-      .flatMap((contact) => {
-        return collection(root.articles)
-          .filter((update) => update.accountId === contact.contactId)
-          .groupBy(
-            (update) => [update.accountId, update.createdAt],
-            (updates) => updates.maxBy((update) => update.timestamp)
-          )
-          .filter((update) => update.content !== "")
-          .map((update) => ({
-            contactId: contact.contactId,
-            contactName: contact.name,
-            accountId: update.accountId,
-            createdAt: update.createdAt,
-            content: update.content,
-          }));
-      });
+    return contactList({ accountId })(root).flatMap((contact) => {
+      return collection(root.articles)
+        .filter((update) => update.accountId === contact.contactId)
+        .groupBy(
+          (update) => [update.accountId, update.createdAt],
+          (updates) => updates.maxBy((update) => update.timestamp)
+        )
+        .filter((update) => update.content !== "")
+        .map((update) => ({
+          contactId: contact.contactId,
+          contactName: contact.name,
+          accountId: update.accountId,
+          createdAt: update.createdAt,
+          content: update.content,
+        }));
+    });
   };
 }

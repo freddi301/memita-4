@@ -1,18 +1,19 @@
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
-import { useMemitaQuery } from "../persistance/dataApi";
-import { contactList } from "../queries/contacts";
+import { refreshMemitaQueries, useMemitaQuery } from "../persistance/dataApi";
+import { directMessagesSummary } from "../queries/directMessages";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { ContactScreen } from "./ContactScreen";
+import { DirectConversationScreen } from "./DirectConversationScreen";
 
 export function DirectMessagesScreen({ accountId }: { accountId: string }) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
-  const contacts = useMemitaQuery(contactList, { accountId });
+  const conversations = useMemitaQuery(directMessagesSummary, { accountId });
 
   return (
     <Fragment>
@@ -28,15 +29,26 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
         />
       </View>
       <FlatList
-        data={contacts}
+        data={conversations}
         renderItem={({ item }) => (
-          <ScreenLink
-            to={
-              <ContactScreen accountId={accountId} contactId={item.contactId} />
-            }
-            label={item.name}
-            icon="circle"
-          />
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <ScreenLink
+              to={
+                <DirectConversationScreen
+                  accountId={accountId}
+                  contactId={item.contactId}
+                />
+              }
+              label={item.contactName}
+              icon="circle"
+              flexGrow1
+            />
+            {item.createdAt ? (
+              <Text style={{ ...theme.textStyle, paddingRight: 16 }}>
+                {new Date(item.createdAt).toLocaleString()}
+              </Text>
+            ) : null}
+          </View>
         )}
         style={{ flex: 1, marginVertical: 8 }}
         contentContainerStyle={{ flexGrow: 1 }}
@@ -53,6 +65,8 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
             })}
           </Text>
         )}
+        refreshing={false}
+        onRefresh={refreshMemitaQueries}
       />
       <BottomTabNavigation accountId={accountId} />
     </Fragment>
