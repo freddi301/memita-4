@@ -1,8 +1,7 @@
-implement reactions (single character emoji)
-add device notification (max every 5 seconds)
 implement biography for accounts
-make event screen (add date to articles)
 make places screen (add position to biography)
+make event screen (add date to articles)
+implement reactions (single character emoji)
 implement lists for contacts, groups, places
 implement data propagation
 implement content as hash

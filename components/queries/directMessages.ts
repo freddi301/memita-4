@@ -1,3 +1,4 @@
+import { triggerNotification } from "../notifications";
 import { collection } from "../persistance/helpers";
 import { contactList } from "./contacts";
 import { Root } from "./queries";
@@ -22,6 +23,7 @@ export function updateDirectMessage({
   content: string;
 }) {
   return (root: Root): Root => {
+    triggerNotification();
     return {
       ...root,
       directMessages: root.directMessages.concat([

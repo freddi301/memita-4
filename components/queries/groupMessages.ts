@@ -1,3 +1,4 @@
+import { triggerNotification } from "../notifications";
 import { collection } from "../persistance/helpers";
 import { groupList } from "./groups";
 import { Root } from "./queries";
@@ -22,6 +23,7 @@ export function updateGroupMessage({
   content: string;
 }) {
   return (root: Root): Root => {
+    triggerNotification();
     return {
       ...root,
       groupMessages: root.groupMessages.concat([

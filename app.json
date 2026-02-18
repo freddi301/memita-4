@@ -45,7 +45,8 @@
             "minSdkVersion": 29
           }
         }
-      ]
+      ],
+      "expo-notifications"
     ],
     "experiments": {
       "typedRoutes": true,
