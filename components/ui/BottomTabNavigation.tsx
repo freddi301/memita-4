@@ -3,6 +3,7 @@ import { ScreenLink } from "../Routing";
 import { ArticlesScreen } from "../screens/ArticlesScreen";
 import { DirectMessagesScreen } from "../screens/DirectMessagesScreen";
 import { GroupMessagesScreen } from "../screens/GroupMessagesScreen";
+import { PlacesScreen } from "../screens/PlacesScreen";
 import { ProfileScreen } from "../screens/ProfileScreen";
 import { useTranslate } from "../Translate";
 
@@ -49,7 +50,15 @@ export function BottomTabNavigation({
         label="newspaper"
       />
       <ScreenLink to={null} icon="calendar" hideLabel label="eventi" />
-      <ScreenLink to={null} icon="map-marker" hideLabel label="posti" />
+      <ScreenLink
+        to={enabled ? <PlacesScreen accountId={accountId} /> : undefined}
+        icon="map-marker"
+        hideLabel
+        label={translate({
+          en: "Places",
+          it: "Luoghi",
+        })}
+      />
       <ScreenLink
         to={
           enabled ? (
