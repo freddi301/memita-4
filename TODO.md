@@ -1,6 +1,7 @@
-implement biography for accounts
 make places screen (add position to biography)
-make event screen (add date to articles)
+make event screen (add position and date to articles)
+implement did read state
+implement ui for modifying a message
 implement reactions (single character emoji)
 implement lists for contacts, groups, places
 implement data propagation
@@ -9,8 +10,7 @@ add cryptography, account + device signature
 implement direct/group message edit and delete
 add whitelist recipients
 implement drafts (maybe as state)
-implement did read state
-implement edit history for contact, article, direct message, group message
+implement show edit history for contact, article, direct message, group message
 implement reply / mention previous
 implement attachments files/images/videos/audios
 implement videocall

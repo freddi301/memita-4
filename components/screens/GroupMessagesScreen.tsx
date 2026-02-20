@@ -41,7 +41,9 @@ export function GroupMessagesScreen({ accountId }: { accountId: string }) {
               }
               label={item.groupName}
               icon="circle"
-              flexGrow1
+              styleOverride={{
+                flexGrow1: true,
+              }}
             />
             {item.createdAt ? (
               <Text style={{ ...theme.textStyle, paddingRight: 16 }}>

@@ -15,7 +15,7 @@ import {
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
-import { BottomTabNavigation } from "../ui/BottomTabNavigation";
+import { ProfileScreen } from "./ProfileScreen";
 import { SelectAccountScreen } from "./SelectAccountScreen";
 
 export function AccountScreen({ accountId }: { accountId?: string }) {
@@ -68,7 +68,7 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
           />
           <ScreenLink
             to={
-              canSave && accountId !== undefined
+              canSave
                 ? async () => {
                     setNameInput(nameOriginal);
                   }
@@ -185,9 +185,17 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
           ) : null}
         </View>
       </ScrollView>
-      {accountId ? (
-        <BottomTabNavigation accountId={accountId} enabled={!canSave} />
-      ) : null}
+      <ScreenLink
+        to={
+          !canSave && accountId ? (
+            <ProfileScreen accountId={accountId} contactId={accountId} />
+          ) : undefined
+        }
+        label={translate({
+          en: "Profile",
+          it: "Profilo",
+        })}
+      />
     </Fragment>
   );
 }

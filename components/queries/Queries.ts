@@ -1,5 +1,6 @@
 import { AccountUpdate } from "./accounts";
 import { ArticleUpdate } from "./articles";
+import { BiographyUpdate } from "./biography";
 import { ContactUpdate } from "./contacts";
 import { DirectMessageUpdate } from "./directMessages";
 import { GroupMessageUpdate } from "./groupMessages";
@@ -12,6 +13,7 @@ export type Root = {
   groups: Array<GroupUpdate>;
   groupMessages: Array<GroupMessageUpdate>;
   articles: Array<ArticleUpdate>;
+  biographies: Array<BiographyUpdate>;
 };
 
 export const initialRoot: Root = {
@@ -21,4 +23,5 @@ export const initialRoot: Root = {
   groups: [],
   groupMessages: [],
   articles: [],
+  biographies: [],
 };

@@ -41,35 +41,36 @@ export function updateGroupMessage({
 
 export function groupMessagesSummary({ accountId }: { accountId: string }) {
   return (root: Root) => {
-    return groupList({ accountId })(root).flatMap((group) => {
-      return collection(root.groupMessages)
-        .filter((update) => update.groupId === group.groupId)
-        .groupBy(
-          (update) => [update.senderId, update.groupId, update.createdAt],
-          (updates) => updates.maxBy((update) => update.timestamp)
-        )
-        .concat(
-          collection([
-            {
-              senderId: accountId,
-              groupId: group.groupId,
-              createdAt: 0,
-              content: "",
-              timestamp: 0,
-            },
-          ])
-        )
-        .groupBy(
-          (update) => [update.groupId],
-          (updates) => updates.maxBy((update) => update.createdAt)
-        )
-        .orderBy((update) => update.createdAt, "desc")
-        .map((update) => ({
-          groupId: group.groupId,
-          groupName: group.name,
-          createdAt: update.createdAt,
-        }));
-    });
+    return groupList({ accountId })(root)
+      .flatMap((group) => {
+        return collection(root.groupMessages)
+          .filter((update) => update.groupId === group.groupId)
+          .groupBy(
+            (update) => [update.senderId, update.groupId, update.createdAt],
+            (updates) => updates.maxBy((update) => update.timestamp)
+          )
+          .concat(
+            collection([
+              {
+                senderId: accountId,
+                groupId: group.groupId,
+                createdAt: 0,
+                content: "",
+                timestamp: 0,
+              },
+            ])
+          )
+          .groupBy(
+            (update) => [update.groupId],
+            (updates) => updates.maxBy((update) => update.createdAt)
+          )
+          .map((update) => ({
+            groupId: group.groupId,
+            groupName: group.name,
+            createdAt: update.createdAt,
+          }));
+      })
+      .orderBy((update) => update.createdAt, "desc");
   };
 }
 

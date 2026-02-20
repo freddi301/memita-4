@@ -41,44 +41,45 @@ export function updateDirectMessage({
 
 export function directMessagesSummary({ accountId }: { accountId: string }) {
   return (root: Root) => {
-    return contactList({ accountId })(root).flatMap((contact) => {
-      return collection(root.directMessages)
-        .filter(
-          (update) =>
-            (update.senderId === accountId &&
-              update.receiverId === contact.contactId) ||
-            (update.senderId === contact.contactId &&
-              update.receiverId === accountId)
-        )
-        .groupBy(
-          (update) => [update.senderId, update.receiverId, update.createdAt],
-          (updates) => updates.maxBy((update) => update.timestamp)
-        )
-        .concat(
-          collection([
-            {
-              senderId: accountId,
-              receiverId: contact.contactId,
-              createdAt: 0,
-              content: "",
-              timestamp: 0,
-            },
-          ])
-        )
-        .groupBy(
-          (update) =>
-            update.senderId.localeCompare(update.receiverId)
-              ? [update.senderId, update.receiverId]
-              : [update.receiverId, update.senderId],
-          (updates) => updates.maxBy((update) => update.createdAt)
-        )
-        .orderBy((update) => update.createdAt, "desc")
-        .map((update) => ({
-          contactId: contact.contactId,
-          contactName: contact.name,
-          createdAt: update.createdAt,
-        }));
-    });
+    return contactList({ accountId })(root)
+      .flatMap((contact) => {
+        return collection(root.directMessages)
+          .filter(
+            (update) =>
+              (update.senderId === accountId &&
+                update.receiverId === contact.contactId) ||
+              (update.senderId === contact.contactId &&
+                update.receiverId === accountId)
+          )
+          .groupBy(
+            (update) => [update.senderId, update.receiverId, update.createdAt],
+            (updates) => updates.maxBy((update) => update.timestamp)
+          )
+          .concat(
+            collection([
+              {
+                senderId: accountId,
+                receiverId: contact.contactId,
+                createdAt: 0,
+                content: "",
+                timestamp: 0,
+              },
+            ])
+          )
+          .groupBy(
+            (update) =>
+              update.senderId.localeCompare(update.receiverId)
+                ? [update.senderId, update.receiverId]
+                : [update.receiverId, update.senderId],
+            (updates) => updates.maxBy((update) => update.createdAt)
+          )
+          .map((update) => ({
+            contactId: contact.contactId,
+            contactName: contact.name,
+            createdAt: update.createdAt,
+          }));
+      })
+      .orderBy((update) => update.createdAt, "desc");
   };
 }
 

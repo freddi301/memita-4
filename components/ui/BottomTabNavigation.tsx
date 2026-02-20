@@ -1,9 +1,9 @@
 import { View } from "react-native";
 import { ScreenLink } from "../Routing";
-import { AccountScreen } from "../screens/AccountScreen";
 import { ArticlesScreen } from "../screens/ArticlesScreen";
 import { DirectMessagesScreen } from "../screens/DirectMessagesScreen";
 import { GroupMessagesScreen } from "../screens/GroupMessagesScreen";
+import { ProfileScreen } from "../screens/ProfileScreen";
 import { useTranslate } from "../Translate";
 
 export function BottomTabNavigation({
@@ -51,12 +51,16 @@ export function BottomTabNavigation({
       <ScreenLink to={null} icon="calendar" hideLabel label="eventi" />
       <ScreenLink to={null} icon="map-marker" hideLabel label="posti" />
       <ScreenLink
-        to={enabled ? <AccountScreen accountId={accountId} /> : undefined}
+        to={
+          enabled ? (
+            <ProfileScreen accountId={accountId} contactId={accountId} />
+          ) : undefined
+        }
         icon="user"
         hideLabel
         label={translate({
-          en: "Account details",
-          it: "Dettagli account",
+          en: "Profile",
+          it: "Profilo",
         })}
       />
     </View>

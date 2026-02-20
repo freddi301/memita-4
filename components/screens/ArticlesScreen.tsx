@@ -7,6 +7,7 @@ import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { EditArticleScreen } from "./EditArticleScreen";
+import { ProfileScreen } from "./ProfileScreen";
 
 export function ArticlesScreen({ accountId }: { accountId: string }) {
   const { translate } = useTranslate();
@@ -30,17 +31,23 @@ export function ArticlesScreen({ accountId }: { accountId: string }) {
       <FlatList
         data={articles}
         renderItem={({ item }) => (
-          <View style={{ gap: 4, paddingVertical: 8, paddingHorizontal: 16 }}>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Text
-                style={{
-                  ...theme.textStyle,
-                  fontWeight: "bold",
-                  flexGrow: 1,
+          <View style={{ paddingVertical: 8, paddingHorizontal: 16 }}>
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 8 }}
+            >
+              <ScreenLink
+                to={
+                  <ProfileScreen
+                    accountId={accountId}
+                    contactId={item.accountId}
+                  />
+                }
+                label={item.contactName}
+                styleOverride={{
+                  flexGrow1: true,
+                  hasPadding: false,
                 }}
-              >
-                {item.contactName}
-              </Text>
+              />
               {item.accountId === accountId ? (
                 <ScreenLink
                   to={
@@ -55,9 +62,12 @@ export function ArticlesScreen({ accountId }: { accountId: string }) {
                     en: "Edit article",
                     it: "Modifica articolo",
                   })}
+                  styleOverride={{
+                    hasPadding: false,
+                  }}
                 />
               ) : null}
-              <Text style={theme.secondaryTextStyle}>
+              <Text style={{ ...theme.secondaryTextStyle }}>
                 {new Date(item.createdAt).toLocaleString()}
               </Text>
             </View>

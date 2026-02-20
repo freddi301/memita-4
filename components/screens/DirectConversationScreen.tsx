@@ -15,8 +15,8 @@ import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { MessageCompose } from "../ui/MessageCompose";
-import { ContactScreen } from "./ContactScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
+import { ProfileScreen } from "./ProfileScreen";
 
 export function DirectConversationScreen({
   accountId,
@@ -50,10 +50,12 @@ export function DirectConversationScreen({
           })}
         />
         <ScreenLink
-          to={<ContactScreen accountId={accountId} contactId={contactId} />}
+          to={<ProfileScreen accountId={accountId} contactId={contactId} />}
           icon="user"
           label={contact?.name ?? ""}
-          flexGrow1
+          styleOverride={{
+            flexGrow1: true,
+          }}
         />
       </View>
       <FlatList

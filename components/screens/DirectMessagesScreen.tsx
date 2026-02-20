@@ -41,7 +41,9 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
               }
               label={item.contactName}
               icon="circle"
-              flexGrow1
+              styleOverride={{
+                flexGrow1: true,
+              }}
             />
             {item.createdAt ? (
               <Text style={{ ...theme.textStyle, paddingRight: 16 }}>

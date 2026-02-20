@@ -1,4 +1,5 @@
 import { FontAwesome } from "@expo/vector-icons";
+import { isEqual } from "lodash";
 import { createContext, ReactNode, Suspense, use, useState } from "react";
 import { Pressable, Text } from "react-native";
 import { useTheme } from "./Theme";
@@ -41,13 +42,16 @@ export function ScreenLink({
   label,
   icon,
   hideLabel,
-  flexGrow1 = false,
+  styleOverride: { flexGrow1 = false, hasPadding = true } = {},
 }: {
   to: ReactNode | (() => Promise<ReactNode | void>);
   label: string;
   icon?: IconName;
   hideLabel?: boolean;
-  flexGrow1?: boolean;
+  styleOverride?: {
+    flexGrow1?: boolean;
+    hasPadding?: boolean;
+  };
 }) {
   const theme = useTheme();
   const { actionInProgress, setActionInProgress, navigate, targetScreen } =
@@ -82,8 +86,8 @@ export function ScreenLink({
         }
       }}
       style={{
-        paddingVertical: 8,
-        paddingHorizontal: 16,
+        paddingVertical: hasPadding ? 8 : 0,
+        paddingHorizontal: hasPadding ? 16 : 0,
         outline: "none",
         backgroundColor: navigationTriggereFromHere
           ? theme.activeActionBackgroundColor
@@ -125,8 +129,9 @@ function compareScreens(left: ReactNode, right: ReactNode): boolean {
     "type" in right &&
     typeof right.type === "function"
   ) {
-    // TODO compare props too
-    return left.type.name === right.type.name;
+    return (
+      left.type.name === right.type.name && isEqual(left.props, right.props)
+    );
   }
   return false;
 }

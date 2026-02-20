@@ -7,6 +7,7 @@ import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { AccountScreen } from "./AccountScreen";
+import { ProfileScreen } from "./ProfileScreen";
 
 export function SelectAccountScreen() {
   const theme = useTheme();
@@ -50,7 +51,12 @@ export function SelectAccountScreen() {
         data={accounts}
         renderItem={({ item }) => (
           <ScreenLink
-            to={<AccountScreen accountId={item.accountId} />}
+            to={
+              <ProfileScreen
+                accountId={item.accountId}
+                contactId={item.accountId}
+              />
+            }
             icon="user-circle"
             label={item.name}
           />

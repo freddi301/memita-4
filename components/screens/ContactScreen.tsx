@@ -12,6 +12,7 @@ import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
+import { ProfileScreen } from "./ProfileScreen";
 
 export function ContactScreen({
   accountId,
@@ -46,105 +47,87 @@ export function ContactScreen({
       <View
         style={{
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "flex-end",
         }}
       >
         <ScreenLink
           to={
-            !canSave && contactId ? (
-              <DirectConversationScreen
-                accountId={accountId}
-                contactId={contactId}
-              />
-            ) : undefined
+            !canSave && contactId !== undefined
+              ? async () => {
+                  await update({
+                    accountId,
+                    contactId,
+                    name: nameOriginal,
+                    deleted: true,
+                  });
+                  return <DirectMessagesScreen accountId={accountId} />;
+                }
+              : undefined
           }
-          icon="arrow-left"
+          icon="trash"
           hideLabel
           label={translate({
-            en: "Go to conversation",
-            it: "Vai alla conversazione",
+            en: "Delete contact",
+            it: "Elimina contatto",
           })}
         />
-        <View style={{ flexDirection: "row" }}>
-          <ScreenLink
-            to={
-              !canSave && contactId !== undefined
-                ? async () => {
+        <ScreenLink
+          to={
+            canSave && contactId !== undefined
+              ? async () => {
+                  setNameInput(nameOriginal);
+                }
+              : undefined
+          }
+          icon="undo"
+          hideLabel
+          label={translate({
+            en: "Discard changes",
+            it: "Scarta modifiche",
+          })}
+        />
+        <ScreenLink
+          to={
+            canSave
+              ? async () => {
+                  if (contactId) {
                     await update({
                       accountId,
                       contactId,
-                      name: nameOriginal,
-                      deleted: true,
+                      name: nameInput,
+                      deleted: false,
                     });
-                    return <DirectMessagesScreen accountId={accountId} />;
+                  } else {
+                    await update({
+                      accountId,
+                      contactId: contactIdInput,
+                      name: nameInput,
+                      deleted: false,
+                    });
+                    return (
+                      <ContactScreen
+                        accountId={accountId}
+                        contactId={contactIdInput}
+                      />
+                    );
                   }
-                : undefined
-            }
-            icon="trash"
-            hideLabel
-            label={translate({
-              en: "Delete contact",
-              it: "Elimina contatto",
-            })}
-          />
-          <ScreenLink
-            to={
-              canSave && contactId !== undefined
-                ? async () => {
-                    setNameInput(nameOriginal);
-                  }
-                : undefined
-            }
-            icon="undo"
-            hideLabel
-            label={translate({
-              en: "Discard changes",
-              it: "Scarta modifiche",
-            })}
-          />
-          <ScreenLink
-            to={
-              canSave
-                ? async () => {
-                    if (contactId) {
-                      await update({
-                        accountId,
-                        contactId,
-                        name: nameInput,
-                        deleted: false,
-                      });
-                    } else {
-                      await update({
-                        accountId,
-                        contactId: contactIdInput,
-                        name: nameInput,
-                        deleted: false,
-                      });
-                      return (
-                        <ContactScreen
-                          accountId={accountId}
-                          contactId={contactIdInput}
-                        />
-                      );
-                    }
-                  }
-                : undefined
-            }
-            icon="save"
-            hideLabel
-            label={
-              contactId
-                ? translate({
-                    en: "Save changes",
-                    it: "Salva modifiche",
-                  })
-                : translate({
-                    en: "Create contact",
-                    it: "Crea contatto",
-                  })
-            }
-          />
-        </View>
+                }
+              : undefined
+          }
+          icon="save"
+          hideLabel
+          label={
+            contactId
+              ? translate({
+                  en: "Save changes",
+                  it: "Salva modifiche",
+                })
+              : translate({
+                  en: "Create contact",
+                  it: "Crea contatto",
+                })
+          }
+        />
       </View>
       <ScrollView
         style={{ flex: 1 }}
@@ -206,6 +189,31 @@ export function ContactScreen({
           ) : null}
         </View>
       </ScrollView>
+      <ScreenLink
+        to={
+          !canSave && contactId ? (
+            <DirectConversationScreen
+              accountId={accountId}
+              contactId={contactId}
+            />
+          ) : undefined
+        }
+        label={translate({
+          en: "Direct messages",
+          it: "Messaggi diretti",
+        })}
+      />
+      <ScreenLink
+        to={
+          !canSave && contactId ? (
+            <ProfileScreen accountId={accountId} contactId={contactId} />
+          ) : undefined
+        }
+        label={translate({
+          en: "Profile",
+          it: "Profilo",
+        })}
+      />
     </Fragment>
   );
 }
