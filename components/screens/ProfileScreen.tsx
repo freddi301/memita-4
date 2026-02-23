@@ -12,6 +12,7 @@ import {
 import { biographyLatest, updateBiography } from "../queries/biography";
 import { contactLatest } from "../queries/contacts";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
+import { CoordsInput } from "../ui/CoordsInput";
 import { AccountScreen } from "./AccountScreen";
 import { ContactScreen } from "./ContactScreen";
 import { DirectConversationScreen } from "./DirectConversationScreen";
@@ -33,17 +34,24 @@ export function ProfileScreen({
 
   const biography = useMemitaQuery(biographyLatest, {
     accountId: contactId,
-  })[0] ?? { content: "" };
+  })[0] ?? { content: "", location: undefined };
 
   const update = useMemitaMutation(updateBiography);
 
-  const [bioInput, setBioInput] = useState("");
   const bioOriginal = biography.content;
+  const [bioInput, setBioInput] = useState(bioOriginal);
   useEffect(() => {
     setBioInput(bioOriginal);
   }, [bioOriginal]);
 
-  const canSave = bioInput !== bioOriginal;
+  const locationOriginal = biography.location;
+  const [locationInput, setLocationInput] = useState(locationOriginal);
+  useEffect(() => {
+    setLocationInput(locationOriginal);
+  }, [locationOriginal]);
+
+  const canSave =
+    bioInput !== bioOriginal || locationInput !== locationOriginal;
 
   return (
     <Fragment>
@@ -65,6 +73,7 @@ export function ProfileScreen({
                 canSave
                   ? async () => {
                       setBioInput(bioOriginal);
+                      setLocationInput(locationOriginal);
                     }
                   : undefined
               }
@@ -81,6 +90,7 @@ export function ProfileScreen({
                   ? async () => {
                       await update({
                         accountId,
+                        location: locationInput,
                         content: bioInput,
                       });
                     }
@@ -110,42 +120,58 @@ export function ProfileScreen({
           <RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />
         }
       >
-        {contactId === accountId ? (
-          <Fragment>
+        <View style={{ gap: 2, paddingVertical: 8 }}>
+          <Text style={{ ...theme.secondaryTextStyle, paddingHorizontal: 16 }}>
+            {translate({
+              en: "Location",
+              it: "Posizione",
+            })}
+          </Text>
+          <CoordsInput value={locationInput} onChange={setLocationInput} />
+        </View>
+        <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
+          <Text style={theme.secondaryTextStyle}>
+            {translate({
+              en: "Biography",
+              it: "Biografia",
+            })}
+          </Text>
+          {contactId === accountId ? (
             <TextInput
               value={bioInput}
               onChangeText={setBioInput}
               style={{
                 ...theme.textInputStyle,
-                marginHorizontal: 16,
                 maxHeight: "100%",
               }}
               multiline
             />
-          </Fragment>
-        ) : (
-          <Text
-            style={{
-              ...theme.textStyle,
-              paddingHorizontal: 16,
-            }}
-          >
-            {biography.content}
-          </Text>
-        )}
+          ) : (
+            <Text
+              style={{
+                ...theme.textStyle,
+                paddingHorizontal: 16,
+              }}
+            >
+              {biography.content}
+            </Text>
+          )}
+        </View>
       </ScrollView>
       <ScreenLink
         to={
-          <DirectConversationScreen
-            accountId={accountId}
-            contactId={contactId}
-          />
+          canSave ? undefined : (
+            <DirectConversationScreen
+              accountId={accountId}
+              contactId={contactId}
+            />
+          )
         }
         label={translate({ en: "Direct messages", it: "Mesaggi diretti" })}
       />
       {accountId === contactId ? (
         <ScreenLink
-          to={<AccountScreen accountId={accountId} />}
+          to={canSave ? undefined : <AccountScreen accountId={accountId} />}
           label={translate({
             en: "Account settings",
             it: "Impostazioni account",
@@ -153,12 +179,16 @@ export function ProfileScreen({
         />
       ) : (
         <ScreenLink
-          to={<ContactScreen accountId={accountId} contactId={contactId} />}
+          to={
+            canSave ? undefined : (
+              <ContactScreen accountId={accountId} contactId={contactId} />
+            )
+          }
           label={translate({ en: "Edit contact", it: "Modifica contatto" })}
         />
       )}
       {contactId === accountId ? (
-        <BottomTabNavigation accountId={accountId} enabled={true} />
+        <BottomTabNavigation accountId={accountId} enabled={!canSave} />
       ) : null}
     </Fragment>
   );

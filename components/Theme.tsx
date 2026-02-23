@@ -14,7 +14,7 @@ const darkTheme = {
 type ThemeProps = typeof darkTheme;
 
 const lightTheme: ThemeProps = {
-  backgroundColor: "#e8e8e8",
+  backgroundColor: "#fbfbfb",
   textColor: "#191919",
   separatorColor: "#cecece",
   secondaryTextColor: "#838383",

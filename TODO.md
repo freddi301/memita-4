@@ -1,4 +1,3 @@
-make places screen (add position to biography)
 make event screen (add position and date to articles)
 implement did read state
 implement ui for modifying a message
