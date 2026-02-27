@@ -40,7 +40,7 @@ export function PlacesScreen({ accountId }: { accountId: string }) {
           {currentPlace?.content}
         </Text>
       </View>
-      <BottomTabNavigation accountId={accountId} />
+      <BottomTabNavigation accountId={accountId} enabled={true} />
     </Fragment>
   );
 }

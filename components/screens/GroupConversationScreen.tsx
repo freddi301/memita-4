@@ -51,7 +51,9 @@ export function GroupConversationScreen({
           to={<GroupScreen accountId={accountId} groupId={groupId} />}
           icon="user"
           label={group?.name ?? ""}
-          flexGrow1
+          styleOverride={{
+            flexGrow1: true,
+          }}
         />
       </View>
       <FlatList

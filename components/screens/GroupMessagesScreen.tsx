@@ -70,7 +70,7 @@ export function GroupMessagesScreen({ accountId }: { accountId: string }) {
         refreshing={false}
         onRefresh={refreshMemitaQueries}
       />
-      <BottomTabNavigation accountId={accountId} />
+      <BottomTabNavigation accountId={accountId} enabled={true} />
     </Fragment>
   );
 }

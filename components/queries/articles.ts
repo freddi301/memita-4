@@ -5,6 +5,17 @@ import { Root } from "./queries";
 export type ArticleUpdate = {
   accountId: string;
   createdAt: number;
+  date:
+    | {
+        timestamp: number;
+        duration: number;
+      }
+    | undefined;
+  // location: {
+  //   latitude: number;
+  //   longitude: number;
+  //   // address: string;
+  // } | undefined;
   content: string;
   timestamp: number;
 };
@@ -12,10 +23,17 @@ export type ArticleUpdate = {
 export function updateArticle({
   accountId,
   createdAt,
+  date,
   content,
 }: {
   accountId: string;
   createdAt: number;
+  date:
+    | {
+        timestamp: number;
+        duration: number;
+      }
+    | undefined;
   content: string;
 }) {
   return (root: Root): Root => {
@@ -25,6 +43,7 @@ export function updateArticle({
         {
           accountId,
           createdAt,
+          date,
           content,
           timestamp: Date.now(),
         },
@@ -48,6 +67,7 @@ export function articleLatest({
       )
       .maxBy((update) => update.timestamp)
       .map((update) => ({
+        date: update.date,
         content: update.content,
       }));
   };
@@ -66,8 +86,8 @@ export function articleList({ accountId }: { accountId: string }) {
         .map((update) => ({
           contactId: contact.contactId,
           contactName: contact.name,
-          accountId: update.accountId,
           createdAt: update.createdAt,
+          date: update.date,
           content: update.content,
         }));
     });

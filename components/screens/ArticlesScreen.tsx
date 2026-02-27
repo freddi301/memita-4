@@ -1,3 +1,4 @@
+import { FontAwesome } from "@expo/vector-icons";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
 import { useMemitaQuery } from "../persistance/dataApi";
@@ -39,7 +40,7 @@ export function ArticlesScreen({ accountId }: { accountId: string }) {
                 to={
                   <ProfileScreen
                     accountId={accountId}
-                    contactId={item.accountId}
+                    contactId={item.contactId}
                   />
                 }
                 label={item.contactName}
@@ -48,7 +49,7 @@ export function ArticlesScreen({ accountId }: { accountId: string }) {
                   hasPadding: false,
                 }}
               />
-              {item.accountId === accountId ? (
+              {item.contactId === accountId ? (
                 <ScreenLink
                   to={
                     <EditArticleScreen
@@ -71,6 +72,26 @@ export function ArticlesScreen({ accountId }: { accountId: string }) {
                 {new Date(item.createdAt).toLocaleString()}
               </Text>
             </View>
+            {item.date && (
+              <View
+                style={{
+                  flexDirection: "row",
+                  gap: 8,
+                }}
+              >
+                <FontAwesome
+                  name="calendar"
+                  color={theme.secondaryTextStyle.color}
+                  size={18}
+                />
+                <Text style={{ ...theme.secondaryTextStyle }}>
+                  {new Date(item.date.timestamp).toLocaleString()}
+                  {/*  {" - "} {new Date(
+                    item.date.timestamp + item.date.duration
+                  ).toLocaleString()} */}
+                </Text>
+              </View>
+            )}
             <Text style={{ ...theme.textStyle }}>{item.content}</Text>
           </View>
         )}
@@ -90,7 +111,7 @@ export function ArticlesScreen({ accountId }: { accountId: string }) {
           </Text>
         )}
       />
-      <BottomTabNavigation accountId={accountId} />
+      <BottomTabNavigation accountId={accountId} enabled={true} />
     </Fragment>
   );
 }

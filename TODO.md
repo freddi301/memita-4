@@ -1,6 +1,6 @@
-make event screen (add position and date to articles)
 implement did read state
 implement ui for modifying a message
+add location to events
 implement reactions (single character emoji)
 implement lists for contacts, groups, places
 implement data propagation

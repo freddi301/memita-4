@@ -5,6 +5,7 @@ import { articleLatest, updateArticle } from "../queries/articles";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
+import { DateTimeInput } from "../ui/DateTimeInput";
 import { ArticlesScreen } from "./ArticlesScreen";
 
 export function EditArticleScreen({
@@ -20,9 +21,17 @@ export function EditArticleScreen({
   const latest = useMemitaQuery(articleLatest, {
     accountId,
     createdAt: createdAt ?? 0,
-  })[0] ?? { content: "" };
+  })[0] ?? { date: undefined, content: "" };
 
   const update = useMemitaMutation(updateArticle);
+
+  const dateTimestampOriginal = latest.date?.timestamp;
+  const [dateTimestampInput, setDateTimestampInput] = useState(
+    dateTimestampOriginal
+  );
+  useEffect(() => {
+    setDateTimestampInput(dateTimestampOriginal);
+  }, [dateTimestampOriginal]);
 
   const [contentInput, setContentInput] = useState("");
   const contentOriginal = latest.content;
@@ -30,7 +39,9 @@ export function EditArticleScreen({
     setContentInput(contentOriginal);
   }, [contentOriginal]);
 
-  const canSave = contentInput !== contentOriginal;
+  const canSave =
+    contentInput !== contentOriginal ||
+    dateTimestampInput !== dateTimestampOriginal;
 
   return (
     <Fragment>
@@ -69,6 +80,7 @@ export function EditArticleScreen({
                     await update({
                       accountId,
                       createdAt,
+                      date: undefined,
                       content: "",
                     });
                     return <ArticlesScreen accountId={accountId} />;
@@ -101,10 +113,17 @@ export function EditArticleScreen({
             to={
               canSave
                 ? async () => {
+                    const dateInput = dateTimestampInput
+                      ? {
+                          timestamp: dateTimestampInput,
+                          duration: 0,
+                        }
+                      : undefined;
                     if (createdAt) {
                       await update({
                         accountId,
                         createdAt,
+                        date: dateInput,
                         content: contentInput,
                       });
                     } else {
@@ -112,6 +131,7 @@ export function EditArticleScreen({
                       await update({
                         accountId,
                         createdAt: now,
+                        date: dateInput,
                         content: contentInput,
                       });
                       return (
@@ -141,6 +161,18 @@ export function EditArticleScreen({
         </View>
       </View>
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
+        <View style={{ gap: 2, paddingVertical: 8 }}>
+          <Text style={{ ...theme.secondaryTextStyle, paddingHorizontal: 16 }}>
+            {translate({
+              en: "Event",
+              it: "Evento",
+            })}
+          </Text>
+          <DateTimeInput
+            value={dateTimestampInput}
+            onChange={setDateTimestampInput}
+          />
+        </View>
         <View
           style={{
             paddingHorizontal: 16,

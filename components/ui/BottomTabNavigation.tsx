@@ -2,6 +2,7 @@ import { View } from "react-native";
 import { ScreenLink } from "../Routing";
 import { ArticlesScreen } from "../screens/ArticlesScreen";
 import { DirectMessagesScreen } from "../screens/DirectMessagesScreen";
+import { EventsScreen } from "../screens/EventsScreen";
 import { GroupMessagesScreen } from "../screens/GroupMessagesScreen";
 import { PlacesScreen } from "../screens/PlacesScreen";
 import { ProfileScreen } from "../screens/ProfileScreen";
@@ -9,10 +10,10 @@ import { useTranslate } from "../Translate";
 
 export function BottomTabNavigation({
   accountId,
-  enabled = true,
+  enabled,
 }: {
   accountId: string;
-  enabled?: boolean;
+  enabled: boolean;
 }) {
   const { translate } = useTranslate();
   return (
@@ -49,7 +50,15 @@ export function BottomTabNavigation({
         hideLabel
         label="newspaper"
       />
-      <ScreenLink to={null} icon="calendar" hideLabel label="eventi" />
+      <ScreenLink
+        to={enabled ? <EventsScreen accountId={accountId} /> : undefined}
+        icon="calendar"
+        hideLabel
+        label={translate({
+          en: "Events",
+          it: "Eventi",
+        })}
+      />
       <ScreenLink
         to={enabled ? <PlacesScreen accountId={accountId} /> : undefined}
         icon="map-marker"
