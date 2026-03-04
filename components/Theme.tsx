@@ -9,6 +9,7 @@ const darkTheme = {
   pressedBackgroundColor: "#2a2a2a",
   activeActionBackgroundColor: "#1a2332",
   validationErrorTextColor: "#d56514",
+  selectedItemBackgroundColor: "#353344",
 };
 
 type ThemeProps = typeof darkTheme;
@@ -22,6 +23,7 @@ const lightTheme: ThemeProps = {
   pressedBackgroundColor: "#d0d0d0",
   activeActionBackgroundColor: "#9bb7e2",
   validationErrorTextColor: "#dd7569",
+  selectedItemBackgroundColor: "#cdc6f6",
 };
 
 export function useTheme() {

@@ -1,5 +1,5 @@
-import { Fragment } from "react";
-import { FlatList, Text, View } from "react-native";
+import { Fragment, useState } from "react";
+import { FlatList, Pressable, Text, View } from "react-native";
 import {
   refreshMemitaQueries,
   useMemitaMutation,
@@ -37,6 +37,14 @@ export function DirectConversationScreen({
 
   const send = useMemitaMutation(updateDirectMessage);
 
+  const [toModifyMessage, setToModifyMessage] = useState<
+    | undefined
+    | {
+        createdAt: number;
+        content: string;
+      }
+  >();
+
   return (
     <Fragment>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -61,7 +69,25 @@ export function DirectConversationScreen({
       <FlatList
         data={conversation}
         renderItem={({ item }) => (
-          <View>
+          <Pressable
+            onLongPress={() => {
+              setToModifyMessage(
+                item.createdAt === toModifyMessage?.createdAt &&
+                  item.senderId === accountId
+                  ? undefined
+                  : {
+                      createdAt: item.createdAt,
+                      content: item.content,
+                    }
+              );
+            }}
+            style={{
+              backgroundColor:
+                item.createdAt === toModifyMessage?.createdAt
+                  ? theme.selectedItemBackgroundColor
+                  : undefined,
+            }}
+          >
             <View
               style={{
                 flexDirection: "row",
@@ -83,7 +109,7 @@ export function DirectConversationScreen({
             <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
               {item.content}
             </Text>
-          </View>
+          </Pressable>
         )}
         style={{ flex: 1, marginVertical: 8 }}
         contentContainerStyle={{ flexGrow: 1 }}
@@ -105,13 +131,17 @@ export function DirectConversationScreen({
         onRefresh={refreshMemitaQueries}
       />
       <MessageCompose
+        toModifyContent={toModifyMessage?.content}
         onSend={async (text) => {
           await send({
-            createdAt: Date.now(),
+            createdAt: toModifyMessage?.createdAt ?? Date.now(),
             senderId: accountId,
             receiverId: contactId,
             content: text,
           });
+          if (toModifyMessage) {
+            setToModifyMessage(undefined);
+          }
         }}
       />
     </Fragment>
