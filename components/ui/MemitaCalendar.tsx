@@ -8,7 +8,6 @@ import Animated, {
   withDecay,
 } from "react-native-reanimated";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
 
 type EventPayload = {
   id: string;
@@ -19,7 +18,6 @@ type EventPayload = {
 
 export function MemitaCalendar({ events }: { events: Array<EventPayload> }) {
   const theme = useTheme();
-  const { translate } = useTranslate();
 
   const baseY = Date.now();
 
@@ -204,15 +202,15 @@ const secondDuration = 1000;
 const minuteDuration = 60 * secondDuration;
 const hourDuration = 60 * minuteDuration;
 const dayDuration = 24 * hourDuration;
-const weekDuration = 7 * dayDuration;
+// const weekDuration = 7 * dayDuration;
 const monthDuration = 31 * dayDuration;
-const yearDuration = 365 * dayDuration;
+// const yearDuration = 365 * dayDuration;
 
-function startOfHour(timestamp: number) {
-  const date = new Date(timestamp);
-  date.setMinutes(0, 0, 0);
-  return date.getTime();
-}
+// function startOfHour(timestamp: number) {
+//   const date = new Date(timestamp);
+//   date.setMinutes(0, 0, 0);
+//   return date.getTime();
+// }
 
 function startOfDay(timestamp: number) {
   const date = new Date(timestamp);
@@ -220,24 +218,24 @@ function startOfDay(timestamp: number) {
   return date.getTime();
 }
 
-function startOfWeek(timestamp: number) {
-  const date = new Date(timestamp);
-  const day = date.getDay();
-  date.setDate(date.getDate() - day);
-  date.setHours(0, 0, 0, 0);
-  return date.getTime();
-}
+// function startOfWeek(timestamp: number) {
+//   const date = new Date(timestamp);
+//   const day = date.getDay();
+//   date.setDate(date.getDate() - day);
+//   date.setHours(0, 0, 0, 0);
+//   return date.getTime();
+// }
 
-function startOfMonth(timestamp: number) {
-  const date = new Date(timestamp);
-  date.setDate(1);
-  date.setHours(0, 0, 0, 0);
-  return date.getTime();
-}
+// function startOfMonth(timestamp: number) {
+//   const date = new Date(timestamp);
+//   date.setDate(1);
+//   date.setHours(0, 0, 0, 0);
+//   return date.getTime();
+// }
 
-function startOfYear(timestamp: number) {
-  const date = new Date(timestamp);
-  date.setMonth(0, 1);
-  date.setHours(0, 0, 0, 0);
-  return date.getTime();
-}
+// function startOfYear(timestamp: number) {
+//   const date = new Date(timestamp);
+//   date.setMonth(0, 1);
+//   date.setHours(0, 0, 0, 0);
+//   return date.getTime();
+// }
