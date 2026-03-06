@@ -1,6 +1,6 @@
+import { RootCollections } from "../persistance/dataApi";
 import { collection } from "../persistance/helpers";
 import { contactList } from "./contacts";
-import { Root } from "./queries";
 
 export type BiographyUpdate = {
   accountId: string;
@@ -24,24 +24,26 @@ export function updateBiography({
   location: BioLocation | undefined;
   content: string;
 }) {
-  return (root: Root): Root => {
+  return (root: RootCollections): RootCollections => {
     return {
       ...root,
-      biographies: root.biographies.concat([
-        {
-          accountId,
-          location,
-          content,
-          timestamp: Date.now(),
-        },
-      ]),
+      biographies: root.biographies.concat(
+        collection([
+          {
+            accountId,
+            location,
+            content,
+            timestamp: Date.now(),
+          },
+        ])
+      ),
     };
   };
 }
 
 export function biographyLatest({ accountId }: { accountId: string }) {
-  return (root: Root) => {
-    return collection(root.biographies)
+  return (root: RootCollections) => {
+    return root.biographies
       .filter((update) => update.accountId === accountId)
       .maxBy((update) => update.timestamp)
       .map((update) => ({
@@ -52,7 +54,7 @@ export function biographyLatest({ accountId }: { accountId: string }) {
 }
 
 export function biographies({ accountId }: { accountId: string }) {
-  return (root: Root) => {
+  return (root: RootCollections) => {
     return contactList({ accountId })(root).flatMap((contact) => {
       return biographyLatest({ accountId: contact.contactId })(root).map(
         (biography) => ({

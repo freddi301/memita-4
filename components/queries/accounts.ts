@@ -1,5 +1,5 @@
+import { RootCollections } from "../persistance/dataApi";
 import { collection } from "../persistance/helpers";
-import { Root } from "./queries";
 
 export function createAccountId() {
   return Math.random().toString(36).slice(2);
@@ -16,25 +16,27 @@ export function updateAccount({
   name: string;
   deleted: boolean;
 }) {
-  return (root: Root): Root => {
+  return (root: RootCollections): RootCollections => {
     return {
       ...root,
-      contacts: root.contacts.concat([
-        {
-          accountId,
-          contactId: accountId,
-          name,
-          deleted,
-          timestamp: Date.now(),
-        },
-      ]),
+      contacts: root.contacts.concat(
+        collection([
+          {
+            accountId,
+            contactId: accountId,
+            name,
+            deleted,
+            timestamp: Date.now(),
+          },
+        ])
+      ),
     };
   };
 }
 
 export function accountList() {
-  return (root: Root) => {
-    return collection(root.contacts)
+  return (root: RootCollections) => {
+    return root.contacts
       .filter((update) => update.accountId === update.contactId)
       .groupBy(
         (update) => [update.accountId],
@@ -49,8 +51,8 @@ export function accountList() {
 }
 
 export function accountLatest({ accountId }: { accountId: string }) {
-  return (root: Root) => {
-    return collection(root.contacts)
+  return (root: RootCollections) => {
+    return root.contacts
       .filter(
         (update) =>
           update.accountId === accountId && update.contactId === accountId

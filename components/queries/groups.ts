@@ -1,5 +1,5 @@
+import { RootCollections } from "../persistance/dataApi";
 import { collection } from "../persistance/helpers";
-import { Root } from "./queries";
 
 export type GroupUpdate = {
   accountId: string;
@@ -20,25 +20,27 @@ export function updateGroup({
   name: string;
   deleted: boolean;
 }) {
-  return (root: Root): Root => {
+  return (root: RootCollections): RootCollections => {
     return {
       ...root,
-      groups: root.groups.concat([
-        {
-          accountId,
-          groupId,
-          name,
-          deleted,
-          timestamp: Date.now(),
-        },
-      ]),
+      groups: root.groups.concat(
+        collection([
+          {
+            accountId,
+            groupId,
+            name,
+            deleted,
+            timestamp: Date.now(),
+          },
+        ])
+      ),
     };
   };
 }
 
 export function groupList({ accountId }: { accountId: string }) {
-  return (root: Root) => {
-    return collection(root.groups)
+  return (root: RootCollections) => {
+    return root.groups
       .filter((update) => update.accountId === accountId)
       .groupBy(
         (update) => [update.groupId],
@@ -59,8 +61,8 @@ export function groupLatest({
   accountId: string;
   groupId: string;
 }) {
-  return (root: Root) => {
-    return collection(root.groups)
+  return (root: RootCollections) => {
+    return root.groups
       .filter(
         (update) => update.accountId === accountId && update.groupId === groupId
       )

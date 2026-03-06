@@ -1,6 +1,6 @@
+import { RootCollections } from "../persistance/dataApi";
 import { collection } from "../persistance/helpers";
 import { contactList } from "./contacts";
-import { Root } from "./queries";
 
 export type ArticleUpdate = {
   accountId: string;
@@ -36,18 +36,20 @@ export function updateArticle({
     | undefined;
   content: string;
 }) {
-  return (root: Root): Root => {
+  return (root: RootCollections): RootCollections => {
     return {
       ...root,
-      articles: root.articles.concat([
-        {
-          accountId,
-          createdAt,
-          date,
-          content,
-          timestamp: Date.now(),
-        },
-      ]),
+      articles: root.articles.concat(
+        collection([
+          {
+            accountId,
+            createdAt,
+            date,
+            content,
+            timestamp: Date.now(),
+          },
+        ])
+      ),
     };
   };
 }
@@ -59,8 +61,8 @@ export function articleLatest({
   accountId: string;
   createdAt: number;
 }) {
-  return (root: Root) => {
-    return collection(root.articles)
+  return (root: RootCollections) => {
+    return root.articles
       .filter(
         (update) =>
           update.accountId === accountId && update.createdAt === createdAt
@@ -74,9 +76,9 @@ export function articleLatest({
 }
 
 export function articleList({ accountId }: { accountId: string }) {
-  return (root: Root) => {
+  return (root: RootCollections) => {
     return contactList({ accountId })(root).flatMap((contact) => {
-      return collection(root.articles)
+      return root.articles
         .filter((update) => update.accountId === contact.contactId)
         .groupBy(
           (update) => [update.accountId, update.createdAt],

@@ -1,7 +1,7 @@
 import { triggerNotification } from "../notifications";
+import { RootCollections } from "../persistance/dataApi";
 import { collection } from "../persistance/helpers";
 import { contactList } from "./contacts";
-import { Root } from "./queries";
 
 export type DirectMessageUpdate = {
   senderId: string;
@@ -22,28 +22,30 @@ export function updateDirectMessage({
   createdAt: number;
   content: string;
 }) {
-  return (root: Root): Root => {
+  return (root: RootCollections): RootCollections => {
     triggerNotification();
     return {
       ...root,
-      directMessages: root.directMessages.concat([
-        {
-          senderId,
-          receiverId,
-          createdAt,
-          content,
-          timestamp: Date.now(),
-        },
-      ]),
+      directMessages: root.directMessages.concat(
+        collection([
+          {
+            senderId,
+            receiverId,
+            createdAt,
+            content,
+            timestamp: Date.now(),
+          },
+        ])
+      ),
     };
   };
 }
 
 export function directMessagesSummary({ accountId }: { accountId: string }) {
-  return (root: Root) => {
+  return (root: RootCollections) => {
     return contactList({ accountId })(root)
       .flatMap((contact) =>
-        collection(root.directMessages)
+        root.directMessages
           .filter(
             (update) =>
               (update.senderId === accountId &&
@@ -67,7 +69,7 @@ export function directMessagesSummary({ accountId }: { accountId: string }) {
             (updates) => updates.maxBy((update) => update.timestamp)
           )
           .flatMap((messageUpdate) =>
-            collection(root.didReadDirectMessages)
+            root.didReadDirectMessages
               .filter(
                 (didReadUpdate) =>
                   didReadUpdate.senderId === messageUpdate.senderId &&
@@ -118,8 +120,8 @@ export function directMessagesList({
   accountId: string;
   contactId: string;
 }) {
-  return (root: Root) => {
-    return collection(root.directMessages)
+  return (root: RootCollections) => {
+    return root.directMessages
       .filter(
         (update) =>
           (update.senderId === accountId && update.receiverId === contactId) ||
@@ -132,7 +134,7 @@ export function directMessagesList({
       .filter((update) => update.content !== "")
       .orderBy((update) => update.createdAt, "asc")
       .flatMap((messageUpdate) =>
-        collection(root.didReadDirectMessages)
+        root.didReadDirectMessages
           .filter(
             (didReadUpdate) =>
               didReadUpdate.senderId === messageUpdate.senderId &&
@@ -181,18 +183,20 @@ export function updateDidReadDirectMessage({
   createdAt: number;
   didRead: boolean;
 }) {
-  return (root: Root): Root => {
+  return (root: RootCollections): RootCollections => {
     return {
       ...root,
-      didReadDirectMessages: root.didReadDirectMessages.concat([
-        {
-          senderId,
-          receiverId,
-          createdAt,
-          didRead,
-          timestamp: Date.now(),
-        },
-      ]),
+      didReadDirectMessages: root.didReadDirectMessages.concat(
+        collection([
+          {
+            senderId,
+            receiverId,
+            createdAt,
+            didRead,
+            timestamp: Date.now(),
+          },
+        ])
+      ),
     };
   };
 }

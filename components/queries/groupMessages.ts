@@ -1,7 +1,7 @@
 import { triggerNotification } from "../notifications";
+import { RootCollections } from "../persistance/dataApi";
 import { collection } from "../persistance/helpers";
 import { groupList } from "./groups";
-import { Root } from "./queries";
 
 export type GroupMessageUpdate = {
   senderId: string;
@@ -22,28 +22,30 @@ export function updateGroupMessage({
   createdAt: number;
   content: string;
 }) {
-  return (root: Root): Root => {
+  return (root: RootCollections): RootCollections => {
     triggerNotification();
     return {
       ...root,
-      groupMessages: root.groupMessages.concat([
-        {
-          senderId,
-          groupId,
-          createdAt,
-          content,
-          timestamp: Date.now(),
-        },
-      ]),
+      groupMessages: root.groupMessages.concat(
+        collection([
+          {
+            senderId,
+            groupId,
+            createdAt,
+            content,
+            timestamp: Date.now(),
+          },
+        ])
+      ),
     };
   };
 }
 
 export function groupMessagesSummary({ accountId }: { accountId: string }) {
-  return (root: Root) => {
+  return (root: RootCollections) => {
     return groupList({ accountId })(root)
       .flatMap((group) => {
-        return collection(root.groupMessages)
+        return root.groupMessages
           .filter((update) => update.groupId === group.groupId)
           .concat(
             collection([
@@ -81,8 +83,8 @@ export function groupMessagesList({
   accountId: string;
   groupId: string;
 }) {
-  return (root: Root) => {
-    return collection(root.groupMessages)
+  return (root: RootCollections) => {
+    return root.groupMessages
       .filter((update) => update.groupId === groupId)
       .groupBy(
         (update) => [update.senderId, update.groupId, update.createdAt],
@@ -91,7 +93,7 @@ export function groupMessagesList({
       .filter((update) => update.content !== "")
       .orderBy((update) => update.createdAt, "asc")
       .flatMap((messageUpdate) => {
-        return collection(root.contacts)
+        return root.contacts
           .filter(
             (contactUpdate) =>
               contactUpdate.accountId === accountId &&
