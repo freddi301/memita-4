@@ -1,3 +1,4 @@
+import { FontAwesome } from "@expo/vector-icons";
 import { Fragment, useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
 import {
@@ -9,6 +10,7 @@ import { accountLatest } from "../queries/accounts";
 import { contactLatest } from "../queries/contacts";
 import {
   directMessagesList,
+  updateDidReadDirectMessage,
   updateDirectMessage,
 } from "../queries/directMessages";
 import { ScreenLink } from "../Routing";
@@ -36,6 +38,8 @@ export function DirectConversationScreen({
   });
 
   const send = useMemitaMutation(updateDirectMessage);
+
+  const didRead = useMemitaMutation(updateDidReadDirectMessage);
 
   const [toModifyMessage, setToModifyMessage] = useState<
     | undefined
@@ -71,15 +75,26 @@ export function DirectConversationScreen({
         renderItem={({ item }) => (
           <Pressable
             onLongPress={() => {
-              setToModifyMessage(
-                item.createdAt === toModifyMessage?.createdAt &&
-                  item.senderId === accountId
-                  ? undefined
-                  : {
-                      createdAt: item.createdAt,
-                      content: item.content,
-                    }
-              );
+              if (item.senderId === accountId) {
+                setToModifyMessage(
+                  item.createdAt === toModifyMessage?.createdAt
+                    ? undefined
+                    : {
+                        createdAt: item.createdAt,
+                        content: item.content,
+                      }
+                );
+              }
+            }}
+            onPress={() => {
+              if (item.receiverId === accountId) {
+                didRead({
+                  senderId: item.senderId,
+                  receiverId: item.receiverId,
+                  createdAt: item.createdAt,
+                  didRead: !item.didRead,
+                });
+              }
             }}
             style={{
               backgroundColor:
@@ -91,20 +106,41 @@ export function DirectConversationScreen({
             <View
               style={{
                 flexDirection: "row",
-                paddingHorizontal: 16,
-                justifyContent: "space-between",
+                alignItems: "center",
+                borderRightWidth: 4,
+                borderColor:
+                  item.receiverId === accountId
+                    ? !item.didRead
+                      ? theme.linkTextColor
+                      : theme.secondaryTextColor
+                    : "transparent",
               }}
             >
-              <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>
+              <Text
+                style={{
+                  ...theme.textStyle,
+                  fontWeight: "bold",
+                  paddingLeft: 16,
+                }}
+              >
                 {item.senderId === accountId
                   ? account?.name ?? ""
                   : item.senderId === contactId
                   ? contact?.name ?? ""
                   : ""}
               </Text>
+              <View style={{ flexGrow: 1 }} />
               <Text style={theme.secondaryTextStyle}>
                 {new Date(item.createdAt).toLocaleString()}
               </Text>
+              <FontAwesome
+                name="check"
+                size={16}
+                color={
+                  item.didRead ? theme.linkTextColor : theme.secondaryTextColor
+                }
+                style={{ marginLeft: 8, paddingRight: 4 }}
+              />
             </View>
             <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
               {item.content}

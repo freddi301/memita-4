@@ -45,10 +45,6 @@ export function groupMessagesSummary({ accountId }: { accountId: string }) {
       .flatMap((group) => {
         return collection(root.groupMessages)
           .filter((update) => update.groupId === group.groupId)
-          .groupBy(
-            (update) => [update.senderId, update.groupId, update.createdAt],
-            (updates) => updates.maxBy((update) => update.timestamp)
-          )
           .concat(
             collection([
               {
@@ -59,6 +55,10 @@ export function groupMessagesSummary({ accountId }: { accountId: string }) {
                 timestamp: 0,
               },
             ])
+          )
+          .groupBy(
+            (update) => [update.senderId, update.groupId, update.createdAt],
+            (updates) => updates.maxBy((update) => update.timestamp)
           )
           .groupBy(
             (update) => [update.groupId],
@@ -88,6 +88,7 @@ export function groupMessagesList({
         (update) => [update.senderId, update.groupId, update.createdAt],
         (updates) => updates.maxBy((update) => update.timestamp)
       )
+      .filter((update) => update.content !== "")
       .orderBy((update) => update.createdAt, "asc")
       .flatMap((messageUpdate) => {
         return collection(root.contacts)

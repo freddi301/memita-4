@@ -46,10 +46,26 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
               }}
             />
             {item.createdAt ? (
-              <Text style={{ ...theme.textStyle, paddingRight: 16 }}>
+              <Text style={{ ...theme.textStyle, paddingRight: 4 }}>
                 {new Date(item.createdAt).toLocaleString()}
               </Text>
             ) : null}
+            <Text
+              style={{
+                ...theme.textStyle,
+                fontWeight: "bold",
+                backgroundColor: theme.linkTextColor,
+                color: theme.backgroundColor,
+                paddingHorizontal: 4,
+                borderRadius: 4,
+                marginHorizontal: 4,
+                minWidth: 24,
+                textAlign: "center",
+                visibility: item.unread > 0 ? "visible" : "hidden",
+              }}
+            >
+              {item.unread}
+            </Text>
           </View>
         )}
         style={{ flex: 1, marginVertical: 8 }}

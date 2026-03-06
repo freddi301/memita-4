@@ -1,5 +1,4 @@
 implement did read state
-implement message modification history
 add location to events
 implement reactions (single character emoji)
 implement lists for contacts, groups, places

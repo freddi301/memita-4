@@ -42,18 +42,14 @@ export function updateDirectMessage({
 export function directMessagesSummary({ accountId }: { accountId: string }) {
   return (root: Root) => {
     return contactList({ accountId })(root)
-      .flatMap((contact) => {
-        return collection(root.directMessages)
+      .flatMap((contact) =>
+        collection(root.directMessages)
           .filter(
             (update) =>
               (update.senderId === accountId &&
                 update.receiverId === contact.contactId) ||
               (update.senderId === contact.contactId &&
                 update.receiverId === accountId)
-          )
-          .groupBy(
-            (update) => [update.senderId, update.receiverId, update.createdAt],
-            (updates) => updates.maxBy((update) => update.timestamp)
           )
           .concat(
             collection([
@@ -67,8 +63,39 @@ export function directMessagesSummary({ accountId }: { accountId: string }) {
             ])
           )
           .groupBy(
+            (update) => [update.senderId, update.receiverId, update.createdAt],
+            (updates) => updates.maxBy((update) => update.timestamp)
+          )
+          .flatMap((messageUpdate) =>
+            collection(root.didReadDirectMessages)
+              .filter(
+                (didReadUpdate) =>
+                  didReadUpdate.senderId === messageUpdate.senderId &&
+                  didReadUpdate.receiverId === messageUpdate.receiverId &&
+                  didReadUpdate.createdAt === messageUpdate.createdAt
+              )
+              .concat(
+                collection([
+                  {
+                    senderId: messageUpdate.senderId,
+                    receiverId: messageUpdate.receiverId,
+                    createdAt: messageUpdate.createdAt,
+                    didRead: true,
+                    timestamp: 0,
+                  },
+                ])
+              )
+              .maxBy((update) => update.timestamp)
+              .map((didReadUpdate) => ({
+                senderId: messageUpdate.senderId,
+                receiverId: messageUpdate.receiverId,
+                createdAt: messageUpdate.createdAt,
+                didRead: didReadUpdate.didRead,
+              }))
+          )
+          .groupBy(
             (update) =>
-              update.senderId.localeCompare(update.receiverId)
+              update.senderId.localeCompare(update.receiverId) > 0
                 ? [update.senderId, update.receiverId]
                 : [update.receiverId, update.senderId],
             (updates) => updates.maxBy((update) => update.createdAt)
@@ -77,8 +104,9 @@ export function directMessagesSummary({ accountId }: { accountId: string }) {
             contactId: contact.contactId,
             contactName: contact.name,
             createdAt: update.createdAt,
-          }));
-      })
+            unread: update.didRead ? 0 : 1,
+          }))
+      )
       .orderBy((update) => update.createdAt, "desc");
   };
 }
@@ -101,12 +129,70 @@ export function directMessagesList({
         (update) => [update.senderId, update.receiverId, update.createdAt],
         (updates) => updates.maxBy((update) => update.timestamp)
       )
+      .filter((update) => update.content !== "")
       .orderBy((update) => update.createdAt, "asc")
-      .map((update) => ({
-        senderId: update.senderId,
-        receiverId: update.receiverId,
-        createdAt: update.createdAt,
-        content: update.content,
-      }));
+      .flatMap((messageUpdate) =>
+        collection(root.didReadDirectMessages)
+          .filter(
+            (didReadUpdate) =>
+              didReadUpdate.senderId === messageUpdate.senderId &&
+              didReadUpdate.receiverId === messageUpdate.receiverId &&
+              didReadUpdate.createdAt === messageUpdate.createdAt
+          )
+          .concat(
+            collection([
+              {
+                senderId: messageUpdate.senderId,
+                receiverId: messageUpdate.receiverId,
+                createdAt: messageUpdate.createdAt,
+                didRead: false,
+                timestamp: 0,
+              },
+            ])
+          )
+          .maxBy((update) => update.timestamp)
+          .map((didReadUpdate) => ({
+            senderId: messageUpdate.senderId,
+            receiverId: messageUpdate.receiverId,
+            createdAt: messageUpdate.createdAt,
+            content: messageUpdate.content,
+            didRead: didReadUpdate.didRead,
+          }))
+      );
+  };
+}
+
+export type DidReadDirectMessageUpdate = {
+  senderId: string;
+  receiverId: string;
+  createdAt: number;
+  didRead: boolean;
+  timestamp: number;
+};
+
+export function updateDidReadDirectMessage({
+  senderId,
+  receiverId,
+  createdAt,
+  didRead,
+}: {
+  senderId: string;
+  receiverId: string;
+  createdAt: number;
+  didRead: boolean;
+}) {
+  return (root: Root): Root => {
+    return {
+      ...root,
+      didReadDirectMessages: root.didReadDirectMessages.concat([
+        {
+          senderId,
+          receiverId,
+          createdAt,
+          didRead,
+          timestamp: Date.now(),
+        },
+      ]),
+    };
   };
 }

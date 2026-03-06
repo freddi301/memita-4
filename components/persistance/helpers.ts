@@ -15,6 +15,7 @@ export type Collection<Item> = {
     direction: "asc" | "desc"
   ): Collection<Item>;
   concat(other: Collection<Item>): Collection<Item>;
+  count(): Collection<number>;
 };
 
 export function collection<Item>(array: Array<Item>): Collection<Item> {
@@ -72,6 +73,9 @@ export function collection<Item>(array: Array<Item>): Collection<Item> {
             : criteria(b) - criteria(a)
         )
       );
+    },
+    count() {
+      return collection([array.length]);
     },
   };
 }
