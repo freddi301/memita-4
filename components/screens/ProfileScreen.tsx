@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { ScrollView, Text, TextInput, View } from "react-native";
+import { ScrollView, Share, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
@@ -66,6 +66,19 @@ export function ProfileScreen({
         >
           {contact.name}
         </Text>
+        <ScreenLink
+          to={async () => {
+            await Share.share({
+              message: contactId,
+            });
+          }}
+          icon="share-alt"
+          hideLabel
+          label={translate({
+            en: "Share profile",
+            it: "Condividi profilo",
+          })}
+        />
         {contactId === accountId && (
           <Fragment>
             <ScreenLink

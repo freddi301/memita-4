@@ -7,7 +7,7 @@ import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { AccountScreen } from "./AccountScreen";
-import { ProfileScreen } from "./ProfileScreen";
+import { DirectMessagesScreen } from "./DirectMessagesScreen";
 
 export function SelectAccountScreen() {
   const theme = useTheme();
@@ -51,12 +51,7 @@ export function SelectAccountScreen() {
         data={accounts}
         renderItem={({ item }) => (
           <ScreenLink
-            to={
-              <ProfileScreen
-                accountId={item.accountId}
-                contactId={item.accountId}
-              />
-            }
+            to={<DirectMessagesScreen accountId={item.accountId} />}
             icon="user-circle"
             label={item.name}
           />

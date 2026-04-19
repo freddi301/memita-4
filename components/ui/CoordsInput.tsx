@@ -28,10 +28,12 @@ export function CoordsInput({
             marginRight: 8,
             marginLeft: 16,
           }}
+          readOnly
         />
         <TextInput
           value={value?.longitude.toString() ?? ""}
           style={{ ...theme.textInputStyle, flex: 1 }}
+          readOnly
         />
         <ScreenLink
           to={async () => {
