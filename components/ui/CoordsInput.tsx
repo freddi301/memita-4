@@ -50,8 +50,8 @@ export function CoordsInput({
       {showMap && (
         <View
           style={{
-            width: Dimensions.get("screen").width,
-            height: Dimensions.get("screen").width,
+            width: Dimensions.get("window").width,
+            height: Math.min(Dimensions.get("window").width, 400),
           }}
         >
           <GeoMap currentLocation={value} onSetLocation={onChange} />

@@ -98,7 +98,12 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
                         name: nameInput,
                         deleted: false,
                       });
-                      return <AccountScreen accountId={newAccountId} />;
+                      return (
+                        <ProfileScreen
+                          accountId={newAccountId}
+                          contactId={newAccountId}
+                        />
+                      );
                     }
                   }
                 : undefined

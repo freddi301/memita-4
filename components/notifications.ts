@@ -16,7 +16,7 @@ export async function triggerNotification() {
   if (Platform.OS !== "web") {
     const presented = await Notifications.getPresentedNotificationsAsync();
     const alreadyPresent = presented.some(
-      (notification) => notification.request.identifier === identifier
+      (notification) => notification.request.identifier === identifier,
     );
     if (!alreadyPresent) {
       await Notifications.scheduleNotificationAsync({
@@ -30,11 +30,6 @@ export async function triggerNotification() {
   }
 }
 
-async function registerForPushNotificationsAsync() {
-  const permissions = await Notifications.getPermissionsAsync();
-  if (!permissions.granted) {
-    await Notifications.requestPermissionsAsync();
-  }
+export async function registerForPushNotificationsAsync() {
+  await Notifications.requestPermissionsAsync();
 }
-
-registerForPushNotificationsAsync();
