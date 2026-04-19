@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
-import { initialRoot, Root } from "../queries/queries";
+import { initialRoot, Root } from "../queries/Queries";
 import { queryClient } from "../queryClient";
 import { collection, Collection } from "./helpers";
 
@@ -27,21 +27,21 @@ function makeRootCollections(root: Root): RootCollections {
     Object.entries(root).map(([key, value]) => [
       key,
       collection(value as any) as any,
-    ])
+    ]),
   ) as RootCollections;
 }
 
 function makeRoot(collections: RootCollections): Root {
   return Object.fromEntries(
-    Object.entries(collections).map(([key, value]) => [key, value.__array])
+    Object.entries(collections).map(([key, value]) => [key, value.__array]),
   ) as Root;
 }
 
 export function useMemitaQuery<Params, Result>(
   queryFactory: (
-    params: Params
+    params: Params,
   ) => (rootCollections: RootCollections) => Collection<Result>,
-  params: Params
+  params: Params,
 ): Array<Result> {
   return useSuspenseQuery(
     {
@@ -51,7 +51,7 @@ export function useMemitaQuery<Params, Result>(
         return queryFactory(params)(makeRootCollections(data)).__array;
       },
     },
-    queryClient
+    queryClient,
   ).data;
 }
 
@@ -61,8 +61,8 @@ export async function refreshMemitaQueries() {
 
 export function useMemitaMutation<Params>(
   mutationFactory: (
-    params: Params
-  ) => (rootCollections: RootCollections) => RootCollections
+    params: Params,
+  ) => (rootCollections: RootCollections) => RootCollections,
 ): (params: Params) => Promise<void> {
   return useMutation(
     {
@@ -75,6 +75,6 @@ export function useMemitaMutation<Params>(
         await queryClient.invalidateQueries();
       },
     },
-    queryClient
+    queryClient,
   ).mutateAsync;
 }
