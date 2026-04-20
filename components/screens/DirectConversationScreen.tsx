@@ -10,10 +10,9 @@ import {
 } from "../queries/directMessages";
 import { ScreenLink } from "../Routing";
 import {
-  refreshMemitaQueries,
   useMemitaMutation,
   useMemitaQuery,
-  useMemitaSubscription,
+  useMemitaSubscription
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
@@ -166,8 +165,6 @@ export function DirectConversationScreen({
             })}
           </Text>
         )}
-        refreshing={false}
-        onRefresh={refreshMemitaQueries}
       />
       <MessageCompose
         toModifyContent={toModifyMessage?.content}

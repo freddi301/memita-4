@@ -1,4 +1,3 @@
-implement did read state
 add location to events
 implement reactions (single character emoji)
 implement lists for contacts, groups, places
