@@ -4,11 +4,11 @@ declare module "hyperswarm" {
     constructor(): void;
     on(
       event: "connection",
-      callback: (connection: Connection, info: PeerInfo) => void
+      callback: (connection: Connection, info: PeerInfo) => void,
     ): void;
     join(
       topic: Buffer,
-      options: { server: boolean; client: boolean }
+      options: { server: boolean; client: boolean },
     ): Promise<Discovery>;
     leave(topic: Buffer): Promise<void>;
     on(event: "update", callback: () => void);
@@ -26,6 +26,7 @@ declare module "hyperswarm" {
     on(event: "data", callback: (data: Buffer) => void): void;
     on(event: "close", callback: () => void): void;
     on(event: "error", callback: (error: any) => void): void;
+    write(data: Buffer): void;
   };
   type PeerInfo = {
     publicKey: Buffer;

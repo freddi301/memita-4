@@ -1,16 +1,23 @@
 import { Fragment, useEffect, useState } from "react";
-import { ScrollView, Share, Text, TextInput, View } from "react-native";
+import {
+  Platform,
+  ScrollView,
+  Share,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
+import { biographyLatest, updateBiography } from "../queries/biography";
+import { contactLatest } from "../queries/contacts";
 import {
   refreshMemitaQueries,
   useMemitaMutation,
   useMemitaQuery,
-} from "../persistance/dataApi";
-import { biographyLatest, updateBiography } from "../queries/biography";
-import { contactLatest } from "../queries/contacts";
+} from "../store/dataApi";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { CoordsInput } from "../ui/CoordsInput";
 import { AccountScreen } from "./AccountScreen";
@@ -30,11 +37,11 @@ export function ProfileScreen({
   const contact = useMemitaQuery(contactLatest, {
     accountId,
     contactId,
-  })[0] ?? { name: "" };
+  }) ?? { name: "" };
 
   const biography = useMemitaQuery(biographyLatest, {
     accountId: contactId,
-  })[0] ?? { content: "", location: undefined };
+  }) ?? { content: "", location: undefined };
 
   const update = useMemitaMutation(updateBiography);
 
@@ -68,9 +75,19 @@ export function ProfileScreen({
         </Text>
         <ScreenLink
           to={async () => {
-            await Share.share({
-              message: contactId,
-            });
+            if (Platform.OS === "web") {
+              await navigator.clipboard.writeText(contactId);
+              alert(
+                translate({
+                  en: "Profile ID copied to clipboard",
+                  it: "ID del profilo copiato negli appunti",
+                }),
+              );
+            } else {
+              await Share.share({
+                message: contactId,
+              });
+            }
           }}
           icon="share-alt"
           hideLabel

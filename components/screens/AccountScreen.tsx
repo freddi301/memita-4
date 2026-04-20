@@ -3,16 +3,16 @@ import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import {
-  refreshMemitaQueries,
-  useMemitaMutation,
-  useMemitaQuery,
-} from "../persistance/dataApi";
-import {
   accountLatest,
   createAccountId,
   updateAccount,
 } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
+import {
+  refreshMemitaQueries,
+  useMemitaMutation,
+  useMemitaQuery,
+} from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { ProfileScreen } from "./ProfileScreen";
@@ -24,7 +24,7 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
 
   const latest = useMemitaQuery(accountLatest, {
     accountId: accountId ?? "",
-  })[0] ?? { name: "" };
+  }) ?? { name: "" };
   const update = useMemitaMutation(updateAccount);
 
   const nameOriginal = latest.name;

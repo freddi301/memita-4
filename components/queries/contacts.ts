@@ -1,7 +1,8 @@
-import { RootCollections } from "../persistance/dataApi";
-import { collection } from "../persistance/helpers";
+import { groupBy, maxBy } from "./helpers";
+import { StoreItem } from "./Queries";
 
 export type ContactUpdate = {
+  type: "ContactUpdate";
   accountId: string;
   contactId: string;
   name: string;
@@ -20,32 +21,29 @@ export function updateContact({
   name: string;
   deleted: boolean;
 }) {
-  return (root: RootCollections): RootCollections => {
-    return {
-      ...root,
-      contacts: root.contacts.concat(
-        collection([
-          {
-            accountId,
-            contactId,
-            name,
-            deleted,
-            timestamp: Date.now(),
-          },
-        ])
-      ),
-    };
+  return (all: Array<StoreItem>): Array<StoreItem> => {
+    return [
+      {
+        type: "ContactUpdate",
+        accountId,
+        contactId,
+        name,
+        deleted,
+        timestamp: Date.now(),
+      },
+    ];
   };
 }
 
 export function contactList({ accountId }: { accountId: string }) {
-  return (root: RootCollections) => {
-    return root.contacts
-      .filter((update) => update.accountId === accountId)
-      .groupBy(
-        (update) => [update.contactId],
-        (updates) => updates.maxBy((update) => update.timestamp)
-      )
+  return (all: Array<StoreItem>) => {
+    return groupBy(
+      all
+        .filter((item) => item.type === "ContactUpdate")
+        .filter((update) => update.accountId === accountId),
+      (update) => [update.contactId],
+      (updates) => maxBy(updates, (update) => update.timestamp),
+    )
       .filter((update) => !update.deleted)
       .map((update) => ({
         contactId: update.contactId,
@@ -61,15 +59,16 @@ export function contactLatest({
   accountId: string;
   contactId: string;
 }) {
-  return (root: RootCollections) => {
-    return root.contacts
+  return (all: Array<StoreItem>) => {
+    const updates = all
+      .filter((item) => item.type === "ContactUpdate")
       .filter(
         (update) =>
-          update.accountId === accountId && update.contactId === contactId
-      )
-      .maxBy((update) => update.timestamp)
-      .map((update) => ({
-        name: update.name,
-      }));
+          update.accountId === accountId && update.contactId === contactId,
+      );
+    if (updates.length) {
+      const latestUpdate = maxBy(updates, (update) => update.timestamp);
+      if (!latestUpdate.deleted) return { name: latestUpdate.name };
+    }
   };
 }

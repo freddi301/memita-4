@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
-import { refreshMemitaQueries, useMemitaQuery } from "../persistance/dataApi";
 import { groupMessagesSummary } from "../queries/groupMessages";
 import { ScreenLink } from "../Routing";
+import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
@@ -45,9 +45,9 @@ export function GroupMessagesScreen({ accountId }: { accountId: string }) {
                 flexGrow1: true,
               }}
             />
-            {item.createdAt ? (
+            {item.lastMessageCreatedAt ? (
               <Text style={{ ...theme.textStyle, paddingRight: 16 }}>
-                {new Date(item.createdAt).toLocaleString()}
+                {new Date(item.lastMessageCreatedAt).toLocaleString()}
               </Text>
             ) : null}
           </View>

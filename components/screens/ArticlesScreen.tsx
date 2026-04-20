@@ -1,9 +1,9 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
-import { useMemitaQuery } from "../persistance/dataApi";
 import { articleList } from "../queries/articles";
 import { ScreenLink } from "../Routing";
+import { useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";

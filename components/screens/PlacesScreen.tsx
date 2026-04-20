@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { Text, View } from "react-native";
-import { useMemitaQuery } from "../persistance/dataApi";
 import { biographies } from "../queries/biography";
+import { useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { GeoMap } from "../ui/GeoMap";
@@ -18,7 +18,7 @@ export function PlacesScreen({ accountId }: { accountId: string }) {
   const [currentPlaceId, setCurrentPlaceId] = useState("");
 
   const currentPlace = places.find(
-    (place) => place.contactId === currentPlaceId
+    (place) => place.contactId === currentPlaceId,
   );
 
   return (

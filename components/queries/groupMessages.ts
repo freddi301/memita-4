@@ -1,9 +1,11 @@
 import { triggerNotification } from "../notifications";
-import { RootCollections } from "../persistance/dataApi";
-import { collection } from "../persistance/helpers";
+import { StoreItem } from "./Queries";
+import { contactLatest } from "./contacts.ts";
 import { groupList } from "./groups";
+import { groupBy, maxBy, orderBy } from "./helpers.ts";
 
 export type GroupMessageUpdate = {
+  type: "GroupMessageUpdate";
   senderId: string;
   groupId: string;
   createdAt: number;
@@ -22,57 +24,51 @@ export function updateGroupMessage({
   createdAt: number;
   content: string;
 }) {
-  return (root: RootCollections): RootCollections => {
+  return (all: Array<StoreItem>): Array<StoreItem> => {
     triggerNotification();
-    return {
-      ...root,
-      groupMessages: root.groupMessages.concat(
-        collection([
-          {
-            senderId,
-            groupId,
-            createdAt,
-            content,
-            timestamp: Date.now(),
-          },
-        ])
-      ),
-    };
+    return [
+      {
+        type: "GroupMessageUpdate",
+        senderId,
+        groupId,
+        createdAt,
+        content,
+        timestamp: Date.now(),
+      },
+    ];
   };
 }
 
 export function groupMessagesSummary({ accountId }: { accountId: string }) {
-  return (root: RootCollections) => {
-    return groupList({ accountId })(root)
-      .flatMap((group) => {
-        return root.groupMessages
-          .filter((update) => update.groupId === group.groupId)
-          .concat(
-            collection([
-              {
-                senderId: accountId,
-                groupId: group.groupId,
-                createdAt: 0,
-                content: "",
-                timestamp: 0,
-              },
-            ])
-          )
-          .groupBy(
-            (update) => [update.senderId, update.groupId, update.createdAt],
-            (updates) => updates.maxBy((update) => update.timestamp)
-          )
-          .groupBy(
-            (update) => [update.groupId],
-            (updates) => updates.maxBy((update) => update.createdAt)
-          )
-          .map((update) => ({
-            groupId: group.groupId,
-            groupName: group.name,
-            createdAt: update.createdAt,
-          }));
-      })
-      .orderBy((update) => update.createdAt, "desc");
+  return (all: Array<StoreItem>) => {
+    return orderBy(
+      groupList({ accountId })(all).map((group) => {
+        const lastMessage = orderBy(
+          commonGroupMessagesList({ groupId: group.groupId })(all),
+          (update) => update.createdAt,
+          "desc",
+        )[0];
+        return {
+          groupId: group.groupId,
+          groupName: group.name,
+          lastMessageCreatedAt: lastMessage?.createdAt ?? 0,
+        };
+      }),
+      (update) => update.lastMessageCreatedAt,
+      "desc",
+    );
+  };
+}
+
+export function commonGroupMessagesList({ groupId }: { groupId: string }) {
+  return (all: Array<StoreItem>) => {
+    return groupBy(
+      all
+        .filter((item) => item.type === "GroupMessageUpdate")
+        .filter((update) => update.groupId === groupId),
+      (update) => [update.senderId, update.groupId, update.createdAt],
+      (updates) => maxBy(updates, (update) => update.timestamp),
+    ).filter((update) => update.content !== "");
   };
 }
 
@@ -83,40 +79,22 @@ export function groupMessagesList({
   accountId: string;
   groupId: string;
 }) {
-  return (root: RootCollections) => {
-    return root.groupMessages
-      .filter((update) => update.groupId === groupId)
-      .groupBy(
-        (update) => [update.senderId, update.groupId, update.createdAt],
-        (updates) => updates.maxBy((update) => update.timestamp)
-      )
-      .filter((update) => update.content !== "")
-      .orderBy((update) => update.createdAt, "asc")
-      .flatMap((messageUpdate) => {
-        return root.contacts
-          .filter(
-            (contactUpdate) =>
-              contactUpdate.accountId === accountId &&
-              contactUpdate.contactId === messageUpdate.senderId
-          )
-          .concat(
-            collection([
-              {
-                accountId,
-                contactId: messageUpdate.senderId,
-                name: "",
-                deleted: false,
-                timestamp: 0,
-              },
-            ])
-          )
-          .maxBy((update) => update.timestamp)
-          .map((contactUpdate) => ({
-            senderId: messageUpdate.senderId,
-            senderName: contactUpdate.name,
-            createdAt: messageUpdate.createdAt,
-            content: messageUpdate.content,
-          }));
-      });
+  return (all: Array<StoreItem>) => {
+    return orderBy(
+      commonGroupMessagesList({ groupId })(all),
+      (update) => update.createdAt,
+      "asc",
+    ).map((update) => {
+      const contactUpdate = contactLatest({
+        accountId,
+        contactId: update.senderId,
+      })(all);
+      return {
+        senderId: update.senderId,
+        senderName: contactUpdate?.name,
+        createdAt: update.createdAt,
+        content: update.content,
+      };
+    });
   };
 }

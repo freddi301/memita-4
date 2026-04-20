@@ -1,8 +1,9 @@
-import { RootCollections } from "../persistance/dataApi";
-import { collection } from "../persistance/helpers";
+import { StoreItem } from "./Queries";
 import { contactList } from "./contacts";
+import { maxBy } from "./helpers";
 
 export type BiographyUpdate = {
+  type: "BiographyUpdate";
   accountId: string;
   location: BioLocation | undefined;
   content: string;
@@ -24,46 +25,50 @@ export function updateBiography({
   location: BioLocation | undefined;
   content: string;
 }) {
-  return (root: RootCollections): RootCollections => {
-    return {
-      ...root,
-      biographies: root.biographies.concat(
-        collection([
-          {
-            accountId,
-            location,
-            content,
-            timestamp: Date.now(),
-          },
-        ])
-      ),
-    };
+  return (all: Array<StoreItem>): Array<StoreItem> => {
+    return [
+      {
+        type: "BiographyUpdate",
+        accountId,
+        location,
+        content,
+        timestamp: Date.now(),
+      },
+    ];
   };
 }
 
 export function biographyLatest({ accountId }: { accountId: string }) {
-  return (root: RootCollections) => {
-    return root.biographies
-      .filter((update) => update.accountId === accountId)
-      .maxBy((update) => update.timestamp)
-      .map((update) => ({
-        location: update.location,
-        content: update.content,
-      }));
+  return (all: Array<StoreItem>) => {
+    const updates = all
+      .filter((item) => item.type === "BiographyUpdate")
+      .filter((update) => update.accountId === accountId);
+    if (updates.length) {
+      const latestUpdate = maxBy(updates, (update) => update.timestamp);
+      return {
+        location: latestUpdate.location,
+        content: latestUpdate.content,
+      };
+    }
   };
 }
 
 export function biographies({ accountId }: { accountId: string }) {
-  return (root: RootCollections) => {
-    return contactList({ accountId })(root).flatMap((contact) => {
-      return biographyLatest({ accountId: contact.contactId })(root).map(
-        (biography) => ({
-          contactId: contact.contactId,
-          contactName: contact.name,
-          content: biography.content,
-          location: biography.location,
-        })
-      );
+  return (all: Array<StoreItem>) => {
+    const contacts = contactList({ accountId })(all);
+    return contacts.flatMap((contact) => {
+      const biography = biographyLatest({ accountId: contact.contactId })(all);
+      if (biography) {
+        return [
+          {
+            contactId: contact.contactId,
+            contactName: contact.name,
+            content: biography.content,
+            location: biography.location,
+          },
+        ];
+      }
+      return [];
     });
   };
 }

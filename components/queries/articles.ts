@@ -1,8 +1,9 @@
-import { RootCollections } from "../persistance/dataApi";
-import { collection } from "../persistance/helpers";
+import { StoreItem } from "./Queries";
 import { contactList } from "./contacts";
+import { groupBy, maxBy } from "./helpers.ts";
 
 export type ArticleUpdate = {
+  type: "ArticleUpdate";
   accountId: string;
   createdAt: number;
   date:
@@ -36,21 +37,17 @@ export function updateArticle({
     | undefined;
   content: string;
 }) {
-  return (root: RootCollections): RootCollections => {
-    return {
-      ...root,
-      articles: root.articles.concat(
-        collection([
-          {
-            accountId,
-            createdAt,
-            date,
-            content,
-            timestamp: Date.now(),
-          },
-        ])
-      ),
-    };
+  return (all: Array<StoreItem>): Array<StoreItem> => {
+    return [
+      {
+        type: "ArticleUpdate",
+        accountId,
+        createdAt,
+        date,
+        content,
+        timestamp: Date.now(),
+      },
+    ];
   };
 }
 
@@ -61,29 +58,33 @@ export function articleLatest({
   accountId: string;
   createdAt: number;
 }) {
-  return (root: RootCollections) => {
-    return root.articles
+  return (all: Array<StoreItem>) => {
+    const updates = all
+      .filter((item) => item.type === "ArticleUpdate")
       .filter(
         (update) =>
-          update.accountId === accountId && update.createdAt === createdAt
-      )
-      .maxBy((update) => update.timestamp)
-      .map((update) => ({
-        date: update.date,
-        content: update.content,
-      }));
+          update.accountId === accountId && update.createdAt === createdAt,
+      );
+    if (updates.length) {
+      const latestUpdate = maxBy(updates, (update) => update.timestamp);
+      return {
+        date: latestUpdate.date,
+        content: latestUpdate.content,
+      };
+    }
   };
 }
 
 export function articleList({ accountId }: { accountId: string }) {
-  return (root: RootCollections) => {
-    return contactList({ accountId })(root).flatMap((contact) => {
-      return root.articles
-        .filter((update) => update.accountId === contact.contactId)
-        .groupBy(
-          (update) => [update.accountId, update.createdAt],
-          (updates) => updates.maxBy((update) => update.timestamp)
-        )
+  return (all: Array<StoreItem>) => {
+    return contactList({ accountId })(all).flatMap((contact) => {
+      return groupBy(
+        all
+          .filter((item) => item.type === "ArticleUpdate")
+          .filter((update) => update.accountId === contact.contactId),
+        (update) => [update.accountId, update.createdAt],
+        (updates) => maxBy(updates, (update) => update.timestamp),
+      )
         .filter((update) => update.content !== "")
         .map((update) => ({
           contactId: contact.contactId,

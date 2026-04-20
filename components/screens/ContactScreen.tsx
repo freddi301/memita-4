@@ -1,13 +1,13 @@
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
+import { contactLatest, updateContact } from "../queries/contacts";
+import { ScreenLink } from "../Routing";
 import {
   refreshMemitaQueries,
   useMemitaMutation,
   useMemitaQuery,
-} from "../persistance/dataApi";
-import { contactLatest, updateContact } from "../queries/contacts";
-import { ScreenLink } from "../Routing";
+} from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { DirectConversationScreen } from "./DirectConversationScreen";
@@ -27,7 +27,7 @@ export function ContactScreen({
   const latest = useMemitaQuery(contactLatest, {
     accountId,
     contactId: contactId || "",
-  })[0] ?? { name: "" };
+  }) ?? { name: "" };
 
   const update = useMemitaMutation(updateContact);
 
@@ -105,7 +105,7 @@ export function ContactScreen({
                       deleted: false,
                     });
                     return (
-                      <ContactScreen
+                      <ProfileScreen
                         accountId={accountId}
                         contactId={contactIdInput}
                       />

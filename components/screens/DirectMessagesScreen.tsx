@@ -1,8 +1,12 @@
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
-import { refreshMemitaQueries, useMemitaQuery } from "../persistance/dataApi";
 import { directMessagesSummary } from "../queries/directMessages";
 import { ScreenLink } from "../Routing";
+import {
+  refreshMemitaQueries,
+  useMemitaQuery,
+  useMemitaSubscription,
+} from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
@@ -14,6 +18,8 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
   const theme = useTheme();
 
   const conversations = useMemitaQuery(directMessagesSummary, { accountId });
+
+  useMemitaSubscription();
 
   return (
     <Fragment>
@@ -45,27 +51,30 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
                 flexGrow1: true,
               }}
             />
-            {item.createdAt ? (
+            {item.lastMesssageCreatedAt ? (
               <Text style={{ ...theme.textStyle, paddingRight: 4 }}>
-                {new Date(item.createdAt).toLocaleString()}
+                {new Date(item.lastMesssageCreatedAt).toLocaleString()}
               </Text>
             ) : null}
-            <Text
-              style={{
-                ...theme.textStyle,
-                fontWeight: "bold",
-                backgroundColor: theme.linkTextColor,
-                color: theme.backgroundColor,
-                paddingHorizontal: 4,
-                borderRadius: 4,
-                marginHorizontal: 4,
-                minWidth: 24,
-                textAlign: "center",
-                visibility: item.unread > 0 ? "visible" : "hidden",
-              }}
-            >
-              {item.unread}
-            </Text>
+            {item.unread > 0 ? (
+              <Text
+                style={{
+                  ...theme.textStyle,
+                  fontWeight: "bold",
+                  backgroundColor: theme.linkTextColor,
+                  color: theme.backgroundColor,
+                  paddingHorizontal: 4,
+                  borderRadius: 4,
+                  marginHorizontal: 4,
+                  minWidth: 24,
+                  textAlign: "center",
+                }}
+              >
+                {item.unread}
+              </Text>
+            ) : (
+              <View style={{ width: 24, marginHorizontal: 4 }} />
+            )}
           </View>
         )}
         style={{ flex: 1, marginVertical: 8 }}

@@ -1,42 +1,33 @@
 import getPort from "get-port";
 import { WebSocket, WebSocketServer } from "ws";
-import { startSwarm } from "../backend/swarm.ts";
+import { hyperswarmNetworkFactory } from "../components/store/hyperswarmNetwork.ts";
 
-startSwarm({
-  log(data) {
-    console.log(data);
-  },
-  emit(key, value) {
-    subscriptionsByConnections.forEach((subscriptions, connection) => {
-      if (subscriptions.has(key)) {
-        console.log("Emitting " + key + ": " + value);
-        connection.send(JSON.stringify({ type: "emit", key, value }));
-      }
+const hyperswarmNetwork = hyperswarmNetworkFactory({
+  async receive(data) {
+    sockets.forEach((socket) => {
+      socket.send(data);
     });
   },
 });
+
+const sockets = new Set<WebSocket>();
 
 getPort({ port: [8090, 8091] }).then((port) => {
   console.log(`WebSocket server listening on port ${port}`);
   const wss = new WebSocketServer({ port });
   wss.on("connection", (ws) => {
     console.log("New WebSocket connection");
-    subscriptionsByConnections.set(ws, new Set());
+    sockets.add(ws);
     ws.on("message", function message(data) {
-      console.log("Received subscription toggle: " + data.toString());
-      const key = data.toString();
-      if (subscriptionsByConnections.get(ws)!.has(key)) {
-        subscriptionsByConnections.get(ws)!.delete(key);
-      } else {
-        subscriptionsByConnections.get(ws)!.add(key);
-      }
+      // console.log("Received WebSocket message: " + data.toString());
+      hyperswarmNetwork.send(data as Buffer);
     });
-    ws.on("error", console.error);
+    ws.on("error", (error) => {
+      console.error(error);
+    });
     ws.on("close", () => {
-      subscriptionsByConnections.delete(ws);
       console.log("WebSocket connection closed");
+      sockets.delete(ws);
     });
   });
 });
-
-const subscriptionsByConnections = new Map<WebSocket, Set<string>>();

@@ -1,11 +1,6 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { Fragment, useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
-import {
-  refreshMemitaQueries,
-  useMemitaMutation,
-  useMemitaQuery,
-} from "../persistance/dataApi";
 import { accountLatest } from "../queries/accounts";
 import { contactLatest } from "../queries/contacts";
 import {
@@ -14,6 +9,12 @@ import {
   updateDirectMessage,
 } from "../queries/directMessages";
 import { ScreenLink } from "../Routing";
+import {
+  refreshMemitaQueries,
+  useMemitaMutation,
+  useMemitaQuery,
+  useMemitaSubscription,
+} from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { MessageCompose } from "../ui/MessageCompose";
@@ -30,8 +31,8 @@ export function DirectConversationScreen({
   const { translate } = useTranslate();
   const theme = useTheme();
 
-  const account = useMemitaQuery(accountLatest, { accountId })[0];
-  const contact = useMemitaQuery(contactLatest, { accountId, contactId })[0];
+  const account = useMemitaQuery(accountLatest, { accountId });
+  const contact = useMemitaQuery(contactLatest, { accountId, contactId });
   const conversation = useMemitaQuery(directMessagesList, {
     accountId,
     contactId,
@@ -48,6 +49,8 @@ export function DirectConversationScreen({
         content: string;
       }
   >();
+
+  useMemitaSubscription();
 
   return (
     <Fragment>
@@ -82,7 +85,7 @@ export function DirectConversationScreen({
                     : {
                         createdAt: item.createdAt,
                         content: item.content,
-                      }
+                      },
                 );
               }
             }}
@@ -124,10 +127,10 @@ export function DirectConversationScreen({
                 }}
               >
                 {item.senderId === accountId
-                  ? account?.name ?? ""
+                  ? (account?.name ?? "")
                   : item.senderId === contactId
-                  ? contact?.name ?? ""
-                  : ""}
+                    ? (contact?.name ?? "")
+                    : ""}
               </Text>
               <View style={{ flexGrow: 1 }} />
               <Text style={theme.secondaryTextStyle}>

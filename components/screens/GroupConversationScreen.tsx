@@ -1,16 +1,16 @@
 import { Fragment, useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
 import {
-  refreshMemitaQueries,
-  useMemitaMutation,
-  useMemitaQuery,
-} from "../persistance/dataApi";
-import {
   groupMessagesList,
   updateGroupMessage,
 } from "../queries/groupMessages";
 import { groupLatest } from "../queries/groups";
 import { ScreenLink } from "../Routing";
+import {
+  refreshMemitaQueries,
+  useMemitaMutation,
+  useMemitaQuery,
+} from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { MessageCompose } from "../ui/MessageCompose";
@@ -27,7 +27,7 @@ export function GroupConversationScreen({
   const { translate } = useTranslate();
   const theme = useTheme();
 
-  const group = useMemitaQuery(groupLatest, { accountId, groupId })[0];
+  const group = useMemitaQuery(groupLatest, { accountId, groupId });
   const conversation = useMemitaQuery(groupMessagesList, {
     accountId,
     groupId,
@@ -76,7 +76,7 @@ export function GroupConversationScreen({
                   : {
                       createdAt: item.createdAt,
                       content: item.content,
-                    }
+                    },
               );
             }}
             style={{

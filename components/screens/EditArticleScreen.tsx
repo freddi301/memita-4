@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
-import { useMemitaMutation, useMemitaQuery } from "../persistance/dataApi";
 import { articleLatest, updateArticle } from "../queries/articles";
 import { ScreenLink } from "../Routing";
+import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { DateTimeInput } from "../ui/DateTimeInput";
@@ -21,13 +21,13 @@ export function EditArticleScreen({
   const latest = useMemitaQuery(articleLatest, {
     accountId,
     createdAt: createdAt ?? 0,
-  })[0] ?? { date: undefined, content: "" };
+  }) ?? { date: undefined, content: "" };
 
   const update = useMemitaMutation(updateArticle);
 
   const dateTimestampOriginal = latest.date?.timestamp;
   const [dateTimestampInput, setDateTimestampInput] = useState(
-    dateTimestampOriginal
+    dateTimestampOriginal,
   );
   useEffect(() => {
     setDateTimestampInput(dateTimestampOriginal);

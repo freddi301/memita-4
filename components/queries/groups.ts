@@ -1,7 +1,8 @@
-import { RootCollections } from "../persistance/dataApi";
-import { collection } from "../persistance/helpers";
+import { StoreItem } from "./Queries";
+import { groupBy, maxBy } from "./helpers.ts";
 
 export type GroupUpdate = {
+  type: "GroupUpdate";
   accountId: string;
   groupId: string;
   name: string;
@@ -20,32 +21,29 @@ export function updateGroup({
   name: string;
   deleted: boolean;
 }) {
-  return (root: RootCollections): RootCollections => {
-    return {
-      ...root,
-      groups: root.groups.concat(
-        collection([
-          {
-            accountId,
-            groupId,
-            name,
-            deleted,
-            timestamp: Date.now(),
-          },
-        ])
-      ),
-    };
+  return (all: Array<StoreItem>): Array<StoreItem> => {
+    return [
+      {
+        type: "GroupUpdate",
+        accountId,
+        groupId,
+        name,
+        deleted,
+        timestamp: Date.now(),
+      },
+    ];
   };
 }
 
 export function groupList({ accountId }: { accountId: string }) {
-  return (root: RootCollections) => {
-    return root.groups
-      .filter((update) => update.accountId === accountId)
-      .groupBy(
-        (update) => [update.groupId],
-        (updates) => updates.maxBy((update) => update.timestamp)
-      )
+  return (all: Array<StoreItem>) => {
+    return groupBy(
+      all
+        .filter((item) => item.type === "GroupUpdate")
+        .filter((update) => update.accountId === accountId),
+      (update) => [update.groupId],
+      (updates) => maxBy(updates, (update) => update.timestamp),
+    )
       .filter((update) => !update.deleted)
       .map((update) => ({
         groupId: update.groupId,
@@ -61,14 +59,18 @@ export function groupLatest({
   accountId: string;
   groupId: string;
 }) {
-  return (root: RootCollections) => {
-    return root.groups
+  return (all: Array<StoreItem>) => {
+    const updates = all
+      .filter((item) => item.type === "GroupUpdate")
       .filter(
-        (update) => update.accountId === accountId && update.groupId === groupId
-      )
-      .maxBy((update) => update.timestamp)
-      .map((update) => ({
-        name: update.name,
-      }));
+        (update) =>
+          update.accountId === accountId && update.groupId === groupId,
+      );
+    if (updates.length) {
+      const latestUpdate = maxBy(updates, (update) => update.timestamp);
+      return {
+        name: latestUpdate.name,
+      };
+    }
   };
 }

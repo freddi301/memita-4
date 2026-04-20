@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Text, View } from "react-native";
-import { useMemitaQuery } from "../persistance/dataApi";
 import { articleList } from "../queries/articles";
+import { useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { MemitaCalendar } from "../ui/MemitaCalendar";

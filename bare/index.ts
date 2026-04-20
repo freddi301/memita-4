@@ -1,26 +1,12 @@
-import { startSwarm } from "../backend/swarm";
 const { IPC } = BareKit;
+import { hyperswarmNetworkFactory } from "../components/store/hyperswarmNetwork";
 
-startSwarm({
-  log(data) {
-    IPC.write(
-      Buffer.from(
-        JSON.stringify({
-          type: "log",
-          data,
-        })
-      )
-    );
+const hyperswarmNetwork = hyperswarmNetworkFactory({
+  async receive(data) {
+    IPC.write(data as any);
   },
-  emit(key, value) {
-    IPC.write(
-      Buffer.from(
-        JSON.stringify({
-          type: "emit",
-          key,
-          value,
-        })
-      )
-    );
-  },
+});
+
+IPC.on("data", (data) => {
+  hyperswarmNetwork.send(data);
 });

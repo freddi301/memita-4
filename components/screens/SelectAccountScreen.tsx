@@ -1,9 +1,9 @@
 import { Image } from "expo-image";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
-import { refreshMemitaQueries, useMemitaQuery } from "../persistance/dataApi";
 import { accountList } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
+import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { AccountScreen } from "./AccountScreen";

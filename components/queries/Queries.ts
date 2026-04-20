@@ -1,4 +1,3 @@
-import { AccountUpdate } from "./accounts";
 import { ArticleUpdate } from "./articles";
 import { BiographyUpdate } from "./biography";
 import { ContactUpdate } from "./contacts";
@@ -9,24 +8,11 @@ import {
 import { GroupMessageUpdate } from "./groupMessages";
 import { GroupUpdate } from "./groups";
 
-export type Root = {
-  accounts: Array<AccountUpdate>;
-  contacts: Array<ContactUpdate>;
-  directMessages: Array<DirectMessageUpdate>;
-  didReadDirectMessages: Array<DidReadDirectMessageUpdate>;
-  groups: Array<GroupUpdate>;
-  groupMessages: Array<GroupMessageUpdate>;
-  articles: Array<ArticleUpdate>;
-  biographies: Array<BiographyUpdate>;
-};
-
-export const initialRoot: Root = {
-  accounts: [],
-  contacts: [],
-  directMessages: [],
-  didReadDirectMessages: [],
-  groups: [],
-  groupMessages: [],
-  articles: [],
-  biographies: [],
-};
+export type StoreItem =
+  | ContactUpdate
+  | DirectMessageUpdate
+  | DidReadDirectMessageUpdate
+  | GroupUpdate
+  | GroupMessageUpdate
+  | ArticleUpdate
+  | BiographyUpdate;
