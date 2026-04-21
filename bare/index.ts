@@ -8,9 +8,9 @@ import {
   serverReceive,
 } from "../components/remoteApi";
 import { hyperswarmNetworkFactory } from "../components/store/hyperswarmNetwork";
-import type {
-  NetworkInInterface,
-  NetworkOutInterface,
+import {
+  type NetworkInInterface,
+  type NetworkOutInterface,
 } from "../components/store/store";
 
 const { IPC } = BareKit;
