@@ -1,4 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { isEqual } from "lodash";
 import { StorageInterface } from "./store";
 
 export function makeLocalStorage<StoreItem>(
@@ -17,8 +18,10 @@ export function makeLocalStorage<StoreItem>(
       const currentParsed: Array<StoreItem> = current
         ? JSON.parse(current)
         : [];
-      currentParsed.push(item);
-      await AsyncStorage.setItem(key, JSON.stringify(currentParsed));
+      if (!currentParsed.some((i) => isEqual(i, item))) {
+        currentParsed.push(item);
+        await AsyncStorage.setItem(key, JSON.stringify(currentParsed));
+      }
     },
     async wipe(): Promise<void> {
       await AsyncStorage.removeItem(key);

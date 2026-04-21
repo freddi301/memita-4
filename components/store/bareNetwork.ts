@@ -1,16 +1,18 @@
 import { Worklet } from "react-native-bare-kit";
 import bundle from "../../components/bundle.js";
-import { NetworkFactory } from "./store.js";
+import { networkRemoteClientFactory } from "./networkRemoteClient";
+import { type NetworkFactory } from "./store";
 
-export const bareNetworkFactory: NetworkFactory = ({ receive }) => {
+export const bareNetworkFactory: NetworkFactory = (networkInImplementation) => {
   const worklet = new Worklet();
   worklet.start("/app.bundle", bundle);
-  worklet.IPC.on("data", (data: Uint8Array) => {
-    receive(data);
-  });
-  return {
-    async send(data) {
-      worklet.IPC.write(data);
-    },
-  };
+
+  const [receive, client] = networkRemoteClientFactory(
+    (message) => worklet.IPC.write(message),
+    networkInImplementation,
+  );
+
+  worklet.IPC.on("data", receive);
+
+  return client;
 };

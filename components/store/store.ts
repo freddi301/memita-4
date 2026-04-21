@@ -16,11 +16,11 @@ export type StorageInterface<StoreItem> = {
   wipe(): Promise<void>;
 };
 
-type NetworkInInterface = {
+export type NetworkInInterface = {
   receive(data: Uint8Array): Promise<void>;
 };
 
-type NetworkOutInterface = {
+export type NetworkOutInterface = {
   send(data: Uint8Array): Promise<void>;
 };
 

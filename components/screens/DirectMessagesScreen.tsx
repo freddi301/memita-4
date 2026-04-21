@@ -1,3 +1,4 @@
+import { FontAwesome } from "@expo/vector-icons";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
 import { directMessagesSummary } from "../queries/directMessages";
@@ -45,36 +46,53 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
                   contactId={item.contactId}
                 />
               }
-              label={item.contactName}
-              icon="circle"
               styleOverride={{
                 flexGrow1: true,
               }}
-            />
-            {item.lastMesssageCreatedAt ? (
-              <Text style={{ ...theme.textStyle, paddingRight: 4 }}>
-                {new Date(item.lastMesssageCreatedAt).toLocaleString()}
-              </Text>
-            ) : null}
-            {item.unread > 0 ? (
-              <Text
+            >
+              <View
                 style={{
-                  ...theme.textStyle,
-                  fontWeight: "bold",
-                  backgroundColor: theme.linkTextColor,
-                  color: theme.backgroundColor,
-                  paddingHorizontal: 4,
-                  borderRadius: 4,
-                  marginHorizontal: 4,
-                  minWidth: 24,
-                  textAlign: "center",
+                  flexDirection: "row",
+                  flexGrow: 1,
+                  paddingVertical: 8,
+                  alignItems: "center",
                 }}
               >
-                {item.unread}
-              </Text>
-            ) : (
-              <View style={{ width: 24, marginHorizontal: 4 }} />
-            )}
+                <FontAwesome
+                  name="circle"
+                  color={theme.linkTextColor}
+                  size={16}
+                  style={{ marginHorizontal: 8 }}
+                />
+                <Text style={{ ...theme.linkTextStyle, flexGrow: 1 }}>
+                  {item.contactName}
+                </Text>
+                {item.lastMesssageCreatedAt ? (
+                  <Text style={{ ...theme.textStyle, paddingRight: 4 }}>
+                    {new Date(item.lastMesssageCreatedAt).toLocaleString()}
+                  </Text>
+                ) : null}
+                {item.unread > 0 ? (
+                  <Text
+                    style={{
+                      ...theme.textStyle,
+                      fontWeight: "bold",
+                      backgroundColor: theme.linkTextColor,
+                      color: theme.backgroundColor,
+                      paddingHorizontal: 4,
+                      borderRadius: 4,
+                      marginHorizontal: 4,
+                      minWidth: 24,
+                      textAlign: "center",
+                    }}
+                  >
+                    {item.unread}
+                  </Text>
+                ) : (
+                  <View style={{ width: 24, marginHorizontal: 4 }} />
+                )}
+              </View>
+            </ScreenLink>
           </View>
         )}
         style={{ flex: 1, marginVertical: 8 }}

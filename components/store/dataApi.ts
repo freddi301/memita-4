@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Platform } from "react-native";
 import { updateContact } from "../queries/contacts";
 import { StoreItem } from "../queries/Queries";
+import { bareNetworkFactory } from "./bareNetwork";
 import { makeLocalStorage } from "./localStorage";
 import { makeNetworkJsonCodec } from "./networkJSONCodec";
 import { makeStore } from "./store";
@@ -41,12 +42,14 @@ async function cleanLocalStorage() {
     await storage.add(item);
   }
 }
+// cleanLocalStorage();
 
 const store = makeStore<StoreItem>({
   storage: makeLocalStorage("data"),
   networkCodec: makeNetworkJsonCodec(),
-  // networkFactory: bareNetworkFactory,
-  networkFactory: websocketNetworkFactory,
+  // networkFactory: websocketNetworkFactory,
+  networkFactory:
+    Platform.OS === "web" ? websocketNetworkFactory : bareNetworkFactory,
   async onAdd(item) {
     subscriptions.forEach((callback) => callback());
   },

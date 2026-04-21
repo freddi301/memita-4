@@ -42,17 +42,28 @@ export function ScreenLink({
   label,
   icon,
   hideLabel,
+  children,
   styleOverride: { flexGrow1 = false, hasPadding = true } = {},
 }: {
   to: ReactNode | (() => Promise<ReactNode | void>);
-  label: string;
-  icon?: IconName;
-  hideLabel?: boolean;
   styleOverride?: {
     flexGrow1?: boolean;
     hasPadding?: boolean;
   };
-}) {
+} & (
+  | {
+      label: string;
+      icon?: IconName;
+      hideLabel?: boolean;
+      children?: undefined;
+    }
+  | {
+      label?: undefined;
+      icon?: undefined;
+      hideLabel?: undefined;
+      children: ReactNode;
+    }
+)) {
   const theme = useTheme();
   const { actionInProgress, setActionInProgress, navigate, targetScreen } =
     use(RouterContext);
@@ -61,10 +72,12 @@ export function ScreenLink({
   const textColor = isPerforming
     ? theme.linkTextColor
     : actionInProgress || !to
-    ? theme.secondaryTextColor
-    : theme.linkTextColor;
+      ? theme.secondaryTextColor
+      : theme.linkTextColor;
   const navigationTriggereFromHere =
     typeof to !== "function" ? compareScreens(targetScreen, to) : false;
+  const shouldHavePadding = children ? false : hasPadding;
+  const shouldShowLabel = children ? false : !hideLabel;
   return (
     <Pressable
       onPress={() => {
@@ -86,16 +99,16 @@ export function ScreenLink({
         }
       }}
       style={{
-        paddingVertical: hasPadding ? 8 : 0,
-        paddingHorizontal: hasPadding ? 16 : 0,
+        paddingVertical: shouldHavePadding ? 8 : 0,
+        paddingHorizontal: shouldHavePadding ? 16 : 0,
         outline: "none",
         backgroundColor: navigationTriggereFromHere
           ? theme.activeActionBackgroundColor
           : isPerforming
-          ? theme.activeActionBackgroundColor
-          : isPressing && to
-          ? theme.pressedBackgroundColor
-          : theme.backgroundColor,
+            ? theme.activeActionBackgroundColor
+            : isPressing && to
+              ? theme.pressedBackgroundColor
+              : theme.backgroundColor,
         flexDirection: "row",
         gap: 8,
         alignItems: "center",
@@ -109,11 +122,12 @@ export function ScreenLink({
       }}
     >
       {icon ? <FontAwesome name={icon} color={textColor} size={16} /> : null}
-      {!hideLabel ? (
+      {shouldShowLabel ? (
         <Text style={{ ...theme.linkTextStyle, color: textColor }}>
           {label}
         </Text>
       ) : null}
+      {children}
     </Pressable>
   );
 }

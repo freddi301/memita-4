@@ -1,7 +1,10 @@
 import { Platform } from "react-native";
+import { networkRemoteClientFactory } from "./networkRemoteClient";
 import { NetworkFactory } from "./store";
 
-export const websocketNetworkFactory: NetworkFactory = ({ receive }) => {
+export const websocketNetworkFactory: NetworkFactory = (
+  networkInImplementation,
+) => {
   const ws = new WebSocket(
     Platform.select({
       web: "ws://localhost:8091",
@@ -12,9 +15,12 @@ export const websocketNetworkFactory: NetworkFactory = ({ receive }) => {
   ws.onopen = () => {
     // console.log("WebSocket connection opened");
   };
+  const [receive, client] = networkRemoteClientFactory(
+    (message) => ws.send(message),
+    networkInImplementation,
+  );
   ws.onmessage = (event) => {
-    // console.log("Received WebSocket message: " + event.data.toString());
-    receive(new Uint8Array(event.data));
+    receive(event.data as ArrayBuffer);
   };
   ws.onerror = (event) => {
     // console.log("WebSocket error");
@@ -22,9 +28,5 @@ export const websocketNetworkFactory: NetworkFactory = ({ receive }) => {
   ws.onclose = () => {
     // console.log("WebSocket connection closed");
   };
-  return {
-    async send(data: Uint8Array) {
-      ws.send(data);
-    },
-  };
+  return client;
 };
