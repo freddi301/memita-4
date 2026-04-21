@@ -6,7 +6,8 @@
 [ ] - reply / mention previous
 [ ] - attachments files/images/videos/audios
 [ ] - videocall
-[ ] - text search
+[x] - text search
+[ ] - message sync status (on which devices)
 
 # Contacts
 
