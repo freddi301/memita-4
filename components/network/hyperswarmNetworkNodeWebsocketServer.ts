@@ -6,12 +6,9 @@ import {
   type RemoteRequest,
   type RemoteResponse,
   serverReceive,
-} from "../components/remoteApi.ts";
-import { hyperswarmNetworkFactory } from "../components/store/hyperswarmNetwork.ts";
-import type {
-  NetworkInInterface,
-  NetworkOutInterface,
-} from "../components/store/store.ts";
+} from "../remoteApi.ts";
+import type { NetworkInInterface, NetworkOutInterface } from "../store/store";
+import { hyperswarmNetworkFactory } from "./hyperswarmNetwork.ts";
 
 const hyperswarmNetwork = hyperswarmNetworkFactory(
   new Proxy(
@@ -38,8 +35,10 @@ const hyperswarmNetwork = hyperswarmNetworkFactory(
 const sockets = new Map<WebSocket, NetworkInInterface>();
 
 getPort({ port: [8090, 8091] }).then((port) => {
-  console.log(`WebSocket server listening on port ${port}`);
   const wss = new WebSocketServer({ port });
+
+  console.log(`WebSocket server listening on port ${port}`);
+
   wss.on("connection", (ws) => {
     console.log("New WebSocket connection");
     const [clientReply, client] = clientFactory<NetworkInInterface>(
@@ -49,9 +48,9 @@ getPort({ port: [8090, 8091] }).then((port) => {
         }),
     );
     sockets.set(ws, client);
-    ws.on("message", function message(data) {
+    ws.on("message", (data) => {
       // console.log("Received WebSocket message: " + data.toString());
-      const decoded = decode(data as Buffer);
+      const decoded = decode(new Uint8Array(data as ArrayBuffer));
       if ("method" in (decoded as any)) {
         serverReceive(
           hyperswarmNetwork,
@@ -75,12 +74,14 @@ getPort({ port: [8090, 8091] }).then((port) => {
         );
       }
     });
+
     ws.on("error", (error) => {
       console.error(error);
     });
+
     ws.on("close", () => {
-      console.log("WebSocket connection closed");
       sockets.delete(ws);
+      console.log("WebSocket connection closed");
     });
   });
 });

@@ -1,6 +1,6 @@
 import { StoreItem } from "./Queries";
 import { contactList } from "./contacts";
-import { groupBy, maxBy } from "./helpers.ts";
+import { groupBy, maxBy } from "./helpers";
 
 export type ArticleUpdate = {
   type: "ArticleUpdate";

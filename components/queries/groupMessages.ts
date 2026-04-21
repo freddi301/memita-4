@@ -1,8 +1,8 @@
 import { triggerNotification } from "../notifications";
 import { StoreItem } from "./Queries";
-import { contactLatest } from "./contacts.ts";
+import { contactLatest } from "./contacts";
 import { groupList } from "./groups";
-import { groupBy, maxBy, orderBy } from "./helpers.ts";
+import { groupBy, maxBy, orderBy } from "./helpers";
 
 export type GroupMessageUpdate = {
   type: "GroupMessageUpdate";

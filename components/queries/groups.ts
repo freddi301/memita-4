@@ -1,5 +1,5 @@
 import { StoreItem } from "./Queries";
-import { groupBy, maxBy } from "./helpers.ts";
+import { groupBy, maxBy } from "./helpers";
 
 export type GroupUpdate = {
   type: "GroupUpdate";

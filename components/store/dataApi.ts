@@ -5,13 +5,12 @@ import {
 } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Platform } from "react-native";
+import { bareNetworkFactory } from "../network/networkBare";
+import { websocketNetworkFactory } from "../network/networkWebsocketClient";
 import { updateContact } from "../queries/contacts";
 import { StoreItem } from "../queries/Queries";
-import { bareNetworkFactory } from "./bareNetwork";
 import { makeLocalStorage } from "./localStorage";
-import { makeNetworkJsonCodec } from "./networkJSONCodec";
 import { makeStore } from "./store";
-import { websocketNetworkFactory } from "./websocketNetwork";
 
 async function cleanLocalStorage() {
   const storage = makeLocalStorage("data");
@@ -46,7 +45,6 @@ async function cleanLocalStorage() {
 
 const store = makeStore<StoreItem>({
   storage: makeLocalStorage("data"),
-  networkCodec: makeNetworkJsonCodec(),
   // networkFactory: websocketNetworkFactory,
   networkFactory:
     Platform.OS === "web" ? websocketNetworkFactory : bareNetworkFactory,

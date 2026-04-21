@@ -1,6 +1,6 @@
 declare const BareKit: {
   IPC: {
-    write(data: Buffer): void;
-    on(event: "data", callback: (data: Buffer) => void): void;
+    write(data: Uint8Array): void;
+    on(event: "data", callback: (data: Uint8Array) => void): void;
   };
 };
