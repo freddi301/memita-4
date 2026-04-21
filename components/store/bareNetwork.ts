@@ -7,10 +7,9 @@ export const bareNetworkFactory: NetworkFactory = (networkInImplementation) => {
   const worklet = new Worklet();
   worklet.start("/app.bundle", bundle);
 
-  const [receive, client] = networkRemoteClientFactory(
-    (message) => worklet.IPC.write(message),
-    networkInImplementation,
-  );
+  const [receive, client] = networkRemoteClientFactory(async (message) => {
+    worklet.IPC.write(message);
+  }, networkInImplementation);
 
   worklet.IPC.on("data", receive);
 

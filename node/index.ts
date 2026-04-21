@@ -22,6 +22,7 @@ const hyperswarmNetwork = hyperswarmNetworkFactory(
           return Promise.all(
             Array.from(sockets.values()).map((client) =>
               client[method as keyof NetworkInInterface](
+                // @ts-ignore
                 ...(args as Parameters<
                   NetworkInInterface[keyof NetworkInInterface]
                 >),
