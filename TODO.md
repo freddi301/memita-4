@@ -3,6 +3,7 @@ implement content as hash
 add cryptography, account + device signature
 do not send draft messages
 dont accept future timestamps
+do not replicate deleted stuff? (ponder)
 add whitelist recipients
 check frontend performance
 check backend performance
