@@ -1,15 +1,17 @@
 import * as z from "zod";
+import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
 import { contactList } from "./contacts";
 import { groupBy, maxBy, orderBy } from "./helpers";
 import { StoreItem } from "./Queries";
+import { nowTimestamp, Timestamp, TimestampSchema } from "./Timestamp";
 
 export const DirectMessageUpdateSchema = z.object({
   type: z.literal("DirectMessageUpdate"),
-  senderId: z.string(),
-  receiverId: z.string(),
-  createdAt: z.number(),
+  senderId: AccountIdSchema,
+  receiverId: AccountIdSchema,
+  createdAt: TimestampSchema,
   content: z.string(),
-  timestamp: z.number(),
+  timestamp: TimestampSchema,
 });
 
 export type DirectMessageUpdate = z.infer<typeof DirectMessageUpdateSchema>;
@@ -20,9 +22,9 @@ export function updateDirectMessage({
   createdAt,
   content,
 }: {
-  senderId: string;
-  receiverId: string;
-  createdAt: number;
+  senderId: AccountId;
+  receiverId: AccountId;
+  createdAt: Timestamp;
   content: string;
 }) {
   return (all: Array<StoreItem>): Array<StoreItem> => {
@@ -33,27 +35,21 @@ export function updateDirectMessage({
         receiverId,
         createdAt,
         content,
-        timestamp: Date.now(),
+        timestamp: nowTimestamp(),
       },
     ];
   };
 }
 
-export function directMessagesSummary({ accountId }: { accountId: string }) {
+export function directMessagesSummary({ accountId }: { accountId: AccountId }) {
   return (all: Array<StoreItem>) => {
     return contactList({ accountId })(all).map((contact) => {
       const messages = directMessagesList({
         accountId,
         contactId: contact.contactId,
       })(all);
-      const lastMesssage = orderBy(
-        messages,
-        (update) => update.createdAt,
-        "desc",
-      )[0];
-      const unread = messages.filter(
-        (message) => message.receiverId === accountId && !message.didRead,
-      ).length;
+      const lastMesssage = orderBy(messages, (update) => update.createdAt, "desc")[0];
+      const unread = messages.filter((message) => message.receiverId === accountId && !message.didRead).length;
       return {
         contactId: contact.contactId,
         contactName: contact.name,
@@ -64,13 +60,7 @@ export function directMessagesSummary({ accountId }: { accountId: string }) {
   };
 }
 
-export function directMessagesList({
-  accountId,
-  contactId,
-}: {
-  accountId: string;
-  contactId: string;
-}) {
+export function directMessagesList({ accountId, contactId }: { accountId: AccountId; contactId: AccountId }) {
   return (all: Array<StoreItem>) => {
     return orderBy(
       groupBy(
@@ -78,10 +68,8 @@ export function directMessagesList({
           .filter((item) => item.type === "DirectMessageUpdate")
           .filter(
             (update) =>
-              (update.senderId === accountId &&
-                update.receiverId === contactId) ||
-              (update.senderId === contactId &&
-                update.receiverId === accountId),
+              (update.senderId === accountId && update.receiverId === contactId) ||
+              (update.senderId === contactId && update.receiverId === accountId),
           ),
         (update) => [update.senderId, update.receiverId, update.createdAt],
         (updates) => maxBy(updates, (update) => update.timestamp),
@@ -108,14 +96,12 @@ export const DidReadDirectMessageUpdateSchema = z.object({
   type: z.literal("DidReadDirectMessageUpdate"),
   senderId: z.string(),
   receiverId: z.string(),
-  createdAt: z.number(),
+  createdAt: TimestampSchema,
   didRead: z.boolean(),
-  timestamp: z.number(),
+  timestamp: TimestampSchema,
 });
 
-export type DidReadDirectMessageUpdate = z.infer<
-  typeof DidReadDirectMessageUpdateSchema
->;
+export type DidReadDirectMessageUpdate = z.infer<typeof DidReadDirectMessageUpdateSchema>;
 
 export function updateDidReadDirectMessage({
   senderId,
@@ -123,9 +109,9 @@ export function updateDidReadDirectMessage({
   createdAt,
   didRead,
 }: {
-  senderId: string;
-  receiverId: string;
-  createdAt: number;
+  senderId: AccountId;
+  receiverId: AccountId;
+  createdAt: Timestamp;
   didRead: boolean;
 }) {
   return (all: Array<StoreItem>): Array<StoreItem> => {
@@ -136,7 +122,7 @@ export function updateDidReadDirectMessage({
         receiverId,
         createdAt,
         didRead,
-        timestamp: Date.now(),
+        timestamp: nowTimestamp(),
       },
     ];
   };
@@ -155,10 +141,7 @@ function didReadLatest({
     const updates = all
       .filter((item) => item.type === "DidReadDirectMessageUpdate")
       .filter(
-        (update) =>
-          update.senderId === senderId &&
-          update.receiverId === receiverId &&
-          update.createdAt === createdAt,
+        (update) => update.senderId === senderId && update.receiverId === receiverId && update.createdAt === createdAt,
       );
     if (updates.length) {
       const latestUpdate = maxBy(updates, (update) => update.timestamp);

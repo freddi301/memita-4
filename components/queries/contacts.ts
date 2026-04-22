@@ -1,14 +1,16 @@
 import * as z from "zod";
+import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
 import { groupBy, maxBy } from "./helpers";
 import { StoreItem } from "./Queries";
+import { nowTimestamp, TimestampSchema } from "./Timestamp";
 
 export const ContactUpdateSchema = z.object({
   type: z.literal("ContactUpdate"),
-  accountId: z.string(),
-  contactId: z.string(),
+  accountId: AccountIdSchema,
+  contactId: AccountIdSchema,
   name: z.string(),
   deleted: z.boolean(),
-  timestamp: z.number(),
+  timestamp: TimestampSchema,
 });
 
 export type ContactUpdate = z.infer<typeof ContactUpdateSchema>;
@@ -19,8 +21,8 @@ export function updateContact({
   name,
   deleted,
 }: {
-  accountId: string;
-  contactId: string;
+  accountId: AccountId;
+  contactId: AccountId;
   name: string;
   deleted: boolean;
 }) {
@@ -32,18 +34,16 @@ export function updateContact({
         contactId,
         name,
         deleted,
-        timestamp: Date.now(),
+        timestamp: nowTimestamp(),
       },
     ];
   };
 }
 
-export function contactList({ accountId }: { accountId: string }) {
+export function contactList({ accountId }: { accountId: AccountId }) {
   return (all: Array<StoreItem>) => {
     return groupBy(
-      all
-        .filter((item) => item.type === "ContactUpdate")
-        .filter((update) => update.accountId === accountId),
+      all.filter((item) => item.type === "ContactUpdate").filter((update) => update.accountId === accountId),
       (update) => [update.contactId],
       (updates) => maxBy(updates, (update) => update.timestamp),
     )
@@ -55,20 +55,11 @@ export function contactList({ accountId }: { accountId: string }) {
   };
 }
 
-export function contactLatest({
-  accountId,
-  contactId,
-}: {
-  accountId: string;
-  contactId: string;
-}) {
+export function contactLatest({ accountId, contactId }: { accountId: AccountId; contactId: AccountId | undefined }) {
   return (all: Array<StoreItem>) => {
     const updates = all
       .filter((item) => item.type === "ContactUpdate")
-      .filter(
-        (update) =>
-          update.accountId === accountId && update.contactId === contactId,
-      );
+      .filter((update) => update.accountId === accountId && update.contactId === contactId);
     if (updates.length) {
       const latestUpdate = maxBy(updates, (update) => update.timestamp);
       if (!latestUpdate.deleted) return { name: latestUpdate.name };

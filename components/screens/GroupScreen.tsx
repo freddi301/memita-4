@@ -1,13 +1,10 @@
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
+import { AccountId } from "../cryptography/cryptography";
 import { groupLatest, updateGroup } from "../queries/groups";
 import { ScreenLink } from "../Routing";
-import {
-  refreshMemitaQueries,
-  useMemitaMutation,
-  useMemitaQuery,
-} from "../store/dataApi";
+import { refreshMemitaQueries, useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { GroupConversationScreen } from "./GroupConversationScreen";
@@ -17,8 +14,8 @@ export function GroupScreen({
   accountId,
   groupId,
 }: {
-  accountId: string;
-  groupId?: string;
+  accountId: AccountId;
+  groupId?: string; // TODO use branded type
 }) {
   const { translate } = useTranslate();
   const theme = useTheme();
@@ -50,14 +47,7 @@ export function GroupScreen({
         }}
       >
         <ScreenLink
-          to={
-            !canSave && groupId ? (
-              <GroupConversationScreen
-                accountId={accountId}
-                groupId={groupId}
-              />
-            ) : undefined
-          }
+          to={!canSave && groupId ? <GroupConversationScreen accountId={accountId} groupId={groupId} /> : undefined}
           icon="arrow-left"
           hideLabel
           label={translate({
@@ -120,12 +110,7 @@ export function GroupScreen({
                         name: nameInput,
                         deleted: false,
                       });
-                      return (
-                        <GroupScreen
-                          accountId={accountId}
-                          groupId={groupIdInput}
-                        />
-                      );
+                      return <GroupScreen accountId={accountId} groupId={groupIdInput} />;
                     }
                   }
                 : undefined
@@ -149,9 +134,7 @@ export function GroupScreen({
       <ScrollView
         style={{ flex: 1 }}
         contentContainerStyle={{ flexGrow: 1 }}
-        refreshControl={
-          <RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />
-        }
+        refreshControl={<RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />}
       >
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
@@ -189,11 +172,7 @@ export function GroupScreen({
               it: "Nome del gruppo",
             })}
           </Text>
-          <TextInput
-            value={nameInput}
-            onChangeText={setNameInput}
-            style={theme.textInputStyle}
-          />
+          <TextInput value={nameInput} onChangeText={setNameInput} style={theme.textInputStyle} />
           {nameInput !== nameOriginal ? (
             <Text
               style={{

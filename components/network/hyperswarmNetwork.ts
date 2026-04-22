@@ -1,6 +1,13 @@
 import { decodeMultiStream, encode } from "@msgpack/msgpack";
 import DHT from "hyperdht";
 import Hyperswarm, { type Connection } from "hyperswarm";
+import {
+  type DeviceId,
+  deviceIdFromUint8Array,
+  deviceIdToUint8Array,
+  type DeviceSecret,
+  deviceSecretToUint8Array,
+} from "../cryptography/cryptography";
 import { type NetworkFactory } from "../store/store";
 
 export const hyperswarmNetworkFactory: NetworkFactory = ({
@@ -8,17 +15,15 @@ export const hyperswarmNetworkFactory: NetworkFactory = ({
   received,
 }) => {
   const hyperswarmNodes = new Map<
-    string,
-    Awaited<ReturnType<typeof hyperswarmNodeFactory>>
+    DeviceId,
+    ReturnType<typeof hyperswarmNodeFactory>
   >();
   return {
     async start(deviceId, deviceSecret) {
-      const deviceIdString = Buffer.from(deviceId).toString("hex");
-      if (hyperswarmNodes.has(deviceIdString)) {
+      if (hyperswarmNodes.has(deviceId)) {
         return;
       }
-      hyperswarmNodes.set(deviceIdString, null as any); // reserve the deviceId to prevent concurrent starts
-      const hyperswarmNode = await hyperswarmNodeFactory({
+      const hyperswarmNodePromise = hyperswarmNodeFactory({
         deviceId,
         deviceSecret,
         received(fromDeviceId, data) {
@@ -28,36 +33,32 @@ export const hyperswarmNetworkFactory: NetworkFactory = ({
           return connected(deviceId, otherDeviceId);
         },
       });
-      hyperswarmNodes.set(deviceIdString, hyperswarmNode);
+      hyperswarmNodes.set(deviceId, hyperswarmNodePromise);
+      await hyperswarmNodePromise;
     },
     async stop(deviceId) {
-      const deviceIdString = Buffer.from(deviceId).toString("hex");
-      const hyperswarmNode = hyperswarmNodes.get(deviceIdString);
+      const hyperswarmNode = await hyperswarmNodes.get(deviceId);
       if (hyperswarmNode) {
         await hyperswarmNode.stop();
-        hyperswarmNodes.delete(deviceIdString);
+        hyperswarmNodes.delete(deviceId);
       }
     },
     async send(deviceId, toDeviceId, data) {
-      const deviceIdString = Buffer.from(deviceId).toString("hex");
-      const hyperswarmNode = hyperswarmNodes.get(deviceIdString);
-      // if (!hyperswarmNode) {
-      //   throw new Error(`Device ${deviceIdString} not started`);
-      // }
+      const hyperswarmNode = await hyperswarmNodes.get(deviceId);
+      if (!hyperswarmNode) {
+        throw new Error(`Device ${deviceId} not started`);
+      }
       await hyperswarmNode?.send(toDeviceId, data);
     },
     async getConnectedDevices(deviceId) {
-      const deviceIdString = Buffer.from(deviceId).toString("hex");
-      const hyperswarmNode = hyperswarmNodes.get(deviceIdString);
-      // if (!hyperswarmNode) {
-      //   throw new Error(`Device ${deviceIdString} not started`);
-      // }
-      return (await hyperswarmNode?.getConnectedDevices()) ?? [];
+      const hyperswarmNode = await hyperswarmNodes.get(deviceId);
+      if (!hyperswarmNode) {
+        throw new Error(`Device ${deviceId} not started`);
+      }
+      return await hyperswarmNode.getConnectedDevices();
     },
     async getStartedDevices() {
-      return Array.from(hyperswarmNodes.keys(), (deviceIdString) =>
-        Buffer.from(deviceIdString, "hex"),
-      );
+      return Array.from(hyperswarmNodes.keys());
     },
   };
 };
@@ -68,50 +69,49 @@ async function hyperswarmNodeFactory({
   received,
   connected,
 }: {
-  deviceId: Uint8Array;
-  deviceSecret: Uint8Array;
-  received(fromDeviceId: Uint8Array, data: unknown): Promise<void>;
-  connected(otherDeviceId: Uint8Array): Promise<void>;
+  deviceId: DeviceId;
+  deviceSecret: DeviceSecret;
+  received(fromDeviceId: DeviceId, data: unknown): Promise<void>;
+  connected(otherDeviceId: DeviceId): Promise<void>;
 }) {
+  console.log(`Starting swarm ${deviceId}`);
   const swarm = new Hyperswarm({
-    // TODO reenable, for some reason is not connecting whe we pass these
-    // keyPair: {
-    //   publicKey: Buffer.from(deviceId),
-    //   secretKey: Buffer.from(deviceSecret),
-    // },
+    keyPair: {
+      publicKey: Buffer.from(deviceIdToUint8Array(deviceId)),
+      secretKey: Buffer.concat([
+        Buffer.from(deviceSecretToUint8Array(deviceSecret)),
+        Buffer.from(deviceIdToUint8Array(deviceId)),
+      ]),
+    },
     bootstrap: [
+      // local bootstrap nodes for development
       "127.0.0.1:50000", // ios
       "10.0.2.2:50000", // android
+      // internet bootstrap nodes
       ...DHT.BOOTSTRAP,
     ],
   });
   await swarm.listen();
+  console.log(`Swarm started ${deviceId}`);
 
-  const connectionByDeviceId = new Map<string, Connection>();
-  const deviceIdToString = (deviceId: Uint8Array) =>
-    Buffer.from(deviceId).toString("hex");
-  const deviceIdFromString = (deviceId: string) => Buffer.from(deviceId, "hex");
-
-  console.log(`Starting swarm ${deviceIdToString(swarm.keyPair.publicKey)}`);
+  const connectionByDeviceId = new Map<DeviceId, Connection>();
 
   swarm.on("connection", async (connection, info) => {
-    const deviceIdString = deviceIdToString(info.publicKey);
+    const deviceIdString = deviceIdFromUint8Array(info.publicKey);
     connectionByDeviceId.set(deviceIdString, connection);
-    console.log(`New connection ${deviceIdString}`);
-    connected(info.publicKey);
-
-    connection.on("close", () => {
+    console.log(`New swarm connection ${deviceIdString}`);
+    await connected(deviceIdString);
+    try {
+      for await (const message of decodeMultiStream(connection)) {
+        await received(deviceIdString, message);
+      }
+    } catch (error) {
+      // should behave as connection.on("error", (error) => {});
+      console.log(`Connection error ${deviceIdString}`, error);
+    } finally {
+      // should behave as connection.on("close", () => {});
       connectionByDeviceId.delete(deviceIdString);
       console.log(`Connection closed ${deviceIdString}`);
-    });
-
-    connection.on("error", (error) => {
-      connectionByDeviceId.delete(deviceIdString);
-      console.log(`Connection error ${deviceIdString} ${String(error)}`);
-    });
-
-    for await (const message of decodeMultiStream(connection as any)) {
-      received(info.publicKey, message);
     }
   });
 
@@ -122,14 +122,12 @@ async function hyperswarmNodeFactory({
 
   return {
     async getConnectedDevices() {
-      return Array.from(connectionByDeviceId.keys(), deviceIdFromString);
+      return Array.from(connectionByDeviceId.keys());
     },
-    async send(deviceId: Uint8Array, data: unknown) {
-      const connection = connectionByDeviceId.get(deviceIdToString(deviceId));
+    async send(deviceId: DeviceId, data: unknown) {
+      const connection = connectionByDeviceId.get(deviceId);
       if (!connection) {
-        throw new Error(
-          `No connection to device ${deviceIdToString(deviceId)}`,
-        );
+        throw new Error(`No connection to device ${deviceId}`);
       }
       const encoded = encode(data);
       connection.write(

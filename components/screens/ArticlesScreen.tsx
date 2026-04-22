@@ -1,6 +1,7 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
+import { AccountId } from "../cryptography/cryptography";
 import { articleList } from "../queries/articles";
 import { ScreenLink } from "../Routing";
 import { useMemitaQuery } from "../store/dataApi";
@@ -10,7 +11,7 @@ import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { EditArticleScreen } from "./EditArticleScreen";
 import { ProfileScreen } from "./ProfileScreen";
 
-export function ArticlesScreen({ accountId }: { accountId: string }) {
+export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
@@ -33,16 +34,9 @@ export function ArticlesScreen({ accountId }: { accountId: string }) {
         data={articles}
         renderItem={({ item }) => (
           <View style={{ paddingVertical: 8, paddingHorizontal: 16 }}>
-            <View
-              style={{ flexDirection: "row", alignItems: "center", gap: 8 }}
-            >
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
               <ScreenLink
-                to={
-                  <ProfileScreen
-                    accountId={accountId}
-                    contactId={item.contactId}
-                  />
-                }
+                to={<ProfileScreen accountId={accountId} contactId={item.contactId} />}
                 label={item.contactName}
                 styleOverride={{
                   flexGrow1: true,
@@ -51,12 +45,7 @@ export function ArticlesScreen({ accountId }: { accountId: string }) {
               />
               {item.contactId === accountId ? (
                 <ScreenLink
-                  to={
-                    <EditArticleScreen
-                      accountId={accountId}
-                      createdAt={item.createdAt}
-                    />
-                  }
+                  to={<EditArticleScreen accountId={accountId} createdAt={item.createdAt} />}
                   icon="pencil"
                   hideLabel
                   label={translate({
@@ -68,9 +57,7 @@ export function ArticlesScreen({ accountId }: { accountId: string }) {
                   }}
                 />
               ) : null}
-              <Text style={{ ...theme.secondaryTextStyle }}>
-                {new Date(item.createdAt).toLocaleString()}
-              </Text>
+              <Text style={{ ...theme.secondaryTextStyle }}>{new Date(item.createdAt).toLocaleString()}</Text>
             </View>
             {item.date && (
               <View
@@ -79,11 +66,7 @@ export function ArticlesScreen({ accountId }: { accountId: string }) {
                   gap: 8,
                 }}
               >
-                <FontAwesome
-                  name="calendar"
-                  color={theme.secondaryTextStyle.color}
-                  size={18}
-                />
+                <FontAwesome name="calendar" color={theme.secondaryTextStyle.color} size={18} />
                 <Text style={{ ...theme.secondaryTextStyle }}>
                   {new Date(item.date.timestamp).toLocaleString()}
                   {/*  {" - "} {new Date(

@@ -56,7 +56,7 @@ declare module "hyperswarm" {
     on(event: "error", callback: (error: unknown) => void): void;
     write(data: Buffer): void;
     pipe(stream: any): void;
-  };
+  } & ReadableStream<Buffer>;
   type PeerInfo = {
     publicKey: PublicKey;
     topics: Array<Buffer>;

@@ -1,29 +1,18 @@
 import { Fragment, useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
-import {
-  groupMessagesList,
-  updateGroupMessage,
-} from "../queries/groupMessages";
+import { AccountId } from "../cryptography/cryptography";
+import { groupMessagesList, updateGroupMessage } from "../queries/groupMessages";
 import { groupLatest } from "../queries/groups";
+import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import { ScreenLink } from "../Routing";
-import {
-  refreshMemitaQueries,
-  useMemitaMutation,
-  useMemitaQuery,
-} from "../store/dataApi";
+import { refreshMemitaQueries, useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { MessageCompose } from "../ui/MessageCompose";
 import { GroupMessagesScreen } from "./GroupMessagesScreen";
 import { GroupScreen } from "./GroupScreen";
 
-export function GroupConversationScreen({
-  accountId,
-  groupId,
-}: {
-  accountId: string;
-  groupId: string;
-}) {
+export function GroupConversationScreen({ accountId, groupId }: { accountId: AccountId; groupId: string }) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
@@ -38,7 +27,7 @@ export function GroupConversationScreen({
   const [toModifyMessage, setToModifyMessage] = useState<
     | undefined
     | {
-        createdAt: number;
+        createdAt: Timestamp;
         content: string;
       }
   >();
@@ -70,8 +59,7 @@ export function GroupConversationScreen({
           <Pressable
             onLongPress={() => {
               setToModifyMessage(
-                item.createdAt === toModifyMessage?.createdAt &&
-                  item.senderId === accountId
+                item.createdAt === toModifyMessage?.createdAt && item.senderId === accountId
                   ? undefined
                   : {
                       createdAt: item.createdAt,
@@ -81,9 +69,7 @@ export function GroupConversationScreen({
             }}
             style={{
               backgroundColor:
-                item.createdAt === toModifyMessage?.createdAt
-                  ? theme.selectedItemBackgroundColor
-                  : undefined,
+                item.createdAt === toModifyMessage?.createdAt ? theme.selectedItemBackgroundColor : undefined,
             }}
           >
             <View
@@ -93,16 +79,10 @@ export function GroupConversationScreen({
                 justifyContent: "space-between",
               }}
             >
-              <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>
-                {item.senderName}
-              </Text>
-              <Text style={theme.secondaryTextStyle}>
-                {new Date(item.createdAt).toLocaleString()}
-              </Text>
+              <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>{item.senderName}</Text>
+              <Text style={theme.secondaryTextStyle}>{new Date(item.createdAt).toLocaleString()}</Text>
             </View>
-            <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
-              {item.content}
-            </Text>
+            <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>{item.content}</Text>
           </Pressable>
         )}
         style={{ flex: 1, marginVertical: 8 }}
@@ -128,7 +108,7 @@ export function GroupConversationScreen({
         toModifyContent={toModifyMessage?.content}
         onSend={async (text) => {
           await send({
-            createdAt: toModifyMessage?.createdAt ?? Date.now(),
+            createdAt: toModifyMessage?.createdAt ?? nowTimestamp(),
             senderId: accountId,
             groupId: groupId,
             content: text,

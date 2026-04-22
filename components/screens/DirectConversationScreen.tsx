@@ -1,32 +1,20 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { Fragment, useRef, useState } from "react";
 import { FlatList, Pressable, Text, TextInput, View } from "react-native";
+import { AccountId } from "../cryptography/cryptography";
 import { accountLatest } from "../queries/accounts";
 import { contactLatest } from "../queries/contacts";
-import {
-  directMessagesList,
-  updateDidReadDirectMessage,
-  updateDirectMessage,
-} from "../queries/directMessages";
+import { directMessagesList, updateDidReadDirectMessage, updateDirectMessage } from "../queries/directMessages";
+import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import { ScreenLink } from "../Routing";
-import {
-  useMemitaMutation,
-  useMemitaQuery,
-  useMemitaSubscription,
-} from "../store/dataApi";
+import { useMemitaMutation, useMemitaQuery, useMemitaSubscription } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { MessageCompose } from "../ui/MessageCompose";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 import { ProfileScreen } from "./ProfileScreen";
 
-export function DirectConversationScreen({
-  accountId,
-  contactId,
-}: {
-  accountId: string;
-  contactId: string;
-}) {
+export function DirectConversationScreen({ accountId, contactId }: { accountId: AccountId; contactId: AccountId }) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
@@ -44,7 +32,7 @@ export function DirectConversationScreen({
   const [toModifyMessage, setToModifyMessage] = useState<
     | undefined
     | {
-        createdAt: number;
+        createdAt: Timestamp;
         content: string;
       }
   >();
@@ -64,9 +52,7 @@ export function DirectConversationScreen({
         {searchState.active && (
           <Fragment>
             <ScreenLink
-              to={async () =>
-                setSearchState({ active: false, text: "", currentIndex: 0 })
-              }
+              to={async () => setSearchState({ active: false, text: "", currentIndex: 0 })}
               icon="close"
               hideLabel
               label={translate({
@@ -77,18 +63,13 @@ export function DirectConversationScreen({
             <TextInput
               style={{ ...theme.textInputStyle, flexGrow: 1 }}
               value={searchState.text}
-              onChangeText={(text) =>
-                setSearchState((state) => ({ ...state, text }))
-              }
+              onChangeText={(text) => setSearchState((state) => ({ ...state, text }))}
             />
             <ScreenLink
               to={async () => {
                 const previous = conversation.findLastIndex(
                   (item, i) =>
-                    i < searchState.currentIndex &&
-                    item.content
-                      .toLowerCase()
-                      .includes(searchState.text.toLowerCase()),
+                    i < searchState.currentIndex && item.content.toLowerCase().includes(searchState.text.toLowerCase()),
                 );
                 if (previous >= 0) {
                   setSearchState((state) => ({
@@ -111,10 +92,7 @@ export function DirectConversationScreen({
               to={async () => {
                 const next = conversation.findIndex(
                   (item, i) =>
-                    i > searchState.currentIndex &&
-                    item.content
-                      .toLowerCase()
-                      .includes(searchState.text.toLowerCase()),
+                    i > searchState.currentIndex && item.content.toLowerCase().includes(searchState.text.toLowerCase()),
                 );
                 if (next >= 0) {
                   setSearchState((state) => ({
@@ -182,9 +160,7 @@ export function DirectConversationScreen({
         }}
         renderItem={({ item, index }) => {
           const isCurrentOccurrence =
-            searchState.active &&
-            searchState.text.length > 0 &&
-            searchState.currentIndex === index;
+            searchState.active && searchState.text.length > 0 && searchState.currentIndex === index;
           return (
             <Pressable
               onLongPress={() => {
@@ -201,7 +177,7 @@ export function DirectConversationScreen({
               }}
               onPress={() => {
                 if (item.receiverId === accountId) {
-                  didRead({
+                  void didRead({
                     senderId: item.senderId,
                     receiverId: item.receiverId,
                     createdAt: item.createdAt,
@@ -211,9 +187,7 @@ export function DirectConversationScreen({
               }}
               style={{
                 backgroundColor:
-                  item.createdAt === toModifyMessage?.createdAt
-                    ? theme.selectedItemBackgroundColor
-                    : undefined,
+                  item.createdAt === toModifyMessage?.createdAt ? theme.selectedItemBackgroundColor : undefined,
                 borderColor: isCurrentOccurrence ? "lightgreen" : undefined,
                 borderLeftWidth: isCurrentOccurrence ? 8 : undefined,
               }}
@@ -245,42 +219,31 @@ export function DirectConversationScreen({
                       : ""}
                 </Text>
                 <View style={{ flexGrow: 1 }} />
-                <Text style={theme.secondaryTextStyle}>
-                  {new Date(item.createdAt).toLocaleString()}
-                </Text>
+                <Text style={theme.secondaryTextStyle}>{new Date(item.createdAt).toLocaleString()}</Text>
                 <FontAwesome
                   name="check"
                   size={16}
-                  color={
-                    item.didRead
-                      ? theme.linkTextColor
-                      : theme.secondaryTextColor
-                  }
+                  color={item.didRead ? theme.linkTextColor : theme.secondaryTextColor}
                   style={{ marginLeft: 8, paddingRight: 4 }}
                 />
               </View>
               <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
                 {searchState.active
-                  ? item.content
-                      .split(new RegExp(`(${searchState.text})`, "i"))
-                      .map((part, index) => {
-                        const isMatch =
-                          part.toLowerCase() === searchState.text.toLowerCase();
-                        return (
-                          <Text
-                            key={index}
-                            style={{
-                              backgroundColor: isMatch
-                                ? "lightgreen"
-                                : undefined,
-                              color: isMatch ? "black" : undefined,
-                              fontWeight: isMatch ? "bold" : undefined,
-                            }}
-                          >
-                            {part}
-                          </Text>
-                        );
-                      })
+                  ? item.content.split(new RegExp(`(${searchState.text})`, "i")).map((part, index) => {
+                      const isMatch = part.toLowerCase() === searchState.text.toLowerCase();
+                      return (
+                        <Text
+                          key={index}
+                          style={{
+                            backgroundColor: isMatch ? "lightgreen" : undefined,
+                            color: isMatch ? "black" : undefined,
+                            fontWeight: isMatch ? "bold" : undefined,
+                          }}
+                        >
+                          {part}
+                        </Text>
+                      );
+                    })
                   : item.content}
               </Text>
             </Pressable>
@@ -307,7 +270,7 @@ export function DirectConversationScreen({
         toModifyContent={toModifyMessage?.content}
         onSend={async (text) => {
           await send({
-            createdAt: toModifyMessage?.createdAt ?? Date.now(),
+            createdAt: toModifyMessage?.createdAt ?? nowTimestamp(),
             senderId: accountId,
             receiverId: contactId,
             content: text,

@@ -1,20 +1,22 @@
 import * as z from "zod";
+import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
 import { StoreItem } from "./Queries";
+import { nowTimestamp, Timestamp, TimestampSchema } from "./Timestamp";
 import { contactList } from "./contacts";
 import { groupBy, maxBy } from "./helpers";
 
 export const ArticleUpdateSchema = z.object({
   type: z.literal("ArticleUpdate"),
-  accountId: z.string(),
-  createdAt: z.number(),
+  accountId: AccountIdSchema,
+  createdAt: TimestampSchema,
   date: z
     .object({
-      timestamp: z.number(),
+      timestamp: TimestampSchema,
       duration: z.number(),
     })
     .optional(),
   content: z.string(),
-  timestamp: z.number(),
+  timestamp: TimestampSchema,
 });
 
 export type ArticleUpdate = z.infer<typeof ArticleUpdateSchema>;
@@ -25,11 +27,11 @@ export function updateArticle({
   date,
   content,
 }: {
-  accountId: string;
-  createdAt: number;
+  accountId: AccountId;
+  createdAt: Timestamp;
   date:
     | {
-        timestamp: number;
+        timestamp: Timestamp;
         duration: number;
       }
     | undefined;
@@ -43,26 +45,17 @@ export function updateArticle({
         createdAt,
         date,
         content,
-        timestamp: Date.now(),
+        timestamp: nowTimestamp(),
       },
     ];
   };
 }
 
-export function articleLatest({
-  accountId,
-  createdAt,
-}: {
-  accountId: string;
-  createdAt: number;
-}) {
+export function articleLatest({ accountId, createdAt }: { accountId: AccountId; createdAt: number }) {
   return (all: Array<StoreItem>) => {
     const updates = all
       .filter((item) => item.type === "ArticleUpdate")
-      .filter(
-        (update) =>
-          update.accountId === accountId && update.createdAt === createdAt,
-      );
+      .filter((update) => update.accountId === accountId && update.createdAt === createdAt);
     if (updates.length) {
       const latestUpdate = maxBy(updates, (update) => update.timestamp);
       return {
@@ -73,13 +66,11 @@ export function articleLatest({
   };
 }
 
-export function articleList({ accountId }: { accountId: string }) {
+export function articleList({ accountId }: { accountId: AccountId }) {
   return (all: Array<StoreItem>) => {
     return contactList({ accountId })(all).flatMap((contact) => {
       return groupBy(
-        all
-          .filter((item) => item.type === "ArticleUpdate")
-          .filter((update) => update.accountId === contact.contactId),
+        all.filter((item) => item.type === "ArticleUpdate").filter((update) => update.accountId === contact.contactId),
         (update) => [update.accountId, update.createdAt],
         (updates) => maxBy(updates, (update) => update.timestamp),
       )

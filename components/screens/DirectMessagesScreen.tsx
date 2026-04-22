@@ -1,20 +1,17 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
+import { AccountId } from "../cryptography/cryptography";
 import { directMessagesSummary } from "../queries/directMessages";
 import { ScreenLink } from "../Routing";
-import {
-  refreshMemitaQueries,
-  useMemitaQuery,
-  useMemitaSubscription,
-} from "../store/dataApi";
+import { refreshMemitaQueries, useMemitaQuery, useMemitaSubscription } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { ContactScreen } from "./ContactScreen";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 
-export function DirectMessagesScreen({ accountId }: { accountId: string }) {
+export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
@@ -40,12 +37,7 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
         renderItem={({ item }) => (
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <ScreenLink
-              to={
-                <DirectConversationScreen
-                  accountId={accountId}
-                  contactId={item.contactId}
-                />
-              }
+              to={<DirectConversationScreen accountId={accountId} contactId={item.contactId} />}
               styleOverride={{
                 flexGrow1: true,
               }}
@@ -58,15 +50,8 @@ export function DirectMessagesScreen({ accountId }: { accountId: string }) {
                   alignItems: "center",
                 }}
               >
-                <FontAwesome
-                  name="circle"
-                  color={theme.linkTextColor}
-                  size={16}
-                  style={{ marginHorizontal: 8 }}
-                />
-                <Text style={{ ...theme.linkTextStyle, flexGrow: 1 }}>
-                  {item.contactName}
-                </Text>
+                <FontAwesome name="circle" color={theme.linkTextColor} size={16} style={{ marginHorizontal: 8 }} />
+                <Text style={{ ...theme.linkTextStyle, flexGrow: 1 }}>{item.contactName}</Text>
                 {item.lastMesssageCreatedAt ? (
                   <Text style={{ ...theme.textStyle, paddingRight: 4 }}>
                     {new Date(item.lastMesssageCreatedAt).toLocaleString()}

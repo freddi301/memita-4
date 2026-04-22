@@ -1,4 +1,7 @@
+import { DeviceId, DeviceSecret } from "../cryptography/cryptography";
+
 type StoreInInterface<StoreItem> = {
+  parse(item: unknown): StoreItem;
   onAdd(item: StoreItem): Promise<void>;
   storage: StorageInterface<StoreItem>;
   networkFactory: NetworkFactory;
@@ -7,63 +10,61 @@ type StoreInInterface<StoreItem> = {
 type StoreOutInterface<StoreItem> = {
   add(item: StoreItem): Promise<void>;
   all(): Promise<Array<StoreItem>>;
-  start(deviceId: Uint8Array, deviceSecret: Uint8Array): Promise<void>;
-  stop(deviceId: Uint8Array): Promise<void>;
+  start(deviceId: DeviceId, deviceSecret: DeviceSecret): Promise<void>;
+  stop(deviceId: DeviceId): Promise<void>;
 };
 
 export type StorageInterface<StoreItem> = {
-  add(item: StoreItem): Promise<void>;
+  add(item: StoreItem): Promise<boolean>;
   all(): Promise<Array<StoreItem>>;
   wipe(): Promise<void>;
 };
 
 export type NetworkInInterface = {
-  received(
-    deviceId: Uint8Array,
-    fromDeviceId: Uint8Array,
-    data: unknown,
-  ): Promise<void>;
-  connected(deviceId: Uint8Array, otherDeviceId: Uint8Array): Promise<void>;
+  received(deviceId: DeviceId, fromDeviceId: DeviceId, data: unknown): Promise<void>;
+  connected(deviceId: DeviceId, otherDeviceId: DeviceId): Promise<void>;
 };
 
 export type NetworkOutInterface = {
-  start(deviceId: Uint8Array, deviceSecret: Uint8Array): Promise<void>;
-  stop(deviceId: Uint8Array): Promise<void>;
-  send(
-    deviceId: Uint8Array,
-    toDeviceId: Uint8Array,
-    data: unknown,
-  ): Promise<void>;
-  getStartedDevices(): Promise<Array<Uint8Array>>;
-  getConnectedDevices(deviceId: Uint8Array): Promise<Array<Uint8Array>>;
+  start(deviceId: DeviceId, deviceSecret: DeviceSecret): Promise<void>;
+  stop(deviceId: DeviceId): Promise<void>;
+  send(deviceId: DeviceId, toDeviceId: DeviceId, data: unknown): Promise<void>;
+  getStartedDevices(): Promise<Array<DeviceId>>;
+  getConnectedDevices(deviceId: DeviceId): Promise<Array<DeviceId>>;
 };
 
 export type NetworkFactory = (out: NetworkInInterface) => NetworkOutInterface;
 
 export function makeStore<StoreItem>({
+  parse,
   onAdd,
   storage,
   networkFactory,
 }: StoreInInterface<StoreItem>): StoreOutInterface<StoreItem> {
   const network = networkFactory({
     async received(deviceId, fromDeviceId, data) {
-      await storage.add(data as StoreItem);
-      await onAdd(data as StoreItem);
+      const item = parse(data);
+      const didAdd = await storage.add(item);
+      if (didAdd) {
+        await onAdd(item);
+      }
     },
     async connected(deviceId, otherDeviceId) {
       const all = await storage.all();
-      await Promise.all(
-        all.map((item) => network.send(deviceId, otherDeviceId, item)),
-      );
+      // TODO discriminate to which devices to send
+      await Promise.all(all.map((item) => network.send(deviceId, otherDeviceId, item)));
     },
   });
   return {
     async add(item) {
-      await storage.add(item);
-      await onAdd(item);
-      for (const deviceId of await network.getStartedDevices()) {
-        for (const toDeviceId of await network.getConnectedDevices(deviceId)) {
-          await network.send(deviceId, toDeviceId, item);
+      const didAdd = await storage.add(item);
+      if (didAdd) {
+        await onAdd(item);
+        for (const deviceId of await network.getStartedDevices()) {
+          for (const toDeviceId of await network.getConnectedDevices(deviceId)) {
+            // TODO discriminate to which devices to send
+            await network.send(deviceId, toDeviceId, item);
+          }
         }
       }
     },

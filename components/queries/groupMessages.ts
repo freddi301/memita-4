@@ -1,16 +1,18 @@
 import * as z from "zod";
+import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
 import { StoreItem } from "./Queries";
+import { nowTimestamp, Timestamp, TimestampSchema } from "./Timestamp";
 import { contactLatest } from "./contacts";
 import { groupList } from "./groups";
 import { groupBy, maxBy, orderBy } from "./helpers";
 
 export const GroupMessageUpdateSchema = z.object({
   type: z.literal("GroupMessageUpdate"),
-  senderId: z.string(),
-  groupId: z.string(),
-  createdAt: z.number(),
+  senderId: AccountIdSchema,
+  groupId: z.string(), // TODO use branded type
+  createdAt: TimestampSchema,
   content: z.string(),
-  timestamp: z.number(),
+  timestamp: TimestampSchema,
 });
 
 export type GroupMessageUpdate = z.infer<typeof GroupMessageUpdateSchema>;
@@ -21,9 +23,9 @@ export function updateGroupMessage({
   createdAt,
   content,
 }: {
-  senderId: string;
+  senderId: AccountId;
   groupId: string;
-  createdAt: number;
+  createdAt: Timestamp;
   content: string;
 }) {
   return (all: Array<StoreItem>): Array<StoreItem> => {
@@ -34,13 +36,13 @@ export function updateGroupMessage({
         groupId,
         createdAt,
         content,
-        timestamp: Date.now(),
+        timestamp: nowTimestamp(),
       },
     ];
   };
 }
 
-export function groupMessagesSummary({ accountId }: { accountId: string }) {
+export function groupMessagesSummary({ accountId }: { accountId: AccountId }) {
   return (all: Array<StoreItem>) => {
     return orderBy(
       groupList({ accountId })(all).map((group) => {
@@ -64,9 +66,7 @@ export function groupMessagesSummary({ accountId }: { accountId: string }) {
 export function commonGroupMessagesList({ groupId }: { groupId: string }) {
   return (all: Array<StoreItem>) => {
     return groupBy(
-      all
-        .filter((item) => item.type === "GroupMessageUpdate")
-        .filter((update) => update.groupId === groupId),
+      all.filter((item) => item.type === "GroupMessageUpdate").filter((update) => update.groupId === groupId),
       (update) => [update.senderId, update.groupId, update.createdAt],
       (updates) => maxBy(updates, (update) => update.timestamp),
     ).filter((update) => update.content !== "");
@@ -77,15 +77,11 @@ export function groupMessagesList({
   accountId,
   groupId,
 }: {
-  accountId: string;
-  groupId: string;
+  accountId: AccountId;
+  groupId: string; // TODO use branded type
 }) {
   return (all: Array<StoreItem>) => {
-    return orderBy(
-      commonGroupMessagesList({ groupId })(all),
-      (update) => update.createdAt,
-      "asc",
-    ).map((update) => {
+    return orderBy(commonGroupMessagesList({ groupId })(all), (update) => update.createdAt, "asc").map((update) => {
       const contactUpdate = contactLatest({
         accountId,
         contactId: update.senderId,

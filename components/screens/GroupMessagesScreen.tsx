@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
+import { AccountId } from "../cryptography/cryptography";
 import { groupMessagesSummary } from "../queries/groupMessages";
 import { ScreenLink } from "../Routing";
 import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
@@ -9,7 +10,7 @@ import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { GroupConversationScreen } from "./GroupConversationScreen";
 import { GroupScreen } from "./GroupScreen";
 
-export function GroupMessagesScreen({ accountId }: { accountId: string }) {
+export function GroupMessagesScreen({ accountId }: { accountId: AccountId }) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
@@ -33,12 +34,7 @@ export function GroupMessagesScreen({ accountId }: { accountId: string }) {
         renderItem={({ item }) => (
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <ScreenLink
-              to={
-                <GroupConversationScreen
-                  accountId={accountId}
-                  groupId={item.groupId}
-                />
-              }
+              to={<GroupConversationScreen accountId={accountId} groupId={item.groupId} />}
               label={item.groupName}
               icon="circle"
               styleOverride={{

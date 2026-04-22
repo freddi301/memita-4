@@ -1,6 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
+import { AccountId } from "../cryptography/cryptography";
 import { articleLatest, updateArticle } from "../queries/articles";
+import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import { ScreenLink } from "../Routing";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
@@ -8,13 +10,7 @@ import { useTranslate } from "../Translate";
 import { DateTimeInput } from "../ui/DateTimeInput";
 import { ArticlesScreen } from "./ArticlesScreen";
 
-export function EditArticleScreen({
-  accountId,
-  createdAt,
-}: {
-  accountId: string;
-  createdAt?: number;
-}) {
+export function EditArticleScreen({ accountId, createdAt }: { accountId: AccountId; createdAt?: Timestamp }) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
@@ -26,9 +22,7 @@ export function EditArticleScreen({
   const update = useMemitaMutation(updateArticle);
 
   const dateTimestampOriginal = latest.date?.timestamp;
-  const [dateTimestampInput, setDateTimestampInput] = useState(
-    dateTimestampOriginal,
-  );
+  const [dateTimestampInput, setDateTimestampInput] = useState(dateTimestampOriginal);
   useEffect(() => {
     setDateTimestampInput(dateTimestampOriginal);
   }, [dateTimestampOriginal]);
@@ -39,9 +33,7 @@ export function EditArticleScreen({
     setContentInput(contentOriginal);
   }, [contentOriginal]);
 
-  const canSave =
-    contentInput !== contentOriginal ||
-    dateTimestampInput !== dateTimestampOriginal;
+  const canSave = contentInput !== contentOriginal || dateTimestampInput !== dateTimestampOriginal;
 
   return (
     <Fragment>
@@ -61,9 +53,7 @@ export function EditArticleScreen({
           })}
         />
         {createdAt ? (
-          <Text style={{ ...theme.textStyle, flexGrow: 1 }}>
-            {new Date(createdAt).toLocaleString()}
-          </Text>
+          <Text style={{ ...theme.textStyle, flexGrow: 1 }}>{new Date(createdAt).toLocaleString()}</Text>
         ) : (
           <Text style={{ ...theme.secondaryTextStyle, flexGrow: 1 }}>
             {translate({
@@ -127,19 +117,14 @@ export function EditArticleScreen({
                         content: contentInput,
                       });
                     } else {
-                      const now = Date.now();
+                      const now = nowTimestamp();
                       await update({
                         accountId,
                         createdAt: now,
                         date: dateInput,
                         content: contentInput,
                       });
-                      return (
-                        <EditArticleScreen
-                          accountId={accountId}
-                          createdAt={now}
-                        />
-                      );
+                      return <EditArticleScreen accountId={accountId} createdAt={now} />;
                     }
                   }
                 : undefined
@@ -168,10 +153,7 @@ export function EditArticleScreen({
               it: "Evento",
             })}
           </Text>
-          <DateTimeInput
-            value={dateTimestampInput}
-            onChange={setDateTimestampInput}
-          />
+          <DateTimeInput value={dateTimestampInput} onChange={setDateTimestampInput as any} />
         </View>
         <View
           style={{

@@ -23,7 +23,7 @@ export function GeoMap({
   const theme = useTheme();
 
   useEffect(() => {
-    ExpoLocation.requestForegroundPermissionsAsync();
+    void ExpoLocation.requestForegroundPermissionsAsync();
   }, []);
 
   const [userLocation, setUserLocation] =
@@ -32,7 +32,7 @@ export function GeoMap({
 
   useEffect(() => {
     let subscription: ExpoLocation.LocationSubscription | null = null;
-    ExpoLocation.watchPositionAsync({}, (location) => {
+    void ExpoLocation.watchPositionAsync({}, (location) => {
       setUserLocation(location);
     }).then((locationSubscription) => {
       subscription = locationSubscription;

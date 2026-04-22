@@ -1,34 +1,24 @@
-import { hexToBytes } from "@noble/hashes/utils.js";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import * as Clipboard from "expo-clipboard";
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
-import { getDeviceKeyPair } from "../cryptography";
-import {
-  accountLatest,
-  createAccountId,
-  updateAccount,
-} from "../queries/accounts";
+import { AccountId, generateAccountKeyPair } from "../cryptography/cryptography";
+import { getDeviceKeyPair } from "../cryptography/cryptographyStorage";
+import { accountLatest, updateAccount } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
-import {
-  queryClient,
-  refreshMemitaQueries,
-  store,
-  useMemitaMutation,
-  useMemitaQuery,
-} from "../store/dataApi";
+import { queryClient, refreshMemitaQueries, store, useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { ProfileScreen } from "./ProfileScreen";
 import { SelectAccountScreen } from "./SelectAccountScreen";
 
-export function AccountScreen({ accountId }: { accountId?: string }) {
+export function AccountScreen({ accountId }: { accountId?: AccountId }) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
   const latest = useMemitaQuery(accountLatest, {
-    accountId: accountId ?? "",
+    accountId: accountId,
   }) ?? { name: "" };
   const update = useMemitaMutation(updateAccount);
 
@@ -46,8 +36,7 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
         queryKey: ["deviceId", accountId],
         queryFn: async () => {
           if (!accountId) return null;
-          const { publicKey } = await getDeviceKeyPair(accountId);
-          return publicKey;
+          return (await getDeviceKeyPair(accountId)).deviceId;
         },
       },
       queryClient,
@@ -73,7 +62,7 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
                       name: nameOriginal,
                       deleted: true,
                     });
-                    await store.stop(hexToBytes(deviceId));
+                    await store.stop(deviceId);
                     return <SelectAccountScreen />;
                   }
                 : undefined
@@ -111,24 +100,16 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
                         deleted: false,
                       });
                     } else {
-                      const newAccountId = createAccountId();
+                      // TODO save account secret
+                      const newAccountId = generateAccountKeyPair().accountId;
                       await update({
                         accountId: newAccountId,
                         name: nameInput,
                         deleted: false,
                       });
-                      const deviceKeyPair =
-                        await getDeviceKeyPair(newAccountId);
-                      await store.start(
-                        hexToBytes(deviceKeyPair.publicKey),
-                        hexToBytes(deviceKeyPair.secretKey),
-                      );
-                      return (
-                        <ProfileScreen
-                          accountId={newAccountId}
-                          contactId={newAccountId}
-                        />
-                      );
+                      const deviceKeyPair = await getDeviceKeyPair(newAccountId);
+                      await store.start(deviceKeyPair.deviceId, deviceKeyPair.deviceSecret);
+                      return <ProfileScreen accountId={newAccountId} contactId={newAccountId} />;
                     }
                   }
                 : undefined
@@ -152,9 +133,7 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
       <ScrollView
         style={{ flex: 1 }}
         contentContainerStyle={{ flexGrow: 1 }}
-        refreshControl={
-          <RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />
-        }
+        refreshControl={<RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />}
       >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View
@@ -205,11 +184,7 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
               it: "Nome dell'account",
             })}
           </Text>
-          <TextInput
-            value={nameInput}
-            onChangeText={setNameInput}
-            style={theme.textInputStyle}
-          />
+          <TextInput value={nameInput} onChangeText={setNameInput} style={theme.textInputStyle} />
           {nameInput !== nameOriginal ? (
             <Text
               style={{
@@ -265,11 +240,7 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
         </View>
       </ScrollView>
       <ScreenLink
-        to={
-          !canSave && accountId ? (
-            <ProfileScreen accountId={accountId} contactId={accountId} />
-          ) : undefined
-        }
+        to={!canSave && accountId ? <ProfileScreen accountId={accountId} contactId={accountId} /> : undefined}
         label={translate({
           en: "Profile",
           it: "Profilo",

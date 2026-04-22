@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
 import { StoreItem } from "./Queries";
+import { nowTimestamp, TimestampSchema } from "./Timestamp";
 import { contactList } from "./contacts";
 import { maxBy } from "./helpers";
 
@@ -12,10 +14,10 @@ const BioLocationSchema = z
 
 export const BiographyUpdateSchema = z.object({
   type: z.literal("BiographyUpdate"),
-  accountId: z.string(),
+  accountId: AccountIdSchema,
   location: BioLocationSchema,
   content: z.string(),
-  timestamp: z.number(),
+  timestamp: TimestampSchema,
 });
 
 export type BiographyUpdate = z.infer<typeof BiographyUpdateSchema>;
@@ -27,7 +29,7 @@ export function updateBiography({
   location,
   content,
 }: {
-  accountId: string;
+  accountId: AccountId;
   location: BioLocation | undefined;
   content: string;
 }) {
@@ -38,13 +40,13 @@ export function updateBiography({
         accountId,
         location,
         content,
-        timestamp: Date.now(),
+        timestamp: nowTimestamp(),
       },
     ];
   };
 }
 
-export function biographyLatest({ accountId }: { accountId: string }) {
+export function biographyLatest({ accountId }: { accountId: AccountId }) {
   return (all: Array<StoreItem>) => {
     const updates = all
       .filter((item) => item.type === "BiographyUpdate")
@@ -59,7 +61,7 @@ export function biographyLatest({ accountId }: { accountId: string }) {
   };
 }
 
-export function biographies({ accountId }: { accountId: string }) {
+export function biographies({ accountId }: { accountId: AccountId }) {
   return (all: Array<StoreItem>) => {
     const contacts = contactList({ accountId })(all);
     return contacts.flatMap((contact) => {

@@ -1,6 +1,4 @@
-import DateTimePicker, {
-  DateTimePickerAndroid,
-} from "@react-native-community/datetimepicker";
+import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import { useState } from "react";
 import { Platform, TextInput, View } from "react-native";
 import { ScreenLink } from "../Routing";

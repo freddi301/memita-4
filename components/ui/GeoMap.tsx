@@ -22,7 +22,7 @@ export function GeoMap({
 }: {
   currentLocation?: { latitude: number; longitude: number };
   onSetLocation?(
-    position: { latitude: number; longitude: number } | undefined
+    position: { latitude: number; longitude: number } | undefined,
   ): void;
   pins?: Array<{ id: string; latitude: number; longitude: number }>;
   onPinPress?(id: string): void;
@@ -30,7 +30,7 @@ export function GeoMap({
   const theme = useTheme();
 
   useEffect(() => {
-    ExpoLocation.requestForegroundPermissionsAsync();
+    void ExpoLocation.requestForegroundPermissionsAsync();
   }, []);
 
   const mapRef = useRef<MapViewRef>(null);
@@ -67,7 +67,7 @@ export function GeoMap({
           }
           mapCenterRef.current = payload.geometry.coordinates as [
             number,
-            number
+            number,
           ];
         }}
       >
@@ -173,7 +173,7 @@ export function GeoMap({
                     : {
                         longitude: mapCenterRef.current[0],
                         latitude: mapCenterRef.current[1],
-                      }
+                      },
                 );
               }}
             />

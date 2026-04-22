@@ -1,24 +1,21 @@
-import {
-  QueryClient,
-  useMutation,
-  useSuspenseQuery,
-} from "@tanstack/react-query";
+import { QueryClient, useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Platform } from "react-native";
+import { AccountIdSchema } from "../cryptography/cryptography";
 import { bareNetworkFactory } from "../network/networkBare";
 import { websocketNetworkFactory } from "../network/networkWebsocketClient";
 import { triggerNotification } from "../notifications";
 import { updateContact } from "../queries/contacts";
-import { StoreItem } from "../queries/Queries";
-import { makeLocalStorage } from "./localStorage";
+import { StoreItem, StoreItemSchema } from "../queries/Queries";
+import { localStorageFactory } from "./localStorage";
 import { makeStore } from "./store";
 
 async function cleanLocalStorage() {
-  const storage = makeLocalStorage("data");
+  const storage = localStorageFactory("data", StoreItemSchema.parse);
   await storage.wipe();
-  const mobileAccountId = "mobile-xxx";
+  const mobileAccountId = AccountIdSchema.parse("984fa5157b2039e1ce05fe04ce1abf81def9f6bf0ea7406f16163058a138f54f");
   const mobileAccountName = "Mobile";
-  const webAccountId = "web-xxx";
+  const webAccountId = AccountIdSchema.parse("49ce6f7e6e684c9491c2eda6f6357fea8b53fc53585639bff0c30185d5e19e81");
   const webAccountName = "Web";
   const accountId = Platform.select({
     web: webAccountId,
@@ -42,16 +39,16 @@ async function cleanLocalStorage() {
     await storage.add(item);
   }
 }
-// cleanLocalStorage();
+// void cleanLocalStorage();
 
 export const store = makeStore<StoreItem>({
-  storage: makeLocalStorage("data"),
+  parse: StoreItemSchema.parse,
+  storage: localStorageFactory("data", StoreItemSchema.parse),
   // networkFactory: websocketNetworkFactory,
-  networkFactory:
-    Platform.OS === "web" ? websocketNetworkFactory : bareNetworkFactory,
+  networkFactory: Platform.OS === "web" ? websocketNetworkFactory : bareNetworkFactory,
   async onAdd(item) {
     subscriptions.forEach((callback) => callback());
-    triggerNotification();
+    await triggerNotification();
   },
 });
 
@@ -90,9 +87,7 @@ export async function refreshMemitaQueries() {
 }
 
 export function useMemitaMutation<Params>(
-  mutationFactory: (
-    params: Params,
-  ) => (all: Array<StoreItem>) => Array<StoreItem>,
+  mutationFactory: (params: Params) => (all: Array<StoreItem>) => Array<StoreItem>,
 ): (params: Params) => Promise<void> {
   return useMutation(
     {
@@ -111,11 +106,12 @@ export function useMemitaMutation<Params>(
   ).mutateAsync;
 }
 
+// TODO remove this somehow
 export function useMemitaSubscription() {
   const [, setForceRerender] = useState(0);
   useEffect(() => {
     const callback = () => {
-      refreshMemitaQueries();
+      void refreshMemitaQueries();
       setForceRerender((prev) => prev + 1);
     };
     subscriptions.add(callback);

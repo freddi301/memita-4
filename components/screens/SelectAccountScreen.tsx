@@ -1,8 +1,7 @@
-import { hexToBytes } from "@noble/hashes/utils.js";
 import { Image } from "expo-image";
 import { Fragment, useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
-import { getDeviceKeyPair } from "../cryptography";
+import { getDeviceKeyPair } from "../cryptography/cryptographyStorage";
 import { accountList } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
 import { refreshMemitaQueries, store, useMemitaQuery } from "../store/dataApi";
@@ -19,13 +18,10 @@ export function SelectAccountScreen() {
 
   // TODO move somewhere more global
   useEffect(() => {
-    (async () => {
+    void (async () => {
       for (const account of accounts) {
         const deviceKeyPair = await getDeviceKeyPair(account.accountId);
-        await store.start(
-          hexToBytes(deviceKeyPair.publicKey),
-          hexToBytes(deviceKeyPair.secretKey),
-        );
+        await store.start(deviceKeyPair.deviceId, deviceKeyPair.deviceSecret);
       }
     })();
   }, [accounts]);
@@ -48,10 +44,7 @@ export function SelectAccountScreen() {
         />
       </View>
       <View style={{ alignItems: "center", gap: 16, padding: 16 }}>
-        <Image
-          source={require("../../assets/images/icon.png")}
-          style={{ width: 100, height: 100 }}
-        />
+        <Image source={require("../../assets/images/icon.png")} style={{ width: 100, height: 100 }} />
         <Text
           style={{
             ...theme.textStyle,
@@ -65,11 +58,7 @@ export function SelectAccountScreen() {
       <FlatList
         data={accounts}
         renderItem={({ item }) => (
-          <ScreenLink
-            to={<DirectMessagesScreen accountId={item.accountId} />}
-            icon="user-circle"
-            label={item.name}
-          />
+          <ScreenLink to={<DirectMessagesScreen accountId={item.accountId} />} icon="user-circle" label={item.name} />
         )}
         ListEmptyComponent={
           <Text

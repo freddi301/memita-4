@@ -1,12 +1,13 @@
 import { Fragment, useState } from "react";
 import { Text, View } from "react-native";
+import { AccountId } from "../cryptography/cryptography";
 import { biographies } from "../queries/biography";
 import { useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { GeoMap } from "../ui/GeoMap";
 
-export function PlacesScreen({ accountId }: { accountId: string }) {
+export function PlacesScreen({ accountId }: { accountId: AccountId }) {
   const theme = useTheme();
 
   const places = useMemitaQuery(biographies, { accountId });
@@ -17,9 +18,7 @@ export function PlacesScreen({ accountId }: { accountId: string }) {
 
   const [currentPlaceId, setCurrentPlaceId] = useState("");
 
-  const currentPlace = places.find(
-    (place) => place.contactId === currentPlaceId,
-  );
+  const currentPlace = places.find((place) => place.contactId === currentPlaceId);
 
   return (
     <Fragment>
@@ -36,9 +35,7 @@ export function PlacesScreen({ accountId }: { accountId: string }) {
         >
           {currentPlace?.contactName}
         </Text>
-        <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
-          {currentPlace?.content}
-        </Text>
+        <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>{currentPlace?.content}</Text>
       </View>
       <BottomTabNavigation accountId={accountId} enabled={true} />
     </Fragment>

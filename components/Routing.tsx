@@ -87,13 +87,19 @@ export function ScreenLink({
         if (typeof to === "function") {
           setIsPerforming(true);
           setActionInProgress(true);
-          to().then((screen) => {
-            setActionInProgress(false);
-            setIsPerforming(false);
-            if (screen) {
-              navigate(screen);
-            }
-          });
+          void to().then(
+            (screen) => {
+              setActionInProgress(false);
+              setIsPerforming(false);
+              if (screen) {
+                navigate(screen);
+              }
+            },
+            (error) => {
+              console.error(error);
+              alert("An error occurred while navigating");
+            },
+          );
         } else {
           navigate(to);
         }
