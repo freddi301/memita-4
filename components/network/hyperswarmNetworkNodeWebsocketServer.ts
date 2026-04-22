@@ -6,9 +6,9 @@ import {
   type RemoteRequest,
   type RemoteResponse,
   serverReceive,
-} from "../remoteApi.ts";
+} from "../remoteApi";
 import type { NetworkInInterface, NetworkOutInterface } from "../store/store";
-import { hyperswarmNetworkFactory } from "./hyperswarmNetwork.ts";
+import { hyperswarmNetworkFactory } from "./hyperswarmNetwork";
 
 const hyperswarmNetwork = hyperswarmNetworkFactory(
   new Proxy(

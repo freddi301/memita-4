@@ -1,4 +1,3 @@
-import { triggerNotification } from "../notifications";
 import { contactList } from "./contacts";
 import { groupBy, maxBy, orderBy } from "./helpers";
 import { StoreItem } from "./Queries";
@@ -24,7 +23,6 @@ export function updateDirectMessage({
   content: string;
 }) {
   return (all: Array<StoreItem>): Array<StoreItem> => {
-    triggerNotification();
     return [
       {
         type: "DirectMessageUpdate",

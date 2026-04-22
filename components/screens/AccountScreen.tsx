@@ -1,7 +1,10 @@
+import { hexToBytes } from "@noble/hashes/utils.js";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import * as Clipboard from "expo-clipboard";
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
+import { getDeviceKeyPair } from "../cryptography";
 import {
   accountLatest,
   createAccountId,
@@ -9,7 +12,9 @@ import {
 } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
 import {
+  queryClient,
   refreshMemitaQueries,
+  store,
   useMemitaMutation,
   useMemitaQuery,
 } from "../store/dataApi";
@@ -35,6 +40,19 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
 
   const canSave = nameInput !== nameOriginal;
 
+  const deviceId =
+    useSuspenseQuery(
+      {
+        queryKey: ["deviceId", accountId],
+        queryFn: async () => {
+          if (!accountId) return null;
+          const { publicKey } = await getDeviceKeyPair(accountId);
+          return publicKey;
+        },
+      },
+      queryClient,
+    ).data ?? undefined;
+
   return (
     <Fragment>
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
@@ -48,13 +66,14 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
         <View style={{ flexDirection: "row" }}>
           <ScreenLink
             to={
-              !canSave && accountId !== undefined
+              !canSave && accountId !== undefined && deviceId !== undefined
                 ? async () => {
                     await update({
                       accountId,
                       name: nameOriginal,
                       deleted: true,
                     });
+                    await store.stop(hexToBytes(deviceId));
                     return <SelectAccountScreen />;
                   }
                 : undefined
@@ -98,6 +117,12 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
                         name: nameInput,
                         deleted: false,
                       });
+                      const deviceKeyPair =
+                        await getDeviceKeyPair(newAccountId);
+                      await store.start(
+                        hexToBytes(deviceKeyPair.publicKey),
+                        hexToBytes(deviceKeyPair.secretKey),
+                      );
                       return (
                         <ProfileScreen
                           accountId={newAccountId}
@@ -132,7 +157,14 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
         }
       >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
+          <View
+            style={{
+              gap: 2,
+              paddingHorizontal: 16,
+              paddingVertical: 8,
+              flex: 1,
+            }}
+          >
             <Text style={theme.secondaryTextStyle}>
               {translate({
                 en: "Account ID",
@@ -140,7 +172,7 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
               })}
             </Text>
             {accountId ? (
-              <Text style={theme.textStyle}>{accountId}</Text>
+              <Text style={{ ...theme.textStyle }}>{accountId}</Text>
             ) : (
               <Text style={theme.secondaryTextStyle}>
                 {translate({
@@ -188,6 +220,48 @@ export function AccountScreen({ accountId }: { accountId?: string }) {
               {nameOriginal || " "}
             </Text>
           ) : null}
+        </View>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <View
+            style={{
+              gap: 2,
+              paddingHorizontal: 16,
+              paddingVertical: 8,
+              flex: 1,
+            }}
+          >
+            <Text style={theme.secondaryTextStyle}>
+              {translate({
+                en: "Device ID",
+                it: "Id del dispositivo",
+              })}
+            </Text>
+            {deviceId ? (
+              <Text style={theme.textStyle}>{deviceId}</Text>
+            ) : (
+              <Text style={theme.secondaryTextStyle}>
+                {translate({
+                  en: "Device id will be generated on save",
+                  it: "L'id del dispositivo sarà generato al salvataggio",
+                })}
+              </Text>
+            )}
+          </View>
+          <ScreenLink
+            to={
+              deviceId
+                ? async () => {
+                    await Clipboard.setStringAsync(deviceId);
+                  }
+                : undefined
+            }
+            icon="copy"
+            hideLabel
+            label={translate({
+              en: "Copy device id to clipboard",
+              it: "Copia l'id del dispositivo negli appunti",
+            })}
+          />
         </View>
       </ScrollView>
       <ScreenLink

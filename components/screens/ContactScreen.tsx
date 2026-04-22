@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
+import { validateAccountId } from "../queries/accounts";
 import { contactLatest, updateContact } from "../queries/contacts";
 import { ScreenLink } from "../Routing";
 import {
@@ -32,8 +33,9 @@ export function ContactScreen({
   const update = useMemitaMutation(updateContact);
 
   const [contactIdInput, setContactIdInput] = useState("");
-  const isContactIdValid = !contactId ? contactIdInput.length > 5 : true; // TODO
-
+  const isContactIdValid = !contactId
+    ? validateAccountId(contactIdInput)
+    : true;
   const [nameInput, setNameInput] = useState("");
   const nameOriginal = latest.name;
   useEffect(() => {

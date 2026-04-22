@@ -8,6 +8,7 @@
 [ ] - videocall
 [x] - text search
 [ ] - message sync status (on which devices)
+[ ] - notifications
 
 # Contacts
 
@@ -68,3 +69,4 @@
 [ ] - settings screen with text search
 [ ] - cloud backup (ex google)
 [ ] - data quota managment
+[ ] - import account

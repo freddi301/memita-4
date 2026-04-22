@@ -9,9 +9,12 @@
       "request": "launch",
       "name": "Debug node",
       "skipFiles": ["<node_internals>/**"],
-      "runtimeArgs": ["--experimental-strip-types"],
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/tsx",
       "program": "${workspaceFolder}/node/index.ts",
-      "outFiles": ["${workspaceFolder}/**/*.js"]
+      "sourceMaps": true,
+      "env": {
+        "NODE_ENV": "development"
+      }
     }
   ]
 }

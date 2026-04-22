@@ -1,9 +1,11 @@
+import { hexToBytes } from "@noble/hashes/utils.js";
 import { Image } from "expo-image";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
+import { getDeviceKeyPair } from "../cryptography";
 import { accountList } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
-import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
+import { refreshMemitaQueries, store, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { AccountScreen } from "./AccountScreen";
@@ -14,6 +16,19 @@ export function SelectAccountScreen() {
   const { translate } = useTranslate();
 
   const accounts = useMemitaQuery(accountList, {});
+
+  // TODO move somewhere more global
+  useEffect(() => {
+    (async () => {
+      for (const account of accounts) {
+        const deviceKeyPair = await getDeviceKeyPair(account.accountId);
+        await store.start(
+          hexToBytes(deviceKeyPair.publicKey),
+          hexToBytes(deviceKeyPair.secretKey),
+        );
+      }
+    })();
+  }, [accounts]);
 
   return (
     <Fragment>

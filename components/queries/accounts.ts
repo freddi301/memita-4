@@ -1,8 +1,21 @@
+import { hexToBytes } from "@noble/hashes/utils.js";
+import { generateKeyPair } from "../cryptography";
 import { groupBy, maxBy } from "./helpers";
 import { StoreItem } from "./Queries";
 
 export function createAccountId() {
-  return Math.random().toString(36).slice(2);
+  return generateKeyPair().publicKey;
+}
+
+export function validateAccountId(accountId: string) {
+  try {
+    if (hexToBytes(accountId).length !== 32) {
+      throw new Error("Invalid accountId length");
+    }
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export function updateAccount({

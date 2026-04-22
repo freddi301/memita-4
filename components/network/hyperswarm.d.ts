@@ -35,6 +35,7 @@ declare module "hyperswarm" {
     };
     dht: DHT;
     listen(): Promise<void>;
+    destroy(): Promise<void>;
   }
   type Options = {
     /** A Noise keypair that will be used to listen/connect on the DHT. Defaults to a new key pair */

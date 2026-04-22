@@ -3,12 +3,22 @@ import { Platform } from "react-native";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
-    shouldPlaySound: false,
+    shouldPlaySound: true,
     shouldSetBadge: true,
-    shouldShowBanner: false,
+    shouldShowBanner: true,
     shouldShowList: false,
   }),
 });
+
+export async function setupNotificationChannel() {
+  if (Platform.OS === "android") {
+    await Notifications.setNotificationChannelAsync("default", {
+      name: "Default",
+      importance: Notifications.AndroidImportance.HIGH,
+      vibrationPattern: [0, 250, 250, 250],
+    });
+  }
+}
 
 const identifier = "memita_has_something_for_you";
 
@@ -31,5 +41,6 @@ export async function triggerNotification() {
 }
 
 export async function registerForPushNotificationsAsync() {
+  await setupNotificationChannel();
   await Notifications.requestPermissionsAsync();
 }

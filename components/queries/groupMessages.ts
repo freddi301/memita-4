@@ -1,4 +1,3 @@
-import { triggerNotification } from "../notifications";
 import { StoreItem } from "./Queries";
 import { contactLatest } from "./contacts";
 import { groupList } from "./groups";
@@ -25,7 +24,6 @@ export function updateGroupMessage({
   content: string;
 }) {
   return (all: Array<StoreItem>): Array<StoreItem> => {
-    triggerNotification();
     return [
       {
         type: "GroupMessageUpdate",
