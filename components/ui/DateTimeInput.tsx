@@ -1,4 +1,6 @@
-import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
+import DateTimePicker, {
+  DateTimePickerAndroid,
+} from "@react-native-community/datetimepicker";
 import { useState } from "react";
 import { Platform, TextInput, View } from "react-native";
 import { ScreenLink } from "../Routing";
@@ -32,6 +34,28 @@ export function DateTimeInput({
       setShow(mode);
     }
   };
+
+  if (Platform.OS === "web") {
+    return (
+      <input
+        type="datetime-local"
+        style={{
+          ...theme.textInputStyle,
+          flexGrow: 1,
+          marginRight: 16,
+          marginLeft: 16,
+        }}
+        value={value ? new Date(value).toISOString().slice(0, 16) : ""}
+        onChange={(event) => {
+          onChange(
+            event.currentTarget.value
+              ? new Date(event.currentTarget.value).getTime()
+              : undefined,
+          );
+        }}
+      />
+    );
+  }
 
   return (
     <View style={{ flexDirection: "row" }}>

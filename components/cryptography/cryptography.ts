@@ -20,11 +20,15 @@ export function deviceIdFromUint8Array(uint8Array: Uint8Array): DeviceId {
   return DeviceIdSchema.parse(bytesToHex(uint8Array));
 }
 
-export function deviceSecretToUint8Array(deviceSecret: DeviceSecret): Uint8Array {
+export function deviceSecretToUint8Array(
+  deviceSecret: DeviceSecret,
+): Uint8Array {
   return hexToBytes(deviceSecret);
 }
 
-export function deviceSecretFromUint8Array(uint8Array: Uint8Array): DeviceSecret {
+export function deviceSecretFromUint8Array(
+  uint8Array: Uint8Array,
+): DeviceSecret {
   if (uint8Array.length !== 32) {
     throw new Error(`Invalid deviceSecret length: ${uint8Array.length}`);
   }
@@ -54,17 +58,26 @@ export function accountIdFromUint8Array(uint8Array: Uint8Array): AccountId {
   }
   return AccountIdSchema.parse(bytesToHex(uint8Array));
 }
-export function accountSecretFromUint8Array(uint8Array: Uint8Array): AccountSecret {
+export function accountSecretFromUint8Array(
+  uint8Array: Uint8Array,
+): AccountSecret {
   if (uint8Array.length !== 32) {
     throw new Error(`Invalid accountSecret length: ${uint8Array.length}`);
   }
   return AccountSecretSchema.parse(bytesToHex(uint8Array));
 }
-export function accountIdFromString(string: string): AccountId {
-  return accountIdFromUint8Array(hexToBytes(string));
+export function accountIdFromString(string: string): AccountId | undefined {
+  try {
+    return accountIdFromUint8Array(hexToBytes(string));
+  } catch {
+    return undefined;
+  }
 }
 
-export type AccountKeyPair = { accountId: AccountId; accountSecret: AccountSecret };
+export type AccountKeyPair = {
+  accountId: AccountId;
+  accountSecret: AccountSecret;
+};
 export function generateAccountKeyPair(): AccountKeyPair {
   const { secretKey, publicKey } = generateED25519KeyPair();
   return {

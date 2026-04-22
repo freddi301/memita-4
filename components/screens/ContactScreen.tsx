@@ -4,14 +4,24 @@ import { RefreshControl } from "react-native-web-refresh-control";
 import { AccountId, accountIdFromString } from "../cryptography/cryptography";
 import { contactLatest, updateContact } from "../queries/contacts";
 import { ScreenLink } from "../Routing";
-import { refreshMemitaQueries, useMemitaMutation, useMemitaQuery } from "../store/dataApi";
+import {
+  refreshMemitaQueries,
+  useMemitaMutation,
+  useMemitaQuery,
+} from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 import { ProfileScreen } from "./ProfileScreen";
 
-export function ContactScreen({ accountId, contactId }: { accountId: AccountId; contactId?: AccountId }) {
+export function ContactScreen({
+  accountId,
+  contactId,
+}: {
+  accountId: AccountId;
+  contactId?: AccountId;
+}) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
@@ -23,7 +33,10 @@ export function ContactScreen({ accountId, contactId }: { accountId: AccountId; 
   const update = useMemitaMutation(updateContact);
 
   const [contactIdInput, setContactIdInput] = useState("");
-  const validContactIdInput = useMemo(() => accountIdFromString(contactIdInput), [contactIdInput]);
+  const validContactIdInput = useMemo(
+    () => accountIdFromString(contactIdInput),
+    [contactIdInput],
+  );
   const [nameInput, setNameInput] = useState("");
   const nameOriginal = latest.name;
   useEffect(() => {
@@ -94,7 +107,12 @@ export function ContactScreen({ accountId, contactId }: { accountId: AccountId; 
                       name: nameInput,
                       deleted: false,
                     });
-                    return <ProfileScreen accountId={accountId} contactId={validContactIdInput} />;
+                    return (
+                      <ProfileScreen
+                        accountId={accountId}
+                        contactId={validContactIdInput}
+                      />
+                    );
                   }
                 }
               : undefined
@@ -117,7 +135,9 @@ export function ContactScreen({ accountId, contactId }: { accountId: AccountId; 
       <ScrollView
         style={{ flex: 1 }}
         contentContainerStyle={{ flexGrow: 1 }}
-        refreshControl={<RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />}
+        refreshControl={
+          <RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />
+        }
       >
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
@@ -155,7 +175,11 @@ export function ContactScreen({ accountId, contactId }: { accountId: AccountId; 
               it: "Nome del contatto",
             })}
           </Text>
-          <TextInput value={nameInput} onChangeText={setNameInput} style={theme.textInputStyle} />
+          <TextInput
+            value={nameInput}
+            onChangeText={setNameInput}
+            style={theme.textInputStyle}
+          />
           {nameInput !== nameOriginal ? (
             <Text
               style={{
@@ -170,7 +194,12 @@ export function ContactScreen({ accountId, contactId }: { accountId: AccountId; 
       </ScrollView>
       <ScreenLink
         to={
-          !canSave && contactId ? <DirectConversationScreen accountId={accountId} contactId={contactId} /> : undefined
+          !canSave && contactId ? (
+            <DirectConversationScreen
+              accountId={accountId}
+              contactId={contactId}
+            />
+          ) : undefined
         }
         label={translate({
           en: "Direct messages",
@@ -178,7 +207,11 @@ export function ContactScreen({ accountId, contactId }: { accountId: AccountId; 
         })}
       />
       <ScreenLink
-        to={!canSave && contactId ? <ProfileScreen accountId={accountId} contactId={contactId} /> : undefined}
+        to={
+          !canSave && contactId ? (
+            <ProfileScreen accountId={accountId} contactId={contactId} />
+          ) : undefined
+        }
         label={translate({
           en: "Profile",
           it: "Profilo",

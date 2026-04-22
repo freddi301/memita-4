@@ -1,8 +1,9 @@
 annotate todos while reviewing [keep going from cryptography.ts]
 implement content as hash
 add cryptography, account + device signature
-add whitelist recipients
+do not send draft messages
 dont accept future timestamps
+add whitelist recipients
 check frontend performance
 check backend performance
 make website

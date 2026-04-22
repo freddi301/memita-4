@@ -1,4 +1,8 @@
-import { QueryClient, useMutation, useSuspenseQuery } from "@tanstack/react-query";
+import {
+  QueryClient,
+  useMutation,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Platform } from "react-native";
 import { AccountIdSchema } from "../cryptography/cryptography";
@@ -13,9 +17,13 @@ import { makeStore } from "./store";
 async function cleanLocalStorage() {
   const storage = localStorageFactory("data", StoreItemSchema.parse);
   await storage.wipe();
-  const mobileAccountId = AccountIdSchema.parse("984fa5157b2039e1ce05fe04ce1abf81def9f6bf0ea7406f16163058a138f54f");
+  const mobileAccountId = AccountIdSchema.parse(
+    "984fa5157b2039e1ce05fe04ce1abf81def9f6bf0ea7406f16163058a138f54f",
+  );
   const mobileAccountName = "Mobile";
-  const webAccountId = AccountIdSchema.parse("49ce6f7e6e684c9491c2eda6f6357fea8b53fc53585639bff0c30185d5e19e81");
+  const webAccountId = AccountIdSchema.parse(
+    "49ce6f7e6e684c9491c2eda6f6357fea8b53fc53585639bff0c30185d5e19e81",
+  );
   const webAccountName = "Web";
   const accountId = Platform.select({
     web: webAccountId,
@@ -45,7 +53,8 @@ export const store = makeStore<StoreItem>({
   parse: StoreItemSchema.parse,
   storage: localStorageFactory("data", StoreItemSchema.parse),
   // networkFactory: websocketNetworkFactory,
-  networkFactory: Platform.OS === "web" ? websocketNetworkFactory : bareNetworkFactory,
+  networkFactory:
+    Platform.OS === "web" ? websocketNetworkFactory : bareNetworkFactory,
   async onAdd(item) {
     subscriptions.forEach((callback) => callback());
     await triggerNotification();
@@ -87,7 +96,9 @@ export async function refreshMemitaQueries() {
 }
 
 export function useMemitaMutation<Params>(
-  mutationFactory: (params: Params) => (all: Array<StoreItem>) => Array<StoreItem>,
+  mutationFactory: (
+    params: Params,
+  ) => (all: Array<StoreItem>) => Array<StoreItem>,
 ): (params: Params) => Promise<void> {
   return useMutation(
     {

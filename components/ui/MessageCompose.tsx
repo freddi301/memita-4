@@ -5,19 +5,19 @@ import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 
 export function MessageCompose({
-  onSend,
-  toModifyContent,
+  onUpdate,
+  toModify,
 }: {
-  toModifyContent: undefined | string;
-  onSend(text: string): Promise<void>;
+  toModify: undefined | { isDraft: boolean; content: string };
+  onUpdate(params: { content: string; isDraft: boolean }): Promise<void>;
 }) {
   const theme = useTheme();
   const { translate } = useTranslate();
 
   const [text, setText] = useState("");
   useLayoutEffect(() => {
-    setText(toModifyContent ?? "");
-  }, [toModifyContent]);
+    setText(toModify?.content ?? "");
+  }, [toModify?.content]);
 
   return (
     <View
@@ -41,18 +41,94 @@ export function MessageCompose({
           maxHeight: 400,
         }}
       />
-      <ScreenLink
-        to={async () => {
-          await onSend(text);
-          setText("");
-        }}
-        icon={toModifyContent ? "save" : "send"}
-        hideLabel
-        label={translate({
-          en: "Send message",
-          it: "Invia messaggio",
-        })}
-      />
+      {(() => {
+        if (!toModify) {
+          // create draft
+          return (
+            <ScreenLink
+              to={
+                text !== ""
+                  ? async () => {
+                      await onUpdate({ content: text, isDraft: true });
+                    }
+                  : undefined
+              }
+              icon="sticky-note"
+              hideLabel
+              label={translate({
+                en: "New draft",
+                it: "Nuova bozza",
+              })}
+            />
+          );
+        } else if (toModify.isDraft && text !== toModify.content) {
+          // update draft
+          return (
+            <ScreenLink
+              to={async () => {
+                await onUpdate({ content: text, isDraft: true });
+              }}
+              icon="save"
+              hideLabel
+              label={translate({
+                en: "Save draft",
+                it: "Salva bozza",
+              })}
+            />
+          );
+        } else if (toModify.isDraft && text === toModify.content) {
+          // publish draft
+          return (
+            <ScreenLink
+              to={async () => {
+                await onUpdate({ content: text, isDraft: false });
+              }}
+              icon="send"
+              hideLabel
+              label={translate({
+                en: "Send message",
+                it: "Invia messaggio",
+              })}
+            />
+          );
+        } else if (!toModify.isDraft) {
+          // update message
+          return (
+            <ScreenLink
+              to={
+                text !== toModify.content
+                  ? async () => {
+                      await onUpdate({ content: text, isDraft: false });
+                    }
+                  : undefined
+              }
+              icon="save"
+              hideLabel
+              label={translate({
+                en: "Modify message",
+                it: "Modifica messaggio",
+              })}
+            />
+          );
+        } else if (text === "") {
+          // delete it
+          return (
+            <ScreenLink
+              to={async () => {
+                await onUpdate({ content: "", isDraft: toModify.isDraft });
+              }}
+              icon="trash"
+              hideLabel
+              label={translate({
+                en: "Delete",
+                it: "Elimina",
+              })}
+            />
+          );
+        } else {
+          throw new Error("Invalid state");
+        }
+      })()}
     </View>
   );
 }

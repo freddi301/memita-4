@@ -1,5 +1,12 @@
 import { Fragment, useEffect, useState } from "react";
-import { Platform, ScrollView, Share, Text, TextInput, View } from "react-native";
+import {
+  Platform,
+  ScrollView,
+  Share,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
@@ -7,14 +14,24 @@ import { useTranslate } from "../Translate";
 import { AccountId } from "../cryptography/cryptography";
 import { biographyLatest, updateBiography } from "../queries/biography";
 import { contactLatest } from "../queries/contacts";
-import { refreshMemitaQueries, useMemitaMutation, useMemitaQuery } from "../store/dataApi";
+import {
+  refreshMemitaQueries,
+  useMemitaMutation,
+  useMemitaQuery,
+} from "../store/dataApi";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { CoordsInput } from "../ui/CoordsInput";
 import { AccountScreen } from "./AccountScreen";
 import { ContactScreen } from "./ContactScreen";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 
-export function ProfileScreen({ accountId, contactId }: { accountId: AccountId; contactId: AccountId }) {
+export function ProfileScreen({
+  accountId,
+  contactId,
+}: {
+  accountId: AccountId;
+  contactId: AccountId;
+}) {
   const theme = useTheme();
   const { translate } = useTranslate();
 
@@ -41,11 +58,12 @@ export function ProfileScreen({ accountId, contactId }: { accountId: AccountId; 
     setLocationInput(locationOriginal);
   }, [locationOriginal]);
 
-  const canSave = bioInput !== bioOriginal || locationInput !== locationOriginal;
+  const canSave =
+    bioInput !== bioOriginal || locationInput !== locationOriginal;
 
   return (
     <Fragment>
-      <View style={{ flexDirection: "row" }}>
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Text
           style={{
             ...theme.textStyle,
@@ -129,7 +147,9 @@ export function ProfileScreen({ accountId, contactId }: { accountId: AccountId; 
       <ScrollView
         style={{ flex: 1 }}
         contentContainerStyle={{ flexGrow: 1 }}
-        refreshControl={<RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />}
+        refreshControl={
+          <RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />
+        }
       >
         <View style={{ gap: 2, paddingVertical: 8 }}>
           <Text style={{ ...theme.secondaryTextStyle, paddingHorizontal: 16 }}>
@@ -170,7 +190,14 @@ export function ProfileScreen({ accountId, contactId }: { accountId: AccountId; 
         </View>
       </ScrollView>
       <ScreenLink
-        to={canSave ? undefined : <DirectConversationScreen accountId={accountId} contactId={contactId} />}
+        to={
+          canSave ? undefined : (
+            <DirectConversationScreen
+              accountId={accountId}
+              contactId={contactId}
+            />
+          )
+        }
         label={translate({ en: "Direct messages", it: "Mesaggi diretti" })}
       />
       {accountId === contactId ? (
@@ -183,11 +210,17 @@ export function ProfileScreen({ accountId, contactId }: { accountId: AccountId; 
         />
       ) : (
         <ScreenLink
-          to={canSave ? undefined : <ContactScreen accountId={accountId} contactId={contactId} />}
+          to={
+            canSave ? undefined : (
+              <ContactScreen accountId={accountId} contactId={contactId} />
+            )
+          }
           label={translate({ en: "Edit contact", it: "Modifica contatto" })}
         />
       )}
-      {contactId === accountId ? <BottomTabNavigation accountId={accountId} enabled={!canSave} /> : null}
+      {contactId === accountId ? (
+        <BottomTabNavigation accountId={accountId} enabled={!canSave} />
+      ) : null}
     </Fragment>
   );
 }

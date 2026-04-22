@@ -39,7 +39,7 @@ export function DirectConversationScreen({
     contactId,
   });
 
-  const send = useMemitaMutation(updateDirectMessage);
+  const update = useMemitaMutation(updateDirectMessage);
 
   const didRead = useMemitaMutation(updateDidReadDirectMessage);
 
@@ -47,6 +47,7 @@ export function DirectConversationScreen({
     | undefined
     | {
         createdAt: Timestamp;
+        isDraft: boolean;
         content: string;
       }
   >();
@@ -67,118 +68,116 @@ export function DirectConversationScreen({
 
   return (
     <Fragment>
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        {searchState.active && (
-          <Fragment>
-            <ScreenLink
-              to={async () =>
-                setSearchState({ active: false, text: "", currentIndex: 0 })
+      {!searchState.active && (
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <ScreenLink
+            to={<DirectMessagesScreen accountId={accountId} />}
+            icon="arrow-left"
+            hideLabel
+            label={translate({
+              en: "Go to messages",
+              it: "Vai ai messaggi",
+            })}
+          />
+          <ScreenLink
+            to={<ProfileScreen accountId={accountId} contactId={contactId} />}
+            icon="user"
+            label={contact?.name ?? ""}
+            styleOverride={{
+              flexGrow1: true,
+            }}
+          />
+          <ScreenLink
+            to={async () => {
+              setSearchState((state) => ({ ...state, active: true }));
+            }}
+            icon="search"
+            hideLabel
+            label={translate({
+              en: "Search",
+              it: "Cerca",
+            })}
+          />
+        </View>
+      )}
+      {searchState.active && (
+        <View style={{ flexDirection: "row", alignItems: "flex-end" }}>
+          <ScreenLink
+            to={async () =>
+              setSearchState({ active: false, text: "", currentIndex: 0 })
+            }
+            icon="close"
+            hideLabel
+            label={translate({
+              en: "Stop searching",
+              it: "Interrompi ricerca",
+            })}
+          />
+          <TextInput
+            style={{ ...theme.textInputStyle, paddingBottom: 5, flexGrow: 1 }}
+            value={searchState.text}
+            onChangeText={(text) =>
+              setSearchState((state) => ({ ...state, text }))
+            }
+          />
+          <ScreenLink
+            to={(() => {
+              const previous = conversation.findLastIndex(
+                (item, i) =>
+                  i < searchState.currentIndex &&
+                  item.content
+                    .toLowerCase()
+                    .includes(searchState.text.toLowerCase()),
+              );
+              if (previous >= 0 && searchState.text.length > 0) {
+                return async () => {
+                  setSearchState((state) => ({
+                    ...state,
+                    currentIndex: previous,
+                  }));
+                  flatListRef.current?.scrollToIndex({
+                    index: previous,
+                  });
+                };
               }
-              icon="close"
-              hideLabel
-              label={translate({
-                en: "Stop searching",
-                it: "Interrompi ricerca",
-              })}
-            />
-            <TextInput
-              style={{ ...theme.textInputStyle, flexGrow: 1 }}
-              value={searchState.text}
-              onChangeText={(text) =>
-                setSearchState((state) => ({ ...state, text }))
+            })()}
+            icon="arrow-up"
+            hideLabel
+            label={translate({
+              en: "Previous occurrence",
+              it: "Occorrenza precedente",
+            })}
+          />
+          <ScreenLink
+            to={(() => {
+              const next = conversation.findIndex(
+                (item, i) =>
+                  i > searchState.currentIndex &&
+                  item.content
+                    .toLowerCase()
+                    .includes(searchState.text.toLowerCase()),
+              );
+              if (next >= 0 && searchState.text.length > 0) {
+                return async () => {
+                  setSearchState((state) => ({
+                    ...state,
+                    currentIndex: next,
+                  }));
+                  flatListRef.current?.scrollToIndex({
+                    index: next,
+                  });
+                };
               }
-            />
-            <ScreenLink
-              to={(() => {
-                const previous = conversation.findLastIndex(
-                  (item, i) =>
-                    i < searchState.currentIndex &&
-                    item.content
-                      .toLowerCase()
-                      .includes(searchState.text.toLowerCase()),
-                );
-                if (previous >= 0 && searchState.text.length > 0) {
-                  return async () => {
-                    setSearchState((state) => ({
-                      ...state,
-                      currentIndex: previous,
-                    }));
-                    flatListRef.current?.scrollToIndex({
-                      index: previous,
-                    });
-                  };
-                }
-              })()}
-              icon="arrow-up"
-              hideLabel
-              label={translate({
-                en: "Previous occurrence",
-                it: "Occorrenza precedente",
-              })}
-            />
-            <ScreenLink
-              to={(() => {
-                const next = conversation.findIndex(
-                  (item, i) =>
-                    i > searchState.currentIndex &&
-                    item.content
-                      .toLowerCase()
-                      .includes(searchState.text.toLowerCase()),
-                );
-                if (next >= 0 && searchState.text.length > 0) {
-                  return async () => {
-                    setSearchState((state) => ({
-                      ...state,
-                      currentIndex: next,
-                    }));
-                    flatListRef.current?.scrollToIndex({
-                      index: next,
-                    });
-                  };
-                }
-              })()}
-              icon="arrow-down"
-              hideLabel
-              label={translate({
-                en: "Next occurrence",
-                it: "Occorrenza successiva",
-              })}
-            />
-          </Fragment>
-        )}
-        {!searchState.active && (
-          <Fragment>
-            <ScreenLink
-              to={<DirectMessagesScreen accountId={accountId} />}
-              icon="arrow-left"
-              hideLabel
-              label={translate({
-                en: "Go to messages",
-                it: "Vai ai messaggi",
-              })}
-            />
-            <ScreenLink
-              to={<ProfileScreen accountId={accountId} contactId={contactId} />}
-              icon="user"
-              label={contact?.name ?? ""}
-              styleOverride={{
-                flexGrow1: true,
-              }}
-            />
-            <ScreenLink
-              to={async () => {
-                setSearchState((state) => ({ ...state, active: true }));
-              }}
-              icon="search"
-              hideLabel
-              label={translate({
-                en: "Search",
-                it: "Cerca",
-              })}
-            />
-          </Fragment>
-        )}
-      </View>
+            })()}
+            icon="arrow-down"
+            hideLabel
+            label={translate({
+              en: "Next occurrence",
+              it: "Occorrenza successiva",
+            })}
+          />
+        </View>
+      )}
       <FlatList
         ref={flatListRef}
         data={conversation}
@@ -209,19 +208,10 @@ export function DirectConversationScreen({
                       ? undefined
                       : {
                           createdAt: item.createdAt,
+                          isDraft: item.isDraft,
                           content: item.content,
                         },
                   );
-                }
-              }}
-              onPress={() => {
-                if (item.receiverId === accountId) {
-                  void didRead({
-                    senderId: item.senderId,
-                    receiverId: item.receiverId,
-                    createdAt: item.createdAt,
-                    didRead: !item.didRead,
-                  });
                 }
               }}
               style={{
@@ -257,10 +247,8 @@ export function DirectConversationScreen({
                     alignItems: "center",
                     borderRightWidth: 4,
                     borderColor:
-                      item.receiverId === accountId
-                        ? !item.didRead
-                          ? theme.linkTextColor
-                          : theme.secondaryTextColor
+                      item.receiverId === accountId && !item.didRead
+                        ? "orange"
                         : "transparent",
                   }}
                 >
@@ -285,14 +273,11 @@ export function DirectConversationScreen({
                     name="check"
                     size={16}
                     color={
-                      item.didRead
-                        ? theme.linkTextColor
-                        : theme.secondaryTextColor
+                      item.didRead ? theme.linkTextColor : theme.backgroundColor
                     }
                     style={{
                       marginLeft: 8,
                       paddingRight: 4,
-                      visibility: item.didRead ? "visible" : "hidden",
                     }}
                   />
                 </View>
@@ -439,16 +424,67 @@ export function DirectConversationScreen({
         />
       </View>
       <MessageCompose
-        toModifyContent={toModifyMessage?.content}
-        onSend={async (text) => {
-          await send({
-            createdAt: toModifyMessage?.createdAt ?? nowTimestamp(),
-            senderId: accountId,
-            receiverId: contactId,
-            content: text,
-          });
-          if (toModifyMessage) {
+        toModify={toModifyMessage}
+        onUpdate={async ({ content, isDraft }) => {
+          if (!toModifyMessage && isDraft) {
+            // create draft
+            const createdAt = nowTimestamp();
+            await update({
+              createdAt: createdAt,
+              senderId: accountId,
+              receiverId: contactId,
+              isDraft: true,
+              content,
+            });
+            setToModifyMessage({
+              createdAt,
+              isDraft: true,
+              content,
+            });
+          } else if (toModifyMessage && toModifyMessage.isDraft && isDraft) {
+            // update draft
+            await update({
+              createdAt: toModifyMessage.createdAt,
+              senderId: accountId,
+              receiverId: contactId,
+              isDraft: true,
+              content,
+            });
+            setToModifyMessage({
+              createdAt: toModifyMessage.createdAt,
+              isDraft: true,
+              content,
+            });
+          } else if (toModifyMessage && toModifyMessage.isDraft && !isDraft) {
+            // publish draft
+            const createdAt = nowTimestamp();
+            await update({
+              createdAt: createdAt,
+              senderId: accountId,
+              receiverId: contactId,
+              isDraft: false,
+              content,
+            });
+            await update({
+              createdAt: toModifyMessage.createdAt,
+              senderId: accountId,
+              receiverId: contactId,
+              isDraft: true,
+              content: "",
+            });
             setToModifyMessage(undefined);
+          } else if (toModifyMessage && !toModifyMessage.isDraft && !isDraft) {
+            // update message
+            await update({
+              createdAt: toModifyMessage.createdAt,
+              senderId: accountId,
+              receiverId: contactId,
+              isDraft: false,
+              content,
+            });
+            setToModifyMessage(undefined);
+          } else {
+            throw new Error("Invalid state");
           }
         }}
       />

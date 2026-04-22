@@ -3,7 +3,8 @@
 - [x] send message
 - [x] edit delete message
 - [x] navigation buttons for unread messages (up, didread, down)
-- [ ] drafts (maybe as state)
+- [x] drafts
+  - [ ] auto save drafts on interval or screen change
 - [ ] reactions (single character emoji)
 - [ ] edit history
 - [ ] reply / mention previous
@@ -15,6 +16,7 @@
   - [ ] static location
   - [ ] live location
 - [ ] videocall
+- [ ] save scroll state
 - [x] text search
   - [ ] filter by date
 - [ ] message sync status (on which devices)
