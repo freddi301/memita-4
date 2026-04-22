@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from "react";
-import { TextInput, View } from "react-native";
+import { Platform, TextInput, View } from "react-native";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
@@ -33,10 +33,12 @@ export function MessageCompose({
         value={text}
         onChangeText={setText}
         multiline
+        numberOfLines={Platform.OS === "web" ? 1 : undefined}
         style={{
           ...theme.textInputStyle,
           flex: 1,
           paddingVertical: 8,
+          maxHeight: 400,
         }}
       />
       <ScreenLink
@@ -53,4 +55,10 @@ export function MessageCompose({
       />
     </View>
   );
+}
+
+if (Platform.OS === "web") {
+  const style = document.createElement("style");
+  style.textContent = "textarea { field-sizing: content; }";
+  document.head.appendChild(style);
 }
