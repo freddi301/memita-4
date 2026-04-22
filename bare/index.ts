@@ -1,5 +1,5 @@
 import "./polyfills";
-// leave this blank line here, otherwise vscode will move it lower, we need it to load first
+// polifils first
 import { decodeMultiStream, encode } from "@msgpack/msgpack";
 import { hyperswarmNetworkFactory } from "../components/network/hyperswarmNetwork";
 import {
@@ -13,27 +13,36 @@ import {
   type NetworkOutInterface,
 } from "../components/store/store";
 
-const [clientReply, client] = clientFactory<NetworkInInterface>(
-  async (request) => BareKit.IPC.write(encode(request)),
-);
+const [networkInClientReceive, networkInClient] =
+  clientFactory<NetworkInInterface>(async (request) => {
+    BareKit.IPC.write(encode(request));
+  });
 
-const hyperswarmNetwork = hyperswarmNetworkFactory(client);
+const hyperswarmNetworkOut = hyperswarmNetworkFactory(networkInClient);
 
 (async () => {
-  for await (const decoded of decodeMultiStream(BareKit.IPC as any)) {
+  for await (const decoded of decodeMultiStream(BareKit.IPC)) {
+    // TODO: validate decoded data
     if ("method" in (decoded as any)) {
-      serverReceive(
-        hyperswarmNetwork,
-        async (message) => BareKit.IPC.write(encode(message)),
-        decoded as RemoteRequest<
-          NetworkOutInterface,
-          keyof NetworkOutInterface
-        >,
+      // TODO: validate decoded data
+      const request = decoded as RemoteRequest<
+        NetworkOutInterface,
+        keyof NetworkOutInterface
+      >;
+      await serverReceive(
+        hyperswarmNetworkOut,
+        async (response) => {
+          BareKit.IPC.write(encode(response));
+        },
+        request,
       );
     } else {
-      clientReply(
-        decoded as RemoteResponse<NetworkInInterface, keyof NetworkInInterface>,
-      );
+      // TODO: validate decoded data
+      const response = decoded as RemoteResponse<
+        NetworkInInterface,
+        keyof NetworkInInterface
+      >;
+      await networkInClientReceive(response);
     }
   }
 })();

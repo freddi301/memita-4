@@ -5,6 +5,7 @@ import {
 } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Platform } from "react-native";
+import { bareNetworkFactory } from "../network/networkBare";
 import { websocketNetworkFactory } from "../network/networkWebsocketClient";
 import { triggerNotification } from "../notifications";
 import { updateContact } from "../queries/contacts";
@@ -45,9 +46,9 @@ async function cleanLocalStorage() {
 
 export const store = makeStore<StoreItem>({
   storage: makeLocalStorage("data"),
-  networkFactory: websocketNetworkFactory,
-  // networkFactory:
-  //   Platform.OS === "web" ? websocketNetworkFactory : bareNetworkFactory,
+  // networkFactory: websocketNetworkFactory,
+  networkFactory:
+    Platform.OS === "web" ? websocketNetworkFactory : bareNetworkFactory,
   async onAdd(item) {
     subscriptions.forEach((callback) => callback());
     triggerNotification();
