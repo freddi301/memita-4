@@ -4,17 +4,31 @@ import { FlatList, Pressable, Text, TextInput, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
 import { accountLatest } from "../queries/accounts";
 import { contactLatest } from "../queries/contacts";
-import { directMessagesList, updateDidReadDirectMessage, updateDirectMessage } from "../queries/directMessages";
+import {
+  directMessagesList,
+  updateDidReadDirectMessage,
+  updateDirectMessage,
+} from "../queries/directMessages";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import { ScreenLink } from "../Routing";
-import { useMemitaMutation, useMemitaQuery, useMemitaSubscription } from "../store/dataApi";
+import {
+  useMemitaMutation,
+  useMemitaQuery,
+  useMemitaSubscription,
+} from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
 import { MessageCompose } from "../ui/MessageCompose";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 import { ProfileScreen } from "./ProfileScreen";
 
-export function DirectConversationScreen({ accountId, contactId }: { accountId: AccountId; contactId: AccountId }) {
+export function DirectConversationScreen({
+  accountId,
+  contactId,
+}: {
+  accountId: AccountId;
+  contactId: AccountId;
+}) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
@@ -39,12 +53,17 @@ export function DirectConversationScreen({ accountId, contactId }: { accountId: 
 
   useMemitaSubscription();
 
+  const flatListRef = useRef<FlatList<(typeof conversation)[number]>>(null);
+
   const [searchState, setSearchState] = useState({
     active: false,
     text: "",
     currentIndex: 0,
   });
-  const flatListRef = useRef<FlatList<(typeof conversation)[number]>>(null);
+
+  const [didReadState, setDidReadState] = useState({
+    currentIndex: 0,
+  });
 
   return (
     <Fragment>
@@ -52,7 +71,9 @@ export function DirectConversationScreen({ accountId, contactId }: { accountId: 
         {searchState.active && (
           <Fragment>
             <ScreenLink
-              to={async () => setSearchState({ active: false, text: "", currentIndex: 0 })}
+              to={async () =>
+                setSearchState({ active: false, text: "", currentIndex: 0 })
+              }
               icon="close"
               hideLabel
               label={translate({
@@ -63,24 +84,31 @@ export function DirectConversationScreen({ accountId, contactId }: { accountId: 
             <TextInput
               style={{ ...theme.textInputStyle, flexGrow: 1 }}
               value={searchState.text}
-              onChangeText={(text) => setSearchState((state) => ({ ...state, text }))}
+              onChangeText={(text) =>
+                setSearchState((state) => ({ ...state, text }))
+              }
             />
             <ScreenLink
-              to={async () => {
+              to={(() => {
                 const previous = conversation.findLastIndex(
                   (item, i) =>
-                    i < searchState.currentIndex && item.content.toLowerCase().includes(searchState.text.toLowerCase()),
+                    i < searchState.currentIndex &&
+                    item.content
+                      .toLowerCase()
+                      .includes(searchState.text.toLowerCase()),
                 );
-                if (previous >= 0) {
-                  setSearchState((state) => ({
-                    ...state,
-                    currentIndex: previous,
-                  }));
-                  flatListRef.current?.scrollToIndex({
-                    index: previous,
-                  });
+                if (previous >= 0 && searchState.text.length > 0) {
+                  return async () => {
+                    setSearchState((state) => ({
+                      ...state,
+                      currentIndex: previous,
+                    }));
+                    flatListRef.current?.scrollToIndex({
+                      index: previous,
+                    });
+                  };
                 }
-              }}
+              })()}
               icon="arrow-up"
               hideLabel
               label={translate({
@@ -89,21 +117,26 @@ export function DirectConversationScreen({ accountId, contactId }: { accountId: 
               })}
             />
             <ScreenLink
-              to={async () => {
+              to={(() => {
                 const next = conversation.findIndex(
                   (item, i) =>
-                    i > searchState.currentIndex && item.content.toLowerCase().includes(searchState.text.toLowerCase()),
+                    i > searchState.currentIndex &&
+                    item.content
+                      .toLowerCase()
+                      .includes(searchState.text.toLowerCase()),
                 );
-                if (next >= 0) {
-                  setSearchState((state) => ({
-                    ...state,
-                    currentIndex: next,
-                  }));
-                  flatListRef.current?.scrollToIndex({
-                    index: next,
-                  });
+                if (next >= 0 && searchState.text.length > 0) {
+                  return async () => {
+                    setSearchState((state) => ({
+                      ...state,
+                      currentIndex: next,
+                    }));
+                    flatListRef.current?.scrollToIndex({
+                      index: next,
+                    });
+                  };
                 }
-              }}
+              })()}
               icon="arrow-down"
               hideLabel
               label={translate({
@@ -160,7 +193,13 @@ export function DirectConversationScreen({ accountId, contactId }: { accountId: 
         }}
         renderItem={({ item, index }) => {
           const isCurrentOccurrence =
-            searchState.active && searchState.text.length > 0 && searchState.currentIndex === index;
+            searchState.active &&
+            searchState.text.length > 0 &&
+            searchState.currentIndex === index;
+          const isCurrentDidReadOccurrence =
+            didReadState.currentIndex === index &&
+            item.receiverId === accountId &&
+            !item.didRead;
           return (
             <Pressable
               onLongPress={() => {
@@ -186,66 +225,103 @@ export function DirectConversationScreen({ accountId, contactId }: { accountId: 
                 }
               }}
               style={{
+                flexDirection: "row",
                 backgroundColor:
-                  item.createdAt === toModifyMessage?.createdAt ? theme.selectedItemBackgroundColor : undefined,
-                borderColor: isCurrentOccurrence ? "lightgreen" : undefined,
-                borderLeftWidth: isCurrentOccurrence ? 8 : undefined,
+                  item.createdAt === toModifyMessage?.createdAt
+                    ? theme.selectedItemBackgroundColor
+                    : undefined,
               }}
             >
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  borderRightWidth: 4,
-                  borderColor:
-                    item.receiverId === accountId
-                      ? !item.didRead
-                        ? theme.linkTextColor
-                        : theme.secondaryTextColor
-                      : "transparent",
-                }}
-              >
-                <Text
+              {isCurrentOccurrence && (
+                <View
                   style={{
-                    ...theme.textStyle,
-                    fontWeight: "bold",
-                    paddingLeft: 16,
+                    backgroundColor: "lightgreen",
+                    height: "100%",
+                    width: 8,
+                  }}
+                />
+              )}
+              {isCurrentDidReadOccurrence && (
+                <View
+                  style={{
+                    backgroundColor: theme.linkTextColor,
+                    height: "100%",
+                    width: 8,
+                  }}
+                />
+              )}
+              <View style={{ flexGrow: 1 }}>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    borderRightWidth: 4,
+                    borderColor:
+                      item.receiverId === accountId
+                        ? !item.didRead
+                          ? theme.linkTextColor
+                          : theme.secondaryTextColor
+                        : "transparent",
                   }}
                 >
-                  {item.senderId === accountId
-                    ? (account?.name ?? "")
-                    : item.senderId === contactId
-                      ? (contact?.name ?? "")
-                      : ""}
+                  <Text
+                    style={{
+                      ...theme.textStyle,
+                      fontWeight: "bold",
+                      paddingLeft: 16,
+                    }}
+                  >
+                    {item.senderId === accountId
+                      ? (account?.name ?? "")
+                      : item.senderId === contactId
+                        ? (contact?.name ?? "")
+                        : ""}
+                  </Text>
+                  <View style={{ flexGrow: 1 }} />
+                  <Text style={theme.secondaryTextStyle}>
+                    {new Date(item.createdAt).toLocaleString()}
+                  </Text>
+                  <FontAwesome
+                    name="check"
+                    size={16}
+                    color={
+                      item.didRead
+                        ? theme.linkTextColor
+                        : theme.secondaryTextColor
+                    }
+                    style={{
+                      marginLeft: 8,
+                      paddingRight: 4,
+                      visibility: item.didRead ? "visible" : "hidden",
+                    }}
+                  />
+                </View>
+                <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
+                  {searchState.active
+                    ? item.content
+                        .split(new RegExp(`(${searchState.text})`, "i"))
+                        .map((part, index) => {
+                          const isMatch =
+                            part.toLowerCase() ===
+                            searchState.text.toLowerCase();
+                          return (
+                            <Text
+                              key={index}
+                              style={{
+                                backgroundColor: isMatch
+                                  ? "lightgreen"
+                                  : undefined,
+                                color: isMatch ? "black" : undefined,
+                                fontWeight: isMatch ? "bold" : undefined,
+                              }}
+                            >
+                              {part}
+                            </Text>
+                          );
+                        })
+                    : item.content}
                 </Text>
-                <View style={{ flexGrow: 1 }} />
-                <Text style={theme.secondaryTextStyle}>{new Date(item.createdAt).toLocaleString()}</Text>
-                <FontAwesome
-                  name="check"
-                  size={16}
-                  color={item.didRead ? theme.linkTextColor : theme.secondaryTextColor}
-                  style={{ marginLeft: 8, paddingRight: 4 }}
-                />
               </View>
-              <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
-                {searchState.active
-                  ? item.content.split(new RegExp(`(${searchState.text})`, "i")).map((part, index) => {
-                      const isMatch = part.toLowerCase() === searchState.text.toLowerCase();
-                      return (
-                        <Text
-                          key={index}
-                          style={{
-                            backgroundColor: isMatch ? "lightgreen" : undefined,
-                            color: isMatch ? "black" : undefined,
-                            fontWeight: isMatch ? "bold" : undefined,
-                          }}
-                        >
-                          {part}
-                        </Text>
-                      );
-                    })
-                  : item.content}
-              </Text>
             </Pressable>
           );
         }}
@@ -266,6 +342,102 @@ export function DirectConversationScreen({ accountId, contactId }: { accountId: 
           </Text>
         )}
       />
+      <View style={{ flexDirection: "row", justifyContent: "center" }}>
+        <ScreenLink
+          to={(() => {
+            const previous = conversation.findLastIndex(
+              (item, i) =>
+                i < didReadState.currentIndex &&
+                item.didRead === false &&
+                item.receiverId === accountId,
+            );
+            if (previous >= 0) {
+              return async () => {
+                setDidReadState((state) => ({
+                  ...state,
+                  currentIndex: previous,
+                }));
+                flatListRef.current?.scrollToIndex({
+                  index: previous,
+                });
+              };
+            }
+          })()}
+          icon="arrow-up"
+          hideLabel
+          label={translate({
+            en: "Previous occurrence",
+            it: "Occorrenza precedente",
+          })}
+        />
+        <ScreenLink
+          to={(() => {
+            const current = conversation[didReadState.currentIndex];
+            if (
+              current &&
+              !current.didRead &&
+              current.receiverId === accountId
+            ) {
+              return async () => {
+                await didRead({
+                  senderId: current.senderId,
+                  receiverId: current.receiverId,
+                  createdAt: current.createdAt,
+                  didRead: true,
+                });
+                const next = conversation.findIndex(
+                  (item, i) =>
+                    i > didReadState.currentIndex &&
+                    item.didRead === false &&
+                    item.receiverId === accountId,
+                );
+                if (next >= 0) {
+                  setDidReadState((state) => ({
+                    ...state,
+                    currentIndex: next,
+                  }));
+                  flatListRef.current?.scrollToIndex({
+                    index: next,
+                  });
+                }
+              };
+            }
+          })()}
+          icon="check"
+          hideLabel
+          label={translate({
+            en: "Mark as read",
+            it: "Segna come letto",
+          })}
+        />
+        <ScreenLink
+          to={(() => {
+            const next = conversation.findIndex(
+              (item, i) =>
+                i > didReadState.currentIndex &&
+                item.didRead === false &&
+                item.receiverId === accountId,
+            );
+            if (next >= 0) {
+              return async () => {
+                setDidReadState((state) => ({
+                  ...state,
+                  currentIndex: next,
+                }));
+                flatListRef.current?.scrollToIndex({
+                  index: next,
+                });
+              };
+            }
+          })()}
+          icon="arrow-down"
+          hideLabel
+          label={translate({
+            en: "Next occurrence",
+            it: "Occorrenza successiva",
+          })}
+        />
+      </View>
       <MessageCompose
         toModifyContent={toModifyMessage?.content}
         onSend={async (text) => {

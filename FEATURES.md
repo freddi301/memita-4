@@ -2,7 +2,7 @@
 
 - [x] send message
 - [x] edit delete message
-- [ ] navigation buttons for unread messages (up, didread, down)
+- [x] navigation buttons for unread messages (up, didread, down)
 - [ ] drafts (maybe as state)
 - [ ] reactions (single character emoji)
 - [ ] edit history
