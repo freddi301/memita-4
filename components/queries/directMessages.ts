@@ -1,15 +1,18 @@
+import * as z from "zod";
 import { contactList } from "./contacts";
 import { groupBy, maxBy, orderBy } from "./helpers";
 import { StoreItem } from "./Queries";
 
-export type DirectMessageUpdate = {
-  type: "DirectMessageUpdate";
-  senderId: string;
-  receiverId: string;
-  createdAt: number;
-  content: string;
-  timestamp: number;
-};
+export const DirectMessageUpdateSchema = z.object({
+  type: z.literal("DirectMessageUpdate"),
+  senderId: z.string(),
+  receiverId: z.string(),
+  createdAt: z.number(),
+  content: z.string(),
+  timestamp: z.number(),
+});
+
+export type DirectMessageUpdate = z.infer<typeof DirectMessageUpdateSchema>;
 
 export function updateDirectMessage({
   senderId,
@@ -101,14 +104,18 @@ export function directMessagesList({
   };
 }
 
-export type DidReadDirectMessageUpdate = {
-  type: "DidReadDirectMessageUpdate";
-  senderId: string;
-  receiverId: string;
-  createdAt: number;
-  didRead: boolean;
-  timestamp: number;
-};
+export const DidReadDirectMessageUpdateSchema = z.object({
+  type: z.literal("DidReadDirectMessageUpdate"),
+  senderId: z.string(),
+  receiverId: z.string(),
+  createdAt: z.number(),
+  didRead: z.boolean(),
+  timestamp: z.number(),
+});
+
+export type DidReadDirectMessageUpdate = z.infer<
+  typeof DidReadDirectMessageUpdateSchema
+>;
 
 export function updateDidReadDirectMessage({
   senderId,

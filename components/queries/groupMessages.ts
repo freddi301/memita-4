@@ -1,16 +1,19 @@
+import * as z from "zod";
 import { StoreItem } from "./Queries";
 import { contactLatest } from "./contacts";
 import { groupList } from "./groups";
 import { groupBy, maxBy, orderBy } from "./helpers";
 
-export type GroupMessageUpdate = {
-  type: "GroupMessageUpdate";
-  senderId: string;
-  groupId: string;
-  createdAt: number;
-  content: string;
-  timestamp: number;
-};
+export const GroupMessageUpdateSchema = z.object({
+  type: z.literal("GroupMessageUpdate"),
+  senderId: z.string(),
+  groupId: z.string(),
+  createdAt: z.number(),
+  content: z.string(),
+  timestamp: z.number(),
+});
+
+export type GroupMessageUpdate = z.infer<typeof GroupMessageUpdateSchema>;
 
 export function updateGroupMessage({
   senderId,

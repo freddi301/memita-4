@@ -1,18 +1,22 @@
-import { ArticleUpdate } from "./articles";
-import { BiographyUpdate } from "./biography";
-import { ContactUpdate } from "./contacts";
+import * as z from "zod";
+import { ArticleUpdateSchema } from "./articles";
+import { BiographyUpdateSchema } from "./biography";
+import { ContactUpdateSchema } from "./contacts";
 import {
-  DidReadDirectMessageUpdate,
-  DirectMessageUpdate,
+  DidReadDirectMessageUpdateSchema,
+  DirectMessageUpdateSchema,
 } from "./directMessages";
-import { GroupMessageUpdate } from "./groupMessages";
-import { GroupUpdate } from "./groups";
+import { GroupMessageUpdateSchema } from "./groupMessages";
+import { GroupUpdateSchema } from "./groups";
 
-export type StoreItem =
-  | ContactUpdate
-  | DirectMessageUpdate
-  | DidReadDirectMessageUpdate
-  | GroupUpdate
-  | GroupMessageUpdate
-  | ArticleUpdate
-  | BiographyUpdate;
+export const StoreItemSchema = z.discriminatedUnion("type", [
+  ContactUpdateSchema,
+  DirectMessageUpdateSchema,
+  DidReadDirectMessageUpdateSchema,
+  GroupUpdateSchema,
+  GroupMessageUpdateSchema,
+  ArticleUpdateSchema,
+  BiographyUpdateSchema,
+]);
+
+export type StoreItem = z.infer<typeof StoreItemSchema>;

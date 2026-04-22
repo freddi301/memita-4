@@ -1,14 +1,17 @@
+import * as z from "zod";
 import { StoreItem } from "./Queries";
 import { groupBy, maxBy } from "./helpers";
 
-export type GroupUpdate = {
-  type: "GroupUpdate";
-  accountId: string;
-  groupId: string;
-  name: string;
-  deleted: boolean;
-  timestamp: number;
-};
+export const GroupUpdateSchema = z.object({
+  type: z.literal("GroupUpdate"),
+  accountId: z.string(),
+  groupId: z.string(),
+  name: z.string(),
+  deleted: z.boolean(),
+  timestamp: z.number(),
+});
+
+export type GroupUpdate = z.infer<typeof GroupUpdateSchema>;
 
 export function updateGroup({
   accountId,

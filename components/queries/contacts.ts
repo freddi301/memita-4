@@ -1,14 +1,17 @@
+import * as z from "zod";
 import { groupBy, maxBy } from "./helpers";
 import { StoreItem } from "./Queries";
 
-export type ContactUpdate = {
-  type: "ContactUpdate";
-  accountId: string;
-  contactId: string;
-  name: string;
-  deleted: boolean;
-  timestamp: number;
-};
+export const ContactUpdateSchema = z.object({
+  type: z.literal("ContactUpdate"),
+  accountId: z.string(),
+  contactId: z.string(),
+  name: z.string(),
+  deleted: z.boolean(),
+  timestamp: z.number(),
+});
+
+export type ContactUpdate = z.infer<typeof ContactUpdateSchema>;
 
 export function updateContact({
   accountId,

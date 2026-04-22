@@ -1,25 +1,23 @@
+import * as z from "zod";
 import { StoreItem } from "./Queries";
 import { contactList } from "./contacts";
 import { groupBy, maxBy } from "./helpers";
 
-export type ArticleUpdate = {
-  type: "ArticleUpdate";
-  accountId: string;
-  createdAt: number;
-  date:
-    | {
-        timestamp: number;
-        duration: number;
-      }
-    | undefined;
-  // location: {
-  //   latitude: number;
-  //   longitude: number;
-  //   // address: string;
-  // } | undefined;
-  content: string;
-  timestamp: number;
-};
+export const ArticleUpdateSchema = z.object({
+  type: z.literal("ArticleUpdate"),
+  accountId: z.string(),
+  createdAt: z.number(),
+  date: z
+    .object({
+      timestamp: z.number(),
+      duration: z.number(),
+    })
+    .optional(),
+  content: z.string(),
+  timestamp: z.number(),
+});
+
+export type ArticleUpdate = z.infer<typeof ArticleUpdateSchema>;
 
 export function updateArticle({
   accountId,

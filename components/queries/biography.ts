@@ -1,20 +1,26 @@
+import * as z from "zod";
 import { StoreItem } from "./Queries";
 import { contactList } from "./contacts";
 import { maxBy } from "./helpers";
 
-export type BiographyUpdate = {
-  type: "BiographyUpdate";
-  accountId: string;
-  location: BioLocation | undefined;
-  content: string;
-  timestamp: number;
-};
+const BioLocationSchema = z
+  .object({
+    latitude: z.number(),
+    longitude: z.number(),
+  })
+  .optional();
 
-type BioLocation = {
-  latitude: number;
-  longitude: number;
-  // address: string;
-};
+export const BiographyUpdateSchema = z.object({
+  type: z.literal("BiographyUpdate"),
+  accountId: z.string(),
+  location: BioLocationSchema,
+  content: z.string(),
+  timestamp: z.number(),
+});
+
+export type BiographyUpdate = z.infer<typeof BiographyUpdateSchema>;
+
+type BioLocation = z.infer<NonNullable<typeof BioLocationSchema>>;
 
 export function updateBiography({
   accountId,
