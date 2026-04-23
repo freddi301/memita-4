@@ -1,9 +1,3 @@
-# Languages
-
-- [x] auto select locale from system settings
-- [x] English
-- [x] Italian
-
 # Platform
 
 - [ ] android
@@ -38,6 +32,12 @@
   - [ ] bloetooth
   - [ ] wifi direct
 
+# Languages
+
+- [x] auto select locale from system settings
+- [x] English
+- [x] Italian
+
 # Account
 
 - [x] account list
@@ -65,6 +65,24 @@
   - [ ] keyboard navigation
 - [ ] multiple accounts on same device
 - [ ] same account on multiple devices
+
+# Contacts
+
+- [x] add contact
+  - [ ] contact name as local alias
+  - [ ] by qr code
+- [x] delete contact
+- [ ] contact online status (off by default)
+- [ ] contact network connection status
+- [ ] avatar image
+- [ ] contact lists (this will be used for: pin converstaion, archive conversation)
+- [ ] edit history
+- [ ] text search
+- [ ] send invite to download app
+- [ ] privacy
+  - [x] block/report is simply deletion
+  - [x] both users must have each other in contact list to comunicate (contact exchange happens off band)
+- [ ] message request (we explicitly dont want this)
 
 # Direct messages
 
@@ -134,23 +152,11 @@
 - [ ] prevent screenshots
 - [ ] Plausible deniability — deniable encryption so you can't prove a message exists (for very provate messages, ponder)
 
-# Contacts
+# Groups
 
-- [x] add contact
-  - [ ] contact name as local alias
-  - [ ] by qr code
-- [x] delete contact
-- [ ] contact online status (off by default)
-- [ ] contact network connection status
-- [ ] avatar image
-- [ ] contact lists (this will be used for: pin converstaion, archive conversation)
-- [ ] edit history
+- [ ] organize in lists
+- [ ] membership managment
 - [ ] text search
-- [ ] send invite to download app
-- [ ] privacy
-  - [x] block/report is simply deletion
-  - [x] both users must have each other in contact list to comunicate (contact exchange happens off band)
-- [ ] message request (we explicitly dont want this)
 
 # Group messages
 
@@ -167,11 +173,9 @@
 - [ ] videocall
 - [ ] text search
 
-# Groups
+# Calls
 
-- [ ] organize in lists
-- [ ] membership managment
-- [ ] text search
+# Attachments
 
 # Articles
 
