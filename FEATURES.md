@@ -137,7 +137,7 @@
   - [ ] notification settings for given contact direct messages
     - [ ] mute for a time
 - [ ] user is typing indicator (off by default)
-- [ ] message tags (this to emulate pinned, archived, prefereed etc)
+- [ ] message tags (this to emulate pinned, archived, prefereed etc), the navigation ui will be in the conversation toolbar
 - [ ] disappearing messages
 - [ ] stickers gif support
 - [ ] media gallery

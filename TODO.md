@@ -1,5 +1,5 @@
 annotate todos while reviewing [keep going from cryptography.ts]
-review features secion, normalize items
+review features secion, normalize items -> transform into tests
 implement content as hash
 add cryptography, account + device signature
 do not send draft messages
