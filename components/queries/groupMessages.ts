@@ -63,7 +63,7 @@ export function groupMessagesSummary({ accountId }: { accountId: AccountId }) {
   };
 }
 
-export function commonGroupMessagesList({ groupId }: { groupId: string }) {
+function commonGroupMessagesList({ groupId }: { groupId: string }) {
   return (all: Array<StoreItem>) => {
     return groupBy(
       all

@@ -6,6 +6,7 @@ dont accept future timestamps
 do not replicate deleted stuff? (ponder)
 enforce data size limits (max file size, max number and size of messages, max attachments)
 add confirm prompt for destructive actions
+add knip to precommit hook
 add cryptography, account + device signature
 add whitelist recipients
 check frontend performance
