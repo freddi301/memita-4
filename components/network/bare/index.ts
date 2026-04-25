@@ -2,14 +2,14 @@ import "./polyfills";
 // polifils first
 import { decodeMultiStream, encode } from "@msgpack/msgpack";
 import {
-    clientFactory,
-    type RemoteRequest,
-    type RemoteResponse,
-    serverReceive,
+  clientFactory,
+  type RemoteRequest,
+  type RemoteResponse,
+  serverReceive,
 } from "../../remoteApi";
 import {
-    type NetworkInInterface,
-    type NetworkOutInterface,
+  type NetworkInInterface,
+  type NetworkOutInterface,
 } from "../../store/store";
 import { hyperswarmNetworkFactory } from "../hyperswarmNetwork";
 

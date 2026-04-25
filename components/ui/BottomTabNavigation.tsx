@@ -9,7 +9,13 @@ import { PlacesScreen } from "../screens/PlacesScreen";
 import { ProfileScreen } from "../screens/ProfileScreen";
 import { useTranslate } from "../Translate";
 
-export function BottomTabNavigation({ accountId, enabled }: { accountId: AccountId; enabled: boolean }) {
+export function BottomTabNavigation({
+  accountId,
+  enabled,
+}: {
+  accountId: AccountId;
+  enabled: boolean;
+}) {
   const { translate } = useTranslate();
   return (
     <View
@@ -20,7 +26,9 @@ export function BottomTabNavigation({ accountId, enabled }: { accountId: Account
       }}
     >
       <ScreenLink
-        to={enabled ? <DirectMessagesScreen accountId={accountId} /> : undefined}
+        to={
+          enabled ? <DirectMessagesScreen accountId={accountId} /> : undefined
+        }
         icon="inbox"
         hideLabel
         label={translate({
@@ -62,7 +70,11 @@ export function BottomTabNavigation({ accountId, enabled }: { accountId: Account
         })}
       />
       <ScreenLink
-        to={enabled ? <ProfileScreen accountId={accountId} contactId={accountId} /> : undefined}
+        to={
+          enabled ? (
+            <ProfileScreen accountId={accountId} contactId={accountId} />
+          ) : undefined
+        }
         icon="user"
         hideLabel
         label={translate({

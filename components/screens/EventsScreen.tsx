@@ -20,7 +20,9 @@ export function EventsScreen({ accountId }: { accountId: AccountId }) {
         duration: article.date!.duration,
         content: (
           <View key={`${article.contactId}-${article.createdAt}`}>
-            <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>{article.contactName}</Text>
+            <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>
+              {article.contactName}
+            </Text>
             <Text style={theme.textStyle}>{article.content}</Text>
           </View>
         ),

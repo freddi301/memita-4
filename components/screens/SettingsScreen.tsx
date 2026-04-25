@@ -28,7 +28,9 @@ export function SettingsScreen({ accountId }: { accountId: AccountId }) {
       <ScrollView
         style={{ flex: 1 }}
         contentContainerStyle={{ flexGrow: 1 }}
-        refreshControl={<RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />}
+        refreshControl={
+          <RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />
+        }
       ></ScrollView>
       <BottomTabNavigation accountId={accountId} enabled={true} />
     </Fragment>

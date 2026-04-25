@@ -51,11 +51,20 @@ export function updateArticle({
   };
 }
 
-export function articleLatest({ accountId, createdAt }: { accountId: AccountId; createdAt: number }) {
+export function articleLatest({
+  accountId,
+  createdAt,
+}: {
+  accountId: AccountId;
+  createdAt: number;
+}) {
   return (all: Array<StoreItem>) => {
     const updates = all
       .filter((item) => item.type === "ArticleUpdate")
-      .filter((update) => update.accountId === accountId && update.createdAt === createdAt);
+      .filter(
+        (update) =>
+          update.accountId === accountId && update.createdAt === createdAt,
+      );
     if (updates.length) {
       const latestUpdate = maxBy(updates, (update) => update.timestamp);
       return {
@@ -70,7 +79,9 @@ export function articleList({ accountId }: { accountId: AccountId }) {
   return (all: Array<StoreItem>) => {
     return contactList({ accountId })(all).flatMap((contact) => {
       return groupBy(
-        all.filter((item) => item.type === "ArticleUpdate").filter((update) => update.accountId === contact.contactId),
+        all
+          .filter((item) => item.type === "ArticleUpdate")
+          .filter((update) => update.accountId === contact.contactId),
         (update) => [update.accountId, update.createdAt],
         (updates) => maxBy(updates, (update) => update.timestamp),
       )

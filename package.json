@@ -14,7 +14,8 @@
     "test": "jest --watchAll",
     "postinstall": "patch-package && expo prebuild --clean",
     "prepare": "husky",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",

@@ -66,7 +66,9 @@ export function groupMessagesSummary({ accountId }: { accountId: AccountId }) {
 export function commonGroupMessagesList({ groupId }: { groupId: string }) {
   return (all: Array<StoreItem>) => {
     return groupBy(
-      all.filter((item) => item.type === "GroupMessageUpdate").filter((update) => update.groupId === groupId),
+      all
+        .filter((item) => item.type === "GroupMessageUpdate")
+        .filter((update) => update.groupId === groupId),
       (update) => [update.senderId, update.groupId, update.createdAt],
       (updates) => maxBy(updates, (update) => update.timestamp),
     ).filter((update) => update.content !== "");
@@ -81,7 +83,11 @@ export function groupMessagesList({
   groupId: string; // TODO use branded type
 }) {
   return (all: Array<StoreItem>) => {
-    return orderBy(commonGroupMessagesList({ groupId })(all), (update) => update.createdAt, "asc").map((update) => {
+    return orderBy(
+      commonGroupMessagesList({ groupId })(all),
+      (update) => update.createdAt,
+      "asc",
+    ).map((update) => {
       const contactUpdate = contactLatest({
         accountId,
         contactId: update.senderId,

@@ -43,7 +43,9 @@ export function updateContact({
 export function contactList({ accountId }: { accountId: AccountId }) {
   return (all: Array<StoreItem>) => {
     return groupBy(
-      all.filter((item) => item.type === "ContactUpdate").filter((update) => update.accountId === accountId),
+      all
+        .filter((item) => item.type === "ContactUpdate")
+        .filter((update) => update.accountId === accountId),
       (update) => [update.contactId],
       (updates) => maxBy(updates, (update) => update.timestamp),
     )
@@ -55,11 +57,20 @@ export function contactList({ accountId }: { accountId: AccountId }) {
   };
 }
 
-export function contactLatest({ accountId, contactId }: { accountId: AccountId; contactId: AccountId | undefined }) {
+export function contactLatest({
+  accountId,
+  contactId,
+}: {
+  accountId: AccountId;
+  contactId: AccountId | undefined;
+}) {
   return (all: Array<StoreItem>) => {
     const updates = all
       .filter((item) => item.type === "ContactUpdate")
-      .filter((update) => update.accountId === accountId && update.contactId === contactId);
+      .filter(
+        (update) =>
+          update.accountId === accountId && update.contactId === contactId,
+      );
     if (updates.length) {
       const latestUpdate = maxBy(updates, (update) => update.timestamp);
       if (!latestUpdate.deleted) return { name: latestUpdate.name };

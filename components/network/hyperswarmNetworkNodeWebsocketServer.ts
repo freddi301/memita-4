@@ -1,7 +1,12 @@
 import { decode, encode } from "@msgpack/msgpack";
 import getPort from "get-port";
 import { WebSocket, WebSocketServer } from "ws";
-import { clientFactory, type RemoteRequest, type RemoteResponse, serverReceive } from "../remoteApi";
+import {
+  clientFactory,
+  type RemoteRequest,
+  type RemoteResponse,
+  serverReceive,
+} from "../remoteApi";
 import type { NetworkInInterface, NetworkOutInterface } from "../store/store";
 import { hyperswarmNetworkFactory } from "./hyperswarmNetwork";
 
@@ -15,7 +20,9 @@ const hyperswarmNetwork = hyperswarmNetworkFactory(
             Array.from(sockets.values()).map((client) =>
               client[method as keyof NetworkInInterface](
                 // @ts-ignore
-                ...(args as Parameters<NetworkInInterface[keyof NetworkInInterface]>),
+                ...(args as Parameters<
+                  NetworkInInterface[keyof NetworkInInterface]
+                >),
               ),
             ),
           );
@@ -49,12 +56,24 @@ void getPort({ port: [8090, 8091] }).then((port) => {
         await serverReceive(
           hyperswarmNetwork,
           (message) =>
-            new Promise((resolve, reject) => ws.send(encode(message), (err) => (err ? reject(err) : resolve()))),
-          decoded as RemoteRequest<NetworkOutInterface, keyof NetworkOutInterface>,
+            new Promise((resolve, reject) =>
+              ws.send(encode(message), (err) =>
+                err ? reject(err) : resolve(),
+              ),
+            ),
+          decoded as RemoteRequest<
+            NetworkOutInterface,
+            keyof NetworkOutInterface
+          >,
         );
       } else {
         // TODO validate
-        await clientReply(decoded as RemoteResponse<NetworkInInterface, keyof NetworkInInterface>);
+        await clientReply(
+          decoded as RemoteResponse<
+            NetworkInInterface,
+            keyof NetworkInInterface
+          >,
+        );
       }
     });
 

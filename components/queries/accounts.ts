@@ -3,7 +3,15 @@ import { groupBy, maxBy } from "./helpers";
 import { StoreItem } from "./Queries";
 import { nowTimestamp } from "./Timestamp";
 
-export function updateAccount({ accountId, name, deleted }: { accountId: AccountId; name: string; deleted: boolean }) {
+export function updateAccount({
+  accountId,
+  name,
+  deleted,
+}: {
+  accountId: AccountId;
+  name: string;
+  deleted: boolean;
+}) {
   return (all: Array<StoreItem>): Array<StoreItem> => {
     return [
       {
@@ -21,7 +29,9 @@ export function updateAccount({ accountId, name, deleted }: { accountId: Account
 export function accountList() {
   return (all: Array<StoreItem>) => {
     return groupBy(
-      all.filter((item) => item.type === "ContactUpdate").filter((update) => update.accountId === update.contactId),
+      all
+        .filter((item) => item.type === "ContactUpdate")
+        .filter((update) => update.accountId === update.contactId),
       (update) => [update.accountId],
       (updates) => maxBy(updates, (update) => update.timestamp),
     )
@@ -33,11 +43,18 @@ export function accountList() {
   };
 }
 
-export function accountLatest({ accountId }: { accountId: AccountId | undefined }) {
+export function accountLatest({
+  accountId,
+}: {
+  accountId: AccountId | undefined;
+}) {
   return (all: Array<StoreItem>) => {
     const udpates = all
       .filter((item) => item.type === "ContactUpdate")
-      .filter((update) => update.accountId === accountId && update.contactId === accountId);
+      .filter(
+        (update) =>
+          update.accountId === accountId && update.contactId === accountId,
+      );
     if (udpates.length) {
       const latestUpdate = maxBy(udpates, (update) => update.timestamp);
       if (!latestUpdate.deleted) return { name: latestUpdate.name };

@@ -10,7 +10,13 @@ import { useTranslate } from "../Translate";
 import { DateTimeInput } from "../ui/DateTimeInput";
 import { ArticlesScreen } from "./ArticlesScreen";
 
-export function EditArticleScreen({ accountId, createdAt }: { accountId: AccountId; createdAt?: Timestamp }) {
+export function EditArticleScreen({
+  accountId,
+  createdAt,
+}: {
+  accountId: AccountId;
+  createdAt?: Timestamp;
+}) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
@@ -22,7 +28,9 @@ export function EditArticleScreen({ accountId, createdAt }: { accountId: Account
   const update = useMemitaMutation(updateArticle);
 
   const dateTimestampOriginal = latest.date?.timestamp;
-  const [dateTimestampInput, setDateTimestampInput] = useState(dateTimestampOriginal);
+  const [dateTimestampInput, setDateTimestampInput] = useState(
+    dateTimestampOriginal,
+  );
   useEffect(() => {
     setDateTimestampInput(dateTimestampOriginal);
   }, [dateTimestampOriginal]);
@@ -33,7 +41,9 @@ export function EditArticleScreen({ accountId, createdAt }: { accountId: Account
     setContentInput(contentOriginal);
   }, [contentOriginal]);
 
-  const canSave = contentInput !== contentOriginal || dateTimestampInput !== dateTimestampOriginal;
+  const canSave =
+    contentInput !== contentOriginal ||
+    dateTimestampInput !== dateTimestampOriginal;
 
   return (
     <Fragment>
@@ -53,7 +63,9 @@ export function EditArticleScreen({ accountId, createdAt }: { accountId: Account
           })}
         />
         {createdAt ? (
-          <Text style={{ ...theme.textStyle, flexGrow: 1 }}>{new Date(createdAt).toLocaleString()}</Text>
+          <Text style={{ ...theme.textStyle, flexGrow: 1 }}>
+            {new Date(createdAt).toLocaleString()}
+          </Text>
         ) : (
           <Text style={{ ...theme.secondaryTextStyle, flexGrow: 1 }}>
             {translate({
@@ -124,7 +136,12 @@ export function EditArticleScreen({ accountId, createdAt }: { accountId: Account
                         date: dateInput,
                         content: contentInput,
                       });
-                      return <EditArticleScreen accountId={accountId} createdAt={now} />;
+                      return (
+                        <EditArticleScreen
+                          accountId={accountId}
+                          createdAt={now}
+                        />
+                      );
                     }
                   }
                 : undefined
@@ -153,7 +170,10 @@ export function EditArticleScreen({ accountId, createdAt }: { accountId: Account
               it: "Evento",
             })}
           </Text>
-          <DateTimeInput value={dateTimestampInput} onChange={setDateTimestampInput as any} />
+          <DateTimeInput
+            value={dateTimestampInput}
+            onChange={setDateTimestampInput as any}
+          />
         </View>
         <View
           style={{

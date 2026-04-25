@@ -34,9 +34,16 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
         data={articles}
         renderItem={({ item }) => (
           <View style={{ paddingVertical: 8, paddingHorizontal: 16 }}>
-            <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 8 }}
+            >
               <ScreenLink
-                to={<ProfileScreen accountId={accountId} contactId={item.contactId} />}
+                to={
+                  <ProfileScreen
+                    accountId={accountId}
+                    contactId={item.contactId}
+                  />
+                }
                 label={item.contactName}
                 styleOverride={{
                   flexGrow1: true,
@@ -45,7 +52,12 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
               />
               {item.contactId === accountId ? (
                 <ScreenLink
-                  to={<EditArticleScreen accountId={accountId} createdAt={item.createdAt} />}
+                  to={
+                    <EditArticleScreen
+                      accountId={accountId}
+                      createdAt={item.createdAt}
+                    />
+                  }
                   icon="pencil"
                   hideLabel
                   label={translate({
@@ -57,7 +69,9 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
                   }}
                 />
               ) : null}
-              <Text style={{ ...theme.secondaryTextStyle }}>{new Date(item.createdAt).toLocaleString()}</Text>
+              <Text style={{ ...theme.secondaryTextStyle }}>
+                {new Date(item.createdAt).toLocaleString()}
+              </Text>
             </View>
             {item.date && (
               <View
@@ -66,7 +80,11 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
                   gap: 8,
                 }}
               >
-                <FontAwesome name="calendar" color={theme.secondaryTextStyle.color} size={18} />
+                <FontAwesome
+                  name="calendar"
+                  color={theme.secondaryTextStyle.color}
+                  size={18}
+                />
                 <Text style={{ ...theme.secondaryTextStyle }}>
                   {new Date(item.date.timestamp).toLocaleString()}
                   {/*  {" - "} {new Date(

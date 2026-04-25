@@ -34,7 +34,12 @@ export function GroupMessagesScreen({ accountId }: { accountId: AccountId }) {
         renderItem={({ item }) => (
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <ScreenLink
-              to={<GroupConversationScreen accountId={accountId} groupId={item.groupId} />}
+              to={
+                <GroupConversationScreen
+                  accountId={accountId}
+                  groupId={item.groupId}
+                />
+              }
               label={item.groupName}
               icon="circle"
               styleOverride={{

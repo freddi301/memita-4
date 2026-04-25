@@ -43,7 +43,9 @@ export function updateGroup({
 export function groupList({ accountId }: { accountId: AccountId }) {
   return (all: Array<StoreItem>) => {
     return groupBy(
-      all.filter((item) => item.type === "GroupUpdate").filter((update) => update.accountId === accountId),
+      all
+        .filter((item) => item.type === "GroupUpdate")
+        .filter((update) => update.accountId === accountId),
       (update) => [update.groupId],
       (updates) => maxBy(updates, (update) => update.timestamp),
     )
@@ -65,7 +67,10 @@ export function groupLatest({
   return (all: Array<StoreItem>) => {
     const updates = all
       .filter((item) => item.type === "GroupUpdate")
-      .filter((update) => update.accountId === accountId && update.groupId === groupId);
+      .filter(
+        (update) =>
+          update.accountId === accountId && update.groupId === groupId,
+      );
     if (updates.length) {
       const latestUpdate = maxBy(updates, (update) => update.timestamp);
       return {

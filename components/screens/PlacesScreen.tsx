@@ -18,7 +18,9 @@ export function PlacesScreen({ accountId }: { accountId: AccountId }) {
 
   const [currentPlaceId, setCurrentPlaceId] = useState("");
 
-  const currentPlace = places.find((place) => place.contactId === currentPlaceId);
+  const currentPlace = places.find(
+    (place) => place.contactId === currentPlaceId,
+  );
 
   return (
     <Fragment>
@@ -35,7 +37,9 @@ export function PlacesScreen({ accountId }: { accountId: AccountId }) {
         >
           {currentPlace?.contactName}
         </Text>
-        <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>{currentPlace?.content}</Text>
+        <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
+          {currentPlace?.content}
+        </Text>
       </View>
       <BottomTabNavigation accountId={accountId} enabled={true} />
     </Fragment>

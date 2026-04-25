@@ -44,7 +44,10 @@ export function SelectAccountScreen() {
         />
       </View>
       <View style={{ alignItems: "center", gap: 16, padding: 16 }}>
-        <Image source={require("../../assets/images/icon.png")} style={{ width: 100, height: 100 }} />
+        <Image
+          source={require("../../assets/images/icon.png")}
+          style={{ width: 100, height: 100 }}
+        />
         <Text
           style={{
             ...theme.textStyle,
@@ -58,7 +61,11 @@ export function SelectAccountScreen() {
       <FlatList
         data={accounts}
         renderItem={({ item }) => (
-          <ScreenLink to={<DirectMessagesScreen accountId={item.accountId} />} icon="user-circle" label={item.name} />
+          <ScreenLink
+            to={<DirectMessagesScreen accountId={item.accountId} />}
+            icon="user-circle"
+            label={item.name}
+          />
         )}
         ListEmptyComponent={
           <Text
