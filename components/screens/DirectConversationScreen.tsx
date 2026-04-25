@@ -1,6 +1,7 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { Fragment, useRef, useState } from "react";
 import { FlatList, Pressable, Text, TextInput, View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { AccountId } from "../cryptography/cryptography";
 import { accountLatest } from "../queries/accounts";
 import { contactLatest } from "../queries/contacts";
@@ -16,11 +17,15 @@ import {
   useMemitaQuery,
   useMemitaSubscription,
 } from "../store/dataApi";
+import { ContentAddress } from "../store/fileStore";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
+import { AttachmentPreview } from "../ui/AttachmentPreview";
 import { MessageCompose } from "../ui/MessageCompose";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 import { ProfileScreen } from "./ProfileScreen";
+
+// TODO profile with lot of messages how search and did red navigation performs
 
 export function DirectConversationScreen({
   accountId,
@@ -49,6 +54,7 @@ export function DirectConversationScreen({
         createdAt: Timestamp;
         isDraft: boolean;
         content: string;
+        attachments: Array<{ name: string; hash: ContentAddress }>;
       }
   >();
 
@@ -59,11 +65,22 @@ export function DirectConversationScreen({
   const [toolbarState, setToolbarState] = useState<
     | { type: "search"; text: string; currentIndex: number }
     | { type: "didRead"; currentIndex: number }
-  >({ type: "didRead", currentIndex: conversation.length - 1 });
+  >({
+    type: "didRead",
+    currentIndex: conversation.findIndex(
+      (item) => item.receiverId === accountId && !item.didRead,
+    ),
+  });
 
   return (
     <Fragment>
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
+      <View
+        style={{
+          flexDirection: "row",
+          borderBottomWidth: 1,
+          borderColor: theme.separatorColor,
+        }}
+      >
         <ScreenLink
           to={<DirectMessagesScreen accountId={accountId} />}
           icon="arrow-left"
@@ -95,7 +112,7 @@ export function DirectConversationScreen({
           };
         }}
         renderItem={({ item, index }) => {
-          const isCurrentOccurrence =
+          const isCurrentSearchOccurrence =
             toolbarState.type === "search" &&
             toolbarState.text.length > 0 &&
             toolbarState.currentIndex === index;
@@ -115,123 +132,110 @@ export function DirectConversationScreen({
                           createdAt: item.createdAt,
                           isDraft: item.isDraft,
                           content: item.content,
+                          attachments: item.attachments,
                         },
                   );
                 }
               }}
               style={{
-                flexDirection: "row",
                 backgroundColor:
                   item.createdAt === toModifyMessage?.createdAt
                     ? theme.selectedItemBackgroundColor
-                    : undefined,
+                    : theme.backgroundColor,
+                borderRadius: 8,
+                paddingHorizontal: 7,
+                paddingVertical: 5,
+                marginVertical: 3,
+                overflow: "hidden",
+                borderWidth: 2,
+                // TODO add search and didRead color to theme colors
+                borderColor: isCurrentSearchOccurrence
+                  ? "lightgreen"
+                  : isCurrentDidReadOccurrence
+                    ? theme.linkTextColor
+                    : theme.backgroundBackColor,
               }}
             >
-              {item.isDraft && (
-                <View
-                  style={{
-                    backgroundColor: "grey",
-                    height: "100%",
-                    width: 8,
-                  }}
+              <View style={{ flexDirection: "row", gap: 8 }}>
+                <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>
+                  {item.senderId === accountId
+                    ? (account?.name ?? "")
+                    : item.senderId === contactId
+                      ? (contact?.name ?? "")
+                      : ""}
+                </Text>
+                <View style={{ flexGrow: 1 }} />
+                <Text style={theme.secondaryTextStyle}>
+                  {new Date(item.createdAt).toLocaleString()}
+                </Text>
+                <FontAwesome
+                  name={item.isDraft ? "sticky-note" : "check"}
+                  size={14}
+                  color={
+                    item.isDraft
+                      ? theme.secondaryTextColor
+                      : item.didRead
+                        ? theme.linkTextColor
+                        : item.receiverId === accountId && !item.didRead
+                          ? "orange"
+                          : theme.backgroundColor
+                  }
                 />
-              )}
-              {isCurrentOccurrence && (
-                <View
+              </View>
+              <Text style={{ ...theme.textStyle }}>
+                {toolbarState.type === "search"
+                  ? item.content
+                      .split(new RegExp(`(${toolbarState.text})`, "i"))
+                      .map((part, index) => {
+                        const isMatch =
+                          part.toLowerCase() ===
+                          toolbarState.text.toLowerCase();
+                        return (
+                          <Text
+                            key={index}
+                            style={{
+                              backgroundColor: isMatch
+                                ? "lightgreen"
+                                : undefined,
+                              color: isMatch ? "black" : undefined,
+                              fontWeight: isMatch ? "bold" : undefined,
+                            }}
+                          >
+                            {part}
+                          </Text>
+                        );
+                      })
+                  : item.content}
+              </Text>
+              {item.attachments.length > 0 && (
+                <ScrollView
+                  horizontal
                   style={{
-                    backgroundColor: "lightgreen",
-                    height: "100%",
-                    width: 8,
-                  }}
-                />
-              )}
-              {isCurrentDidReadOccurrence && (
-                <View
-                  style={{
-                    backgroundColor: theme.linkTextColor,
-                    height: "100%",
-                    width: 8,
-                  }}
-                />
-              )}
-              <View style={{ flexGrow: 1 }}>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    borderRightWidth: 4,
-                    borderColor:
-                      item.receiverId === accountId && !item.didRead
-                        ? "orange"
-                        : "transparent",
+                    marginHorizontal: -7,
+                    marginBottom: -5,
+                    marginTop: 8,
                   }}
                 >
-                  <Text
-                    style={{
-                      ...theme.textStyle,
-                      fontWeight: "bold",
-                      paddingLeft: 16,
-                    }}
-                  >
-                    {item.senderId === accountId
-                      ? (account?.name ?? "")
-                      : item.senderId === contactId
-                        ? (contact?.name ?? "")
-                        : ""}
-                  </Text>
-                  <View style={{ flexGrow: 1 }} />
-                  <Text style={theme.secondaryTextStyle}>
-                    {new Date(item.createdAt).toLocaleString()}
-                  </Text>
-                  <FontAwesome
-                    name="check"
-                    size={16}
-                    color={
-                      item.didRead ? theme.linkTextColor : theme.backgroundColor
-                    }
-                    style={{
-                      marginLeft: 8,
-                      paddingRight: 4,
-                    }}
-                  />
-                </View>
-                <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
-                  {toolbarState.type === "search"
-                    ? item.content
-                        .split(new RegExp(`(${toolbarState.text})`, "i"))
-                        .map((part, index) => {
-                          const isMatch =
-                            part.toLowerCase() ===
-                            toolbarState.text.toLowerCase();
-                          return (
-                            <Text
-                              key={index}
-                              style={{
-                                backgroundColor: isMatch
-                                  ? "lightgreen"
-                                  : undefined,
-                                color: isMatch ? "black" : undefined,
-                                fontWeight: isMatch ? "bold" : undefined,
-                              }}
-                            >
-                              {part}
-                            </Text>
-                          );
-                        })
-                    : item.content}
-                </Text>
-              </View>
+                  {item.attachments.map((file, index) => (
+                    <AttachmentPreview key={index} file={file} />
+                  ))}
+                </ScrollView>
+              )}
             </Pressable>
           );
         }}
-        style={{ flex: 1, marginVertical: 8 }}
-        contentContainerStyle={{ flexGrow: 1 }}
-        ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
+        style={{ flex: 1, backgroundColor: theme.backgroundBackColor }}
+        contentContainerStyle={{
+          flexGrow: 1,
+          paddingVertical: 5,
+          paddingHorizontal: 7,
+        }}
         ListEmptyComponent={() => (
           <Text
             style={{
               ...theme.secondaryTextStyle,
               textAlign: "center",
+              margin: 16,
             }}
           >
             {translate({
@@ -469,7 +473,7 @@ export function DirectConversationScreen({
       })()}
       <MessageCompose
         toModify={toModifyMessage}
-        onUpdate={async ({ content, isDraft }) => {
+        onUpdate={async ({ content, attachments, isDraft }) => {
           if (!toModifyMessage && isDraft) {
             // create draft
             const createdAt = nowTimestamp();
@@ -479,11 +483,13 @@ export function DirectConversationScreen({
               receiverId: contactId,
               isDraft: true,
               content,
+              attachments,
             });
             setToModifyMessage({
               createdAt,
               isDraft: true,
               content,
+              attachments,
             });
           } else if (toModifyMessage && toModifyMessage.isDraft && isDraft) {
             // update draft
@@ -493,11 +499,13 @@ export function DirectConversationScreen({
               receiverId: contactId,
               isDraft: true,
               content,
+              attachments,
             });
             setToModifyMessage({
               createdAt: toModifyMessage.createdAt,
               isDraft: true,
               content,
+              attachments,
             });
           } else if (toModifyMessage && toModifyMessage.isDraft && !isDraft) {
             // publish draft
@@ -508,6 +516,7 @@ export function DirectConversationScreen({
               receiverId: contactId,
               isDraft: false,
               content,
+              attachments,
             });
             await update({
               createdAt: toModifyMessage.createdAt,
@@ -515,6 +524,7 @@ export function DirectConversationScreen({
               receiverId: contactId,
               isDraft: true,
               content: "",
+              attachments: [],
             });
             setToModifyMessage(undefined);
           } else if (toModifyMessage && !toModifyMessage.isDraft && !isDraft) {
@@ -525,6 +535,7 @@ export function DirectConversationScreen({
               receiverId: contactId,
               isDraft: false,
               content,
+              attachments,
             });
             setToModifyMessage(undefined);
           } else {

@@ -1,6 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { isEqual } from "lodash";
+import { deleteAllFiles } from "./fileStore";
 import { StorageInterface } from "./store";
+
+// TODO stop using this database
 
 export function localStorageFactory<StoreItem>(
   key: string,
@@ -29,6 +32,7 @@ export function localStorageFactory<StoreItem>(
     },
     async wipe() {
       await AsyncStorage.removeItem(key);
+      await deleteAllFiles();
     },
   };
 }

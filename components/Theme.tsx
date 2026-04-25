@@ -2,6 +2,7 @@ import { useColorScheme } from "react-native";
 
 const darkTheme = {
   backgroundColor: "#1d1d1d",
+  backgroundBackColor: "#131313",
   textColor: "#e9e9e9",
   separatorColor: "#4a4a4a",
   secondaryTextColor: "#939393",
@@ -16,6 +17,7 @@ type ThemeProps = typeof darkTheme;
 
 const lightTheme: ThemeProps = {
   backgroundColor: "#fbfbfb",
+  backgroundBackColor: "#e1e1e1",
   textColor: "#191919",
   separatorColor: "#cecece",
   secondaryTextColor: "#838383",
@@ -33,14 +35,12 @@ export function useTheme() {
     color: themeProps.textColor,
     fontFamliy: "sans-serif",
     fontSize: 16,
+    lineHeight: 18,
+    includeFontPadding: false, // Android only, ignored on web
   };
   return {
     ...themeProps,
-    textStyle: {
-      color: themeProps.textColor,
-      fontFamliy: "sans-serif",
-      fontSize: 16,
-    },
+    textStyle,
     secondaryTextStyle: {
       ...textStyle,
       color: themeProps.secondaryTextColor,

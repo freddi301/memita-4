@@ -4,6 +4,13 @@ import { createContext, ReactNode, Suspense, use, useState } from "react";
 import { Pressable, Text } from "react-native";
 import { useTheme } from "./Theme";
 
+// TODO refactor to use <React.Activity visibility={}/>
+// TODO refactor to a fixed paramterized set of screens
+// TODO Refactor ScreenLink into
+//  -- proper direct link
+//  -- async action that doesnt change screen
+//  -- async action that changes screen after completion
+
 const RouterContext = createContext<RouterContextProps>(null as any);
 
 type RouterContextProps = {
@@ -117,7 +124,7 @@ export function ScreenLink({
               : theme.backgroundColor,
         flexDirection: "row",
         gap: 8,
-        alignItems: "center",
+        alignItems: "baseline",
         flexGrow: flexGrow1 ? 1 : undefined,
       }}
       onPressIn={() => {

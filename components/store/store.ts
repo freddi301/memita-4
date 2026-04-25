@@ -5,6 +5,7 @@ type StoreInInterface<StoreItem> = {
   onAdd(item: StoreItem): Promise<void>;
   storage: StorageInterface<StoreItem>;
   networkFactory: NetworkFactory;
+  shouldSend(item: StoreItem): boolean;
 };
 
 type StoreOutInterface<StoreItem> = {
@@ -21,7 +22,11 @@ export type StorageInterface<StoreItem> = {
 };
 
 export type NetworkInInterface = {
-  received(deviceId: DeviceId, fromDeviceId: DeviceId, data: unknown): Promise<void>;
+  received(
+    deviceId: DeviceId,
+    fromDeviceId: DeviceId,
+    data: unknown,
+  ): Promise<void>;
   connected(deviceId: DeviceId, otherDeviceId: DeviceId): Promise<void>;
 };
 
@@ -40,6 +45,7 @@ export function makeStore<StoreItem>({
   onAdd,
   storage,
   networkFactory,
+  shouldSend,
 }: StoreInInterface<StoreItem>): StoreOutInterface<StoreItem> {
   const network = networkFactory({
     async received(deviceId, fromDeviceId, data) {
@@ -52,20 +58,30 @@ export function makeStore<StoreItem>({
     async connected(deviceId, otherDeviceId) {
       const all = await storage.all();
       // TODO discriminate to which devices to send
-      await Promise.all(all.map((item) => network.send(deviceId, otherDeviceId, item)));
+      await Promise.all(
+        all
+          .filter((item) => shouldSend(item))
+          .map((item) => network.send(deviceId, otherDeviceId, item)),
+      );
     },
   });
   return {
     async add(item) {
       const didAdd = await storage.add(item);
-      if (didAdd) {
+      if (didAdd && shouldSend(item)) {
         await onAdd(item);
-        for (const deviceId of await network.getStartedDevices()) {
-          for (const toDeviceId of await network.getConnectedDevices(deviceId)) {
-            // TODO discriminate to which devices to send
-            await network.send(deviceId, toDeviceId, item);
+        // TODO do not block ui while sending
+        void (async () => {
+          for (const deviceId of await network.getStartedDevices()) {
+            for (const toDeviceId of await network.getConnectedDevices(
+              deviceId,
+            )) {
+              // TODO discriminate to which devices to send
+              await network.send(deviceId, toDeviceId, item);
+              // TODO send over files too (might need rework of network typings)
+            }
           }
-        }
+        })();
       }
     },
     async all() {

@@ -1,5 +1,6 @@
 import * as z from "zod";
 import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
+import { ContentAddress, ContentAddressSchema } from "../store/fileStore";
 import { contactList } from "./contacts";
 import { groupBy, maxBy, orderBy } from "./helpers";
 import { StoreItem } from "./Queries";
@@ -11,6 +12,9 @@ export const DirectMessageUpdateSchema = z.object({
   receiverId: AccountIdSchema,
   createdAt: TimestampSchema,
   content: z.string(),
+  attachments: z.array(
+    z.object({ name: z.string(), hash: ContentAddressSchema }),
+  ),
   isDraft: z.boolean(),
   timestamp: TimestampSchema,
 });
@@ -23,12 +27,14 @@ export function updateDirectMessage({
   createdAt,
   isDraft,
   content,
+  attachments,
 }: {
   senderId: AccountId;
   receiverId: AccountId;
   createdAt: Timestamp;
   isDraft: boolean;
   content: string;
+  attachments: Array<{ name: string; hash: ContentAddress }>;
 }) {
   return (all: Array<StoreItem>): Array<StoreItem> => {
     return [
@@ -39,6 +45,7 @@ export function updateDirectMessage({
         createdAt,
         isDraft,
         content,
+        attachments,
         timestamp: nowTimestamp(),
       },
     ];
@@ -91,7 +98,9 @@ export function directMessagesList({
           ),
         (update) => [update.senderId, update.receiverId, update.createdAt],
         (updates) => maxBy(updates, (update) => update.timestamp),
-      ).filter((update) => update.content !== ""),
+      ).filter(
+        (update) => update.content !== "" || update.attachments.length > 0,
+      ),
       (update) => update.createdAt,
       "asc",
     ).map((messageUpdate) => {
@@ -101,6 +110,7 @@ export function directMessagesList({
         createdAt: messageUpdate.createdAt,
         isDraft: messageUpdate.isDraft,
         content: messageUpdate.content,
+        attachments: messageUpdate.attachments,
         didRead: didReadLatest({
           senderId: messageUpdate.senderId,
           receiverId: messageUpdate.receiverId,

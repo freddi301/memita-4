@@ -11,6 +11,7 @@ import { websocketNetworkFactory } from "../network/networkWebsocketClient";
 import { triggerNotification } from "../notifications";
 import { updateContact } from "../queries/contacts";
 import { StoreItem, StoreItemSchema } from "../queries/Queries";
+import { shouldSend } from "../queries/shouldSend";
 import { localStorageFactory } from "./localStorage";
 import { makeStore } from "./store";
 
@@ -47,7 +48,7 @@ async function cleanLocalStorage() {
     await storage.add(item);
   }
 }
-// void cleanLocalStorage();
+void cleanLocalStorage();
 
 export const store = makeStore<StoreItem>({
   parse: StoreItemSchema.parse,
@@ -59,6 +60,7 @@ export const store = makeStore<StoreItem>({
     subscriptions.forEach((callback) => callback());
     await triggerNotification();
   },
+  shouldSend,
 });
 
 const subscriptions = new Set<() => void>();
