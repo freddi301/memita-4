@@ -36,10 +36,7 @@ export function accountList() {
       (updates) => maxBy(updates, (update) => update.timestamp),
     )
       .filter((update) => !update.deleted)
-      .map((update) => ({
-        accountId: update.accountId,
-        name: update.name,
-      }));
+      .map((update) => ({ accountId: update.accountId, name: update.name }));
   };
 }
 

@@ -23,10 +23,7 @@ export function GroupMessagesScreen({ accountId }: { accountId: AccountId }) {
         <ScreenLink
           to={<GroupScreen accountId={accountId} />}
           icon="plus"
-          label={translate({
-            en: "Create new group",
-            it: "Crea nuovo gruppo",
-          })}
+          label={translate({ en: "Create new group", it: "Crea nuovo gruppo" })}
         />
       </View>
       <FlatList
@@ -42,9 +39,7 @@ export function GroupMessagesScreen({ accountId }: { accountId: AccountId }) {
               }
               label={item.groupName}
               icon="circle"
-              styleOverride={{
-                flexGrow1: true,
-              }}
+              styleOverride={{ flexGrow1: true }}
             />
             {item.lastMessageCreatedAt ? (
               <Text style={{ ...theme.textStyle, paddingRight: 16 }}>
@@ -56,16 +51,8 @@ export function GroupMessagesScreen({ accountId }: { accountId: AccountId }) {
         style={{ flex: 1, marginVertical: 8 }}
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={() => (
-          <Text
-            style={{
-              ...theme.secondaryTextStyle,
-              textAlign: "center",
-            }}
-          >
-            {translate({
-              en: "No messages",
-              it: "Nessun messagio",
-            })}
+          <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
+            {translate({ en: "No messages", it: "Nessun messagio" })}
           </Text>
         )}
         refreshing={false}

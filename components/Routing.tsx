@@ -22,11 +22,7 @@ type RouterContextType = {
   startTransition(callback: (() => void) | (() => Promise<void>)): void;
 };
 
-type ScreenEntry = {
-  key: string;
-  forceSuspend: string;
-  element: ReactNode;
-};
+type ScreenEntry = { key: string; forceSuspend: string; element: ReactNode };
 
 const RouterContext = createContext<RouterContextType>(null as any);
 
@@ -130,10 +126,7 @@ export function ScreenLink({
 }: {
   to: ReactNode | (() => Promise<ReactNode | void>);
   color?: string;
-  styleOverride?: {
-    flexGrow1?: boolean;
-    hasPadding?: boolean;
-  };
+  styleOverride?: { flexGrow1?: boolean; hasPadding?: boolean };
 } & (
   | {
       label: string;

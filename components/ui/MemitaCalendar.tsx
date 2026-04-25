@@ -67,13 +67,7 @@ export function MemitaCalendar({ events }: { events: Array<EventPayload> }) {
 
   return (
     <GestureDetector gesture={composed}>
-      <View
-        style={{
-          flex: 1,
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
+      <View style={{ flex: 1, position: "relative", overflow: "hidden" }}>
         <Animated.View style={[animatedStyle]}>
           {Array.from({ length: 31 }).map((_, i) => {
             const dayStart = startOfDay(baseY + i * dayDuration);
@@ -85,10 +79,7 @@ export function MemitaCalendar({ events }: { events: Array<EventPayload> }) {
                 scaleY={scaleY}
               >
                 <Text
-                  style={{
-                    ...theme.secondaryTextStyle,
-                    textAlign: "right",
-                  }}
+                  style={{ ...theme.secondaryTextStyle, textAlign: "right" }}
                 >
                   {new Date(dayStart).toLocaleString("default", {
                     day: "2-digit",
@@ -130,11 +121,7 @@ function EventItem({
   const eventStyle = useAnimatedStyle(() => {
     const top = (event.start - baseY) * scaleY.value;
     const height = Math.max(event.duration, monthDuration) * scaleY.value;
-    return {
-      position: "absolute",
-      top,
-      height,
-    };
+    return { position: "absolute", top, height };
   });
 
   return (
@@ -175,10 +162,7 @@ function LegendItem({
 
   const eventStyle = useAnimatedStyle(() => {
     const top = (timestamp - baseY) * scaleY.value;
-    return {
-      position: "absolute",
-      top,
-    };
+    return { position: "absolute", top };
   });
 
   return (

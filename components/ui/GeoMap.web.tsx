@@ -51,11 +51,7 @@ export function GeoMap({
   return (
     <View style={{ flexGrow: 1, position: "relative" }}>
       <Map
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-        }}
+        style={{ width: "100%", height: "100%", position: "absolute" }}
         mapStyle={"https://tiles.openfreemap.org/styles/liberty"}
         attributionControl={false}
         {...viewState}
@@ -138,11 +134,7 @@ export function GeoMap({
               name="map-marker"
               color={"blue"}
               size={40}
-              style={{
-                position: "absolute",
-                top: -40,
-                left: -11,
-              }}
+              style={{ position: "absolute", top: -40, left: -11 }}
               onPress={() => {
                 onSetLocation(
                   currentLocation &&

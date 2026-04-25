@@ -4,9 +4,7 @@
     "lib": ["ES2025", "DOM"],
     "strict": true,
     "noUncheckedIndexedAccess": true,
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "paths": { "@/*": ["./*"] }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }

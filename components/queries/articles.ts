@@ -10,10 +10,7 @@ export const ArticleUpdateSchema = z.object({
   accountId: AccountIdSchema,
   createdAt: TimestampSchema,
   date: z
-    .object({
-      timestamp: TimestampSchema,
-      duration: z.number(),
-    })
+    .object({ timestamp: TimestampSchema, duration: z.number() })
     .optional(),
   content: z.string(),
   timestamp: TimestampSchema,
@@ -29,12 +26,7 @@ export function updateArticle({
 }: {
   accountId: AccountId;
   createdAt: Timestamp;
-  date:
-    | {
-        timestamp: Timestamp;
-        duration: number;
-      }
-    | undefined;
+  date: { timestamp: Timestamp; duration: number } | undefined;
   content: string;
 }) {
   return (all: Array<StoreItem>): Array<StoreItem> => {
@@ -67,10 +59,7 @@ export function articleLatest({
       );
     if (updates.length) {
       const latestUpdate = maxBy(updates, (update) => update.timestamp);
-      return {
-        date: latestUpdate.date,
-        content: latestUpdate.content,
-      };
+      return { date: latestUpdate.date, content: latestUpdate.content };
     }
   };
 }

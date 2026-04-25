@@ -30,10 +30,7 @@ declare module "hyperdht" {
       /** fully connected */
       on(event: "open", callback: () => void): void;
     };
-  type KeyPair = {
-    publicKey: PublicKey;
-    secretKey: SecretKey;
-  };
+  type KeyPair = { publicKey: PublicKey; secretKey: SecretKey };
   type PublicKey = Buffer & {};
   type SecretKey = Buffer & {};
 }

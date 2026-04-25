@@ -41,18 +41,12 @@ export function useTheme() {
   return {
     ...themeProps,
     textStyle,
-    secondaryTextStyle: {
-      ...textStyle,
-      color: themeProps.secondaryTextColor,
-    },
+    secondaryTextStyle: { ...textStyle, color: themeProps.secondaryTextColor },
     validationErrorTextStyle: {
       ...textStyle,
       color: themeProps.validationErrorTextColor,
     },
-    linkTextStyle: {
-      ...textStyle,
-      color: themeProps.linkTextColor,
-    },
+    linkTextStyle: { ...textStyle, color: themeProps.linkTextColor },
     textInputStyle: {
       ...textStyle,
       borderColor: themeProps.linkTextColor,

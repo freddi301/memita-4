@@ -47,20 +47,12 @@ export function EditArticleScreen({
 
   return (
     <Fragment>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-        }}
-      >
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
         <ScreenLink
           to={!canSave ? <ArticlesScreen accountId={accountId} /> : undefined}
           icon="arrow-left"
           hideLabel
-          label={translate({
-            en: "Go to articles",
-            it: "Vai agli articoli",
-          })}
+          label={translate({ en: "Go to articles", it: "Vai agli articoli" })}
         />
         {createdAt ? (
           <Text style={{ ...theme.textStyle, flexGrow: 1 }}>
@@ -68,10 +60,7 @@ export function EditArticleScreen({
           </Text>
         ) : (
           <Text style={{ ...theme.secondaryTextStyle, flexGrow: 1 }}>
-            {translate({
-              en: "New article",
-              it: "Nuovo articolo",
-            })}
+            {translate({ en: "New article", it: "Nuovo articolo" })}
           </Text>
         )}
         <View style={{ flexDirection: "row" }}>
@@ -91,10 +80,7 @@ export function EditArticleScreen({
             }
             icon="trash"
             hideLabel
-            label={translate({
-              en: "Delete article",
-              it: "Elimina articolo",
-            })}
+            label={translate({ en: "Delete article", it: "Elimina articolo" })}
           />
           <ScreenLink
             to={
@@ -106,20 +92,14 @@ export function EditArticleScreen({
             }
             icon="undo"
             hideLabel
-            label={translate({
-              en: "Discard changes",
-              it: "Scarta modifiche",
-            })}
+            label={translate({ en: "Discard changes", it: "Scarta modifiche" })}
           />
           <ScreenLink
             to={
               canSave
                 ? async () => {
                     const dateInput = dateTimestampInput
-                      ? {
-                          timestamp: dateTimestampInput,
-                          duration: 0,
-                        }
+                      ? { timestamp: dateTimestampInput, duration: 0 }
                       : undefined;
                     if (createdAt) {
                       await update({
@@ -150,14 +130,8 @@ export function EditArticleScreen({
             hideLabel
             label={
               createdAt
-                ? translate({
-                    en: "Update article",
-                    it: "Aggiorna articolo",
-                  })
-                : translate({
-                    en: "Create article",
-                    it: "Crea articolo",
-                  })
+                ? translate({ en: "Update article", it: "Aggiorna articolo" })
+                : translate({ en: "Create article", it: "Crea articolo" })
             }
           />
         </View>
@@ -165,23 +139,14 @@ export function EditArticleScreen({
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
         <View style={{ gap: 2, paddingVertical: 8 }}>
           <Text style={{ ...theme.secondaryTextStyle, paddingHorizontal: 16 }}>
-            {translate({
-              en: "Event",
-              it: "Evento",
-            })}
+            {translate({ en: "Event", it: "Evento" })}
           </Text>
           <DateTimeInput
             value={dateTimestampInput}
             onChange={setDateTimestampInput as any}
           />
         </View>
-        <View
-          style={{
-            paddingHorizontal: 16,
-            paddingVertical: 8,
-            gap: 2,
-          }}
-        >
+        <View style={{ paddingHorizontal: 16, paddingVertical: 8, gap: 2 }}>
           <TextInput
             value={contentInput}
             onChangeText={setContentInput}

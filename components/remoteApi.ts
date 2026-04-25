@@ -6,19 +6,12 @@ type RemoteInterfaceShape = Record<
 export type RemoteRequest<
   Interface extends RemoteInterfaceShape,
   Method extends keyof Interface,
-> = {
-  id: number;
-  method: Method;
-  arguments: Parameters<Interface[Method]>;
-};
+> = { id: number; method: Method; arguments: Parameters<Interface[Method]> };
 
 export type RemoteResponse<
   Interface extends RemoteInterfaceShape,
   Method extends keyof Interface,
-> = {
-  id: number;
-  result: ReturnType<Interface[Method]>;
-};
+> = { id: number; result: ReturnType<Interface[Method]> };
 
 export function serverReceive<
   Interface extends RemoteInterfaceShape,

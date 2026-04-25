@@ -50,10 +50,7 @@ export function groupList({ accountId }: { accountId: AccountId }) {
       (updates) => maxBy(updates, (update) => update.timestamp),
     )
       .filter((update) => !update.deleted)
-      .map((update) => ({
-        groupId: update.groupId,
-        name: update.name,
-      }));
+      .map((update) => ({ groupId: update.groupId, name: update.name }));
   };
 }
 
@@ -73,9 +70,7 @@ export function groupLatest({
       );
     if (updates.length) {
       const latestUpdate = maxBy(updates, (update) => update.timestamp);
-      return {
-        name: latestUpdate.name,
-      };
+      return { name: latestUpdate.name };
     }
   };
 }

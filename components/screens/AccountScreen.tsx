@@ -26,9 +26,9 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
   const { translate } = useTranslate();
   const theme = useTheme();
 
-  const latest = useMemitaQuery(accountLatest, {
-    accountId: accountId,
-  }) ?? { name: "" };
+  const latest = useMemitaQuery(accountLatest, { accountId: accountId }) ?? {
+    name: "",
+  };
   const update = useMemitaMutation(updateAccount);
 
   const nameOriginal = latest.name;
@@ -93,10 +93,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             }
             icon="undo"
             hideLabel
-            label={translate({
-              en: "Discard changes",
-              it: "Scarta modifiche",
-            })}
+            label={translate({ en: "Discard changes", it: "Scarta modifiche" })}
           />
           <ScreenLink
             to={
@@ -136,14 +133,8 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             hideLabel
             label={
               accountId
-                ? translate({
-                    en: "Save changes",
-                    it: "Salva modifiche",
-                  })
-                : translate({
-                    en: "Create account",
-                    it: "Crea account",
-                  })
+                ? translate({ en: "Save changes", it: "Salva modifiche" })
+                : translate({ en: "Create account", it: "Crea account" })
             }
           />
         </View>
@@ -165,10 +156,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             }}
           >
             <Text style={theme.secondaryTextStyle}>
-              {translate({
-                en: "Account ID",
-                it: "Id dell'account",
-              })}
+              {translate({ en: "Account ID", it: "Id dell'account" })}
             </Text>
             {accountId ? (
               <Text style={{ ...theme.textStyle }}>{accountId}</Text>
@@ -199,10 +187,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
-            {translate({
-              en: "Account name",
-              it: "Nome dell'account",
-            })}
+            {translate({ en: "Account name", it: "Nome dell'account" })}
           </Text>
           <TextInput
             value={nameInput}
@@ -230,10 +215,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             }}
           >
             <Text style={theme.secondaryTextStyle}>
-              {translate({
-                en: "Device ID",
-                it: "Id del dispositivo",
-              })}
+              {translate({ en: "Device ID", it: "Id del dispositivo" })}
             </Text>
             {deviceId ? (
               <Text style={theme.textStyle}>{deviceId}</Text>
@@ -269,10 +251,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             <ProfileScreen accountId={accountId} contactId={accountId} />
           ) : undefined
         }
-        label={translate({
-          en: "Profile",
-          it: "Profilo",
-        })}
+        label={translate({ en: "Profile", it: "Profilo" })}
       />
     </Fragment>
   );

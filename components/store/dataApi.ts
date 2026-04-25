@@ -66,12 +66,7 @@ export const store = makeStore<StoreItem>({
 const subscriptions = new Set<() => void>();
 
 export const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 0,
-      refetchOnMount: "always",
-    },
-  },
+  defaultOptions: { queries: { staleTime: 0, refetchOnMount: "always" } },
 });
 export function useMemitaQuery<Params, Result>(
   queryFactory: (params: Params) => (all: Array<StoreItem>) => Result,

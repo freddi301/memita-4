@@ -38,11 +38,7 @@ export function GroupConversationScreen({
   const send = useMemitaMutation(updateGroupMessage);
 
   const [toModifyMessage, setToModifyMessage] = useState<
-    | undefined
-    | {
-        createdAt: Timestamp;
-        content: string;
-      }
+    undefined | { createdAt: Timestamp; content: string }
   >();
 
   return (
@@ -52,18 +48,13 @@ export function GroupConversationScreen({
           to={<GroupMessagesScreen accountId={accountId} />}
           icon="arrow-left"
           hideLabel
-          label={translate({
-            en: "Go to messages",
-            it: "Vai ai messaggi",
-          })}
+          label={translate({ en: "Go to messages", it: "Vai ai messaggi" })}
         />
         <ScreenLink
           to={<GroupScreen accountId={accountId} groupId={groupId} />}
           icon="user"
           label={group?.name ?? ""}
-          styleOverride={{
-            flexGrow1: true,
-          }}
+          styleOverride={{ flexGrow1: true }}
         />
       </View>
       <FlatList
@@ -75,10 +66,7 @@ export function GroupConversationScreen({
                 item.createdAt === toModifyMessage?.createdAt &&
                   item.senderId === accountId
                   ? undefined
-                  : {
-                      createdAt: item.createdAt,
-                      content: item.content,
-                    },
+                  : { createdAt: item.createdAt, content: item.content },
               );
             }}
             style={{
@@ -111,16 +99,8 @@ export function GroupConversationScreen({
         contentContainerStyle={{ flexGrow: 1 }}
         ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
         ListEmptyComponent={() => (
-          <Text
-            style={{
-              ...theme.secondaryTextStyle,
-              textAlign: "center",
-            }}
-          >
-            {translate({
-              en: "No messages",
-              it: "Nessun messagio",
-            })}
+          <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
+            {translate({ en: "No messages", it: "Nessun messagio" })}
           </Text>
         )}
         refreshing={false}

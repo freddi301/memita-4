@@ -29,10 +29,7 @@ declare module "hyperswarm" {
     connections: Set<Connection>;
     /** A Map containing all connected peers, of the form: (Noise public key hex string) -> PeerInfo object */
     peers: Map<string, PeerInfo>;
-    keyPair: {
-      publicKey: Buffer;
-      secretKey: Buffer;
-    };
+    keyPair: { publicKey: Buffer; secretKey: Buffer };
     dht: DHT;
     listen(): Promise<void>;
     destroy(): Promise<void>;

@@ -11,9 +11,7 @@ module.exports = defineConfig([
     plugins: { "@typescript-eslint": typescriptEslint },
     languageOptions: {
       parser: typescriptParser,
-      parserOptions: {
-        project: "./tsconfig.json",
-      },
+      parserOptions: { project: "./tsconfig.json" },
     },
     rules: {
       "@typescript-eslint/array-type": ["error", { default: "generic" }],

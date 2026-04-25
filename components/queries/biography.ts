@@ -6,10 +6,7 @@ import { contactList } from "./contacts";
 import { maxBy } from "./helpers";
 
 const BioLocationSchema = z
-  .object({
-    latitude: z.number(),
-    longitude: z.number(),
-  })
+  .object({ latitude: z.number(), longitude: z.number() })
   .optional();
 
 export const BiographyUpdateSchema = z.object({
@@ -53,10 +50,7 @@ export function biographyLatest({ accountId }: { accountId: AccountId }) {
       .filter((update) => update.accountId === accountId);
     if (updates.length) {
       const latestUpdate = maxBy(updates, (update) => update.timestamp);
-      return {
-        location: latestUpdate.location,
-        content: latestUpdate.content,
-      };
+      return { location: latestUpdate.location, content: latestUpdate.content };
     }
   };
 }

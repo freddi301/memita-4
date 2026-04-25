@@ -44,12 +44,7 @@ export function GroupScreen({
 
   return (
     <Fragment>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
+      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <ScreenLink
           to={
             !canSave && groupId ? (
@@ -83,10 +78,7 @@ export function GroupScreen({
             }
             icon="trash"
             hideLabel
-            label={translate({
-              en: "Delete contact",
-              it: "Elimina contatto",
-            })}
+            label={translate({ en: "Delete contact", it: "Elimina contatto" })}
           />
           <ScreenLink
             to={
@@ -98,10 +90,7 @@ export function GroupScreen({
             }
             icon="undo"
             hideLabel
-            label={translate({
-              en: "Discard changes",
-              it: "Scarta modifiche",
-            })}
+            label={translate({ en: "Discard changes", it: "Scarta modifiche" })}
           />
           <ScreenLink
             to={
@@ -135,14 +124,8 @@ export function GroupScreen({
             hideLabel
             label={
               groupId
-                ? translate({
-                    en: "Save changes",
-                    it: "Salva modifiche",
-                  })
-                : translate({
-                    en: "Create contact",
-                    it: "Crea contatto",
-                  })
+                ? translate({ en: "Save changes", it: "Salva modifiche" })
+                : translate({ en: "Create contact", it: "Crea contatto" })
             }
           />
         </View>
@@ -156,10 +139,7 @@ export function GroupScreen({
       >
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
-            {translate({
-              en: "Group id",
-              it: "Id del gruppo",
-            })}
+            {translate({ en: "Group id", it: "Id del gruppo" })}
           </Text>
           {groupId ? (
             <Text style={theme.textStyle}>{groupId}</Text>
@@ -185,10 +165,7 @@ export function GroupScreen({
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
-            {translate({
-              en: "Group name",
-              it: "Nome del gruppo",
-            })}
+            {translate({ en: "Group name", it: "Nome del gruppo" })}
           </Text>
           <TextInput
             value={nameInput}

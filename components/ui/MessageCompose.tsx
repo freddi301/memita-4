@@ -54,13 +54,7 @@ export function MessageCompose({
             >
               <AttachmentPreview file={file} />
               {isSelected && (
-                <View
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    right: 0,
-                  }}
-                >
+                <View style={{ position: "absolute", top: 0, right: 0 }}>
                   <ScreenLink
                     to={async () => {
                       setFiles(files.filter((_, i) => i !== index));
@@ -68,10 +62,7 @@ export function MessageCompose({
                     }}
                     icon="trash"
                     hideLabel
-                    label={translate({
-                      en: "Remove",
-                      it: "Rimuovi",
-                    })}
+                    label={translate({ en: "Remove", it: "Rimuovi" })}
                   />
                 </View>
               )}
@@ -79,12 +70,7 @@ export function MessageCompose({
           );
         })}
       </ScrollView>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "flex-end",
-        }}
-      >
+      <View style={{ flexDirection: "row", alignItems: "flex-end" }}>
         <ScreenLink
           to={async () => {
             // TODO try also with @react-native-documents/picker might work better on android devices
@@ -113,10 +99,7 @@ export function MessageCompose({
           }}
           icon="paperclip"
           hideLabel
-          label={translate({
-            en: "Attach file",
-            it: "Allega file",
-          })}
+          label={translate({ en: "Attach file", it: "Allega file" })}
         />
         <TextInput
           value={text}
@@ -148,10 +131,7 @@ export function MessageCompose({
                 }
                 icon="sticky-note"
                 hideLabel
-                label={translate({
-                  en: "New draft",
-                  it: "Nuova bozza",
-                })}
+                label={translate({ en: "New draft", it: "Nuova bozza" })}
               />
             );
           } else if (toModify.isDraft && text !== toModify.content) {
@@ -167,10 +147,7 @@ export function MessageCompose({
                 }}
                 icon="save"
                 hideLabel
-                label={translate({
-                  en: "Save draft",
-                  it: "Salva bozza",
-                })}
+                label={translate({ en: "Save draft", it: "Salva bozza" })}
               />
             );
           } else if (toModify.isDraft && text === toModify.content) {
@@ -188,10 +165,7 @@ export function MessageCompose({
                 }}
                 icon="send"
                 hideLabel
-                label={translate({
-                  en: "Send message",
-                  it: "Invia messaggio",
-                })}
+                label={translate({ en: "Send message", it: "Invia messaggio" })}
               />
             );
           } else if (!toModify.isDraft) {
@@ -230,10 +204,7 @@ export function MessageCompose({
                 }}
                 icon="trash"
                 hideLabel
-                label={translate({
-                  en: "Delete",
-                  it: "Elimina",
-                })}
+                label={translate({ en: "Delete", it: "Elimina" })}
               />
             );
           } else {

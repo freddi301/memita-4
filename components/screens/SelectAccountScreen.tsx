@@ -28,12 +28,7 @@ export function SelectAccountScreen() {
 
   return (
     <Fragment>
-      <View
-        style={{
-          justifyContent: "flex-end",
-          flexDirection: "row",
-        }}
-      >
+      <View style={{ justifyContent: "flex-end", flexDirection: "row" }}>
         <ScreenLink
           to={<AccountScreen />}
           icon="plus"
@@ -81,10 +76,7 @@ export function SelectAccountScreen() {
             })}
           </Text>
         }
-        style={{
-          flex: 1,
-          paddingVertical: 8,
-        }}
+        style={{ flex: 1, paddingVertical: 8 }}
         contentContainerStyle={{ flexGrow: 1, justifyContent: "flex-end" }}
         refreshing={false}
         onRefresh={refreshMemitaQueries}

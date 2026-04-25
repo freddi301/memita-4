@@ -70,10 +70,7 @@ export function DateTimeInput({
         }}
         icon="calendar"
         hideLabel
-        label={translate({
-          en: "Edit date",
-          it: "Modifica data",
-        })}
+        label={translate({ en: "Edit date", it: "Modifica data" })}
       />
       <ScreenLink
         to={async () => {
@@ -81,10 +78,7 @@ export function DateTimeInput({
         }}
         icon="clock-o"
         hideLabel
-        label={translate({
-          en: "Edit time",
-          it: "Modifica ora",
-        })}
+        label={translate({ en: "Edit time", it: "Modifica ora" })}
       />
       <ScreenLink
         to={async () => {
@@ -92,10 +86,7 @@ export function DateTimeInput({
         }}
         icon="close"
         hideLabel
-        label={translate({
-          en: "Clear date",
-          it: "Cancella data",
-        })}
+        label={translate({ en: "Clear date", it: "Cancella data" })}
       />
       {show && (
         <DateTimePicker

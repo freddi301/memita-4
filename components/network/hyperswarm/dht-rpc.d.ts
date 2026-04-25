@@ -5,7 +5,5 @@ declare module "dht-rpc" {
     addNode(node: { host: string; port: number }): void;
     static bootstrapper(port: number, host: string): DHT;
   }
-  type Options = {
-    nodes: Array<{ host: string; port: number }>;
-  };
+  type Options = { nodes: Array<{ host: string; port: number }> };
 }

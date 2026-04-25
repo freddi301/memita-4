@@ -31,9 +31,7 @@ export async function triggerNotification() {
     if (!alreadyPresent) {
       await Notifications.scheduleNotificationAsync({
         identifier,
-        content: {
-          title: "Memita",
-        },
+        content: { title: "Memita" },
         trigger: null,
       });
     }

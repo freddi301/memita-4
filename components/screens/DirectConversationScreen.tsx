@@ -69,9 +69,7 @@ export function DirectConversationScreen({
 
   const [toolbarState, setToolbarState] = useState<
     { type: "search"; text: string } | { type: "didRead" }
-  >({
-    type: "didRead",
-  });
+  >({ type: "didRead" });
 
   const [currentViewingMessageId, setCurrentViewingMessageId] = useState<
     | { senderId: AccountId; receiverId: AccountId; createdAt: Timestamp }
@@ -148,18 +146,13 @@ export function DirectConversationScreen({
           to={<DirectMessagesScreen accountId={accountId} />}
           icon="arrow-left"
           hideLabel
-          label={translate({
-            en: "Go to messages",
-            it: "Vai ai messaggi",
-          })}
+          label={translate({ en: "Go to messages", it: "Vai ai messaggi" })}
         />
         <ScreenLink
           to={<ProfileScreen accountId={accountId} contactId={contactId} />}
           icon="user"
           label={contact?.name ?? ""}
-          styleOverride={{
-            flexGrow1: true,
-          }}
+          styleOverride={{ flexGrow1: true }}
         />
       </View>
       <FlatList
@@ -187,9 +180,7 @@ export function DirectConversationScreen({
           },
           [],
         )}
-        viewabilityConfig={{
-          itemVisiblePercentThreshold: 100,
-        }}
+        viewabilityConfig={{ itemVisiblePercentThreshold: 100 }}
         style={{ flex: 1, backgroundColor: theme.backgroundBackColor }}
         contentContainerStyle={{
           flexGrow: 1,
@@ -312,10 +303,7 @@ export function DirectConversationScreen({
               margin: 16,
             }}
           >
-            {translate({
-              en: "No messages",
-              it: "Nessun messagio",
-            })}
+            {translate({ en: "No messages", it: "Nessun messagio" })}
           </Text>
         )}
       />
@@ -339,10 +327,7 @@ export function DirectConversationScreen({
                   }}
                   icon="eye"
                   hideLabel
-                  label={translate({
-                    en: "Search",
-                    it: "Cerca",
-                  })}
+                  label={translate({ en: "Search", it: "Cerca" })}
                 />
                 <View style={{ flexGrow: 1 }} />
                 <ScreenLink
@@ -355,9 +340,7 @@ export function DirectConversationScreen({
                     );
                     if (previous >= 0) {
                       return async () => {
-                        setToolbarState({
-                          type: "didRead",
-                        });
+                        setToolbarState({ type: "didRead" });
                         flatListRef.current?.scrollToIndex({
                           index: previous,
                           viewPosition: 1.0,
@@ -427,9 +410,7 @@ export function DirectConversationScreen({
                     );
                     if (next >= 0) {
                       return async () => {
-                        setToolbarState({
-                          type: "didRead",
-                        });
+                        setToolbarState({ type: "didRead" });
                         flatListRef.current?.scrollToIndex({
                           index: next,
                           viewPosition: 1.0,
@@ -476,10 +457,7 @@ export function DirectConversationScreen({
                   }}
                   value={toolbarState.text}
                   onChangeText={(text) =>
-                    setToolbarState({
-                      type: "search",
-                      text,
-                    })
+                    setToolbarState({ type: "search", text })
                   }
                 />
                 <ScreenLink

@@ -41,9 +41,7 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
                   contactId={item.contactId}
                 />
               }
-              styleOverride={{
-                flexGrow1: true,
-              }}
+              styleOverride={{ flexGrow1: true }}
             >
               <View
                 style={{
@@ -93,16 +91,8 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
         style={{ flex: 1, marginVertical: 8 }}
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={() => (
-          <Text
-            style={{
-              ...theme.secondaryTextStyle,
-              textAlign: "center",
-            }}
-          >
-            {translate({
-              en: "No messages",
-              it: "Nessun messagio",
-            })}
+          <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
+            {translate({ en: "No messages", it: "Nessun messagio" })}
           </Text>
         )}
         refreshing={false}

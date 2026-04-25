@@ -35,10 +35,9 @@ export function ProfileScreen({
   const theme = useTheme();
   const { translate } = useTranslate();
 
-  const contact = useMemitaQuery(contactLatest, {
-    accountId,
-    contactId,
-  }) ?? { name: "" };
+  const contact = useMemitaQuery(contactLatest, { accountId, contactId }) ?? {
+    name: "",
+  };
 
   const biography = useMemitaQuery(biographyLatest, {
     accountId: contactId,
@@ -85,17 +84,12 @@ export function ProfileScreen({
                 }),
               );
             } else {
-              await Share.share({
-                message: contactId,
-              });
+              await Share.share({ message: contactId });
             }
           }}
           icon="share-alt"
           hideLabel
-          label={translate({
-            en: "Share profile",
-            it: "Condividi profilo",
-          })}
+          label={translate({ en: "Share profile", it: "Condividi profilo" })}
         />
         {contactId === accountId && (
           <Fragment>
@@ -131,14 +125,8 @@ export function ProfileScreen({
               hideLabel
               label={
                 contactId
-                  ? translate({
-                      en: "Save changes",
-                      it: "Salva modifiche",
-                    })
-                  : translate({
-                      en: "Create contact",
-                      it: "Crea contatto",
-                    })
+                  ? translate({ en: "Save changes", it: "Salva modifiche" })
+                  : translate({ en: "Create contact", it: "Crea contatto" })
               }
             />
           </Fragment>
@@ -153,37 +141,23 @@ export function ProfileScreen({
       >
         <View style={{ gap: 2, paddingVertical: 8 }}>
           <Text style={{ ...theme.secondaryTextStyle, paddingHorizontal: 16 }}>
-            {translate({
-              en: "Location",
-              it: "Posizione",
-            })}
+            {translate({ en: "Location", it: "Posizione" })}
           </Text>
           <CoordsInput value={locationInput} onChange={setLocationInput} />
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
-            {translate({
-              en: "Biography",
-              it: "Biografia",
-            })}
+            {translate({ en: "Biography", it: "Biografia" })}
           </Text>
           {contactId === accountId ? (
             <TextInput
               value={bioInput}
               onChangeText={setBioInput}
-              style={{
-                ...theme.textInputStyle,
-                maxHeight: "100%",
-              }}
+              style={{ ...theme.textInputStyle, maxHeight: "100%" }}
               multiline
             />
           ) : (
-            <Text
-              style={{
-                ...theme.textStyle,
-                paddingHorizontal: 16,
-              }}
-            >
+            <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
               {biography.content}
             </Text>
           )}

@@ -25,10 +25,9 @@ export function ContactScreen({
   const { translate } = useTranslate();
   const theme = useTheme();
 
-  const latest = useMemitaQuery(contactLatest, {
-    accountId,
-    contactId,
-  }) ?? { name: "" };
+  const latest = useMemitaQuery(contactLatest, { accountId, contactId }) ?? {
+    name: "",
+  };
 
   const update = useMemitaMutation(updateContact);
 
@@ -47,12 +46,7 @@ export function ContactScreen({
 
   return (
     <Fragment>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "flex-end",
-        }}
-      >
+      <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
         <ScreenLink
           to={
             !canSave && contactId !== undefined
@@ -69,10 +63,7 @@ export function ContactScreen({
           }
           icon="trash"
           hideLabel
-          label={translate({
-            en: "Delete contact",
-            it: "Elimina contatto",
-          })}
+          label={translate({ en: "Delete contact", it: "Elimina contatto" })}
         />
         <ScreenLink
           to={
@@ -84,10 +75,7 @@ export function ContactScreen({
           }
           icon="undo"
           hideLabel
-          label={translate({
-            en: "Discard changes",
-            it: "Scarta modifiche",
-          })}
+          label={translate({ en: "Discard changes", it: "Scarta modifiche" })}
         />
         <ScreenLink
           to={
@@ -121,14 +109,8 @@ export function ContactScreen({
           hideLabel
           label={
             contactId
-              ? translate({
-                  en: "Save changes",
-                  it: "Salva modifiche",
-                })
-              : translate({
-                  en: "Create contact",
-                  it: "Crea contatto",
-                })
+              ? translate({ en: "Save changes", it: "Salva modifiche" })
+              : translate({ en: "Create contact", it: "Crea contatto" })
           }
         />
       </View>
@@ -170,10 +152,7 @@ export function ContactScreen({
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>
-            {translate({
-              en: "Contact name",
-              it: "Nome del contatto",
-            })}
+            {translate({ en: "Contact name", it: "Nome del contatto" })}
           </Text>
           <TextInput
             value={nameInput}
@@ -201,10 +180,7 @@ export function ContactScreen({
             />
           ) : undefined
         }
-        label={translate({
-          en: "Direct messages",
-          it: "Messaggi diretti",
-        })}
+        label={translate({ en: "Direct messages", it: "Messaggi diretti" })}
       />
       <ScreenLink
         to={
@@ -212,10 +188,7 @@ export function ContactScreen({
             <ProfileScreen accountId={accountId} contactId={contactId} />
           ) : undefined
         }
-        label={translate({
-          en: "Profile",
-          it: "Profilo",
-        })}
+        label={translate({ en: "Profile", it: "Profilo" })}
       />
     </Fragment>
   );

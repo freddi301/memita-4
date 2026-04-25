@@ -45,10 +45,7 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
                   />
                 }
                 label={item.contactName}
-                styleOverride={{
-                  flexGrow1: true,
-                  hasPadding: false,
-                }}
+                styleOverride={{ flexGrow1: true, hasPadding: false }}
               />
               {item.contactId === accountId ? (
                 <ScreenLink
@@ -64,9 +61,7 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
                     en: "Edit article",
                     it: "Modifica articolo",
                   })}
-                  styleOverride={{
-                    hasPadding: false,
-                  }}
+                  styleOverride={{ hasPadding: false }}
                 />
               ) : null}
               <Text style={{ ...theme.secondaryTextStyle }}>
@@ -74,12 +69,7 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
               </Text>
             </View>
             {item.date && (
-              <View
-                style={{
-                  flexDirection: "row",
-                  gap: 8,
-                }}
-              >
+              <View style={{ flexDirection: "row", gap: 8 }}>
                 <FontAwesome
                   name="calendar"
                   color={theme.secondaryTextStyle.color}
@@ -99,16 +89,8 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
         style={{ flex: 1, marginVertical: 8 }}
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={() => (
-          <Text
-            style={{
-              ...theme.secondaryTextStyle,
-              textAlign: "center",
-            }}
-          >
-            {translate({
-              en: "No articles",
-              it: "Nessun articolo",
-            })}
+          <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
+            {translate({ en: "No articles", it: "Nessun articolo" })}
           </Text>
         )}
       />

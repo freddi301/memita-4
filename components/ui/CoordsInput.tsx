@@ -41,10 +41,7 @@ export function CoordsInput({
           }}
           icon="map"
           hideLabel
-          label={translate({
-            en: "Show on map",
-            it: "Mostra sulla mappa",
-          })}
+          label={translate({ en: "Show on map", it: "Mostra sulla mappa" })}
         />
       </View>
       {showMap && (

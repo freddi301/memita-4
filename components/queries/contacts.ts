@@ -50,10 +50,7 @@ export function contactList({ accountId }: { accountId: AccountId }) {
       (updates) => maxBy(updates, (update) => update.timestamp),
     )
       .filter((update) => !update.deleted)
-      .map((update) => ({
-        contactId: update.contactId,
-        name: update.name,
-      }));
+      .map((update) => ({ contactId: update.contactId, name: update.name }));
   };
 }
 

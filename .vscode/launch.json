@@ -12,9 +12,7 @@
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/tsx",
       "program": "${workspaceFolder}/node/index.ts",
       "sourceMaps": true,
-      "env": {
-        "NODE_ENV": "development"
-      }
+      "env": { "NODE_ENV": "development" }
     }
   ]
 }
