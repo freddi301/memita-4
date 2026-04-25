@@ -123,11 +123,13 @@ export function ScreenLink({
   to,
   label,
   icon,
+  color,
   hideLabel,
   children,
   styleOverride: { flexGrow1 = false, hasPadding = true } = {},
 }: {
   to: ReactNode | (() => Promise<ReactNode | void>);
+  color?: string;
   styleOverride?: {
     flexGrow1?: boolean;
     hasPadding?: boolean;
@@ -151,7 +153,9 @@ export function ScreenLink({
   const [isPressing, setIsPressing] = useState(false);
   const [isPerforming, setIsPerforming] = useState(false);
   const textColor =
-    isPending || !to ? theme.secondaryTextColor : theme.linkTextColor;
+    isPending || !to
+      ? theme.secondaryTextColor
+      : (color ?? theme.linkTextColor);
   const isCurrentScreen =
     typeof to !== "function" ? compareScreens(to, current.element) : false;
   const shouldHavePadding = children ? false : hasPadding;

@@ -1,6 +1,19 @@
 import { FontAwesome } from "@expo/vector-icons";
-import { Fragment, useLayoutEffect, useRef, useState } from "react";
-import { FlatList, Pressable, Text, TextInput, View } from "react-native";
+import {
+  Fragment,
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+import {
+  FlatList,
+  Pressable,
+  Text,
+  TextInput,
+  View,
+  ViewToken,
+} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { AccountId } from "../cryptography/cryptography";
 import { accountLatest } from "../queries/accounts";
@@ -54,28 +67,73 @@ export function DirectConversationScreen({
       }
   >();
 
-  const flatListRef = useRef<FlatList<(typeof conversation)[number]>>(null);
-
-  // TODO make this more stable in case of messages did change while off screen
-  // maybe save visible message id (not index)
-  // maybe save to disk
-  const lastScrollOffsetRef = useRef<number>(0);
-  useLayoutEffect(() => {
-    flatListRef.current?.scrollToOffset({
-      offset: lastScrollOffsetRef.current,
-      animated: false,
-    });
-  }, []);
-
   const [toolbarState, setToolbarState] = useState<
-    | { type: "search"; text: string; currentIndex: number }
-    | { type: "didRead"; currentIndex: number }
+    { type: "search"; text: string } | { type: "didRead" }
   >({
     type: "didRead",
-    currentIndex: conversation.findIndex(
-      (item) => item.receiverId === accountId && !item.didRead,
-    ),
   });
+
+  const [currentViewingMessageId, setCurrentViewingMessageId] = useState<
+    | { senderId: AccountId; receiverId: AccountId; createdAt: Timestamp }
+    | undefined
+  >(conversation.at(-1));
+  const currentViewingMessageIndex = conversation.findIndex(
+    (item) =>
+      item.createdAt === currentViewingMessageId?.createdAt &&
+      item.senderId === currentViewingMessageId?.senderId &&
+      item.receiverId === currentViewingMessageId?.receiverId,
+  );
+
+  const flatListRef = useRef<FlatList<(typeof conversation)[number]>>(null);
+
+  const [flatListHeight, setFlatListHeight] = useState(0);
+
+  const itemVerticalMarginHalf = 3;
+  const itemVerticalPaddingHalf = 5;
+  const itemVerticalBorderWidth = 2;
+  const itemAttachementHeight = 100;
+  const getItemHeight = (item: (typeof conversation)[number]) => {
+    return (
+      itemVerticalMarginHalf * 2 +
+      itemVerticalPaddingHalf * 2 +
+      itemVerticalBorderWidth * 2 +
+      +theme.textStyle.lineHeight + // contact name
+      theme.textStyle.lineHeight * item.content.split("\n").length +
+      (item.attachments.length > 0 ? itemAttachementHeight : 0)
+    );
+  };
+  const firstItemHeight = conversation[0] ? getItemHeight(conversation[0]) : 0;
+  const initialEmptySpaceHeight =
+    flatListHeight - itemVerticalMarginHalf * 2 - firstItemHeight;
+  const conversationItemLayouts = conversation.reduce(
+    ({ offset, layouts }, item, index) => {
+      const length = getItemHeight(item);
+      layouts.push({ length, offset, index });
+      return { offset: offset + length, layouts };
+    },
+    {
+      offset: initialEmptySpaceHeight,
+      layouts: [] as Array<{ length: number; offset: number; index: number }>,
+    },
+  ).layouts;
+
+  // TODO maybe save permanently current viewing by converstaion on device
+
+  // restore scroll position on mount
+  useLayoutEffect(() => {
+    flatListRef.current?.scrollToIndex({
+      index:
+        conversation.findIndex(
+          (item) =>
+            item.createdAt === currentViewingMessageId?.createdAt &&
+            item.senderId === currentViewingMessageId?.senderId &&
+            item.receiverId === currentViewingMessageId?.receiverId,
+        ) ?? 0,
+      animated: false,
+      viewPosition: 1.0,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Fragment>
@@ -107,28 +165,44 @@ export function DirectConversationScreen({
       <FlatList
         ref={flatListRef}
         data={conversation}
-        onScroll={(event) => {
-          lastScrollOffsetRef.current = event.nativeEvent.contentOffset.y;
+        onLayout={(event) => {
+          setFlatListHeight(event.nativeEvent.layout.height);
         }}
-        getItemLayout={(data, index) => {
-          // this is needed for scrollToIndex to work properly
-          // for now this magic number works
-          return {
-            length: 36,
-            offset: index * (36 + 8),
-            index,
-          };
+        getItemLayout={(data, index) => conversationItemLayouts[index]!}
+        onViewableItemsChanged={useCallback(
+          ({
+            viewableItems,
+          }: {
+            viewableItems: Array<ViewToken<(typeof conversation)[number]>>;
+            changed: Array<ViewToken<(typeof conversation)[number]>>;
+          }) => {
+            const currentItem = viewableItems.at(-1)?.item;
+            if (currentItem) {
+              setCurrentViewingMessageId({
+                senderId: currentItem.senderId,
+                receiverId: currentItem.receiverId,
+                createdAt: currentItem.createdAt,
+              });
+            }
+          },
+          [],
+        )}
+        viewabilityConfig={{
+          itemVisiblePercentThreshold: 100,
+        }}
+        style={{ flex: 1, backgroundColor: theme.backgroundBackColor }}
+        contentContainerStyle={{
+          flexGrow: 1,
+          paddingTop: initialEmptySpaceHeight,
+          paddingBottom: itemVerticalPaddingHalf,
+          paddingHorizontal: 7,
         }}
         renderItem={({ item, index }) => {
-          const isCurrentSearchOccurrence =
-            toolbarState.type === "search" &&
-            toolbarState.text.length > 0 &&
-            toolbarState.currentIndex === index;
-          const isCurrentDidReadOccurrence =
-            toolbarState.type === "didRead" &&
-            toolbarState.currentIndex === index &&
-            item.receiverId === accountId &&
-            !item.didRead;
+          const isCurrentViewingMessage =
+            currentViewingMessageId &&
+            item.createdAt === currentViewingMessageId.createdAt &&
+            item.senderId === currentViewingMessageId.senderId &&
+            item.receiverId === currentViewingMessageId.receiverId;
           return (
             <Pressable
               onLongPress={() => {
@@ -152,16 +226,14 @@ export function DirectConversationScreen({
                     : theme.backgroundColor,
                 borderRadius: 8,
                 paddingHorizontal: 7,
-                paddingVertical: 5,
-                marginVertical: 3,
+                paddingVertical: itemVerticalPaddingHalf,
+                marginVertical: itemVerticalMarginHalf,
                 overflow: "hidden",
-                borderWidth: 2,
-                // TODO add search and didRead color to theme colors
-                borderColor: isCurrentSearchOccurrence
-                  ? "lightgreen"
-                  : isCurrentDidReadOccurrence
-                    ? theme.linkTextColor
-                    : theme.backgroundBackColor,
+                borderWidth: itemVerticalBorderWidth,
+                // TODO add search and current viewing message color to theme colors
+                borderColor: isCurrentViewingMessage
+                  ? "purple"
+                  : theme.backgroundBackColor,
               }}
             >
               <View style={{ flexDirection: "row", gap: 8 }}>
@@ -232,12 +304,6 @@ export function DirectConversationScreen({
             </Pressable>
           );
         }}
-        style={{ flex: 1, backgroundColor: theme.backgroundBackColor }}
-        contentContainerStyle={{
-          flexGrow: 1,
-          paddingVertical: 5,
-          paddingHorizontal: 7,
-        }}
         ListEmptyComponent={() => (
           <Text
             style={{
@@ -269,11 +335,7 @@ export function DirectConversationScreen({
               >
                 <ScreenLink
                   to={async () => {
-                    setToolbarState({
-                      type: "search",
-                      text: "",
-                      currentIndex: 0,
-                    });
+                    setToolbarState({ type: "search", text: "" });
                   }}
                   icon="eye"
                   hideLabel
@@ -287,7 +349,7 @@ export function DirectConversationScreen({
                   to={(() => {
                     const previous = conversation.findLastIndex(
                       (item, i) =>
-                        i < toolbarState.currentIndex &&
+                        i < currentViewingMessageIndex &&
                         item.didRead === false &&
                         item.receiverId === accountId,
                     );
@@ -295,10 +357,10 @@ export function DirectConversationScreen({
                       return async () => {
                         setToolbarState({
                           type: "didRead",
-                          currentIndex: previous,
                         });
                         flatListRef.current?.scrollToIndex({
                           index: previous,
+                          viewPosition: 1.0,
                         });
                       };
                     }
@@ -312,32 +374,30 @@ export function DirectConversationScreen({
                 />
                 <ScreenLink
                   to={(() => {
-                    const current = conversation[toolbarState.currentIndex];
-                    if (
-                      current &&
-                      !current.didRead &&
-                      current.receiverId === accountId
-                    ) {
+                    const current = conversation[currentViewingMessageIndex];
+                    if (current && current.receiverId === accountId) {
                       return async () => {
                         await didRead({
                           senderId: current.senderId,
                           receiverId: current.receiverId,
                           createdAt: current.createdAt,
-                          didRead: true,
+                          didRead: !current.didRead,
                         });
                         const next = conversation.findIndex(
                           (item, i) =>
-                            i > toolbarState.currentIndex &&
+                            i > currentViewingMessageIndex &&
                             item.didRead === false &&
                             item.receiverId === accountId,
                         );
-                        if (next >= 0) {
-                          setToolbarState({
-                            type: "didRead",
-                            currentIndex: next,
-                          });
+                        if (
+                          next >= 0 &&
+                          next === currentViewingMessageIndex + 1 &&
+                          current.didRead === false
+                        ) {
+                          setToolbarState({ type: "didRead" });
                           flatListRef.current?.scrollToIndex({
                             index: next,
+                            viewPosition: 1.0,
                           });
                         }
                       };
@@ -349,12 +409,19 @@ export function DirectConversationScreen({
                     en: "Mark as read",
                     it: "Segna come letto",
                   })}
+                  color={
+                    conversation[currentViewingMessageIndex]
+                      ? conversation[currentViewingMessageIndex].didRead
+                        ? "orange"
+                        : theme.linkTextColor
+                      : theme.secondaryTextColor
+                  }
                 />
                 <ScreenLink
                   to={(() => {
                     const next = conversation.findIndex(
                       (item, i) =>
-                        i > toolbarState.currentIndex &&
+                        i > currentViewingMessageIndex &&
                         item.didRead === false &&
                         item.receiverId === accountId,
                     );
@@ -362,10 +429,10 @@ export function DirectConversationScreen({
                       return async () => {
                         setToolbarState({
                           type: "didRead",
-                          currentIndex: next,
                         });
                         flatListRef.current?.scrollToIndex({
                           index: next,
+                          viewPosition: 1.0,
                         });
                       };
                     }
@@ -392,7 +459,7 @@ export function DirectConversationScreen({
               >
                 <ScreenLink
                   to={async () => {
-                    setToolbarState({ type: "didRead", currentIndex: 0 });
+                    setToolbarState({ type: "didRead" });
                   }}
                   icon="search"
                   hideLabel
@@ -412,7 +479,6 @@ export function DirectConversationScreen({
                     setToolbarState({
                       type: "search",
                       text,
-                      currentIndex: toolbarState.currentIndex,
                     })
                   }
                 />
@@ -420,7 +486,7 @@ export function DirectConversationScreen({
                   to={(() => {
                     const previous = conversation.findLastIndex(
                       (item, i) =>
-                        i < toolbarState.currentIndex &&
+                        i < currentViewingMessageIndex &&
                         item.content
                           .toLowerCase()
                           .includes(toolbarState.text.toLowerCase()),
@@ -430,10 +496,10 @@ export function DirectConversationScreen({
                         setToolbarState({
                           type: "search",
                           text: toolbarState.text,
-                          currentIndex: previous,
                         });
                         flatListRef.current?.scrollToIndex({
                           index: previous,
+                          viewPosition: 1.0,
                         });
                       };
                     }
@@ -449,7 +515,7 @@ export function DirectConversationScreen({
                   to={(() => {
                     const next = conversation.findIndex(
                       (item, i) =>
-                        i > toolbarState.currentIndex &&
+                        i > currentViewingMessageIndex &&
                         item.content
                           .toLowerCase()
                           .includes(toolbarState.text.toLowerCase()),
@@ -459,10 +525,10 @@ export function DirectConversationScreen({
                         setToolbarState({
                           type: "search",
                           text: toolbarState.text,
-                          currentIndex: next,
                         });
                         flatListRef.current?.scrollToIndex({
                           index: next,
+                          viewPosition: 1.0,
                         });
                       };
                     }
