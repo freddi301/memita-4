@@ -3,7 +3,6 @@ import {
   useMutation,
   useSuspenseQuery,
 } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 import { Platform } from "react-native";
 import { AccountIdSchema } from "../cryptography/cryptography";
 import { bareNetworkFactory } from "../network/networkBare";
@@ -12,6 +11,7 @@ import { triggerNotification } from "../notifications";
 import { updateContact } from "../queries/contacts";
 import { StoreItem, StoreItemSchema } from "../queries/Queries";
 import { shouldSend } from "../queries/shouldSend";
+import { useCurrentScreenForceSuspend } from "../Routing";
 import { localStorageFactory } from "./localStorage";
 import { makeStore } from "./store";
 
@@ -48,7 +48,7 @@ async function cleanLocalStorage() {
     await storage.add(item);
   }
 }
-void cleanLocalStorage();
+// void cleanLocalStorage();
 
 export const store = makeStore<StoreItem>({
   parse: StoreItemSchema.parse,
@@ -70,19 +70,19 @@ export const queryClient = new QueryClient({
     queries: {
       staleTime: 0,
       refetchOnMount: "always",
-      gcTime: 0,
     },
   },
 });
-
 export function useMemitaQuery<Params, Result>(
   queryFactory: (params: Params) => (all: Array<StoreItem>) => Result,
   params: Params,
 ): Result {
+  const forceSuspend = useCurrentScreenForceSuspend();
   return useSuspenseQuery(
     {
-      queryKey: [queryFactory.name, params],
+      queryKey: [forceSuspend, queryFactory.name, params],
       async queryFn(): Promise<Result> {
+        await new Promise((resolve) => setTimeout(resolve, 500));
         const all = await store.all();
         const result = queryFactory(params)(all);
         if (result === undefined) return null as unknown as Result;
@@ -94,7 +94,7 @@ export function useMemitaQuery<Params, Result>(
 }
 
 export async function refreshMemitaQueries() {
-  return queryClient.invalidateQueries();
+  await queryClient.invalidateQueries();
 }
 
 export function useMemitaMutation<Params>(
@@ -105,6 +105,7 @@ export function useMemitaMutation<Params>(
   return useMutation(
     {
       async mutationFn(params: Params) {
+        await new Promise((resolve) => setTimeout(resolve, 500));
         const all = await store.all();
         const newItems = mutationFactory(params)(all);
         for (const item of newItems) {
@@ -117,19 +118,4 @@ export function useMemitaMutation<Params>(
     },
     queryClient,
   ).mutateAsync;
-}
-
-// TODO remove this somehow
-export function useMemitaSubscription() {
-  const [, setForceRerender] = useState(0);
-  useEffect(() => {
-    const callback = () => {
-      void refreshMemitaQueries();
-      setForceRerender((prev) => prev + 1);
-    };
-    subscriptions.add(callback);
-    return () => {
-      subscriptions.delete(callback);
-    };
-  }, []);
 }

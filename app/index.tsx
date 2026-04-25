@@ -3,7 +3,7 @@ import "react-native-get-random-values";
 import { useEffect } from "react";
 import { patchFlatListProps } from "react-native-web-refresh-control";
 import { registerForPushNotificationsAsync } from "../components/notifications";
-import { RouterProvider } from "../components/Routing";
+import { RouterRoot } from "../components/Routing";
 import { SelectAccountScreen } from "../components/screens/SelectAccountScreen";
 
 patchFlatListProps();
@@ -12,5 +12,5 @@ export default function Index() {
   useEffect(() => {
     void registerForPushNotificationsAsync();
   }, []);
-  return <RouterProvider initial={<SelectAccountScreen />} />;
+  return <RouterRoot initial={<SelectAccountScreen />} />;
 }

@@ -1,6 +1,6 @@
 import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Platform, Pressable, ScrollView, TextInput, View } from "react-native";
 import { ScreenLink } from "../Routing";
 import { ContentAddress, storeFile } from "../store/fileStore";
@@ -27,7 +27,9 @@ export function MessageCompose({
   const { translate } = useTranslate();
 
   const [text, setText] = useState("");
-  useLayoutEffect(() => {
+  useEffect(() => {
+    // TODO fix, it resets textarea content when navigatin away and then back in
+    // maybe fix skippable when implementing properunsaved work managment
     setText(toModify?.content ?? "");
   }, [toModify?.content]);
 

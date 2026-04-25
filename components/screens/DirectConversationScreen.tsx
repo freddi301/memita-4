@@ -1,5 +1,5 @@
 import { FontAwesome } from "@expo/vector-icons";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useLayoutEffect, useRef, useState } from "react";
 import { FlatList, Pressable, Text, TextInput, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { AccountId } from "../cryptography/cryptography";
@@ -12,11 +12,7 @@ import {
 } from "../queries/directMessages";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import { ScreenLink } from "../Routing";
-import {
-  useMemitaMutation,
-  useMemitaQuery,
-  useMemitaSubscription,
-} from "../store/dataApi";
+import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { ContentAddress } from "../store/fileStore";
 import { useTheme } from "../Theme";
 import { useTranslate } from "../Translate";
@@ -58,9 +54,18 @@ export function DirectConversationScreen({
       }
   >();
 
-  useMemitaSubscription();
-
   const flatListRef = useRef<FlatList<(typeof conversation)[number]>>(null);
+
+  // TODO make this more stable in case of messages did change while off screen
+  // maybe save visible message id (not index)
+  // maybe save to disk
+  const lastScrollOffsetRef = useRef<number>(0);
+  useLayoutEffect(() => {
+    flatListRef.current?.scrollToOffset({
+      offset: lastScrollOffsetRef.current,
+      animated: false,
+    });
+  }, []);
 
   const [toolbarState, setToolbarState] = useState<
     | { type: "search"; text: string; currentIndex: number }
@@ -102,6 +107,9 @@ export function DirectConversationScreen({
       <FlatList
         ref={flatListRef}
         data={conversation}
+        onScroll={(event) => {
+          lastScrollOffsetRef.current = event.nativeEvent.contentOffset.y;
+        }}
         getItemLayout={(data, index) => {
           // this is needed for scrollToIndex to work properly
           // for now this magic number works
@@ -510,22 +518,24 @@ export function DirectConversationScreen({
           } else if (toModifyMessage && toModifyMessage.isDraft && !isDraft) {
             // publish draft
             const createdAt = nowTimestamp();
-            await update({
-              createdAt: createdAt,
-              senderId: accountId,
-              receiverId: contactId,
-              isDraft: false,
-              content,
-              attachments,
-            });
-            await update({
-              createdAt: toModifyMessage.createdAt,
-              senderId: accountId,
-              receiverId: contactId,
-              isDraft: true,
-              content: "",
-              attachments: [],
-            });
+            await Promise.all([
+              update({
+                createdAt: createdAt,
+                senderId: accountId,
+                receiverId: contactId,
+                isDraft: false,
+                content,
+                attachments,
+              }),
+              update({
+                createdAt: toModifyMessage.createdAt,
+                senderId: accountId,
+                receiverId: contactId,
+                isDraft: true,
+                content: "",
+                attachments: [],
+              }),
+            ]);
             setToModifyMessage(undefined);
           } else if (toModifyMessage && !toModifyMessage.isDraft && !isDraft) {
             // update message
