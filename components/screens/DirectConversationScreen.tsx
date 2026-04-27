@@ -1,4 +1,5 @@
 import { FontAwesome } from "@expo/vector-icons";
+import { useLingui } from "@lingui/react/macro";
 import {
   Fragment,
   useCallback,
@@ -28,7 +29,6 @@ import { ScreenLink } from "../Routing";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { ContentAddress } from "../store/fileStore";
 import { useTheme } from "../Theme";
-import { useLingui } from "@lingui/react/macro";
 import { AttachmentPreview } from "../ui/AttachmentPreview";
 import { MessageCompose } from "../ui/MessageCompose";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
@@ -119,17 +119,20 @@ export function DirectConversationScreen({
 
   // restore scroll position on mount
   useLayoutEffect(() => {
-    flatListRef.current?.scrollToIndex({
-      index:
-        conversation.findIndex(
-          (item) =>
-            item.createdAt === currentViewingMessageId?.createdAt &&
-            item.senderId === currentViewingMessageId?.senderId &&
-            item.receiverId === currentViewingMessageId?.receiverId,
-        ) ?? 0,
-      animated: false,
-      viewPosition: 1.0,
-    });
+    const restored = conversation.findIndex(
+      (item) =>
+        item.createdAt === currentViewingMessageId?.createdAt &&
+        item.senderId === currentViewingMessageId?.senderId &&
+        item.receiverId === currentViewingMessageId?.receiverId,
+    );
+    const last = conversation.length - 1;
+    if (conversation.length > 0) {
+      flatListRef.current?.scrollToIndex({
+        index: restored >= 0 ? restored : last,
+        animated: false,
+        viewPosition: 1.0,
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

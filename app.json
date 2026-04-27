@@ -50,6 +50,6 @@
       "expo-web-browser",
       "expo-document-picker"
     ],
-    "experiments": { "typedRoutes": true, "reactCompiler": true }
+    "experiments": { "typedRoutes": false, "reactCompiler": true }
   }
 }

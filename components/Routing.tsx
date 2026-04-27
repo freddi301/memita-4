@@ -175,6 +175,7 @@ export function ScreenLink({
       style={{
         paddingVertical: shouldHavePadding ? 8 : 0,
         paddingHorizontal: shouldHavePadding ? 16 : 0,
+        // @ts-ignore
         outline: "none",
         backgroundColor:
           isPerforming || isCurrentScreen

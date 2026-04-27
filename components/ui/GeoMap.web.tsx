@@ -2,6 +2,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Map, Marker } from "@vis.gl/react-maplibre";
 import * as ExpoLocation from "expo-location";
 import { isEqual } from "lodash";
+// @ts-ignore
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useState } from "react";
 import { Pressable, View } from "react-native";
