@@ -3,6 +3,7 @@ const { defineConfig } = require("eslint/config");
 const expoConfig = require("eslint-config-expo/flat");
 const typescriptEslint = require("@typescript-eslint/eslint-plugin");
 const typescriptParser = require("@typescript-eslint/parser");
+const pluginLingui = require("eslint-plugin-lingui");
 
 module.exports = defineConfig([
   expoConfig,
@@ -18,4 +19,5 @@ module.exports = defineConfig([
       "@typescript-eslint/no-floating-promises": "error",
     },
   },
+  pluginLingui.configs["flat/recommended"],
 ]);

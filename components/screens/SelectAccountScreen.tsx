@@ -1,3 +1,4 @@
+import { useLingui } from "@lingui/react/macro";
 import { Image } from "expo-image";
 import { Fragment, useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
@@ -13,6 +14,7 @@ import { DirectMessagesScreen } from "./DirectMessagesScreen";
 export function SelectAccountScreen() {
   const theme = useTheme();
   const { translate } = useTranslate();
+  const { t } = useLingui();
 
   const accounts = useMemitaQuery(accountList, {});
 
@@ -50,7 +52,7 @@ export function SelectAccountScreen() {
             fontWeight: "bold",
           }}
         >
-          Memita
+          {t`Memita`}
         </Text>
       </View>
       <FlatList
