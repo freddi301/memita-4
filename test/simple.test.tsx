@@ -1,5 +1,9 @@
-import { expect, test } from "@jest/globals";
+import { render } from "@testing-library/react-native";
+import Main from "../app/index";
 
-test("hehe", () => {
-  expect(true).toBe(true);
+describe("FAKE", () => {
+  test("render on screen", () => {
+    const { getByText } = render(<Main />);
+    expect(getByText("Welcome")).toBeOnTheScreen();
+  });
 });
