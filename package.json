@@ -96,7 +96,10 @@
       "^expo-modules-core(|/.*)$": "<rootDir>/node_modules/expo/node_modules/expo-modules-core$1"
     },
     "transform": {},
-    "transformIgnorePatterns": []
+    "transformIgnorePatterns": [],
+    "setupFiles": [
+      "./jest.setup.js"
+    ]
   },
   "private": true
 }
