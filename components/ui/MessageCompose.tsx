@@ -5,7 +5,7 @@ import { Platform, Pressable, ScrollView, TextInput, View } from "react-native";
 import { ScreenLink } from "../Routing";
 import { ContentAddress, storeFile } from "../store/fileStore";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 import { AttachmentPreview } from "./AttachmentPreview";
 
 // refactor this to DirectMessageCompose and split to smaller files
@@ -24,7 +24,7 @@ export function MessageCompose({
   onUpdate(params: MessageShape): Promise<void>;
 }) {
   const theme = useTheme();
-  const { translate } = useTranslate();
+  const { t } = useLingui();
 
   const [text, setText] = useState("");
   useEffect(() => {
@@ -62,7 +62,7 @@ export function MessageCompose({
                     }}
                     icon="trash"
                     hideLabel
-                    label={translate({ en: "Remove", it: "Rimuovi" })}
+                    label={t`Remove`}
                   />
                 </View>
               )}
@@ -99,7 +99,7 @@ export function MessageCompose({
           }}
           icon="paperclip"
           hideLabel
-          label={translate({ en: "Attach file", it: "Allega file" })}
+          label={t`Attach file`}
         />
         <TextInput
           value={text}
@@ -131,7 +131,7 @@ export function MessageCompose({
                 }
                 icon="sticky-note"
                 hideLabel
-                label={translate({ en: "New draft", it: "Nuova bozza" })}
+                label={t`New draft`}
               />
             );
           } else if (toModify.isDraft && text !== toModify.content) {
@@ -147,7 +147,7 @@ export function MessageCompose({
                 }}
                 icon="save"
                 hideLabel
-                label={translate({ en: "Save draft", it: "Salva bozza" })}
+                label={t`Save draft`}
               />
             );
           } else if (toModify.isDraft && text === toModify.content) {
@@ -165,7 +165,7 @@ export function MessageCompose({
                 }}
                 icon="send"
                 hideLabel
-                label={translate({ en: "Send message", it: "Invia messaggio" })}
+                label={t`Send message`}
               />
             );
           } else if (!toModify.isDraft) {
@@ -185,10 +185,7 @@ export function MessageCompose({
                 }
                 icon="save"
                 hideLabel
-                label={translate({
-                  en: "Modify message",
-                  it: "Modifica messaggio",
-                })}
+                label={t`Modify message`}
               />
             );
           } else if (text === "") {
@@ -204,7 +201,7 @@ export function MessageCompose({
                 }}
                 icon="trash"
                 hideLabel
-                label={translate({ en: "Delete", it: "Elimina" })}
+                label={t`Delete`}
               />
             );
           } else {

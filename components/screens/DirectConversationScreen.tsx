@@ -28,7 +28,7 @@ import { ScreenLink } from "../Routing";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { ContentAddress } from "../store/fileStore";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 import { AttachmentPreview } from "../ui/AttachmentPreview";
 import { MessageCompose } from "../ui/MessageCompose";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
@@ -43,7 +43,7 @@ export function DirectConversationScreen({
   accountId: AccountId;
   contactId: AccountId;
 }) {
-  const { translate } = useTranslate();
+  const { t } = useLingui();
   const theme = useTheme();
 
   const account = useMemitaQuery(accountLatest, { accountId });
@@ -146,7 +146,7 @@ export function DirectConversationScreen({
           to={<DirectMessagesScreen accountId={accountId} />}
           icon="arrow-left"
           hideLabel
-          label={translate({ en: "Go to messages", it: "Vai ai messaggi" })}
+          label={t`Go to messages`}
         />
         <ScreenLink
           to={<ProfileScreen accountId={accountId} contactId={contactId} />}
@@ -303,7 +303,7 @@ export function DirectConversationScreen({
               margin: 16,
             }}
           >
-            {translate({ en: "No messages", it: "Nessun messagio" })}
+            {t`No messages`}
           </Text>
         )}
       />
@@ -327,7 +327,7 @@ export function DirectConversationScreen({
                   }}
                   icon="eye"
                   hideLabel
-                  label={translate({ en: "Search", it: "Cerca" })}
+                  label={t`Search`}
                 />
                 <View style={{ flexGrow: 1 }} />
                 <ScreenLink
@@ -350,10 +350,7 @@ export function DirectConversationScreen({
                   })()}
                   icon="arrow-up"
                   hideLabel
-                  label={translate({
-                    en: "Previous occurrence",
-                    it: "Occorrenza precedente",
-                  })}
+                  label={t`Previous occurrence`}
                 />
                 <ScreenLink
                   to={(() => {
@@ -388,10 +385,7 @@ export function DirectConversationScreen({
                   })()}
                   icon="check"
                   hideLabel
-                  label={translate({
-                    en: "Mark as read",
-                    it: "Segna come letto",
-                  })}
+                  label={t`Mark as read`}
                   color={
                     conversation[currentViewingMessageIndex]
                       ? conversation[currentViewingMessageIndex].didRead
@@ -420,10 +414,7 @@ export function DirectConversationScreen({
                   })()}
                   icon="arrow-down"
                   hideLabel
-                  label={translate({
-                    en: "Next occurrence",
-                    it: "Occorrenza successiva",
-                  })}
+                  label={t`Next occurrence`}
                 />
               </View>
             );
@@ -444,10 +435,7 @@ export function DirectConversationScreen({
                   }}
                   icon="search"
                   hideLabel
-                  label={translate({
-                    en: "Unread messages",
-                    it: "Messaggi non letti",
-                  })}
+                  label={t`Unread messages`}
                 />
                 <TextInput
                   style={{
@@ -484,10 +472,7 @@ export function DirectConversationScreen({
                   })()}
                   icon="arrow-up"
                   hideLabel
-                  label={translate({
-                    en: "Previous occurrence",
-                    it: "Occorrenza precedente",
-                  })}
+                  label={t`Previous occurrence`}
                 />
                 <ScreenLink
                   to={(() => {
@@ -513,10 +498,7 @@ export function DirectConversationScreen({
                   })()}
                   icon="arrow-down"
                   hideLabel
-                  label={translate({
-                    en: "Next occurrence",
-                    it: "Occorrenza successiva",
-                  })}
+                  label={t`Next occurrence`}
                 />
               </View>
             );

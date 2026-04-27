@@ -10,7 +10,7 @@ import {
   useMemitaQuery,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 import { ProfileScreen } from "./ProfileScreen";
@@ -22,7 +22,7 @@ export function ContactScreen({
   accountId: AccountId;
   contactId?: AccountId;
 }) {
-  const { translate } = useTranslate();
+  const { t } = useLingui();
   const theme = useTheme();
 
   const latest = useMemitaQuery(contactLatest, { accountId, contactId }) ?? {
@@ -63,7 +63,7 @@ export function ContactScreen({
           }
           icon="trash"
           hideLabel
-          label={translate({ en: "Delete contact", it: "Elimina contatto" })}
+          label={t`Delete contact`}
         />
         <ScreenLink
           to={
@@ -75,7 +75,7 @@ export function ContactScreen({
           }
           icon="undo"
           hideLabel
-          label={translate({ en: "Discard changes", it: "Scarta modifiche" })}
+          label={t`Discard changes`}
         />
         <ScreenLink
           to={
@@ -107,11 +107,7 @@ export function ContactScreen({
           }
           icon="save"
           hideLabel
-          label={
-            contactId
-              ? translate({ en: "Save changes", it: "Salva modifiche" })
-              : translate({ en: "Create contact", it: "Crea contatto" })
-          }
+          label={contactId ? t`Save changes` : t`Create contact`}
         />
       </View>
       <ScrollView
@@ -122,12 +118,7 @@ export function ContactScreen({
         }
       >
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={theme.secondaryTextStyle}>
-            {translate({
-              en: "Contact account id",
-              it: "Id dell'account del contatto",
-            })}
-          </Text>
+          <Text style={theme.secondaryTextStyle}>{t`Contact account id`}</Text>
           {contactId ? (
             <Text style={theme.textStyle}>{contactId}</Text>
           ) : (
@@ -141,19 +132,14 @@ export function ContactScreen({
               />
               {!validContactIdInput ? (
                 <Text style={theme.validationErrorTextStyle}>
-                  {translate({
-                    en: "Not a valid account id",
-                    it: "Non è un id account valido",
-                  })}
+                  {t`Not a valid account id`}
                 </Text>
               ) : null}
             </Fragment>
           )}
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={theme.secondaryTextStyle}>
-            {translate({ en: "Contact name", it: "Nome del contatto" })}
-          </Text>
+          <Text style={theme.secondaryTextStyle}>{t`Contact name`}</Text>
           <TextInput
             value={nameInput}
             onChangeText={setNameInput}
@@ -180,7 +166,7 @@ export function ContactScreen({
             />
           ) : undefined
         }
-        label={translate({ en: "Direct messages", it: "Messaggi diretti" })}
+        label={t`Direct messages`}
       />
       <ScreenLink
         to={
@@ -188,7 +174,7 @@ export function ContactScreen({
             <ProfileScreen accountId={accountId} contactId={contactId} />
           ) : undefined
         }
-        label={translate({ en: "Profile", it: "Profilo" })}
+        label={t`Profile`}
       />
     </Fragment>
   );

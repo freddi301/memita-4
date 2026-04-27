@@ -6,7 +6,7 @@ import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import { ScreenLink } from "../Routing";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 import { DateTimeInput } from "../ui/DateTimeInput";
 import { ArticlesScreen } from "./ArticlesScreen";
 
@@ -17,7 +17,7 @@ export function EditArticleScreen({
   accountId: AccountId;
   createdAt?: Timestamp;
 }) {
-  const { translate } = useTranslate();
+  const { t } = useLingui();
   const theme = useTheme();
 
   const latest = useMemitaQuery(articleLatest, {
@@ -52,7 +52,7 @@ export function EditArticleScreen({
           to={!canSave ? <ArticlesScreen accountId={accountId} /> : undefined}
           icon="arrow-left"
           hideLabel
-          label={translate({ en: "Go to articles", it: "Vai agli articoli" })}
+          label={t`Go to articles`}
         />
         {createdAt ? (
           <Text style={{ ...theme.textStyle, flexGrow: 1 }}>
@@ -60,7 +60,7 @@ export function EditArticleScreen({
           </Text>
         ) : (
           <Text style={{ ...theme.secondaryTextStyle, flexGrow: 1 }}>
-            {translate({ en: "New article", it: "Nuovo articolo" })}
+            {t`New article`}
           </Text>
         )}
         <View style={{ flexDirection: "row" }}>
@@ -80,7 +80,7 @@ export function EditArticleScreen({
             }
             icon="trash"
             hideLabel
-            label={translate({ en: "Delete article", it: "Elimina articolo" })}
+            label={t`Delete article`}
           />
           <ScreenLink
             to={
@@ -92,7 +92,7 @@ export function EditArticleScreen({
             }
             icon="undo"
             hideLabel
-            label={translate({ en: "Discard changes", it: "Scarta modifiche" })}
+            label={t`Discard changes`}
           />
           <ScreenLink
             to={
@@ -128,18 +128,14 @@ export function EditArticleScreen({
             }
             icon="save"
             hideLabel
-            label={
-              createdAt
-                ? translate({ en: "Update article", it: "Aggiorna articolo" })
-                : translate({ en: "Create article", it: "Crea articolo" })
-            }
+            label={createdAt ? t`Update article` : t`Create article`}
           />
         </View>
       </View>
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
         <View style={{ gap: 2, paddingVertical: 8 }}>
           <Text style={{ ...theme.secondaryTextStyle, paddingHorizontal: 16 }}>
-            {translate({ en: "Event", it: "Evento" })}
+            {t`Event`}
           </Text>
           <DateTimeInput
             value={dateTimestampInput}

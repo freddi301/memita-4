@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Platform, TextInput, View } from "react-native";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 
 export function DateTimeInput({
   value,
@@ -15,7 +15,7 @@ export function DateTimeInput({
   onChange(value: number | undefined): void;
 }) {
   const theme = useTheme();
-  const { translate } = useTranslate();
+  const { t } = useLingui();
 
   const [show, setShow] = useState<"date" | "time" | false>(false);
 
@@ -70,7 +70,7 @@ export function DateTimeInput({
         }}
         icon="calendar"
         hideLabel
-        label={translate({ en: "Edit date", it: "Modifica data" })}
+        label={t`Edit date`}
       />
       <ScreenLink
         to={async () => {
@@ -78,7 +78,7 @@ export function DateTimeInput({
         }}
         icon="clock-o"
         hideLabel
-        label={translate({ en: "Edit time", it: "Modifica ora" })}
+        label={t`Edit time`}
       />
       <ScreenLink
         to={async () => {
@@ -86,7 +86,7 @@ export function DateTimeInput({
         }}
         icon="close"
         hideLabel
-        label={translate({ en: "Clear date", it: "Cancella data" })}
+        label={t`Clear date`}
       />
       {show && (
         <DateTimePicker

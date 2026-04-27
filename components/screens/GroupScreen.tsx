@@ -10,7 +10,7 @@ import {
   useMemitaQuery,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 import { GroupConversationScreen } from "./GroupConversationScreen";
 import { GroupMessagesScreen } from "./GroupMessagesScreen";
 
@@ -21,7 +21,7 @@ export function GroupScreen({
   accountId: AccountId;
   groupId?: string; // TODO use branded type
 }) {
-  const { translate } = useTranslate();
+  const { t } = useLingui();
   const theme = useTheme();
 
   const latest = useMemitaQuery(groupLatest, {
@@ -56,10 +56,7 @@ export function GroupScreen({
           }
           icon="arrow-left"
           hideLabel
-          label={translate({
-            en: "Go to conversation",
-            it: "Vai alla conversazione",
-          })}
+          label={t`Go to conversation`}
         />
         <View style={{ flexDirection: "row" }}>
           <ScreenLink
@@ -78,7 +75,7 @@ export function GroupScreen({
             }
             icon="trash"
             hideLabel
-            label={translate({ en: "Delete contact", it: "Elimina contatto" })}
+            label={t`Delete contact`}
           />
           <ScreenLink
             to={
@@ -90,7 +87,7 @@ export function GroupScreen({
             }
             icon="undo"
             hideLabel
-            label={translate({ en: "Discard changes", it: "Scarta modifiche" })}
+            label={t`Discard changes`}
           />
           <ScreenLink
             to={
@@ -122,11 +119,7 @@ export function GroupScreen({
             }
             icon="save"
             hideLabel
-            label={
-              groupId
-                ? translate({ en: "Save changes", it: "Salva modifiche" })
-                : translate({ en: "Create contact", it: "Crea contatto" })
-            }
+            label={groupId ? t`Save changes` : t`Create contact`}
           />
         </View>
       </View>
@@ -138,9 +131,7 @@ export function GroupScreen({
         }
       >
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={theme.secondaryTextStyle}>
-            {translate({ en: "Group id", it: "Id del gruppo" })}
-          </Text>
+          <Text style={theme.secondaryTextStyle}>{t`Group id`}</Text>
           {groupId ? (
             <Text style={theme.textStyle}>{groupId}</Text>
           ) : (
@@ -154,19 +145,14 @@ export function GroupScreen({
               />
               {!isGroupIdValid ? (
                 <Text style={theme.validationErrorTextStyle}>
-                  {translate({
-                    en: "Not a valid group id",
-                    it: "Non è un id gruppo valido",
-                  })}
+                  {t`Not a valid group id`}
                 </Text>
               ) : null}
             </Fragment>
           )}
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={theme.secondaryTextStyle}>
-            {translate({ en: "Group name", it: "Nome del gruppo" })}
-          </Text>
+          <Text style={theme.secondaryTextStyle}>{t`Group name`}</Text>
           <TextInput
             value={nameInput}
             onChangeText={setNameInput}

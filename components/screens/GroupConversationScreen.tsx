@@ -14,7 +14,7 @@ import {
   useMemitaQuery,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 import { MessageCompose } from "../ui/MessageCompose";
 import { GroupMessagesScreen } from "./GroupMessagesScreen";
 import { GroupScreen } from "./GroupScreen";
@@ -26,7 +26,7 @@ export function GroupConversationScreen({
   accountId: AccountId;
   groupId: string;
 }) {
-  const { translate } = useTranslate();
+  const { t } = useLingui();
   const theme = useTheme();
 
   const group = useMemitaQuery(groupLatest, { accountId, groupId });
@@ -48,7 +48,7 @@ export function GroupConversationScreen({
           to={<GroupMessagesScreen accountId={accountId} />}
           icon="arrow-left"
           hideLabel
-          label={translate({ en: "Go to messages", it: "Vai ai messaggi" })}
+          label={t`Go to messages`}
         />
         <ScreenLink
           to={<GroupScreen accountId={accountId} groupId={groupId} />}
@@ -100,7 +100,7 @@ export function GroupConversationScreen({
         ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
         ListEmptyComponent={() => (
           <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
-            {translate({ en: "No messages", it: "Nessun messagio" })}
+            {t`No messages`}
           </Text>
         )}
         refreshing={false}

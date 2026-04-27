@@ -6,13 +6,13 @@ import { directMessagesSummary } from "../queries/directMessages";
 import { ScreenLink } from "../Routing";
 import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { ContactScreen } from "./ContactScreen";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 
 export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
-  const { translate } = useTranslate();
+  const { t } = useLingui();
   const theme = useTheme();
 
   const conversations = useMemitaQuery(directMessagesSummary, { accountId });
@@ -24,10 +24,7 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
         <ScreenLink
           to={<ContactScreen accountId={accountId} />}
           icon="user-plus"
-          label={translate({
-            en: "Create new contact",
-            it: "Crea nuovo contatto",
-          })}
+          label={t`Create new contact`}
         />
       </View>
       <FlatList
@@ -92,7 +89,7 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={() => (
           <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
-            {translate({ en: "No messages", it: "Nessun messagio" })}
+            {t`No messages`}
           </Text>
         )}
         refreshing={false}

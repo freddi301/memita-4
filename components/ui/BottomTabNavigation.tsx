@@ -7,7 +7,7 @@ import { EventsScreen } from "../screens/EventsScreen";
 import { GroupMessagesScreen } from "../screens/GroupMessagesScreen";
 import { PlacesScreen } from "../screens/PlacesScreen";
 import { ProfileScreen } from "../screens/ProfileScreen";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 
 export function BottomTabNavigation({
   accountId,
@@ -16,7 +16,7 @@ export function BottomTabNavigation({
   accountId: AccountId;
   enabled: boolean;
 }) {
-  const { translate } = useTranslate();
+  const { t } = useLingui();
   return (
     <View
       style={{ flexDirection: "row", justifyContent: "center", paddingTop: 8 }}
@@ -27,13 +27,13 @@ export function BottomTabNavigation({
         }
         icon="inbox"
         hideLabel
-        label={translate({ en: "Direct messages", it: "Messaggi diretti" })}
+        label={t`Direct messages`}
       />
       <ScreenLink
         to={enabled ? <GroupMessagesScreen accountId={accountId} /> : undefined}
         icon="group"
         hideLabel
-        label={translate({ en: "Group messages", it: "Messaggi di gruppo" })}
+        label={t`Group messages`}
       />
       <ScreenLink
         to={enabled ? <ArticlesScreen accountId={accountId} /> : undefined}
@@ -45,13 +45,13 @@ export function BottomTabNavigation({
         to={enabled ? <EventsScreen accountId={accountId} /> : undefined}
         icon="calendar"
         hideLabel
-        label={translate({ en: "Events", it: "Eventi" })}
+        label={t`Events`}
       />
       <ScreenLink
         to={enabled ? <PlacesScreen accountId={accountId} /> : undefined}
         icon="map-marker"
         hideLabel
-        label={translate({ en: "Places", it: "Luoghi" })}
+        label={t`Places`}
       />
       <ScreenLink
         to={
@@ -61,7 +61,7 @@ export function BottomTabNavigation({
         }
         icon="user"
         hideLabel
-        label={translate({ en: "Profile", it: "Profilo" })}
+        label={t`Profile`}
       />
     </View>
   );

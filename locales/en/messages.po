@@ -13,6 +13,278 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: components/screens/SelectAccountScreen.tsx:55
+#: components/screens/AccountScreen.tsx:153
+msgid "Account ID"
+msgstr "Account ID"
+
+#: components/screens/AccountScreen.tsx:159
+msgid "Account id will be generated on save"
+msgstr "Account id will be generated on save"
+
+#: components/screens/AccountScreen.tsx:178
+msgid "Account name"
+msgstr "Account name"
+
+#: components/screens/ProfileScreen.tsx:174
+msgid "Account settings"
+msgstr "Account settings"
+
+#: components/ui/MessageCompose.tsx:102
+msgid "Attach file"
+msgstr "Attach file"
+
+#: components/screens/ProfileScreen.tsx:144
+msgid "Biography"
+msgstr "Biography"
+
+#: components/ui/DateTimeInput.tsx:89
+msgid "Clear date"
+msgstr "Clear date"
+
+#: components/screens/ContactScreen.tsx:126
+msgid "Contact account id"
+msgstr "Contact account id"
+
+#: components/screens/ContactScreen.tsx:149
+msgid "Contact name"
+msgstr "Contact name"
+
+#: components/screens/AccountScreen.tsx:173
+msgid "Copy account id to clipboard"
+msgstr "Copy account id to clipboard"
+
+#: components/screens/AccountScreen.tsx:226
+msgid "Copy device id to clipboard"
+msgstr "Copy device id to clipboard"
+
+#: components/screens/AccountScreen.tsx:131
+msgid "Create account"
+msgstr "Create account"
+
+#: components/screens/EditArticleScreen.tsx:134
+msgid "Create article"
+msgstr "Create article"
+
+#: components/screens/ContactScreen.tsx:113
+#: components/screens/GroupScreen.tsx:125
+#: components/screens/ProfileScreen.tsx:123
+msgid "Create contact"
+msgstr "Create contact"
+
+#: components/screens/SelectAccountScreen.tsx:35
+msgid "Create new account"
+msgstr "Create new account"
+
+#: components/screens/ArticlesScreen.tsx:27
+msgid "Create new article"
+msgstr "Create new article"
+
+#: components/screens/DirectMessagesScreen.tsx:27
+msgid "Create new contact"
+msgstr "Create new contact"
+
+#: components/screens/GroupMessagesScreen.tsx:26
+msgid "Create new group"
+msgstr "Create new group"
+
+#: components/ui/MessageCompose.tsx:204
+msgid "Delete"
+msgstr "Delete"
+
+#: components/screens/EditArticleScreen.tsx:83
+msgid "Delete article"
+msgstr "Delete article"
+
+#: components/screens/ContactScreen.tsx:66
+#: components/screens/GroupScreen.tsx:78
+msgid "Delete contact"
+msgstr "Delete contact"
+
+#: components/screens/AccountScreen.tsx:206
+msgid "Device ID"
+msgstr "Device ID"
+
+#: components/screens/AccountScreen.tsx:212
+msgid "Device id will be generated on save"
+msgstr "Device id will be generated on save"
+
+#: components/screens/ContactScreen.tsx:177
+#: components/screens/ProfileScreen.tsx:169
+#: components/ui/BottomTabNavigation.tsx:30
+msgid "Direct messages"
+msgstr "Direct messages"
+
+#: components/screens/AccountScreen.tsx:90
+#: components/screens/ContactScreen.tsx:78
+#: components/screens/EditArticleScreen.tsx:95
+#: components/screens/GroupScreen.tsx:90
+#: components/screens/ProfileScreen.tsx:104
+msgid "Discard changes"
+msgstr "Discard changes"
+
+#: components/screens/ArticlesScreen.tsx:57
+msgid "Edit article"
+msgstr "Edit article"
+
+#: components/screens/ProfileScreen.tsx:183
+msgid "Edit contact"
+msgstr "Edit contact"
+
+#: components/ui/DateTimeInput.tsx:73
+msgid "Edit date"
+msgstr "Edit date"
+
+#: components/ui/DateTimeInput.tsx:81
+msgid "Edit time"
+msgstr "Edit time"
+
+#: components/screens/EditArticleScreen.tsx:142
+msgid "Event"
+msgstr "Event"
+
+#: components/ui/BottomTabNavigation.tsx:48
+msgid "Events"
+msgstr "Events"
+
+#: components/screens/EditArticleScreen.tsx:55
+msgid "Go to articles"
+msgstr "Go to articles"
+
+#: components/screens/GroupScreen.tsx:59
+msgid "Go to conversation"
+msgstr "Go to conversation"
+
+#: components/screens/DirectConversationScreen.tsx:149
+#: components/screens/GroupConversationScreen.tsx:51
+msgid "Go to messages"
+msgstr "Go to messages"
+
+#: components/screens/GroupScreen.tsx:139
+msgid "Group id"
+msgstr "Group id"
+
+#: components/ui/BottomTabNavigation.tsx:36
+msgid "Group messages"
+msgstr "Group messages"
+
+#: components/screens/GroupScreen.tsx:162
+msgid "Group name"
+msgstr "Group name"
+
+#: components/screens/ProfileScreen.tsx:138
+msgid "Location"
+msgstr "Location"
+
+#: components/screens/DirectConversationScreen.tsx:388
+msgid "Mark as read"
+msgstr "Mark as read"
+
+#: components/screens/SelectAccountScreen.tsx:50
 msgid "Memita"
 msgstr "Memita"
+
+#: components/ui/MessageCompose.tsx:188
+msgid "Modify message"
+msgstr "Modify message"
+
+#: components/screens/EditArticleScreen.tsx:63
+msgid "New article"
+msgstr "New article"
+
+#: components/ui/MessageCompose.tsx:134
+msgid "New draft"
+msgstr "New draft"
+
+#: components/screens/DirectConversationScreen.tsx:417
+#: components/screens/DirectConversationScreen.tsx:501
+msgid "Next occurrence"
+msgstr "Next occurrence"
+
+#: components/screens/SelectAccountScreen.tsx:70
+msgid "No accounts on this device"
+msgstr "No accounts on this device"
+
+#: components/screens/ArticlesScreen.tsx:87
+msgid "No articles"
+msgstr "No articles"
+
+#: components/screens/DirectConversationScreen.tsx:306
+#: components/screens/DirectMessagesScreen.tsx:92
+#: components/screens/GroupConversationScreen.tsx:103
+#: components/screens/GroupMessagesScreen.tsx:55
+msgid "No messages"
+msgstr "No messages"
+
+#: components/screens/ContactScreen.tsx:141
+msgid "Not a valid account id"
+msgstr "Not a valid account id"
+
+#: components/screens/GroupScreen.tsx:154
+msgid "Not a valid group id"
+msgstr "Not a valid group id"
+
+#: components/ui/BottomTabNavigation.tsx:54
+msgid "Places"
+msgstr "Places"
+
+#: components/screens/DirectConversationScreen.tsx:353
+#: components/screens/DirectConversationScreen.tsx:475
+msgid "Previous occurrence"
+msgstr "Previous occurrence"
+
+#: components/screens/AccountScreen.tsx:236
+#: components/screens/ContactScreen.tsx:185
+#: components/ui/BottomTabNavigation.tsx:64
+msgid "Profile"
+msgstr "Profile"
+
+#: components/screens/ProfileScreen.tsx:81
+msgid "Profile ID copied to clipboard"
+msgstr "Profile ID copied to clipboard"
+
+#: components/ui/MessageCompose.tsx:65
+msgid "Remove"
+msgstr "Remove"
+
+#: components/screens/AccountScreen.tsx:78
+msgid "Remove account from this device"
+msgstr "Remove account from this device"
+
+#: components/screens/AccountScreen.tsx:130
+#: components/screens/ContactScreen.tsx:112
+#: components/screens/GroupScreen.tsx:124
+#: components/screens/ProfileScreen.tsx:122
+msgid "Save changes"
+msgstr "Save changes"
+
+#: components/ui/MessageCompose.tsx:150
+msgid "Save draft"
+msgstr "Save draft"
+
+#: components/screens/DirectConversationScreen.tsx:330
+msgid "Search"
+msgstr "Search"
+
+#: components/ui/MessageCompose.tsx:168
+msgid "Send message"
+msgstr "Send message"
+
+#: components/screens/ProfileScreen.tsx:89
+msgid "Share profile"
+msgstr "Share profile"
+
+#: components/ui/CoordsInput.tsx:44
+msgid "Show on map"
+msgstr "Show on map"
+
+#: components/screens/DirectConversationScreen.tsx:438
+msgid "Unread messages"
+msgstr "Unread messages"
+
+#: components/screens/EditArticleScreen.tsx:133
+msgid "Update article"
+msgstr "Update article"
+
+#: components/screens/AccountScreen.tsx:59
+msgid "Use another account"
+msgstr "Use another account"

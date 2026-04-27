@@ -18,12 +18,12 @@ import {
   useMemitaQuery,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 import { ProfileScreen } from "./ProfileScreen";
 import { SelectAccountScreen } from "./SelectAccountScreen";
 
 export function AccountScreen({ accountId }: { accountId?: AccountId }) {
-  const { translate } = useTranslate();
+  const { t } = useLingui();
   const theme = useTheme();
 
   const latest = useMemitaQuery(accountLatest, { accountId: accountId }) ?? {
@@ -56,10 +56,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <ScreenLink
           to={!canSave ? <SelectAccountScreen /> : undefined}
-          label={translate({
-            en: "Use another account",
-            it: "Usa un altro account",
-          })}
+          label={t`Use another account`}
         />
         <View style={{ flexDirection: "row" }}>
           <ScreenLink
@@ -78,10 +75,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             }
             icon="trash"
             hideLabel
-            label={translate({
-              en: "Remove account from this device",
-              it: "Rimuovi account da questo dispositivo",
-            })}
+            label={t`Remove account from this device`}
           />
           <ScreenLink
             to={
@@ -93,7 +87,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             }
             icon="undo"
             hideLabel
-            label={translate({ en: "Discard changes", it: "Scarta modifiche" })}
+            label={t`Discard changes`}
           />
           <ScreenLink
             to={
@@ -131,11 +125,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             }
             icon="save"
             hideLabel
-            label={
-              accountId
-                ? translate({ en: "Save changes", it: "Salva modifiche" })
-                : translate({ en: "Create account", it: "Crea account" })
-            }
+            label={accountId ? t`Save changes` : t`Create account`}
           />
         </View>
       </View>
@@ -155,17 +145,12 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
               flex: 1,
             }}
           >
-            <Text style={theme.secondaryTextStyle}>
-              {translate({ en: "Account ID", it: "Id dell'account" })}
-            </Text>
+            <Text style={theme.secondaryTextStyle}>{t`Account ID`}</Text>
             {accountId ? (
               <Text style={{ ...theme.textStyle }}>{accountId}</Text>
             ) : (
               <Text style={theme.secondaryTextStyle}>
-                {translate({
-                  en: "Account id will be generated on save",
-                  it: "L'id dell'account sarà generato al salvataggio",
-                })}
+                {t`Account id will be generated on save`}
               </Text>
             )}
           </View>
@@ -179,16 +164,11 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             }
             icon="copy"
             hideLabel
-            label={translate({
-              en: "Copy account id to clipboard",
-              it: "Copia l'id dell'account negli appunti",
-            })}
+            label={t`Copy account id to clipboard`}
           />
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={theme.secondaryTextStyle}>
-            {translate({ en: "Account name", it: "Nome dell'account" })}
-          </Text>
+          <Text style={theme.secondaryTextStyle}>{t`Account name`}</Text>
           <TextInput
             value={nameInput}
             onChangeText={setNameInput}
@@ -214,17 +194,12 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
               flex: 1,
             }}
           >
-            <Text style={theme.secondaryTextStyle}>
-              {translate({ en: "Device ID", it: "Id del dispositivo" })}
-            </Text>
+            <Text style={theme.secondaryTextStyle}>{t`Device ID`}</Text>
             {deviceId ? (
               <Text style={theme.textStyle}>{deviceId}</Text>
             ) : (
               <Text style={theme.secondaryTextStyle}>
-                {translate({
-                  en: "Device id will be generated on save",
-                  it: "L'id del dispositivo sarà generato al salvataggio",
-                })}
+                {t`Device id will be generated on save`}
               </Text>
             )}
           </View>
@@ -238,10 +213,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             }
             icon="copy"
             hideLabel
-            label={translate({
-              en: "Copy device id to clipboard",
-              it: "Copia l'id del dispositivo negli appunti",
-            })}
+            label={t`Copy device id to clipboard`}
           />
         </View>
       </ScrollView>
@@ -251,7 +223,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             <ProfileScreen accountId={accountId} contactId={accountId} />
           ) : undefined
         }
-        label={translate({ en: "Profile", it: "Profilo" })}
+        label={t`Profile`}
       />
     </Fragment>
   );

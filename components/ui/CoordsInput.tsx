@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import { Dimensions, TextInput, View } from "react-native";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 import { GeoMap } from "./GeoMap";
 
 export function CoordsInput({
@@ -13,7 +13,7 @@ export function CoordsInput({
   onChange(value: { latitude: number; longitude: number } | undefined): void;
 }) {
   const theme = useTheme();
-  const { translate } = useTranslate();
+  const { t } = useLingui();
 
   const [showMap, setShowMap] = useState(false);
 
@@ -41,7 +41,7 @@ export function CoordsInput({
           }}
           icon="map"
           hideLabel
-          label={translate({ en: "Show on map", it: "Mostra sulla mappa" })}
+          label={t`Show on map`}
         />
       </View>
       {showMap && (

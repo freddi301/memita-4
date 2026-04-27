@@ -6,13 +6,13 @@ import { articleList } from "../queries/articles";
 import { ScreenLink } from "../Routing";
 import { useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { EditArticleScreen } from "./EditArticleScreen";
 import { ProfileScreen } from "./ProfileScreen";
 
 export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
-  const { translate } = useTranslate();
+  const { t } = useLingui();
   const theme = useTheme();
 
   const articles = useMemitaQuery(articleList, { accountId });
@@ -24,10 +24,7 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
         <ScreenLink
           to={<EditArticleScreen accountId={accountId} />}
           icon="pencil"
-          label={translate({
-            en: "Create new article",
-            it: "Crea nuovo articolo",
-          })}
+          label={t`Create new article`}
         />
       </View>
       <FlatList
@@ -57,10 +54,7 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
                   }
                   icon="pencil"
                   hideLabel
-                  label={translate({
-                    en: "Edit article",
-                    it: "Modifica articolo",
-                  })}
+                  label={t`Edit article`}
                   styleOverride={{ hasPadding: false }}
                 />
               ) : null}
@@ -90,7 +84,7 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={() => (
           <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
-            {translate({ en: "No articles", it: "Nessun articolo" })}
+            {t`No articles`}
           </Text>
         )}
       />

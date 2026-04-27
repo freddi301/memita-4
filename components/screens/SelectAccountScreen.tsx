@@ -7,13 +7,11 @@ import { accountList } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
 import { refreshMemitaQueries, store, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
 import { AccountScreen } from "./AccountScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 
 export function SelectAccountScreen() {
   const theme = useTheme();
-  const { translate } = useTranslate();
   const { t } = useLingui();
 
   const accounts = useMemitaQuery(accountList, {});
@@ -34,10 +32,7 @@ export function SelectAccountScreen() {
         <ScreenLink
           to={<AccountScreen />}
           icon="plus"
-          label={translate({
-            en: "Create new account",
-            it: "Crea nuovo account",
-          })}
+          label={t`Create new account`}
         />
       </View>
       <View style={{ alignItems: "center", gap: 16, padding: 16 }}>
@@ -72,10 +67,7 @@ export function SelectAccountScreen() {
               textAlign: "center",
             }}
           >
-            {translate({
-              en: "No accounts on this device",
-              it: "Nessun account su questo dispositivo",
-            })}
+            {t`No accounts on this device`}
           </Text>
         }
         style={{ flex: 1, paddingVertical: 8 }}

@@ -10,7 +10,7 @@ import {
 import { RefreshControl } from "react-native-web-refresh-control";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 import { AccountId } from "../cryptography/cryptography";
 import { biographyLatest, updateBiography } from "../queries/biography";
 import { contactLatest } from "../queries/contacts";
@@ -33,7 +33,7 @@ export function ProfileScreen({
   contactId: AccountId;
 }) {
   const theme = useTheme();
-  const { translate } = useTranslate();
+  const { t } = useLingui();
 
   const contact = useMemitaQuery(contactLatest, { accountId, contactId }) ?? {
     name: "",
@@ -77,19 +77,14 @@ export function ProfileScreen({
           to={async () => {
             if (Platform.OS === "web") {
               await navigator.clipboard.writeText(contactId);
-              alert(
-                translate({
-                  en: "Profile ID copied to clipboard",
-                  it: "ID del profilo copiato negli appunti",
-                }),
-              );
+              alert(t`Profile ID copied to clipboard`);
             } else {
               await Share.share({ message: contactId });
             }
           }}
           icon="share-alt"
           hideLabel
-          label={translate({ en: "Share profile", it: "Condividi profilo" })}
+          label={t`Share profile`}
         />
         {contactId === accountId && (
           <Fragment>
@@ -104,10 +99,7 @@ export function ProfileScreen({
               }
               icon="undo"
               hideLabel
-              label={translate({
-                en: "Discard changes",
-                it: "Scarta modifiche",
-              })}
+              label={t`Discard changes`}
             />
             <ScreenLink
               to={
@@ -123,11 +115,7 @@ export function ProfileScreen({
               }
               icon="save"
               hideLabel
-              label={
-                contactId
-                  ? translate({ en: "Save changes", it: "Salva modifiche" })
-                  : translate({ en: "Create contact", it: "Crea contatto" })
-              }
+              label={contactId ? t`Save changes` : t`Create contact`}
             />
           </Fragment>
         )}
@@ -141,14 +129,12 @@ export function ProfileScreen({
       >
         <View style={{ gap: 2, paddingVertical: 8 }}>
           <Text style={{ ...theme.secondaryTextStyle, paddingHorizontal: 16 }}>
-            {translate({ en: "Location", it: "Posizione" })}
+            {t`Location`}
           </Text>
           <CoordsInput value={locationInput} onChange={setLocationInput} />
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={theme.secondaryTextStyle}>
-            {translate({ en: "Biography", it: "Biografia" })}
-          </Text>
+          <Text style={theme.secondaryTextStyle}>{t`Biography`}</Text>
           {contactId === accountId ? (
             <TextInput
               value={bioInput}
@@ -172,15 +158,12 @@ export function ProfileScreen({
             />
           )
         }
-        label={translate({ en: "Direct messages", it: "Mesaggi diretti" })}
+        label={t`Direct messages`}
       />
       {accountId === contactId ? (
         <ScreenLink
           to={canSave ? undefined : <AccountScreen accountId={accountId} />}
-          label={translate({
-            en: "Account settings",
-            it: "Impostazioni account",
-          })}
+          label={t`Account settings`}
         />
       ) : (
         <ScreenLink
@@ -189,7 +172,7 @@ export function ProfileScreen({
               <ContactScreen accountId={accountId} contactId={contactId} />
             )
           }
-          label={translate({ en: "Edit contact", it: "Modifica contatto" })}
+          label={t`Edit contact`}
         />
       )}
       {contactId === accountId ? (

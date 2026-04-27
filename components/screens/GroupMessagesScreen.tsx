@@ -5,13 +5,13 @@ import { groupMessagesSummary } from "../queries/groupMessages";
 import { ScreenLink } from "../Routing";
 import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useTranslate } from "../Translate";
+import { useLingui } from "@lingui/react/macro";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { GroupConversationScreen } from "./GroupConversationScreen";
 import { GroupScreen } from "./GroupScreen";
 
 export function GroupMessagesScreen({ accountId }: { accountId: AccountId }) {
-  const { translate } = useTranslate();
+  const { t } = useLingui();
   const theme = useTheme();
 
   const conversations = useMemitaQuery(groupMessagesSummary, { accountId });
@@ -23,7 +23,7 @@ export function GroupMessagesScreen({ accountId }: { accountId: AccountId }) {
         <ScreenLink
           to={<GroupScreen accountId={accountId} />}
           icon="plus"
-          label={translate({ en: "Create new group", it: "Crea nuovo gruppo" })}
+          label={t`Create new group`}
         />
       </View>
       <FlatList
@@ -52,7 +52,7 @@ export function GroupMessagesScreen({ accountId }: { accountId: AccountId }) {
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={() => (
           <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
-            {translate({ en: "No messages", it: "Nessun messagio" })}
+            {t`No messages`}
           </Text>
         )}
         refreshing={false}
