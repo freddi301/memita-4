@@ -5,7 +5,6 @@ import {
 } from "@tanstack/react-query";
 import { Platform } from "react-native";
 import { AccountIdSchema } from "../cryptography/cryptography";
-import { networkDummy } from "../network/netoworkDummy";
 import { bareNetworkFactory } from "../network/networkBare";
 import { websocketNetworkFactory } from "../network/networkWebsocketClient";
 import { triggerNotification } from "../notifications";
@@ -56,11 +55,7 @@ export const store = makeStore<StoreItem>({
   storage: localStorageFactory("data", StoreItemSchema.parse),
   // networkFactory: websocketNetworkFactory,
   networkFactory:
-    typeof jest !== "undefined"
-      ? networkDummy
-      : Platform.OS === "web"
-        ? websocketNetworkFactory
-        : bareNetworkFactory,
+    Platform.OS === "web" ? websocketNetworkFactory : bareNetworkFactory,
   async onAdd(item) {
     subscriptions.forEach((callback) => callback());
     await triggerNotification();
