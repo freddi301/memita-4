@@ -2,29 +2,11 @@ import { ed25519 } from "@noble/curves/ed25519.js";
 import { bytesToHex, hexToBytes } from "@noble/hashes/utils.js";
 import * as z from "zod";
 
-export const DeviceIdSchema = z.string().brand("DeviceId");
-/** ED25519 Public key, hex string */
-export type DeviceId = z.infer<typeof DeviceIdSchema>;
+// Device Keys
 
 export const DeviceSecretSchema = z.string().brand("DeviceSecret");
 /** ED25519 Secret key, hex string */
 export type DeviceSecret = z.infer<typeof DeviceSecretSchema>;
-
-export function deviceIdToUint8Array(deviceId: DeviceId): Uint8Array {
-  return hexToBytes(deviceId);
-}
-export function deviceIdFromUint8Array(uint8Array: Uint8Array): DeviceId {
-  if (uint8Array.length !== 32) {
-    throw new Error(`Invalid deviceId length: ${uint8Array.length}`);
-  }
-  return DeviceIdSchema.parse(bytesToHex(uint8Array));
-}
-
-export function deviceSecretToUint8Array(
-  deviceSecret: DeviceSecret,
-): Uint8Array {
-  return hexToBytes(deviceSecret);
-}
 
 export function deviceSecretFromUint8Array(
   uint8Array: Uint8Array,
@@ -35,29 +17,44 @@ export function deviceSecretFromUint8Array(
   return DeviceSecretSchema.parse(bytesToHex(uint8Array));
 }
 
-export type DeviceKeyPair = { deviceId: DeviceId; deviceSecret: DeviceSecret };
-export function generateDeviceKeyPair(): DeviceKeyPair {
-  const { secretKey, publicKey } = generateED25519KeyPair();
-  return {
-    deviceId: deviceIdFromUint8Array(publicKey),
-    deviceSecret: deviceSecretFromUint8Array(secretKey),
-  };
+export function deviceSecretToUint8Array(
+  deviceSecret: DeviceSecret,
+): Uint8Array {
+  return hexToBytes(deviceSecret);
 }
 
-export const AccountIdSchema = z.string().brand("AccountId");
+export function generateDeviceSecret(): DeviceSecret {
+  const secretKey = ed25519.utils.randomSecretKey();
+  return DeviceSecretSchema.parse(bytesToHex(secretKey));
+}
+
+export const DeviceIdSchema = z.string().brand("DeviceId");
 /** ED25519 Public key, hex string */
-export type AccountId = z.infer<typeof AccountIdSchema>;
+export type DeviceId = z.infer<typeof DeviceIdSchema>;
+
+export function deviceIdFromUint8Array(uint8Array: Uint8Array): DeviceId {
+  if (uint8Array.length !== 32) {
+    throw new Error(`Invalid deviceId length: ${uint8Array.length}`);
+  }
+  return DeviceIdSchema.parse(bytesToHex(uint8Array));
+}
+
+export function deviceIdToUint8Array(deviceId: DeviceId): Uint8Array {
+  return hexToBytes(deviceId);
+}
+
+// TODO memoize since its expensive
+export function deviceIdFromDeviceSecret(deviceSecret: DeviceSecret): DeviceId {
+  const publicKey = ed25519.getPublicKey(hexToBytes(deviceSecret));
+  return deviceIdFromUint8Array(publicKey);
+}
+
+// Account Keys
 
 export const AccountSecretSchema = z.string().brand("AccountSecret");
 /** ED25519 Secret key, hex string */
 export type AccountSecret = z.infer<typeof AccountSecretSchema>;
 
-export function accountIdFromUint8Array(uint8Array: Uint8Array): AccountId {
-  if (uint8Array.length !== 32) {
-    throw new Error(`Invalid accountId length: ${uint8Array.length}`);
-  }
-  return AccountIdSchema.parse(bytesToHex(uint8Array));
-}
 export function accountSecretFromUint8Array(
   uint8Array: Uint8Array,
 ): AccountSecret {
@@ -66,28 +63,45 @@ export function accountSecretFromUint8Array(
   }
   return AccountSecretSchema.parse(bytesToHex(uint8Array));
 }
+
+export function accountSecretToUint8Array(
+  accountSecret: AccountSecret,
+): Uint8Array {
+  return hexToBytes(accountSecret);
+}
+
+export function generateAccountSecret(): AccountSecret {
+  const secretKey = ed25519.utils.randomSecretKey();
+  return AccountSecretSchema.parse(bytesToHex(secretKey));
+}
+
+export const AccountIdSchema = z.string().brand("AccountId");
+/** ED25519 Public key, hex string */
+export type AccountId = z.infer<typeof AccountIdSchema>;
+
+export function accountIdFromUint8Array(uint8Array: Uint8Array): AccountId {
+  if (uint8Array.length !== 32) {
+    throw new Error(`Invalid accountId length: ${uint8Array.length}`);
+  }
+  return AccountIdSchema.parse(bytesToHex(uint8Array));
+}
+
+export function accountIdToUint8Array(accountId: AccountId): Uint8Array {
+  return hexToBytes(accountId);
+}
+
+// TODO memoize since its expensive
+export function accountIdFromAccountSecret(
+  accountSecret: AccountSecret,
+): AccountId {
+  const publicKey = ed25519.getPublicKey(hexToBytes(accountSecret));
+  return accountIdFromUint8Array(publicKey);
+}
+
 export function accountIdFromString(string: string): AccountId | undefined {
   try {
     return accountIdFromUint8Array(hexToBytes(string));
   } catch {
     return undefined;
   }
-}
-
-export type AccountKeyPair = {
-  accountId: AccountId;
-  accountSecret: AccountSecret;
-};
-export function generateAccountKeyPair(): AccountKeyPair {
-  const { secretKey, publicKey } = generateED25519KeyPair();
-  return {
-    accountId: accountIdFromUint8Array(publicKey),
-    accountSecret: accountSecretFromUint8Array(secretKey),
-  };
-}
-
-function generateED25519KeyPair() {
-  const secretKey = ed25519.utils.randomSecretKey();
-  const publicKey = ed25519.getPublicKey(secretKey);
-  return { secretKey, publicKey };
 }

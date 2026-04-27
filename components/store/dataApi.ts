@@ -4,33 +4,46 @@ import {
   useSuspenseQuery,
 } from "@tanstack/react-query";
 import { Platform } from "react-native";
-import { AccountIdSchema } from "../cryptography/cryptography";
+import {
+  accountIdFromAccountSecret,
+  AccountSecretSchema,
+} from "../cryptography/cryptography";
 import { networkDummy } from "../network/netoworkDummy";
 import { bareNetworkFactory } from "../network/networkBare";
 import { websocketNetworkFactory } from "../network/networkWebsocketClient";
 import { triggerNotification } from "../notifications";
 import { updateContact } from "../queries/contacts";
+import {
+  directMessagesList,
+  directMessagesSummary,
+} from "../queries/directMessages";
 import { StoreItem, StoreItemSchema } from "../queries/Queries";
 import { shouldSend } from "../queries/shouldSend";
 import { useCurrentScreenForceSuspend } from "../Routing";
+import { deviceSettingsStore } from "./deviceSettingsStorage";
 import { localStorageFactory } from "./localStorage";
 import { makeStore } from "./store";
 
 async function cleanLocalStorage() {
+  await deviceSettingsStore.wipe();
   const storage = localStorageFactory("data", StoreItemSchema.parse);
   await storage.wipe();
-  const mobileAccountId = AccountIdSchema.parse(
+  const mobileAccountSecret = AccountSecretSchema.parse(
     "984fa5157b2039e1ce05fe04ce1abf81def9f6bf0ea7406f16163058a138f54f",
   );
+  const mobileAccountId = accountIdFromAccountSecret(mobileAccountSecret);
   const mobileAccountName = "Mobile";
-  const webAccountId = AccountIdSchema.parse(
+  const webAccountSecret = AccountSecretSchema.parse(
     "49ce6f7e6e684c9491c2eda6f6357fea8b53fc53585639bff0c30185d5e19e81",
   );
+  const webAccountId = accountIdFromAccountSecret(webAccountSecret);
   const webAccountName = "Web";
-  const accountId = Platform.select({
-    web: webAccountId,
-    default: mobileAccountId,
+  const accountSecret = Platform.select({
+    web: webAccountSecret,
+    default: mobileAccountSecret,
   });
+  const accountId = accountIdFromAccountSecret(accountSecret);
+  await deviceSettingsStore.addAccount(accountSecret);
   const insertions = [
     ...updateContact({
       accountId,
@@ -62,13 +75,15 @@ export const store = makeStore<StoreItem>({
         ? websocketNetworkFactory
         : bareNetworkFactory,
   async onAdd(item) {
-    subscriptions.forEach((callback) => callback());
+    // TODO make these more efficient and selective and come up with a thing to express that it is a live query at callsite
+    await Promise.all([
+      queryClient.invalidateQueries({ queryKey: [directMessagesList.name] }),
+      queryClient.invalidateQueries({ queryKey: [directMessagesSummary.name] }),
+    ]);
     await triggerNotification();
   },
   shouldSend,
 });
-
-const subscriptions = new Set<() => void>();
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -86,7 +101,7 @@ export function useMemitaQuery<Params, Result>(
   const forceSuspend = useCurrentScreenForceSuspend();
   return useSuspenseQuery(
     {
-      queryKey: [forceSuspend, queryFactory.name, params],
+      queryKey: [queryFactory.name, params, forceSuspend],
       async queryFn(): Promise<Result> {
         await new Promise((resolve) => setTimeout(resolve, 500));
         const all = await store.all();

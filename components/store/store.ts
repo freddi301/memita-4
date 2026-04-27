@@ -1,4 +1,5 @@
 import { DeviceId, DeviceSecret } from "../cryptography/cryptography";
+import { deviceSettingsStore } from "./deviceSettingsStorage";
 
 type StoreInInterface<StoreItem> = {
   parse(item: unknown): StoreItem;
@@ -11,8 +12,6 @@ type StoreInInterface<StoreItem> = {
 type StoreOutInterface<StoreItem> = {
   add(item: StoreItem): Promise<void>;
   all(): Promise<Array<StoreItem>>;
-  start(deviceId: DeviceId, deviceSecret: DeviceSecret): Promise<void>;
-  stop(deviceId: DeviceId): Promise<void>;
 };
 
 export type StorageInterface<StoreItem> = {
@@ -31,7 +30,7 @@ export type NetworkInInterface = {
 };
 
 export type NetworkOutInterface = {
-  start(deviceId: DeviceId, deviceSecret: DeviceSecret): Promise<void>;
+  start(deviceSecret: DeviceSecret): Promise<void>;
   stop(deviceId: DeviceId): Promise<void>;
   send(deviceId: DeviceId, toDeviceId: DeviceId, data: unknown): Promise<void>;
   getStartedDevices(): Promise<Array<DeviceId>>;
@@ -65,6 +64,25 @@ export function makeStore<StoreItem>({
       );
     },
   });
+  let queuedStartStop = Promise.resolve();
+  async function startStop() {
+    await queuedStartStop;
+    const deviceSettings = deviceSettingsStore.getSnapshot();
+    const deviceIds = Object.values(deviceSettings.cryptoPublicKeys);
+    for (const deviceId of await network.getStartedDevices()) {
+      if (!deviceIds.includes(deviceId)) {
+        await network.stop(deviceId);
+      }
+    }
+    const deviceSecrets = Object.values(deviceSettings.cryptoPrivateKeys);
+    for (const deviceSecret of deviceSecrets) {
+      await network.start(deviceSecret);
+    }
+  }
+  queuedStartStop = startStop();
+  deviceSettingsStore.subscribe(() => {
+    queuedStartStop = startStop();
+  });
   return {
     async add(item) {
       const didAdd = await storage.add(item);
@@ -86,12 +104,6 @@ export function makeStore<StoreItem>({
     },
     async all() {
       return await storage.all();
-    },
-    async start(deviceId, deviceSecret) {
-      await network.start(deviceId, deviceSecret);
-    },
-    async stop(deviceId) {
-      await network.stop(deviceId);
     },
   };
 }

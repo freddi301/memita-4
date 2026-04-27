@@ -1,42 +1,11 @@
-# Platform
-
-- [ ] android
-  - [x] dev build
-  - [ ] binary published on website
-  - [ ] published on store
-  - [ ] background exection
-- [ ] ios
-  - [x] dev build
-  - [ ] binary published on website
-  - [ ] published on store
-  - [ ] background exection
-- [ ] windows
-  - [x] dev build
-  - [ ] binary published on website
-- [ ] macos
-  - [x] dev build
-  - [ ] binary published on website
-- [ ] linux
-  - [x] dev build
-  - [ ] binary published on website
-- [ ] cloud (for replication)
-- [ ] premise (for replication)
-
-- [x] must update app mechanism
-- [ ] crash report
-- [ ] data replication
-  - [x] store on creations
-  - [x] send on connection
-- [x] peer to peer networking
-  - [x] hyperswarm
-  - [ ] bloetooth
-  - [ ] wifi direct
-
 # Languages
 
-- [x] auto select locale from system settings
-- [x] English
-- [x] Italian
+- [ ] auto select locale from system settings
+- [ ] select language manually
+- [ ] English
+- [ ] Italian
+- [ ] auto select theme from system settings
+- [ ] select theme manually
 
 # Account
 
@@ -198,3 +167,18 @@
 # File sharing
 
 - [ ] torrent like, with privacy settings
+
+# More
+
+- [ ] android background exection
+- [ ] ios background exection
+- [ ] macos background exection
+- [ ] windows background exection
+- [ ] linux background exection
+- [ ] must update app mechanism
+- [ ] crash report send
+- [ ] conect over hyperswarm
+- [ ] connect bloetooth
+- [ ] connect wifi direct
+- [ ] connect over federated servers
+- [ ] relay connection

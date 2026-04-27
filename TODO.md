@@ -1,3 +1,4 @@
+add knip to precommit hook
 review features secion, normalize items -> transform into tests
 review what happens on back button (web and native)
 while editing a direct message, dont let user do anything to inadvertently lose chages
@@ -6,7 +7,6 @@ dont accept future timestamps
 do not replicate deleted stuff? (ponder)
 enforce data size limits (max file size, max number and size of messages, max attachments)
 add confirm prompt for destructive actions
-add knip to precommit hook
 add cryptography, account + device signature
 add whitelist recipients
 check frontend performance
@@ -21,3 +21,25 @@ refactor so that entities
 Message - for DM, group message, articles, events
 Contact - for contact and account
 Biography - for Profile and places
+
+# Platform support
+
+- [ ] android
+  - [x] dev build
+  - [ ] binary published on website
+  - [ ] published on store
+- [ ] ios
+  - [x] dev build
+  - [ ] binary published on website
+  - [ ] published on store
+- [ ] windows
+  - [x] dev build
+  - [ ] binary published on website
+- [ ] macos
+  - [x] dev build
+  - [ ] binary published on website
+- [ ] linux
+  - [x] dev build
+  - [ ] binary published on website
+- [ ] cloud (for replication)
+- [ ] premise (for replication)

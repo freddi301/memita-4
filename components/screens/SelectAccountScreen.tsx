@@ -1,11 +1,10 @@
 import { useLingui } from "@lingui/react/macro";
 import { Image } from "expo-image";
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
-import { getDeviceKeyPair } from "../cryptography/cryptographyStorage";
 import { accountList } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
-import { refreshMemitaQueries, store, useMemitaQuery } from "../store/dataApi";
+import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { AccountScreen } from "./AccountScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
@@ -15,16 +14,6 @@ export function SelectAccountScreen() {
   const { t } = useLingui();
 
   const accounts = useMemitaQuery(accountList, {});
-
-  // TODO move somewhere more global
-  useEffect(() => {
-    void (async () => {
-      for (const account of accounts) {
-        const deviceKeyPair = await getDeviceKeyPair(account.accountId);
-        await store.start(deviceKeyPair.deviceId, deviceKeyPair.deviceSecret);
-      }
-    })();
-  }, [accounts]);
 
   return (
     <Fragment>

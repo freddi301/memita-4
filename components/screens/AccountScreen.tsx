@@ -1,24 +1,22 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useLingui } from "@lingui/react/macro";
 import * as Clipboard from "expo-clipboard";
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import {
   AccountId,
-  generateAccountKeyPair,
+  accountIdFromAccountSecret,
+  generateAccountSecret,
 } from "../cryptography/cryptography";
-import { getDeviceKeyPair } from "../cryptography/cryptographyStorage";
 import { accountLatest, updateAccount } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
 import {
-  queryClient,
   refreshMemitaQueries,
-  store,
   useMemitaMutation,
   useMemitaQuery,
 } from "../store/dataApi";
+import { useDeviceSettingsStore as useDeviceSettings } from "../store/deviceSettingsStorage";
 import { useTheme } from "../Theme";
-import { useLingui } from "@lingui/react/macro";
 import { ProfileScreen } from "./ProfileScreen";
 import { SelectAccountScreen } from "./SelectAccountScreen";
 
@@ -39,17 +37,10 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
 
   const canSave = nameInput !== nameOriginal;
 
-  const deviceId =
-    useSuspenseQuery(
-      {
-        queryKey: ["deviceId", accountId],
-        queryFn: async () => {
-          if (!accountId) return null;
-          return (await getDeviceKeyPair(accountId)).deviceId;
-        },
-      },
-      queryClient,
-    ).data ?? undefined;
+  const deviceSettings = useDeviceSettings();
+  const deviceId = accountId
+    ? deviceSettings.cryptoPublicKeys[accountId]
+    : undefined;
 
   return (
     <Fragment>
@@ -68,7 +59,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
                       name: nameOriginal,
                       deleted: true,
                     });
-                    await store.stop(deviceId);
+                    await deviceSettings.removeAccount(accountId);
                     return <SelectAccountScreen />;
                   }
                 : undefined
@@ -100,19 +91,15 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
                         deleted: false,
                       });
                     } else {
-                      // TODO save account secret
-                      const newAccountId = generateAccountKeyPair().accountId;
+                      const newAccountSecret = generateAccountSecret();
+                      const newAccountId =
+                        accountIdFromAccountSecret(newAccountSecret);
+                      await deviceSettings.addAccount(newAccountSecret);
                       await update({
                         accountId: newAccountId,
                         name: nameInput,
                         deleted: false,
                       });
-                      const deviceKeyPair =
-                        await getDeviceKeyPair(newAccountId);
-                      await store.start(
-                        deviceKeyPair.deviceId,
-                        deviceKeyPair.deviceSecret,
-                      );
                       return (
                         <ProfileScreen
                           accountId={newAccountId}

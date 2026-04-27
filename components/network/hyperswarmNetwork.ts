@@ -3,6 +3,7 @@ import DHT from "hyperdht";
 import Hyperswarm, { type Connection } from "hyperswarm";
 import {
   type DeviceId,
+  deviceIdFromDeviceSecret,
   deviceIdFromUint8Array,
   deviceIdToUint8Array,
   type DeviceSecret,
@@ -19,12 +20,12 @@ export const hyperswarmNetworkFactory: NetworkFactory = ({
     ReturnType<typeof hyperswarmNodeFactory>
   >();
   return {
-    async start(deviceId, deviceSecret) {
+    async start(deviceSecret) {
+      const deviceId = deviceIdFromDeviceSecret(deviceSecret);
       if (hyperswarmNodes.has(deviceId)) {
         return;
       }
       const hyperswarmNodePromise = hyperswarmNodeFactory({
-        deviceId,
         deviceSecret,
         received(fromDeviceId, data) {
           return received(deviceId, fromDeviceId, data);
@@ -39,8 +40,8 @@ export const hyperswarmNetworkFactory: NetworkFactory = ({
     async stop(deviceId) {
       const hyperswarmNode = await hyperswarmNodes.get(deviceId);
       if (hyperswarmNode) {
-        await hyperswarmNode.stop();
         hyperswarmNodes.delete(deviceId);
+        await hyperswarmNode.stop();
       }
     },
     async send(deviceId, toDeviceId, data) {
@@ -64,16 +65,15 @@ export const hyperswarmNetworkFactory: NetworkFactory = ({
 };
 
 async function hyperswarmNodeFactory({
-  deviceId,
   deviceSecret,
   received,
   connected,
 }: {
-  deviceId: DeviceId;
   deviceSecret: DeviceSecret;
   received(fromDeviceId: DeviceId, data: unknown): Promise<void>;
   connected(otherDeviceId: DeviceId): Promise<void>;
 }) {
+  const deviceId = deviceIdFromDeviceSecret(deviceSecret);
   console.log(`Starting swarm ${deviceId}`);
   const swarm = new Hyperswarm({
     keyPair: {
@@ -90,6 +90,13 @@ async function hyperswarmNodeFactory({
       // internet bootstrap nodes
       ...DHT.BOOTSTRAP,
     ],
+    firewall(remotePublicKey) {
+      const otherDeviceId = deviceIdFromUint8Array(remotePublicKey);
+      const isMe = otherDeviceId === deviceId;
+      const isAlreadyConnected = connectionByDeviceId.has(otherDeviceId);
+      // this prevents opening duplicate connections
+      return isMe || isAlreadyConnected;
+    },
   });
   await swarm.listen();
   console.log(`Swarm started ${deviceId}`);
