@@ -5,6 +5,7 @@ import {
 } from "@tanstack/react-query";
 import { Platform } from "react-native";
 import { AccountIdSchema } from "../cryptography/cryptography";
+import { networkDummy } from "../network/netoworkDummy";
 import { bareNetworkFactory } from "../network/networkBare";
 import { websocketNetworkFactory } from "../network/networkWebsocketClient";
 import { triggerNotification } from "../notifications";
@@ -55,7 +56,11 @@ export const store = makeStore<StoreItem>({
   storage: localStorageFactory("data", StoreItemSchema.parse),
   // networkFactory: websocketNetworkFactory,
   networkFactory:
-    Platform.OS === "web" ? websocketNetworkFactory : bareNetworkFactory,
+    process.env.NODE_ENV === "test"
+      ? networkDummy
+      : Platform.OS === "web"
+        ? websocketNetworkFactory
+        : bareNetworkFactory,
   async onAdd(item) {
     subscriptions.forEach((callback) => callback());
     await triggerNotification();
@@ -66,7 +71,13 @@ export const store = makeStore<StoreItem>({
 const subscriptions = new Set<() => void>();
 
 export const queryClient = new QueryClient({
-  defaultOptions: { queries: { staleTime: 0, refetchOnMount: "always" } },
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+      refetchOnMount: "always",
+      gcTime: process.env.NODE_ENV === "test" ? Infinity : undefined,
+    },
+  },
 });
 export function useMemitaQuery<Params, Result>(
   queryFactory: (params: Params) => (all: Array<StoreItem>) => Result,
