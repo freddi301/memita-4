@@ -1,4 +1,4 @@
-# Languages & Theme
+# Languages
 
 - [ ] auto select locale from system settings
 - [ ] select language manually
