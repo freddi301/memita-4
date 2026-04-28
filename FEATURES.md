@@ -2,8 +2,6 @@
 
 - [x] account list
 - [ ] switch account
-- [x] no accounts screen
-- [x] create account
 - [ ] export account
 - [ ] import account
 - [x] delete account

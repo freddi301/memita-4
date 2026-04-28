@@ -103,7 +103,7 @@ export function useMemitaQuery<Params, Result>(
     {
       queryKey: [queryFactory.name, params, forceSuspend],
       async queryFn(): Promise<Result> {
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        // await new Promise((resolve) => setTimeout(resolve, 500));
         const all = await store.all();
         const result = queryFactory(params)(all);
         if (result === undefined) return null as unknown as Result;
@@ -126,7 +126,7 @@ export function useMemitaMutation<Params>(
   return useMutation(
     {
       async mutationFn(params: Params) {
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        // await new Promise((resolve) => setTimeout(resolve, 500));
         const all = await store.all();
         const newItems = mutationFactory(params)(all);
         for (const item of newItems) {

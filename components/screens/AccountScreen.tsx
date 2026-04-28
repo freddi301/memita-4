@@ -160,6 +160,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             value={nameInput}
             onChangeText={setNameInput}
             style={theme.textInputStyle}
+            placeholder={t`This name is only visible to you on this device`}
           />
           {nameInput !== nameOriginal ? (
             <Text
