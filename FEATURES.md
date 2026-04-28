@@ -1,4 +1,4 @@
-# Languages
+# Languages & Theme
 
 - [ ] auto select locale from system settings
 - [ ] select language manually
@@ -167,18 +167,3 @@
 # File sharing
 
 - [ ] torrent like, with privacy settings
-
-# More
-
-- [ ] android background exection
-- [ ] ios background exection
-- [ ] macos background exection
-- [ ] windows background exection
-- [ ] linux background exection
-- [ ] must update app mechanism
-- [ ] crash report send
-- [ ] conect over hyperswarm
-- [ ] connect bloetooth
-- [ ] connect wifi direct
-- [ ] connect over federated servers
-- [ ] relay connection

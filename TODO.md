@@ -1,4 +1,3 @@
-add knip to precommit hook
 review features secion, normalize items -> transform into tests
 review what happens on back button (web and native)
 while editing a direct message, dont let user do anything to inadvertently lose chages
@@ -25,18 +24,17 @@ Biography - for Profile and places
 # Platform support
 
 - [ ] android
-  - [x] dev build
   - [ ] binary published on website
   - [ ] published on store
 - [ ] ios
-  - [x] dev build
+  - [ ] dev build
   - [ ] binary published on website
   - [ ] published on store
 - [ ] windows
-  - [x] dev build
+  - [ ] dev build
   - [ ] binary published on website
 - [ ] macos
-  - [x] dev build
+  - [ ] dev build
   - [ ] binary published on website
 - [ ] linux
   - [x] dev build
