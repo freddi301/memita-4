@@ -17,6 +17,8 @@
     "format": "prettier --write .",
     "knip": "knip",
     "test": "jest",
+    "coverage": "jest --coverage",
+    "lint-staged": "lint-staged",
     "lingui:extract": "lingui extract",
     "lingui:compile": "lingui compile"
   },
@@ -73,6 +75,7 @@
     "jest": "~29.7.0",
     "jest-expo": "~55.0.16",
     "knip": "^6.6.3",
+    "lint-staged": "^16.4.0",
     "lodash": "^4.17.23",
     "magic-bytes.js": "^1.13.0",
     "maplibre-gl": "^5.23.0",
@@ -107,6 +110,11 @@
     "transformIgnorePatterns": [],
     "setupFiles": [
       "./jest.setup.js"
+    ]
+  },
+  "lint-staged": {
+    "./**/*.{ts,tsx,js,jsx}": [
+      "jest --findRelatedTests --coverage --coverageThreshold='{\"global\":{\"lines\":100,\"functions\":100,\"statements\":100}}' --ci"
     ]
   }
 }

@@ -1,4 +1,5 @@
 review features secion, normalize items -> transform into tests
+setup test coverage to detect unused code
 review what happens on back button (web and native)
 while editing a direct message, dont let user do anything to inadvertently lose chages
 do not send draft messages
