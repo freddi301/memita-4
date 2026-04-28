@@ -15,8 +15,6 @@ export const GroupMessageUpdateSchema = z.object({
   timestamp: TimestampSchema,
 });
 
-export type GroupMessageUpdate = z.infer<typeof GroupMessageUpdateSchema>;
-
 export function updateGroupMessage({
   senderId,
   groupId,

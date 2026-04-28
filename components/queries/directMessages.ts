@@ -19,8 +19,6 @@ export const DirectMessageUpdateSchema = z.object({
   timestamp: TimestampSchema,
 });
 
-export type DirectMessageUpdate = z.infer<typeof DirectMessageUpdateSchema>;
-
 export function updateDirectMessage({
   senderId,
   receiverId,
@@ -129,10 +127,6 @@ export const DidReadDirectMessageUpdateSchema = z.object({
   didRead: z.boolean(),
   timestamp: TimestampSchema,
 });
-
-export type DidReadDirectMessageUpdate = z.infer<
-  typeof DidReadDirectMessageUpdateSchema
->;
 
 export function updateDidReadDirectMessage({
   senderId,

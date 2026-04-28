@@ -13,8 +13,6 @@ export const GroupUpdateSchema = z.object({
   timestamp: TimestampSchema,
 });
 
-export type GroupUpdate = z.infer<typeof GroupUpdateSchema>;
-
 export function updateGroup({
   accountId,
   groupId,

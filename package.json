@@ -43,7 +43,6 @@
     "@typescript-eslint/eslint-plugin": "^8.59.0",
     "@typescript-eslint/parser": "^8.59.0",
     "@vis.gl/react-maplibre": "^8.1.1",
-    "bare": "^1.26.0",
     "bare-buffer": "^3.4.2",
     "bare-encoding": "^1.0.3",
     "bare-pack": "^2.0.0",

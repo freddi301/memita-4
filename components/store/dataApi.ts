@@ -64,7 +64,7 @@ async function cleanLocalStorage() {
 }
 // void cleanLocalStorage();
 
-export const store = makeStore<StoreItem>({
+const store = makeStore<StoreItem>({
   parse: StoreItemSchema.parse,
   storage: localStorageFactory("data", StoreItemSchema.parse),
   // networkFactory: websocketNetworkFactory,
@@ -85,7 +85,7 @@ export const store = makeStore<StoreItem>({
   shouldSend,
 });
 
-export const queryClient = new QueryClient({
+const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 0,

@@ -10,7 +10,7 @@ Notifications.setNotificationHandler({
   }),
 });
 
-export async function setupNotificationChannel() {
+async function setupNotificationChannel() {
   if (Platform.OS === "android") {
     await Notifications.setNotificationChannelAsync("default", {
       name: "Default",

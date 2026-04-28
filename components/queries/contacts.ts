@@ -13,8 +13,6 @@ export const ContactUpdateSchema = z.object({
   timestamp: TimestampSchema,
 });
 
-export type ContactUpdate = z.infer<typeof ContactUpdateSchema>;
-
 export function updateContact({
   accountId,
   contactId,

@@ -17,8 +17,6 @@ export const BiographyUpdateSchema = z.object({
   timestamp: TimestampSchema,
 });
 
-export type BiographyUpdate = z.infer<typeof BiographyUpdateSchema>;
-
 type BioLocation = z.infer<NonNullable<typeof BioLocationSchema>>;
 
 export function updateBiography({

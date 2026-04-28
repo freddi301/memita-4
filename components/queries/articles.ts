@@ -16,8 +16,6 @@ export const ArticleUpdateSchema = z.object({
   timestamp: TimestampSchema,
 });
 
-export type ArticleUpdate = z.infer<typeof ArticleUpdateSchema>;
-
 export function updateArticle({
   accountId,
   createdAt,
