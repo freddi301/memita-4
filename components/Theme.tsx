@@ -1,4 +1,5 @@
 import { useColorScheme } from "react-native";
+import { ThemeSchema, useDeviceSettings } from "./store/deviceSettingsStorage";
 
 const darkTheme = {
   backgroundColor: "#1d1d1d",
@@ -28,8 +29,15 @@ const lightTheme: ThemeProps = {
   selectedItemBackgroundColor: "#cdc6f6",
 };
 
+export function useSystemTheme() {
+  const systemColorScheme = useColorScheme();
+  return ThemeSchema.parse(systemColorScheme === "light" ? "light" : "dark");
+}
+
 export function useTheme() {
-  const colorScheme = useColorScheme();
+  const deviceSettings = useDeviceSettings();
+  const systemColorScheme = useSystemTheme();
+  const colorScheme = deviceSettings.theme ?? systemColorScheme;
   const themeProps = colorScheme === "light" ? lightTheme : darkTheme;
   const textStyle = {
     color: themeProps.textColor,

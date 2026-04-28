@@ -20,9 +20,14 @@ import { languages } from "./languages";
 export const LanguageSchema = z.enum(languages);
 export type Language = z.infer<typeof LanguageSchema>;
 
+export const themes = ["light", "dark"] as const;
+export const ThemeSchema = z.enum(themes);
+export type Theme = z.infer<typeof ThemeSchema>;
+
 const StoredDeviceSettingsDataSchema = z.object({
   cryptoPrivateKeys: z.record(AccountSecretSchema, DeviceSecretSchema),
   language: LanguageSchema.optional(),
+  theme: ThemeSchema.optional(),
 });
 
 type StoredDeviceSettingsData = z.infer<typeof StoredDeviceSettingsDataSchema>;
@@ -31,6 +36,7 @@ type CachedDeviceSettingsData = {
   cryptoPrivateKeys: Record<AccountSecret, DeviceSecret>;
   cryptoPublicKeys: Record<AccountId, DeviceId>;
   language: Language | undefined;
+  theme: Theme | undefined;
 };
 
 function storedToCached(
@@ -47,6 +53,7 @@ function storedToCached(
       ),
     ),
     language: stored.language,
+    theme: stored.theme,
   };
 }
 
@@ -56,6 +63,7 @@ function cachedToStored(
   return {
     cryptoPrivateKeys: cached.cryptoPrivateKeys,
     language: cached.language,
+    theme: cached.theme,
   };
 }
 
@@ -125,6 +133,10 @@ async function setLanguage(language: Language | undefined) {
   await update({ ...cachedData, language });
 }
 
+async function setTheme(theme: Theme | undefined) {
+  await update({ ...cachedData, theme });
+}
+
 export function useDeviceSettings() {
   use(loadPromise);
   return {
@@ -132,6 +144,7 @@ export function useDeviceSettings() {
     addAccount,
     removeAccount,
     setLanguage,
+    setTheme,
   };
 }
 

@@ -1,12 +1,3 @@
-# Languages
-
-- [ ] auto select locale from system settings
-- [ ] select language manually
-- [ ] English
-- [ ] Italian
-- [ ] auto select theme from system settings
-- [ ] select theme manually
-
 # Account
 
 - [x] account list

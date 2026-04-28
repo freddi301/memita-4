@@ -33,7 +33,7 @@ msgstr "Account settings"
 msgid "Attach file"
 msgstr "Attach file"
 
-#: components/screens/DeviceSettingsScreen.tsx:27
+#: components/screens/DeviceSettingsScreen.tsx:31
 msgid "Back"
 msgstr "Back"
 
@@ -75,7 +75,7 @@ msgstr "Create article"
 msgid "Create contact"
 msgstr "Create contact"
 
-#: components/screens/SelectAccountScreen.tsx:27
+#: components/screens/SelectAccountScreen.tsx:31
 msgid "Create new account"
 msgstr "Create new account"
 
@@ -90,6 +90,11 @@ msgstr "Create new contact"
 #: components/screens/GroupMessagesScreen.tsx:26
 msgid "Create new group"
 msgstr "Create new group"
+
+#: components/screens/DeviceSettingsScreen.tsx:82
+#: components/screens/DeviceSettingsScreen.tsx:85
+msgid "Dark"
+msgstr "Dark"
 
 #: components/ui/MessageCompose.tsx:204
 msgid "Delete"
@@ -112,7 +117,7 @@ msgstr "Device ID"
 msgid "Device id will be generated on save"
 msgstr "Device id will be generated on save"
 
-#: components/screens/DeviceSettingsScreen.tsx:30
+#: components/screens/DeviceSettingsScreen.tsx:34
 msgid "Device Settings"
 msgstr "Device Settings"
 
@@ -146,7 +151,7 @@ msgstr "Edit date"
 msgid "Edit time"
 msgstr "Edit time"
 
-#: components/screens/DeviceSettingsScreen.tsx:46
+#: components/screens/DeviceSettingsScreen.tsx:52
 msgid "English"
 msgstr "English"
 
@@ -183,13 +188,17 @@ msgstr "Group messages"
 msgid "Group name"
 msgstr "Group name"
 
-#: components/screens/DeviceSettingsScreen.tsx:48
+#: components/screens/DeviceSettingsScreen.tsx:54
 msgid "Italian"
 msgstr "Italian"
 
-#: components/screens/DeviceSettingsScreen.tsx:35
+#: components/screens/DeviceSettingsScreen.tsx:39
 msgid "Language"
 msgstr "Language"
+
+#: components/screens/DeviceSettingsScreen.tsx:80
+msgid "Light"
+msgstr "Light"
 
 #: components/screens/ProfileScreen.tsx:132
 msgid "Location"
@@ -199,7 +208,7 @@ msgstr "Location"
 msgid "Mark as read"
 msgstr "Mark as read"
 
-#: components/screens/SelectAccountScreen.tsx:42
+#: components/screens/SelectAccountScreen.tsx:46
 msgid "Memita"
 msgstr "Memita"
 
@@ -220,7 +229,7 @@ msgstr "New draft"
 msgid "Next occurrence"
 msgstr "Next occurrence"
 
-#: components/screens/SelectAccountScreen.tsx:62
+#: components/screens/SelectAccountScreen.tsx:66
 msgid "No accounts on this device"
 msgstr "No accounts on this device"
 
@@ -289,7 +298,7 @@ msgstr "Search"
 msgid "Send message"
 msgstr "Send message"
 
-#: components/screens/SelectAccountScreen.tsx:22
+#: components/screens/SelectAccountScreen.tsx:25
 msgid "Settings"
 msgstr "Settings"
 
@@ -300,6 +309,22 @@ msgstr "Share profile"
 #: components/ui/CoordsInput.tsx:44
 msgid "Show on map"
 msgstr "Show on map"
+
+#: components/screens/DeviceSettingsScreen.tsx:85
+#~ msgid "System"
+#~ msgstr "System"
+
+#: components/screens/DeviceSettingsScreen.tsx:62
+msgid "System default ({languageName})"
+msgstr "System default ({languageName})"
+
+#: components/screens/DeviceSettingsScreen.tsx:86
+msgid "System default ({themeName})"
+msgstr "System default ({themeName})"
+
+#: components/screens/DeviceSettingsScreen.tsx:67
+msgid "Theme"
+msgstr "Theme"
 
 #: components/screens/DirectConversationScreen.tsx:438
 msgid "Unread messages"

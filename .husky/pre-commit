@@ -6,6 +6,6 @@ npm run typecheck &&\
 npm run lint &&\
 npm run knip || { echo "❌ Found unused exports"; exit 1; } &&\
 npm run test &&\
-npm run lint-staged &&\
 npx expo export  &&\
-npx expo prebuild --clean
+npx expo prebuild --clean &&\
+npm run lint-staged
