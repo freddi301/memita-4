@@ -7,6 +7,7 @@ import { ScreenLink } from "../Routing";
 import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { AccountScreen } from "./AccountScreen";
+import { DeviceSettingsScreen } from "./DeviceSettingsScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 
 export function SelectAccountScreen() {
@@ -17,7 +18,13 @@ export function SelectAccountScreen() {
 
   return (
     <Fragment>
-      <View style={{ justifyContent: "flex-end", flexDirection: "row" }}>
+      <View style={{ flexDirection: "row" }}>
+        <ScreenLink
+          icon="gear"
+          to={<DeviceSettingsScreen />}
+          label={t`Settings`}
+        />
+        <View style={{ flexGrow: 1 }} />
         <ScreenLink
           to={<AccountScreen />}
           icon="plus"

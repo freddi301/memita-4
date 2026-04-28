@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
+    "@jest/globals": "^30.3.0",
     "@lingui/babel-plugin-lingui-macro": "^5.9.5",
     "@lingui/cli": "^5.9.5",
     "@lingui/core": "^5.9.5",
@@ -110,6 +111,9 @@
     "transformIgnorePatterns": [],
     "setupFiles": [
       "./jest.setup.js"
+    ],
+    "setupFilesAfterEnv": [
+      "./jest.setup.after.js"
     ]
   },
   "lint-staged": {

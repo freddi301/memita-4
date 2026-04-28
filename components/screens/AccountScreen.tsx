@@ -15,7 +15,7 @@ import {
   useMemitaMutation,
   useMemitaQuery,
 } from "../store/dataApi";
-import { useDeviceSettingsStore as useDeviceSettings } from "../store/deviceSettingsStorage";
+import { useDeviceSettings } from "../store/deviceSettingsStorage";
 import { useTheme } from "../Theme";
 import { ProfileScreen } from "./ProfileScreen";
 import { SelectAccountScreen } from "./SelectAccountScreen";

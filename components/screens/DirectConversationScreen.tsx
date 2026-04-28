@@ -247,7 +247,7 @@ export function DirectConversationScreen({
                   size={14}
                   color={
                     item.isDraft
-                      ? theme.secondaryTextColor
+                      ? "yellow"
                       : item.didRead
                         ? theme.linkTextColor
                         : item.receiverId === accountId && !item.didRead
@@ -311,9 +311,6 @@ export function DirectConversationScreen({
         )}
       />
       {(() => {
-        if (toModifyMessage) {
-          return null;
-        }
         switch (toolbarState.type) {
           case "didRead": {
             return (

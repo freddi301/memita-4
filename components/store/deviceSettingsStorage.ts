@@ -11,13 +11,18 @@ import {
   DeviceSecretSchema,
   generateDeviceSecret,
 } from "../cryptography/cryptography";
+import { languages } from "./languages";
 
 // TODO migration scripts when app updates
 // TODO protect data with password or biometric auth
 // TODO what to do when data is corrupted?
 
+export const LanguageSchema = z.enum(languages);
+export type Language = z.infer<typeof LanguageSchema>;
+
 const StoredDeviceSettingsDataSchema = z.object({
   cryptoPrivateKeys: z.record(AccountSecretSchema, DeviceSecretSchema),
+  language: LanguageSchema.optional(),
 });
 
 type StoredDeviceSettingsData = z.infer<typeof StoredDeviceSettingsDataSchema>;
@@ -25,6 +30,7 @@ type StoredDeviceSettingsData = z.infer<typeof StoredDeviceSettingsDataSchema>;
 type CachedDeviceSettingsData = {
   cryptoPrivateKeys: Record<AccountSecret, DeviceSecret>;
   cryptoPublicKeys: Record<AccountId, DeviceId>;
+  language: Language | undefined;
 };
 
 function storedToCached(
@@ -40,13 +46,17 @@ function storedToCached(
         ],
       ),
     ),
+    language: stored.language,
   };
 }
 
 function cachedToStored(
   cached: CachedDeviceSettingsData,
 ): StoredDeviceSettingsData {
-  return { cryptoPrivateKeys: cached.cryptoPrivateKeys };
+  return {
+    cryptoPrivateKeys: cached.cryptoPrivateKeys,
+    language: cached.language,
+  };
 }
 
 const initialStoredData: StoredDeviceSettingsData = { cryptoPrivateKeys: {} };
@@ -111,12 +121,17 @@ async function removeAccount(accountId: AccountId) {
   await update({ cryptoPrivateKeys });
 }
 
-export function useDeviceSettingsStore() {
+async function setLanguage(language: Language | undefined) {
+  await update({ ...cachedData, language });
+}
+
+export function useDeviceSettings() {
   use(loadPromise);
   return {
     ...useSyncExternalStore(subscribe, getSnapshot),
     addAccount,
     removeAccount,
+    setLanguage,
   };
 }
 

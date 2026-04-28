@@ -155,6 +155,7 @@ export function ScreenLink({
   const shouldShowLabel = children ? false : !hideLabel;
   return (
     <Pressable
+      accessibilityRole="button"
       onPress={() => {
         if (isPending || !to) {
           return;
