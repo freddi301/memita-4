@@ -1,3 +1,4 @@
+import { useLingui } from "@lingui/react/macro";
 import { Fragment, useEffect, useState } from "react";
 import {
   Platform,
@@ -8,19 +9,19 @@ import {
   View,
 } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
-import { ScreenLink } from "../Routing";
-import { useTheme } from "../Theme";
-import { useLingui } from "@lingui/react/macro";
 import { AccountId } from "../cryptography/cryptography";
 import { biographyLatest, updateBiography } from "../queries/biography";
 import { contactLatest } from "../queries/contacts";
+import { ScreenLink } from "../Routing";
 import {
   refreshMemitaQueries,
   useMemitaMutation,
   useMemitaQuery,
 } from "../store/dataApi";
+import { useTheme } from "../Theme";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { CoordsInput } from "../ui/CoordsInput";
+import { CryptoAvatar } from "../ui/CryptoAvatar";
 import { AccountScreen } from "./AccountScreen";
 import { ContactScreen } from "./ContactScreen";
 import { DirectConversationScreen } from "./DirectConversationScreen";
@@ -62,13 +63,17 @@ export function ProfileScreen({
 
   return (
     <Fragment>
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
+      <View
+        style={{ flexDirection: "row", alignItems: "center", paddingLeft: 16 }}
+      >
+        <CryptoAvatar accountId={contactId} />
         <Text
           style={{
             ...theme.textStyle,
             fontWeight: "bold",
-            paddingLeft: 16,
             flexGrow: 1,
+            paddingLeft: 8,
+            paddingTop: 6,
           }}
         >
           {contact.name}

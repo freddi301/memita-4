@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
 import * as Clipboard from "expo-clipboard";
 import { Fragment, useEffect, useState } from "react";
-import { ScrollView, Text, TextInput, View } from "react-native";
+import { Pressable, ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import {
   AccountId,
@@ -17,6 +17,7 @@ import {
 } from "../store/dataApi";
 import { useDeviceSettings } from "../store/deviceSettingsStorage";
 import { useTheme } from "../Theme";
+import { CryptoAvatar } from "../ui/CryptoAvatar";
 import { ProfileScreen } from "./ProfileScreen";
 import { SelectAccountScreen } from "./SelectAccountScreen";
 
@@ -41,6 +42,11 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
   const deviceId = accountId
     ? deviceSettings.cryptoPublicKeys[accountId]
     : undefined;
+
+  const [newAccountSecret, setNewAccountSecret] = useState(
+    generateAccountSecret,
+  );
+  const newAccountId = accountIdFromAccountSecret(newAccountSecret);
 
   return (
     <Fragment>
@@ -91,9 +97,6 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
                         deleted: false,
                       });
                     } else {
-                      const newAccountSecret = generateAccountSecret();
-                      const newAccountId =
-                        accountIdFromAccountSecret(newAccountSecret);
                       await deviceSettings.addAccount(newAccountSecret);
                       await update({
                         accountId: newAccountId,
@@ -118,48 +121,39 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
       </View>
       <ScrollView
         style={{ flex: 1 }}
-        contentContainerStyle={{ flexGrow: 1 }}
+        contentContainerStyle={{ flexGrow: 1, paddingVertical: 8 }}
         refreshControl={
           <RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />
         }
       >
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <View
-            style={{
-              gap: 2,
-              paddingHorizontal: 16,
-              paddingVertical: 8,
-              flex: 1,
+        <View style={{ flexDirection: "row", paddingHorizontal: 16, gap: 8 }}>
+          <Pressable
+            onPress={() => {
+              setNewAccountSecret(generateAccountSecret());
             }}
           >
-            <Text style={theme.secondaryTextStyle}>{t`Account ID`}</Text>
-            {accountId ? (
-              <Text style={{ ...theme.textStyle }}>{accountId}</Text>
-            ) : (
-              <Text style={theme.secondaryTextStyle}>
-                {t`Account id will be generated on save`}
-              </Text>
-            )}
-          </View>
-          <ScreenLink
-            to={
-              accountId
-                ? async () => {
-                    await Clipboard.setStringAsync(accountId);
-                  }
-                : undefined
-            }
-            icon="copy"
-            hideLabel
-            label={t`Copy account id to clipboard`}
-          />
+            <CryptoAvatar accountId={accountId ?? newAccountId} />
+          </Pressable>
+          {!accountId && (
+            <View>
+              <Text
+                style={theme.textStyle}
+              >{t`This will your avatar forever, choose wisely`}</Text>
+              <Text style={theme.secondaryTextStyle}>{t`Tap to change`}</Text>
+            </View>
+          )}
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={theme.secondaryTextStyle}>{t`Account name`}</Text>
+          <Text
+            style={{ ...theme.secondaryTextStyle, fontWeight: "bold" }}
+          >{t`Account name`}</Text>
           <TextInput
             value={nameInput}
             onChangeText={setNameInput}
-            style={theme.textInputStyle}
+            style={{
+              ...theme.textInputStyle,
+              color: nameInput ? theme.textColor : theme.secondaryTextColor,
+            }}
             placeholder={t`This name is only visible to you on this device`}
           />
           {nameInput !== nameOriginal ? (
@@ -173,37 +167,68 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             </Text>
           ) : null}
         </View>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        {accountId && (
           <View
-            style={{
-              gap: 2,
-              paddingHorizontal: 16,
-              paddingVertical: 8,
-              flex: 1,
-            }}
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-            <Text style={theme.secondaryTextStyle}>{t`Device ID`}</Text>
-            {deviceId ? (
-              <Text style={theme.textStyle}>{deviceId}</Text>
-            ) : (
-              <Text style={theme.secondaryTextStyle}>
-                {t`Device id will be generated on save`}
-              </Text>
-            )}
+            <View
+              style={{
+                gap: 2,
+                paddingHorizontal: 16,
+                paddingVertical: 8,
+                flex: 1,
+              }}
+            >
+              <Text
+                style={{ ...theme.secondaryTextStyle, fontWeight: "bold" }}
+              >{t`Account ID`}</Text>
+              <Text style={{ ...theme.textStyle }}>{accountId}</Text>
+            </View>
+            <ScreenLink
+              to={
+                accountId
+                  ? async () => {
+                      await Clipboard.setStringAsync(accountId);
+                    }
+                  : undefined
+              }
+              icon="copy"
+              hideLabel
+              label={t`Copy account id to clipboard`}
+            />
           </View>
-          <ScreenLink
-            to={
-              deviceId
-                ? async () => {
-                    await Clipboard.setStringAsync(deviceId);
-                  }
-                : undefined
-            }
-            icon="copy"
-            hideLabel
-            label={t`Copy device id to clipboard`}
-          />
-        </View>
+        )}
+        {accountId && (
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <View
+              style={{
+                gap: 2,
+                paddingHorizontal: 16,
+                paddingVertical: 8,
+                flex: 1,
+              }}
+            >
+              <Text
+                style={{ ...theme.secondaryTextStyle, fontWeight: "bold" }}
+              >{t`Device ID`}</Text>
+              <Text style={theme.textStyle}>{deviceId}</Text>
+            </View>
+            <ScreenLink
+              to={
+                deviceId
+                  ? async () => {
+                      await Clipboard.setStringAsync(deviceId);
+                    }
+                  : undefined
+              }
+              icon="copy"
+              hideLabel
+              label={t`Copy device id to clipboard`}
+            />
+          </View>
+        )}
       </ScrollView>
       <ScreenLink
         to={

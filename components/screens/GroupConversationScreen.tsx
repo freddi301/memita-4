@@ -1,3 +1,4 @@
+import { useLingui } from "@lingui/react/macro";
 import { Fragment, useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
@@ -14,7 +15,6 @@ import {
   useMemitaQuery,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useLingui } from "@lingui/react/macro";
 import { MessageCompose } from "../ui/MessageCompose";
 import { GroupMessagesScreen } from "./GroupMessagesScreen";
 import { GroupScreen } from "./GroupScreen";
@@ -54,7 +54,7 @@ export function GroupConversationScreen({
           to={<GroupScreen accountId={accountId} groupId={groupId} />}
           icon="user"
           label={group?.name ?? ""}
-          styleOverride={{ flexGrow1: true }}
+          styleOverride={{ flexGrow: 1 }}
         />
       </View>
       <FlatList

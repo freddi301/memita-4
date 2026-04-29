@@ -1,4 +1,4 @@
-import { FontAwesome } from "@expo/vector-icons";
+import { useLingui } from "@lingui/react/macro";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
@@ -6,8 +6,8 @@ import { directMessagesSummary } from "../queries/directMessages";
 import { ScreenLink } from "../Routing";
 import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useLingui } from "@lingui/react/macro";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
+import { CryptoAvatar } from "../ui/CryptoAvatar";
 import { ContactScreen } from "./ContactScreen";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 
@@ -38,48 +38,47 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
                   contactId={item.contactId}
                 />
               }
-              styleOverride={{ flexGrow1: true }}
+              styleOverride={{
+                flexDirection: "row",
+                paddingHorizontal: 8,
+                marginVertical: 4,
+                gap: 8,
+                flexGrow: 1,
+              }}
             >
-              <View
-                style={{
-                  flexDirection: "row",
-                  flexGrow: 1,
-                  paddingVertical: 8,
-                  alignItems: "center",
-                }}
-              >
-                <FontAwesome
-                  name="circle"
-                  color={theme.linkTextColor}
-                  size={16}
-                  style={{ marginHorizontal: 8 }}
-                />
-                <Text style={{ ...theme.linkTextStyle, flexGrow: 1 }}>
-                  {item.contactName}
-                </Text>
-                {item.lastMesssageCreatedAt ? (
-                  <Text style={{ ...theme.textStyle, paddingRight: 4 }}>
-                    {new Date(item.lastMesssageCreatedAt).toLocaleString()}
+              <CryptoAvatar accountId={item.contactId} />
+              <View style={{ flexGrow: 1 }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={{ ...theme.linkTextStyle, flexGrow: 1 }}>
+                    {item.contactName}
                   </Text>
-                ) : null}
-                {item.unread > 0 ? (
+                  {item.unread > 0 && (
+                    <Text
+                      style={{
+                        ...theme.textStyle,
+                        fontWeight: "bold",
+                        backgroundColor: theme.linkTextColor,
+                        color: theme.backgroundColor,
+                        paddingHorizontal: 4,
+                        borderRadius: 8,
+                        minWidth: 24,
+                        textAlign: "center",
+                      }}
+                    >
+                      {item.unread}
+                    </Text>
+                  )}
+                </View>
+                {item.lastMesssageCreatedAt > 0 && (
                   <Text
                     style={{
                       ...theme.textStyle,
-                      fontWeight: "bold",
-                      backgroundColor: theme.linkTextColor,
-                      color: theme.backgroundColor,
-                      paddingHorizontal: 4,
-                      borderRadius: 4,
-                      marginHorizontal: 4,
-                      minWidth: 24,
-                      textAlign: "center",
+                      color: theme.secondaryTextColor,
+                      alignSelf: "flex-end",
                     }}
                   >
-                    {item.unread}
+                    {new Date(item.lastMesssageCreatedAt).toLocaleString()}
                   </Text>
-                ) : (
-                  <View style={{ width: 24, marginHorizontal: 4 }} />
                 )}
               </View>
             </ScreenLink>

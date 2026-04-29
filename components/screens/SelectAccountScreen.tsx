@@ -6,6 +6,7 @@ import { accountList } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
 import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
+import { CryptoAvatar } from "../ui/CryptoAvatar";
 import { AccountScreen } from "./AccountScreen";
 import { DeviceSettingsScreen } from "./DeviceSettingsScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
@@ -51,9 +52,25 @@ export function SelectAccountScreen() {
         renderItem={({ item }) => (
           <ScreenLink
             to={<DirectMessagesScreen accountId={item.accountId} />}
-            icon="user-circle"
-            label={item.name}
-          />
+            styleOverride={{
+              flexDirection: "row",
+              paddingHorizontal: 8,
+              gap: 8,
+              marginVertical: 4,
+              alignItems: "center",
+            }}
+          >
+            <CryptoAvatar accountId={item.accountId} />
+            <Text
+              style={{
+                ...theme.textStyle,
+                color: theme.linkTextColor,
+                fontWeight: "bold",
+              }}
+            >
+              {item.name}
+            </Text>
+          </ScreenLink>
         )}
         ListEmptyComponent={
           <Text

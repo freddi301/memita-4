@@ -3,6 +3,7 @@ import { use, useSyncExternalStore } from "react";
 import * as z from "zod";
 import {
   AccountId,
+  accountIdFromAccountSecret,
   AccountSecret,
   AccountSecretSchema,
   DeviceId,
@@ -47,7 +48,7 @@ function storedToCached(
     cryptoPublicKeys: Object.fromEntries(
       Object.entries(stored.cryptoPrivateKeys).map(
         ([accountSecret, deviceSecret]) => [
-          accountSecret,
+          accountIdFromAccountSecret(accountSecret as AccountSecret),
           deviceIdFromDeviceSecret(deviceSecret),
         ],
       ),
@@ -117,6 +118,7 @@ const loadPromise = load();
 async function addAccount(accountSecret: AccountSecret) {
   const deviceSecret = generateDeviceSecret();
   await update({
+    ...cachedData,
     cryptoPrivateKeys: {
       ...cachedData.cryptoPrivateKeys,
       [accountSecret]: deviceSecret,
@@ -126,7 +128,7 @@ async function addAccount(accountSecret: AccountSecret) {
 async function removeAccount(accountId: AccountId) {
   const { [accountId as any]: _, ...cryptoPrivateKeys } =
     cachedData.cryptoPrivateKeys;
-  await update({ cryptoPrivateKeys });
+  await update({ ...cachedData, cryptoPrivateKeys });
 }
 
 async function setLanguage(language: Language | undefined) {

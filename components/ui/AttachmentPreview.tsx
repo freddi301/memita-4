@@ -21,7 +21,6 @@ export function AttachmentPreview({
   const magicBytes = use(loadFileMagicBytes(file.hash));
   const fileType = filetypeinfo(magicBytes)[0]?.mime;
   const uri = use(getFileUri(file.hash));
-  console.log(uri);
   useEffect(() => {
     if (Platform.OS === "web") {
       return () => {

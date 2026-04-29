@@ -30,6 +30,7 @@ import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { ContentAddress } from "../store/fileStore";
 import { useTheme } from "../Theme";
 import { AttachmentPreview } from "../ui/AttachmentPreview";
+import { CryptoAvatar } from "../ui/CryptoAvatar";
 import { MessageCompose } from "../ui/MessageCompose";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 import { ProfileScreen } from "./ProfileScreen";
@@ -153,10 +154,13 @@ export function DirectConversationScreen({
         />
         <ScreenLink
           to={<ProfileScreen accountId={accountId} contactId={contactId} />}
-          icon="user"
-          label={contact?.name ?? ""}
-          styleOverride={{ flexGrow1: true }}
-        />
+          styleOverride={{ flexDirection: "row", flexGrow: 1 }}
+        >
+          <CryptoAvatar accountId={contactId} />
+          <Text style={{ ...theme.textStyle, paddingLeft: 16, paddingTop: 10 }}>
+            {contact?.name ?? ""}
+          </Text>
+        </ScreenLink>
       </View>
       <FlatList
         ref={flatListRef}

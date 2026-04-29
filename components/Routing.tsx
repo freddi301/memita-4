@@ -3,6 +3,7 @@ import { isEqual } from "lodash";
 import {
   Activity,
   createContext,
+  Fragment,
   ReactNode,
   use,
   useCallback,
@@ -10,7 +11,7 @@ import {
   useState,
   useTransition,
 } from "react";
-import { Pressable, Text } from "react-native";
+import { Pressable, StyleProp, Text, ViewStyle } from "react-native";
 import { useTheme } from "./Theme";
 
 const MAX_ALIVE_SCREENS = 15;
@@ -122,11 +123,11 @@ export function ScreenLink({
   color,
   hideLabel,
   children,
-  styleOverride: { flexGrow1 = false, hasPadding = true } = {},
+  styleOverride,
 }: {
   to: ReactNode | (() => Promise<ReactNode | void>);
   color?: string;
-  styleOverride?: { flexGrow1?: boolean; hasPadding?: boolean };
+  styleOverride?: StyleProp<ViewStyle>;
 } & (
   | {
       label: string;
@@ -151,8 +152,12 @@ export function ScreenLink({
       : (color ?? theme.linkTextColor);
   const isCurrentScreen =
     typeof to !== "function" ? compareScreens(to, current.element) : false;
-  const shouldHavePadding = children ? false : hasPadding;
-  const shouldShowLabel = children ? false : !hideLabel;
+  const backgroundColor =
+    isPerforming || isCurrentScreen
+      ? theme.activeActionBackgroundColor
+      : isPressing && to
+        ? theme.pressedBackgroundColor
+        : theme.backgroundColor;
   return (
     <Pressable
       accessibilityRole="button"
@@ -173,22 +178,22 @@ export function ScreenLink({
           });
         }
       }}
-      style={{
-        paddingVertical: shouldHavePadding ? 8 : 0,
-        paddingHorizontal: shouldHavePadding ? 16 : 0,
-        // @ts-ignore
-        outline: "none",
-        backgroundColor:
-          isPerforming || isCurrentScreen
-            ? theme.activeActionBackgroundColor
-            : isPressing && to
-              ? theme.pressedBackgroundColor
-              : theme.backgroundColor,
-        flexDirection: "row",
-        gap: 8,
-        alignItems: "baseline",
-        flexGrow: flexGrow1 ? 1 : undefined,
-      }}
+      style={
+        children
+          ? { backgroundColor, ...styleOverride }
+          : {
+              paddingVertical: 8,
+              paddingHorizontal: 16,
+              // @ts-ignore
+              outline: "none",
+              backgroundColor,
+              flexDirection: "row",
+              gap: 8,
+              alignItems: "center",
+              minHeight: 36,
+              ...styleOverride,
+            }
+      }
       onPressIn={() => {
         setIsPressing(true);
       }}
@@ -196,13 +201,18 @@ export function ScreenLink({
         setIsPressing(false);
       }}
     >
-      {icon ? <FontAwesome name={icon} color={textColor} size={16} /> : null}
-      {shouldShowLabel ? (
-        <Text style={{ ...theme.linkTextStyle, color: textColor }}>
-          {label}
-        </Text>
-      ) : null}
-      {children}
+      {children ? (
+        children
+      ) : (
+        <Fragment>
+          {icon && <FontAwesome name={icon} color={textColor} size={16} />}
+          {!hideLabel && (
+            <Text style={{ ...theme.linkTextStyle, color: textColor }}>
+              {label}
+            </Text>
+          )}
+        </Fragment>
+      )}
     </Pressable>
   );
 }

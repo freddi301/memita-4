@@ -1,4 +1,5 @@
 import { FontAwesome } from "@expo/vector-icons";
+import { useLingui } from "@lingui/react/macro";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
@@ -6,7 +7,6 @@ import { articleList } from "../queries/articles";
 import { ScreenLink } from "../Routing";
 import { useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useLingui } from "@lingui/react/macro";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { EditArticleScreen } from "./EditArticleScreen";
 import { ProfileScreen } from "./ProfileScreen";
@@ -42,7 +42,7 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
                   />
                 }
                 label={item.contactName}
-                styleOverride={{ flexGrow1: true, hasPadding: false }}
+                styleOverride={{ flexGrow: 1 }}
               />
               {item.contactId === accountId ? (
                 <ScreenLink
@@ -55,7 +55,6 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
                   icon="pencil"
                   hideLabel
                   label={t`Edit article`}
-                  styleOverride={{ hasPadding: false }}
                 />
               ) : null}
               <Text style={{ ...theme.secondaryTextStyle }}>

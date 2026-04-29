@@ -1,4 +1,5 @@
 review features secion, normalize items -> transform into tests
+setup electron forge build
 review what happens on back button (web and native)
 while editing a direct message, dont let user do anything to inadvertently lose chages
 do not send draft messages
@@ -54,7 +55,7 @@ Biography - for Profile and places
   - [ ] dev build
   - [ ] binary published on website
 - [ ] linux
-  - [x] dev build
+  - [ ] dev build
   - [ ] binary published on website
 - [ ] cloud (for replication)
 - [ ] premise (for replication)
