@@ -57,7 +57,6 @@ export function SelectAccountScreen() {
               paddingHorizontal: 8,
               gap: 8,
               marginVertical: 4,
-              alignItems: "center",
             }}
           >
             <CryptoAvatar accountId={item.accountId} />
@@ -66,6 +65,7 @@ export function SelectAccountScreen() {
                 ...theme.textStyle,
                 color: theme.linkTextColor,
                 fontWeight: "bold",
+                paddingTop: 10,
               }}
             >
               {item.name}
@@ -83,8 +83,12 @@ export function SelectAccountScreen() {
             {t`No accounts on this device`}
           </Text>
         }
-        style={{ flex: 1, paddingVertical: 8 }}
-        contentContainerStyle={{ flexGrow: 1, justifyContent: "flex-end" }}
+        style={{ flex: 1 }}
+        contentContainerStyle={{
+          flexGrow: 1,
+          justifyContent: "flex-end",
+          paddingBottom: 4,
+        }}
         refreshing={false}
         onRefresh={refreshMemitaQueries}
       />

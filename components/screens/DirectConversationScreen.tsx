@@ -88,13 +88,11 @@ export function DirectConversationScreen({
   const [flatListHeight, setFlatListHeight] = useState(0);
 
   const itemVerticalMarginHalf = 3;
-  const itemVerticalPaddingHalf = 5;
   const itemVerticalBorderWidth = 2;
   const itemAttachementHeight = 100;
   const getItemHeight = (item: (typeof conversation)[number]) => {
     return (
       itemVerticalMarginHalf * 2 +
-      itemVerticalPaddingHalf * 2 +
       itemVerticalBorderWidth * 2 +
       +theme.textStyle.lineHeight + // contact name
       theme.textStyle.lineHeight * item.content.split("\n").length +
@@ -157,7 +155,14 @@ export function DirectConversationScreen({
           styleOverride={{ flexDirection: "row", flexGrow: 1 }}
         >
           <CryptoAvatar accountId={contactId} />
-          <Text style={{ ...theme.textStyle, paddingLeft: 16, paddingTop: 10 }}>
+          <Text
+            style={{
+              ...theme.textStyle,
+              color: theme.linkTextColor,
+              paddingLeft: 16,
+              paddingTop: 10,
+            }}
+          >
             {contact?.name ?? ""}
           </Text>
         </ScreenLink>
@@ -188,14 +193,12 @@ export function DirectConversationScreen({
           [],
         )}
         viewabilityConfig={{ itemVisiblePercentThreshold: 100 }}
-        style={{ flex: 1, backgroundColor: theme.backgroundBackColor }}
+        style={{ flex: 1 }}
         contentContainerStyle={{
           flexGrow: 1,
           paddingTop: initialEmptySpaceHeight,
-          paddingBottom: itemVerticalPaddingHalf,
-          paddingHorizontal: 7,
         }}
-        renderItem={({ item, index }) => {
+        renderItem={({ item }) => {
           const isCurrentViewingMessage =
             currentViewingMessageId &&
             item.createdAt === currentViewingMessageId.createdAt &&
@@ -224,67 +227,71 @@ export function DirectConversationScreen({
                     : theme.backgroundColor,
                 borderRadius: 8,
                 paddingHorizontal: 7,
-                paddingVertical: itemVerticalPaddingHalf,
                 marginVertical: itemVerticalMarginHalf,
                 overflow: "hidden",
                 borderWidth: itemVerticalBorderWidth,
                 // TODO add search and current viewing message color to theme colors
                 borderColor: isCurrentViewingMessage
                   ? "purple"
-                  : theme.backgroundBackColor,
+                  : theme.backgroundColor,
               }}
             >
               <View style={{ flexDirection: "row", gap: 8 }}>
-                <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>
-                  {item.senderId === accountId
-                    ? (account?.name ?? "")
-                    : item.senderId === contactId
-                      ? (contact?.name ?? "")
-                      : ""}
-                </Text>
-                <View style={{ flexGrow: 1 }} />
-                <Text style={theme.secondaryTextStyle}>
-                  {new Date(item.createdAt).toLocaleString()}
-                </Text>
-                <FontAwesome
-                  name={item.isDraft ? "sticky-note" : "check"}
-                  size={14}
-                  color={
-                    item.isDraft
-                      ? "yellow"
-                      : item.didRead
-                        ? theme.linkTextColor
-                        : item.receiverId === accountId && !item.didRead
-                          ? "orange"
-                          : theme.backgroundColor
-                  }
-                />
+                <CryptoAvatar accountId={item.senderId} />
+                <View style={{ flexGrow: 1 }}>
+                  <View style={{ flexDirection: "row", gap: 8 }}>
+                    <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>
+                      {item.senderId === accountId
+                        ? (account?.name ?? "")
+                        : item.senderId === contactId
+                          ? (contact?.name ?? "")
+                          : ""}
+                    </Text>
+                    <View style={{ flexGrow: 1 }} />
+                    <Text style={theme.secondaryTextStyle}>
+                      {new Date(item.createdAt).toLocaleString()}
+                    </Text>
+                    <FontAwesome
+                      name={item.isDraft ? "sticky-note" : "check"}
+                      size={14}
+                      color={
+                        item.isDraft
+                          ? "yellow"
+                          : item.didRead
+                            ? theme.linkTextColor
+                            : item.receiverId === accountId && !item.didRead
+                              ? "orange"
+                              : theme.backgroundColor
+                      }
+                    />
+                  </View>
+                  <Text style={{ ...theme.textStyle }}>
+                    {toolbarState.type === "search"
+                      ? item.content
+                          .split(new RegExp(`(${toolbarState.text})`, "i"))
+                          .map((part, index) => {
+                            const isMatch =
+                              part.toLowerCase() ===
+                              toolbarState.text.toLowerCase();
+                            return (
+                              <Text
+                                key={index}
+                                style={{
+                                  backgroundColor: isMatch
+                                    ? "lightgreen"
+                                    : undefined,
+                                  color: isMatch ? "black" : undefined,
+                                  fontWeight: isMatch ? "bold" : undefined,
+                                }}
+                              >
+                                {part}
+                              </Text>
+                            );
+                          })
+                      : item.content}
+                  </Text>
+                </View>
               </View>
-              <Text style={{ ...theme.textStyle }}>
-                {toolbarState.type === "search"
-                  ? item.content
-                      .split(new RegExp(`(${toolbarState.text})`, "i"))
-                      .map((part, index) => {
-                        const isMatch =
-                          part.toLowerCase() ===
-                          toolbarState.text.toLowerCase();
-                        return (
-                          <Text
-                            key={index}
-                            style={{
-                              backgroundColor: isMatch
-                                ? "lightgreen"
-                                : undefined,
-                              color: isMatch ? "black" : undefined,
-                              fontWeight: isMatch ? "bold" : undefined,
-                            }}
-                          >
-                            {part}
-                          </Text>
-                        );
-                      })
-                  : item.content}
-              </Text>
               {item.attachments.length > 0 && (
                 <ScrollView
                   horizontal
@@ -529,6 +536,7 @@ export function DirectConversationScreen({
               content,
               attachments,
             });
+            // TODO scroll to created draft
           } else if (toModifyMessage && toModifyMessage.isDraft && isDraft) {
             // update draft
             await update({
@@ -548,24 +556,22 @@ export function DirectConversationScreen({
           } else if (toModifyMessage && toModifyMessage.isDraft && !isDraft) {
             // publish draft
             const createdAt = nowTimestamp();
-            await Promise.all([
-              update({
-                createdAt: createdAt,
-                senderId: accountId,
-                receiverId: contactId,
-                isDraft: false,
-                content,
-                attachments,
-              }),
-              update({
-                createdAt: toModifyMessage.createdAt,
-                senderId: accountId,
-                receiverId: contactId,
-                isDraft: true,
-                content: "",
-                attachments: [],
-              }),
-            ]);
+            await update({
+              createdAt: createdAt,
+              senderId: accountId,
+              receiverId: contactId,
+              isDraft: false,
+              content,
+              attachments,
+            });
+            await update({
+              createdAt: toModifyMessage.createdAt,
+              senderId: accountId,
+              receiverId: contactId,
+              isDraft: true,
+              content: "",
+              attachments: [],
+            });
             setToModifyMessage(undefined);
           } else if (toModifyMessage && !toModifyMessage.isDraft && !isDraft) {
             // update message

@@ -207,7 +207,13 @@ export function ScreenLink({
         <Fragment>
           {icon && <FontAwesome name={icon} color={textColor} size={16} />}
           {!hideLabel && (
-            <Text style={{ ...theme.linkTextStyle, color: textColor }}>
+            <Text
+              style={{
+                ...theme.linkTextStyle,
+                color: textColor,
+                paddingTop: 2,
+              }}
+            >
               {label}
             </Text>
           )}

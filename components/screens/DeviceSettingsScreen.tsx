@@ -30,7 +30,7 @@ export function DeviceSettingsScreen() {
           hideLabel
           label={t`Back`}
         />
-        <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>
+        <Text style={{ ...theme.textStyle, fontWeight: "bold", paddingTop: 2 }}>
           {t`Device Settings`}
         </Text>
       </View>

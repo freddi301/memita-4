@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { useTheme } from "../Theme";
 
+// TODO fix dropdown not visible is there are successive items
+
 export function Select<T = string>({
   options,
   value,
@@ -40,7 +42,8 @@ export function Select<T = string>({
               style={{
                 ...theme.textStyle,
                 paddingHorizontal: 8,
-                paddingVertical: 4,
+                paddingBottom: 4,
+                paddingTop: 6,
               }}
             >
               {renderedValue}
@@ -61,7 +64,6 @@ export function Select<T = string>({
             borderWidth: 1,
             borderBottomLeftRadius: 4,
             borderBottomRightRadius: 4,
-            zIndex: 1000,
           }}
         >
           {options.map((option, index) => {

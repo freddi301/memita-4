@@ -121,12 +121,19 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
       </View>
       <ScrollView
         style={{ flex: 1 }}
-        contentContainerStyle={{ flexGrow: 1, paddingVertical: 8 }}
+        contentContainerStyle={{ flexGrow: 1 }}
         refreshControl={
           <RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />
         }
       >
-        <View style={{ flexDirection: "row", paddingHorizontal: 16, gap: 8 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            paddingHorizontal: 16,
+            paddingVertical: 8,
+            gap: 8,
+          }}
+        >
           <Pressable
             onPress={() => {
               setNewAccountSecret(generateAccountSecret());

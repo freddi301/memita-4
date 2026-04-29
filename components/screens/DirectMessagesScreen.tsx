@@ -52,6 +52,21 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
                   <Text style={{ ...theme.linkTextStyle, flexGrow: 1 }}>
                     {item.contactName}
                   </Text>
+                  {item.lastMesssageCreatedAt > 0 && (
+                    <Text
+                      style={{
+                        ...theme.textStyle,
+                        color: theme.secondaryTextColor,
+                        alignSelf: "flex-end",
+                      }}
+                    >
+                      {new Date(item.lastMesssageCreatedAt).toLocaleString()}
+                    </Text>
+                  )}
+                </View>
+                <View
+                  style={{ flexDirection: "row", justifyContent: "flex-end" }}
+                >
                   {item.unread > 0 && (
                     <Text
                       style={{
@@ -69,17 +84,6 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
                     </Text>
                   )}
                 </View>
-                {item.lastMesssageCreatedAt > 0 && (
-                  <Text
-                    style={{
-                      ...theme.textStyle,
-                      color: theme.secondaryTextColor,
-                      alignSelf: "flex-end",
-                    }}
-                  >
-                    {new Date(item.lastMesssageCreatedAt).toLocaleString()}
-                  </Text>
-                )}
               </View>
             </ScreenLink>
           </View>

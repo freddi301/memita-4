@@ -1,3 +1,4 @@
+import { useLingui } from "@lingui/react/macro";
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
@@ -10,7 +11,7 @@ import {
   useMemitaQuery,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useLingui } from "@lingui/react/macro";
+import { CryptoAvatar } from "../ui/CryptoAvatar";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 import { ProfileScreen } from "./ProfileScreen";
@@ -117,6 +118,13 @@ export function ContactScreen({
           <RefreshControl refreshing={false} onRefresh={refreshMemitaQueries} />
         }
       >
+        <View style={{ paddingHorizontal: 16, paddingVertical: 8 }}>
+          <CryptoAvatar
+            accountId={
+              contactId ?? validContactIdInput ?? (contactIdInput as AccountId)
+            }
+          />
+        </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text style={theme.secondaryTextStyle}>{t`Contact account id`}</Text>
           {contactId ? (
