@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { Pressable, Text, View } from "react-native";
+import { Modal, Pressable, Text, View } from "react-native";
 import { useTheme } from "../Theme";
-
-// TODO fix dropdown not visible is there are successive items
 
 export function Select<T = string>({
   options,
@@ -28,10 +26,7 @@ export function Select<T = string>({
         flexGrow: flexGrow1 ? 1 : undefined,
         borderWidth: 1,
         borderColor: theme.separatorColor,
-        borderTopLeftRadius: 4,
-        borderTopRightRadius: 4,
-        borderBottomLeftRadius: isOpen ? 0 : 4,
-        borderBottomRightRadius: isOpen ? 0 : 4,
+        borderRadius: 4,
       }}
     >
       <Pressable onPress={() => setIsOpen((open) => !open)}>
@@ -53,47 +48,51 @@ export function Select<T = string>({
           );
         })()}
       </Pressable>
-      {isOpen && (
+      <Modal visible={isOpen} transparent animationType="fade">
         <View
           style={{
-            position: "absolute",
-            top: "100%",
-            width: "100%",
-            backgroundColor: theme.backgroundBackColor,
-            borderColor: theme.separatorColor,
-            borderWidth: 1,
-            borderBottomLeftRadius: 4,
-            borderBottomRightRadius: 4,
+            justifyContent: "center",
+            alignItems: "center",
+            flex: 1,
+            backgroundColor: "#000000cc",
           }}
         >
-          {options.map((option, index) => {
-            const renderedOption = renderOption(option);
-            return (
-              <Pressable
-                key={index}
-                onPress={() => {
-                  onChange(option);
-                  setIsOpen(false);
-                }}
-              >
-                {typeof renderedOption === "string" ? (
-                  <Text
-                    style={{
-                      ...theme.textStyle,
-                      paddingHorizontal: 8,
-                      paddingVertical: 4,
-                    }}
-                  >
-                    {renderedOption}
-                  </Text>
-                ) : (
-                  renderedOption
-                )}
-              </Pressable>
-            );
-          })}
+          <View
+            style={{
+              backgroundColor: theme.backgroundColor,
+              borderRadius: 8,
+              minWidth: 200,
+            }}
+          >
+            {options.map((option, index) => {
+              const renderedOption = renderOption(option);
+              return (
+                <Pressable
+                  key={index}
+                  onPress={() => {
+                    onChange(option);
+                    setIsOpen(false);
+                  }}
+                >
+                  {typeof renderedOption === "string" ? (
+                    <Text
+                      style={{
+                        ...theme.textStyle,
+                        paddingHorizontal: 16,
+                        paddingVertical: 8,
+                      }}
+                    >
+                      {renderedOption}
+                    </Text>
+                  ) : (
+                    renderedOption
+                  )}
+                </Pressable>
+              );
+            })}
+          </View>
         </View>
-      )}
+      </Modal>
     </View>
   );
 }

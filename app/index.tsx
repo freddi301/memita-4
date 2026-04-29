@@ -3,7 +3,7 @@ import "react-native-get-random-values";
 import { i18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
 import * as Localization from "expo-localization";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { patchFlatListProps } from "react-native-web-refresh-control";
 import { registerForPushNotificationsAsync } from "../components/notifications";
 import { RouterRoot } from "../components/Routing";
@@ -39,13 +39,15 @@ function switchLanguage(language: Language) {
   });
 }
 
+switchLanguage(systemLanguage);
+
 export default function Index() {
   useEffect(() => {
     void registerForPushNotificationsAsync();
   }, []);
   const deviceSettings = useDeviceSettings();
   const currentLanguage = deviceSettings.language ?? systemLanguage;
-  useEffect(() => {
+  useLayoutEffect(() => {
     switchLanguage(currentLanguage);
   }, [currentLanguage]);
   return (
