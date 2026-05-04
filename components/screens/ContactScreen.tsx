@@ -48,37 +48,50 @@ export function ContactScreen({
 
   return (
     <Fragment>
-      <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-        <ScreenLink
-          to={
-            !canSave && contactId !== undefined
-              ? async () => {
-                  await update({
-                    accountId,
-                    contactId,
-                    name: nameOriginal,
-                    deleted: true,
-                  });
-                  return <DirectMessagesScreen accountId={accountId} />;
-                }
-              : undefined
-          }
-          icon="trash"
-          hideLabel
-          label={t`Delete contact`}
-        />
-        <ScreenLink
-          to={
-            canSave && contactId !== undefined
-              ? async () => {
-                  setNameInput(nameOriginal);
-                }
-              : undefined
-          }
-          icon="undo"
-          hideLabel
-          label={t`Discard changes`}
-        />
+      <View style={{ flexDirection: "row" }}>
+        {contactId === undefined && (
+          <ScreenLink
+            to={<DirectMessagesScreen accountId={accountId} />}
+            icon="arrow-left"
+            hideLabel
+            label={t`Back to direct messages`}
+          />
+        )}
+        <View style={{ flex: 1 }} />
+        {contactId && (
+          <ScreenLink
+            to={
+              !canSave
+                ? async () => {
+                    await update({
+                      accountId,
+                      contactId,
+                      name: nameOriginal,
+                      deleted: true,
+                    });
+                    return <DirectMessagesScreen accountId={accountId} />;
+                  }
+                : undefined
+            }
+            icon="trash"
+            hideLabel
+            label={t`Delete contact`}
+          />
+        )}
+        {contactId && (
+          <ScreenLink
+            to={
+              canSave
+                ? async () => {
+                    setNameInput(nameOriginal);
+                  }
+                : undefined
+            }
+            icon="undo"
+            hideLabel
+            label={t`Discard changes`}
+          />
+        )}
         <ScreenLink
           to={
             canSave
@@ -166,25 +179,29 @@ export function ContactScreen({
           ) : null}
         </View>
       </ScrollView>
-      <ScreenLink
-        to={
-          !canSave && contactId ? (
-            <DirectConversationScreen
-              accountId={accountId}
-              contactId={contactId}
-            />
-          ) : undefined
-        }
-        label={t`Direct messages`}
-      />
-      <ScreenLink
-        to={
-          !canSave && contactId ? (
-            <ProfileScreen accountId={accountId} contactId={contactId} />
-          ) : undefined
-        }
-        label={t`Profile`}
-      />
+      {contactId !== undefined && (
+        <ScreenLink
+          to={
+            !canSave ? (
+              <DirectConversationScreen
+                accountId={accountId}
+                contactId={contactId}
+              />
+            ) : undefined
+          }
+          label={t`Direct messages`}
+        />
+      )}
+      {contactId !== undefined && (
+        <ScreenLink
+          to={
+            !canSave ? (
+              <ProfileScreen accountId={accountId} contactId={contactId} />
+            ) : undefined
+          }
+          label={t`Profile`}
+        />
+      )}
     </Fragment>
   );
 }
