@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
 import { accountList } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
-import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
+import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
 import { AccountScreen } from "./AccountScreen";
@@ -14,6 +14,7 @@ import { DirectMessagesScreen } from "./DirectMessagesScreen";
 export function SelectAccountScreen() {
   const theme = useTheme();
   const { t } = useLingui();
+  const refreshMemitaQueries = useRefreshMemitaQueries();
 
   const accounts = useMemitaQuery(accountList, {});
 

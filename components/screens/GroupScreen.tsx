@@ -1,3 +1,4 @@
+import { useLingui } from "@lingui/react/macro";
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
@@ -5,12 +6,11 @@ import { AccountId } from "../cryptography/cryptography";
 import { groupLatest, updateGroup } from "../queries/groups";
 import { ScreenLink } from "../Routing";
 import {
-  refreshMemitaQueries,
   useMemitaMutation,
   useMemitaQuery,
+  useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useLingui } from "@lingui/react/macro";
 import { GroupConversationScreen } from "./GroupConversationScreen";
 import { GroupMessagesScreen } from "./GroupMessagesScreen";
 
@@ -23,6 +23,7 @@ export function GroupScreen({
 }) {
   const { t } = useLingui();
   const theme = useTheme();
+  const refreshMemitaQueries = useRefreshMemitaQueries();
 
   const latest = useMemitaQuery(groupLatest, {
     accountId,

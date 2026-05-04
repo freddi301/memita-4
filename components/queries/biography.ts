@@ -1,6 +1,6 @@
 import * as z from "zod";
 import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
-import { StoreItem } from "./Queries";
+import { DataItem } from "./Queries";
 import { nowTimestamp, TimestampSchema } from "./Timestamp";
 import { contactList } from "./contacts";
 import { maxBy } from "./helpers";
@@ -28,7 +28,7 @@ export function updateBiography({
   location: BioLocation | undefined;
   content: string;
 }) {
-  return (all: Array<StoreItem>): Array<StoreItem> => {
+  return (all: Array<DataItem>): Array<DataItem> => {
     return [
       {
         type: "BiographyUpdate",
@@ -42,7 +42,7 @@ export function updateBiography({
 }
 
 export function biographyLatest({ accountId }: { accountId: AccountId }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     const updates = all
       .filter((item) => item.type === "BiographyUpdate")
       .filter((update) => update.accountId === accountId);
@@ -54,7 +54,7 @@ export function biographyLatest({ accountId }: { accountId: AccountId }) {
 }
 
 export function biographies({ accountId }: { accountId: AccountId }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     const contacts = contactList({ accountId })(all);
     return contacts.flatMap((contact) => {
       const biography = biographyLatest({ accountId: contact.contactId })(all);

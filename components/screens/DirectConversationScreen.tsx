@@ -100,8 +100,7 @@ export function DirectConversationScreen({
     );
   };
   const firstItemHeight = conversation[0] ? getItemHeight(conversation[0]) : 0;
-  const initialEmptySpaceHeight =
-    flatListHeight - itemVerticalMarginHalf * 2 - firstItemHeight;
+  const initialEmptySpaceHeight = flatListHeight - firstItemHeight;
   const conversationItemLayouts = conversation.reduce(
     ({ offset, layouts }, item, index) => {
       const length = getItemHeight(item);
@@ -314,7 +313,7 @@ export function DirectConversationScreen({
             style={{
               ...theme.secondaryTextStyle,
               textAlign: "center",
-              margin: 16,
+              marginTop: -theme.textStyle.lineHeight * 2,
             }}
           >
             {t`No messages`}

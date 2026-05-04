@@ -1,6 +1,6 @@
 import { AccountId } from "../cryptography/cryptography";
 import { groupBy, maxBy } from "./helpers";
-import { StoreItem } from "./Queries";
+import { DataItem } from "./Queries";
 import { nowTimestamp } from "./Timestamp";
 
 export function updateAccount({
@@ -12,7 +12,7 @@ export function updateAccount({
   name: string;
   deleted: boolean;
 }) {
-  return (all: Array<StoreItem>): Array<StoreItem> => {
+  return (all: Array<DataItem>): Array<DataItem> => {
     return [
       {
         type: "ContactUpdate",
@@ -27,7 +27,7 @@ export function updateAccount({
 }
 
 export function accountList() {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     return groupBy(
       all
         .filter((item) => item.type === "ContactUpdate")
@@ -45,7 +45,7 @@ export function accountLatest({
 }: {
   accountId: AccountId | undefined;
 }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     const udpates = all
       .filter((item) => item.type === "ContactUpdate")
       .filter(

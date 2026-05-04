@@ -3,7 +3,7 @@ import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
 import { ContentAddress, ContentAddressSchema } from "../store/fileStore";
 import { contactList } from "./contacts";
 import { groupBy, maxBy, orderBy } from "./helpers";
-import { StoreItem } from "./Queries";
+import { DataItem } from "./Queries";
 import { nowTimestamp, Timestamp, TimestampSchema } from "./Timestamp";
 
 export const DirectMessageUpdateSchema = z.object({
@@ -34,7 +34,7 @@ export function updateDirectMessage({
   content: string;
   attachments: Array<{ name: string; hash: ContentAddress }>;
 }) {
-  return (all: Array<StoreItem>): Array<StoreItem> => {
+  return (all: Array<DataItem>): Array<DataItem> => {
     return [
       {
         type: "DirectMessageUpdate",
@@ -51,7 +51,7 @@ export function updateDirectMessage({
 }
 
 export function directMessagesSummary({ accountId }: { accountId: AccountId }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     return contactList({ accountId })(all).map((contact) => {
       const messages = directMessagesList({
         accountId,
@@ -82,7 +82,7 @@ export function directMessagesList({
   accountId: AccountId;
   contactId: AccountId;
 }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     return orderBy(
       groupBy(
         all
@@ -139,7 +139,7 @@ export function updateDidReadDirectMessage({
   createdAt: Timestamp;
   didRead: boolean;
 }) {
-  return (all: Array<StoreItem>): Array<StoreItem> => {
+  return (all: Array<DataItem>): Array<DataItem> => {
     return [
       {
         type: "DidReadDirectMessageUpdate",
@@ -162,7 +162,7 @@ function didReadLatest({
   receiverId: string;
   createdAt: number;
 }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     const updates = all
       .filter((item) => item.type === "DidReadDirectMessageUpdate")
       .filter(

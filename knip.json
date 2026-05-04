@@ -5,6 +5,10 @@
     "**/*.ios.{ts,tsx}",
     "components/network/bare/index.ts"
   ],
-  "ignore": ["babel.config.js", "lingui.config.ts", "locales/**"],
+  "ignore": [
+    "babel.config.js",
+    "lingui.config.ts",
+    "components/i18n/locales/*/messages.js"
+  ],
   "ignoreDependencies": ["@types/streamx"]
 }

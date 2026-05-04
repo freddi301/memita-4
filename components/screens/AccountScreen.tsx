@@ -11,9 +11,9 @@ import {
 import { accountLatest, updateAccount } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
 import {
-  refreshMemitaQueries,
   useMemitaMutation,
   useMemitaQuery,
+  useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useDeviceSettings } from "../store/deviceSettingsStorage";
 import { useTheme } from "../Theme";
@@ -24,6 +24,7 @@ import { SelectAccountScreen } from "./SelectAccountScreen";
 export function AccountScreen({ accountId }: { accountId?: AccountId }) {
   const { t } = useLingui();
   const theme = useTheme();
+  const refreshMemitaQueries = useRefreshMemitaQueries();
 
   const latest = useMemitaQuery(accountLatest, { accountId: accountId }) ?? {
     name: "",

@@ -1,6 +1,6 @@
 import * as z from "zod";
 import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
-import { StoreItem } from "./Queries";
+import { DataItem } from "./Queries";
 import { nowTimestamp, Timestamp, TimestampSchema } from "./Timestamp";
 import { contactList } from "./contacts";
 import { groupBy, maxBy } from "./helpers";
@@ -27,7 +27,7 @@ export function updateArticle({
   date: { timestamp: Timestamp; duration: number } | undefined;
   content: string;
 }) {
-  return (all: Array<StoreItem>): Array<StoreItem> => {
+  return (all: Array<DataItem>): Array<DataItem> => {
     return [
       {
         type: "ArticleUpdate",
@@ -48,7 +48,7 @@ export function articleLatest({
   accountId: AccountId;
   createdAt: number;
 }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     const updates = all
       .filter((item) => item.type === "ArticleUpdate")
       .filter(
@@ -63,7 +63,7 @@ export function articleLatest({
 }
 
 export function articleList({ accountId }: { accountId: AccountId }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     return contactList({ accountId })(all).flatMap((contact) => {
       return groupBy(
         all

@@ -1,25 +1,16 @@
-import { render, userEvent } from "@testing-library/react-native";
-import { Suspense } from "react";
-import Index from "../app/index";
-import { findIcon } from "./findIcon";
+import { userEvent } from "@testing-library/react-native";
+import { createTestApp } from "./utils/createTestApp";
+import { findIcon } from "./utils/findIcon";
 
 test("no accounts are shown on first app launch", async () => {
-  const screen = await render(
-    <Suspense fallback={null}>
-      <Index />
-    </Suspense>,
-  );
+  const { screen } = await createTestApp();
 
   expect(await screen.findByText("No accounts on this device")).toBeVisible();
 });
 
 test("user can create an account and lands on profile", async () => {
   const user = userEvent.setup();
-  const screen = await render(
-    <Suspense fallback={null}>
-      <Index />
-    </Suspense>,
-  );
+  const { screen } = await createTestApp();
 
   await user.press(await screen.findByText("Create new account"));
   expect(await screen.findByText("Account name")).toBeVisible();

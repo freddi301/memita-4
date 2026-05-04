@@ -1,7 +1,7 @@
 import * as z from "zod";
 import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
 import { groupBy, maxBy } from "./helpers";
-import { StoreItem } from "./Queries";
+import { DataItem } from "./Queries";
 import { nowTimestamp, TimestampSchema } from "./Timestamp";
 
 export const ContactUpdateSchema = z.object({
@@ -24,7 +24,7 @@ export function updateContact({
   name: string;
   deleted: boolean;
 }) {
-  return (all: Array<StoreItem>): Array<StoreItem> => {
+  return (all: Array<DataItem>): Array<DataItem> => {
     return [
       {
         type: "ContactUpdate",
@@ -39,7 +39,7 @@ export function updateContact({
 }
 
 export function contactList({ accountId }: { accountId: AccountId }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     return groupBy(
       all
         .filter((item) => item.type === "ContactUpdate")
@@ -59,7 +59,7 @@ export function contactLatest({
   accountId: AccountId;
   contactId: AccountId | undefined;
 }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     const updates = all
       .filter((item) => item.type === "ContactUpdate")
       .filter(

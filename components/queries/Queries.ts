@@ -9,7 +9,7 @@ import {
 import { GroupMessageUpdateSchema } from "./groupMessages";
 import { GroupUpdateSchema } from "./groups";
 
-export const StoreItemSchema = z.discriminatedUnion("type", [
+export const DataItemSchema = z.discriminatedUnion("type", [
   ContactUpdateSchema,
   DirectMessageUpdateSchema,
   DidReadDirectMessageUpdateSchema,
@@ -19,4 +19,4 @@ export const StoreItemSchema = z.discriminatedUnion("type", [
   BiographyUpdateSchema,
 ]);
 
-export type StoreItem = z.infer<typeof StoreItemSchema>;
+export type DataItem = z.infer<typeof DataItemSchema>;

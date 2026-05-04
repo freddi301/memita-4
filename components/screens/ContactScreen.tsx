@@ -6,9 +6,9 @@ import { AccountId, accountIdFromString } from "../cryptography/cryptography";
 import { contactLatest, updateContact } from "../queries/contacts";
 import { ScreenLink } from "../Routing";
 import {
-  refreshMemitaQueries,
   useMemitaMutation,
   useMemitaQuery,
+  useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
@@ -25,6 +25,7 @@ export function ContactScreen({
 }) {
   const { t } = useLingui();
   const theme = useTheme();
+  const refreshMemitaQueries = useRefreshMemitaQueries();
 
   const latest = useMemitaQuery(contactLatest, { accountId, contactId }) ?? {
     name: "",

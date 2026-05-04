@@ -10,9 +10,9 @@ import { groupLatest } from "../queries/groups";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import { ScreenLink } from "../Routing";
 import {
-  refreshMemitaQueries,
   useMemitaMutation,
   useMemitaQuery,
+  useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { MessageCompose } from "../ui/MessageCompose";
@@ -28,6 +28,7 @@ export function GroupConversationScreen({
 }) {
   const { t } = useLingui();
   const theme = useTheme();
+  const refreshMemitaQueries = useRefreshMemitaQueries();
 
   const group = useMemitaQuery(groupLatest, { accountId, groupId });
   const conversation = useMemitaQuery(groupMessagesList, {

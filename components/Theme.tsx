@@ -1,5 +1,6 @@
 import { useColorScheme } from "react-native";
-import { ThemeSchema, useDeviceSettings } from "./store/deviceSettingsStorage";
+import { ThemeSchema } from "./storage/storageSchema";
+import { useDeviceSettings } from "./store/deviceSettingsStorage";
 
 const darkTheme = {
   backgroundColor: "#1d1d1d",
@@ -41,7 +42,7 @@ export function useTheme() {
   const themeProps = colorScheme === "light" ? lightTheme : darkTheme;
   const textStyle = {
     color: themeProps.textColor,
-    fontFamliy: "sans-serif",
+    fontFamily: "sans-serif",
     fontSize: 16,
     lineHeight: 18,
     includeFontPadding: false, // Android only, ignored on web

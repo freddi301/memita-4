@@ -1,6 +1,6 @@
 import * as z from "zod";
 import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
-import { StoreItem } from "./Queries";
+import { DataItem } from "./Queries";
 import { nowTimestamp, Timestamp, TimestampSchema } from "./Timestamp";
 import { contactLatest } from "./contacts";
 import { groupList } from "./groups";
@@ -26,7 +26,7 @@ export function updateGroupMessage({
   createdAt: Timestamp;
   content: string;
 }) {
-  return (all: Array<StoreItem>): Array<StoreItem> => {
+  return (all: Array<DataItem>): Array<DataItem> => {
     return [
       {
         type: "GroupMessageUpdate",
@@ -41,7 +41,7 @@ export function updateGroupMessage({
 }
 
 export function groupMessagesSummary({ accountId }: { accountId: AccountId }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     return orderBy(
       groupList({ accountId })(all).map((group) => {
         const lastMessage = orderBy(
@@ -62,7 +62,7 @@ export function groupMessagesSummary({ accountId }: { accountId: AccountId }) {
 }
 
 function commonGroupMessagesList({ groupId }: { groupId: string }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     return groupBy(
       all
         .filter((item) => item.type === "GroupMessageUpdate")
@@ -80,7 +80,7 @@ export function groupMessagesList({
   accountId: AccountId;
   groupId: string; // TODO use branded type
 }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     return orderBy(
       commonGroupMessagesList({ groupId })(all),
       (update) => update.createdAt,

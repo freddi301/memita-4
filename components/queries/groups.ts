@@ -1,6 +1,6 @@
 import * as z from "zod";
 import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
-import { StoreItem } from "./Queries";
+import { DataItem } from "./Queries";
 import { nowTimestamp, TimestampSchema } from "./Timestamp";
 import { groupBy, maxBy } from "./helpers";
 
@@ -24,7 +24,7 @@ export function updateGroup({
   name: string;
   deleted: boolean;
 }) {
-  return (all: Array<StoreItem>): Array<StoreItem> => {
+  return (all: Array<DataItem>): Array<DataItem> => {
     return [
       {
         type: "GroupUpdate",
@@ -39,7 +39,7 @@ export function updateGroup({
 }
 
 export function groupList({ accountId }: { accountId: AccountId }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     return groupBy(
       all
         .filter((item) => item.type === "GroupUpdate")
@@ -59,7 +59,7 @@ export function groupLatest({
   accountId: AccountId;
   groupId: string; // TODO use branded type
 }) {
-  return (all: Array<StoreItem>) => {
+  return (all: Array<DataItem>) => {
     const updates = all
       .filter((item) => item.type === "GroupUpdate")
       .filter(

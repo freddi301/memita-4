@@ -1,5 +1,11 @@
-import { DeviceId, DeviceSecret } from "../cryptography/cryptography";
-import { deviceSettingsStore } from "./deviceSettingsStorage";
+import { createContext } from "react";
+import {
+  AccountSecret,
+  DeviceId,
+  deviceIdFromDeviceSecret,
+  DeviceSecret,
+} from "../cryptography/cryptography";
+import { DataItem } from "../queries/Queries";
 
 type StoreInInterface<StoreItem> = {
   parse(item: unknown): StoreItem;
@@ -12,12 +18,14 @@ type StoreInInterface<StoreItem> = {
 type StoreOutInterface<StoreItem> = {
   add(item: StoreItem): Promise<void>;
   all(): Promise<Array<StoreItem>>;
+  updateConnections(
+    cryptoPrivateKeys: Record<AccountSecret, DeviceSecret>,
+  ): Promise<void>;
 };
 
-export type StorageInterface<StoreItem> = {
+type StorageInterface<StoreItem> = {
   add(item: StoreItem): Promise<boolean>;
   all(): Promise<Array<StoreItem>>;
-  wipe(): Promise<void>;
 };
 
 export type NetworkInInterface = {
@@ -39,7 +47,9 @@ export type NetworkOutInterface = {
 
 export type NetworkFactory = (out: NetworkInInterface) => NetworkOutInterface;
 
-export function makeStore<StoreItem>({
+// TODO implement close method for network
+
+export function createStore<StoreItem>({
   parse,
   onAdd,
   storage,
@@ -64,25 +74,6 @@ export function makeStore<StoreItem>({
       );
     },
   });
-  let queuedStartStop = Promise.resolve();
-  async function startStop() {
-    await queuedStartStop;
-    const deviceSettings = deviceSettingsStore.getSnapshot();
-    const deviceIds = Object.values(deviceSettings.cryptoPublicKeys);
-    for (const deviceId of await network.getStartedDevices()) {
-      if (!deviceIds.includes(deviceId)) {
-        await network.stop(deviceId);
-      }
-    }
-    const deviceSecrets = Object.values(deviceSettings.cryptoPrivateKeys);
-    for (const deviceSecret of deviceSecrets) {
-      await network.start(deviceSecret);
-    }
-  }
-  queuedStartStop = startStop();
-  deviceSettingsStore.subscribe(() => {
-    queuedStartStop = startStop();
-  });
   return {
     async add(item) {
       const didAdd = await storage.add(item);
@@ -105,5 +96,25 @@ export function makeStore<StoreItem>({
     async all() {
       return await storage.all();
     },
+    async updateConnections(
+      cryptoPrivateKeys: Record<AccountSecret, DeviceSecret>,
+    ) {
+      const deviceIds = Object.values(cryptoPrivateKeys).map((deviceSecret) =>
+        deviceIdFromDeviceSecret(deviceSecret),
+      );
+      for (const deviceId of await network.getStartedDevices()) {
+        if (!deviceIds.includes(deviceId)) {
+          await network.stop(deviceId);
+        }
+      }
+      const deviceSecrets = Object.values(cryptoPrivateKeys);
+      for (const deviceSecret of deviceSecrets) {
+        await network.start(deviceSecret);
+      }
+    },
   };
 }
+
+export const AppStoreContext = createContext<StoreOutInterface<DataItem>>(
+  null as any,
+);

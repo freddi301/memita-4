@@ -1,7 +1,8 @@
 import { blake3 } from "@noble/hashes/blake3.js";
 import { bytesToHex } from "@noble/hashes/utils.js";
-import { Directory, File, Paths } from "expo-file-system";
+import { File, Paths } from "expo-file-system";
 import * as z from "zod";
+import { memoizeSimple } from "../memoization";
 
 export const ContentAddressSchema = z.string().brand("ContentAddress");
 export type ContentAddress = z.infer<typeof ContentAddressSchema>;
@@ -21,7 +22,7 @@ async function doGetFileUri(address: ContentAddress): Promise<string> {
   if (!file.exists) throw new Error("File not found: " + address);
   return file.uri;
 }
-export const getFileUri = naiveMemoize(doGetFileUri);
+export const getFileUri = memoizeSimple(doGetFileUri);
 
 async function doLoadFileMagicBytes(
   address: ContentAddress,
@@ -32,7 +33,7 @@ async function doLoadFileMagicBytes(
   const magicBytes = handle.readBytes(16);
   return magicBytes;
 }
-export const loadFileMagicBytes = naiveMemoize(doLoadFileMagicBytes);
+export const loadFileMagicBytes = memoizeSimple(doLoadFileMagicBytes);
 
 // export function loadFile(address: ContentAddress): Uint8Array {
 //   const file = new File(Paths.document, address);
@@ -40,19 +41,9 @@ export const loadFileMagicBytes = naiveMemoize(doLoadFileMagicBytes);
 //   return file.bytesSync();
 // }
 
-export async function deleteAllFiles(): Promise<void> {
-  const dir = new Directory(Paths.document);
-  for (const item of dir.list()) {
-    item.delete();
-  }
-}
-
-function naiveMemoize<A extends string, R>(callback: (arg: A) => R) {
-  const cache = new Map<A, R>();
-  return (arg: A) => {
-    if (cache.has(arg)) return cache.get(arg)!;
-    const result = callback(arg);
-    cache.set(arg, result);
-    return result;
-  };
-}
+// export async function deleteAllFiles(): Promise<void> {
+//   const dir = new Directory(Paths.document);
+//   for (const item of dir.list()) {
+//     item.delete();
+//   }
+// }

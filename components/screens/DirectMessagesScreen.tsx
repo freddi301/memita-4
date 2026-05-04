@@ -4,7 +4,7 @@ import { FlatList, Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
 import { directMessagesSummary } from "../queries/directMessages";
 import { ScreenLink } from "../Routing";
-import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
+import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
@@ -14,6 +14,7 @@ import { DirectConversationScreen } from "./DirectConversationScreen";
 export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
   const { t } = useLingui();
   const theme = useTheme();
+  const refreshMemitaQueries = useRefreshMemitaQueries();
 
   const conversations = useMemitaQuery(directMessagesSummary, { accountId });
 

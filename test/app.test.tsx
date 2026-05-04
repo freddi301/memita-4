@@ -1,13 +1,7 @@
-import { render } from "@testing-library/react-native";
-import { Suspense } from "react";
-import Index from "../app/index";
+import { createTestApp } from "./utils/createTestApp";
 
 test("app starts", async () => {
-  const screen = await render(
-    <Suspense fallback={null}>
-      <Index />
-    </Suspense>,
-  );
+  const { screen } = await createTestApp();
 
   expect(await screen.findByText("Memita")).toBeVisible();
 });

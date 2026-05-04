@@ -14,9 +14,9 @@ import { biographyLatest, updateBiography } from "../queries/biography";
 import { contactLatest } from "../queries/contacts";
 import { ScreenLink } from "../Routing";
 import {
-  refreshMemitaQueries,
   useMemitaMutation,
   useMemitaQuery,
+  useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
@@ -35,6 +35,7 @@ export function ProfileScreen({
 }) {
   const theme = useTheme();
   const { t } = useLingui();
+  const refreshMemitaQueries = useRefreshMemitaQueries();
 
   const contact = useMemitaQuery(contactLatest, { accountId, contactId }) ?? {
     name: "",

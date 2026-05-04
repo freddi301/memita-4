@@ -1,15 +1,11 @@
 import { useLingui } from "@lingui/react/macro";
 import { Fragment, startTransition } from "react";
 import { ScrollView, Text, View } from "react-native";
-import { systemLanguage } from "../../app/index";
+import { languages } from "../i18n/languages";
+import { systemLanguage } from "../i18n/Memitai18n";
 import { ScreenLink } from "../Routing";
-import {
-  Language,
-  Theme,
-  themes,
-  useDeviceSettings,
-} from "../store/deviceSettingsStorage";
-import { languages } from "../store/languages";
+import { Language, Theme, themes } from "../storage/storageSchema";
+import { useDeviceSettings } from "../store/deviceSettingsStorage";
 import { useSystemTheme, useTheme } from "../Theme";
 import { Select } from "../ui/Select";
 import { SelectAccountScreen } from "./SelectAccountScreen";

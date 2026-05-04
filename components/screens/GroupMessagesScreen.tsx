@@ -4,7 +4,7 @@ import { FlatList, Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
 import { groupMessagesSummary } from "../queries/groupMessages";
 import { ScreenLink } from "../Routing";
-import { refreshMemitaQueries, useMemitaQuery } from "../store/dataApi";
+import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { GroupConversationScreen } from "./GroupConversationScreen";
@@ -13,6 +13,7 @@ import { GroupScreen } from "./GroupScreen";
 export function GroupMessagesScreen({ accountId }: { accountId: AccountId }) {
   const { t } = useLingui();
   const theme = useTheme();
+  const refreshMemitaQueries = useRefreshMemitaQueries();
 
   const conversations = useMemitaQuery(groupMessagesSummary, { accountId });
 
