@@ -1,9 +1,7 @@
 # Account
 
-- [ ] switch account
 - [ ] export account
 - [ ] import account
-- [x] delete account
 - [ ] settings screen with text search
 - [ ] backup
   - [ ] zip
