@@ -10,6 +10,7 @@ add confirm prompt for destructive actions
 add cryptography, account + device signature
 add whitelist recipients
 in hyperswarm disconnect from devices not in conctact list
+add confirm prompts for destrucive actions (remove account, delete contact)
 check frontend performance
 check backend performance
 profile bandwidth usage (maybe compress files or entire stream)
@@ -26,6 +27,10 @@ Biography - for Profile and places
 
 # More
 
+- [ ] backup device data to zip file
+- [ ] backup device data to google drive
+- [ ] backup device data to one drive
+- [ ] settings screen with text search
 - [ ] android background exection
 - [ ] ios background exection
 - [ ] macos background exection

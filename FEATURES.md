@@ -1,14 +1,5 @@
 # Account
 
-- [ ] export account
-- [ ] import account
-- [ ] settings screen with text search
-- [ ] backup
-  - [ ] zip
-  - [ ] cloud
-    - [ ] google drive
-    - [ ] one drive
-- [x] offline mode
 - [ ] connection status
 - [ ] data quota managment
 - [ ] end to end ecryption

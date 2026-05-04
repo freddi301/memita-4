@@ -18,6 +18,7 @@ import {
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
+import { ExportAccountScreen } from "./ExportAccountScreen";
 import { ProfileScreen } from "./ProfileScreen";
 import { SelectAccountScreen } from "./SelectAccountScreen";
 
@@ -233,6 +234,17 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
               label={t`Copy device id to clipboard`}
             />
           </View>
+        )}
+        {accountId && (
+          <ScreenLink
+            to={
+              !canSave ? (
+                <ExportAccountScreen accountId={accountId} />
+              ) : undefined
+            }
+            icon="upload"
+            label={t`Export account`}
+          />
         )}
       </ScrollView>
       <ScreenLink

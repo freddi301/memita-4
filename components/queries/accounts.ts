@@ -2,6 +2,7 @@ import {
   AccountId,
   accountIdFromAccountSecret,
   AccountSecret,
+  AccountSecretSchema,
   DeviceId,
   deviceIdFromDeviceSecret,
   generateDeviceSecret,
@@ -95,6 +96,26 @@ export const getDeviceId: MemitaQuery<
     })?.[1];
     if (deviceSecret) {
       return deviceIdFromDeviceSecret(deviceSecret);
+    }
+  };
+
+export const getAccountSecret: MemitaQuery<
+  { accountId: AccountId },
+  AccountSecret | undefined
+> =
+  ({ accountId }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const accountSecret = Object.keys(
+      current.deviceSettings.cryptoPrivateKeys,
+    ).find((candidateAccountSecret) => {
+      const currentAccountId = accountIdFromAccountSecret(
+        candidateAccountSecret as AccountSecret,
+      );
+      return currentAccountId === accountId;
+    });
+    if (accountSecret) {
+      return AccountSecretSchema.parse(accountSecret);
     }
   };
 

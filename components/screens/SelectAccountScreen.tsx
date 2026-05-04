@@ -10,6 +10,7 @@ import { CryptoAvatar } from "../ui/CryptoAvatar";
 import { AccountScreen } from "./AccountScreen";
 import { DeviceSettingsScreen } from "./DeviceSettingsScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
+import { ImportAccountScreen } from "./ImportAccountScreen";
 
 export function SelectAccountScreen() {
   const theme = useTheme();
@@ -26,12 +27,6 @@ export function SelectAccountScreen() {
           to={<DeviceSettingsScreen />}
           label={t`Settings`}
         />
-        <View style={{ flexGrow: 1 }} />
-        <ScreenLink
-          to={<AccountScreen />}
-          icon="plus"
-          label={t`Create new account`}
-        />
       </View>
       <View style={{ alignItems: "center", gap: 16, padding: 16 }}>
         <Image
@@ -47,6 +42,19 @@ export function SelectAccountScreen() {
         >
           {t`Memita`}
         </Text>
+      </View>
+      <View style={{ flexDirection: "row" }}>
+        <ScreenLink
+          to={<ImportAccountScreen />}
+          icon="download"
+          label={t`Import account`}
+        />
+        <View style={{ flexGrow: 1 }} />
+        <ScreenLink
+          to={<AccountScreen />}
+          icon="plus"
+          label={t`Create new account`}
+        />
       </View>
       <FlatList
         data={accounts}
