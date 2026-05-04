@@ -13,19 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: components/screens/AccountScreen.tsx:135
+#: components/screens/AccountScreen.tsx:192
 msgid "Account ID"
 msgstr "Account ID"
 
-#: components/screens/AccountScreen.tsx:140
-msgid "Account id will be generated on save"
-msgstr "Account id will be generated on save"
-
-#: components/screens/AccountScreen.tsx:158
+#: components/screens/AccountScreen.tsx:157
 msgid "Account name"
 msgstr "Account name"
 
-#: components/screens/ProfileScreen.tsx:166
+#: components/screens/ProfileScreen.tsx:172
 msgid "Account settings"
 msgstr "Account settings"
 
@@ -33,11 +29,11 @@ msgstr "Account settings"
 msgid "Attach file"
 msgstr "Attach file"
 
-#: components/screens/DeviceSettingsScreen.tsx:31
+#: components/screens/DeviceSettingsScreen.tsx:27
 msgid "Back"
 msgstr "Back"
 
-#: components/screens/ProfileScreen.tsx:137
+#: components/screens/ProfileScreen.tsx:143
 msgid "Biography"
 msgstr "Biography"
 
@@ -45,23 +41,23 @@ msgstr "Biography"
 msgid "Clear date"
 msgstr "Clear date"
 
-#: components/screens/ContactScreen.tsx:121
+#: components/screens/ContactScreen.tsx:130
 msgid "Contact account id"
 msgstr "Contact account id"
 
-#: components/screens/ContactScreen.tsx:142
+#: components/screens/ContactScreen.tsx:151
 msgid "Contact name"
 msgstr "Contact name"
 
-#: components/screens/AccountScreen.tsx:154
+#: components/screens/AccountScreen.tsx:205
 msgid "Copy account id to clipboard"
 msgstr "Copy account id to clipboard"
 
-#: components/screens/AccountScreen.tsx:203
+#: components/screens/AccountScreen.tsx:236
 msgid "Copy device id to clipboard"
 msgstr "Copy device id to clipboard"
 
-#: components/screens/AccountScreen.tsx:115
+#: components/screens/AccountScreen.tsx:119
 msgid "Create account"
 msgstr "Create account"
 
@@ -69,13 +65,13 @@ msgstr "Create account"
 msgid "Create article"
 msgstr "Create article"
 
-#: components/screens/ContactScreen.tsx:110
-#: components/screens/GroupScreen.tsx:122
-#: components/screens/ProfileScreen.tsx:118
+#: components/screens/ContactScreen.tsx:112
+#: components/screens/GroupScreen.tsx:123
+#: components/screens/ProfileScreen.tsx:124
 msgid "Create contact"
 msgstr "Create contact"
 
-#: components/screens/SelectAccountScreen.tsx:31
+#: components/screens/SelectAccountScreen.tsx:33
 msgid "Create new account"
 msgstr "Create new account"
 
@@ -83,16 +79,15 @@ msgstr "Create new account"
 msgid "Create new article"
 msgstr "Create new article"
 
-#: components/screens/DirectMessagesScreen.tsx:27
+#: components/screens/DirectMessagesScreen.tsx:28
 msgid "Create new contact"
 msgstr "Create new contact"
 
-#: components/screens/GroupMessagesScreen.tsx:26
+#: components/screens/GroupMessagesScreen.tsx:27
 msgid "Create new group"
 msgstr "Create new group"
 
-#: components/screens/DeviceSettingsScreen.tsx:82
-#: components/screens/DeviceSettingsScreen.tsx:85
+#: components/screens/DeviceSettingsScreen.tsx:78
 msgid "Dark"
 msgstr "Dark"
 
@@ -104,34 +99,30 @@ msgstr "Delete"
 msgid "Delete article"
 msgstr "Delete article"
 
-#: components/screens/ContactScreen.tsx:66
-#: components/screens/GroupScreen.tsx:78
+#: components/screens/ContactScreen.tsx:68
+#: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "Delete contact"
 
-#: components/screens/AccountScreen.tsx:184
+#: components/screens/AccountScreen.tsx:223
 msgid "Device ID"
 msgstr "Device ID"
 
-#: components/screens/AccountScreen.tsx:189
-msgid "Device id will be generated on save"
-msgstr "Device id will be generated on save"
-
-#: components/screens/DeviceSettingsScreen.tsx:34
+#: components/screens/DeviceSettingsScreen.tsx:30
 msgid "Device Settings"
 msgstr "Device Settings"
 
-#: components/screens/ContactScreen.tsx:169
-#: components/screens/ProfileScreen.tsx:161
+#: components/screens/ContactScreen.tsx:178
+#: components/screens/ProfileScreen.tsx:167
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Direct messages"
 
-#: components/screens/AccountScreen.tsx:81
-#: components/screens/ContactScreen.tsx:78
+#: components/screens/AccountScreen.tsx:88
+#: components/screens/ContactScreen.tsx:80
 #: components/screens/EditArticleScreen.tsx:95
-#: components/screens/GroupScreen.tsx:90
-#: components/screens/ProfileScreen.tsx:102
+#: components/screens/GroupScreen.tsx:91
+#: components/screens/ProfileScreen.tsx:108
 msgid "Discard changes"
 msgstr "Discard changes"
 
@@ -139,7 +130,7 @@ msgstr "Discard changes"
 msgid "Edit article"
 msgstr "Edit article"
 
-#: components/screens/ProfileScreen.tsx:175
+#: components/screens/ProfileScreen.tsx:181
 msgid "Edit contact"
 msgstr "Edit contact"
 
@@ -151,7 +142,7 @@ msgstr "Edit date"
 msgid "Edit time"
 msgstr "Edit time"
 
-#: components/screens/DeviceSettingsScreen.tsx:52
+#: components/screens/DeviceSettingsScreen.tsx:48
 msgid "English"
 msgstr "English"
 
@@ -167,16 +158,16 @@ msgstr "Events"
 msgid "Go to articles"
 msgstr "Go to articles"
 
-#: components/screens/GroupScreen.tsx:59
+#: components/screens/GroupScreen.tsx:60
 msgid "Go to conversation"
 msgstr "Go to conversation"
 
-#: components/screens/DirectConversationScreen.tsx:152
-#: components/screens/GroupConversationScreen.tsx:51
+#: components/screens/DirectConversationScreen.tsx:150
+#: components/screens/GroupConversationScreen.tsx:52
 msgid "Go to messages"
 msgstr "Go to messages"
 
-#: components/screens/GroupScreen.tsx:134
+#: components/screens/GroupScreen.tsx:135
 msgid "Group id"
 msgstr "Group id"
 
@@ -184,31 +175,31 @@ msgstr "Group id"
 msgid "Group messages"
 msgstr "Group messages"
 
-#: components/screens/GroupScreen.tsx:155
+#: components/screens/GroupScreen.tsx:156
 msgid "Group name"
 msgstr "Group name"
 
-#: components/screens/DeviceSettingsScreen.tsx:54
+#: components/screens/DeviceSettingsScreen.tsx:50
 msgid "Italian"
 msgstr "Italian"
 
-#: components/screens/DeviceSettingsScreen.tsx:39
+#: components/screens/DeviceSettingsScreen.tsx:35
 msgid "Language"
 msgstr "Language"
 
-#: components/screens/DeviceSettingsScreen.tsx:80
+#: components/screens/DeviceSettingsScreen.tsx:76
 msgid "Light"
 msgstr "Light"
 
-#: components/screens/ProfileScreen.tsx:132
+#: components/screens/ProfileScreen.tsx:138
 msgid "Location"
 msgstr "Location"
 
-#: components/screens/DirectConversationScreen.tsx:388
+#: components/screens/DirectConversationScreen.tsx:398
 msgid "Mark as read"
 msgstr "Mark as read"
 
-#: components/screens/SelectAccountScreen.tsx:46
+#: components/screens/SelectAccountScreen.tsx:48
 msgid "Memita"
 msgstr "Memita"
 
@@ -224,31 +215,31 @@ msgstr "New article"
 msgid "New draft"
 msgstr "New draft"
 
-#: components/screens/DirectConversationScreen.tsx:417
-#: components/screens/DirectConversationScreen.tsx:501
+#: components/screens/DirectConversationScreen.tsx:427
+#: components/screens/DirectConversationScreen.tsx:511
 msgid "Next occurrence"
 msgstr "Next occurrence"
 
-#: components/screens/SelectAccountScreen.tsx:66
+#: components/screens/SelectAccountScreen.tsx:84
 msgid "No accounts on this device"
 msgstr "No accounts on this device"
 
-#: components/screens/ArticlesScreen.tsx:87
+#: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
 msgstr "No articles"
 
-#: components/screens/DirectConversationScreen.tsx:309
-#: components/screens/DirectMessagesScreen.tsx:92
-#: components/screens/GroupConversationScreen.tsx:103
-#: components/screens/GroupMessagesScreen.tsx:55
+#: components/screens/DirectConversationScreen.tsx:319
+#: components/screens/DirectMessagesScreen.tsx:96
+#: components/screens/GroupConversationScreen.tsx:104
+#: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
 msgstr "No messages"
 
-#: components/screens/ContactScreen.tsx:135
+#: components/screens/ContactScreen.tsx:144
 msgid "Not a valid account id"
 msgstr "Not a valid account id"
 
-#: components/screens/GroupScreen.tsx:148
+#: components/screens/GroupScreen.tsx:149
 msgid "Not a valid group id"
 msgstr "Not a valid group id"
 
@@ -256,18 +247,18 @@ msgstr "Not a valid group id"
 msgid "Places"
 msgstr "Places"
 
-#: components/screens/DirectConversationScreen.tsx:353
-#: components/screens/DirectConversationScreen.tsx:475
+#: components/screens/DirectConversationScreen.tsx:363
+#: components/screens/DirectConversationScreen.tsx:485
 msgid "Previous occurrence"
 msgstr "Previous occurrence"
 
-#: components/screens/AccountScreen.tsx:213
-#: components/screens/ContactScreen.tsx:177
+#: components/screens/AccountScreen.tsx:247
+#: components/screens/ContactScreen.tsx:186
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "Profile"
 
-#: components/screens/ProfileScreen.tsx:80
+#: components/screens/ProfileScreen.tsx:86
 msgid "Profile ID copied to clipboard"
 msgstr "Profile ID copied to clipboard"
 
@@ -275,14 +266,14 @@ msgstr "Profile ID copied to clipboard"
 msgid "Remove"
 msgstr "Remove"
 
-#: components/screens/AccountScreen.tsx:69
+#: components/screens/AccountScreen.tsx:76
 msgid "Remove account from this device"
 msgstr "Remove account from this device"
 
-#: components/screens/AccountScreen.tsx:115
-#: components/screens/ContactScreen.tsx:110
-#: components/screens/GroupScreen.tsx:122
-#: components/screens/ProfileScreen.tsx:118
+#: components/screens/AccountScreen.tsx:119
+#: components/screens/ContactScreen.tsx:112
+#: components/screens/GroupScreen.tsx:123
+#: components/screens/ProfileScreen.tsx:124
 msgid "Save changes"
 msgstr "Save changes"
 
@@ -290,7 +281,7 @@ msgstr "Save changes"
 msgid "Save draft"
 msgstr "Save draft"
 
-#: components/screens/DirectConversationScreen.tsx:330
+#: components/screens/DirectConversationScreen.tsx:340
 msgid "Search"
 msgstr "Search"
 
@@ -298,11 +289,11 @@ msgstr "Search"
 msgid "Send message"
 msgstr "Send message"
 
-#: components/screens/SelectAccountScreen.tsx:25
+#: components/screens/SelectAccountScreen.tsx:27
 msgid "Settings"
 msgstr "Settings"
 
-#: components/screens/ProfileScreen.tsx:87
+#: components/screens/ProfileScreen.tsx:93
 msgid "Share profile"
 msgstr "Share profile"
 
@@ -310,23 +301,31 @@ msgstr "Share profile"
 msgid "Show on map"
 msgstr "Show on map"
 
-#: components/screens/DeviceSettingsScreen.tsx:85
-#~ msgid "System"
-#~ msgstr "System"
-
-#: components/screens/DeviceSettingsScreen.tsx:62
+#: components/screens/DeviceSettingsScreen.tsx:58
 msgid "System default ({languageName})"
 msgstr "System default ({languageName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:86
+#: components/screens/DeviceSettingsScreen.tsx:84
 msgid "System default ({themeName})"
 msgstr "System default ({themeName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:67
+#: components/screens/AccountScreen.tsx:150
+msgid "Tap to change"
+msgstr "Tap to change"
+
+#: components/screens/DeviceSettingsScreen.tsx:63
 msgid "Theme"
 msgstr "Theme"
 
-#: components/screens/DirectConversationScreen.tsx:438
+#: components/screens/AccountScreen.tsx:165
+msgid "This name is only visible to you on this device"
+msgstr "This name is only visible to you on this device"
+
+#: components/screens/AccountScreen.tsx:149
+msgid "This will your avatar forever, choose wisely"
+msgstr "This will your avatar forever, choose wisely"
+
+#: components/screens/DirectConversationScreen.tsx:448
 msgid "Unread messages"
 msgstr "Unread messages"
 
@@ -334,6 +333,6 @@ msgstr "Unread messages"
 msgid "Update article"
 msgstr "Update article"
 
-#: components/screens/AccountScreen.tsx:50
+#: components/screens/AccountScreen.tsx:57
 msgid "Use another account"
 msgstr "Use another account"

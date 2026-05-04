@@ -19,8 +19,8 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "lint-staged": "lint-staged",
-    "lingui:extract": "lingui extract",
-    "lingui:compile": "lingui compile"
+    "lingui:extract": "lingui extract --clean",
+    "lingui:compile": "lingui compile --strict"
   },
   "dependencies": {
     "@dicebear/collection": "^9.4.2",
