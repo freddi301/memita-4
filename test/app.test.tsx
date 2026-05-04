@@ -1,7 +1,10 @@
+import { render } from "@testing-library/react-native";
 import { createTestApp } from "./utils/createTestApp";
 
 test("app starts", async () => {
-  const { screen } = await createTestApp();
+  const { Main } = await createTestApp();
+
+  const screen = await render(<Main />);
 
   expect(await screen.findByText("Memita")).toBeVisible();
 });

@@ -1,6 +1,5 @@
 # Account
 
-- [x] account list
 - [ ] switch account
 - [ ] export account
 - [ ] import account

@@ -98,7 +98,7 @@ export const getDeviceId: MemitaQuery<
     }
   };
 
-export const accountList: MemitaQuery<
+export const getAccounts: MemitaQuery<
   void,
   Array<{ accountId: AccountId; name: string }>
 > =

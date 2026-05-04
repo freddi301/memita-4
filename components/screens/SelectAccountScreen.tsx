@@ -2,7 +2,7 @@ import { useLingui } from "@lingui/react/macro";
 import { Image } from "expo-image";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
-import { accountList } from "../queries/accounts";
+import { getAccounts } from "../queries/accounts";
 import { ScreenLink } from "../Routing";
 import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
@@ -16,7 +16,7 @@ export function SelectAccountScreen() {
   const { t } = useLingui();
   const refreshMemitaQueries = useRefreshMemitaQueries();
 
-  const accounts = useMemitaQuery(accountList, undefined);
+  const accounts = useMemitaQuery(getAccounts, undefined);
 
   return (
     <Fragment>

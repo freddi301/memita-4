@@ -85,6 +85,8 @@ export function createApp({ storage }: { storage: StorageInterface }) {
     );
   };
 
+  const api = { appStorage };
+
   const Main = () => {
     useEffect(() => {
       void registerForPushNotificationsAsync();
@@ -105,7 +107,7 @@ export function createApp({ storage }: { storage: StorageInterface }) {
       };
     }, []);
     return (
-      <FeApiContext value={{ appStorage }}>
+      <FeApiContext value={api}>
         <QueryClientProvider client={queryClient}>
           <Memitai18n i18n={i18n}>
             <LayoutWrapper>
@@ -116,5 +118,5 @@ export function createApp({ storage }: { storage: StorageInterface }) {
       </FeApiContext>
     );
   };
-  return { Main };
+  return { Main, api };
 }

@@ -1,9 +1,11 @@
-import { userEvent } from "@testing-library/react-native";
+import { render, userEvent } from "@testing-library/react-native";
 import { createTestApp } from "./utils/createTestApp";
 
 test("user sees system locale as default in device settings", async () => {
+  const { Main } = await createTestApp();
+
   const user = userEvent.setup();
-  const { screen } = await createTestApp();
+  const screen = await render(<Main />);
 
   await user.press(await screen.findByText("Settings"));
   expect(await screen.findByText("Language")).toBeVisible();
@@ -11,8 +13,10 @@ test("user sees system locale as default in device settings", async () => {
 });
 
 test("user can switch locale to italian", async () => {
+  const { Main } = await createTestApp();
+
   const user = userEvent.setup();
-  const { screen } = await createTestApp();
+  const screen = await render(<Main />);
 
   await user.press(await screen.findByText("Settings"));
   await user.press(await screen.findByText("System default (English)"));
