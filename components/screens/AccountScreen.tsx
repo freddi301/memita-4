@@ -8,14 +8,14 @@ import {
   accountIdFromAccountSecret,
   generateAccountSecret,
 } from "../cryptography/cryptography";
-import { accountLatest, updateAccount } from "../queries/accounts";
+import { addAccount, getDeviceId, removeAccount } from "../queries/accounts";
+import { getContact, updateContact } from "../queries/contacts";
 import { ScreenLink } from "../Routing";
 import {
   useMemitaMutation,
   useMemitaQuery,
   useRefreshMemitaQueries,
 } from "../store/dataApi";
-import { useDeviceSettings } from "../store/deviceSettingsStorage";
 import { useTheme } from "../Theme";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
 import { ProfileScreen } from "./ProfileScreen";
@@ -26,10 +26,16 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
   const theme = useTheme();
   const refreshMemitaQueries = useRefreshMemitaQueries();
 
-  const latest = useMemitaQuery(accountLatest, { accountId: accountId }) ?? {
-    name: "",
-  };
-  const update = useMemitaMutation(updateAccount);
+  const latest = useMemitaQuery(getContact, {
+    accountId: accountId,
+    contactId: accountId,
+  }) ?? { name: "" };
+
+  const add = useMemitaMutation(addAccount);
+
+  const update = useMemitaMutation(updateContact);
+
+  const remove = useMemitaMutation(removeAccount);
 
   const nameOriginal = latest.name;
   const [nameInput, setNameInput] = useState("");
@@ -39,10 +45,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
 
   const canSave = nameInput !== nameOriginal;
 
-  const deviceSettings = useDeviceSettings();
-  const deviceId = accountId
-    ? deviceSettings.cryptoPublicKeys[accountId]
-    : undefined;
+  const deviceId = useMemitaQuery(getDeviceId, { accountId });
 
   const [newAccountSecret, setNewAccountSecret] = useState(
     generateAccountSecret,
@@ -61,12 +64,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             to={
               !canSave && accountId !== undefined && deviceId !== undefined
                 ? async () => {
-                    await update({
-                      accountId,
-                      name: nameOriginal,
-                      deleted: true,
-                    });
-                    await deviceSettings.removeAccount(accountId);
+                    await remove({ accountId });
                     return <SelectAccountScreen />;
                   }
                 : undefined
@@ -94,15 +92,14 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
                     if (accountId) {
                       await update({
                         accountId,
+                        contactId: accountId,
                         name: nameInput,
                         deleted: false,
                       });
                     } else {
-                      await deviceSettings.addAccount(newAccountSecret);
-                      await update({
-                        accountId: newAccountId,
+                      await add({
+                        accountSecret: newAccountSecret,
                         name: nameInput,
-                        deleted: false,
                       });
                       return (
                         <ProfileScreen

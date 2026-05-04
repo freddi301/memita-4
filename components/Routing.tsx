@@ -93,7 +93,7 @@ export function RouterRoot({ initial }: { initial: ReactNode }) {
 }
 
 export function useCurrentScreenForceSuspend() {
-  return use(RouterContext).current.forceSuspend;
+  return use(RouterContext)?.current.forceSuspend;
 }
 
 function compareScreens(left: ReactNode, right: ReactNode): boolean {

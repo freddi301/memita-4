@@ -2,11 +2,8 @@ import { useLingui } from "@lingui/react/macro";
 import { Fragment, useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
-import {
-  groupMessagesList,
-  updateGroupMessage,
-} from "../queries/groupMessages";
-import { groupLatest } from "../queries/groups";
+import { getGroupMessages, updateGroupMessage } from "../queries/groupMessages";
+import { getGroup } from "../queries/groups";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import { ScreenLink } from "../Routing";
 import {
@@ -30,11 +27,8 @@ export function GroupConversationScreen({
   const theme = useTheme();
   const refreshMemitaQueries = useRefreshMemitaQueries();
 
-  const group = useMemitaQuery(groupLatest, { accountId, groupId });
-  const conversation = useMemitaQuery(groupMessagesList, {
-    accountId,
-    groupId,
-  });
+  const group = useMemitaQuery(getGroup, { accountId, groupId });
+  const conversation = useMemitaQuery(getGroupMessages, { accountId, groupId });
 
   const send = useMemitaMutation(updateGroupMessage);
 

@@ -1,12 +1,12 @@
+import { useLingui } from "@lingui/react/macro";
 import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
-import { articleLatest, updateArticle } from "../queries/articles";
+import { getArticle, updateArticle } from "../queries/articles";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import { ScreenLink } from "../Routing";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
-import { useLingui } from "@lingui/react/macro";
 import { DateTimeInput } from "../ui/DateTimeInput";
 import { ArticlesScreen } from "./ArticlesScreen";
 
@@ -20,9 +20,9 @@ export function EditArticleScreen({
   const { t } = useLingui();
   const theme = useTheme();
 
-  const latest = useMemitaQuery(articleLatest, {
+  const latest = useMemitaQuery(getArticle, {
     accountId,
-    createdAt: createdAt ?? 0,
+    createdAt: createdAt,
   }) ?? { date: undefined, content: "" };
 
   const update = useMemitaMutation(updateArticle);

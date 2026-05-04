@@ -16,7 +16,7 @@ export function SelectAccountScreen() {
   const { t } = useLingui();
   const refreshMemitaQueries = useRefreshMemitaQueries();
 
-  const accounts = useMemitaQuery(accountList, {});
+  const accounts = useMemitaQuery(accountList, undefined);
 
   return (
     <Fragment>

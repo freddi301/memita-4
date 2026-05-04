@@ -1,5 +1,6 @@
 import * as z from "zod";
 import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
+import { MemitaMutation, MemitaQuery } from "../store/feApi";
 import { groupBy, maxBy } from "./helpers";
 import { DataItem } from "./Queries";
 import { nowTimestamp, TimestampSchema } from "./Timestamp";
@@ -13,30 +14,31 @@ export const ContactUpdateSchema = z.object({
   timestamp: TimestampSchema,
 });
 
-export function updateContact({
-  accountId,
-  contactId,
-  name,
-  deleted,
-}: {
+export const updateContact: MemitaMutation<{
   accountId: AccountId;
   contactId: AccountId;
   name: string;
   deleted: boolean;
-}) {
-  return (all: Array<DataItem>): Array<DataItem> => {
-    return [
-      {
-        type: "ContactUpdate",
-        accountId,
-        contactId,
-        name,
-        deleted,
-        timestamp: nowTimestamp(),
-      },
-    ];
+}> =
+  ({ accountId, contactId, name, deleted }) =>
+  async ({ appStorage }) => {
+    await appStorage.write((current) => {
+      return {
+        ...current,
+        data: [
+          ...current.data,
+          {
+            type: "ContactUpdate",
+            accountId,
+            contactId,
+            name,
+            deleted,
+            timestamp: nowTimestamp(),
+          },
+        ],
+      };
+    });
   };
-}
 
 export function contactList({ accountId }: { accountId: AccountId }) {
   return (all: Array<DataItem>) => {
@@ -57,7 +59,7 @@ export function contactLatest({
   contactId,
 }: {
   accountId: AccountId;
-  contactId: AccountId | undefined;
+  contactId: AccountId;
 }) {
   return (all: Array<DataItem>) => {
     const updates = all
@@ -72,3 +74,14 @@ export function contactLatest({
     }
   };
 }
+
+export const getContact: MemitaQuery<
+  { accountId: AccountId | undefined; contactId: AccountId | undefined },
+  { name: string } | undefined
+> =
+  ({ accountId, contactId }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const all = current.data;
+    return contactLatest({ accountId: accountId!, contactId: contactId! })(all);
+  };

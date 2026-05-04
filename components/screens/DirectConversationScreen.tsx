@@ -3,6 +3,7 @@ import { useLingui } from "@lingui/react/macro";
 import {
   Fragment,
   useCallback,
+  useEffect,
   useLayoutEffect,
   useRef,
   useState,
@@ -17,10 +18,9 @@ import {
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { AccountId } from "../cryptography/cryptography";
-import { accountLatest } from "../queries/accounts";
-import { contactLatest } from "../queries/contacts";
+import { getContact } from "../queries/contacts";
 import {
-  directMessagesList,
+  getDirectMessages,
   updateDidReadDirectMessage,
   updateDirectMessage,
 } from "../queries/directMessages";
@@ -47,9 +47,12 @@ export function DirectConversationScreen({
   const { t } = useLingui();
   const theme = useTheme();
 
-  const account = useMemitaQuery(accountLatest, { accountId });
-  const contact = useMemitaQuery(contactLatest, { accountId, contactId });
-  const conversation = useMemitaQuery(directMessagesList, {
+  const account = useMemitaQuery(getContact, {
+    accountId,
+    contactId: accountId,
+  });
+  const contact = useMemitaQuery(getContact, { accountId, contactId });
+  const conversation = useMemitaQuery(getDirectMessages, {
     accountId,
     contactId,
   });
@@ -133,6 +136,25 @@ export function DirectConversationScreen({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const [createdDraft, setCreatedDraft] = useState<{ createdAt: Timestamp }>();
+
+  // scroll to jsut created draft
+  const lastMessage = conversation.at(-1);
+  useEffect(() => {
+    if (
+      lastMessage &&
+      lastMessage.senderId === accountId &&
+      lastMessage.createdAt === createdDraft?.createdAt
+    ) {
+      flatListRef.current?.scrollToIndex({
+        index: conversation.length - 1,
+        animated: true,
+        viewPosition: 1.0,
+      });
+      setCreatedDraft(undefined);
+    }
+  }, [accountId, conversation.length, createdDraft, lastMessage]);
 
   return (
     <Fragment>
@@ -535,7 +557,7 @@ export function DirectConversationScreen({
               content,
               attachments,
             });
-            // TODO scroll to created draft
+            setCreatedDraft({ createdAt });
           } else if (toModifyMessage && toModifyMessage.isDraft && isDraft) {
             // update draft
             await update({

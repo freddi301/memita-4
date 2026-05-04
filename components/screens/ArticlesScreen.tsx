@@ -3,7 +3,7 @@ import { useLingui } from "@lingui/react/macro";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
-import { articleList } from "../queries/articles";
+import { getArticles } from "../queries/articles";
 import { ScreenLink } from "../Routing";
 import { useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
@@ -15,7 +15,7 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
   const { t } = useLingui();
   const theme = useTheme();
 
-  const articles = useMemitaQuery(articleList, { accountId });
+  const articles = useMemitaQuery(getArticles, { accountId });
 
   return (
     <Fragment>

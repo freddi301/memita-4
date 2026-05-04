@@ -1,5 +1,6 @@
 import * as z from "zod";
 import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
+import { MemitaQuery } from "../store/feApi";
 import { DataItem } from "./Queries";
 import { nowTimestamp, Timestamp, TimestampSchema } from "./Timestamp";
 import { contactLatest } from "./contacts";
@@ -15,33 +16,47 @@ export const GroupMessageUpdateSchema = z.object({
   timestamp: TimestampSchema,
 });
 
-export function updateGroupMessage({
-  senderId,
-  groupId,
-  createdAt,
-  content,
-}: {
-  senderId: AccountId;
-  groupId: string;
-  createdAt: Timestamp;
-  content: string;
-}) {
-  return (all: Array<DataItem>): Array<DataItem> => {
-    return [
-      {
-        type: "GroupMessageUpdate",
-        senderId,
-        groupId,
-        createdAt,
-        content,
-        timestamp: nowTimestamp(),
-      },
-    ];
+export const updateGroupMessage: MemitaQuery<
+  {
+    senderId: AccountId;
+    groupId: string;
+    createdAt: Timestamp;
+    content: string;
+  },
+  void
+> =
+  ({ senderId, groupId, createdAt, content }) =>
+  async ({ appStorage }) => {
+    await appStorage.write((current) => {
+      return {
+        ...current,
+        data: [
+          ...current.data,
+          {
+            type: "GroupMessageUpdate",
+            senderId,
+            groupId,
+            createdAt,
+            content,
+            timestamp: nowTimestamp(),
+          },
+        ],
+      };
+    });
   };
-}
 
-export function groupMessagesSummary({ accountId }: { accountId: AccountId }) {
-  return (all: Array<DataItem>) => {
+export const getGroupMessagesSummary: MemitaQuery<
+  { accountId: AccountId },
+  Array<{
+    groupId: string;
+    groupName: string;
+    lastMessageCreatedAt: Timestamp | undefined;
+  }>
+> =
+  ({ accountId }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const all = current.data;
     return orderBy(
       groupList({ accountId })(all).map((group) => {
         const lastMessage = orderBy(
@@ -52,14 +67,13 @@ export function groupMessagesSummary({ accountId }: { accountId: AccountId }) {
         return {
           groupId: group.groupId,
           groupName: group.name,
-          lastMessageCreatedAt: lastMessage?.createdAt ?? 0,
+          lastMessageCreatedAt: lastMessage?.createdAt,
         };
       }),
-      (update) => update.lastMessageCreatedAt,
+      (update) => update.lastMessageCreatedAt ?? 0,
       "desc",
     );
   };
-}
 
 function commonGroupMessagesList({ groupId }: { groupId: string }) {
   return (all: Array<DataItem>) => {
@@ -73,14 +87,19 @@ function commonGroupMessagesList({ groupId }: { groupId: string }) {
   };
 }
 
-export function groupMessagesList({
-  accountId,
-  groupId,
-}: {
-  accountId: AccountId;
-  groupId: string; // TODO use branded type
-}) {
-  return (all: Array<DataItem>) => {
+export const getGroupMessages: MemitaQuery<
+  { accountId: AccountId; groupId: string },
+  Array<{
+    senderId: AccountId;
+    senderName: string | undefined;
+    createdAt: Timestamp;
+    content: string;
+  }>
+> =
+  ({ accountId, groupId }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const all = current.data;
     return orderBy(
       commonGroupMessagesList({ groupId })(all),
       (update) => update.createdAt,
@@ -98,4 +117,3 @@ export function groupMessagesList({
       };
     });
   };
-}

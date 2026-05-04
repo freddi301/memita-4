@@ -1,6 +1,6 @@
 import * as z from "zod";
 import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
-import { DataItem } from "./Queries";
+import { MemitaMutation, MemitaQuery } from "../store/feApi";
 import { nowTimestamp, Timestamp, TimestampSchema } from "./Timestamp";
 import { contactList } from "./contacts";
 import { groupBy, maxBy } from "./helpers";
@@ -16,39 +16,44 @@ export const ArticleUpdateSchema = z.object({
   timestamp: TimestampSchema,
 });
 
-export function updateArticle({
-  accountId,
-  createdAt,
-  date,
-  content,
-}: {
+export const updateArticle: MemitaMutation<{
   accountId: AccountId;
   createdAt: Timestamp;
   date: { timestamp: Timestamp; duration: number } | undefined;
   content: string;
-}) {
-  return (all: Array<DataItem>): Array<DataItem> => {
-    return [
-      {
-        type: "ArticleUpdate",
-        accountId,
-        createdAt,
-        date,
-        content,
-        timestamp: nowTimestamp(),
-      },
-    ];
+}> =
+  ({ accountId, createdAt, date, content }) =>
+  async ({ appStorage }) => {
+    await appStorage.write((current) => {
+      return {
+        ...current,
+        data: [
+          ...current.data,
+          {
+            type: "ArticleUpdate",
+            accountId,
+            createdAt,
+            date,
+            content,
+            timestamp: nowTimestamp(),
+          },
+        ],
+      };
+    });
   };
-}
 
-export function articleLatest({
-  accountId,
-  createdAt,
-}: {
-  accountId: AccountId;
-  createdAt: number;
-}) {
-  return (all: Array<DataItem>) => {
+export const getArticle: MemitaQuery<
+  { accountId: AccountId; createdAt: Timestamp | undefined },
+  | {
+      date: { timestamp: Timestamp; duration: number } | undefined;
+      content: string;
+    }
+  | undefined
+> =
+  ({ accountId, createdAt }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const all = current.data;
     const updates = all
       .filter((item) => item.type === "ArticleUpdate")
       .filter(
@@ -60,10 +65,21 @@ export function articleLatest({
       return { date: latestUpdate.date, content: latestUpdate.content };
     }
   };
-}
 
-export function articleList({ accountId }: { accountId: AccountId }) {
-  return (all: Array<DataItem>) => {
+export const getArticles: MemitaQuery<
+  { accountId: AccountId },
+  Array<{
+    contactId: AccountId;
+    contactName: string;
+    createdAt: Timestamp;
+    date: { timestamp: Timestamp; duration: number } | undefined;
+    content: string;
+  }>
+> =
+  ({ accountId }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const all = current.data;
     return contactList({ accountId })(all).flatMap((contact) => {
       return groupBy(
         all
@@ -82,4 +98,3 @@ export function articleList({ accountId }: { accountId: AccountId }) {
         }));
     });
   };
-}

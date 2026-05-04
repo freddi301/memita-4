@@ -3,7 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import { AccountId } from "../cryptography/cryptography";
-import { groupLatest, updateGroup } from "../queries/groups";
+import { getGroup, updateGroup } from "../queries/groups";
 import { ScreenLink } from "../Routing";
 import {
   useMemitaMutation,
@@ -25,7 +25,7 @@ export function GroupScreen({
   const theme = useTheme();
   const refreshMemitaQueries = useRefreshMemitaQueries();
 
-  const latest = useMemitaQuery(groupLatest, {
+  const latest = useMemitaQuery(getGroup, {
     accountId,
     groupId: groupId || "",
   }) ?? { name: "" };

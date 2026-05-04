@@ -2,7 +2,7 @@ import { useLingui } from "@lingui/react/macro";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
-import { groupMessagesSummary } from "../queries/groupMessages";
+import { getGroupMessagesSummary } from "../queries/groupMessages";
 import { ScreenLink } from "../Routing";
 import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
@@ -15,7 +15,7 @@ export function GroupMessagesScreen({ accountId }: { accountId: AccountId }) {
   const theme = useTheme();
   const refreshMemitaQueries = useRefreshMemitaQueries();
 
-  const conversations = useMemitaQuery(groupMessagesSummary, { accountId });
+  const conversations = useMemitaQuery(getGroupMessagesSummary, { accountId });
 
   return (
     <Fragment>

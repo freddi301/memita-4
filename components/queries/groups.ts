@@ -1,5 +1,6 @@
 import * as z from "zod";
 import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
+import { MemitaMutation, MemitaQuery } from "../store/feApi";
 import { DataItem } from "./Queries";
 import { nowTimestamp, TimestampSchema } from "./Timestamp";
 import { groupBy, maxBy } from "./helpers";
@@ -13,30 +14,31 @@ export const GroupUpdateSchema = z.object({
   timestamp: TimestampSchema,
 });
 
-export function updateGroup({
-  accountId,
-  groupId,
-  name,
-  deleted,
-}: {
+export const updateGroup: MemitaMutation<{
   accountId: AccountId;
   groupId: string; // TODO use branded type
   name: string;
   deleted: boolean;
-}) {
-  return (all: Array<DataItem>): Array<DataItem> => {
-    return [
-      {
-        type: "GroupUpdate",
-        accountId,
-        groupId,
-        name,
-        deleted,
-        timestamp: nowTimestamp(),
-      },
-    ];
+}> =
+  ({ accountId, groupId, name, deleted }) =>
+  async ({ appStorage }) => {
+    await appStorage.write((current) => {
+      return {
+        ...current,
+        data: [
+          ...current.data,
+          {
+            type: "GroupUpdate",
+            accountId,
+            groupId,
+            name,
+            deleted,
+            timestamp: nowTimestamp(),
+          },
+        ],
+      };
+    });
   };
-}
 
 export function groupList({ accountId }: { accountId: AccountId }) {
   return (all: Array<DataItem>) => {
@@ -52,14 +54,14 @@ export function groupList({ accountId }: { accountId: AccountId }) {
   };
 }
 
-export function groupLatest({
-  accountId,
-  groupId,
-}: {
-  accountId: AccountId;
-  groupId: string; // TODO use branded type
-}) {
-  return (all: Array<DataItem>) => {
+export const getGroup: MemitaQuery<
+  { accountId: AccountId; groupId: string },
+  { name: string } | undefined
+> =
+  ({ accountId, groupId }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const all = current.data;
     const updates = all
       .filter((item) => item.type === "GroupUpdate")
       .filter(
@@ -71,4 +73,3 @@ export function groupLatest({
       return { name: latestUpdate.name };
     }
   };
-}

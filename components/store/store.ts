@@ -1,11 +1,9 @@
-import { createContext } from "react";
 import {
   AccountSecret,
   DeviceId,
   deviceIdFromDeviceSecret,
   DeviceSecret,
 } from "../cryptography/cryptography";
-import { DataItem } from "../queries/Queries";
 
 type StoreInInterface<StoreItem> = {
   parse(item: unknown): StoreItem;
@@ -114,7 +112,3 @@ export function createStore<StoreItem>({
     },
   };
 }
-
-export const AppStoreContext = createContext<StoreOutInterface<DataItem>>(
-  null as any,
-);

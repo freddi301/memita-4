@@ -1,9 +1,10 @@
 import * as z from "zod";
 import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
-import { DataItem } from "./Queries";
-import { nowTimestamp, TimestampSchema } from "./Timestamp";
+import { MemitaMutation, MemitaQuery } from "../store/feApi";
 import { contactList } from "./contacts";
 import { maxBy } from "./helpers";
+import { DataItem } from "./Queries";
+import { nowTimestamp, TimestampSchema } from "./Timestamp";
 
 const BioLocationSchema = z
   .object({ latitude: z.number(), longitude: z.number() })
@@ -19,29 +20,31 @@ export const BiographyUpdateSchema = z.object({
 
 type BioLocation = z.infer<NonNullable<typeof BioLocationSchema>>;
 
-export function updateBiography({
-  accountId,
-  location,
-  content,
-}: {
+export const updateBiography: MemitaMutation<{
   accountId: AccountId;
   location: BioLocation | undefined;
   content: string;
-}) {
-  return (all: Array<DataItem>): Array<DataItem> => {
-    return [
-      {
-        type: "BiographyUpdate",
-        accountId,
-        location,
-        content,
-        timestamp: nowTimestamp(),
-      },
-    ];
+}> =
+  ({ accountId, location, content }) =>
+  async ({ appStorage }) => {
+    await appStorage.write((current) => {
+      return {
+        ...current,
+        data: [
+          ...current.data,
+          {
+            type: "BiographyUpdate",
+            accountId,
+            location,
+            content,
+            timestamp: nowTimestamp(),
+          },
+        ],
+      };
+    });
   };
-}
 
-export function biographyLatest({ accountId }: { accountId: AccountId }) {
+function biographyLatest({ accountId }: { accountId: AccountId }) {
   return (all: Array<DataItem>) => {
     const updates = all
       .filter((item) => item.type === "BiographyUpdate")
@@ -53,8 +56,30 @@ export function biographyLatest({ accountId }: { accountId: AccountId }) {
   };
 }
 
-export function biographies({ accountId }: { accountId: AccountId }) {
-  return (all: Array<DataItem>) => {
+export const getBiography: MemitaQuery<
+  { accountId: AccountId },
+  { content: string; location: BioLocation | undefined } | undefined
+> =
+  ({ accountId }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const all = current.data;
+    return biographyLatest({ accountId })(all);
+  };
+
+export const getBiographies: MemitaQuery<
+  { accountId: AccountId },
+  Array<{
+    contactId: AccountId;
+    contactName: string;
+    content: string;
+    location: BioLocation | undefined;
+  }>
+> =
+  ({ accountId }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const all = current.data;
     const contacts = contactList({ accountId })(all);
     return contacts.flatMap((contact) => {
       const biography = biographyLatest({ accountId: contact.contactId })(all);
@@ -71,4 +96,3 @@ export function biographies({ accountId }: { accountId: AccountId }) {
       return [];
     });
   };
-}

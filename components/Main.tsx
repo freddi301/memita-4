@@ -23,11 +23,11 @@ import {
 } from "./queries/directMessages";
 import { DataItem, DataItemSchema } from "./queries/Queries";
 import { shouldSend } from "./queries/shouldSend";
-import { AppStorageContext, createAppStorage } from "./storage/AppStorage";
+import { createAppStorage } from "./storage/AppStorage";
 import { StorageInterface } from "./storage/StorageInteraface";
 import { createMemitaQueryClient } from "./store/dataApi";
-import { DeviceSettingsProvider } from "./store/deviceSettingsStorage";
-import { AppStoreContext, createStore } from "./store/store";
+import { FeApiContext } from "./store/feApi";
+import { createStore } from "./store/store";
 import { useTheme } from "./Theme";
 
 patchFlatListProps();
@@ -98,25 +98,22 @@ export function createApp({ storage }: { storage: StorageInterface }) {
         );
         await updateConnections();
       };
-      void updateConnections();
+      // TODO reactivate
+      // void updateConnections();
       return () => {
         isActive = false;
       };
     }, []);
     return (
-      <AppStorageContext value={appStorage}>
-        <AppStoreContext value={store}>
-          <DeviceSettingsProvider>
-            <QueryClientProvider client={queryClient}>
-              <Memitai18n i18n={i18n}>
-                <LayoutWrapper>
-                  <RouterRoot initial={<SelectAccountScreen />} />
-                </LayoutWrapper>
-              </Memitai18n>
-            </QueryClientProvider>
-          </DeviceSettingsProvider>
-        </AppStoreContext>
-      </AppStorageContext>
+      <FeApiContext value={{ appStorage }}>
+        <QueryClientProvider client={queryClient}>
+          <Memitai18n i18n={i18n}>
+            <LayoutWrapper>
+              <RouterRoot initial={<SelectAccountScreen />} />
+            </LayoutWrapper>
+          </Memitai18n>
+        </QueryClientProvider>
+      </FeApiContext>
     );
   };
   return { Main };

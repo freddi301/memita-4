@@ -1,6 +1,25 @@
 import { useColorScheme } from "react-native";
-import { ThemeSchema } from "./storage/storageSchema";
-import { useDeviceSettings } from "./store/deviceSettingsStorage";
+import { Theme, ThemeSchema } from "./storage/storageSchema";
+import { useMemitaQuery } from "./store/dataApi";
+import { MemitaMutation, MemitaQuery } from "./store/feApi";
+
+export const getTheme: MemitaQuery<void, Theme | undefined> =
+  () =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    return current.deviceSettings.theme;
+  };
+
+export const setTheme: MemitaMutation<Theme | undefined> =
+  (theme) =>
+  async ({ appStorage }) => {
+    await appStorage.write((current) => {
+      return {
+        ...current,
+        deviceSettings: { ...current.deviceSettings, theme },
+      };
+    });
+  };
 
 const darkTheme = {
   backgroundColor: "#1d1d1d",
@@ -36,9 +55,9 @@ export function useSystemTheme() {
 }
 
 export function useTheme() {
-  const deviceSettings = useDeviceSettings();
+  const themeFromStorage = useMemitaQuery(getTheme, undefined);
   const systemColorScheme = useSystemTheme();
-  const colorScheme = deviceSettings.theme ?? systemColorScheme;
+  const colorScheme = themeFromStorage ?? systemColorScheme;
   const themeProps = colorScheme === "light" ? lightTheme : darkTheme;
   const textStyle = {
     color: themeProps.textColor,

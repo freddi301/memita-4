@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
-import { biographies } from "../queries/biography";
+import { getBiographies } from "../queries/biography";
 import { useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
@@ -10,7 +10,7 @@ import { GeoMap } from "../ui/GeoMap";
 export function PlacesScreen({ accountId }: { accountId: AccountId }) {
   const theme = useTheme();
 
-  const places = useMemitaQuery(biographies, { accountId });
+  const places = useMemitaQuery(getBiographies, { accountId });
 
   const pins = places
     .filter((place) => place.location !== undefined)

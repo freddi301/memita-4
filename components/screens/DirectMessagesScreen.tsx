@@ -2,7 +2,7 @@ import { useLingui } from "@lingui/react/macro";
 import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
-import { directMessagesSummary } from "../queries/directMessages";
+import { getDirectMessagesSummary } from "../queries/directMessages";
 import { ScreenLink } from "../Routing";
 import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
@@ -16,7 +16,7 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
   const theme = useTheme();
   const refreshMemitaQueries = useRefreshMemitaQueries();
 
-  const conversations = useMemitaQuery(directMessagesSummary, { accountId });
+  const conversations = useMemitaQuery(getDirectMessagesSummary, { accountId });
 
   return (
     <Fragment>
@@ -53,7 +53,7 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
                   <Text style={{ ...theme.linkTextStyle, flexGrow: 1 }}>
                     {item.contactName}
                   </Text>
-                  {item.lastMesssageCreatedAt > 0 && (
+                  {item.lastMesssageCreatedAt && (
                     <Text
                       style={{
                         ...theme.textStyle,

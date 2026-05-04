@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
-import { articleList } from "../queries/articles";
+import { getArticles } from "../queries/articles";
 import { useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
@@ -10,7 +10,7 @@ import { MemitaCalendar } from "../ui/MemitaCalendar";
 export function EventsScreen({ accountId }: { accountId: AccountId }) {
   const theme = useTheme();
 
-  const articles = useMemitaQuery(articleList, { accountId });
+  const articles = useMemitaQuery(getArticles, { accountId });
   const events = articles
     .filter((article) => article.date !== undefined)
     .map((article) => {

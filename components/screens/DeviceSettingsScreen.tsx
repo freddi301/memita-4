@@ -2,11 +2,11 @@ import { useLingui } from "@lingui/react/macro";
 import { Fragment, startTransition } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { languages } from "../i18n/languages";
-import { systemLanguage } from "../i18n/Memitai18n";
+import { getLanguage, setLanguage, systemLanguage } from "../i18n/Memitai18n";
 import { ScreenLink } from "../Routing";
 import { Language, Theme, themes } from "../storage/storageSchema";
-import { useDeviceSettings } from "../store/deviceSettingsStorage";
-import { useSystemTheme, useTheme } from "../Theme";
+import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
+import { getTheme, setTheme, useSystemTheme, useTheme } from "../Theme";
 import { Select } from "../ui/Select";
 import { SelectAccountScreen } from "./SelectAccountScreen";
 
@@ -15,7 +15,11 @@ export function DeviceSettingsScreen() {
   const theme = useTheme();
   const systemTheme = useSystemTheme();
 
-  const deviceSettings = useDeviceSettings();
+  const savedLanguage = useMemitaQuery(getLanguage, undefined);
+  const setLanguageMutation = useMemitaMutation(setLanguage);
+
+  const savedTheme = useMemitaQuery(getTheme, undefined);
+  const setThemeMutation = useMemitaMutation(setTheme);
 
   return (
     <Fragment>
@@ -35,10 +39,10 @@ export function DeviceSettingsScreen() {
           <Text style={theme.secondaryTextStyle}>{t`Language`}</Text>
           <Select
             options={[undefined, ...languages]}
-            value={deviceSettings.language}
+            value={savedLanguage}
             onChange={(language) => {
               startTransition(async () => {
-                await deviceSettings.setLanguage(language);
+                await setLanguageMutation(language);
               });
             }}
             renderValue={(language) => {
@@ -63,10 +67,10 @@ export function DeviceSettingsScreen() {
           <Text style={theme.secondaryTextStyle}>{t`Theme`}</Text>
           <Select
             options={[undefined, ...themes]}
-            value={deviceSettings.theme}
+            value={savedTheme}
             onChange={(nextTheme) => {
               startTransition(async () => {
-                await deviceSettings.setTheme(nextTheme);
+                await setThemeMutation(nextTheme);
               });
             }}
             renderValue={(nextTheme) => {

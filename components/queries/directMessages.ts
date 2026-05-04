@@ -1,5 +1,6 @@
 import * as z from "zod";
 import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
+import { MemitaMutation, MemitaQuery } from "../store/feApi";
 import { ContentAddress, ContentAddressSchema } from "../store/fileStore";
 import { contactList } from "./contacts";
 import { groupBy, maxBy, orderBy } from "./helpers";
@@ -19,36 +20,38 @@ export const DirectMessageUpdateSchema = z.object({
   timestamp: TimestampSchema,
 });
 
-export function updateDirectMessage({
-  senderId,
-  receiverId,
-  createdAt,
-  isDraft,
-  content,
-  attachments,
-}: {
-  senderId: AccountId;
-  receiverId: AccountId;
-  createdAt: Timestamp;
-  isDraft: boolean;
-  content: string;
-  attachments: Array<{ name: string; hash: ContentAddress }>;
-}) {
-  return (all: Array<DataItem>): Array<DataItem> => {
-    return [
-      {
-        type: "DirectMessageUpdate",
-        senderId,
-        receiverId,
-        createdAt,
-        isDraft,
-        content,
-        attachments,
-        timestamp: nowTimestamp(),
-      },
-    ];
+export const updateDirectMessage: MemitaQuery<
+  {
+    senderId: AccountId;
+    receiverId: AccountId;
+    createdAt: Timestamp;
+    isDraft: boolean;
+    content: string;
+    attachments: Array<{ name: string; hash: ContentAddress }>;
+  },
+  void
+> =
+  ({ senderId, receiverId, createdAt, isDraft, content, attachments }) =>
+  async ({ appStorage }) => {
+    await appStorage.write((current) => {
+      return {
+        ...current,
+        data: [
+          ...current.data,
+          {
+            type: "DirectMessageUpdate",
+            senderId,
+            receiverId,
+            createdAt,
+            isDraft,
+            content,
+            attachments,
+            timestamp: nowTimestamp(),
+          },
+        ],
+      };
+    });
   };
-}
 
 export function directMessagesSummary({ accountId }: { accountId: AccountId }) {
   return (all: Array<DataItem>) => {
@@ -68,12 +71,28 @@ export function directMessagesSummary({ accountId }: { accountId: AccountId }) {
       return {
         contactId: contact.contactId,
         contactName: contact.name,
-        lastMesssageCreatedAt: lastMesssage?.createdAt ?? 0,
+        lastMesssageCreatedAt: lastMesssage?.createdAt,
         unread,
       };
     });
   };
 }
+
+export const getDirectMessagesSummary: MemitaQuery<
+  { accountId: AccountId },
+  Array<{
+    contactId: AccountId;
+    contactName: string;
+    lastMesssageCreatedAt: Timestamp | undefined;
+    unread: number;
+  }>
+> =
+  ({ accountId }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const all = current.data;
+    return directMessagesSummary({ accountId })(all);
+  };
 
 export function directMessagesList({
   accountId,
@@ -119,6 +138,25 @@ export function directMessagesList({
   };
 }
 
+export const getDirectMessages: MemitaQuery<
+  { accountId: AccountId; contactId: AccountId },
+  Array<{
+    senderId: AccountId;
+    receiverId: AccountId;
+    createdAt: Timestamp;
+    isDraft: boolean;
+    content: string;
+    attachments: Array<{ name: string; hash: ContentAddress }>;
+    didRead: boolean;
+  }>
+> =
+  ({ accountId, contactId }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const all = current.data;
+    return directMessagesList({ accountId, contactId })(all);
+  };
+
 export const DidReadDirectMessageUpdateSchema = z.object({
   type: z.literal("DidReadDirectMessageUpdate"),
   senderId: z.string(),
@@ -128,30 +166,31 @@ export const DidReadDirectMessageUpdateSchema = z.object({
   timestamp: TimestampSchema,
 });
 
-export function updateDidReadDirectMessage({
-  senderId,
-  receiverId,
-  createdAt,
-  didRead,
-}: {
+export const updateDidReadDirectMessage: MemitaMutation<{
   senderId: AccountId;
   receiverId: AccountId;
   createdAt: Timestamp;
   didRead: boolean;
-}) {
-  return (all: Array<DataItem>): Array<DataItem> => {
-    return [
-      {
-        type: "DidReadDirectMessageUpdate",
-        senderId,
-        receiverId,
-        createdAt,
-        didRead,
-        timestamp: nowTimestamp(),
-      },
-    ];
+}> =
+  ({ senderId, receiverId, createdAt, didRead }) =>
+  async ({ appStorage }) => {
+    await appStorage.write((current) => {
+      return {
+        ...current,
+        data: [
+          ...current.data,
+          {
+            type: "DidReadDirectMessageUpdate",
+            senderId,
+            receiverId,
+            createdAt,
+            didRead,
+            timestamp: nowTimestamp(),
+          },
+        ],
+      };
+    });
   };
-}
 
 function didReadLatest({
   senderId,

@@ -10,8 +10,8 @@ import {
 } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import { AccountId } from "../cryptography/cryptography";
-import { biographyLatest, updateBiography } from "../queries/biography";
-import { contactLatest } from "../queries/contacts";
+import { getBiography, updateBiography } from "../queries/biography";
+import { getContact } from "../queries/contacts";
 import { ScreenLink } from "../Routing";
 import {
   useMemitaMutation,
@@ -37,13 +37,14 @@ export function ProfileScreen({
   const { t } = useLingui();
   const refreshMemitaQueries = useRefreshMemitaQueries();
 
-  const contact = useMemitaQuery(contactLatest, { accountId, contactId }) ?? {
+  const contact = useMemitaQuery(getContact, { accountId, contactId }) ?? {
     name: "",
   };
 
-  const biography = useMemitaQuery(biographyLatest, {
-    accountId: contactId,
-  }) ?? { content: "", location: undefined };
+  const biography = useMemitaQuery(getBiography, { accountId: contactId }) ?? {
+    content: "",
+    location: undefined,
+  };
 
   const update = useMemitaMutation(updateBiography);
 
