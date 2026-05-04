@@ -1,6 +1,7 @@
 import { ed25519 } from "@noble/curves/ed25519.js";
 import { bytesToHex, hexToBytes } from "@noble/hashes/utils.js";
 import * as z from "zod";
+import { memoizeSimple } from "../memoization";
 
 // Device Keys
 
@@ -34,11 +35,12 @@ export function deviceIdToUint8Array(deviceId: DeviceId): Uint8Array {
   return hexToBytes(deviceId);
 }
 
-// TODO memoize since its expensive
-export function deviceIdFromDeviceSecret(deviceSecret: DeviceSecret): DeviceId {
-  const publicKey = ed25519.getPublicKey(hexToBytes(deviceSecret));
-  return deviceIdFromUint8Array(publicKey);
-}
+export const deviceIdFromDeviceSecret = memoizeSimple(
+  (deviceSecret: DeviceSecret): DeviceId => {
+    const publicKey = ed25519.getPublicKey(hexToBytes(deviceSecret));
+    return deviceIdFromUint8Array(publicKey);
+  },
+);
 
 // Account Keys
 
@@ -63,12 +65,12 @@ function accountIdFromUint8Array(uint8Array: Uint8Array): AccountId {
 }
 
 // TODO memoize since its expensive
-export function accountIdFromAccountSecret(
-  accountSecret: AccountSecret,
-): AccountId {
-  const publicKey = ed25519.getPublicKey(hexToBytes(accountSecret));
-  return accountIdFromUint8Array(publicKey);
-}
+export const accountIdFromAccountSecret = memoizeSimple(
+  (accountSecret: AccountSecret): AccountId => {
+    const publicKey = ed25519.getPublicKey(hexToBytes(accountSecret));
+    return accountIdFromUint8Array(publicKey);
+  },
+);
 
 export function accountIdFromString(string: string): AccountId | undefined {
   try {
