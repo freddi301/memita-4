@@ -43,7 +43,7 @@ export function SelectAccountScreen() {
           {t`Memita`}
         </Text>
       </View>
-      <View style={{ flexDirection: "row" }}>
+      <View style={{ alignItems: "flex-end" }}>
         <ScreenLink
           to={<ImportAccountScreen />}
           icon="download"
