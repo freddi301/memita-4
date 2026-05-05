@@ -1,0 +1,432 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-05-05 13:30+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: ha\n"
+
+#: components/screens/AccountScreen.tsx:187
+msgid "Account ID"
+msgstr "ID na Asusun"
+
+#: components/screens/AccountScreen.tsx:155
+#: components/screens/ImportAccountScreen.tsx:80
+msgid "Account name"
+msgstr "Sunan asusun"
+
+#: components/screens/ProfileScreen.tsx:235
+msgid "Account settings"
+msgstr "Saitunan asusun"
+
+#: components/screens/ExportAccountScreen.tsx:87
+msgid "Anyone who is able to import the secret will have full access to the account forever!"
+msgstr "Duk wanda zai iya shigo da sirrin zai samu cikakken damar asusun har abada!"
+
+#: components/ui/MessageCompose.tsx:102
+msgid "Attach file"
+msgstr "Haɗa fayil"
+
+#: components/screens/DeviceSettingsScreen.tsx:31
+#: components/screens/ProfileDeepLinkScreen.tsx:36
+msgid "Back"
+msgstr "Baya"
+
+#: components/screens/ExportAccountScreen.tsx:38
+msgid "Back to account screen"
+msgstr "Koma shafin asusun"
+
+#: components/screens/ImportAccountScreen.tsx:34
+msgid "Back to account selection"
+msgstr "Koma zaɓin asusun"
+
+#: components/screens/ContactScreen.tsx:63
+msgid "Back to direct messages"
+msgstr "Koma saƙonnin kai tsaye"
+
+#: components/screens/ProfileScreen.tsx:206
+msgid "Biography"
+msgstr "Tarihin rayuwa"
+
+#: components/ui/DateTimeInput.tsx:97
+msgid "Clear date"
+msgstr "Share kwanan wata"
+
+#: components/screens/ExportAccountScreen.tsx:70
+msgid "Confirm export"
+msgstr "Tabbatar da fitarwa"
+
+#: components/screens/ImportAccountScreen.tsx:68
+msgid "Confirm import"
+msgstr "Tabbatar da shigarwa"
+
+#: components/screens/ContactScreen.tsx:151
+#: components/screens/ProfileDeepLinkScreen.tsx:46
+msgid "Contact account id"
+msgstr "ID na asusun tuntuɓe"
+
+#: components/screens/ContactScreen.tsx:174
+msgid "Contact name"
+msgstr "Sunan tuntuɓe"
+
+#: components/screens/AccountScreen.tsx:200
+msgid "Copy account id to clipboard"
+msgstr "Kwafi ID na asusun zuwa clipboard"
+
+#: components/screens/AccountScreen.tsx:231
+msgid "Copy device id to clipboard"
+msgstr "Kwafi ID na na'ura zuwa clipboard"
+
+#: components/screens/AccountScreen.tsx:117
+msgid "Create account"
+msgstr "Ƙirƙiri asusun"
+
+#: components/screens/EditArticleScreen.tsx:131
+msgid "Create article"
+msgstr "Ƙirƙiri labari"
+
+#: components/screens/ContactScreen.tsx:133
+#: components/screens/GroupScreen.tsx:123
+#: components/screens/ProfileScreen.tsx:187
+msgid "Create contact"
+msgstr "Ƙirƙiri tuntuɓe"
+
+#: components/screens/SelectAccountScreen.tsx:56
+msgid "Create new account"
+msgstr "Ƙirƙiri sabon asusun"
+
+#: components/screens/ArticlesScreen.tsx:27
+msgid "Create new article"
+msgstr "Ƙirƙiri sabon labari"
+
+#: components/screens/DirectMessagesScreen.tsx:28
+msgid "Create new contact"
+msgstr "Ƙirƙiri sabon tuntuɓe"
+
+#: components/screens/GroupMessagesScreen.tsx:27
+msgid "Create new group"
+msgstr "Ƙirƙiri sabon ƙungiya"
+
+#: components/screens/DeviceSettingsScreen.tsx:82
+msgid "Dark"
+msgstr "Duhu"
+
+#: components/ui/MessageCompose.tsx:204
+msgid "Delete"
+msgstr "Goge"
+
+#: components/screens/EditArticleScreen.tsx:83
+msgid "Delete article"
+msgstr "Goge labari"
+
+#: components/screens/ContactScreen.tsx:84
+#: components/screens/GroupScreen.tsx:79
+msgid "Delete contact"
+msgstr "Goge tuntuɓe"
+
+#: components/screens/AccountScreen.tsx:218
+msgid "Device ID"
+msgstr "ID na Na'ura"
+
+#: components/screens/DeviceSettingsScreen.tsx:34
+msgid "Device Settings"
+msgstr "Saitunan Na'ura"
+
+#: components/screens/ContactScreen.tsx:203
+#: components/screens/ProfileScreen.tsx:230
+#: components/ui/BottomTabNavigation.tsx:30
+msgid "Direct messages"
+msgstr "Saƙonnin kai tsaye"
+
+#: components/screens/AccountScreen.tsx:87
+#: components/screens/ContactScreen.tsx:98
+#: components/screens/EditArticleScreen.tsx:95
+#: components/screens/GroupScreen.tsx:91
+#: components/screens/ProfileScreen.tsx:171
+msgid "Discard changes"
+msgstr "Jefar da canje-canje"
+
+#: components/screens/ArticlesScreen.tsx:57
+msgid "Edit article"
+msgstr "Gyara labari"
+
+#: components/screens/ProfileScreen.tsx:244
+msgid "Edit contact"
+msgstr "Gyara tuntuɓe"
+
+#: components/ui/DateTimeInput.tsx:81
+msgid "Edit date"
+msgstr "Gyara kwanan wata"
+
+#: components/ui/DateTimeInput.tsx:89
+msgid "Edit time"
+msgstr "Gyara lokaci"
+
+#: components/screens/DeviceSettingsScreen.tsx:52
+msgid "English"
+msgstr "Turanci"
+
+#: components/screens/EditArticleScreen.tsx:138
+msgid "Event"
+msgstr "Taron"
+
+#: components/ui/BottomTabNavigation.tsx:48
+msgid "Events"
+msgstr "Taruka"
+
+#: components/screens/AccountScreen.tsx:243
+#: components/screens/ExportAccountScreen.tsx:49
+msgid "Export account"
+msgstr "Fitar da asusun"
+
+#: components/screens/ImportAccountScreen.tsx:91
+msgid "Export password"
+msgstr "Kalmar sirri ta fitarwa"
+
+#: components/screens/ImportAccountScreen.tsx:105
+msgid "Exported account secret"
+msgstr "Sirrin asusun da aka fitar"
+
+#: components/screens/ExportAccountScreen.tsx:62
+#: components/screens/ExportAccountScreen.tsx:64
+msgid "Exported account secret copied to clipboard"
+msgstr "An kwafi sirrin asusun da aka fitar zuwa clipboard"
+
+#: components/screens/EditArticleScreen.tsx:55
+msgid "Go to articles"
+msgstr "Je labaran"
+
+#: components/screens/GroupScreen.tsx:60
+msgid "Go to conversation"
+msgstr "Je tattaunawa"
+
+#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/GroupConversationScreen.tsx:46
+msgid "Go to messages"
+msgstr "Je saƙonnin"
+
+#: components/screens/GroupScreen.tsx:135
+msgid "Group id"
+msgstr "ID na ƙungiya"
+
+#: components/ui/BottomTabNavigation.tsx:36
+msgid "Group messages"
+msgstr "Saƙonnin ƙungiya"
+
+#: components/screens/GroupScreen.tsx:156
+msgid "Group name"
+msgstr "Sunan ƙungiya"
+
+#: components/screens/ImportAccountScreen.tsx:37
+#: components/screens/SelectAccountScreen.tsx:50
+msgid "Import account"
+msgstr "Shigo da asusun"
+
+#: components/screens/ImportAccountScreen.tsx:61
+msgid "Invalid account secret or password"
+msgstr "Sirrin asusun ko kalmar sirri ba ta dace ba"
+
+#: components/screens/DeviceSettingsScreen.tsx:54
+msgid "Italian"
+msgstr "Italiyanci"
+
+#: components/screens/DeviceSettingsScreen.tsx:39
+msgid "Language"
+msgstr "Harshe"
+
+#: components/screens/DeviceSettingsScreen.tsx:80
+msgid "Light"
+msgstr "Haske"
+
+#: components/screens/ProfileScreen.tsx:201
+msgid "Location"
+msgstr "Wurin"
+
+#: components/screens/DirectConversationScreen.tsx:420
+msgid "Mark as read"
+msgstr "Alama a matsayin an karanta"
+
+#: components/screens/SelectAccountScreen.tsx:43
+msgid "Memita"
+msgstr "Memita"
+
+#: components/ui/MessageCompose.tsx:188
+msgid "Modify message"
+msgstr "Gyara saƙo"
+
+#: components/screens/EditArticleScreen.tsx:63
+msgid "New article"
+msgstr "Sabon labari"
+
+#: components/ui/MessageCompose.tsx:134
+msgid "New draft"
+msgstr "Sabon daftari"
+
+#: components/screens/DirectConversationScreen.tsx:449
+#: components/screens/DirectConversationScreen.tsx:533
+msgid "Next occurrence"
+msgstr "Na gaba"
+
+#: components/screens/ProfileDeepLinkScreen.tsx:101
+#: components/screens/SelectAccountScreen.tsx:92
+msgid "No accounts on this device"
+msgstr "Babu asusun a wannan na'ura"
+
+#: components/screens/ArticlesScreen.tsx:86
+msgid "No articles"
+msgstr "Babu labarun"
+
+#: components/screens/DirectConversationScreen.tsx:341
+#: components/screens/DirectMessagesScreen.tsx:96
+#: components/screens/GroupConversationScreen.tsx:98
+#: components/screens/GroupMessagesScreen.tsx:56
+msgid "No messages"
+msgstr "Babu saƙonnin"
+
+#: components/screens/ContactScreen.tsx:167
+msgid "Not a valid account id"
+msgstr "ID na asusun ba ta dace ba"
+
+#: components/screens/GroupScreen.tsx:149
+msgid "Not a valid group id"
+msgstr "ID na ƙungiya ba ta dace ba"
+
+#: components/screens/ExportAccountScreen.tsx:105
+msgid "NOTE: every export has it's own password!"
+msgstr "LURA: kowane fitarwa yana da kalmar sirri nasa!"
+
+#: components/screens/ProfileDeepLinkScreen.tsx:39
+msgid "Open profile"
+msgstr "Buɗe bayanin martaba"
+
+#: components/screens/ProfileDeepLinkScreen.tsx:57
+msgid "Open with account"
+msgstr "Buɗe da asusun"
+
+#: components/screens/ExportAccountScreen.tsx:92
+msgid "Password"
+msgstr "Kalmar sirri"
+
+#: components/screens/ImportAccountScreen.tsx:114
+msgid "Paste here exported account secret"
+msgstr "Manna sirrin asusun da aka fitar a nan"
+
+#: components/screens/ContactScreen.tsx:162
+msgid "Paste the account id your contact shared with you"
+msgstr "Manna ID na asusun da tuntuɓenka ya raba da kai"
+
+#: components/ui/BottomTabNavigation.tsx:54
+msgid "Places"
+msgstr "Wurare"
+
+#: components/screens/DirectConversationScreen.tsx:385
+#: components/screens/DirectConversationScreen.tsx:507
+msgid "Previous occurrence"
+msgstr "Na baya"
+
+#: components/screens/AccountScreen.tsx:253
+#: components/screens/ContactScreen.tsx:213
+#: components/ui/BottomTabNavigation.tsx:64
+msgid "Profile"
+msgstr "Bayanin martaba"
+
+#: components/screens/ProfileScreen.tsx:149
+msgid "Profile ID copied to clipboard"
+msgstr "An kwafi ID na bayanin martaba zuwa clipboard"
+
+#: components/ui/MessageCompose.tsx:65
+msgid "Remove"
+msgstr "Cire"
+
+#: components/screens/AccountScreen.tsx:75
+msgid "Remove account from this device"
+msgstr "Cire asusun daga wannan na'ura"
+
+#: components/screens/AccountScreen.tsx:117
+#: components/screens/ContactScreen.tsx:133
+#: components/screens/GroupScreen.tsx:123
+#: components/screens/ProfileScreen.tsx:187
+msgid "Save changes"
+msgstr "Ajiye canje-canje"
+
+#: components/ui/MessageCompose.tsx:150
+msgid "Save draft"
+msgstr "Ajiye daftari"
+
+#: components/screens/DirectConversationScreen.tsx:362
+msgid "Search"
+msgstr "Bincika"
+
+#: components/ui/MessageCompose.tsx:168
+msgid "Send message"
+msgstr "Aika saƙo"
+
+#: components/screens/SelectAccountScreen.tsx:28
+msgid "Settings"
+msgstr "Saitunan"
+
+#: components/screens/ProfileScreen.tsx:156
+msgid "Share profile"
+msgstr "Raba bayanin martaba"
+
+#: components/ui/CoordsInput.tsx:47
+msgid "Show on map"
+msgstr "Nuna a taswirar"
+
+#: components/screens/ProfileScreen.tsx:100
+msgid "Show QR code"
+msgstr "Nuna lamba QR"
+
+#: components/screens/DeviceSettingsScreen.tsx:62
+msgid "System default ({languageName})"
+msgstr "Tsarin tsoho ({languageName})"
+
+#: components/screens/DeviceSettingsScreen.tsx:88
+msgid "System default ({themeName})"
+msgstr "Tsarin tsoho ({themeName})"
+
+#: components/screens/AccountScreen.tsx:148
+msgid "Tap to change"
+msgstr "Taɓa don canzawa"
+
+#: components/screens/ImportAccountScreen.tsx:100
+msgid "The one you typed in during export"
+msgstr "Wanda ka rubuta yayin fitarwa"
+
+#: components/screens/DeviceSettingsScreen.tsx:67
+msgid "Theme"
+msgstr "Jigo"
+
+#: components/screens/ContactScreen.tsx:179
+msgid "This name is only visible to you"
+msgstr "Wannan sunan ka kaɗai ne zai ganshi"
+
+#: components/screens/AccountScreen.tsx:160
+#: components/screens/ImportAccountScreen.tsx:86
+msgid "This name is only visible to you on this device"
+msgstr "Wannan sunan ka kaɗai ne zai ganshi a wannan na'ura"
+
+#: components/screens/AccountScreen.tsx:147
+msgid "This will your avatar forever, choose wisely"
+msgstr "Wannan zai zama hoton ka har abada, zaɓa da hikima"
+
+#: components/screens/DirectConversationScreen.tsx:470
+msgid "Unread messages"
+msgstr "Saƙonnin da ba a karanta ba"
+
+#: components/screens/EditArticleScreen.tsx:131
+msgid "Update article"
+msgstr "Sabunta labari"
+
+#: components/screens/AccountScreen.tsx:61
+msgid "Use another account"
+msgstr "Yi amfani da wani asusun"
+
+#: components/screens/ExportAccountScreen.tsx:101
+msgid "Will be needed to import later"
+msgstr "Za a buƙata don shigarwa daga baya"
+
+#: components/screens/ExportAccountScreen.tsx:82
+msgid "You can send or store this exported text to import the account on other devices"
+msgstr "Zaka iya aika ko adana wannan rubutun da aka fitar don shigo da asusun a wasu na'urori"
