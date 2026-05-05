@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: zh\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: components/screens/AccountScreen.tsx:187
 msgid "Account ID"
@@ -23,6 +29,10 @@ msgstr "账户设置"
 #: components/screens/ExportAccountScreen.tsx:87
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "任何能够导入密钥的人将永久拥有对该账户的完全访问权限！"
+
+#: components/screens/DeviceSettingsScreen.tsx:82
+msgid "Arabic"
+msgstr "阿拉伯语"
 
 #: components/ui/MessageCompose.tsx:102
 msgid "Attach file"
@@ -44,6 +54,10 @@ msgstr "返回账户选择"
 #: components/screens/ContactScreen.tsx:63
 msgid "Back to direct messages"
 msgstr "返回私信"
+
+#: components/screens/DeviceSettingsScreen.tsx:60
+msgid "Bengali"
+msgstr "孟加拉语"
 
 #: components/screens/ProfileScreen.tsx:206
 msgid "Biography"
@@ -108,7 +122,7 @@ msgstr "创建新联系人"
 msgid "Create new group"
 msgstr "创建新群组"
 
-#: components/screens/DeviceSettingsScreen.tsx:82
+#: components/screens/DeviceSettingsScreen.tsx:134
 msgid "Dark"
 msgstr "深色"
 
@@ -193,6 +207,14 @@ msgstr "已导出的账户密钥"
 msgid "Exported account secret copied to clipboard"
 msgstr "已导出的账户密钥已复制到剪贴板"
 
+#: components/screens/DeviceSettingsScreen.tsx:78
+msgid "French"
+msgstr "法语"
+
+#: components/screens/DeviceSettingsScreen.tsx:84
+msgid "German"
+msgstr "德语"
+
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
 msgstr "前往文章"
@@ -218,30 +240,70 @@ msgstr "群组消息"
 msgid "Group name"
 msgstr "群组名称"
 
+#: components/screens/DeviceSettingsScreen.tsx:94
+msgid "Gujarati"
+msgstr "古吉拉特语"
+
+#: components/screens/DeviceSettingsScreen.tsx:96
+msgid "Hausa"
+msgstr "豪萨语"
+
+#: components/screens/DeviceSettingsScreen.tsx:58
+msgid "Hindi"
+msgstr "印地语"
+
 #: components/screens/ImportAccountScreen.tsx:37
 #: components/screens/SelectAccountScreen.tsx:50
 msgid "Import account"
 msgstr "导入账户"
 
+#: components/screens/DeviceSettingsScreen.tsx:104
+msgid "Indonesian"
+msgstr "印度尼西亚语"
+
 #: components/screens/ImportAccountScreen.tsx:61
 msgid "Invalid account secret or password"
 msgstr "账户密钥或密码无效"
 
-#: components/screens/DeviceSettingsScreen.tsx:54
+#: components/screens/DeviceSettingsScreen.tsx:90
 msgid "Italian"
 msgstr "意大利语"
+
+#: components/screens/DeviceSettingsScreen.tsx:66
+msgid "Japanese"
+msgstr "日语"
+
+#: components/screens/DeviceSettingsScreen.tsx:88
+msgid "Javanese"
+msgstr "爪哇语"
+
+#: components/screens/DeviceSettingsScreen.tsx:98
+msgid "Kannada"
+msgstr "卡纳达语"
+
+#: components/screens/DeviceSettingsScreen.tsx:76
+msgid "Korean"
+msgstr "韩语"
 
 #: components/screens/DeviceSettingsScreen.tsx:39
 msgid "Language"
 msgstr "语言"
 
-#: components/screens/DeviceSettingsScreen.tsx:80
+#: components/screens/DeviceSettingsScreen.tsx:132
 msgid "Light"
 msgstr "浅色"
 
 #: components/screens/ProfileScreen.tsx:201
 msgid "Location"
 msgstr "位置"
+
+#: components/screens/DeviceSettingsScreen.tsx:54
+msgid "Mandarin Chinese"
+msgstr "普通话"
+
+#: components/screens/DeviceSettingsScreen.tsx:72
+msgid "Marathi"
+msgstr "马拉地语"
 
 #: components/screens/DirectConversationScreen.tsx:420
 msgid "Mark as read"
@@ -316,9 +378,21 @@ msgstr "在此粘贴导出的账户密钥"
 msgid "Paste the account id your contact shared with you"
 msgstr "粘贴联系人与您共享的账户 ID"
 
+#: components/screens/DeviceSettingsScreen.tsx:100
+msgid "Persian"
+msgstr "波斯语"
+
 #: components/ui/BottomTabNavigation.tsx:54
 msgid "Places"
 msgstr "地点"
+
+#: components/screens/DeviceSettingsScreen.tsx:102
+msgid "Polish"
+msgstr "波兰语"
+
+#: components/screens/DeviceSettingsScreen.tsx:62
+msgid "Portuguese"
+msgstr "葡萄牙语"
 
 #: components/screens/DirectConversationScreen.tsx:385
 #: components/screens/DirectConversationScreen.tsx:507
@@ -342,6 +416,10 @@ msgstr "移除"
 #: components/screens/AccountScreen.tsx:75
 msgid "Remove account from this device"
 msgstr "从此设备移除账户"
+
+#: components/screens/DeviceSettingsScreen.tsx:64
+msgid "Russian"
+msgstr "俄语"
 
 #: components/screens/AccountScreen.tsx:117
 #: components/screens/ContactScreen.tsx:133
@@ -378,23 +456,43 @@ msgstr "在地图上显示"
 msgid "Show QR code"
 msgstr "显示二维码"
 
-#: components/screens/DeviceSettingsScreen.tsx:62
+#: components/screens/DeviceSettingsScreen.tsx:56
+msgid "Spanish"
+msgstr "西班牙语"
+
+#: components/screens/DeviceSettingsScreen.tsx:106
+msgid "Swahili"
+msgstr "斯瓦希里语"
+
+#: components/screens/DeviceSettingsScreen.tsx:114
 msgid "System default ({languageName})"
 msgstr "系统默认（{languageName}）"
 
-#: components/screens/DeviceSettingsScreen.tsx:88
+#: components/screens/DeviceSettingsScreen.tsx:140
 msgid "System default ({themeName})"
 msgstr "系统默认（{themeName}）"
+
+#: components/screens/DeviceSettingsScreen.tsx:80
+msgid "Tamil"
+msgstr "泰米尔语"
 
 #: components/screens/AccountScreen.tsx:148
 msgid "Tap to change"
 msgstr "点击更改"
 
+#: components/screens/DeviceSettingsScreen.tsx:74
+msgid "Telugu"
+msgstr "泰卢固语"
+
+#: components/screens/DeviceSettingsScreen.tsx:92
+msgid "Thai"
+msgstr "泰语"
+
 #: components/screens/ImportAccountScreen.tsx:100
 msgid "The one you typed in during export"
 msgstr "您在导出时输入的密码"
 
-#: components/screens/DeviceSettingsScreen.tsx:67
+#: components/screens/DeviceSettingsScreen.tsx:119
 msgid "Theme"
 msgstr "主题"
 
@@ -411,6 +509,10 @@ msgstr "此名称仅在此设备上对您可见"
 msgid "This will your avatar forever, choose wisely"
 msgstr "这将永久成为您的头像，请谨慎选择"
 
+#: components/screens/DeviceSettingsScreen.tsx:70
+msgid "Turkish"
+msgstr "土耳其语"
+
 #: components/screens/DirectConversationScreen.tsx:470
 msgid "Unread messages"
 msgstr "未读消息"
@@ -419,9 +521,17 @@ msgstr "未读消息"
 msgid "Update article"
 msgstr "更新文章"
 
+#: components/screens/DeviceSettingsScreen.tsx:86
+msgid "Urdu"
+msgstr "乌尔都语"
+
 #: components/screens/AccountScreen.tsx:61
 msgid "Use another account"
 msgstr "使用其他账户"
+
+#: components/screens/DeviceSettingsScreen.tsx:68
+msgid "Vietnamese"
+msgstr "越南语"
 
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"

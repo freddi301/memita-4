@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: pl\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: components/screens/AccountScreen.tsx:187
 msgid "Account ID"
@@ -23,6 +29,10 @@ msgstr "Ustawienia konta"
 #: components/screens/ExportAccountScreen.tsx:87
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "Każdy, kto będzie mógł zaimportować sekret, będzie miał pełny dostęp do konta na zawsze!"
+
+#: components/screens/DeviceSettingsScreen.tsx:82
+msgid "Arabic"
+msgstr "Arabski"
 
 #: components/ui/MessageCompose.tsx:102
 msgid "Attach file"
@@ -44,6 +54,10 @@ msgstr "Powrót do wyboru konta"
 #: components/screens/ContactScreen.tsx:63
 msgid "Back to direct messages"
 msgstr "Powrót do wiadomości bezpośrednich"
+
+#: components/screens/DeviceSettingsScreen.tsx:60
+msgid "Bengali"
+msgstr "Bengalski"
 
 #: components/screens/ProfileScreen.tsx:206
 msgid "Biography"
@@ -108,7 +122,7 @@ msgstr "Utwórz nowy kontakt"
 msgid "Create new group"
 msgstr "Utwórz nową grupę"
 
-#: components/screens/DeviceSettingsScreen.tsx:82
+#: components/screens/DeviceSettingsScreen.tsx:134
 msgid "Dark"
 msgstr "Ciemny"
 
@@ -193,6 +207,14 @@ msgstr "Sekret wyeksportowanego konta"
 msgid "Exported account secret copied to clipboard"
 msgstr "Sekret wyeksportowanego konta skopiowany do schowka"
 
+#: components/screens/DeviceSettingsScreen.tsx:78
+msgid "French"
+msgstr "Francuski"
+
+#: components/screens/DeviceSettingsScreen.tsx:84
+msgid "German"
+msgstr "Niemiecki"
+
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
 msgstr "Przejdź do artykułów"
@@ -218,30 +240,70 @@ msgstr "Wiadomości grupowe"
 msgid "Group name"
 msgstr "Nazwa grupy"
 
+#: components/screens/DeviceSettingsScreen.tsx:94
+msgid "Gujarati"
+msgstr "Gudżarati"
+
+#: components/screens/DeviceSettingsScreen.tsx:96
+msgid "Hausa"
+msgstr "Hausa"
+
+#: components/screens/DeviceSettingsScreen.tsx:58
+msgid "Hindi"
+msgstr "Hindi"
+
 #: components/screens/ImportAccountScreen.tsx:37
 #: components/screens/SelectAccountScreen.tsx:50
 msgid "Import account"
 msgstr "Importuj konto"
 
+#: components/screens/DeviceSettingsScreen.tsx:104
+msgid "Indonesian"
+msgstr "Indonezyjski"
+
 #: components/screens/ImportAccountScreen.tsx:61
 msgid "Invalid account secret or password"
 msgstr "Nieprawidłowy sekret konta lub hasło"
 
-#: components/screens/DeviceSettingsScreen.tsx:54
+#: components/screens/DeviceSettingsScreen.tsx:90
 msgid "Italian"
 msgstr "Włoski"
+
+#: components/screens/DeviceSettingsScreen.tsx:66
+msgid "Japanese"
+msgstr "Japoński"
+
+#: components/screens/DeviceSettingsScreen.tsx:88
+msgid "Javanese"
+msgstr "Jawajski"
+
+#: components/screens/DeviceSettingsScreen.tsx:98
+msgid "Kannada"
+msgstr "Kannada"
+
+#: components/screens/DeviceSettingsScreen.tsx:76
+msgid "Korean"
+msgstr "Koreański"
 
 #: components/screens/DeviceSettingsScreen.tsx:39
 msgid "Language"
 msgstr "Język"
 
-#: components/screens/DeviceSettingsScreen.tsx:80
+#: components/screens/DeviceSettingsScreen.tsx:132
 msgid "Light"
 msgstr "Jasny"
 
 #: components/screens/ProfileScreen.tsx:201
 msgid "Location"
 msgstr "Lokalizacja"
+
+#: components/screens/DeviceSettingsScreen.tsx:54
+msgid "Mandarin Chinese"
+msgstr "Chiński mandaryński"
+
+#: components/screens/DeviceSettingsScreen.tsx:72
+msgid "Marathi"
+msgstr "Marathi"
 
 #: components/screens/DirectConversationScreen.tsx:420
 msgid "Mark as read"
@@ -316,9 +378,21 @@ msgstr "Wklej tutaj sekret wyeksportowanego konta"
 msgid "Paste the account id your contact shared with you"
 msgstr "Wklej ID konta, które udostępnił Ci kontakt"
 
+#: components/screens/DeviceSettingsScreen.tsx:100
+msgid "Persian"
+msgstr "Perski"
+
 #: components/ui/BottomTabNavigation.tsx:54
 msgid "Places"
 msgstr "Miejsca"
+
+#: components/screens/DeviceSettingsScreen.tsx:102
+msgid "Polish"
+msgstr "Polski"
+
+#: components/screens/DeviceSettingsScreen.tsx:62
+msgid "Portuguese"
+msgstr "Portugalski"
 
 #: components/screens/DirectConversationScreen.tsx:385
 #: components/screens/DirectConversationScreen.tsx:507
@@ -342,6 +416,10 @@ msgstr "Usuń"
 #: components/screens/AccountScreen.tsx:75
 msgid "Remove account from this device"
 msgstr "Usuń konto z tego urządzenia"
+
+#: components/screens/DeviceSettingsScreen.tsx:64
+msgid "Russian"
+msgstr "Rosyjski"
 
 #: components/screens/AccountScreen.tsx:117
 #: components/screens/ContactScreen.tsx:133
@@ -378,23 +456,43 @@ msgstr "Pokaż na mapie"
 msgid "Show QR code"
 msgstr "Pokaż kod QR"
 
-#: components/screens/DeviceSettingsScreen.tsx:62
+#: components/screens/DeviceSettingsScreen.tsx:56
+msgid "Spanish"
+msgstr "Hiszpański"
+
+#: components/screens/DeviceSettingsScreen.tsx:106
+msgid "Swahili"
+msgstr "Suahili"
+
+#: components/screens/DeviceSettingsScreen.tsx:114
 msgid "System default ({languageName})"
 msgstr "Domyślny systemu ({languageName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:88
+#: components/screens/DeviceSettingsScreen.tsx:140
 msgid "System default ({themeName})"
 msgstr "Domyślny systemu ({themeName})"
+
+#: components/screens/DeviceSettingsScreen.tsx:80
+msgid "Tamil"
+msgstr "Tamilski"
 
 #: components/screens/AccountScreen.tsx:148
 msgid "Tap to change"
 msgstr "Dotknij, aby zmienić"
 
+#: components/screens/DeviceSettingsScreen.tsx:74
+msgid "Telugu"
+msgstr "Telugu"
+
+#: components/screens/DeviceSettingsScreen.tsx:92
+msgid "Thai"
+msgstr "Tajski"
+
 #: components/screens/ImportAccountScreen.tsx:100
 msgid "The one you typed in during export"
 msgstr "Ten, który wpisałeś podczas eksportu"
 
-#: components/screens/DeviceSettingsScreen.tsx:67
+#: components/screens/DeviceSettingsScreen.tsx:119
 msgid "Theme"
 msgstr "Motyw"
 
@@ -411,6 +509,10 @@ msgstr "Ta nazwa jest widoczna tylko dla Ciebie na tym urządzeniu"
 msgid "This will your avatar forever, choose wisely"
 msgstr "To będzie Twój awatar na zawsze, wybierz mądrze"
 
+#: components/screens/DeviceSettingsScreen.tsx:70
+msgid "Turkish"
+msgstr "Turecki"
+
 #: components/screens/DirectConversationScreen.tsx:470
 msgid "Unread messages"
 msgstr "Nieprzeczytane wiadomości"
@@ -419,9 +521,17 @@ msgstr "Nieprzeczytane wiadomości"
 msgid "Update article"
 msgstr "Zaktualizuj artykuł"
 
+#: components/screens/DeviceSettingsScreen.tsx:86
+msgid "Urdu"
+msgstr "Urdu"
+
 #: components/screens/AccountScreen.tsx:61
 msgid "Use another account"
 msgstr "Użyj innego konta"
+
+#: components/screens/DeviceSettingsScreen.tsx:68
+msgid "Vietnamese"
+msgstr "Wietnamski"
 
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"

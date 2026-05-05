@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ha\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: components/screens/AccountScreen.tsx:187
 msgid "Account ID"
@@ -23,6 +29,10 @@ msgstr "Saitunan asusun"
 #: components/screens/ExportAccountScreen.tsx:87
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "Duk wanda zai iya shigo da sirrin zai samu cikakken damar asusun har abada!"
+
+#: components/screens/DeviceSettingsScreen.tsx:82
+msgid "Arabic"
+msgstr "Larabci"
 
 #: components/ui/MessageCompose.tsx:102
 msgid "Attach file"
@@ -44,6 +54,10 @@ msgstr "Koma zaɓin asusun"
 #: components/screens/ContactScreen.tsx:63
 msgid "Back to direct messages"
 msgstr "Koma saƙonnin kai tsaye"
+
+#: components/screens/DeviceSettingsScreen.tsx:60
+msgid "Bengali"
+msgstr "Bangali"
 
 #: components/screens/ProfileScreen.tsx:206
 msgid "Biography"
@@ -108,7 +122,7 @@ msgstr "Ƙirƙiri sabon tuntuɓe"
 msgid "Create new group"
 msgstr "Ƙirƙiri sabon ƙungiya"
 
-#: components/screens/DeviceSettingsScreen.tsx:82
+#: components/screens/DeviceSettingsScreen.tsx:134
 msgid "Dark"
 msgstr "Duhu"
 
@@ -193,6 +207,14 @@ msgstr "Sirrin asusun da aka fitar"
 msgid "Exported account secret copied to clipboard"
 msgstr "An kwafi sirrin asusun da aka fitar zuwa clipboard"
 
+#: components/screens/DeviceSettingsScreen.tsx:78
+msgid "French"
+msgstr "Faransanci"
+
+#: components/screens/DeviceSettingsScreen.tsx:84
+msgid "German"
+msgstr "Jamusanci"
+
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
 msgstr "Je labaran"
@@ -218,30 +240,70 @@ msgstr "Saƙonnin ƙungiya"
 msgid "Group name"
 msgstr "Sunan ƙungiya"
 
+#: components/screens/DeviceSettingsScreen.tsx:94
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: components/screens/DeviceSettingsScreen.tsx:96
+msgid "Hausa"
+msgstr "Hausa"
+
+#: components/screens/DeviceSettingsScreen.tsx:58
+msgid "Hindi"
+msgstr "Hindi"
+
 #: components/screens/ImportAccountScreen.tsx:37
 #: components/screens/SelectAccountScreen.tsx:50
 msgid "Import account"
 msgstr "Shigo da asusun"
 
+#: components/screens/DeviceSettingsScreen.tsx:104
+msgid "Indonesian"
+msgstr "Indonesiya"
+
 #: components/screens/ImportAccountScreen.tsx:61
 msgid "Invalid account secret or password"
 msgstr "Sirrin asusun ko kalmar sirri ba ta dace ba"
 
-#: components/screens/DeviceSettingsScreen.tsx:54
+#: components/screens/DeviceSettingsScreen.tsx:90
 msgid "Italian"
 msgstr "Italiyanci"
+
+#: components/screens/DeviceSettingsScreen.tsx:66
+msgid "Japanese"
+msgstr "Japananci"
+
+#: components/screens/DeviceSettingsScreen.tsx:88
+msgid "Javanese"
+msgstr "Yawanci"
+
+#: components/screens/DeviceSettingsScreen.tsx:98
+msgid "Kannada"
+msgstr "Kannada"
+
+#: components/screens/DeviceSettingsScreen.tsx:76
+msgid "Korean"
+msgstr "Koriyanci"
 
 #: components/screens/DeviceSettingsScreen.tsx:39
 msgid "Language"
 msgstr "Harshe"
 
-#: components/screens/DeviceSettingsScreen.tsx:80
+#: components/screens/DeviceSettingsScreen.tsx:132
 msgid "Light"
 msgstr "Haske"
 
 #: components/screens/ProfileScreen.tsx:201
 msgid "Location"
 msgstr "Wurin"
+
+#: components/screens/DeviceSettingsScreen.tsx:54
+msgid "Mandarin Chinese"
+msgstr "Mandarin Sinanci"
+
+#: components/screens/DeviceSettingsScreen.tsx:72
+msgid "Marathi"
+msgstr "Marathi"
 
 #: components/screens/DirectConversationScreen.tsx:420
 msgid "Mark as read"
@@ -316,9 +378,21 @@ msgstr "Manna sirrin asusun da aka fitar a nan"
 msgid "Paste the account id your contact shared with you"
 msgstr "Manna ID na asusun da tuntuɓenka ya raba da kai"
 
+#: components/screens/DeviceSettingsScreen.tsx:100
+msgid "Persian"
+msgstr "Farisanci"
+
 #: components/ui/BottomTabNavigation.tsx:54
 msgid "Places"
 msgstr "Wurare"
+
+#: components/screens/DeviceSettingsScreen.tsx:102
+msgid "Polish"
+msgstr "Polanci"
+
+#: components/screens/DeviceSettingsScreen.tsx:62
+msgid "Portuguese"
+msgstr "Fotigal"
 
 #: components/screens/DirectConversationScreen.tsx:385
 #: components/screens/DirectConversationScreen.tsx:507
@@ -342,6 +416,10 @@ msgstr "Cire"
 #: components/screens/AccountScreen.tsx:75
 msgid "Remove account from this device"
 msgstr "Cire asusun daga wannan na'ura"
+
+#: components/screens/DeviceSettingsScreen.tsx:64
+msgid "Russian"
+msgstr "Rashanci"
 
 #: components/screens/AccountScreen.tsx:117
 #: components/screens/ContactScreen.tsx:133
@@ -378,23 +456,43 @@ msgstr "Nuna a taswirar"
 msgid "Show QR code"
 msgstr "Nuna lamba QR"
 
-#: components/screens/DeviceSettingsScreen.tsx:62
+#: components/screens/DeviceSettingsScreen.tsx:56
+msgid "Spanish"
+msgstr "Sipaniyanci"
+
+#: components/screens/DeviceSettingsScreen.tsx:106
+msgid "Swahili"
+msgstr "Swahili"
+
+#: components/screens/DeviceSettingsScreen.tsx:114
 msgid "System default ({languageName})"
 msgstr "Tsarin tsoho ({languageName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:88
+#: components/screens/DeviceSettingsScreen.tsx:140
 msgid "System default ({themeName})"
 msgstr "Tsarin tsoho ({themeName})"
+
+#: components/screens/DeviceSettingsScreen.tsx:80
+msgid "Tamil"
+msgstr "Tamil"
 
 #: components/screens/AccountScreen.tsx:148
 msgid "Tap to change"
 msgstr "Taɓa don canzawa"
 
+#: components/screens/DeviceSettingsScreen.tsx:74
+msgid "Telugu"
+msgstr "Telugu"
+
+#: components/screens/DeviceSettingsScreen.tsx:92
+msgid "Thai"
+msgstr "Tayanci"
+
 #: components/screens/ImportAccountScreen.tsx:100
 msgid "The one you typed in during export"
 msgstr "Wanda ka rubuta yayin fitarwa"
 
-#: components/screens/DeviceSettingsScreen.tsx:67
+#: components/screens/DeviceSettingsScreen.tsx:119
 msgid "Theme"
 msgstr "Jigo"
 
@@ -411,6 +509,10 @@ msgstr "Wannan sunan ka kaɗai ne zai ganshi a wannan na'ura"
 msgid "This will your avatar forever, choose wisely"
 msgstr "Wannan zai zama hoton ka har abada, zaɓa da hikima"
 
+#: components/screens/DeviceSettingsScreen.tsx:70
+msgid "Turkish"
+msgstr "Turkanci"
+
 #: components/screens/DirectConversationScreen.tsx:470
 msgid "Unread messages"
 msgstr "Saƙonnin da ba a karanta ba"
@@ -419,9 +521,17 @@ msgstr "Saƙonnin da ba a karanta ba"
 msgid "Update article"
 msgstr "Sabunta labari"
 
+#: components/screens/DeviceSettingsScreen.tsx:86
+msgid "Urdu"
+msgstr "Urdawa"
+
 #: components/screens/AccountScreen.tsx:61
 msgid "Use another account"
 msgstr "Yi amfani da wani asusun"
+
+#: components/screens/DeviceSettingsScreen.tsx:68
+msgid "Vietnamese"
+msgstr "Vietnamanci"
 
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"

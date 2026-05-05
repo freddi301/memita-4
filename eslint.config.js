@@ -8,7 +8,7 @@ const pluginLingui = require("eslint-plugin-lingui");
 module.exports = defineConfig([
   expoConfig,
   {
-    ignores: ["dist/*"],
+    ignores: ["dist/*", "components/i18n/locales/**/*.js"],
     plugins: { "@typescript-eslint": typescriptEslint },
     languageOptions: {
       parser: typescriptParser,

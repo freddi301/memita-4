@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ko\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: components/screens/AccountScreen.tsx:187
 msgid "Account ID"
@@ -23,6 +29,10 @@ msgstr "계정 설정"
 #: components/screens/ExportAccountScreen.tsx:87
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "비밀을 가져올 수 있는 사람은 누구든 영원히 계정에 전체 액세스할 수 있습니다!"
+
+#: components/screens/DeviceSettingsScreen.tsx:82
+msgid "Arabic"
+msgstr "아랍어"
 
 #: components/ui/MessageCompose.tsx:102
 msgid "Attach file"
@@ -44,6 +54,10 @@ msgstr "계정 선택으로 돌아가기"
 #: components/screens/ContactScreen.tsx:63
 msgid "Back to direct messages"
 msgstr "다이렉트 메시지로 돌아가기"
+
+#: components/screens/DeviceSettingsScreen.tsx:60
+msgid "Bengali"
+msgstr "벵골어"
 
 #: components/screens/ProfileScreen.tsx:206
 msgid "Biography"
@@ -108,7 +122,7 @@ msgstr "새 연락처 만들기"
 msgid "Create new group"
 msgstr "새 그룹 만들기"
 
-#: components/screens/DeviceSettingsScreen.tsx:82
+#: components/screens/DeviceSettingsScreen.tsx:134
 msgid "Dark"
 msgstr "어두운"
 
@@ -193,6 +207,14 @@ msgstr "내보낸 계정 비밀"
 msgid "Exported account secret copied to clipboard"
 msgstr "내보낸 계정 비밀이 클립보드에 복사되었습니다"
 
+#: components/screens/DeviceSettingsScreen.tsx:78
+msgid "French"
+msgstr "프랑스어"
+
+#: components/screens/DeviceSettingsScreen.tsx:84
+msgid "German"
+msgstr "독일어"
+
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
 msgstr "게시물로 이동"
@@ -218,30 +240,70 @@ msgstr "그룹 메시지"
 msgid "Group name"
 msgstr "그룹 이름"
 
+#: components/screens/DeviceSettingsScreen.tsx:94
+msgid "Gujarati"
+msgstr "구자라트어"
+
+#: components/screens/DeviceSettingsScreen.tsx:96
+msgid "Hausa"
+msgstr "하우사어"
+
+#: components/screens/DeviceSettingsScreen.tsx:58
+msgid "Hindi"
+msgstr "힌디어"
+
 #: components/screens/ImportAccountScreen.tsx:37
 #: components/screens/SelectAccountScreen.tsx:50
 msgid "Import account"
 msgstr "계정 가져오기"
 
+#: components/screens/DeviceSettingsScreen.tsx:104
+msgid "Indonesian"
+msgstr "인도네시아어"
+
 #: components/screens/ImportAccountScreen.tsx:61
 msgid "Invalid account secret or password"
 msgstr "유효하지 않은 계정 비밀 또는 비밀번호"
 
-#: components/screens/DeviceSettingsScreen.tsx:54
+#: components/screens/DeviceSettingsScreen.tsx:90
 msgid "Italian"
 msgstr "이탈리아어"
+
+#: components/screens/DeviceSettingsScreen.tsx:66
+msgid "Japanese"
+msgstr "일본어"
+
+#: components/screens/DeviceSettingsScreen.tsx:88
+msgid "Javanese"
+msgstr "자바어"
+
+#: components/screens/DeviceSettingsScreen.tsx:98
+msgid "Kannada"
+msgstr "칸나다어"
+
+#: components/screens/DeviceSettingsScreen.tsx:76
+msgid "Korean"
+msgstr "한국어"
 
 #: components/screens/DeviceSettingsScreen.tsx:39
 msgid "Language"
 msgstr "언어"
 
-#: components/screens/DeviceSettingsScreen.tsx:80
+#: components/screens/DeviceSettingsScreen.tsx:132
 msgid "Light"
 msgstr "밝은"
 
 #: components/screens/ProfileScreen.tsx:201
 msgid "Location"
 msgstr "위치"
+
+#: components/screens/DeviceSettingsScreen.tsx:54
+msgid "Mandarin Chinese"
+msgstr "중국어(만다린)"
+
+#: components/screens/DeviceSettingsScreen.tsx:72
+msgid "Marathi"
+msgstr "마라티어"
 
 #: components/screens/DirectConversationScreen.tsx:420
 msgid "Mark as read"
@@ -316,9 +378,21 @@ msgstr "여기에 내보낸 계정 비밀 붙여넣기"
 msgid "Paste the account id your contact shared with you"
 msgstr "연락처가 공유한 계정 ID를 붙여넣으세요"
 
+#: components/screens/DeviceSettingsScreen.tsx:100
+msgid "Persian"
+msgstr "페르시아어"
+
 #: components/ui/BottomTabNavigation.tsx:54
 msgid "Places"
 msgstr "장소"
+
+#: components/screens/DeviceSettingsScreen.tsx:102
+msgid "Polish"
+msgstr "폴란드어"
+
+#: components/screens/DeviceSettingsScreen.tsx:62
+msgid "Portuguese"
+msgstr "포르투갈어"
 
 #: components/screens/DirectConversationScreen.tsx:385
 #: components/screens/DirectConversationScreen.tsx:507
@@ -342,6 +416,10 @@ msgstr "제거"
 #: components/screens/AccountScreen.tsx:75
 msgid "Remove account from this device"
 msgstr "이 기기에서 계정 제거"
+
+#: components/screens/DeviceSettingsScreen.tsx:64
+msgid "Russian"
+msgstr "러시아어"
 
 #: components/screens/AccountScreen.tsx:117
 #: components/screens/ContactScreen.tsx:133
@@ -378,23 +456,43 @@ msgstr "지도에서 보기"
 msgid "Show QR code"
 msgstr "QR 코드 보기"
 
-#: components/screens/DeviceSettingsScreen.tsx:62
+#: components/screens/DeviceSettingsScreen.tsx:56
+msgid "Spanish"
+msgstr "스페인어"
+
+#: components/screens/DeviceSettingsScreen.tsx:106
+msgid "Swahili"
+msgstr "스와힐리어"
+
+#: components/screens/DeviceSettingsScreen.tsx:114
 msgid "System default ({languageName})"
 msgstr "시스템 기본값 ({languageName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:88
+#: components/screens/DeviceSettingsScreen.tsx:140
 msgid "System default ({themeName})"
 msgstr "시스템 기본값 ({themeName})"
+
+#: components/screens/DeviceSettingsScreen.tsx:80
+msgid "Tamil"
+msgstr "타밀어"
 
 #: components/screens/AccountScreen.tsx:148
 msgid "Tap to change"
 msgstr "변경하려면 탭하세요"
 
+#: components/screens/DeviceSettingsScreen.tsx:74
+msgid "Telugu"
+msgstr "텔루구어"
+
+#: components/screens/DeviceSettingsScreen.tsx:92
+msgid "Thai"
+msgstr "태국어"
+
 #: components/screens/ImportAccountScreen.tsx:100
 msgid "The one you typed in during export"
 msgstr "내보내기 중에 입력한 것"
 
-#: components/screens/DeviceSettingsScreen.tsx:67
+#: components/screens/DeviceSettingsScreen.tsx:119
 msgid "Theme"
 msgstr "테마"
 
@@ -411,6 +509,10 @@ msgstr "이 이름은 이 기기에서 당신에게만 표시됩니다"
 msgid "This will your avatar forever, choose wisely"
 msgstr "이것이 영원히 당신의 아바타가 됩니다, 신중하게 선택하세요"
 
+#: components/screens/DeviceSettingsScreen.tsx:70
+msgid "Turkish"
+msgstr "터키어"
+
 #: components/screens/DirectConversationScreen.tsx:470
 msgid "Unread messages"
 msgstr "읽지 않은 메시지"
@@ -419,9 +521,17 @@ msgstr "읽지 않은 메시지"
 msgid "Update article"
 msgstr "게시물 업데이트"
 
+#: components/screens/DeviceSettingsScreen.tsx:86
+msgid "Urdu"
+msgstr "우르두어"
+
 #: components/screens/AccountScreen.tsx:61
 msgid "Use another account"
 msgstr "다른 계정 사용"
+
+#: components/screens/DeviceSettingsScreen.tsx:68
+msgid "Vietnamese"
+msgstr "베트남어"
 
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"

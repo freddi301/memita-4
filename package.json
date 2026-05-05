@@ -128,5 +128,8 @@
     "./**/*.{ts,tsx,js,jsx}": [
       "jest --findRelatedTests --coverage --coverageThreshold='{\"global\":{\"lines\":100,\"functions\":100,\"statements\":100}}' --ci"
     ]
+  },
+  "devDependencies": {
+    "babel-plugin-dynamic-import-node": "^2.3.3"
   }
 }

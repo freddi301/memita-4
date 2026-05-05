@@ -10,5 +10,5 @@
     "lingui.config.ts",
     "components/i18n/locales/*/messages.js"
   ],
-  "ignoreDependencies": ["@types/streamx"]
+  "ignoreDependencies": ["@types/streamx", "babel-plugin-dynamic-import-node"]
 }

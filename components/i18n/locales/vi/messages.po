@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: vi\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: components/screens/AccountScreen.tsx:187
 msgid "Account ID"
@@ -23,6 +29,10 @@ msgstr "Cài đặt tài khoản"
 #: components/screens/ExportAccountScreen.tsx:87
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "Bất kỳ ai có thể nhập khóa bí mật sẽ có toàn quyền truy cập vào tài khoản mãi mãi!"
+
+#: components/screens/DeviceSettingsScreen.tsx:82
+msgid "Arabic"
+msgstr "Tiếng Ả Rập"
 
 #: components/ui/MessageCompose.tsx:102
 msgid "Attach file"
@@ -44,6 +54,10 @@ msgstr "Quay lại chọn tài khoản"
 #: components/screens/ContactScreen.tsx:63
 msgid "Back to direct messages"
 msgstr "Quay lại tin nhắn trực tiếp"
+
+#: components/screens/DeviceSettingsScreen.tsx:60
+msgid "Bengali"
+msgstr "Tiếng Bengali"
 
 #: components/screens/ProfileScreen.tsx:206
 msgid "Biography"
@@ -108,7 +122,7 @@ msgstr "Tạo liên lạc mới"
 msgid "Create new group"
 msgstr "Tạo nhóm mới"
 
-#: components/screens/DeviceSettingsScreen.tsx:82
+#: components/screens/DeviceSettingsScreen.tsx:134
 msgid "Dark"
 msgstr "Tối"
 
@@ -193,6 +207,14 @@ msgstr "Khóa bí mật tài khoản đã xuất"
 msgid "Exported account secret copied to clipboard"
 msgstr "Đã sao chép khóa bí mật tài khoản vào clipboard"
 
+#: components/screens/DeviceSettingsScreen.tsx:78
+msgid "French"
+msgstr "Tiếng Pháp"
+
+#: components/screens/DeviceSettingsScreen.tsx:84
+msgid "German"
+msgstr "Tiếng Đức"
+
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
 msgstr "Đến bài viết"
@@ -218,30 +240,70 @@ msgstr "Tin nhắn nhóm"
 msgid "Group name"
 msgstr "Tên nhóm"
 
+#: components/screens/DeviceSettingsScreen.tsx:94
+msgid "Gujarati"
+msgstr "Tiếng Gujarati"
+
+#: components/screens/DeviceSettingsScreen.tsx:96
+msgid "Hausa"
+msgstr "Tiếng Hausa"
+
+#: components/screens/DeviceSettingsScreen.tsx:58
+msgid "Hindi"
+msgstr "Tiếng Hindi"
+
 #: components/screens/ImportAccountScreen.tsx:37
 #: components/screens/SelectAccountScreen.tsx:50
 msgid "Import account"
 msgstr "Nhập tài khoản"
 
+#: components/screens/DeviceSettingsScreen.tsx:104
+msgid "Indonesian"
+msgstr "Tiếng Indonesia"
+
 #: components/screens/ImportAccountScreen.tsx:61
 msgid "Invalid account secret or password"
 msgstr "Khóa bí mật hoặc mật khẩu tài khoản không hợp lệ"
 
-#: components/screens/DeviceSettingsScreen.tsx:54
+#: components/screens/DeviceSettingsScreen.tsx:90
 msgid "Italian"
 msgstr "Tiếng Ý"
+
+#: components/screens/DeviceSettingsScreen.tsx:66
+msgid "Japanese"
+msgstr "Tiếng Nhật"
+
+#: components/screens/DeviceSettingsScreen.tsx:88
+msgid "Javanese"
+msgstr "Tiếng Java"
+
+#: components/screens/DeviceSettingsScreen.tsx:98
+msgid "Kannada"
+msgstr "Tiếng Kannada"
+
+#: components/screens/DeviceSettingsScreen.tsx:76
+msgid "Korean"
+msgstr "Tiếng Hàn"
 
 #: components/screens/DeviceSettingsScreen.tsx:39
 msgid "Language"
 msgstr "Ngôn ngữ"
 
-#: components/screens/DeviceSettingsScreen.tsx:80
+#: components/screens/DeviceSettingsScreen.tsx:132
 msgid "Light"
 msgstr "Sáng"
 
 #: components/screens/ProfileScreen.tsx:201
 msgid "Location"
 msgstr "Vị trí"
+
+#: components/screens/DeviceSettingsScreen.tsx:54
+msgid "Mandarin Chinese"
+msgstr "Tiếng Quan Thoại"
+
+#: components/screens/DeviceSettingsScreen.tsx:72
+msgid "Marathi"
+msgstr "Tiếng Marathi"
 
 #: components/screens/DirectConversationScreen.tsx:420
 msgid "Mark as read"
@@ -316,9 +378,21 @@ msgstr "Dán khóa bí mật tài khoản đã xuất vào đây"
 msgid "Paste the account id your contact shared with you"
 msgstr "Dán ID tài khoản mà liên lạc của bạn đã chia sẻ"
 
+#: components/screens/DeviceSettingsScreen.tsx:100
+msgid "Persian"
+msgstr "Tiếng Ba Tư"
+
 #: components/ui/BottomTabNavigation.tsx:54
 msgid "Places"
 msgstr "Địa điểm"
+
+#: components/screens/DeviceSettingsScreen.tsx:102
+msgid "Polish"
+msgstr "Tiếng Ba Lan"
+
+#: components/screens/DeviceSettingsScreen.tsx:62
+msgid "Portuguese"
+msgstr "Tiếng Bồ Đào Nha"
 
 #: components/screens/DirectConversationScreen.tsx:385
 #: components/screens/DirectConversationScreen.tsx:507
@@ -342,6 +416,10 @@ msgstr "Xóa"
 #: components/screens/AccountScreen.tsx:75
 msgid "Remove account from this device"
 msgstr "Xóa tài khoản khỏi thiết bị này"
+
+#: components/screens/DeviceSettingsScreen.tsx:64
+msgid "Russian"
+msgstr "Tiếng Nga"
 
 #: components/screens/AccountScreen.tsx:117
 #: components/screens/ContactScreen.tsx:133
@@ -378,23 +456,43 @@ msgstr "Hiển thị trên bản đồ"
 msgid "Show QR code"
 msgstr "Hiển thị mã QR"
 
-#: components/screens/DeviceSettingsScreen.tsx:62
+#: components/screens/DeviceSettingsScreen.tsx:56
+msgid "Spanish"
+msgstr "Tiếng Tây Ban Nha"
+
+#: components/screens/DeviceSettingsScreen.tsx:106
+msgid "Swahili"
+msgstr "Tiếng Swahili"
+
+#: components/screens/DeviceSettingsScreen.tsx:114
 msgid "System default ({languageName})"
 msgstr "Mặc định hệ thống ({languageName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:88
+#: components/screens/DeviceSettingsScreen.tsx:140
 msgid "System default ({themeName})"
 msgstr "Mặc định hệ thống ({themeName})"
+
+#: components/screens/DeviceSettingsScreen.tsx:80
+msgid "Tamil"
+msgstr "Tiếng Tamil"
 
 #: components/screens/AccountScreen.tsx:148
 msgid "Tap to change"
 msgstr "Nhấn để thay đổi"
 
+#: components/screens/DeviceSettingsScreen.tsx:74
+msgid "Telugu"
+msgstr "Tiếng Telugu"
+
+#: components/screens/DeviceSettingsScreen.tsx:92
+msgid "Thai"
+msgstr "Tiếng Thái"
+
 #: components/screens/ImportAccountScreen.tsx:100
 msgid "The one you typed in during export"
 msgstr "Cái bạn đã nhập trong quá trình xuất"
 
-#: components/screens/DeviceSettingsScreen.tsx:67
+#: components/screens/DeviceSettingsScreen.tsx:119
 msgid "Theme"
 msgstr "Chủ đề"
 
@@ -411,6 +509,10 @@ msgstr "Tên này chỉ hiển thị với bạn trên thiết bị này"
 msgid "This will your avatar forever, choose wisely"
 msgstr "Đây sẽ là avatar của bạn mãi mãi, hãy chọn thật khôn ngoan"
 
+#: components/screens/DeviceSettingsScreen.tsx:70
+msgid "Turkish"
+msgstr "Tiếng Thổ Nhĩ Kỳ"
+
 #: components/screens/DirectConversationScreen.tsx:470
 msgid "Unread messages"
 msgstr "Tin nhắn chưa đọc"
@@ -419,9 +521,17 @@ msgstr "Tin nhắn chưa đọc"
 msgid "Update article"
 msgstr "Cập nhật bài viết"
 
+#: components/screens/DeviceSettingsScreen.tsx:86
+msgid "Urdu"
+msgstr "Tiếng Urdu"
+
 #: components/screens/AccountScreen.tsx:61
 msgid "Use another account"
 msgstr "Sử dụng tài khoản khác"
+
+#: components/screens/DeviceSettingsScreen.tsx:68
+msgid "Vietnamese"
+msgstr "Tiếng Việt"
 
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"

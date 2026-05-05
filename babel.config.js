@@ -5,5 +5,6 @@ module.exports = function (api) {
     plugins: [
       "@lingui/babel-plugin-lingui-macro", // must be first
     ],
+    env: { test: { plugins: ["babel-plugin-dynamic-import-node"] } },
   };
 };

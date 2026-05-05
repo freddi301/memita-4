@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ja\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: components/screens/AccountScreen.tsx:187
 msgid "Account ID"
@@ -23,6 +29,10 @@ msgstr "アカウント設定"
 #: components/screens/ExportAccountScreen.tsx:87
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "秘密をインポートできる人は、そのアカウントに永遠にフルアクセスできます！"
+
+#: components/screens/DeviceSettingsScreen.tsx:82
+msgid "Arabic"
+msgstr "アラビア語"
 
 #: components/ui/MessageCompose.tsx:102
 msgid "Attach file"
@@ -44,6 +54,10 @@ msgstr "アカウント選択に戻る"
 #: components/screens/ContactScreen.tsx:63
 msgid "Back to direct messages"
 msgstr "ダイレクトメッセージに戻る"
+
+#: components/screens/DeviceSettingsScreen.tsx:60
+msgid "Bengali"
+msgstr "ベンガル語"
 
 #: components/screens/ProfileScreen.tsx:206
 msgid "Biography"
@@ -108,7 +122,7 @@ msgstr "新しい連絡先を作成"
 msgid "Create new group"
 msgstr "新しいグループを作成"
 
-#: components/screens/DeviceSettingsScreen.tsx:82
+#: components/screens/DeviceSettingsScreen.tsx:134
 msgid "Dark"
 msgstr "ダーク"
 
@@ -193,6 +207,14 @@ msgstr "エクスポートされたアカウントシークレット"
 msgid "Exported account secret copied to clipboard"
 msgstr "エクスポートされたアカウントシークレットをクリップボードにコピーしました"
 
+#: components/screens/DeviceSettingsScreen.tsx:78
+msgid "French"
+msgstr "フランス語"
+
+#: components/screens/DeviceSettingsScreen.tsx:84
+msgid "German"
+msgstr "ドイツ語"
+
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
 msgstr "記事へ移動"
@@ -218,30 +240,70 @@ msgstr "グループメッセージ"
 msgid "Group name"
 msgstr "グループ名"
 
+#: components/screens/DeviceSettingsScreen.tsx:94
+msgid "Gujarati"
+msgstr "グジャラート語"
+
+#: components/screens/DeviceSettingsScreen.tsx:96
+msgid "Hausa"
+msgstr "ハウサ語"
+
+#: components/screens/DeviceSettingsScreen.tsx:58
+msgid "Hindi"
+msgstr "ヒンディー語"
+
 #: components/screens/ImportAccountScreen.tsx:37
 #: components/screens/SelectAccountScreen.tsx:50
 msgid "Import account"
 msgstr "アカウントをインポート"
 
+#: components/screens/DeviceSettingsScreen.tsx:104
+msgid "Indonesian"
+msgstr "インドネシア語"
+
 #: components/screens/ImportAccountScreen.tsx:61
 msgid "Invalid account secret or password"
 msgstr "アカウントシークレットまたはパスワードが無効です"
 
-#: components/screens/DeviceSettingsScreen.tsx:54
+#: components/screens/DeviceSettingsScreen.tsx:90
 msgid "Italian"
 msgstr "イタリア語"
+
+#: components/screens/DeviceSettingsScreen.tsx:66
+msgid "Japanese"
+msgstr "日本語"
+
+#: components/screens/DeviceSettingsScreen.tsx:88
+msgid "Javanese"
+msgstr "ジャワ語"
+
+#: components/screens/DeviceSettingsScreen.tsx:98
+msgid "Kannada"
+msgstr "カンナダ語"
+
+#: components/screens/DeviceSettingsScreen.tsx:76
+msgid "Korean"
+msgstr "韓国語"
 
 #: components/screens/DeviceSettingsScreen.tsx:39
 msgid "Language"
 msgstr "言語"
 
-#: components/screens/DeviceSettingsScreen.tsx:80
+#: components/screens/DeviceSettingsScreen.tsx:132
 msgid "Light"
 msgstr "ライト"
 
 #: components/screens/ProfileScreen.tsx:201
 msgid "Location"
 msgstr "場所"
+
+#: components/screens/DeviceSettingsScreen.tsx:54
+msgid "Mandarin Chinese"
+msgstr "中国語（北京語）"
+
+#: components/screens/DeviceSettingsScreen.tsx:72
+msgid "Marathi"
+msgstr "マラーティー語"
 
 #: components/screens/DirectConversationScreen.tsx:420
 msgid "Mark as read"
@@ -316,9 +378,21 @@ msgstr "エクスポートされたアカウントシークレットをここに
 msgid "Paste the account id your contact shared with you"
 msgstr "連絡先が共有したアカウントIDを貼り付けてください"
 
+#: components/screens/DeviceSettingsScreen.tsx:100
+msgid "Persian"
+msgstr "ペルシア語"
+
 #: components/ui/BottomTabNavigation.tsx:54
 msgid "Places"
 msgstr "場所"
+
+#: components/screens/DeviceSettingsScreen.tsx:102
+msgid "Polish"
+msgstr "ポーランド語"
+
+#: components/screens/DeviceSettingsScreen.tsx:62
+msgid "Portuguese"
+msgstr "ポルトガル語"
 
 #: components/screens/DirectConversationScreen.tsx:385
 #: components/screens/DirectConversationScreen.tsx:507
@@ -342,6 +416,10 @@ msgstr "削除"
 #: components/screens/AccountScreen.tsx:75
 msgid "Remove account from this device"
 msgstr "このデバイスからアカウントを削除"
+
+#: components/screens/DeviceSettingsScreen.tsx:64
+msgid "Russian"
+msgstr "ロシア語"
 
 #: components/screens/AccountScreen.tsx:117
 #: components/screens/ContactScreen.tsx:133
@@ -378,23 +456,43 @@ msgstr "地図で表示"
 msgid "Show QR code"
 msgstr "QRコードを表示"
 
-#: components/screens/DeviceSettingsScreen.tsx:62
+#: components/screens/DeviceSettingsScreen.tsx:56
+msgid "Spanish"
+msgstr "スペイン語"
+
+#: components/screens/DeviceSettingsScreen.tsx:106
+msgid "Swahili"
+msgstr "スワヒリ語"
+
+#: components/screens/DeviceSettingsScreen.tsx:114
 msgid "System default ({languageName})"
 msgstr "システムデフォルト（{languageName}）"
 
-#: components/screens/DeviceSettingsScreen.tsx:88
+#: components/screens/DeviceSettingsScreen.tsx:140
 msgid "System default ({themeName})"
 msgstr "システムデフォルト（{themeName}）"
+
+#: components/screens/DeviceSettingsScreen.tsx:80
+msgid "Tamil"
+msgstr "タミル語"
 
 #: components/screens/AccountScreen.tsx:148
 msgid "Tap to change"
 msgstr "タップして変更"
 
+#: components/screens/DeviceSettingsScreen.tsx:74
+msgid "Telugu"
+msgstr "テルグ語"
+
+#: components/screens/DeviceSettingsScreen.tsx:92
+msgid "Thai"
+msgstr "タイ語"
+
 #: components/screens/ImportAccountScreen.tsx:100
 msgid "The one you typed in during export"
 msgstr "エクスポート時に入力したもの"
 
-#: components/screens/DeviceSettingsScreen.tsx:67
+#: components/screens/DeviceSettingsScreen.tsx:119
 msgid "Theme"
 msgstr "テーマ"
 
@@ -411,6 +509,10 @@ msgstr "この名前はこのデバイスであなただけに表示されます
 msgid "This will your avatar forever, choose wisely"
 msgstr "これがあなたのアバターになります。慎重に選んでください"
 
+#: components/screens/DeviceSettingsScreen.tsx:70
+msgid "Turkish"
+msgstr "トルコ語"
+
 #: components/screens/DirectConversationScreen.tsx:470
 msgid "Unread messages"
 msgstr "未読メッセージ"
@@ -419,9 +521,17 @@ msgstr "未読メッセージ"
 msgid "Update article"
 msgstr "記事を更新"
 
+#: components/screens/DeviceSettingsScreen.tsx:86
+msgid "Urdu"
+msgstr "ウルドゥー語"
+
 #: components/screens/AccountScreen.tsx:61
 msgid "Use another account"
 msgstr "別のアカウントを使用"
+
+#: components/screens/DeviceSettingsScreen.tsx:68
+msgid "Vietnamese"
+msgstr "ベトナム語"
 
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
