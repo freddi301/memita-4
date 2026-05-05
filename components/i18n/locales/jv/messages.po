@@ -126,7 +126,7 @@ msgstr "Gawe grup anyar"
 msgid "Dark"
 msgstr "Peteng"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "Busak"
 
@@ -257,10 +257,6 @@ msgstr "Basa Hindi"
 msgid "Import account"
 msgstr "Impor akun"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "Impor akun saka piranti liyane"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "Basa Indonesia"
@@ -317,7 +313,7 @@ msgstr "Tandai wis diwaca"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "Owahi pesan"
 
@@ -325,7 +321,7 @@ msgstr "Owahi pesan"
 msgid "New article"
 msgstr "Artikel anyar"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "Draf anyar"
 
@@ -338,10 +334,6 @@ msgstr "Kejadian sabanjure"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "Ora ana akun ing piranti iki"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "Durung ana akun ing piranti iki. Gawe utawa impor"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "Basa Rusia"
 msgid "Save changes"
 msgstr "Simpen owahan"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "Simpen draf"
 
@@ -444,7 +436,7 @@ msgstr "Simpen draf"
 msgid "Search"
 msgstr "Goleki"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "Kirim pesan"
 
@@ -544,6 +536,10 @@ msgstr "Basa Vietnam"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "Bakal dibutuhake kanggo impor mengko"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "Tulis pesen"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

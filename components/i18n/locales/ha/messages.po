@@ -126,7 +126,7 @@ msgstr "Ƙirƙiri sabon ƙungiya"
 msgid "Dark"
 msgstr "Duhu"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "Goge"
 
@@ -257,10 +257,6 @@ msgstr "Hindi"
 msgid "Import account"
 msgstr "Shigo da asusun"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "Shigo da asusu daga wata na'ura"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "Indonesiya"
@@ -317,7 +313,7 @@ msgstr "Alama a matsayin an karanta"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "Gyara saƙo"
 
@@ -325,7 +321,7 @@ msgstr "Gyara saƙo"
 msgid "New article"
 msgstr "Sabon labari"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "Sabon daftari"
 
@@ -338,10 +334,6 @@ msgstr "Na gaba"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "Babu asusun a wannan na'ura"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "Babu asusu a wannan naurar tukuna. Kirkiri ko shigo da"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "Rashanci"
 msgid "Save changes"
 msgstr "Ajiye canje-canje"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "Ajiye daftari"
 
@@ -444,7 +436,7 @@ msgstr "Ajiye daftari"
 msgid "Search"
 msgstr "Bincika"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "Aika saƙo"
 
@@ -544,6 +536,10 @@ msgstr "Vietnamanci"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "Za a buƙata don shigarwa daga baya"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "Rubuta saƙo"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

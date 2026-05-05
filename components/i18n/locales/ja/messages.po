@@ -126,7 +126,7 @@ msgstr "新しいグループを作成"
 msgid "Dark"
 msgstr "ダーク"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "削除"
 
@@ -257,10 +257,6 @@ msgstr "ヒンディー語"
 msgid "Import account"
 msgstr "アカウントをインポート"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "別のデバイスからアカウントをインポート"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "インドネシア語"
@@ -317,7 +313,7 @@ msgstr "既読にする"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "メッセージを変更"
 
@@ -325,7 +321,7 @@ msgstr "メッセージを変更"
 msgid "New article"
 msgstr "新しい記事"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "新しい下書き"
 
@@ -338,10 +334,6 @@ msgstr "次の一致"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "このデバイスにアカウントがありません"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "このデバイスにはまだアカウントがありません。作成またはインポート"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "ロシア語"
 msgid "Save changes"
 msgstr "変更を保存"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "下書きを保存"
 
@@ -444,7 +436,7 @@ msgstr "下書きを保存"
 msgid "Search"
 msgstr "検索"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "メッセージを送信"
 
@@ -544,6 +536,10 @@ msgstr "ベトナム語"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "後でインポートするために必要です"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "メッセージを書く"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

@@ -126,7 +126,7 @@ msgstr "Unda kikundi kipya"
 msgid "Dark"
 msgstr "Giza"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "Futa"
 
@@ -257,10 +257,6 @@ msgstr "Kihindi"
 msgid "Import account"
 msgstr "Agiza akaunti"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "Ingiza akaunti kutoka kifaa kingine"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "Kiindonesia"
@@ -317,7 +313,7 @@ msgstr "Weka alama kama imesomwa"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "Badilisha ujumbe"
 
@@ -325,7 +321,7 @@ msgstr "Badilisha ujumbe"
 msgid "New article"
 msgstr "Makala mpya"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "Rasimu mpya"
 
@@ -338,10 +334,6 @@ msgstr "Tukio lijalo"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "Hakuna akaunti kwenye kifaa hiki"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "Bado hakuna akaunti kwenye kifaa hiki. Unda au ingiza"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "Kirusi"
 msgid "Save changes"
 msgstr "Hifadhi mabadiliko"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "Hifadhi rasimu"
 
@@ -444,7 +436,7 @@ msgstr "Hifadhi rasimu"
 msgid "Search"
 msgstr "Tafuta"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "Tuma ujumbe"
 
@@ -544,6 +536,10 @@ msgstr "Kivietinamu"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "Itahitajika kuagiza baadaye"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "Andika ujumbe"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

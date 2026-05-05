@@ -1,5 +1,6 @@
 review features secion, normalize items -> transform into tests
 setup electron forge build
+put hardcoced colors into theme
 on screenLink, web hover, mobile longpress show tooltip with label
 review what happens on back button (web and native), disable back button!!!
 while editing a direct message, dont let user do anything to inadvertently lose chages

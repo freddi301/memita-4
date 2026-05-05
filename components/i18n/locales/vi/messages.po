@@ -126,7 +126,7 @@ msgstr "Tạo nhóm mới"
 msgid "Dark"
 msgstr "Tối"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "Xóa"
 
@@ -257,10 +257,6 @@ msgstr "Tiếng Hindi"
 msgid "Import account"
 msgstr "Nhập tài khoản"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "Nhap tai khoan tu thiet bi khac"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "Tiếng Indonesia"
@@ -317,7 +313,7 @@ msgstr "Đánh dấu là đã đọc"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "Chỉnh sửa tin nhắn"
 
@@ -325,7 +321,7 @@ msgstr "Chỉnh sửa tin nhắn"
 msgid "New article"
 msgstr "Bài viết mới"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "Bản nháp mới"
 
@@ -338,10 +334,6 @@ msgstr "Lần xuất hiện tiếp theo"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "Không có tài khoản nào trên thiết bị này"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "Chua co tai khoan nao tren thiet bi nay. Tao hoac nhap"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "Tiếng Nga"
 msgid "Save changes"
 msgstr "Lưu thay đổi"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "Lưu bản nháp"
 
@@ -444,7 +436,7 @@ msgstr "Lưu bản nháp"
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "Gửi tin nhắn"
 
@@ -544,6 +536,10 @@ msgstr "Tiếng Việt"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "Sẽ cần để nhập sau"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "Viết tin nhắn"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

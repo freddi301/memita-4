@@ -26,6 +26,8 @@ argument-hint: "language code(s) (e.g. de,fr,es) or omit for all"
 
 ## Phase 1: Prepare Payloads (One Command)
 
+Payloads are grouped **by msgid across all languages** (not per-language). Each payload file covers up to `chunk_size` msgids × all languages that need that msgid translated. This means one AI call handles all languages for the same string simultaneously.
+
 Run this command exactly (standalone; do not chain after heredoc):
 
 ```bash
@@ -34,6 +36,7 @@ import json
 import re
 import subprocess
 from pathlib import Path
+from collections import defaultdict
 
 langs = ["zh","es","hi","bn","pt","ru","ja","vi","tr","mr","te","ko","fr","ta","ar","de","ur","jv","it","th","gu","ha","kn","fa","pl","id","sw"]
 labels = {
@@ -50,7 +53,10 @@ root = Path('.').resolve()
 locales = root / 'components/i18n/locales'
 out = Path('/tmp/ai-translation-inputs')
 out.mkdir(parents=True, exist_ok=True)
-chunk_size = 25
+# Clean old files
+for p in out.glob('*.txt'):
+    p.unlink(missing_ok=True)
+chunk_size = 25  # msgids per payload file
 
 msgid_re = re.compile(r'^msgid "(.*)"$')
 msgstr_re = re.compile(r'^msgstr "(.*)"$')
@@ -74,107 +80,104 @@ for line in diff.splitlines():
     (old if line.startswith('-') else new).add(s)
 stale = new - old
 
-summary = {
-    "base_ref":"HEAD",
-    "head_ref":"WORKTREE+INDEX",
-    "stale_global_count":len(stale),
-    "languages":{}
-}
-
+# Per-language current translations
+lang_maps = {}
 for lang in langs:
     po = locales / lang / 'messages.po'
-    for p in out.glob(f'{lang}.txt'):
-        p.unlink(missing_ok=True)
-    for p in out.glob(f'{lang}.part*.txt'):
-        p.unlink(missing_ok=True)
-
     lines = po.read_text(encoding='utf-8').splitlines()
-    present, empty = set(), set()
     current_map = {}
     current = None
     for line in lines:
         m = msgid_re.match(line)
         if m:
             current = m.group(1)
-            if current:
-                present.add(current)
             continue
         m = msgstr_re.match(line)
         if m and current:
             current_map[current] = m.group(1)
-            if m.group(1) == '':
-                empty.add(current)
             current = None
+    lang_maps[lang] = current_map
 
+# Build cross-language index: msgid -> {lang -> existing_msgstr}
+# Only include (msgid, lang) pairs that need AI
+need: dict[str, dict[str, str]] = defaultdict(dict)  # need[msgid][lang] = existing
+for lang in langs:
+    current_map = lang_maps[lang]
+    present = set(current_map)
+    empty = {k for k, v in current_map.items() if v == '' and k}
     stale_candidates = stale & present
-    stale_needs_ai = {
-        s for s in stale_candidates
-        if current_map.get(s, '') == '' or current_map.get(s, '') == s
-    }
-    unresolved = sorted(empty | stale_needs_ai)
+    stale_needs_ai = {s for s in stale_candidates if current_map.get(s,'') in ('', s)}
+    for msgid in sorted(empty | stale_needs_ai):
+        need[msgid][lang] = current_map.get(msgid, '')
 
-    if not unresolved:
-        summary['languages'][lang] = {
-            "empty_count": len(empty),
-            "stale_count": len(stale_candidates),
-            "stale_needs_ai_count": len(stale_needs_ai),
-            "total_for_ai": 0,
-            "payload_count": 0,
-            "outputs": [],
-            "status": "skip-no-ai-needed"
-        }
-        continue
+all_msgids = sorted(need)
 
+if not all_msgids:
+    print("Nothing to translate.")
+else:
     outputs = []
-    for i in range(0, len(unresolved), chunk_size):
-        chunk = unresolved[i:i+chunk_size]
+    for i in range(0, len(all_msgids), chunk_size):
+        chunk = all_msgids[i:i+chunk_size]
         idx = (i // chunk_size) + 1
-        name = f"{lang}.txt" if len(unresolved) <= chunk_size else f"{lang}.part{idx}.txt"
+        name = f"chunk{idx}.txt" if len(all_msgids) > chunk_size else "chunk1.txt"
         p = out / name
-        body = [f"{msg}\t{current_map.get(msg, '')}" for msg in chunk]
-        p.write_text("\n".join([f"Target language: {lang} ({labels[lang]})", "", *body]) + "\n", encoding='utf-8')
+        lines_out = [
+            "Translate each msgid into every listed target language.",
+            "Return TSV rows: msgid<TAB>lang<TAB>msgstr — one row per (msgid, language) pair.",
+            "No commentary.",
+            "",
+        ]
+        for msgid in chunk:
+            lang_existing = need[msgid]
+            langs_needed = sorted(lang_existing)
+            existing_hint = "; ".join(
+                f"{lang}({labels[lang]}): {lang_existing[lang]!r}" if lang_existing[lang] else f"{lang}({labels[lang]})"
+                for lang in langs_needed
+            )
+            lines_out.append(f"{msgid}\t{existing_hint}")
+        p.write_text("\n".join(lines_out) + "\n", encoding='utf-8')
         outputs.append(str(p))
+        print(f"  {p}  ({len(chunk)} msgids × {len(need[chunk[0]])} langs)")
 
-    summary['languages'][lang] = {
-        "empty_count": len(empty),
-        "stale_count": len(stale_candidates),
-        "stale_needs_ai_count": len(stale_needs_ai),
-        "total_for_ai": len(unresolved),
-        "payload_count": len(outputs),
-        "outputs": outputs,
-        "status": "ready",
-    }
-
+summary = {
+    "base_ref": "HEAD",
+    "head_ref": "WORKTREE+INDEX",
+    "stale_global_count": len(stale),
+    "total_msgids_for_ai": len(all_msgids),
+    "payload_files": outputs if all_msgids else [],
+}
 (out / 'summary.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
-print(f"Wrote payloads to {out}")
+print(f"\nWrote {len(outputs)} payload file(s) to {out}")
 print(f"Summary: {out / 'summary.json'}")
 PY
 ```
 
 ## AI Input/Output Format
 
-For each generated payload file:
+Each payload file covers multiple msgids × multiple languages.
 
-- Input file rows are: `msgid<TAB>existing_msgstr`
-- AI instruction:
+- Header lines explain the format.
+- Body rows: `msgid<TAB><lang>(<Label>)[: 'existing']` — one row per msgid, listing all languages needing it.
+- AI instruction (already embedded in the file header):
 
 ```text
-Target language is in the first line.
-Input rows are msgid<TAB>existing_msgstr.
-Return only TSV rows: msgid<TAB>msgstr
+Translate each msgid into every listed target language.
+Return TSV rows: msgid<TAB>lang<TAB>msgstr — one row per (msgid, language) pair.
 No commentary.
 ```
 
-Save AI output files to `/tmp/ai-translation-results/<lang>.tsv`.
+Save AI output to a **single file**: `/tmp/ai-translation-results/translations.tsv`  
+Format: `msgid<TAB>lang<TAB>msgstr` (one row per msgid+lang combination).
 
 ## Phase 2: Apply + Compile + Report (One Command)
 
-Run this command after AI TSV files exist:
+Run this command after the AI TSV file exists at `/tmp/ai-translation-results/translations.tsv`:
 
 ```bash
 python3 - <<'PY'
 import csv
 import subprocess
+from collections import defaultdict
 from pathlib import Path
 
 langs = ["zh","es","hi","bn","pt","ru","ja","vi","tr","mr","te","ko","fr","ta","ar","de","ur","jv","it","th","gu","ha","kn","fa","pl","id","sw"]
@@ -182,24 +185,22 @@ locales = Path('components/i18n/locales')
 results = Path('/tmp/ai-translation-results')
 report = Path('/tmp/ai-translation-report.tsv')
 
+# Load all translations from single file: msgid<TAB>lang<TAB>msgstr
+updates: dict[str, dict[str, str]] = defaultdict(dict)  # updates[lang][msgid] = msgstr
+tsv = results / 'translations.tsv'
+for raw in tsv.read_text(encoding='utf-8').splitlines():
+    if not raw.strip() or raw.count('\t') < 2:
+        continue
+    parts = raw.split('\t', 2)
+    msgid, lang, msgstr = parts[0].strip(), parts[1].strip(), parts[2].strip()
+    if msgid and lang:
+        updates[lang][msgid] = msgstr
+
 report_rows = []
 
 for lang in langs:
-    tsv = results / f'{lang}.tsv'
-    if not tsv.exists():
-        continue
-
-    updates = {}
-    for raw in tsv.read_text(encoding='utf-8').splitlines():
-        if not raw.strip() or '\t' not in raw:
-            continue
-        msgid, msgstr = raw.split('\t', 1)
-        msgid = msgid.strip()
-        msgstr = msgstr.strip()
-        if msgid:
-            updates[msgid] = msgstr
-
-    if not updates:
+    lang_updates = updates.get(lang)
+    if not lang_updates:
         continue
 
     po = locales / lang / 'messages.po'
@@ -211,9 +212,9 @@ for lang in langs:
             current = line[7:-1]
             out.append(line)
             continue
-        if line.startswith('msgstr "') and current in updates:
+        if line.startswith('msgstr "') and current in lang_updates:
             existing = line[8:-1]
-            updated = updates[current]
+            updated = lang_updates[current]
             out.append(f'msgstr "{updated}"')
             if existing != updated:
                 report_rows.append([lang, current, existing, updated])

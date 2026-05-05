@@ -126,7 +126,7 @@ msgstr "ایجاد گروه جدید"
 msgid "Dark"
 msgstr "تیره"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "حذف"
 
@@ -257,10 +257,6 @@ msgstr "هندی"
 msgid "Import account"
 msgstr "وارد کردن حساب"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "وارد کردن حساب از دستگاه دیگر"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "اندونزیایی"
@@ -317,7 +313,7 @@ msgstr "علامت‌گذاری به عنوان خوانده شده"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "ویرایش پیام"
 
@@ -325,7 +321,7 @@ msgstr "ویرایش پیام"
 msgid "New article"
 msgstr "مقاله جدید"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "پیش‌نویس جدید"
 
@@ -338,10 +334,6 @@ msgstr "رخداد بعدی"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "هیچ حسابی در این دستگاه وجود ندارد"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "هنوز هیچ حسابی روی این دستگاه نیست. ایجاد کنید یا وارد کنید"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "روسی"
 msgid "Save changes"
 msgstr "ذخیره تغییرات"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "ذخیره پیش‌نویس"
 
@@ -444,7 +436,7 @@ msgstr "ذخیره پیش‌نویس"
 msgid "Search"
 msgstr "جستجو"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "ارسال پیام"
 
@@ -544,6 +536,10 @@ msgstr "ویتنامی"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "برای واردات بعدی مورد نیاز خواهد بود"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "یک پیام بنویسید"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

@@ -126,7 +126,7 @@ msgstr "Créer un nouveau groupe"
 msgid "Dark"
 msgstr "Sombre"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -257,10 +257,6 @@ msgstr "Hindi"
 msgid "Import account"
 msgstr "Importer le compte"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "Importer un compte depuis un autre appareil"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "Indonésien"
@@ -317,7 +313,7 @@ msgstr "Marquer comme lu"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "Modifier le message"
 
@@ -325,7 +321,7 @@ msgstr "Modifier le message"
 msgid "New article"
 msgstr "Nouvel article"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "Nouveau brouillon"
 
@@ -338,10 +334,6 @@ msgstr "Occurrence suivante"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "Aucun compte sur cet appareil"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "Aucun compte sur cet appareil pour le moment. Creer ou importer"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "Russe"
 msgid "Save changes"
 msgstr "Enregistrer les modifications"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "Enregistrer le brouillon"
 
@@ -444,7 +436,7 @@ msgstr "Enregistrer le brouillon"
 msgid "Search"
 msgstr "Rechercher"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "Envoyer le message"
 
@@ -544,6 +536,10 @@ msgstr "Vietnamien"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "Sera nécessaire pour importer plus tard"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "Écrire un message"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

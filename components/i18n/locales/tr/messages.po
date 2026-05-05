@@ -126,7 +126,7 @@ msgstr "Yeni grup oluştur"
 msgid "Dark"
 msgstr "Koyu"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "Sil"
 
@@ -257,10 +257,6 @@ msgstr "Hintçe"
 msgid "Import account"
 msgstr "Hesabı içe aktar"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "Hesabi baska bir cihazdan ice aktar"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "Endonezce"
@@ -317,7 +313,7 @@ msgstr "Okundu olarak işaretle"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "Mesajı değiştir"
 
@@ -325,7 +321,7 @@ msgstr "Mesajı değiştir"
 msgid "New article"
 msgstr "Yeni makale"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "Yeni taslak"
 
@@ -338,10 +334,6 @@ msgstr "Sonraki eşleşme"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "Bu cihazda hesap yok"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "Bu cihazda henuz hesap yok. Olustur veya ice aktar"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "Rusça"
 msgid "Save changes"
 msgstr "Değişiklikleri kaydet"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "Taslağı kaydet"
 
@@ -444,7 +436,7 @@ msgstr "Taslağı kaydet"
 msgid "Search"
 msgstr "Ara"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "Mesaj gönder"
 
@@ -544,6 +536,10 @@ msgstr "Vietnamca"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "Daha sonra içe aktarmak için gerekli olacak"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "Bir mesaj yaz"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

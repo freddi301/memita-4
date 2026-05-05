@@ -126,7 +126,7 @@ msgstr "새 그룹 만들기"
 msgid "Dark"
 msgstr "어두운"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "삭제"
 
@@ -257,10 +257,6 @@ msgstr "힌디어"
 msgid "Import account"
 msgstr "계정 가져오기"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "다른 기기에서 계정 가져오기"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "인도네시아어"
@@ -317,7 +313,7 @@ msgstr "읽음으로 표시"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "메시지 수정"
 
@@ -325,7 +321,7 @@ msgstr "메시지 수정"
 msgid "New article"
 msgstr "새 게시물"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "새 초안"
 
@@ -338,10 +334,6 @@ msgstr "다음 항목"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "이 기기에 계정이 없습니다"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "이 기기에는 아직 계정이 없습니다. 생성 또는 가져오기"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "러시아어"
 msgid "Save changes"
 msgstr "변경 사항 저장"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "초안 저장"
 
@@ -444,7 +436,7 @@ msgstr "초안 저장"
 msgid "Search"
 msgstr "검색"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "메시지 보내기"
 
@@ -544,6 +536,10 @@ msgstr "베트남어"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "나중에 가져오기에 필요합니다"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "메시지를 작성하세요"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

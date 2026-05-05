@@ -126,7 +126,7 @@ msgstr "Criar novo grupo"
 msgid "Dark"
 msgstr "Escuro"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -257,10 +257,6 @@ msgstr "Hindi"
 msgid "Import account"
 msgstr "Importar conta"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "Importar conta de outro dispositivo"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "Indonésio"
@@ -317,7 +313,7 @@ msgstr "Marcar como lido"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "Modificar mensagem"
 
@@ -325,7 +321,7 @@ msgstr "Modificar mensagem"
 msgid "New article"
 msgstr "Novo artigo"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "Novo rascunho"
 
@@ -338,10 +334,6 @@ msgstr "Próxima ocorrência"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "Sem contas neste dispositivo"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "Ainda nao ha contas neste dispositivo. Crie ou importe"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "Russo"
 msgid "Save changes"
 msgstr "Guardar alterações"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "Guardar rascunho"
 
@@ -444,7 +436,7 @@ msgstr "Guardar rascunho"
 msgid "Search"
 msgstr "Pesquisar"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "Enviar mensagem"
 
@@ -544,6 +536,10 @@ msgstr "Vietnamita"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "Será necessária para importar mais tarde"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "Escreva uma mensagem"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

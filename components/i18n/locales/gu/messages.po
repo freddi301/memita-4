@@ -126,7 +126,7 @@ msgstr "નવો ગ્રૂપ બનાવો"
 msgid "Dark"
 msgstr "ઘેરો"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "કાઢી નાખો"
 
@@ -257,10 +257,6 @@ msgstr "હિન્દી"
 msgid "Import account"
 msgstr "એકાઉન્ટ આયાત કરો"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "બીજા ઉપકરણમાંથી ખાતું આયાત કરો"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "ઇન્ડોનેશિયન"
@@ -317,7 +313,7 @@ msgstr "વાંચ્યું તરીકે ચિહ્નિત કરો
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "સંદેશ સુધારો"
 
@@ -325,7 +321,7 @@ msgstr "સંદેશ સુધારો"
 msgid "New article"
 msgstr "નવો લેખ"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "નવો ડ્રાફ્ટ"
 
@@ -338,10 +334,6 @@ msgstr "આગળની ઘટના"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "આ ઉપકરણ પર કોઈ એકાઉન્ટ નથી"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "આ ઉપકરણ પર હજી કોઈ ખાતાં નથી. બનાવો અથવા આયાત કરો"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "રશિયન"
 msgid "Save changes"
 msgstr "ફેરફારો સાચવો"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "ડ્રાફ્ટ સાચવો"
 
@@ -444,7 +436,7 @@ msgstr "ડ્રાફ્ટ સાચવો"
 msgid "Search"
 msgstr "શોધ"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "સંદેશ મોકલો"
 
@@ -544,6 +536,10 @@ msgstr "વિયેટનામી"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "પછી આયાત કરવા જરૂરી થશે"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "સંદેશ લખો"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

@@ -126,7 +126,7 @@ msgstr "புதிய குழுவை உருவாக்கவும்"
 msgid "Dark"
 msgstr "இருண்ட"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "நீக்கு"
 
@@ -257,10 +257,6 @@ msgstr "இந்தி"
 msgid "Import account"
 msgstr "கணக்கை இறக்குமதி செய்யவும்"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "மற்றொரு சாதனத்திலிருந்து கணக்கை இறக்குமதி செய்"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "இந்தோனேசியன்"
@@ -317,7 +313,7 @@ msgstr "படிக்கப்பட்டதாக குறிக்கவ�
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "செய்தியை மாற்றவும்"
 
@@ -325,7 +321,7 @@ msgstr "செய்தியை மாற்றவும்"
 msgid "New article"
 msgstr "புதிய கட்டுரை"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "புதிய வரைவு"
 
@@ -338,10 +334,6 @@ msgstr "அடுத்த நிகழ்வு"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "இந்த சாதனத்தில் கணக்குகள் இல்லை"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "இந்த சாதனத்தில் இன்னும் கணக்குகள் இல்லை. உருவாக்கவும் அல்லது இறக்குமதி செய்யவும்"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "ரஷியன்"
 msgid "Save changes"
 msgstr "மாற்றங்களை சேமிக்கவும்"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "வரைவை சேமிக்கவும்"
 
@@ -444,7 +436,7 @@ msgstr "வரைவை சேமிக்கவும்"
 msgid "Search"
 msgstr "தேடு"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "செய்தி அனுப்பவும்"
 
@@ -544,6 +536,10 @@ msgstr "வியட்நாமீஸ்"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "பின்னர் இறக்குமதி செய்ய தேவைப்படும்"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "ஒரு செய்தி எழுதுங்கள்"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

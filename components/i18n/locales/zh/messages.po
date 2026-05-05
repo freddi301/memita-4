@@ -126,7 +126,7 @@ msgstr "创建新群组"
 msgid "Dark"
 msgstr "深色"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "删除"
 
@@ -257,10 +257,6 @@ msgstr "印地语"
 msgid "Import account"
 msgstr "导入账户"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "从另一台设备导入账户"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "印度尼西亚语"
@@ -317,7 +313,7 @@ msgstr "标记为已读"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "修改消息"
 
@@ -325,7 +321,7 @@ msgstr "修改消息"
 msgid "New article"
 msgstr "新文章"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "新草稿"
 
@@ -338,10 +334,6 @@ msgstr "下一个匹配"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "此设备上没有账户"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "此设备上还没有账户。创建或导入"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "俄语"
 msgid "Save changes"
 msgstr "保存更改"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "保存草稿"
 
@@ -444,7 +436,7 @@ msgstr "保存草稿"
 msgid "Search"
 msgstr "搜索"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "发送消息"
 
@@ -544,6 +536,10 @@ msgstr "越南语"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "稍后导入时将需要此密码"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "写一条消息"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

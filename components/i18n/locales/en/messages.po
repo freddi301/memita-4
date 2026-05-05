@@ -126,7 +126,7 @@ msgstr "Create new group"
 msgid "Dark"
 msgstr "Dark"
 
-#: components/ui/MessageCompose.tsx:204
+#: components/ui/MessageCompose.tsx:205
 msgid "Delete"
 msgstr "Delete"
 
@@ -257,10 +257,6 @@ msgstr "Hindi"
 msgid "Import account"
 msgstr "Import account"
 
-#: components/screens/SelectAccountScreen.tsx:50
-#~ msgid "Import account from another device"
-#~ msgstr "Import account from another device"
-
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "Indonesian"
@@ -317,7 +313,7 @@ msgstr "Mark as read"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:188
+#: components/ui/MessageCompose.tsx:189
 msgid "Modify message"
 msgstr "Modify message"
 
@@ -325,7 +321,7 @@ msgstr "Modify message"
 msgid "New article"
 msgstr "New article"
 
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "New draft"
 msgstr "New draft"
 
@@ -338,10 +334,6 @@ msgstr "Next occurrence"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "No accounts on this device"
-
-#: components/screens/SelectAccountScreen.tsx:92
-#~ msgid "No accounts on this device yet. Create or import"
-#~ msgstr "No accounts on this device yet. Create or import"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
@@ -436,7 +428,7 @@ msgstr "Russian"
 msgid "Save changes"
 msgstr "Save changes"
 
-#: components/ui/MessageCompose.tsx:150
+#: components/ui/MessageCompose.tsx:151
 msgid "Save draft"
 msgstr "Save draft"
 
@@ -444,7 +436,7 @@ msgstr "Save draft"
 msgid "Search"
 msgstr "Search"
 
-#: components/ui/MessageCompose.tsx:168
+#: components/ui/MessageCompose.tsx:169
 msgid "Send message"
 msgstr "Send message"
 
@@ -544,6 +536,10 @@ msgstr "Vietnamese"
 #: components/screens/ExportAccountScreen.tsx:101
 msgid "Will be needed to import later"
 msgstr "Will be needed to import later"
+
+#: components/ui/MessageCompose.tsx:107
+msgid "Write a message"
+msgstr "Write a message"
 
 #: components/screens/ExportAccountScreen.tsx:82
 msgid "You can send or store this exported text to import the account on other devices"

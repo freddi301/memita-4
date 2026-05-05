@@ -40,15 +40,31 @@ Observe and internalize:
 
 Use these observations as the convention for all decisions: where to create new files, what to name them, and how to group concerns when splitting. Do not invent a new convention — extend the one already present. If the project is brand new and `test/` is empty, establish a clean mirrored structure and note it in the summary so it becomes the baseline going forward.
 
-### 1d — Score each source file (lower = more neglected = higher priority)
+### 1d — Milestone filter (apply before scoring)
+
+This project is currently in **Milestone 1: Account · Contacts · Direct Messages**.
+
+Before scoring, **exclude** any source file whose primary concern is outside this milestone. Concretely, skip files that are primarily about:
+
+- Groups / group messages (`groups`, `groupMessages`, `GroupConversationScreen`, `GroupMessagesScreen`, `GroupScreen`, …)
+- Articles / feed (`articles`, `ArticlesScreen`, `EditArticleScreen`, …)
+- Events / calendar (`EventsScreen`, `MemitaCalendar`, …)
+- Places / map (`PlacesScreen`, `GeoMap`, `CoordsInput`, …)
+- Any other feature area not directly related to account management, contact management, or 1-to-1 direct messaging
+
+Files that are shared infrastructure used by in-scope features (e.g. `Routing.tsx`, `Main.tsx`, `Theme.tsx`, `cryptography/`, `storage/`, `queries/helpers.ts`) are **not** excluded — they support the milestone and are fair game.
+
+### 1e — Score each remaining source file (lower = more neglected = higher priority)
 
 First, assign a **file-type tier** that scales how aggressively age is counted:
 
-| File type                     | Examples                                                                                                                                                                    | Age multiplier     |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| **Tier A** — product code     | `.ts`, `.tsx`                                                                                                                                                               | ×1.0 (full weight) |
-| **Tier B** — config / tooling | `*.config.*`, `babel.config.*`, `metro.config.*`, `jest.config.*`, `.eslintrc`, `tsconfig*.json`, `package.json`, `Gemfile`, `Podfile`, `*.gradle`, `*.plist`, `*.xcconfig` | ×0.3 (ages slowly) |
-| **Tier C** — scripts / CI     | `*.sh`, `.github/workflows/*.yml`, `Makefile`, `Dockerfile`                                                                                                                 | ×0.2               |
+| File type                       | Examples                                                                                                                                                                    | Age multiplier        |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| **Tier A** — UI / screen code   | `.tsx` files (screens, components, navigation)                                                                                                                              | ×2.0 (highest weight) |
+| **Tier B** — pure product logic | `.ts` files that are not infra/network/storage (e.g. `queries/`, `cryptography/`, `store/`)                                                                                 | ×1.0 (full weight)    |
+| **Tier C** — infra / network    | `.ts` files under `network/`, `storage/`, files named `*Network*`, `*Websocket*`, `*Bare*`, `*Server*`, `*.web.ts`, `*.d.ts`, pure adapter/polyfill files                   | ×0.2 (ages slowly)    |
+| **Tier D** — config / tooling   | `*.config.*`, `babel.config.*`, `metro.config.*`, `jest.config.*`, `.eslintrc`, `tsconfig*.json`, `package.json`, `Gemfile`, `Podfile`, `*.gradle`, `*.plist`, `*.xcconfig` | ×0.1                  |
+| **Tier E** — scripts / CI       | `*.sh`, `.github/workflows/*.yml`, `Makefile`, `Dockerfile`                                                                                                                 | ×0.1                  |
 
 Then compute the neglect score:
 
@@ -63,7 +79,7 @@ Pick the source file with the **lowest score**.
 
 > Rationale: a config file untouched for 90 days scores the same as a `.ts` file untouched for 27 days. Config files still cycle in — they just cycle in less urgently than product code.
 
-### 1e — Choose which test file to write into
+### 1f — Choose which test file to write into
 
 Once the source file is selected:
 
@@ -71,11 +87,11 @@ Once the source file is selected:
 - If test files exist → pick the **oldest-committed** one **under 500 lines**
 - If **all correlated test files are at or above 450 lines** → trigger the auto-split procedure (see Step 1g)
 
-### 1f — Skip rules
+### 1g — Skip rules
 
 - Source file committed within last 14 days AND at least one correlated test file exists → skip, pick next
 
-### 1g — Auto-split procedure
+### 1h — Auto-split procedure
 
 When a test file reaches 450+ lines it is a candidate for splitting. Do this **before** writing new proposals:
 
@@ -115,20 +131,54 @@ Use the most recent test block as the **exact template** for formatting, describ
 
 ## Step 3 — Understand the domain
 
-This is a **decentralized p2p chat app**. When identifying gaps, think in terms of:
+This is a **decentralized p2p chat app** currently focused on **Milestone 1: Account · Contacts · Direct Messages**. Draw inspiration from WhatsApp, Telegram, Briar, Slack, and classic email when identifying missing scenarios.
 
-- **Identity** — key generation, wallet connection, identity switching, display names
-- **Contacts** — adding, blocking, removing, pending requests, mutual discovery
-- **Messaging** — send, receive, delete, react, reply, forward
-- **Delivery states** — sending → sent → delivered → read, and failures at each step
-- **P2P connectivity** — peer online/offline, relay fallback, reconnection, NAT traversal
-- **Sync** — message history sync on new device, partial sync, conflict resolution
-- **Groups** — create, invite, join, leave, admin actions, member list
-- **Media** — image/file send, receive, progress, failure, preview
-- **Notifications** — foreground, background, muted conversations, badges
-- **Encryption** — key exchange, message decryption failure, ratchet advancement
-- **Offline** — queue, retry, reorder on reconnect
-- **App lifecycle** — background, foreground, kill & reopen, deep link
+### In-scope feature areas for this milestone
+
+- **Account / identity**
+  - Create account with a display name
+  - Switch between multiple local accounts
+  - Edit own display name
+  - Export and import account (backup / restore)
+  - Delete account
+  - Share own account ID (copy to clipboard, QR code)
+
+- **Contacts**
+  - Add contact by pasting their account ID
+  - Assign and edit a local nickname
+  - View contact profile (their public name, account ID)
+  - Delete / remove a contact
+  - Contact list shows all contacts with names
+  - Contact list is empty state when no contacts added
+
+- **Direct messaging (1-to-1)**
+  - Send a plain-text message
+  - Receive a message from a contact (message appears in conversation)
+  - Message history is persisted across app restarts
+  - Conversation list shows latest message preview and contact name
+  - Unread badge / indicator on conversations with new messages
+  - Open a conversation from the conversation list
+  - Messages display timestamps
+  - Long message (many characters) renders without truncation or crash
+  - Empty conversation state (no messages yet)
+  - Send message while offline — queued and delivered on reconnect
+  - Message ordering is chronological
+  - Scroll to bottom when new message arrives
+  - User can copy a message text to clipboard
+
+- **Settings / app-level (in-scope)**
+  - Language / locale selection
+  - Theme (light / dark / system)
+  - Device settings screen is reachable from main navigation
+
+### Out-of-scope for this milestone (skip when proposing)
+
+- Groups, group messages, group management
+- Articles, feed, publishing
+- Events, calendar
+- Places, maps, geolocation
+- Media attachments (images, files) — deferred
+- Notifications — deferred
 
 ---
 
