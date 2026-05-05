@@ -257,6 +257,10 @@ msgstr "Hindi"
 msgid "Import account"
 msgstr "Importar cuenta"
 
+#: components/screens/SelectAccountScreen.tsx:50
+#~ msgid "Import account from another device"
+#~ msgstr "Importar cuenta desde otro dispositivo"
+
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "Indonesio"
@@ -334,6 +338,10 @@ msgstr "Siguiente coincidencia"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "No hay cuentas en este dispositivo"
+
+#: components/screens/SelectAccountScreen.tsx:92
+#~ msgid "No accounts on this device yet. Create or import"
+#~ msgstr "Aun no hay cuentas en este dispositivo. Crea o importa"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"

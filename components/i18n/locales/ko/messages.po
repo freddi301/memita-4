@@ -257,6 +257,10 @@ msgstr "힌디어"
 msgid "Import account"
 msgstr "계정 가져오기"
 
+#: components/screens/SelectAccountScreen.tsx:50
+#~ msgid "Import account from another device"
+#~ msgstr "다른 기기에서 계정 가져오기"
+
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "인도네시아어"
@@ -334,6 +338,10 @@ msgstr "다음 항목"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "이 기기에 계정이 없습니다"
+
+#: components/screens/SelectAccountScreen.tsx:92
+#~ msgid "No accounts on this device yet. Create or import"
+#~ msgstr "이 기기에는 아직 계정이 없습니다. 생성 또는 가져오기"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"

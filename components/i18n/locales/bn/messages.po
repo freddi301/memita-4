@@ -257,6 +257,10 @@ msgstr "হিন্দি"
 msgid "Import account"
 msgstr "অ্যাকাউন্ট আমদানি করুন"
 
+#: components/screens/SelectAccountScreen.tsx:50
+#~ msgid "Import account from another device"
+#~ msgstr "অন্য ডিভাইস থেকে অ্যাকাউন্ট আমদানি করুন"
+
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "ইন্দোনেশিয়ান"
@@ -334,6 +338,10 @@ msgstr "পরবর্তী মিল"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "এই ডিভাইসে কোনো অ্যাকাউন্ট নেই"
+
+#: components/screens/SelectAccountScreen.tsx:92
+#~ msgid "No accounts on this device yet. Create or import"
+#~ msgstr "এই ডিভাইসে এখনও কোনও অ্যাকাউন্ট নেই। তৈরি করুন বা আমদানি করুন"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"

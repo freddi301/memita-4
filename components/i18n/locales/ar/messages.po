@@ -257,6 +257,10 @@ msgstr "الهندية"
 msgid "Import account"
 msgstr "استيراد الحساب"
 
+#: components/screens/SelectAccountScreen.tsx:50
+#~ msgid "Import account from another device"
+#~ msgstr "استيراد الحساب من جهاز آخر"
+
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "الإندونيسية"
@@ -334,6 +338,10 @@ msgstr "التكرار التالي"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "لا توجد حسابات على هذا الجهاز"
+
+#: components/screens/SelectAccountScreen.tsx:92
+#~ msgid "No accounts on this device yet. Create or import"
+#~ msgstr "لا توجد حسابات على هذا الجهاز بعد. أنشئ أو استورد"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"

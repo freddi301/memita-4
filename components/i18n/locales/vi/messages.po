@@ -257,6 +257,10 @@ msgstr "Tiếng Hindi"
 msgid "Import account"
 msgstr "Nhập tài khoản"
 
+#: components/screens/SelectAccountScreen.tsx:50
+#~ msgid "Import account from another device"
+#~ msgstr "Nhap tai khoan tu thiet bi khac"
+
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "Tiếng Indonesia"
@@ -334,6 +338,10 @@ msgstr "Lần xuất hiện tiếp theo"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "Không có tài khoản nào trên thiết bị này"
+
+#: components/screens/SelectAccountScreen.tsx:92
+#~ msgid "No accounts on this device yet. Create or import"
+#~ msgstr "Chua co tai khoan nao tren thiet bi nay. Tao hoac nhap"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"

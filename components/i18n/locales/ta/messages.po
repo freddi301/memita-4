@@ -257,6 +257,10 @@ msgstr "இந்தி"
 msgid "Import account"
 msgstr "கணக்கை இறக்குமதி செய்யவும்"
 
+#: components/screens/SelectAccountScreen.tsx:50
+#~ msgid "Import account from another device"
+#~ msgstr "மற்றொரு சாதனத்திலிருந்து கணக்கை இறக்குமதி செய்"
+
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "இந்தோனேசியன்"
@@ -334,6 +338,10 @@ msgstr "அடுத்த நிகழ்வு"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "இந்த சாதனத்தில் கணக்குகள் இல்லை"
+
+#: components/screens/SelectAccountScreen.tsx:92
+#~ msgid "No accounts on this device yet. Create or import"
+#~ msgstr "இந்த சாதனத்தில் இன்னும் கணக்குகள் இல்லை. உருவாக்கவும் அல்லது இறக்குமதி செய்யவும்"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"

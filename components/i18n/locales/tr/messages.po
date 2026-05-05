@@ -257,6 +257,10 @@ msgstr "Hintçe"
 msgid "Import account"
 msgstr "Hesabı içe aktar"
 
+#: components/screens/SelectAccountScreen.tsx:50
+#~ msgid "Import account from another device"
+#~ msgstr "Hesabi baska bir cihazdan ice aktar"
+
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "Endonezce"
@@ -334,6 +338,10 @@ msgstr "Sonraki eşleşme"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "Bu cihazda hesap yok"
+
+#: components/screens/SelectAccountScreen.tsx:92
+#~ msgid "No accounts on this device yet. Create or import"
+#~ msgstr "Bu cihazda henuz hesap yok. Olustur veya ice aktar"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"

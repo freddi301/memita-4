@@ -257,6 +257,10 @@ msgstr "Kihindi"
 msgid "Import account"
 msgstr "Agiza akaunti"
 
+#: components/screens/SelectAccountScreen.tsx:50
+#~ msgid "Import account from another device"
+#~ msgstr "Ingiza akaunti kutoka kifaa kingine"
+
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "Kiindonesia"
@@ -334,6 +338,10 @@ msgstr "Tukio lijalo"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "Hakuna akaunti kwenye kifaa hiki"
+
+#: components/screens/SelectAccountScreen.tsx:92
+#~ msgid "No accounts on this device yet. Create or import"
+#~ msgstr "Bado hakuna akaunti kwenye kifaa hiki. Unda au ingiza"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"

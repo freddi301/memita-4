@@ -257,6 +257,10 @@ msgstr "హిందీ"
 msgid "Import account"
 msgstr "ఖాతా దిగుమతి చేయి"
 
+#: components/screens/SelectAccountScreen.tsx:50
+#~ msgid "Import account from another device"
+#~ msgstr "మరో పరికరం నుండి ఖాతాను దిగుమతి చేయండి"
+
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "ఇండోనేషియన్"
@@ -334,6 +338,10 @@ msgstr "తదుపరి సారి"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "ఈ పరికరంలో ఖాతాలు లేవు"
+
+#: components/screens/SelectAccountScreen.tsx:92
+#~ msgid "No accounts on this device yet. Create or import"
+#~ msgstr "ఈ పరికరంలో ఇంకా ఖాతాలు లేవు. సృష్టించండి లేదా దిగుమతి చేయండి"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"

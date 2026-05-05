@@ -257,6 +257,10 @@ msgstr "هندی"
 msgid "Import account"
 msgstr "وارد کردن حساب"
 
+#: components/screens/SelectAccountScreen.tsx:50
+#~ msgid "Import account from another device"
+#~ msgstr "وارد کردن حساب از دستگاه دیگر"
+
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "اندونزیایی"
@@ -334,6 +338,10 @@ msgstr "رخداد بعدی"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "هیچ حسابی در این دستگاه وجود ندارد"
+
+#: components/screens/SelectAccountScreen.tsx:92
+#~ msgid "No accounts on this device yet. Create or import"
+#~ msgstr "هنوز هیچ حسابی روی این دستگاه نیست. ایجاد کنید یا وارد کنید"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"

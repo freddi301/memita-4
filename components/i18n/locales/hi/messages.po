@@ -257,6 +257,10 @@ msgstr "हिंदी"
 msgid "Import account"
 msgstr "खाता आयात करें"
 
+#: components/screens/SelectAccountScreen.tsx:50
+#~ msgid "Import account from another device"
+#~ msgstr "दूसरे डिवाइस से खाता आयात करें"
+
 #: components/screens/DeviceSettingsScreen.tsx:104
 msgid "Indonesian"
 msgstr "इंडोनेशियाई"
@@ -334,6 +338,10 @@ msgstr "अगली घटना"
 #: components/screens/SelectAccountScreen.tsx:92
 msgid "No accounts on this device"
 msgstr "इस डिवाइस पर कोई खाता नहीं है"
+
+#: components/screens/SelectAccountScreen.tsx:92
+#~ msgid "No accounts on this device yet. Create or import"
+#~ msgstr "इस डिवाइस पर अभी कोई खाता नहीं है। बनाएं या आयात करें"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
