@@ -1,0 +1,432 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-05-05 13:30+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: gu\n"
+
+#: components/screens/AccountScreen.tsx:187
+msgid "Account ID"
+msgstr "એકાઉન્ટ ID"
+
+#: components/screens/AccountScreen.tsx:155
+#: components/screens/ImportAccountScreen.tsx:80
+msgid "Account name"
+msgstr "એકાઉન્ટ નામ"
+
+#: components/screens/ProfileScreen.tsx:235
+msgid "Account settings"
+msgstr "એકાઉન્ટ સેટિંગ્સ"
+
+#: components/screens/ExportAccountScreen.tsx:87
+msgid "Anyone who is able to import the secret will have full access to the account forever!"
+msgstr "જે કોઈ પણ રહસ્ય આયાત કરી શકે છે તેઓ હંમેશ માટે એકાઉન્ટ પર સંપૂર્ણ ઍક્સેસ મેળવશે!"
+
+#: components/ui/MessageCompose.tsx:102
+msgid "Attach file"
+msgstr "ફાઇલ જોડો"
+
+#: components/screens/DeviceSettingsScreen.tsx:31
+#: components/screens/ProfileDeepLinkScreen.tsx:36
+msgid "Back"
+msgstr "પાછળ"
+
+#: components/screens/ExportAccountScreen.tsx:38
+msgid "Back to account screen"
+msgstr "એકાઉન્ટ સ્ક્રીન પર પાછળ"
+
+#: components/screens/ImportAccountScreen.tsx:34
+msgid "Back to account selection"
+msgstr "એકાઉન્ટ પસંદગી પર પાછળ"
+
+#: components/screens/ContactScreen.tsx:63
+msgid "Back to direct messages"
+msgstr "સીધા સંદેશ પર પાછળ"
+
+#: components/screens/ProfileScreen.tsx:206
+msgid "Biography"
+msgstr "જીવની"
+
+#: components/ui/DateTimeInput.tsx:97
+msgid "Clear date"
+msgstr "તારીખ સાફ કરો"
+
+#: components/screens/ExportAccountScreen.tsx:70
+msgid "Confirm export"
+msgstr "નિકાસ પુષ્ટિ કરો"
+
+#: components/screens/ImportAccountScreen.tsx:68
+msgid "Confirm import"
+msgstr "આયાત પુષ્ટિ કરો"
+
+#: components/screens/ContactScreen.tsx:151
+#: components/screens/ProfileDeepLinkScreen.tsx:46
+msgid "Contact account id"
+msgstr "સંપર્ક એકાઉન્ટ ID"
+
+#: components/screens/ContactScreen.tsx:174
+msgid "Contact name"
+msgstr "સંપર્ક નામ"
+
+#: components/screens/AccountScreen.tsx:200
+msgid "Copy account id to clipboard"
+msgstr "એકાઉન્ટ ID ક્લિપબોર્ડ પર નકલ કરો"
+
+#: components/screens/AccountScreen.tsx:231
+msgid "Copy device id to clipboard"
+msgstr "ઉપકરણ ID ક્લિપબોર્ડ પર નકલ કરો"
+
+#: components/screens/AccountScreen.tsx:117
+msgid "Create account"
+msgstr "એકાઉન્ટ બનાવો"
+
+#: components/screens/EditArticleScreen.tsx:131
+msgid "Create article"
+msgstr "લેખ બનાવો"
+
+#: components/screens/ContactScreen.tsx:133
+#: components/screens/GroupScreen.tsx:123
+#: components/screens/ProfileScreen.tsx:187
+msgid "Create contact"
+msgstr "સંપર્ક બનાવો"
+
+#: components/screens/SelectAccountScreen.tsx:56
+msgid "Create new account"
+msgstr "નવું એકાઉન્ટ બનાવો"
+
+#: components/screens/ArticlesScreen.tsx:27
+msgid "Create new article"
+msgstr "નવો લેખ બનાવો"
+
+#: components/screens/DirectMessagesScreen.tsx:28
+msgid "Create new contact"
+msgstr "નવો સંપર્ક બનાવો"
+
+#: components/screens/GroupMessagesScreen.tsx:27
+msgid "Create new group"
+msgstr "નવો ગ્રૂપ બનાવો"
+
+#: components/screens/DeviceSettingsScreen.tsx:82
+msgid "Dark"
+msgstr "ઘેરો"
+
+#: components/ui/MessageCompose.tsx:204
+msgid "Delete"
+msgstr "કાઢી નાખો"
+
+#: components/screens/EditArticleScreen.tsx:83
+msgid "Delete article"
+msgstr "લેખ કાઢી નાખો"
+
+#: components/screens/ContactScreen.tsx:84
+#: components/screens/GroupScreen.tsx:79
+msgid "Delete contact"
+msgstr "સંપર્ક કાઢી નાખો"
+
+#: components/screens/AccountScreen.tsx:218
+msgid "Device ID"
+msgstr "ઉપકરણ ID"
+
+#: components/screens/DeviceSettingsScreen.tsx:34
+msgid "Device Settings"
+msgstr "ઉપકરણ સેટિંગ્સ"
+
+#: components/screens/ContactScreen.tsx:203
+#: components/screens/ProfileScreen.tsx:230
+#: components/ui/BottomTabNavigation.tsx:30
+msgid "Direct messages"
+msgstr "સીધા સંદેશ"
+
+#: components/screens/AccountScreen.tsx:87
+#: components/screens/ContactScreen.tsx:98
+#: components/screens/EditArticleScreen.tsx:95
+#: components/screens/GroupScreen.tsx:91
+#: components/screens/ProfileScreen.tsx:171
+msgid "Discard changes"
+msgstr "ફેરફારો છોડો"
+
+#: components/screens/ArticlesScreen.tsx:57
+msgid "Edit article"
+msgstr "લેખ સંપાદિત કરો"
+
+#: components/screens/ProfileScreen.tsx:244
+msgid "Edit contact"
+msgstr "સંપર્ક સંપાદિત કરો"
+
+#: components/ui/DateTimeInput.tsx:81
+msgid "Edit date"
+msgstr "તારીખ સંપાદિત કરો"
+
+#: components/ui/DateTimeInput.tsx:89
+msgid "Edit time"
+msgstr "સમય સંપાદિત કરો"
+
+#: components/screens/DeviceSettingsScreen.tsx:52
+msgid "English"
+msgstr "અંગ્રેજી"
+
+#: components/screens/EditArticleScreen.tsx:138
+msgid "Event"
+msgstr "ઇવેન્ટ"
+
+#: components/ui/BottomTabNavigation.tsx:48
+msgid "Events"
+msgstr "ઇવેન્ટ્સ"
+
+#: components/screens/AccountScreen.tsx:243
+#: components/screens/ExportAccountScreen.tsx:49
+msgid "Export account"
+msgstr "એકાઉન્ટ નિકાસ કરો"
+
+#: components/screens/ImportAccountScreen.tsx:91
+msgid "Export password"
+msgstr "નિકાસ પાસવર્ડ"
+
+#: components/screens/ImportAccountScreen.tsx:105
+msgid "Exported account secret"
+msgstr "નિકાસ એકાઉન્ટ રહસ્ય"
+
+#: components/screens/ExportAccountScreen.tsx:62
+#: components/screens/ExportAccountScreen.tsx:64
+msgid "Exported account secret copied to clipboard"
+msgstr "નિકાસ એકાઉન્ટ રહસ્ય ક્લિપબોર્ડ પર નકલ થયું"
+
+#: components/screens/EditArticleScreen.tsx:55
+msgid "Go to articles"
+msgstr "લેખો પર જાઓ"
+
+#: components/screens/GroupScreen.tsx:60
+msgid "Go to conversation"
+msgstr "વાતચીત પર જાઓ"
+
+#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/GroupConversationScreen.tsx:46
+msgid "Go to messages"
+msgstr "સંદેશ પર જાઓ"
+
+#: components/screens/GroupScreen.tsx:135
+msgid "Group id"
+msgstr "ગ્રૂપ ID"
+
+#: components/ui/BottomTabNavigation.tsx:36
+msgid "Group messages"
+msgstr "ગ્રૂપ સંદેશ"
+
+#: components/screens/GroupScreen.tsx:156
+msgid "Group name"
+msgstr "ગ્રૂપ નામ"
+
+#: components/screens/ImportAccountScreen.tsx:37
+#: components/screens/SelectAccountScreen.tsx:50
+msgid "Import account"
+msgstr "એકાઉન્ટ આયાત કરો"
+
+#: components/screens/ImportAccountScreen.tsx:61
+msgid "Invalid account secret or password"
+msgstr "અમાન્ય એકાઉન્ટ રહસ્ય અથવા પાસવર્ડ"
+
+#: components/screens/DeviceSettingsScreen.tsx:54
+msgid "Italian"
+msgstr "ઇટાલિયન"
+
+#: components/screens/DeviceSettingsScreen.tsx:39
+msgid "Language"
+msgstr "ભાષા"
+
+#: components/screens/DeviceSettingsScreen.tsx:80
+msgid "Light"
+msgstr "હળવો"
+
+#: components/screens/ProfileScreen.tsx:201
+msgid "Location"
+msgstr "સ્થળ"
+
+#: components/screens/DirectConversationScreen.tsx:420
+msgid "Mark as read"
+msgstr "વાંચ્યું તરીકે ચિહ્નિત કરો"
+
+#: components/screens/SelectAccountScreen.tsx:43
+msgid "Memita"
+msgstr "Memita"
+
+#: components/ui/MessageCompose.tsx:188
+msgid "Modify message"
+msgstr "સંદેશ સુધારો"
+
+#: components/screens/EditArticleScreen.tsx:63
+msgid "New article"
+msgstr "નવો લેખ"
+
+#: components/ui/MessageCompose.tsx:134
+msgid "New draft"
+msgstr "નવો ડ્રાફ્ટ"
+
+#: components/screens/DirectConversationScreen.tsx:449
+#: components/screens/DirectConversationScreen.tsx:533
+msgid "Next occurrence"
+msgstr "આગળની ઘટના"
+
+#: components/screens/ProfileDeepLinkScreen.tsx:101
+#: components/screens/SelectAccountScreen.tsx:92
+msgid "No accounts on this device"
+msgstr "આ ઉપકરણ પર કોઈ એકાઉન્ટ નથી"
+
+#: components/screens/ArticlesScreen.tsx:86
+msgid "No articles"
+msgstr "કોઈ લેખ નથી"
+
+#: components/screens/DirectConversationScreen.tsx:341
+#: components/screens/DirectMessagesScreen.tsx:96
+#: components/screens/GroupConversationScreen.tsx:98
+#: components/screens/GroupMessagesScreen.tsx:56
+msgid "No messages"
+msgstr "કોઈ સંદેશ નથી"
+
+#: components/screens/ContactScreen.tsx:167
+msgid "Not a valid account id"
+msgstr "માન્ય એકાઉન્ટ ID નથી"
+
+#: components/screens/GroupScreen.tsx:149
+msgid "Not a valid group id"
+msgstr "માન્ય ગ્રૂપ ID નથી"
+
+#: components/screens/ExportAccountScreen.tsx:105
+msgid "NOTE: every export has it's own password!"
+msgstr "નોંધ: દરેક નિકાસ નો પોતાનો પાસવર્ડ છે!"
+
+#: components/screens/ProfileDeepLinkScreen.tsx:39
+msgid "Open profile"
+msgstr "પ્રોફાઇલ ખોલો"
+
+#: components/screens/ProfileDeepLinkScreen.tsx:57
+msgid "Open with account"
+msgstr "એકાઉન્ટ સાથે ખોલો"
+
+#: components/screens/ExportAccountScreen.tsx:92
+msgid "Password"
+msgstr "પાસવર્ડ"
+
+#: components/screens/ImportAccountScreen.tsx:114
+msgid "Paste here exported account secret"
+msgstr "અહીં નિકાસ એકાઉન્ટ રહસ્ય પેસ્ટ કરો"
+
+#: components/screens/ContactScreen.tsx:162
+msgid "Paste the account id your contact shared with you"
+msgstr "તમારા સંપર્કે શેર કરેલ એકાઉન્ટ ID પેસ્ટ કરો"
+
+#: components/ui/BottomTabNavigation.tsx:54
+msgid "Places"
+msgstr "સ્થળો"
+
+#: components/screens/DirectConversationScreen.tsx:385
+#: components/screens/DirectConversationScreen.tsx:507
+msgid "Previous occurrence"
+msgstr "પાછળની ઘટના"
+
+#: components/screens/AccountScreen.tsx:253
+#: components/screens/ContactScreen.tsx:213
+#: components/ui/BottomTabNavigation.tsx:64
+msgid "Profile"
+msgstr "પ્રોફાઇલ"
+
+#: components/screens/ProfileScreen.tsx:149
+msgid "Profile ID copied to clipboard"
+msgstr "પ્રોફાઇલ ID ક્લિપબોર્ડ પર નકલ થઈ"
+
+#: components/ui/MessageCompose.tsx:65
+msgid "Remove"
+msgstr "દૂર કરો"
+
+#: components/screens/AccountScreen.tsx:75
+msgid "Remove account from this device"
+msgstr "આ ઉપકરણ પરથી એકાઉન્ટ દૂર કરો"
+
+#: components/screens/AccountScreen.tsx:117
+#: components/screens/ContactScreen.tsx:133
+#: components/screens/GroupScreen.tsx:123
+#: components/screens/ProfileScreen.tsx:187
+msgid "Save changes"
+msgstr "ફેરફારો સાચવો"
+
+#: components/ui/MessageCompose.tsx:150
+msgid "Save draft"
+msgstr "ડ્રાફ્ટ સાચવો"
+
+#: components/screens/DirectConversationScreen.tsx:362
+msgid "Search"
+msgstr "શોધ"
+
+#: components/ui/MessageCompose.tsx:168
+msgid "Send message"
+msgstr "સંદેશ મોકલો"
+
+#: components/screens/SelectAccountScreen.tsx:28
+msgid "Settings"
+msgstr "સેટિંગ્સ"
+
+#: components/screens/ProfileScreen.tsx:156
+msgid "Share profile"
+msgstr "પ્રોફાઇલ શેર કરો"
+
+#: components/ui/CoordsInput.tsx:47
+msgid "Show on map"
+msgstr "નકશા પર બતાવો"
+
+#: components/screens/ProfileScreen.tsx:100
+msgid "Show QR code"
+msgstr "QR કોડ બતાવો"
+
+#: components/screens/DeviceSettingsScreen.tsx:62
+msgid "System default ({languageName})"
+msgstr "સિસ્ટમ ડિફૉલ્ટ ({languageName})"
+
+#: components/screens/DeviceSettingsScreen.tsx:88
+msgid "System default ({themeName})"
+msgstr "સિસ્ટમ ડિફૉલ્ટ ({themeName})"
+
+#: components/screens/AccountScreen.tsx:148
+msgid "Tap to change"
+msgstr "બદલવા ટૅપ કરો"
+
+#: components/screens/ImportAccountScreen.tsx:100
+msgid "The one you typed in during export"
+msgstr "નિકાસ દરમિયાન ટાઇપ કરેલ"
+
+#: components/screens/DeviceSettingsScreen.tsx:67
+msgid "Theme"
+msgstr "થીમ"
+
+#: components/screens/ContactScreen.tsx:179
+msgid "This name is only visible to you"
+msgstr "આ નામ ફક્ત તમને જ દેખાય છે"
+
+#: components/screens/AccountScreen.tsx:160
+#: components/screens/ImportAccountScreen.tsx:86
+msgid "This name is only visible to you on this device"
+msgstr "આ નામ ફક્ત આ ઉપકરણ પર તમને જ દેખાય છે"
+
+#: components/screens/AccountScreen.tsx:147
+msgid "This will your avatar forever, choose wisely"
+msgstr "આ તમારો અવતાર હંમેશ માટે રહેશે, સમજીને પસંદ કરો"
+
+#: components/screens/DirectConversationScreen.tsx:470
+msgid "Unread messages"
+msgstr "ન વાંચ્યા સંદેશ"
+
+#: components/screens/EditArticleScreen.tsx:131
+msgid "Update article"
+msgstr "લેખ અપડેટ કરો"
+
+#: components/screens/AccountScreen.tsx:61
+msgid "Use another account"
+msgstr "બીજો એકાઉન્ટ વાપરો"
+
+#: components/screens/ExportAccountScreen.tsx:101
+msgid "Will be needed to import later"
+msgstr "પછી આયાત કરવા જરૂરી થશે"
+
+#: components/screens/ExportAccountScreen.tsx:82
+msgid "You can send or store this exported text to import the account on other devices"
+msgstr "તમે આ નિકાસ ટેક્સ્ટ અન્ય ઉપકરણ પર એકાઉન્ટ આયાત કરવા મોકલી અથવા સંગ્રહ કરી શકો"
