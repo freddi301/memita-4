@@ -100,3 +100,46 @@ test("user can update a contact name", async () => {
     await getContact({ accountId, contactId: contactAccountId })(api),
   ).toEqual({ name: "Robert" });
 });
+
+test("user can delete a contact", async () => {
+  const { Main, api } = await createTestApp();
+
+  const accountSecret = generateAccountSecret();
+  const accountId = accountIdFromAccountSecret(accountSecret);
+  await addAccount({ accountSecret, name: "Alice" })(api);
+
+  const contactSecret = generateAccountSecret();
+  const contactAccountId = accountIdFromAccountSecret(contactSecret);
+  await updateContact({
+    accountId,
+    contactId: contactAccountId,
+    name: "Bob",
+    deleted: false,
+  })(api);
+
+  const user = userEvent.setup();
+  const screen = await render(<Main />);
+
+  // navigate into Alice's direct messages
+  await user.press(await screen.findByText("Alice"));
+
+  // press on Bob to go to the conversation
+  await user.press(await screen.findByText("Bob"));
+
+  // press on Bob's name in the conversation header to go to profile
+  await user.press(await screen.findByText("Bob"));
+
+  // press Edit contact
+  await user.press(await screen.findByText("Edit contact"));
+
+  // press the trash icon to delete
+  await user.press(await findIcon(screen, "trash"));
+
+  // should navigate back to direct messages, Bob no longer listed
+  expect(await screen.findByText("Create new contact")).toBeVisible();
+  expect(screen.queryByText("Bob")).toBeNull();
+
+  expect(
+    await getContact({ accountId, contactId: contactAccountId })(api),
+  ).toBeUndefined();
+});
