@@ -49,61 +49,61 @@ export function DeviceSettingsScreen() {
               const getLanguageName = (language: Language) => {
                 switch (language) {
                   case "en":
-                    return t`English`;
+                    return "🇬🇧 " + t`English`;
                   case "zh":
-                    return t`Mandarin Chinese`;
+                    return "🇨🇳 " + t`Mandarin Chinese`;
                   case "es":
-                    return t`Spanish`;
+                    return "🇪🇸 " + t`Spanish`;
                   case "hi":
-                    return t`Hindi`;
+                    return "🇮🇳 " + t`Hindi`;
                   case "bn":
-                    return t`Bengali`;
+                    return "🇧🇩 " + t`Bengali`;
                   case "pt":
-                    return t`Portuguese`;
+                    return "🇵🇹 " + t`Portuguese`;
                   case "ru":
-                    return t`Russian`;
+                    return "🇷🇺 " + t`Russian`;
                   case "ja":
-                    return t`Japanese`;
+                    return "🇯🇵 " + t`Japanese`;
                   case "vi":
-                    return t`Vietnamese`;
+                    return "🇻🇳 " + t`Vietnamese`;
                   case "tr":
-                    return t`Turkish`;
+                    return "🇹🇷 " + t`Turkish`;
                   case "mr":
-                    return t`Marathi`;
+                    return "🇮🇳 " + t`Marathi`;
                   case "te":
-                    return t`Telugu`;
+                    return "🇮🇳 " + t`Telugu`;
                   case "ko":
-                    return t`Korean`;
+                    return "🇰🇷 " + t`Korean`;
                   case "fr":
-                    return t`French`;
+                    return "🇫🇷 " + t`French`;
                   case "ta":
-                    return t`Tamil`;
+                    return "🇱🇰 " + t`Tamil`;
                   case "ar":
-                    return t`Arabic`;
+                    return "🇸🇦 " + t`Arabic`;
                   case "de":
-                    return t`German`;
+                    return "🇩🇪 " + t`German`;
                   case "ur":
-                    return t`Urdu`;
+                    return "🇵🇰 " + t`Urdu`;
                   case "jv":
-                    return t`Javanese`;
+                    return "🇮🇩 " + t`Javanese`;
                   case "it":
-                    return t`Italian`;
+                    return "🇮🇹 " + t`Italian`;
                   case "th":
-                    return t`Thai`;
+                    return "🇹🇭 " + t`Thai`;
                   case "gu":
-                    return t`Gujarati`;
+                    return "🇮🇳 " + t`Gujarati`;
                   case "ha":
-                    return t`Hausa`;
+                    return "🇳🇬 " + t`Hausa`;
                   case "kn":
-                    return t`Kannada`;
+                    return "🇮🇳 " + t`Kannada`;
                   case "fa":
-                    return t`Persian`;
+                    return "🇮🇷 " + t`Persian`;
                   case "pl":
-                    return t`Polish`;
+                    return "🇵🇱 " + t`Polish`;
                   case "id":
-                    return t`Indonesian`;
+                    return "🇮🇩 " + t`Indonesian`;
                   case "sw":
-                    return t`Swahili`;
+                    return "🇰🇪 " + t`Swahili`;
                 }
               };
               const languageName = language
