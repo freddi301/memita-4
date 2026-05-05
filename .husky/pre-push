@@ -1,0 +1,4 @@
+git diff --exit-code || { echo "❌ You have unstaged changes. Please stage all files before committing."; exit 1; } &&\
+test -z "$(git ls-files --others --exclude-standard)" || { echo "❌ You have untracked files. Please stage or ignore them before committing."; exit 1; } &&\
+npx expo export  &&\
+npx expo prebuild --clean

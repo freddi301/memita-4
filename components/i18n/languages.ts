@@ -1,30 +1,36 @@
-export const languages = [
-  "en" as const, // English
-  "zh" as const, // Mandarin Chinese
-  "es" as const, // Spanish
-  "hi" as const, // Hindi
-  "bn" as const, // Bengali
-  "pt" as const, // Portuguese
-  "ru" as const, // Russian
-  "ja" as const, // Japanese
-  "vi" as const, // Vietnamese
-  "tr" as const, // Turkish
-  "mr" as const, // Marathi
-  "te" as const, // Telugu
-  "ko" as const, // Korean
-  "fr" as const, // French
-  "ta" as const, // Tamil
-  "ar" as const, // Arabic
-  "de" as const, // German
-  "ur" as const, // Urdu
-  "jv" as const, // Javanese
-  "it" as const, // Italian
-  "th" as const, // Thai
-  "gu" as const, // Gujarati
-  "ha" as const, // Hausa
-  "kn" as const, // Kannada
-  "fa" as const, // Persian
-  "pl" as const, // Polish
-  "id" as const, // Indonesian
-  "sw" as const, // Swahili
-];
+export const languagesDict = {
+  en: "English",
+  zh: "Chinese",
+  es: "Spanish",
+  hi: "Hindi",
+  bn: "Bengali",
+  pt: "Portuguese",
+  ru: "Russian",
+  ja: "Japanese",
+  vi: "Vietnamese",
+  tr: "Turkish",
+  mr: "Marathi",
+  te: "Telugu",
+  ko: "Korean",
+  fr: "French",
+  ta: "Tamil",
+  ar: "Arabic",
+  de: "German",
+  ur: "Urdu",
+  jv: "Javanese",
+  it: "Italian",
+  th: "Thai",
+  gu: "Gujarati",
+  ha: "Hausa",
+  kn: "Kannada",
+  fa: "Persian",
+  pl: "Polish",
+  id: "Indonesian",
+  sw: "Swahili",
+  // till here languages were ranked by number of speakers
+  sk: "Slovak",
+};
+
+export const languages = Object.keys(languagesDict) as Array<
+  keyof typeof languagesDict
+>;
