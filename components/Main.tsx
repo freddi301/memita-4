@@ -5,7 +5,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { useLocalSearchParams } from "expo-router";
 import { isEqual } from "lodash";
 import { useEffect, useMemo, useState } from "react";
-import { Platform } from "react-native";
+import { BackHandler, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { patchFlatListProps } from "react-native-web-refresh-control";
 import {
@@ -124,6 +124,8 @@ export function createApp({ storage }: { storage: StorageInterface }) {
       if (validContactId) setIgnoreOverride(false);
     }, [validContactId]);
 
+    useDisableBack();
+
     return (
       <FeApiContext value={api}>
         <QueryClientProvider client={queryClient}>
@@ -149,4 +151,29 @@ export function createApp({ storage }: { storage: StorageInterface }) {
     );
   };
   return { Main, api };
+}
+
+function useDisableBack() {
+  useEffect(() => {
+    const sub = BackHandler.addEventListener("hardwareBackPress", () => true);
+    return () => sub.remove();
+  }, []);
+
+  useEffect(() => {
+    if (Platform.OS !== "web") return;
+    history.pushState(null, "", location.href);
+    const onPopState = () => {
+      history.pushState(null, "", location.href);
+    };
+    window.addEventListener("popstate", onPopState);
+    const onBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => {
+      window.removeEventListener("popstate", onPopState);
+      window.removeEventListener("beforeunload", onBeforeUnload);
+    };
+  }, []);
 }

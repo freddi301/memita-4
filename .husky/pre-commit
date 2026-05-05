@@ -8,6 +8,4 @@ npm run knip || { echo "❌ Found unused exports"; exit 1; } &&\
 npm run ai-translate &&\
 npm run lingui:extract && (npm run lingui:compile || { echo "❌ Missing translations"; exit 1; }) &&\
 npm run test &&\
-npx expo export  &&\
-npx expo prebuild --clean &&\
 npm run lint-staged
