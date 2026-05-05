@@ -1,12 +1,10 @@
 # Contacts
 
-- [x] add contact
-  - [ ] contact name as local alias
-  - [ ] by qr code
 - [x] delete contact
+- [ ] contact list
+- [ ] contact by qr code
 - [ ] contact online status (off by default)
 - [ ] contact network connection status
-- [ ] avatar image
 - [ ] contact lists (this will be used for: pin converstaion, archive conversation)
 - [ ] edit history
 - [ ] text search

@@ -44,6 +44,7 @@ export const addAccount: MemitaMutation<{
     });
   };
 
+// TODO remove all data related to the account, not just the crypto keys
 export const removeAccount: MemitaMutation<{ accountId: AccountId }> =
   ({ accountId }) =>
   async ({ appStorage }) => {

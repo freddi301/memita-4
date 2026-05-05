@@ -70,7 +70,7 @@ msgstr "Confirm import"
 msgid "Contact account id"
 msgstr "Contact account id"
 
-#: components/screens/ContactScreen.tsx:164
+#: components/screens/ContactScreen.tsx:165
 msgid "Contact name"
 msgstr "Contact name"
 
@@ -137,7 +137,7 @@ msgstr "Device ID"
 msgid "Device Settings"
 msgstr "Device Settings"
 
-#: components/screens/ContactScreen.tsx:192
+#: components/screens/ContactScreen.tsx:194
 #: components/screens/ProfileScreen.tsx:168
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
@@ -287,7 +287,7 @@ msgstr "No articles"
 msgid "No messages"
 msgstr "No messages"
 
-#: components/screens/ContactScreen.tsx:157
+#: components/screens/ContactScreen.tsx:158
 msgid "Not a valid account id"
 msgstr "Not a valid account id"
 
@@ -307,6 +307,10 @@ msgstr "Password"
 msgid "Paste here exported account secret"
 msgstr "Paste here exported account secret"
 
+#: components/screens/ContactScreen.tsx:154
+msgid "Paste the account id your contact shared with you"
+msgstr "Paste the account id your contact shared with you"
+
 #: components/ui/BottomTabNavigation.tsx:54
 msgid "Places"
 msgstr "Places"
@@ -317,7 +321,7 @@ msgid "Previous occurrence"
 msgstr "Previous occurrence"
 
 #: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:202
+#: components/screens/ContactScreen.tsx:204
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "Profile"
@@ -384,6 +388,10 @@ msgstr "The one you typed in during export"
 #: components/screens/DeviceSettingsScreen.tsx:67
 msgid "Theme"
 msgstr "Theme"
+
+#: components/screens/ContactScreen.tsx:170
+msgid "This name is only visible to you"
+msgstr "This name is only visible to you"
 
 #: components/screens/AccountScreen.tsx:163
 #: components/screens/ImportAccountScreen.tsx:86

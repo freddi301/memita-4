@@ -151,6 +151,7 @@ export function ContactScreen({
                 style={theme.textInputStyle}
                 autoCapitalize="none"
                 autoCorrect={false}
+                placeholder={t`Paste the account id your contact shared with you`}
               />
               {!validContactIdInput ? (
                 <Text style={theme.validationErrorTextStyle}>
@@ -166,6 +167,7 @@ export function ContactScreen({
             value={nameInput}
             onChangeText={setNameInput}
             style={theme.textInputStyle}
+            placeholder={t`This name is only visible to you`}
           />
           {nameInput !== nameOriginal ? (
             <Text
