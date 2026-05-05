@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Modal, Pressable, Text, View } from "react-native";
+import { Modal, Pressable, ScrollView, Text, View } from "react-native";
 import { useTheme } from "../Theme";
 
 export function Select<T = string>({
@@ -49,19 +49,21 @@ export function Select<T = string>({
         })()}
       </Pressable>
       <Modal visible={isOpen} transparent animationType="fade">
-        <View
+        <Pressable
           style={{
             justifyContent: "center",
             alignItems: "center",
             flex: 1,
             backgroundColor: "#000000cc",
           }}
+          onPress={() => setIsOpen(false)}
         >
-          <View
+          <ScrollView
             style={{
               backgroundColor: theme.backgroundColor,
               borderRadius: 8,
               minWidth: 200,
+              margin: 16,
             }}
           >
             {options.map((option, index) => {
@@ -90,8 +92,8 @@ export function Select<T = string>({
                 </Pressable>
               );
             })}
-          </View>
-        </View>
+          </ScrollView>
+        </Pressable>
       </Modal>
     </View>
   );

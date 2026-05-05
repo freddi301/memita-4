@@ -1,0 +1,432 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-05-05 13:30+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: zh\n"
+
+#: components/screens/AccountScreen.tsx:187
+msgid "Account ID"
+msgstr "账户 ID"
+
+#: components/screens/AccountScreen.tsx:155
+#: components/screens/ImportAccountScreen.tsx:80
+msgid "Account name"
+msgstr "账户名称"
+
+#: components/screens/ProfileScreen.tsx:235
+msgid "Account settings"
+msgstr "账户设置"
+
+#: components/screens/ExportAccountScreen.tsx:87
+msgid "Anyone who is able to import the secret will have full access to the account forever!"
+msgstr "任何能够导入密钥的人将永久拥有对该账户的完全访问权限！"
+
+#: components/ui/MessageCompose.tsx:102
+msgid "Attach file"
+msgstr "附加文件"
+
+#: components/screens/DeviceSettingsScreen.tsx:31
+#: components/screens/ProfileDeepLinkScreen.tsx:36
+msgid "Back"
+msgstr "返回"
+
+#: components/screens/ExportAccountScreen.tsx:38
+msgid "Back to account screen"
+msgstr "返回账户界面"
+
+#: components/screens/ImportAccountScreen.tsx:34
+msgid "Back to account selection"
+msgstr "返回账户选择"
+
+#: components/screens/ContactScreen.tsx:63
+msgid "Back to direct messages"
+msgstr "返回私信"
+
+#: components/screens/ProfileScreen.tsx:206
+msgid "Biography"
+msgstr "个人简介"
+
+#: components/ui/DateTimeInput.tsx:97
+msgid "Clear date"
+msgstr "清除日期"
+
+#: components/screens/ExportAccountScreen.tsx:70
+msgid "Confirm export"
+msgstr "确认导出"
+
+#: components/screens/ImportAccountScreen.tsx:68
+msgid "Confirm import"
+msgstr "确认导入"
+
+#: components/screens/ContactScreen.tsx:151
+#: components/screens/ProfileDeepLinkScreen.tsx:46
+msgid "Contact account id"
+msgstr "联系人账户 ID"
+
+#: components/screens/ContactScreen.tsx:174
+msgid "Contact name"
+msgstr "联系人姓名"
+
+#: components/screens/AccountScreen.tsx:200
+msgid "Copy account id to clipboard"
+msgstr "复制账户 ID 到剪贴板"
+
+#: components/screens/AccountScreen.tsx:231
+msgid "Copy device id to clipboard"
+msgstr "复制设备 ID 到剪贴板"
+
+#: components/screens/AccountScreen.tsx:117
+msgid "Create account"
+msgstr "创建账户"
+
+#: components/screens/EditArticleScreen.tsx:131
+msgid "Create article"
+msgstr "创建文章"
+
+#: components/screens/ContactScreen.tsx:133
+#: components/screens/GroupScreen.tsx:123
+#: components/screens/ProfileScreen.tsx:187
+msgid "Create contact"
+msgstr "创建联系人"
+
+#: components/screens/SelectAccountScreen.tsx:56
+msgid "Create new account"
+msgstr "创建新账户"
+
+#: components/screens/ArticlesScreen.tsx:27
+msgid "Create new article"
+msgstr "创建新文章"
+
+#: components/screens/DirectMessagesScreen.tsx:28
+msgid "Create new contact"
+msgstr "创建新联系人"
+
+#: components/screens/GroupMessagesScreen.tsx:27
+msgid "Create new group"
+msgstr "创建新群组"
+
+#: components/screens/DeviceSettingsScreen.tsx:82
+msgid "Dark"
+msgstr "深色"
+
+#: components/ui/MessageCompose.tsx:204
+msgid "Delete"
+msgstr "删除"
+
+#: components/screens/EditArticleScreen.tsx:83
+msgid "Delete article"
+msgstr "删除文章"
+
+#: components/screens/ContactScreen.tsx:84
+#: components/screens/GroupScreen.tsx:79
+msgid "Delete contact"
+msgstr "删除联系人"
+
+#: components/screens/AccountScreen.tsx:218
+msgid "Device ID"
+msgstr "设备 ID"
+
+#: components/screens/DeviceSettingsScreen.tsx:34
+msgid "Device Settings"
+msgstr "设备设置"
+
+#: components/screens/ContactScreen.tsx:203
+#: components/screens/ProfileScreen.tsx:230
+#: components/ui/BottomTabNavigation.tsx:30
+msgid "Direct messages"
+msgstr "私信"
+
+#: components/screens/AccountScreen.tsx:87
+#: components/screens/ContactScreen.tsx:98
+#: components/screens/EditArticleScreen.tsx:95
+#: components/screens/GroupScreen.tsx:91
+#: components/screens/ProfileScreen.tsx:171
+msgid "Discard changes"
+msgstr "放弃更改"
+
+#: components/screens/ArticlesScreen.tsx:57
+msgid "Edit article"
+msgstr "编辑文章"
+
+#: components/screens/ProfileScreen.tsx:244
+msgid "Edit contact"
+msgstr "编辑联系人"
+
+#: components/ui/DateTimeInput.tsx:81
+msgid "Edit date"
+msgstr "编辑日期"
+
+#: components/ui/DateTimeInput.tsx:89
+msgid "Edit time"
+msgstr "编辑时间"
+
+#: components/screens/DeviceSettingsScreen.tsx:52
+msgid "English"
+msgstr "英语"
+
+#: components/screens/EditArticleScreen.tsx:138
+msgid "Event"
+msgstr "事件"
+
+#: components/ui/BottomTabNavigation.tsx:48
+msgid "Events"
+msgstr "事件"
+
+#: components/screens/AccountScreen.tsx:243
+#: components/screens/ExportAccountScreen.tsx:49
+msgid "Export account"
+msgstr "导出账户"
+
+#: components/screens/ImportAccountScreen.tsx:91
+msgid "Export password"
+msgstr "导出密码"
+
+#: components/screens/ImportAccountScreen.tsx:105
+msgid "Exported account secret"
+msgstr "已导出的账户密钥"
+
+#: components/screens/ExportAccountScreen.tsx:62
+#: components/screens/ExportAccountScreen.tsx:64
+msgid "Exported account secret copied to clipboard"
+msgstr "已导出的账户密钥已复制到剪贴板"
+
+#: components/screens/EditArticleScreen.tsx:55
+msgid "Go to articles"
+msgstr "前往文章"
+
+#: components/screens/GroupScreen.tsx:60
+msgid "Go to conversation"
+msgstr "前往对话"
+
+#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/GroupConversationScreen.tsx:46
+msgid "Go to messages"
+msgstr "前往消息"
+
+#: components/screens/GroupScreen.tsx:135
+msgid "Group id"
+msgstr "群组 ID"
+
+#: components/ui/BottomTabNavigation.tsx:36
+msgid "Group messages"
+msgstr "群组消息"
+
+#: components/screens/GroupScreen.tsx:156
+msgid "Group name"
+msgstr "群组名称"
+
+#: components/screens/ImportAccountScreen.tsx:37
+#: components/screens/SelectAccountScreen.tsx:50
+msgid "Import account"
+msgstr "导入账户"
+
+#: components/screens/ImportAccountScreen.tsx:61
+msgid "Invalid account secret or password"
+msgstr "账户密钥或密码无效"
+
+#: components/screens/DeviceSettingsScreen.tsx:54
+msgid "Italian"
+msgstr "意大利语"
+
+#: components/screens/DeviceSettingsScreen.tsx:39
+msgid "Language"
+msgstr "语言"
+
+#: components/screens/DeviceSettingsScreen.tsx:80
+msgid "Light"
+msgstr "浅色"
+
+#: components/screens/ProfileScreen.tsx:201
+msgid "Location"
+msgstr "位置"
+
+#: components/screens/DirectConversationScreen.tsx:420
+msgid "Mark as read"
+msgstr "标记为已读"
+
+#: components/screens/SelectAccountScreen.tsx:43
+msgid "Memita"
+msgstr "Memita"
+
+#: components/ui/MessageCompose.tsx:188
+msgid "Modify message"
+msgstr "修改消息"
+
+#: components/screens/EditArticleScreen.tsx:63
+msgid "New article"
+msgstr "新文章"
+
+#: components/ui/MessageCompose.tsx:134
+msgid "New draft"
+msgstr "新草稿"
+
+#: components/screens/DirectConversationScreen.tsx:449
+#: components/screens/DirectConversationScreen.tsx:533
+msgid "Next occurrence"
+msgstr "下一个匹配"
+
+#: components/screens/ProfileDeepLinkScreen.tsx:101
+#: components/screens/SelectAccountScreen.tsx:92
+msgid "No accounts on this device"
+msgstr "此设备上没有账户"
+
+#: components/screens/ArticlesScreen.tsx:86
+msgid "No articles"
+msgstr "没有文章"
+
+#: components/screens/DirectConversationScreen.tsx:341
+#: components/screens/DirectMessagesScreen.tsx:96
+#: components/screens/GroupConversationScreen.tsx:98
+#: components/screens/GroupMessagesScreen.tsx:56
+msgid "No messages"
+msgstr "没有消息"
+
+#: components/screens/ContactScreen.tsx:167
+msgid "Not a valid account id"
+msgstr "账户 ID 无效"
+
+#: components/screens/GroupScreen.tsx:149
+msgid "Not a valid group id"
+msgstr "群组 ID 无效"
+
+#: components/screens/ExportAccountScreen.tsx:105
+msgid "NOTE: every export has it's own password!"
+msgstr "注意：每次导出都有其独立的密码！"
+
+#: components/screens/ProfileDeepLinkScreen.tsx:39
+msgid "Open profile"
+msgstr "打开个人资料"
+
+#: components/screens/ProfileDeepLinkScreen.tsx:57
+msgid "Open with account"
+msgstr "使用账户打开"
+
+#: components/screens/ExportAccountScreen.tsx:92
+msgid "Password"
+msgstr "密码"
+
+#: components/screens/ImportAccountScreen.tsx:114
+msgid "Paste here exported account secret"
+msgstr "在此粘贴导出的账户密钥"
+
+#: components/screens/ContactScreen.tsx:162
+msgid "Paste the account id your contact shared with you"
+msgstr "粘贴联系人与您共享的账户 ID"
+
+#: components/ui/BottomTabNavigation.tsx:54
+msgid "Places"
+msgstr "地点"
+
+#: components/screens/DirectConversationScreen.tsx:385
+#: components/screens/DirectConversationScreen.tsx:507
+msgid "Previous occurrence"
+msgstr "上一个匹配"
+
+#: components/screens/AccountScreen.tsx:253
+#: components/screens/ContactScreen.tsx:213
+#: components/ui/BottomTabNavigation.tsx:64
+msgid "Profile"
+msgstr "个人资料"
+
+#: components/screens/ProfileScreen.tsx:149
+msgid "Profile ID copied to clipboard"
+msgstr "个人资料 ID 已复制到剪贴板"
+
+#: components/ui/MessageCompose.tsx:65
+msgid "Remove"
+msgstr "移除"
+
+#: components/screens/AccountScreen.tsx:75
+msgid "Remove account from this device"
+msgstr "从此设备移除账户"
+
+#: components/screens/AccountScreen.tsx:117
+#: components/screens/ContactScreen.tsx:133
+#: components/screens/GroupScreen.tsx:123
+#: components/screens/ProfileScreen.tsx:187
+msgid "Save changes"
+msgstr "保存更改"
+
+#: components/ui/MessageCompose.tsx:150
+msgid "Save draft"
+msgstr "保存草稿"
+
+#: components/screens/DirectConversationScreen.tsx:362
+msgid "Search"
+msgstr "搜索"
+
+#: components/ui/MessageCompose.tsx:168
+msgid "Send message"
+msgstr "发送消息"
+
+#: components/screens/SelectAccountScreen.tsx:28
+msgid "Settings"
+msgstr "设置"
+
+#: components/screens/ProfileScreen.tsx:156
+msgid "Share profile"
+msgstr "分享个人资料"
+
+#: components/ui/CoordsInput.tsx:47
+msgid "Show on map"
+msgstr "在地图上显示"
+
+#: components/screens/ProfileScreen.tsx:100
+msgid "Show QR code"
+msgstr "显示二维码"
+
+#: components/screens/DeviceSettingsScreen.tsx:62
+msgid "System default ({languageName})"
+msgstr "系统默认（{languageName}）"
+
+#: components/screens/DeviceSettingsScreen.tsx:88
+msgid "System default ({themeName})"
+msgstr "系统默认（{themeName}）"
+
+#: components/screens/AccountScreen.tsx:148
+msgid "Tap to change"
+msgstr "点击更改"
+
+#: components/screens/ImportAccountScreen.tsx:100
+msgid "The one you typed in during export"
+msgstr "您在导出时输入的密码"
+
+#: components/screens/DeviceSettingsScreen.tsx:67
+msgid "Theme"
+msgstr "主题"
+
+#: components/screens/ContactScreen.tsx:179
+msgid "This name is only visible to you"
+msgstr "此名称仅对您可见"
+
+#: components/screens/AccountScreen.tsx:160
+#: components/screens/ImportAccountScreen.tsx:86
+msgid "This name is only visible to you on this device"
+msgstr "此名称仅在此设备上对您可见"
+
+#: components/screens/AccountScreen.tsx:147
+msgid "This will your avatar forever, choose wisely"
+msgstr "这将永久成为您的头像，请谨慎选择"
+
+#: components/screens/DirectConversationScreen.tsx:470
+msgid "Unread messages"
+msgstr "未读消息"
+
+#: components/screens/EditArticleScreen.tsx:131
+msgid "Update article"
+msgstr "更新文章"
+
+#: components/screens/AccountScreen.tsx:61
+msgid "Use another account"
+msgstr "使用其他账户"
+
+#: components/screens/ExportAccountScreen.tsx:101
+msgid "Will be needed to import later"
+msgstr "稍后导入时将需要此密码"
+
+#: components/screens/ExportAccountScreen.tsx:82
+msgid "You can send or store this exported text to import the account on other devices"
+msgstr "您可以发送或存储此导出文本，以便在其他设备上导入账户"

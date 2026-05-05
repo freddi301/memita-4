@@ -46,14 +46,66 @@ export function DeviceSettingsScreen() {
               });
             }}
             renderValue={(language) => {
-              function getLanguageName(language: Language) {
+              const getLanguageName = (language: Language) => {
                 switch (language) {
                   case "en":
                     return t`English`;
+                  case "zh":
+                    return t`Mandarin Chinese`;
+                  case "es":
+                    return t`Spanish`;
+                  case "hi":
+                    return t`Hindi`;
+                  case "bn":
+                    return t`Bengali`;
+                  case "pt":
+                    return t`Portuguese`;
+                  case "ru":
+                    return t`Russian`;
+                  case "ja":
+                    return t`Japanese`;
+                  case "vi":
+                    return t`Vietnamese`;
+                  case "tr":
+                    return t`Turkish`;
+                  case "mr":
+                    return t`Marathi`;
+                  case "te":
+                    return t`Telugu`;
+                  case "ko":
+                    return t`Korean`;
+                  case "fr":
+                    return t`French`;
+                  case "ta":
+                    return t`Tamil`;
+                  case "ar":
+                    return t`Arabic`;
+                  case "de":
+                    return t`German`;
+                  case "ur":
+                    return t`Urdu`;
+                  case "jv":
+                    return t`Javanese`;
                   case "it":
                     return t`Italian`;
+                  case "th":
+                    return t`Thai`;
+                  case "gu":
+                    return t`Gujarati`;
+                  case "ha":
+                    return t`Hausa`;
+                  case "kn":
+                    return t`Kannada`;
+                  case "fa":
+                    return t`Persian`;
+                  case "pl":
+                    return t`Polish`;
+                  case "id":
+                    return t`Indonesian`;
+                  case "sw":
+                    return t`Swahili`;
                 }
-              }
+              };
               const languageName = language
                 ? getLanguageName(language)
                 : getLanguageName(systemLanguage);
