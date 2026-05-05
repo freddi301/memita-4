@@ -140,7 +140,7 @@ export function GroupScreen({
               <TextInput
                 value={groupIdInput}
                 onChangeText={setContactIdInput}
-                style={theme.textInputStyle}
+                style={theme.textInputStyle(groupIdInput)}
                 autoCapitalize="none"
                 autoCorrect={false}
               />
@@ -157,7 +157,7 @@ export function GroupScreen({
           <TextInput
             value={nameInput}
             onChangeText={setNameInput}
-            style={theme.textInputStyle}
+            style={theme.textInputStyle(nameInput)}
           />
           {nameInput !== nameOriginal ? (
             <Text

@@ -146,7 +146,7 @@ export function EditArticleScreen({
           <TextInput
             value={contentInput}
             onChangeText={setContentInput}
-            style={{ ...theme.textInputStyle }}
+            style={theme.textInputStyle(contentInput)}
             multiline
           />
           {contentInput !== contentOriginal ? (

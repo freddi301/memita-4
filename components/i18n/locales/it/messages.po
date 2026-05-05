@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: components/screens/AccountScreen.tsx:190
+#: components/screens/AccountScreen.tsx:187
 msgid "Account ID"
 msgstr "ID account"
 
@@ -46,7 +46,7 @@ msgstr "Torna alla schermata account"
 msgid "Back to account selection"
 msgstr "Torna alla selezione account"
 
-#: components/screens/ContactScreen.tsx:57
+#: components/screens/ContactScreen.tsx:58
 msgid "Back to direct messages"
 msgstr "Torna ai messaggi diretti"
 
@@ -54,7 +54,7 @@ msgstr "Torna ai messaggi diretti"
 msgid "Biography"
 msgstr "Biografia"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:97
 msgid "Clear date"
 msgstr "Cancella data"
 
@@ -66,19 +66,19 @@ msgstr "Conferma esportazione"
 msgid "Confirm import"
 msgstr "Conferma importazione"
 
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:146
 msgid "Contact account id"
 msgstr "ID account contatto"
 
-#: components/screens/ContactScreen.tsx:165
+#: components/screens/ContactScreen.tsx:169
 msgid "Contact name"
 msgstr "Nome contatto"
 
-#: components/screens/AccountScreen.tsx:203
+#: components/screens/AccountScreen.tsx:200
 msgid "Copy account id to clipboard"
 msgstr "Copia ID account negli appunti"
 
-#: components/screens/AccountScreen.tsx:234
+#: components/screens/AccountScreen.tsx:231
 msgid "Copy device id to clipboard"
 msgstr "Copia ID dispositivo negli appunti"
 
@@ -90,7 +90,7 @@ msgstr "Crea account"
 msgid "Create article"
 msgstr "Crea articolo"
 
-#: components/screens/ContactScreen.tsx:125
+#: components/screens/ContactScreen.tsx:128
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:125
 msgid "Create contact"
@@ -124,12 +124,12 @@ msgstr "Elimina"
 msgid "Delete article"
 msgstr "Elimina articolo"
 
-#: components/screens/ContactScreen.tsx:78
+#: components/screens/ContactScreen.tsx:79
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "Elimina contatto"
 
-#: components/screens/AccountScreen.tsx:221
+#: components/screens/AccountScreen.tsx:218
 msgid "Device ID"
 msgstr "ID dispositivo"
 
@@ -137,14 +137,14 @@ msgstr "ID dispositivo"
 msgid "Device Settings"
 msgstr "Impostazioni"
 
-#: components/screens/ContactScreen.tsx:194
+#: components/screens/ContactScreen.tsx:198
 #: components/screens/ProfileScreen.tsx:168
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Messaggi diretti"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:92
+#: components/screens/ContactScreen.tsx:93
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:109
@@ -159,11 +159,11 @@ msgstr "Modifica articolo"
 msgid "Edit contact"
 msgstr "Modifica contatto"
 
-#: components/ui/DateTimeInput.tsx:73
+#: components/ui/DateTimeInput.tsx:81
 msgid "Edit date"
 msgstr "Modifica data"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:89
 msgid "Edit time"
 msgstr "Modifica ora"
 
@@ -179,7 +179,7 @@ msgstr "Evento"
 msgid "Events"
 msgstr "Eventi"
 
-#: components/screens/AccountScreen.tsx:246
+#: components/screens/AccountScreen.tsx:243
 #: components/screens/ExportAccountScreen.tsx:49
 msgid "Export account"
 msgstr "Esporta account"
@@ -287,7 +287,7 @@ msgstr "Nessun articolo"
 msgid "No messages"
 msgstr "Nessun messaggio"
 
-#: components/screens/ContactScreen.tsx:158
+#: components/screens/ContactScreen.tsx:162
 msgid "Not a valid account id"
 msgstr "ID account non valido"
 
@@ -307,7 +307,7 @@ msgstr "Password"
 msgid "Paste here exported account secret"
 msgstr "Incolla qui il segreto account esportato"
 
-#: components/screens/ContactScreen.tsx:154
+#: components/screens/ContactScreen.tsx:157
 msgid "Paste the account id your contact shared with you"
 msgstr "Incolla l'ID account che il tuo contatto ha condiviso con te"
 
@@ -320,8 +320,8 @@ msgstr "Luoghi"
 msgid "Previous occurrence"
 msgstr "Occorrenza precedente"
 
-#: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:204
+#: components/screens/AccountScreen.tsx:253
+#: components/screens/ContactScreen.tsx:208
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "Profilo"
@@ -339,7 +339,7 @@ msgid "Remove account from this device"
 msgstr "Rimuovi account da questo dispositivo"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:125
+#: components/screens/ContactScreen.tsx:128
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:125
 msgid "Save changes"
@@ -365,7 +365,7 @@ msgstr "Impostazioni"
 msgid "Share profile"
 msgstr "Condividi profilo"
 
-#: components/ui/CoordsInput.tsx:44
+#: components/ui/CoordsInput.tsx:47
 msgid "Show on map"
 msgstr "Mostra sulla mappa"
 
@@ -389,11 +389,11 @@ msgstr "Quella che hai inserito durante l'esportazione"
 msgid "Theme"
 msgstr "Tema"
 
-#: components/screens/ContactScreen.tsx:170
+#: components/screens/ContactScreen.tsx:174
 msgid "This name is only visible to you"
 msgstr "Questo nome è visibile solo a te"
 
-#: components/screens/AccountScreen.tsx:163
+#: components/screens/AccountScreen.tsx:160
 #: components/screens/ImportAccountScreen.tsx:86
 msgid "This name is only visible to you on this device"
 msgstr "Questo nome è visibile solo a te su questo dispositivo"

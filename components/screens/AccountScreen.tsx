@@ -156,10 +156,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
           <TextInput
             value={nameInput}
             onChangeText={setNameInput}
-            style={{
-              ...theme.textInputStyle,
-              color: nameInput ? theme.textColor : theme.secondaryTextColor,
-            }}
+            style={theme.textInputStyle(nameInput)}
             placeholder={t`This name is only visible to you on this device`}
           />
           {nameInput !== nameOriginal ? (

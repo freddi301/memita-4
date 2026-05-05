@@ -82,7 +82,7 @@ export function ImportAccountScreen() {
           <TextInput
             value={nameInput}
             onChangeText={setNameInput}
-            style={theme.textInputStyle}
+            style={theme.textInputStyle(nameInput)}
             placeholder={t`This name is only visible to you on this device`}
           />
         </View>
@@ -93,7 +93,7 @@ export function ImportAccountScreen() {
           <TextInput
             value={passwordInput}
             onChangeText={setPasswordInput}
-            style={theme.textInputStyle}
+            style={theme.textInputStyle(passwordInput)}
             secureTextEntry
             autoCapitalize="none"
             autoCorrect={false}
@@ -107,7 +107,7 @@ export function ImportAccountScreen() {
           <TextInput
             value={encryptedInput}
             onChangeText={setEncryptedInput}
-            style={{ ...theme.textInputStyle }}
+            style={theme.textInputStyle(encryptedInput)}
             multiline
             autoCapitalize="none"
             autoCorrect={false}

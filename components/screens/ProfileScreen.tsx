@@ -146,7 +146,7 @@ export function ProfileScreen({
             <TextInput
               value={bioInput}
               onChangeText={setBioInput}
-              style={{ ...theme.textInputStyle, maxHeight: "100%" }}
+              style={{ ...theme.textInputStyle(bioInput), maxHeight: "100%" }}
               multiline
             />
           ) : (

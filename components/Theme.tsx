@@ -75,15 +75,18 @@ export function useTheme() {
       color: themeProps.validationErrorTextColor,
     },
     linkTextStyle: { ...textStyle, color: themeProps.linkTextColor },
-    textInputStyle: {
-      ...textStyle,
-      borderColor: themeProps.linkTextColor,
-      borderBottomWidth: 1,
-      borderTopWidth: 0,
-      borderLeftWidth: 0,
-      borderRightWidth: 0,
-      outline: "none" as const,
-      padding: 0,
+    textInputStyle(value: string) {
+      return {
+        ...textStyle,
+        color: value ? themeProps.textColor : themeProps.secondaryTextColor,
+        borderColor: themeProps.linkTextColor,
+        borderBottomWidth: 1,
+        borderTopWidth: 0,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        outline: "none" as const,
+        padding: 0,
+      };
     },
   };
 }

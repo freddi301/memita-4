@@ -471,7 +471,7 @@ export function DirectConversationScreen({
                 />
                 <TextInput
                   style={{
-                    ...theme.textInputStyle,
+                    ...theme.textInputStyle(toolbarState.text),
                     paddingBottom: 5,
                     flexGrow: 1,
                   }}

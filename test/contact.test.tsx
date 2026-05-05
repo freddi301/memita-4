@@ -4,7 +4,7 @@ import {
   generateAccountSecret,
 } from "../components/cryptography/cryptography";
 import { addAccount } from "../components/queries/accounts";
-import { getContact } from "../components/queries/contacts";
+import { getContact, updateContact } from "../components/queries/contacts";
 import { createTestApp } from "./utils/createTestApp";
 import { findIcon } from "./utils/findIcon";
 
@@ -49,4 +49,54 @@ test("user can add a contact", async () => {
       api,
     ),
   ).toEqual({ name: "Bob" });
+});
+
+test("user can update a contact name", async () => {
+  const { Main, api } = await createTestApp();
+
+  const accountSecret = generateAccountSecret();
+  const accountId = accountIdFromAccountSecret(accountSecret);
+  await addAccount({ accountSecret, name: "Alice" })(api);
+
+  const contactSecret = generateAccountSecret();
+  const contactAccountId = accountIdFromAccountSecret(contactSecret);
+  await updateContact({
+    accountId,
+    contactId: contactAccountId,
+    name: "Bob",
+    deleted: false,
+  })(api);
+
+  const user = userEvent.setup();
+  const screen = await render(<Main />);
+
+  // navigate into Alice's direct messages
+  await user.press(await screen.findByText("Alice"));
+
+  // press on Bob to go to the conversation
+  await user.press(await screen.findByText("Bob"));
+
+  // press on Bob's name in the conversation header to go to profile
+  await user.press(await screen.findByText("Bob"));
+
+  // press Edit contact
+  await user.press(await screen.findByText("Edit contact"));
+
+  // clear the name and type the new one
+  const nameInput = await screen.findByPlaceholderText(
+    "This name is only visible to you",
+  );
+  await user.clear(nameInput);
+  await user.type(nameInput, "Robert");
+
+  // save
+  await user.press(await findIcon(screen, "save"));
+
+  expect(
+    await screen.findByPlaceholderText("This name is only visible to you"),
+  ).toHaveProp("value", "Robert");
+
+  expect(
+    await getContact({ accountId, contactId: contactAccountId })(api),
+  ).toEqual({ name: "Robert" });
 });

@@ -1,6 +1,6 @@
 # Contacts
 
-- [x] delete contact
+- [ ] delete contact
 - [ ] contact list
 - [ ] contact by qr code
 - [ ] contact online status (off by default)

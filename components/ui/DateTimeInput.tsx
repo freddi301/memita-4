@@ -1,3 +1,4 @@
+import { useLingui } from "@lingui/react/macro";
 import DateTimePicker, {
   DateTimePickerAndroid,
 } from "@react-native-community/datetimepicker";
@@ -5,7 +6,6 @@ import { useState } from "react";
 import { Platform, TextInput, View } from "react-native";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
-import { useLingui } from "@lingui/react/macro";
 
 export function DateTimeInput({
   value,
@@ -40,7 +40,9 @@ export function DateTimeInput({
       <input
         type="datetime-local"
         style={{
-          ...theme.textInputStyle,
+          ...theme.textInputStyle(
+            value ? new Date(value).toISOString().slice(0, 16) : "",
+          ),
           flexGrow: 1,
           marginRight: 16,
           marginLeft: 16,
@@ -60,7 +62,13 @@ export function DateTimeInput({
   return (
     <View style={{ flexDirection: "row" }}>
       <TextInput
-        style={{ ...theme.textInputStyle, flexGrow: 1, marginHorizontal: 16 }}
+        style={{
+          ...theme.textInputStyle(
+            value ? new Date(value).toLocaleString() : "",
+          ),
+          flexGrow: 1,
+          marginHorizontal: 16,
+        }}
         value={value ? new Date(value).toLocaleString() : ""}
         readOnly
       />

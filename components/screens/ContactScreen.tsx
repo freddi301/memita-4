@@ -44,7 +44,8 @@ export function ContactScreen({
     setNameInput(nameOriginal);
   }, [nameOriginal]);
 
-  const canSave = validContactIdInput && nameInput !== nameOriginal;
+  const canSave =
+    (contactId ? true : validContactIdInput) && nameInput !== nameOriginal;
 
   return (
     <Fragment>
@@ -94,16 +95,19 @@ export function ContactScreen({
         )}
         <ScreenLink
           to={
-            canSave
-              ? async () => {
-                  if (contactId) {
+            contactId
+              ? canSave
+                ? async () => {
                     await update({
                       accountId,
                       contactId,
                       name: nameInput,
                       deleted: false,
                     });
-                  } else {
+                  }
+                : undefined
+              : canSave && validContactIdInput
+                ? async () => {
                     await update({
                       accountId,
                       contactId: validContactIdInput,
@@ -117,8 +121,7 @@ export function ContactScreen({
                       />
                     );
                   }
-                }
-              : undefined
+                : undefined
           }
           icon="save"
           hideLabel
@@ -148,10 +151,11 @@ export function ContactScreen({
               <TextInput
                 value={contactIdInput}
                 onChangeText={setContactIdInput}
-                style={theme.textInputStyle}
+                style={theme.textInputStyle(contactIdInput)}
                 autoCapitalize="none"
                 autoCorrect={false}
                 placeholder={t`Paste the account id your contact shared with you`}
+                multiline
               />
               {!validContactIdInput ? (
                 <Text style={theme.validationErrorTextStyle}>
@@ -166,7 +170,7 @@ export function ContactScreen({
           <TextInput
             value={nameInput}
             onChangeText={setNameInput}
-            style={theme.textInputStyle}
+            style={theme.textInputStyle(nameInput)}
             placeholder={t`This name is only visible to you`}
           />
           {nameInput !== nameOriginal ? (

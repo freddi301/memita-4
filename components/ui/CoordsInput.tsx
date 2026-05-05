@@ -1,8 +1,8 @@
+import { useLingui } from "@lingui/react/macro";
 import { Fragment, useState } from "react";
 import { Dimensions, TextInput, View } from "react-native";
 import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
-import { useLingui } from "@lingui/react/macro";
 import { GeoMap } from "./GeoMap";
 
 export function CoordsInput({
@@ -23,7 +23,7 @@ export function CoordsInput({
         <TextInput
           value={value?.latitude.toString() ?? ""}
           style={{
-            ...theme.textInputStyle,
+            ...theme.textInputStyle(value?.latitude.toString() ?? ""),
             flex: 1,
             marginRight: 8,
             marginLeft: 16,
@@ -32,7 +32,10 @@ export function CoordsInput({
         />
         <TextInput
           value={value?.longitude.toString() ?? ""}
-          style={{ ...theme.textInputStyle, flex: 1 }}
+          style={{
+            ...theme.textInputStyle(value?.longitude.toString() ?? ""),
+            flex: 1,
+          }}
           readOnly
         />
         <ScreenLink

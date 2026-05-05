@@ -94,7 +94,7 @@ export function ExportAccountScreen({ accountId }: { accountId: AccountId }) {
           <TextInput
             value={passwordInput}
             onChangeText={setPasswordInput}
-            style={theme.textInputStyle}
+            style={theme.textInputStyle(passwordInput)}
             secureTextEntry
             autoCapitalize="none"
             autoCorrect={false}

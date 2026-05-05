@@ -1,3 +1,4 @@
+import { useLingui } from "@lingui/react/macro";
 import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
 import { useEffect, useState } from "react";
@@ -5,7 +6,6 @@ import { Platform, Pressable, ScrollView, TextInput, View } from "react-native";
 import { ScreenLink } from "../Routing";
 import { ContentAddress, storeFile } from "../store/fileStore";
 import { useTheme } from "../Theme";
-import { useLingui } from "@lingui/react/macro";
 import { AttachmentPreview } from "./AttachmentPreview";
 
 // refactor this to DirectMessageCompose and split to smaller files
@@ -107,7 +107,7 @@ export function MessageCompose({
           multiline
           numberOfLines={Platform.OS === "web" ? 1 : undefined}
           style={{
-            ...theme.textInputStyle,
+            ...theme.textInputStyle(text),
             flex: 1,
             paddingVertical: 8,
             maxHeight: 400,
