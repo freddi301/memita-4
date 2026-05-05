@@ -2,8 +2,9 @@ import "react-native-get-random-values";
 // polifills first
 import { setupI18n } from "@lingui/core";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { useLocalSearchParams } from "expo-router";
 import { isEqual } from "lodash";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { patchFlatListProps } from "react-native-web-refresh-control";
@@ -13,6 +14,7 @@ import {
 } from "../components/notifications";
 import { RouterRoot } from "../components/Routing";
 import { SelectAccountScreen } from "../components/screens/SelectAccountScreen";
+import { accountIdFromString } from "./cryptography/cryptography";
 import { Memitai18n } from "./i18n/Memitai18n";
 import { networkDummy } from "./network/netoworkDummy";
 import { bareNetworkFactory } from "./network/networkBare";
@@ -23,6 +25,7 @@ import {
 } from "./queries/directMessages";
 import { DataItem, DataItemSchema } from "./queries/Queries";
 import { shouldSend } from "./queries/shouldSend";
+import { ProfileDeepLinkScreen } from "./screens/ProfileDeepLinkScreen";
 import { createAppStorage } from "./storage/AppStorage";
 import { StorageInterface } from "./storage/StorageInteraface";
 import { createMemitaQueryClient } from "./store/dataApi";
@@ -106,12 +109,39 @@ export function createApp({ storage }: { storage: StorageInterface }) {
         isActive = false;
       };
     }, []);
+
+    const { contactId } = useLocalSearchParams();
+    const validContactId = useMemo(() => {
+      if (typeof contactId !== "string") return;
+      try {
+        return accountIdFromString(contactId);
+      } catch {
+        return;
+      }
+    }, [contactId]);
+    const [ignoreOverride, setIgnoreOverride] = useState(false);
+    useEffect(() => {
+      if (validContactId) setIgnoreOverride(false);
+    }, [validContactId]);
+
     return (
       <FeApiContext value={api}>
         <QueryClientProvider client={queryClient}>
           <Memitai18n i18n={i18n}>
             <LayoutWrapper>
-              <RouterRoot initial={<SelectAccountScreen />} />
+              <RouterRoot
+                initial={<SelectAccountScreen />}
+                overrideScreen={
+                  validContactId && !ignoreOverride ? (
+                    <ProfileDeepLinkScreen
+                      contactId={validContactId}
+                      onDone={() => {
+                        setIgnoreOverride(true);
+                      }}
+                    />
+                  ) : null
+                }
+              />
             </LayoutWrapper>
           </Memitai18n>
         </QueryClientProvider>

@@ -19,9 +19,11 @@ import { ProfileScreen } from "./ProfileScreen";
 export function ContactScreen({
   accountId,
   contactId,
+  openedFromDeepLinkWithContactId,
 }: {
   accountId: AccountId;
   contactId?: AccountId;
+  openedFromDeepLinkWithContactId?: AccountId;
 }) {
   const { t } = useLingui();
   const theme = useTheme();
@@ -33,10 +35,13 @@ export function ContactScreen({
 
   const update = useMemitaMutation(updateContact);
 
-  const [contactIdInput, setContactIdInput] = useState("");
+  const [contactIdInput, setContactIdInput] = useState(
+    openedFromDeepLinkWithContactId ?? "",
+  );
   const validContactIdInput = useMemo(
-    () => accountIdFromString(contactIdInput),
-    [contactIdInput],
+    () =>
+      openedFromDeepLinkWithContactId ?? accountIdFromString(contactIdInput),
+    [contactIdInput, openedFromDeepLinkWithContactId],
   );
   const [nameInput, setNameInput] = useState("");
   const nameOriginal = latest.name;

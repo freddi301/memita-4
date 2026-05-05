@@ -27,7 +27,13 @@ type ScreenEntry = { key: string; forceSuspend: string; element: ReactNode };
 
 const RouterContext = createContext<RouterContextType>(null as any);
 
-export function RouterRoot({ initial }: { initial: ReactNode }) {
+export function RouterRoot({
+  initial,
+  overrideScreen,
+}: {
+  initial: ReactNode;
+  overrideScreen: ReactNode;
+}) {
   const [state, setState] = useState<{
     nextScreenKey: number;
     nextForceSuspend: number;
@@ -78,11 +84,16 @@ export function RouterRoot({ initial }: { initial: ReactNode }) {
   );
   return (
     <RouterContext value={value}>
+      {overrideScreen}
       {state.screens.map((screen) => {
         return (
           <Activity
             key={screen.key}
-            mode={screen.key === current.key ? "visible" : "hidden"}
+            mode={
+              screen.key === current.key && !overrideScreen
+                ? "visible"
+                : "hidden"
+            }
           >
             {screen.element}
           </Activity>

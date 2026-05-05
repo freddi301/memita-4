@@ -1,6 +1,5 @@
 # Contacts
 
-- [ ] import contact by qr code
 - [ ] contact online status (off by default)
 - [ ] contact network connection status
 - [ ] contact lists (this will be used for: pin converstaion, archive conversation)

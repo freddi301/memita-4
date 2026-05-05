@@ -31,6 +31,10 @@ import { AccountScreen } from "./AccountScreen";
 import { ContactScreen } from "./ContactScreen";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 
+function createDeepLink(accountId: AccountId) {
+  return `memita4://profile/${accountId}`;
+}
+
 export function ProfileScreen({
   accountId,
   contactId,
@@ -113,7 +117,11 @@ export function ProfileScreen({
               }}
             >
               <View style={{ position: "relative" }}>
-                <QRCode value={contactId} size={240} level="H" />
+                <QRCode
+                  value={createDeepLink(contactId)}
+                  size={240}
+                  level="H"
+                />
                 <View
                   style={{
                     position: "absolute",
@@ -137,10 +145,10 @@ export function ProfileScreen({
         <ScreenLink
           to={async () => {
             if (Platform.OS === "web") {
-              await Clipboard.setStringAsync(contactId);
+              await Clipboard.setStringAsync(createDeepLink(contactId));
               alert(t`Profile ID copied to clipboard`);
             } else {
-              await Share.share({ message: contactId });
+              await Share.share({ message: createDeepLink(contactId) });
             }
           }}
           icon="share-alt"
