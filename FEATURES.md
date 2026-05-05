@@ -1,17 +1,3 @@
-# Account
-
-- [ ] connection status
-- [ ] data quota managment
-- [ ] end to end ecryption
-- [ ] app lock
-  - [ ] pin
-  - [ ] biometric
-- [ ] accessbility
-  - [ ] screen reader
-  - [ ] keyboard navigation
-- [ ] multiple accounts on same device
-- [ ] same account on multiple devices
-
 # Contacts
 
 - [x] add contact

@@ -27,6 +27,9 @@ Biography - for Profile and places
 
 # More
 
+- [ ] connection status
+- [ ] app lock pin
+- [ ] app lock biometric
 - [ ] backup device data to zip file
 - [ ] backup device data to google drive
 - [ ] backup device data to one drive
@@ -37,12 +40,15 @@ Biography - for Profile and places
 - [ ] windows background exection
 - [ ] linux background exection
 - [ ] must update app mechanism
+- [ ] data quota managment
 - [ ] crash report send
 - [ ] conect over hyperswarm
 - [ ] connect bloetooth
 - [ ] connect wifi direct
 - [ ] connect over federated servers
 - [ ] relay connection
+- [ ] accessibility keyboard navigation
+- [ ] acessibility test with screen reader
 
 # Platform support
 
