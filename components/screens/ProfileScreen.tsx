@@ -1,7 +1,11 @@
 import { useLingui } from "@lingui/react/macro";
+import * as Clipboard from "expo-clipboard";
+import { Image } from "expo-image";
 import { Fragment, useEffect, useState } from "react";
 import {
+  Modal,
   Platform,
+  Pressable,
   ScrollView,
   Share,
   Text,
@@ -9,6 +13,7 @@ import {
   View,
 } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
+import QRCode from "react-qr-code";
 import { AccountId } from "../cryptography/cryptography";
 import { getBiography, updateBiography } from "../queries/biography";
 import { getContact } from "../queries/contacts";
@@ -63,6 +68,8 @@ export function ProfileScreen({
   const canSave =
     bioInput !== bioOriginal || locationInput !== locationOriginal;
 
+  const [qrVisible, setQrVisible] = useState(false);
+
   return (
     <Fragment>
       <View
@@ -82,8 +89,55 @@ export function ProfileScreen({
         </Text>
         <ScreenLink
           to={async () => {
+            setQrVisible(true);
+          }}
+          icon="qrcode"
+          hideLabel
+          label={t`Show QR code`}
+        />
+        <Modal visible={qrVisible} transparent animationType="fade">
+          <Pressable
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "#000000cc",
+            }}
+            onPress={() => setQrVisible(false)}
+          >
+            <View
+              style={{
+                backgroundColor: "#ffffff",
+                padding: 16,
+                borderRadius: 8,
+              }}
+            >
+              <View style={{ position: "relative" }}>
+                <QRCode value={contactId} size={240} level="H" />
+                <View
+                  style={{
+                    position: "absolute",
+                    top: (240 - 72) / 2,
+                    left: (240 - 72) / 2,
+                    width: 72,
+                    height: 72,
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Image
+                    source={require("../../assets/images/icon.png")}
+                    style={{ width: 64, height: 64 }}
+                  />
+                </View>
+              </View>
+            </View>
+          </Pressable>
+        </Modal>
+        <ScreenLink
+          to={async () => {
             if (Platform.OS === "web") {
-              await navigator.clipboard.writeText(contactId);
+              await Clipboard.setStringAsync(contactId);
               alert(t`Profile ID copied to clipboard`);
             } else {
               await Share.share({ message: contactId });

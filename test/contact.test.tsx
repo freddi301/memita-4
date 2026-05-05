@@ -8,7 +8,41 @@ import { getContact, updateContact } from "../components/queries/contacts";
 import { createTestApp } from "./utils/createTestApp";
 import { findIcon } from "./utils/findIcon";
 
-test("user can add a contact", async () => {
+test("user sees contact list", async () => {
+  const { Main, api } = await createTestApp();
+
+  const accountSecret = generateAccountSecret();
+  const accountId = accountIdFromAccountSecret(accountSecret);
+  await addAccount({ accountSecret, name: "Alice" })(api);
+
+  const bobSecret = generateAccountSecret();
+  const bobAccountId = accountIdFromAccountSecret(bobSecret);
+  await updateContact({
+    accountId,
+    contactId: bobAccountId,
+    name: "Bob",
+    deleted: false,
+  })(api);
+
+  const carolSecret = generateAccountSecret();
+  const carolAccountId = accountIdFromAccountSecret(carolSecret);
+  await updateContact({
+    accountId,
+    contactId: carolAccountId,
+    name: "Carol",
+    deleted: false,
+  })(api);
+
+  const user = userEvent.setup();
+  const screen = await render(<Main />);
+
+  await user.press(await screen.findByText("Alice"));
+
+  expect(await screen.findByText("Bob")).toBeVisible();
+  expect(await screen.findByText("Carol")).toBeVisible();
+});
+
+test("user adds a contact", async () => {
   const { Main, api } = await createTestApp();
 
   const accountSecret = generateAccountSecret();
@@ -51,7 +85,7 @@ test("user can add a contact", async () => {
   ).toEqual({ name: "Bob" });
 });
 
-test("user can update a contact name", async () => {
+test("user updates a contact name", async () => {
   const { Main, api } = await createTestApp();
 
   const accountSecret = generateAccountSecret();
@@ -101,7 +135,7 @@ test("user can update a contact name", async () => {
   ).toEqual({ name: "Robert" });
 });
 
-test("user can delete a contact", async () => {
+test("user deletes a contact", async () => {
   const { Main, api } = await createTestApp();
 
   const accountSecret = generateAccountSecret();

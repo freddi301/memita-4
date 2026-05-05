@@ -22,7 +22,7 @@ msgstr "ID account"
 msgid "Account name"
 msgstr "Nome account"
 
-#: components/screens/ProfileScreen.tsx:173
+#: components/screens/ProfileScreen.tsx:227
 msgid "Account settings"
 msgstr "Impostazioni account"
 
@@ -50,7 +50,7 @@ msgstr "Torna alla selezione account"
 msgid "Back to direct messages"
 msgstr "Torna ai messaggi diretti"
 
-#: components/screens/ProfileScreen.tsx:144
+#: components/screens/ProfileScreen.tsx:198
 msgid "Biography"
 msgstr "Biografia"
 
@@ -92,7 +92,7 @@ msgstr "Crea articolo"
 
 #: components/screens/ContactScreen.tsx:128
 #: components/screens/GroupScreen.tsx:123
-#: components/screens/ProfileScreen.tsx:125
+#: components/screens/ProfileScreen.tsx:179
 msgid "Create contact"
 msgstr "Crea contatto"
 
@@ -138,7 +138,7 @@ msgid "Device Settings"
 msgstr "Impostazioni"
 
 #: components/screens/ContactScreen.tsx:198
-#: components/screens/ProfileScreen.tsx:168
+#: components/screens/ProfileScreen.tsx:222
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Messaggi diretti"
@@ -147,7 +147,7 @@ msgstr "Messaggi diretti"
 #: components/screens/ContactScreen.tsx:93
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
-#: components/screens/ProfileScreen.tsx:109
+#: components/screens/ProfileScreen.tsx:163
 msgid "Discard changes"
 msgstr "Scarta modifiche"
 
@@ -155,7 +155,7 @@ msgstr "Scarta modifiche"
 msgid "Edit article"
 msgstr "Modifica articolo"
 
-#: components/screens/ProfileScreen.tsx:182
+#: components/screens/ProfileScreen.tsx:236
 msgid "Edit contact"
 msgstr "Modifica contatto"
 
@@ -243,7 +243,7 @@ msgstr "Lingua"
 msgid "Light"
 msgstr "Chiaro"
 
-#: components/screens/ProfileScreen.tsx:139
+#: components/screens/ProfileScreen.tsx:193
 msgid "Location"
 msgstr "Posizione"
 
@@ -326,7 +326,7 @@ msgstr "Occorrenza precedente"
 msgid "Profile"
 msgstr "Profilo"
 
-#: components/screens/ProfileScreen.tsx:87
+#: components/screens/ProfileScreen.tsx:141
 msgid "Profile ID copied to clipboard"
 msgstr "ID profilo copiato negli appunti"
 
@@ -341,7 +341,7 @@ msgstr "Rimuovi account da questo dispositivo"
 #: components/screens/AccountScreen.tsx:117
 #: components/screens/ContactScreen.tsx:128
 #: components/screens/GroupScreen.tsx:123
-#: components/screens/ProfileScreen.tsx:125
+#: components/screens/ProfileScreen.tsx:179
 msgid "Save changes"
 msgstr "Salva modifiche"
 
@@ -361,13 +361,17 @@ msgstr "Invia messaggio"
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: components/screens/ProfileScreen.tsx:94
+#: components/screens/ProfileScreen.tsx:148
 msgid "Share profile"
 msgstr "Condividi profilo"
 
 #: components/ui/CoordsInput.tsx:47
 msgid "Show on map"
 msgstr "Mostra sulla mappa"
+
+#: components/screens/ProfileScreen.tsx:96
+msgid "Show QR code"
+msgstr "Mostra codice QR"
 
 #: components/screens/DeviceSettingsScreen.tsx:62
 msgid "System default ({languageName})"
