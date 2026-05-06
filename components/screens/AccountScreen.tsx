@@ -141,9 +141,9 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             <CryptoAvatar accountId={accountId ?? newAccountId} />
           </Pressable>
           {!accountId && (
-            <View>
+            <View style={{ flex: 1 }}>
               <Text
-                style={theme.textStyle}
+                style={{ ...theme.textStyle, flex: 1 }}
               >{t`This will your avatar forever, choose wisely`}</Text>
               <Text style={theme.secondaryTextStyle}>{t`Tap to change`}</Text>
             </View>

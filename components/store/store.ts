@@ -1,5 +1,7 @@
+import * as z from "zod";
 import {
-  AccountSecret,
+  AccountId,
+  AccountIdSchema,
   DeviceId,
   deviceIdFromDeviceSecret,
   DeviceSecret,
@@ -11,14 +13,13 @@ type StoreInInterface<StoreItem> = {
   storage: StorageInterface<StoreItem>;
   networkFactory: NetworkFactory;
   shouldSend(item: StoreItem): boolean;
+  getDeviceByAccounts(): Promise<Map<AccountId, DeviceSecret>>;
 };
 
-type StoreOutInterface<StoreItem> = {
+export type StoreOutInterface<StoreItem> = {
   add(item: StoreItem): Promise<void>;
   all(): Promise<Array<StoreItem>>;
-  updateConnections(
-    cryptoPrivateKeys: Record<AccountSecret, DeviceSecret>,
-  ): Promise<void>;
+  isContactConnected(contactId: AccountId): Promise<boolean>;
 };
 
 type StorageInterface<StoreItem> = {
@@ -30,7 +31,7 @@ export type NetworkInInterface = {
   received(
     deviceId: DeviceId,
     fromDeviceId: DeviceId,
-    data: unknown,
+    message: unknown,
   ): Promise<void>;
   connected(deviceId: DeviceId, otherDeviceId: DeviceId): Promise<void>;
 };
@@ -38,7 +39,11 @@ export type NetworkInInterface = {
 export type NetworkOutInterface = {
   start(deviceSecret: DeviceSecret): Promise<void>;
   stop(deviceId: DeviceId): Promise<void>;
-  send(deviceId: DeviceId, toDeviceId: DeviceId, data: unknown): Promise<void>;
+  send(
+    deviceId: DeviceId,
+    toDeviceId: DeviceId,
+    message: unknown,
+  ): Promise<void>;
   getStartedDevices(): Promise<Array<DeviceId>>;
   getConnectedDevices(deviceId: DeviceId): Promise<Array<DeviceId>>;
 };
@@ -53,13 +58,48 @@ export function createStore<StoreItem>({
   storage,
   networkFactory,
   shouldSend,
+  getDeviceByAccounts,
 }: StoreInInterface<StoreItem>): StoreOutInterface<StoreItem> {
+  const ProtocolMessageSchema = z.discriminatedUnion("type", [
+    z.object({
+      type: z.literal("data"),
+      data: z.unknown().transform((value, ctx) => {
+        try {
+          return parse(value);
+        } catch (err) {
+          ctx.addIssue({
+            code: "custom",
+            message: err instanceof Error ? err.message : "Parsing failed",
+          });
+          return z.NEVER;
+        }
+      }),
+    }),
+    z.object({
+      type: z.literal("accountHeartbeat"),
+      accountId: AccountIdSchema,
+    }),
+  ]);
+  // type ProtocolMessage = z.infer<typeof ProtocolMessageSchema>;
+
+  const receivedHeartbeats = new Map<AccountId, number>();
+
   const network = networkFactory({
     async received(deviceId, fromDeviceId, data) {
-      const item = parse(data);
-      const didAdd = await storage.add(item);
-      if (didAdd) {
-        await onAdd(item);
+      const parsed = ProtocolMessageSchema.parse(data);
+      switch (parsed.type) {
+        case "data": {
+          const item = parse(data);
+          const didAdd = await storage.add(item);
+          if (didAdd) {
+            await onAdd(item);
+          }
+          break;
+        }
+        case "accountHeartbeat": {
+          receivedHeartbeats.set(parsed.accountId, Date.now());
+          break;
+        }
       }
     },
     async connected(deviceId, otherDeviceId) {
@@ -68,10 +108,48 @@ export function createStore<StoreItem>({
       await Promise.all(
         all
           .filter((item) => shouldSend(item))
-          .map((item) => network.send(deviceId, otherDeviceId, item)),
+          .map(async (item) =>
+            network.send(deviceId, otherDeviceId, {
+              type: "data",
+              data: await item,
+            }),
+          ),
       );
     },
   });
+  async function startStopDevices() {
+    const deviceByAccounts = await getDeviceByAccounts();
+    const devicesToActivateSecrets = new Set(deviceByAccounts.values());
+    const devicesToActivatateIds = new Set(
+      Object.values(devicesToActivateSecrets).map((deviceSecret) =>
+        deviceIdFromDeviceSecret(deviceSecret),
+      ),
+    );
+    for (const deviceId of await network.getStartedDevices()) {
+      if (!devicesToActivatateIds.has(deviceId)) {
+        await network.stop(deviceId);
+      }
+    }
+    for (const deviceSecret of devicesToActivateSecrets) {
+      await network.start(deviceSecret);
+    }
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await startStopDevices();
+  }
+  void startStopDevices();
+  async function heartbeat() {
+    const deviceByAccounts = await getDeviceByAccounts();
+    for (const [accountId, deviceSecret] of deviceByAccounts) {
+      const deviceId = deviceIdFromDeviceSecret(deviceSecret);
+      await network.send(deviceId, deviceId, {
+        type: "accountHeartbeat",
+        accountId,
+      });
+    }
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await heartbeat();
+  }
+  void heartbeat();
   return {
     async add(item) {
       const didAdd = await storage.add(item);
@@ -84,8 +162,11 @@ export function createStore<StoreItem>({
               deviceId,
             )) {
               // TODO discriminate to which devices to send
-              await network.send(deviceId, toDeviceId, item);
-              // TODO send over files too (might need rework of network typings)
+              await network.send(deviceId, toDeviceId, {
+                type: "data",
+                data: await item,
+              });
+              // TODO send over files too
             }
           }
         })();
@@ -94,21 +175,10 @@ export function createStore<StoreItem>({
     async all() {
       return await storage.all();
     },
-    async updateConnections(
-      cryptoPrivateKeys: Record<AccountSecret, DeviceSecret>,
-    ) {
-      const deviceIds = Object.values(cryptoPrivateKeys).map((deviceSecret) =>
-        deviceIdFromDeviceSecret(deviceSecret),
-      );
-      for (const deviceId of await network.getStartedDevices()) {
-        if (!deviceIds.includes(deviceId)) {
-          await network.stop(deviceId);
-        }
-      }
-      const deviceSecrets = Object.values(cryptoPrivateKeys);
-      for (const deviceSecret of deviceSecrets) {
-        await network.start(deviceSecret);
-      }
+    async isContactConnected(accountId) {
+      const now = Date.now();
+      const timestamp = receivedHeartbeats.get(accountId);
+      return timestamp !== undefined && now - timestamp < 4000;
     },
   };
 }

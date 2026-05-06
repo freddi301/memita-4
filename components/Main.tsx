@@ -14,7 +14,11 @@ import {
 } from "../components/notifications";
 import { RouterRoot } from "../components/Routing";
 import { SelectAccountScreen } from "../components/screens/SelectAccountScreen";
-import { accountIdFromString } from "./cryptography/cryptography";
+import {
+  accountIdFromAccountSecret,
+  accountIdFromString,
+  AccountSecret,
+} from "./cryptography/cryptography";
 import { Memitai18n } from "./i18n/Memitai18n";
 import { networkDummy } from "./network/netoworkDummy";
 import { bareNetworkFactory } from "./network/networkBare";
@@ -57,7 +61,6 @@ export function createApp({ storage }: { storage: StorageInterface }) {
         return (await appStorage.read()).data;
       },
     },
-    // networkFactory: websocketNetworkFactory,
     networkFactory:
       process.env.NODE_ENV === "test"
         ? networkDummy
@@ -75,6 +78,17 @@ export function createApp({ storage }: { storage: StorageInterface }) {
       await triggerNotification();
     },
     shouldSend,
+    async getDeviceByAccounts() {
+      const data = await appStorage.read();
+      return new Map(
+        Object.entries(data.deviceSettings.cryptoPrivateKeys).map(
+          ([accountSecret, deviceSecret]) => [
+            accountIdFromAccountSecret(accountSecret as AccountSecret),
+            deviceSecret,
+          ],
+        ),
+      );
+    },
   });
 
   const i18n = setupI18n();
@@ -88,26 +102,11 @@ export function createApp({ storage }: { storage: StorageInterface }) {
     );
   };
 
-  const api = { appStorage };
+  const api = { appStorage, store };
 
   const Main = () => {
     useEffect(() => {
       void registerForPushNotificationsAsync();
-    }, []);
-    useEffect(() => {
-      let isActive = true;
-      const updateConnections = async () => {
-        if (!isActive) return;
-        await store.updateConnections(
-          (await appStorage.read()).deviceSettings.cryptoPrivateKeys,
-        );
-        await updateConnections();
-      };
-      // TODO reactivate
-      // void updateConnections();
-      return () => {
-        isActive = false;
-      };
     }, []);
 
     const { contactId } = useLocalSearchParams();
@@ -166,14 +165,14 @@ function useDisableBack() {
       history.pushState(null, "", location.href);
     };
     window.addEventListener("popstate", onPopState);
-    const onBeforeUnload = (event: BeforeUnloadEvent) => {
-      event.preventDefault();
-      event.returnValue = "";
-    };
-    window.addEventListener("beforeunload", onBeforeUnload);
+    // const onBeforeUnload = (event: BeforeUnloadEvent) => {
+    //   event.preventDefault();
+    //   event.returnValue = "";
+    // };
+    // window.addEventListener("beforeunload", onBeforeUnload);
     return () => {
       window.removeEventListener("popstate", onPopState);
-      window.removeEventListener("beforeunload", onBeforeUnload);
+      // window.removeEventListener("beforeunload", onBeforeUnload);
     };
   }, []);
 }

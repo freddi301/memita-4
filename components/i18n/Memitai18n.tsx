@@ -1,7 +1,7 @@
 import { I18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
 import * as Localization from "expo-localization";
-import { use, useLayoutEffect } from "react";
+import { use, useLayoutEffect, useState } from "react";
 import { memoizeSimple } from "../memoization";
 import { Language, LanguageSchema } from "../storage/storageSchema";
 import { useMemitaQuery } from "../store/dataApi";
@@ -42,9 +42,12 @@ export function Memitai18n({
   const languageFromStorage = useMemitaQuery(getLanguage, undefined);
   const currentLanguage = languageFromStorage ?? systemLanguage;
   const messages = use(loadMessages(currentLanguage));
+  const [isActivated, setIsActivated] = useState(false);
   useLayoutEffect(() => {
     i18n.loadAndActivate({ locale: currentLanguage, messages });
+    setIsActivated(true);
   }, [currentLanguage, i18n, messages]);
+  if (!isActivated) return null;
   return <I18nProvider i18n={i18n}>{children}</I18nProvider>;
 }
 

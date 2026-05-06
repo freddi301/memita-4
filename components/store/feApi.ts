@@ -1,6 +1,8 @@
 import { createContext } from "react";
+import { DataItem } from "../queries/Queries";
 import { AppStoredData } from "../storage/AppStorage";
 import { QueuedStorageInterface } from "../storage/StorageInteraface";
+import { StoreOutInterface } from "./store";
 
 export type MemitaQuery<Params, Return> = (
   p: Params,
@@ -10,6 +12,9 @@ export type MemitaMutation<Params> = (
   p: Params,
 ) => (apiContext: FeApiContextType) => Promise<void>;
 
-type FeApiContextType = { appStorage: QueuedStorageInterface<AppStoredData> };
+type FeApiContextType = {
+  appStorage: QueuedStorageInterface<AppStoredData>;
+  store: StoreOutInterface<DataItem>;
+};
 
 export const FeApiContext = createContext<FeApiContextType>(null as any);
