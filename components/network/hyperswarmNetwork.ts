@@ -46,17 +46,19 @@ export const hyperswarmNetworkFactory: NetworkFactory = ({
     },
     async send(deviceId, toDeviceId, data) {
       const hyperswarmNode = await hyperswarmNodes.get(deviceId);
-      if (!hyperswarmNode) {
-        throw new Error(`Device ${deviceId} not started`);
-      }
+      // TODO
+      // if (!hyperswarmNode) {
+      //   throw new Error(`Device ${deviceId} not started`);
+      // }
       await hyperswarmNode?.send(toDeviceId, data);
     },
     async getConnectedDevices(deviceId) {
       const hyperswarmNode = await hyperswarmNodes.get(deviceId);
-      if (!hyperswarmNode) {
-        throw new Error(`Device ${deviceId} not started`);
-      }
-      return await hyperswarmNode.getConnectedDevices();
+      // TODO
+      // if (!hyperswarmNode) {
+      //   throw new Error(`Device ${deviceId} not started`);
+      // }
+      return (await hyperswarmNode?.getConnectedDevices()) ?? [];
     },
     async getStartedDevices() {
       return Array.from(hyperswarmNodes.keys());

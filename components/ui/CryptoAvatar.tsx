@@ -1,6 +1,7 @@
 import { funEmoji } from "@dicebear/collection";
 import { createAvatar } from "@dicebear/core";
 import { use, useEffect, useMemo, useState } from "react";
+import { View } from "react-native";
 import { SvgXml } from "react-native-svg";
 import { AccountId } from "../cryptography/cryptography";
 import { FeApiContext } from "../store/feApi";
@@ -18,7 +19,6 @@ export function CryptoAvatar({ accountId }: { accountId: AccountId }) {
       if (!isActive) return;
       void store.isContactConnected(accountId).then((connected) => {
         if (isActive) {
-          console.log("Contact", accountId, "connected:", connected);
           setIsConnected(connected);
           setTimeout(poll, 1000);
         }
@@ -30,19 +30,18 @@ export function CryptoAvatar({ accountId }: { accountId: AccountId }) {
     };
   }, [accountId, store]);
 
+  // TODO this loops for some reason
+  // const isConnected = useMemitaQuery(isContactConnected, {
+  //   contactId: accountId,
+  // });
+
   const svg = useMemo(
-    () =>
-      createAvatar(funEmoji, {
-        seed: accountId,
-        size: isConnected ? size : size * 0.5,
-      }).toString(),
-    [accountId, size, isConnected],
+    () => createAvatar(funEmoji, { seed: accountId, size: size }).toString(),
+    [accountId, size],
   );
   return (
-    <SvgXml
-      xml={svg}
-      width={isConnected ? size : size * 0.5}
-      height={isConnected ? size : size * 0.5}
-    />
+    <View style={{ width: size, height: size, opacity: isConnected ? 1 : 0.2 }}>
+      <SvgXml xml={svg} width={size} height={size} />
+    </View>
   );
 }

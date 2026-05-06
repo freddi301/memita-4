@@ -121,7 +121,7 @@ export function createStore<StoreItem>({
     const deviceByAccounts = await getDeviceByAccounts();
     const devicesToActivateSecrets = new Set(deviceByAccounts.values());
     const devicesToActivatateIds = new Set(
-      Object.values(devicesToActivateSecrets).map((deviceSecret) =>
+      Array.from(devicesToActivateSecrets).map((deviceSecret) =>
         deviceIdFromDeviceSecret(deviceSecret),
       ),
     );
@@ -141,10 +141,12 @@ export function createStore<StoreItem>({
     const deviceByAccounts = await getDeviceByAccounts();
     for (const [accountId, deviceSecret] of deviceByAccounts) {
       const deviceId = deviceIdFromDeviceSecret(deviceSecret);
-      await network.send(deviceId, deviceId, {
-        type: "accountHeartbeat",
-        accountId,
-      });
+      for (const toDeviceId of await network.getConnectedDevices(deviceId)) {
+        await network.send(deviceId, toDeviceId, {
+          type: "accountHeartbeat",
+          accountId,
+        });
+      }
     }
     await new Promise((resolve) => setTimeout(resolve, 1000));
     await heartbeat();

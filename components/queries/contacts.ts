@@ -86,10 +86,7 @@ export const getContact: MemitaQuery<
     return contactLatest({ accountId: accountId!, contactId: contactId! })(all);
   };
 
-export const isContactConnected: MemitaQuery<
-  { contactId: AccountId },
-  boolean
-> =
+const isContactConnected: MemitaQuery<{ contactId: AccountId }, boolean> =
   ({ contactId }) =>
   async ({ store }) => {
     return await store.isContactConnected(contactId);
