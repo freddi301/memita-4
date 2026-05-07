@@ -21,7 +21,9 @@
     "lint-staged": "lint-staged",
     "ai-translate": "tsx ./update-translations.ts",
     "lingui:extract": "lingui extract --clean",
-    "lingui:compile": "lingui compile --strict"
+    "lingui:compile": "lingui compile --strict",
+    "desktop": "(cd desktop && npm run dev)",
+    "desktop:start": "expo export --platform web --output-dir ./desktop/dist && (cd desktop && npm run start)"
   },
   "dependencies": {
     "@dicebear/collection": "^9.4.2",

@@ -44,6 +44,20 @@ export function createApp({ storage }: { storage: StorageInterface }) {
 
   const queryClient = createMemitaQueryClient();
 
+  const networkFactory = (() => {
+    if (process.env.NODE_ENV === "test") {
+      return networkDummy;
+    }
+    if (Platform.OS === "web") {
+      if (navigator.userAgent.includes("Electron")) {
+        return networkDummy;
+      } else {
+        return websocketNetworkFactory;
+      }
+    }
+    return bareNetworkFactory;
+  })();
+
   const store = createStore<DataItem>({
     parse: DataItemSchema.parse,
     storage: {
@@ -61,12 +75,7 @@ export function createApp({ storage }: { storage: StorageInterface }) {
         return (await appStorage.read()).data;
       },
     },
-    networkFactory:
-      process.env.NODE_ENV === "test"
-        ? networkDummy
-        : Platform.OS === "web"
-          ? websocketNetworkFactory
-          : bareNetworkFactory,
+    networkFactory,
     async onAdd(item) {
       // TODO make these more efficient and selective and come up with a thing to express that it is a live query at callsite
       await Promise.all([

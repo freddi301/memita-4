@@ -41,9 +41,6 @@ export function AttachmentPreview({
             width: 100,
             height: 100,
             padding: 8,
-            borderRightWidth: 1,
-            borderBottomWidth: 1,
-            borderColor: theme.separatorColor,
             gap: 4,
             alignItems: "center",
           }}

@@ -50,7 +50,12 @@ export function MessageCompose({
               onLongPress={() => {
                 setSelectedFileIndex(index);
               }}
-              style={{ position: "relative" }}
+              style={{
+                position: "relative",
+                borderBottomWidth: 1,
+                borderRightWidth: 1,
+                borderColor: theme.separatorColor,
+              }}
             >
               <AttachmentPreview file={file} />
               {isSelected && (

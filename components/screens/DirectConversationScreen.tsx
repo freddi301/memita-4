@@ -323,7 +323,17 @@ export function DirectConversationScreen({
                   }}
                 >
                   {item.attachments.map((file, index) => (
-                    <AttachmentPreview key={index} file={file} />
+                    <View
+                      key={index}
+                      style={{
+                        borderTopWidth: 1,
+                        borderBottomWidth: 1,
+                        borderRightWidth: 1,
+                        borderColor: theme.separatorColor,
+                      }}
+                    >
+                      <AttachmentPreview file={file} />
+                    </View>
                   ))}
                 </ScrollView>
               )}
