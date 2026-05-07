@@ -16,6 +16,7 @@ import {
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
+import { ContactChangesHistoryScreen } from "./ContactChangesHistoryScreen";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 import { ProfileScreen } from "./ProfileScreen";
@@ -74,6 +75,19 @@ export function ContactScreen({
           />
         )}
         <View style={{ flex: 1 }} />
+        {contactId && (
+          <ScreenLink
+            to={
+              <ContactChangesHistoryScreen
+                accountId={accountId}
+                contactId={contactId}
+              />
+            }
+            icon="history"
+            hideLabel
+            label={t`Changes history`}
+          />
+        )}
         {contactId && (
           <ScreenLink
             to={

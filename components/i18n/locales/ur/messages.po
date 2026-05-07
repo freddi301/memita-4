@@ -51,7 +51,11 @@ msgstr "اکاؤنٹ اسکرین پر واپس جائیں"
 msgid "Back to account selection"
 msgstr "اکاؤنٹ انتخاب پر واپس جائیں"
 
-#: components/screens/ContactScreen.tsx:73
+#: components/screens/ContactChangesHistoryScreen.tsx:36
+msgid "Back to contact"
+msgstr "تماس کے صفحہ پر لوٹیں"
+
+#: components/screens/ContactScreen.tsx:74
 msgid "Back to direct messages"
 msgstr "براہ راست پیغامات پر واپس جائیں"
 
@@ -62,6 +66,11 @@ msgstr "بنگالی"
 #: components/screens/ProfileScreen.tsx:206
 msgid "Biography"
 msgstr "سوانح عمری"
+
+#: components/screens/ContactChangesHistoryScreen.tsx:48
+#: components/screens/ContactScreen.tsx:88
+msgid "Changes history"
+msgstr "م Modifications کی تاریخ"
 
 #: components/ui/DateTimeInput.tsx:97
 msgid "Clear date"
@@ -75,16 +84,17 @@ msgstr "برآمد کی تصدیق کریں"
 msgid "Confirm import"
 msgstr "درآمد کی تصدیق کریں"
 
-#: components/screens/ContactScreen.tsx:205
+#: components/screens/ContactScreen.tsx:219
 msgid "Connected devices"
 msgstr "اتصالی شدہ آلات"
 
-#: components/screens/ContactScreen.tsx:162
+#: components/screens/ContactScreen.tsx:176
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "رابطہ اکاؤنٹ آئی ڈی"
 
-#: components/screens/ContactScreen.tsx:185
+#: components/screens/ContactChangesHistoryScreen.tsx:70
+#: components/screens/ContactScreen.tsx:199
 msgid "Contact name"
 msgstr "رابطے کا نام"
 
@@ -104,7 +114,7 @@ msgstr "اکاؤنٹ بنائیں"
 msgid "Create article"
 msgstr "مضمون بنائیں"
 
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:157
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
@@ -138,7 +148,7 @@ msgstr "حذف کریں"
 msgid "Delete article"
 msgstr "مضمون حذف کریں"
 
-#: components/screens/ContactScreen.tsx:94
+#: components/screens/ContactScreen.tsx:108
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "رابطہ حذف کریں"
@@ -151,14 +161,14 @@ msgstr "ڈیوائس آئی ڈی"
 msgid "Device Settings"
 msgstr "ڈیوائس کی ترتیبات"
 
-#: components/screens/ContactScreen.tsx:237
+#: components/screens/ContactScreen.tsx:251
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "براہ راست پیغامات"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:108
+#: components/screens/ContactScreen.tsx:122
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -269,7 +279,7 @@ msgstr "انڈونیشیائی"
 msgid "Invalid account secret or password"
 msgstr "غلط اکاؤنٹ راز یا پاس ورڈ"
 
-#: components/screens/ContactScreen.tsx:224
+#: components/screens/ContactScreen.tsx:238
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "یہ دو افراد کے لیے ہے۔ ایک دوسرے کو رابطہ کے طور پر شامل کریں اور شروع کریں!"
 
@@ -347,7 +357,11 @@ msgstr "اس ڈیوائس پر کوئی اکاؤنٹ نہیں"
 msgid "No articles"
 msgstr "کوئی مضمون نہیں"
 
-#: components/screens/ContactScreen.tsx:212
+#: components/screens/ContactChangesHistoryScreen.tsx:103
+msgid "No changes yet"
+msgstr "اب تک کوئی تبدیلی نہیں ہوئی۔"
+
+#: components/screens/ContactScreen.tsx:226
 msgid "No connected devices"
 msgstr "کوئی منسلک آلات نہیں"
 
@@ -358,7 +372,7 @@ msgstr "کوئی منسلک آلات نہیں"
 msgid "No messages"
 msgstr "کوئی پیغام نہیں"
 
-#: components/screens/ContactScreen.tsx:178
+#: components/screens/ContactScreen.tsx:192
 msgid "Not a valid account id"
 msgstr "درست اکاؤنٹ آئی ڈی نہیں"
 
@@ -386,7 +400,7 @@ msgstr "پاس ورڈ"
 msgid "Paste here exported account secret"
 msgstr "یہاں برآمد شدہ اکاؤنٹ راز چسپاں کریں"
 
-#: components/screens/ContactScreen.tsx:173
+#: components/screens/ContactScreen.tsx:187
 msgid "Paste the account id your contact shared with you"
 msgstr "وہ اکاؤنٹ آئی ڈی چسپاں کریں جو آپ کے رابطے نے آپ کے ساتھ شیئر کی"
 
@@ -412,7 +426,7 @@ msgid "Previous occurrence"
 msgstr "پچھلی موجودگی"
 
 #: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:247
+#: components/screens/ContactScreen.tsx:261
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "پروفائل"
@@ -434,7 +448,7 @@ msgid "Russian"
 msgstr "روسی"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:157
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
@@ -508,7 +522,7 @@ msgstr "جو آپ نے برآمد کے دوران ٹائپ کیا"
 msgid "Theme"
 msgstr "تھیم"
 
-#: components/screens/ContactScreen.tsx:190
+#: components/screens/ContactScreen.tsx:204
 msgid "This name is only visible to you"
 msgstr "یہ نام صرف آپ کو نظر آتا ہے"
 

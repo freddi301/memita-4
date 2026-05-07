@@ -29,7 +29,8 @@ Biography - for Profile and places
 
 # More
 
-- [ ] connection status
+- [ ] contact presence status (off by default, research carefully bhow to implement)
+- [ ] send invite to download app
 - [ ] app lock pin
 - [ ] app lock biometric
 - [ ] backup device data to zip file

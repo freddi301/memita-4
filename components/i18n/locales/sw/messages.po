@@ -51,7 +51,11 @@ msgstr "Rudi kwenye skrini ya akaunti"
 msgid "Back to account selection"
 msgstr "Rudi kwenye uchaguzi wa akaunti"
 
-#: components/screens/ContactScreen.tsx:73
+#: components/screens/ContactChangesHistoryScreen.tsx:36
+msgid "Back to contact"
+msgstr "Kurudi kwenye mawasiliano"
+
+#: components/screens/ContactScreen.tsx:74
 msgid "Back to direct messages"
 msgstr "Rudi kwenye ujumbe wa moja kwa moja"
 
@@ -62,6 +66,11 @@ msgstr "Kibengali"
 #: components/screens/ProfileScreen.tsx:206
 msgid "Biography"
 msgstr "Wasifu"
+
+#: components/screens/ContactChangesHistoryScreen.tsx:48
+#: components/screens/ContactScreen.tsx:88
+msgid "Changes history"
+msgstr "Historia ya mabadiliko"
 
 #: components/ui/DateTimeInput.tsx:97
 msgid "Clear date"
@@ -75,16 +84,17 @@ msgstr "Thibitisha usafirishaji"
 msgid "Confirm import"
 msgstr "Thibitisha uagizaji"
 
-#: components/screens/ContactScreen.tsx:205
+#: components/screens/ContactScreen.tsx:219
 msgid "Connected devices"
 msgstr "Vifaa vinavyoendeshwa"
 
-#: components/screens/ContactScreen.tsx:162
+#: components/screens/ContactScreen.tsx:176
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "ID ya akaunti ya mawasiliano"
 
-#: components/screens/ContactScreen.tsx:185
+#: components/screens/ContactChangesHistoryScreen.tsx:70
+#: components/screens/ContactScreen.tsx:199
 msgid "Contact name"
 msgstr "Jina la mawasiliano"
 
@@ -104,7 +114,7 @@ msgstr "Unda akaunti"
 msgid "Create article"
 msgstr "Unda makala"
 
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:157
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
@@ -138,7 +148,7 @@ msgstr "Futa"
 msgid "Delete article"
 msgstr "Futa makala"
 
-#: components/screens/ContactScreen.tsx:94
+#: components/screens/ContactScreen.tsx:108
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "Futa mawasiliano"
@@ -151,14 +161,14 @@ msgstr "ID ya Kifaa"
 msgid "Device Settings"
 msgstr "Mipangilio ya Kifaa"
 
-#: components/screens/ContactScreen.tsx:237
+#: components/screens/ContactScreen.tsx:251
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Ujumbe wa moja kwa moja"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:108
+#: components/screens/ContactScreen.tsx:122
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -269,7 +279,7 @@ msgstr "Kiindonesia"
 msgid "Invalid account secret or password"
 msgstr "Siri ya akaunti au nenosiri si sahihi"
 
-#: components/screens/ContactScreen.tsx:224
+#: components/screens/ContactScreen.tsx:238
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "Inahitaji wawili. Onana kama marafiki ili kuanzia na mazungumzo!"
 
@@ -347,7 +357,11 @@ msgstr "Hakuna akaunti kwenye kifaa hiki"
 msgid "No articles"
 msgstr "Hakuna makala"
 
-#: components/screens/ContactScreen.tsx:212
+#: components/screens/ContactChangesHistoryScreen.tsx:103
+msgid "No changes yet"
+msgstr "Bado hakuna mabadiliko"
+
+#: components/screens/ContactScreen.tsx:226
 msgid "No connected devices"
 msgstr "Hakuna vifaa vinavyoendeshwa"
 
@@ -358,7 +372,7 @@ msgstr "Hakuna vifaa vinavyoendeshwa"
 msgid "No messages"
 msgstr "Hakuna ujumbe"
 
-#: components/screens/ContactScreen.tsx:178
+#: components/screens/ContactScreen.tsx:192
 msgid "Not a valid account id"
 msgstr "ID ya akaunti si sahihi"
 
@@ -386,7 +400,7 @@ msgstr "Nenosiri"
 msgid "Paste here exported account secret"
 msgstr "Bandika hapa siri ya akaunti iliyosafirishwa"
 
-#: components/screens/ContactScreen.tsx:173
+#: components/screens/ContactScreen.tsx:187
 msgid "Paste the account id your contact shared with you"
 msgstr "Bandika ID ya akaunti ambayo mawasiliano yako yalikushirikisha"
 
@@ -412,7 +426,7 @@ msgid "Previous occurrence"
 msgstr "Tukio lililopita"
 
 #: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:247
+#: components/screens/ContactScreen.tsx:261
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "Wasifu"
@@ -434,7 +448,7 @@ msgid "Russian"
 msgstr "Kirusi"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:157
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
@@ -508,7 +522,7 @@ msgstr "Ile uliyoandika wakati wa usafirishaji"
 msgid "Theme"
 msgstr "Mandhari"
 
-#: components/screens/ContactScreen.tsx:190
+#: components/screens/ContactScreen.tsx:204
 msgid "This name is only visible to you"
 msgstr "Jina hili linaonekana kwako peke yako"
 

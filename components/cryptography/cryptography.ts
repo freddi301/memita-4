@@ -20,7 +20,7 @@ export function generateDeviceSecret(): DeviceSecret {
   return DeviceSecretSchema.parse(bytesToHex(secretKey));
 }
 
-const DeviceIdSchema = z.string().brand("DeviceId");
+export const DeviceIdSchema = z.string().brand("DeviceId");
 /** ED25519 Public key, hex string */
 export type DeviceId = z.infer<typeof DeviceIdSchema>;
 
@@ -33,6 +33,10 @@ export function deviceIdFromUint8Array(uint8Array: Uint8Array): DeviceId {
 
 export function deviceIdToUint8Array(deviceId: DeviceId): Uint8Array {
   return hexToBytes(deviceId);
+}
+
+export function deviceIdToString(deviceId: DeviceId): string {
+  return deviceId;
 }
 
 export const deviceIdFromDeviceSecret = memoizeSimple(

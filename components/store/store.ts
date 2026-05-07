@@ -200,8 +200,9 @@ function makeHeartbeatRepository() {
   const getAccountConnectedDevices = (accountId: AccountId) => {
     const now = Date.now();
     return Array.from(
-      (byAccountId.get(accountId) ?? new Map<DeviceId, number>())
-        ?.entries()
+      Array.from(
+        (byAccountId.get(accountId) ?? new Map<DeviceId, number>()).entries(),
+      )
         .filter(([_, timestamp]) => now - timestamp < 4000)
         .map(([deviceId, _]) => deviceId),
     );

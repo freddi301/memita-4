@@ -3,11 +3,15 @@ import {
   AccountId,
   AccountIdSchema,
   DeviceId,
+  DeviceIdSchema,
 } from "../cryptography/cryptography";
 import { MemitaMutation, MemitaQuery } from "../store/feApi";
+import { getDeviceIdByAccountId } from "./accounts";
 import { groupBy, maxBy } from "./helpers";
 import { DataItem } from "./Queries";
 import { nowTimestamp, TimestampSchema } from "./Timestamp";
+
+// TODO double signature/encryption, with account secret and device secret
 
 export const ContactUpdateSchema = z.object({
   type: z.literal("ContactUpdate"),
@@ -16,6 +20,7 @@ export const ContactUpdateSchema = z.object({
   name: z.string(),
   deleted: z.boolean(),
   timestamp: TimestampSchema,
+  deviceId: DeviceIdSchema,
 });
 
 export const updateContact: MemitaMutation<{
@@ -27,6 +32,7 @@ export const updateContact: MemitaMutation<{
   ({ accountId, contactId, name, deleted }) =>
   async ({ appStorage }) => {
     await appStorage.write((current) => {
+      const deviceId = getDeviceIdByAccountId(accountId, current);
       return {
         ...current,
         data: [
@@ -38,6 +44,7 @@ export const updateContact: MemitaMutation<{
             name,
             deleted,
             timestamp: nowTimestamp(),
+            deviceId,
           },
         ],
       };
@@ -78,6 +85,34 @@ export function contactLatest({
     }
   };
 }
+
+export const getContactChangesHistory: MemitaQuery<
+  { accountId: AccountId | undefined; contactId: AccountId | undefined },
+  Array<{
+    name: string;
+    deleted: boolean;
+    timestamp: number;
+    deviceId: DeviceId;
+  }>
+> =
+  ({ accountId, contactId }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const all = current.data;
+    return all
+      .filter((item) => item.type === "ContactUpdate")
+      .filter(
+        (update) =>
+          update.accountId === accountId && update.contactId === contactId,
+      )
+      .sort((a, b) => b.timestamp - a.timestamp)
+      .map((update) => ({
+        name: update.name,
+        deleted: update.deleted,
+        timestamp: update.timestamp,
+        deviceId: update.deviceId,
+      }));
+  };
 
 export const getContact: MemitaQuery<
   { accountId: AccountId | undefined; contactId: AccountId | undefined },

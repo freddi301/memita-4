@@ -51,7 +51,11 @@ msgstr "Späť na obrazovku účtu"
 msgid "Back to account selection"
 msgstr "Späť na výber účtu"
 
-#: components/screens/ContactScreen.tsx:73
+#: components/screens/ContactChangesHistoryScreen.tsx:36
+msgid "Back to contact"
+msgstr "Späť na kontakt"
+
+#: components/screens/ContactScreen.tsx:74
 msgid "Back to direct messages"
 msgstr "Späť k priamym správam"
 
@@ -62,6 +66,11 @@ msgstr "Bengálsky jazyk"
 #: components/screens/ProfileScreen.tsx:206
 msgid "Biography"
 msgstr "Životopis"
+
+#: components/screens/ContactChangesHistoryScreen.tsx:48
+#: components/screens/ContactScreen.tsx:88
+msgid "Changes history"
+msgstr "História zmien"
 
 #: components/ui/DateTimeInput.tsx:97
 msgid "Clear date"
@@ -75,16 +84,17 @@ msgstr "Potvrdiť export"
 msgid "Confirm import"
 msgstr "Potvrdiť import"
 
-#: components/screens/ContactScreen.tsx:205
+#: components/screens/ContactScreen.tsx:219
 msgid "Connected devices"
 msgstr "Pripojené zariadenia"
 
-#: components/screens/ContactScreen.tsx:162
+#: components/screens/ContactScreen.tsx:176
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "ID kontaktného účtu"
 
-#: components/screens/ContactScreen.tsx:185
+#: components/screens/ContactChangesHistoryScreen.tsx:70
+#: components/screens/ContactScreen.tsx:199
 msgid "Contact name"
 msgstr "Meno kontaktnej osoby"
 
@@ -104,7 +114,7 @@ msgstr "Vytvoriť účet"
 msgid "Create article"
 msgstr "Vytvoriť článok"
 
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:157
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
@@ -138,7 +148,7 @@ msgstr "Zmazať"
 msgid "Delete article"
 msgstr "Zmazať položku"
 
-#: components/screens/ContactScreen.tsx:94
+#: components/screens/ContactScreen.tsx:108
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "Zmazať kontakt"
@@ -151,14 +161,14 @@ msgstr "ID zariadenia"
 msgid "Device Settings"
 msgstr "Nastavenia zariadenia"
 
-#: components/screens/ContactScreen.tsx:237
+#: components/screens/ContactScreen.tsx:251
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Priame správy"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:108
+#: components/screens/ContactScreen.tsx:122
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -269,7 +279,7 @@ msgstr "Indonézština"
 msgid "Invalid account secret or password"
 msgstr "Neplatný tajný kľúč účtu alebo heslo"
 
-#: components/screens/ContactScreen.tsx:224
+#: components/screens/ContactScreen.tsx:238
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "Potrebujete dvoch. Pridajte sa navzájom ako kontakty, aby ste mohli chatovať!"
 
@@ -347,7 +357,11 @@ msgstr "Na tomto zariadení nie sú žiadne účty"
 msgid "No articles"
 msgstr "Žiadne články"
 
-#: components/screens/ContactScreen.tsx:212
+#: components/screens/ContactChangesHistoryScreen.tsx:103
+msgid "No changes yet"
+msgstr "Zatiaľ žiadne zmeny"
+
+#: components/screens/ContactScreen.tsx:226
 msgid "No connected devices"
 msgstr "Žiadne pripojené zariadenia"
 
@@ -358,7 +372,7 @@ msgstr "Žiadne pripojené zariadenia"
 msgid "No messages"
 msgstr "Žiadne správy"
 
-#: components/screens/ContactScreen.tsx:178
+#: components/screens/ContactScreen.tsx:192
 msgid "Not a valid account id"
 msgstr "Neplatné ID používateľského účtu"
 
@@ -386,7 +400,7 @@ msgstr "Heslo"
 msgid "Paste here exported account secret"
 msgstr "Vložte sem vyexportovaný tajný kľúč účtu"
 
-#: components/screens/ContactScreen.tsx:173
+#: components/screens/ContactScreen.tsx:187
 msgid "Paste the account id your contact shared with you"
 msgstr "Vložte ID účtu, ktoré vám váš kontakt poskytol"
 
@@ -412,7 +426,7 @@ msgid "Previous occurrence"
 msgstr "Predchádzajúca správa"
 
 #: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:247
+#: components/screens/ContactScreen.tsx:261
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "Profil"
@@ -434,7 +448,7 @@ msgid "Russian"
 msgstr "Ruština"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:157
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
@@ -508,7 +522,7 @@ msgstr "Ten, ktorý ste zadali počas exportu"
 msgid "Theme"
 msgstr "Téma"
 
-#: components/screens/ContactScreen.tsx:190
+#: components/screens/ContactScreen.tsx:204
 msgid "This name is only visible to you"
 msgstr "Toto meno je viditeľné len vám"
 

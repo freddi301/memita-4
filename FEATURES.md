@@ -1,10 +1,7 @@
 # Contacts
 
-- [ ] edit history
 - [ ] text search
-- [ ] send invite to download app
 - [ ] contact lists (this will be used for: pin converstaion, archive conversation)
-- [ ] contact online status (off by default)
 
 # Direct messages
 

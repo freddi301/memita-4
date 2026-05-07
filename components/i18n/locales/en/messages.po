@@ -51,7 +51,11 @@ msgstr "Back to account screen"
 msgid "Back to account selection"
 msgstr "Back to account selection"
 
-#: components/screens/ContactScreen.tsx:73
+#: components/screens/ContactChangesHistoryScreen.tsx:36
+msgid "Back to contact"
+msgstr "Back to contact"
+
+#: components/screens/ContactScreen.tsx:74
 msgid "Back to direct messages"
 msgstr "Back to direct messages"
 
@@ -62,6 +66,11 @@ msgstr "Bengali"
 #: components/screens/ProfileScreen.tsx:206
 msgid "Biography"
 msgstr "Biography"
+
+#: components/screens/ContactChangesHistoryScreen.tsx:48
+#: components/screens/ContactScreen.tsx:88
+msgid "Changes history"
+msgstr "Changes history"
 
 #: components/ui/DateTimeInput.tsx:97
 msgid "Clear date"
@@ -75,16 +84,17 @@ msgstr "Confirm export"
 msgid "Confirm import"
 msgstr "Confirm import"
 
-#: components/screens/ContactScreen.tsx:205
+#: components/screens/ContactScreen.tsx:219
 msgid "Connected devices"
 msgstr "Connected devices"
 
-#: components/screens/ContactScreen.tsx:162
+#: components/screens/ContactScreen.tsx:176
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "Contact account id"
 
-#: components/screens/ContactScreen.tsx:185
+#: components/screens/ContactChangesHistoryScreen.tsx:70
+#: components/screens/ContactScreen.tsx:199
 msgid "Contact name"
 msgstr "Contact name"
 
@@ -104,7 +114,7 @@ msgstr "Create account"
 msgid "Create article"
 msgstr "Create article"
 
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:157
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
@@ -138,7 +148,7 @@ msgstr "Delete"
 msgid "Delete article"
 msgstr "Delete article"
 
-#: components/screens/ContactScreen.tsx:94
+#: components/screens/ContactScreen.tsx:108
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "Delete contact"
@@ -151,14 +161,14 @@ msgstr "Device ID"
 msgid "Device Settings"
 msgstr "Device Settings"
 
-#: components/screens/ContactScreen.tsx:237
+#: components/screens/ContactScreen.tsx:251
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Direct messages"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:108
+#: components/screens/ContactScreen.tsx:122
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -269,7 +279,7 @@ msgstr "Indonesian"
 msgid "Invalid account secret or password"
 msgstr "Invalid account secret or password"
 
-#: components/screens/ContactScreen.tsx:224
+#: components/screens/ContactScreen.tsx:238
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "It takes two. Add each other as contacts to start chatting!"
 
@@ -347,7 +357,11 @@ msgstr "No accounts on this device"
 msgid "No articles"
 msgstr "No articles"
 
-#: components/screens/ContactScreen.tsx:212
+#: components/screens/ContactChangesHistoryScreen.tsx:103
+msgid "No changes yet"
+msgstr "No changes yet"
+
+#: components/screens/ContactScreen.tsx:226
 msgid "No connected devices"
 msgstr "No connected devices"
 
@@ -358,7 +372,7 @@ msgstr "No connected devices"
 msgid "No messages"
 msgstr "No messages"
 
-#: components/screens/ContactScreen.tsx:178
+#: components/screens/ContactScreen.tsx:192
 msgid "Not a valid account id"
 msgstr "Not a valid account id"
 
@@ -386,7 +400,7 @@ msgstr "Password"
 msgid "Paste here exported account secret"
 msgstr "Paste here exported account secret"
 
-#: components/screens/ContactScreen.tsx:173
+#: components/screens/ContactScreen.tsx:187
 msgid "Paste the account id your contact shared with you"
 msgstr "Paste the account id your contact shared with you"
 
@@ -412,7 +426,7 @@ msgid "Previous occurrence"
 msgstr "Previous occurrence"
 
 #: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:247
+#: components/screens/ContactScreen.tsx:261
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "Profile"
@@ -434,7 +448,7 @@ msgid "Russian"
 msgstr "Russian"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:157
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
@@ -508,7 +522,7 @@ msgstr "The one you typed in during export"
 msgid "Theme"
 msgstr "Theme"
 
-#: components/screens/ContactScreen.tsx:190
+#: components/screens/ContactScreen.tsx:204
 msgid "This name is only visible to you"
 msgstr "This name is only visible to you"
 

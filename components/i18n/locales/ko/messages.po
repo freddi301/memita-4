@@ -51,7 +51,11 @@ msgstr "계정 화면으로 돌아가기"
 msgid "Back to account selection"
 msgstr "계정 선택으로 돌아가기"
 
-#: components/screens/ContactScreen.tsx:73
+#: components/screens/ContactChangesHistoryScreen.tsx:36
+msgid "Back to contact"
+msgstr "연락처로 돌아가기"
+
+#: components/screens/ContactScreen.tsx:74
 msgid "Back to direct messages"
 msgstr "다이렉트 메시지로 돌아가기"
 
@@ -62,6 +66,11 @@ msgstr "벵골어"
 #: components/screens/ProfileScreen.tsx:206
 msgid "Biography"
 msgstr "자기소개"
+
+#: components/screens/ContactChangesHistoryScreen.tsx:48
+#: components/screens/ContactScreen.tsx:88
+msgid "Changes history"
+msgstr "변경 이력"
 
 #: components/ui/DateTimeInput.tsx:97
 msgid "Clear date"
@@ -75,16 +84,17 @@ msgstr "내보내기 확인"
 msgid "Confirm import"
 msgstr "가져오기 확인"
 
-#: components/screens/ContactScreen.tsx:205
+#: components/screens/ContactScreen.tsx:219
 msgid "Connected devices"
 msgstr "연결된 기기들"
 
-#: components/screens/ContactScreen.tsx:162
+#: components/screens/ContactScreen.tsx:176
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "연락처 계정 ID"
 
-#: components/screens/ContactScreen.tsx:185
+#: components/screens/ContactChangesHistoryScreen.tsx:70
+#: components/screens/ContactScreen.tsx:199
 msgid "Contact name"
 msgstr "연락처 이름"
 
@@ -104,7 +114,7 @@ msgstr "계정 만들기"
 msgid "Create article"
 msgstr "게시물 만들기"
 
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:157
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
@@ -138,7 +148,7 @@ msgstr "삭제"
 msgid "Delete article"
 msgstr "게시물 삭제"
 
-#: components/screens/ContactScreen.tsx:94
+#: components/screens/ContactScreen.tsx:108
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "연락처 삭제"
@@ -151,14 +161,14 @@ msgstr "기기 ID"
 msgid "Device Settings"
 msgstr "기기 설정"
 
-#: components/screens/ContactScreen.tsx:237
+#: components/screens/ContactScreen.tsx:251
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "다이렉트 메시지"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:108
+#: components/screens/ContactScreen.tsx:122
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -269,7 +279,7 @@ msgstr "인도네시아어"
 msgid "Invalid account secret or password"
 msgstr "유효하지 않은 계정 비밀 또는 비밀번호"
 
-#: components/screens/ContactScreen.tsx:224
+#: components/screens/ContactScreen.tsx:238
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "두 사람이 함께 해야 합니다. 채팅을 시작하려면 서로를 친구로 추가하세요!"
 
@@ -347,7 +357,11 @@ msgstr "이 기기에 계정이 없습니다"
 msgid "No articles"
 msgstr "게시물 없음"
 
-#: components/screens/ContactScreen.tsx:212
+#: components/screens/ContactChangesHistoryScreen.tsx:103
+msgid "No changes yet"
+msgstr "아직 변경 없음"
+
+#: components/screens/ContactScreen.tsx:226
 msgid "No connected devices"
 msgstr "연결된 장치가 없습니다"
 
@@ -358,7 +372,7 @@ msgstr "연결된 장치가 없습니다"
 msgid "No messages"
 msgstr "메시지 없음"
 
-#: components/screens/ContactScreen.tsx:178
+#: components/screens/ContactScreen.tsx:192
 msgid "Not a valid account id"
 msgstr "유효하지 않은 계정 ID"
 
@@ -386,7 +400,7 @@ msgstr "비밀번호"
 msgid "Paste here exported account secret"
 msgstr "여기에 내보낸 계정 비밀 붙여넣기"
 
-#: components/screens/ContactScreen.tsx:173
+#: components/screens/ContactScreen.tsx:187
 msgid "Paste the account id your contact shared with you"
 msgstr "연락처가 공유한 계정 ID를 붙여넣으세요"
 
@@ -412,7 +426,7 @@ msgid "Previous occurrence"
 msgstr "이전 항목"
 
 #: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:247
+#: components/screens/ContactScreen.tsx:261
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "프로필"
@@ -434,7 +448,7 @@ msgid "Russian"
 msgstr "러시아어"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:157
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
@@ -508,7 +522,7 @@ msgstr "내보내기 중에 입력한 것"
 msgid "Theme"
 msgstr "테마"
 
-#: components/screens/ContactScreen.tsx:190
+#: components/screens/ContactScreen.tsx:204
 msgid "This name is only visible to you"
 msgstr "이 이름은 당신에게만 표시됩니다"
 

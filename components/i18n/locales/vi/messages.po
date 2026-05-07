@@ -51,7 +51,11 @@ msgstr "Quay lại màn hình tài khoản"
 msgid "Back to account selection"
 msgstr "Quay lại chọn tài khoản"
 
-#: components/screens/ContactScreen.tsx:73
+#: components/screens/ContactChangesHistoryScreen.tsx:36
+msgid "Back to contact"
+msgstr "Quay lại liên hệ"
+
+#: components/screens/ContactScreen.tsx:74
 msgid "Back to direct messages"
 msgstr "Quay lại tin nhắn trực tiếp"
 
@@ -62,6 +66,11 @@ msgstr "Tiếng Bengali"
 #: components/screens/ProfileScreen.tsx:206
 msgid "Biography"
 msgstr "Tiểu sử"
+
+#: components/screens/ContactChangesHistoryScreen.tsx:48
+#: components/screens/ContactScreen.tsx:88
+msgid "Changes history"
+msgstr "Lịch sử thay đổi"
 
 #: components/ui/DateTimeInput.tsx:97
 msgid "Clear date"
@@ -75,16 +84,17 @@ msgstr "Xác nhận xuất"
 msgid "Confirm import"
 msgstr "Xác nhận nhập"
 
-#: components/screens/ContactScreen.tsx:205
+#: components/screens/ContactScreen.tsx:219
 msgid "Connected devices"
 msgstr "Thiết bị đã kết nối"
 
-#: components/screens/ContactScreen.tsx:162
+#: components/screens/ContactScreen.tsx:176
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "ID tài khoản liên lạc"
 
-#: components/screens/ContactScreen.tsx:185
+#: components/screens/ContactChangesHistoryScreen.tsx:70
+#: components/screens/ContactScreen.tsx:199
 msgid "Contact name"
 msgstr "Tên liên lạc"
 
@@ -104,7 +114,7 @@ msgstr "Tạo tài khoản"
 msgid "Create article"
 msgstr "Tạo bài viết"
 
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:157
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
@@ -138,7 +148,7 @@ msgstr "Xóa"
 msgid "Delete article"
 msgstr "Xóa bài viết"
 
-#: components/screens/ContactScreen.tsx:94
+#: components/screens/ContactScreen.tsx:108
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "Xóa liên lạc"
@@ -151,14 +161,14 @@ msgstr "ID thiết bị"
 msgid "Device Settings"
 msgstr "Cài đặt thiết bị"
 
-#: components/screens/ContactScreen.tsx:237
+#: components/screens/ContactScreen.tsx:251
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Tin nhắn trực tiếp"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:108
+#: components/screens/ContactScreen.tsx:122
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -269,7 +279,7 @@ msgstr "Tiếng Indonesia"
 msgid "Invalid account secret or password"
 msgstr "Khóa bí mật hoặc mật khẩu tài khoản không hợp lệ"
 
-#: components/screens/ContactScreen.tsx:224
+#: components/screens/ContactScreen.tsx:238
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "Cần có hai người. Thêm người kia vào danh sách liên hệ của bạn để bắt đầu trò chuyện!"
 
@@ -347,7 +357,11 @@ msgstr "Không có tài khoản nào trên thiết bị này"
 msgid "No articles"
 msgstr "Không có bài viết"
 
-#: components/screens/ContactScreen.tsx:212
+#: components/screens/ContactChangesHistoryScreen.tsx:103
+msgid "No changes yet"
+msgstr "Chưa có thay đổi nào"
+
+#: components/screens/ContactScreen.tsx:226
 msgid "No connected devices"
 msgstr "Không có thiết bị nào được kết nối"
 
@@ -358,7 +372,7 @@ msgstr "Không có thiết bị nào được kết nối"
 msgid "No messages"
 msgstr "Không có tin nhắn"
 
-#: components/screens/ContactScreen.tsx:178
+#: components/screens/ContactScreen.tsx:192
 msgid "Not a valid account id"
 msgstr "ID tài khoản không hợp lệ"
 
@@ -386,7 +400,7 @@ msgstr "Mật khẩu"
 msgid "Paste here exported account secret"
 msgstr "Dán khóa bí mật tài khoản đã xuất vào đây"
 
-#: components/screens/ContactScreen.tsx:173
+#: components/screens/ContactScreen.tsx:187
 msgid "Paste the account id your contact shared with you"
 msgstr "Dán ID tài khoản mà liên lạc của bạn đã chia sẻ"
 
@@ -412,7 +426,7 @@ msgid "Previous occurrence"
 msgstr "Lần xuất hiện trước"
 
 #: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:247
+#: components/screens/ContactScreen.tsx:261
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "Hồ sơ"
@@ -434,7 +448,7 @@ msgid "Russian"
 msgstr "Tiếng Nga"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:143
+#: components/screens/ContactScreen.tsx:157
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
@@ -508,7 +522,7 @@ msgstr "Cái bạn đã nhập trong quá trình xuất"
 msgid "Theme"
 msgstr "Chủ đề"
 
-#: components/screens/ContactScreen.tsx:190
+#: components/screens/ContactScreen.tsx:204
 msgid "This name is only visible to you"
 msgstr "Tên này chỉ hiển thị với bạn"
 

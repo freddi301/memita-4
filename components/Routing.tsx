@@ -14,6 +14,8 @@ import {
 import { Pressable, StyleProp, Text, ViewStyle } from "react-native";
 import { useTheme } from "./Theme";
 
+const IS_TESTING = process.env.NODE_ENV === "test";
+
 const MAX_ALIVE_SCREENS = 15;
 
 type RouterContextType = {
@@ -85,20 +87,22 @@ export function RouterRoot({
   return (
     <RouterContext value={value}>
       {overrideScreen}
-      {state.screens.map((screen) => {
-        return (
-          <Activity
-            key={screen.key}
-            mode={
-              screen.key === current.key && !overrideScreen
-                ? "visible"
-                : "hidden"
-            }
-          >
-            {screen.element}
-          </Activity>
-        );
-      })}
+      {IS_TESTING
+        ? current.element
+        : state.screens.map((screen) => {
+            return (
+              <Activity
+                key={screen.key}
+                mode={
+                  screen.key === current.key && !overrideScreen
+                    ? "visible"
+                    : "hidden"
+                }
+              >
+                {screen.element}
+              </Activity>
+            );
+          })}
     </RouterContext>
   );
 }

@@ -7,6 +7,7 @@ import {
   deviceIdFromDeviceSecret,
   generateDeviceSecret,
 } from "../cryptography/cryptography";
+import { AppStoredData } from "../storage/AppStorage";
 import { MemitaMutation, MemitaQuery } from "../store/feApi";
 import { groupBy, maxBy } from "./helpers";
 import { nowTimestamp } from "./Timestamp";
@@ -19,6 +20,7 @@ export const addAccount: MemitaMutation<{
   async ({ appStorage }) => {
     const accountId = accountIdFromAccountSecret(accountSecret);
     const deviceSecret = generateDeviceSecret();
+    const deviceId = deviceIdFromDeviceSecret(deviceSecret);
     await appStorage.write((current) => {
       return {
         ...current,
@@ -38,6 +40,7 @@ export const addAccount: MemitaMutation<{
             name,
             deleted: false,
             timestamp: nowTimestamp(),
+            deviceId,
           },
         ],
       };
@@ -59,6 +62,7 @@ export const removeAccount: MemitaMutation<{ accountId: AccountId }> =
           },
         ),
       );
+      const deviceId = getDeviceIdByAccountId(accountId, current);
       return {
         ...current,
         deviceSettings: {
@@ -74,6 +78,7 @@ export const removeAccount: MemitaMutation<{ accountId: AccountId }> =
             name: "",
             deleted: true,
             timestamp: nowTimestamp(),
+            deviceId,
           },
         ],
       };
@@ -87,18 +92,26 @@ export const getDeviceId: MemitaQuery<
   ({ accountId }) =>
   async ({ appStorage }) => {
     const current = await appStorage.read();
-    const deviceSecret = Object.entries(
-      current.deviceSettings.cryptoPrivateKeys,
-    ).find(([accountSecret]) => {
-      const currentAccountId = accountIdFromAccountSecret(
-        accountSecret as AccountSecret,
-      );
-      return currentAccountId === accountId;
-    })?.[1];
-    if (deviceSecret) {
-      return deviceIdFromDeviceSecret(deviceSecret);
-    }
+    return accountId ? getDeviceIdByAccountId(accountId, current) : undefined;
   };
+
+export function getDeviceIdByAccountId(
+  accountId: AccountId,
+  current: AppStoredData,
+): DeviceId {
+  const deviceSecret = Object.entries(
+    current.deviceSettings.cryptoPrivateKeys,
+  ).find(([accountSecret]) => {
+    const currentAccountId = accountIdFromAccountSecret(
+      accountSecret as AccountSecret,
+    );
+    return currentAccountId === accountId;
+  })?.[1];
+  if (!deviceSecret) {
+    throw new Error(`No device secret found for accountId ${accountId}`);
+  }
+  return deviceIdFromDeviceSecret(deviceSecret);
+}
 
 export const getAccountSecret: MemitaQuery<
   { accountId: AccountId },

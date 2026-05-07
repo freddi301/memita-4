@@ -18,6 +18,7 @@ export function CryptoAvatar({
   const { store } = use(FeApiContext);
   useEffect(() => {
     let isActive = true;
+    let timeoutId = 0;
     const poll = () => {
       if (!isActive) return;
       void store
@@ -25,12 +26,13 @@ export function CryptoAvatar({
         .then((connectedDevices) => {
           if (isActive) {
             setIsConnected(connectedDevices.length > 0);
-            setTimeout(poll, 1000);
+            timeoutId = setTimeout(poll, 1000);
           }
         });
     };
     if (accountId !== contactId) poll();
     return () => {
+      if (timeoutId) clearTimeout(timeoutId);
       isActive = false;
     };
   }, [accountId, contactId, store]);
