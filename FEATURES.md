@@ -1,6 +1,5 @@
 # Contacts
 
-- [ ] text search
 - [ ] contact lists (this will be used for: pin converstaion, archive conversation)
 
 # Direct messages

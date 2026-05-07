@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
-import { Fragment } from "react";
-import { FlatList, Text, View } from "react-native";
+import { Fragment, useMemo, useState } from "react";
+import { FlatList, Text, TextInput, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
 import { getDirectMessagesSummary } from "../queries/directMessages";
 import { ScreenLink } from "../Routing";
@@ -11,25 +11,82 @@ import { CryptoAvatar } from "../ui/CryptoAvatar";
 import { ContactScreen } from "./ContactScreen";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 
+// TODO make the search more powerful
+
 export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
   const { t } = useLingui();
   const theme = useTheme();
   const refreshMemitaQueries = useRefreshMemitaQueries();
+  const [toolbarState, setToolbarState] = useState<
+    { type: "default" } | { type: "search"; text: string }
+  >({ type: "default" });
 
   const conversations = useMemitaQuery(getDirectMessagesSummary, { accountId });
+  const filteredConversations = useMemo(() => {
+    if (toolbarState.type === "default" || !toolbarState.text.trim()) {
+      return conversations;
+    }
+    const needle = toolbarState.text.trim().toLowerCase();
+    return conversations.filter((item) =>
+      item.contactName.toLowerCase().includes(needle),
+    );
+  }, [conversations, toolbarState]);
 
   return (
     <Fragment>
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ flexGrow: 1 }} />
-        <ScreenLink
-          to={<ContactScreen accountId={accountId} />}
-          icon="user-plus"
-          label={t`Create new contact`}
-        />
-      </View>
+      {(() => {
+        switch (toolbarState.type) {
+          case "default":
+            return (
+              <View style={{ flexDirection: "row" }}>
+                <ScreenLink
+                  to={async () => {
+                    setToolbarState({ type: "search", text: "" });
+                  }}
+                  icon="search"
+                  hideLabel
+                  label={t`Search contacts`}
+                />
+                <View style={{ flexGrow: 1 }} />
+                <ScreenLink
+                  to={<ContactScreen accountId={accountId} />}
+                  icon="user-plus"
+                  label={t`Create new contact`}
+                />
+              </View>
+            );
+          case "search":
+            return (
+              <View style={{ flexDirection: "row", alignItems: "flex-end" }}>
+                <ScreenLink
+                  to={async () => {
+                    setToolbarState({ type: "default" });
+                  }}
+                  icon="times"
+                  hideLabel
+                  label={t`Stop searching`}
+                />
+                <TextInput
+                  value={toolbarState.text}
+                  onChangeText={(text) => {
+                    setToolbarState({ type: "search", text });
+                  }}
+                  style={{
+                    ...theme.textInputStyle(toolbarState.text),
+                    flexGrow: 1,
+                    marginRight: 16,
+                    paddingBottom: 6,
+                  }}
+                  placeholder={t`Search`}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                />
+              </View>
+            );
+        }
+      })()}
       <FlatList
-        data={conversations}
+        data={filteredConversations}
         renderItem={({ item }) => (
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <ScreenLink
@@ -89,13 +146,19 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
             </ScreenLink>
           </View>
         )}
-        style={{ flex: 1, marginVertical: 8 }}
+        style={{ flex: 1 }}
         contentContainerStyle={{ flexGrow: 1 }}
-        ListEmptyComponent={() => (
-          <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
-            {t`No messages`}
-          </Text>
-        )}
+        ListEmptyComponent={() =>
+          toolbarState.type === "search" ? (
+            <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
+              {t`No results found`}
+            </Text>
+          ) : (
+            <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
+              {t`No messages`}
+            </Text>
+          )
+        }
         refreshing={false}
         onRefresh={refreshMemitaQueries}
       />

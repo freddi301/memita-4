@@ -128,7 +128,7 @@ msgstr "নতুন অ্যাকাউন্ট তৈরি করুন"
 msgid "Create new article"
 msgstr "নতুন নিবন্ধ তৈরি করুন"
 
-#: components/screens/DirectMessagesScreen.tsx:28
+#: components/screens/DirectMessagesScreen.tsx:54
 msgid "Create new contact"
 msgstr "নতুন যোগাযোগ তৈরি করুন"
 
@@ -366,11 +366,15 @@ msgid "No connected devices"
 msgstr "কোনো সংযুক্ত ডিভাইস নেই।"
 
 #: components/screens/DirectConversationScreen.tsx:341
-#: components/screens/DirectMessagesScreen.tsx:96
+#: components/screens/DirectMessagesScreen.tsx:158
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
 msgstr "কোনো বার্তা নেই"
+
+#: components/screens/DirectMessagesScreen.tsx:154
+msgid "No results found"
+msgstr "কোনো ফলাফল পাওয়া যায়নি"
 
 #: components/screens/ContactScreen.tsx:192
 msgid "Not a valid account id"
@@ -459,8 +463,13 @@ msgid "Save draft"
 msgstr "খসড়া সংরক্ষণ করুন"
 
 #: components/screens/DirectConversationScreen.tsx:362
+#: components/screens/DirectMessagesScreen.tsx:80
 msgid "Search"
 msgstr "অনুসন্ধান"
+
+#: components/screens/DirectMessagesScreen.tsx:48
+msgid "Search contacts"
+msgstr "যোগাযোগের তালিকা অনুসন্ধান করুন"
 
 #: components/ui/MessageCompose.tsx:169
 msgid "Send message"
@@ -485,6 +494,10 @@ msgstr "QR কোড দেখান"
 #: components/screens/DeviceSettingsScreen.tsx:56
 msgid "Spanish"
 msgstr "স্প্যানিশ"
+
+#: components/screens/DirectMessagesScreen.tsx:67
+msgid "Stop searching"
+msgstr "অনুসন্ধান বন্ধ করুন"
 
 #: components/screens/DeviceSettingsScreen.tsx:106
 msgid "Swahili"

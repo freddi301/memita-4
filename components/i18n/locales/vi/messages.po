@@ -128,7 +128,7 @@ msgstr "Tạo tài khoản mới"
 msgid "Create new article"
 msgstr "Tạo bài viết mới"
 
-#: components/screens/DirectMessagesScreen.tsx:28
+#: components/screens/DirectMessagesScreen.tsx:54
 msgid "Create new contact"
 msgstr "Tạo liên lạc mới"
 
@@ -366,11 +366,15 @@ msgid "No connected devices"
 msgstr "Không có thiết bị nào được kết nối"
 
 #: components/screens/DirectConversationScreen.tsx:341
-#: components/screens/DirectMessagesScreen.tsx:96
+#: components/screens/DirectMessagesScreen.tsx:158
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
 msgstr "Không có tin nhắn"
+
+#: components/screens/DirectMessagesScreen.tsx:154
+msgid "No results found"
+msgstr "Không tìm thấy kết quả"
 
 #: components/screens/ContactScreen.tsx:192
 msgid "Not a valid account id"
@@ -459,8 +463,13 @@ msgid "Save draft"
 msgstr "Lưu bản nháp"
 
 #: components/screens/DirectConversationScreen.tsx:362
+#: components/screens/DirectMessagesScreen.tsx:80
 msgid "Search"
 msgstr "Tìm kiếm"
+
+#: components/screens/DirectMessagesScreen.tsx:48
+msgid "Search contacts"
+msgstr "Tìm kiếm liên hệ"
 
 #: components/ui/MessageCompose.tsx:169
 msgid "Send message"
@@ -485,6 +494,10 @@ msgstr "Hiển thị mã QR"
 #: components/screens/DeviceSettingsScreen.tsx:56
 msgid "Spanish"
 msgstr "Tiếng Tây Ban Nha"
+
+#: components/screens/DirectMessagesScreen.tsx:67
+msgid "Stop searching"
+msgstr "Dừng tìm kiếm"
 
 #: components/screens/DeviceSettingsScreen.tsx:106
 msgid "Swahili"

@@ -128,7 +128,7 @@ msgstr "创建新账户"
 msgid "Create new article"
 msgstr "创建新文章"
 
-#: components/screens/DirectMessagesScreen.tsx:28
+#: components/screens/DirectMessagesScreen.tsx:54
 msgid "Create new contact"
 msgstr "创建新联系人"
 
@@ -366,11 +366,15 @@ msgid "No connected devices"
 msgstr "未连接任何设备。"
 
 #: components/screens/DirectConversationScreen.tsx:341
-#: components/screens/DirectMessagesScreen.tsx:96
+#: components/screens/DirectMessagesScreen.tsx:158
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
 msgstr "没有消息"
+
+#: components/screens/DirectMessagesScreen.tsx:154
+msgid "No results found"
+msgstr "未找到结果"
 
 #: components/screens/ContactScreen.tsx:192
 msgid "Not a valid account id"
@@ -459,8 +463,13 @@ msgid "Save draft"
 msgstr "保存草稿"
 
 #: components/screens/DirectConversationScreen.tsx:362
+#: components/screens/DirectMessagesScreen.tsx:80
 msgid "Search"
 msgstr "搜索"
+
+#: components/screens/DirectMessagesScreen.tsx:48
+msgid "Search contacts"
+msgstr "搜索联系人"
 
 #: components/ui/MessageCompose.tsx:169
 msgid "Send message"
@@ -485,6 +494,10 @@ msgstr "显示二维码"
 #: components/screens/DeviceSettingsScreen.tsx:56
 msgid "Spanish"
 msgstr "西班牙语"
+
+#: components/screens/DirectMessagesScreen.tsx:67
+msgid "Stop searching"
+msgstr "停止搜索"
 
 #: components/screens/DeviceSettingsScreen.tsx:106
 msgid "Swahili"

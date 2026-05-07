@@ -7,7 +7,9 @@ import linguiConfig from "./lingui.config";
 
 const execAsync = promisify(exec);
 
-const model = "translategemma:4b"; // TODO upgrade to translategemma:12b when you have a better GPU
+// TODO upgrade to translategemma:12b when you have a better GPU
+// retranslate all files with it, it does a good job
+const model = "translategemma:4b";
 
 async function getLastCommitFileContent(filePath: string) {
   try {

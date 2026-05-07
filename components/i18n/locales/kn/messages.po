@@ -128,7 +128,7 @@ msgstr "ಹೊಸ ಖಾತೆ ರಚಿಸಿ"
 msgid "Create new article"
 msgstr "ಹೊಸ ಲೇಖನ ರಚಿಸಿ"
 
-#: components/screens/DirectMessagesScreen.tsx:28
+#: components/screens/DirectMessagesScreen.tsx:54
 msgid "Create new contact"
 msgstr "ಹೊಸ ಸಂಪರ್ಕ ರಚಿಸಿ"
 
@@ -366,11 +366,15 @@ msgid "No connected devices"
 msgstr "ಸಂಪರ್ತಗೊಂಡ ಸಾಧನಗಳು ಇಲ್ಲ"
 
 #: components/screens/DirectConversationScreen.tsx:341
-#: components/screens/DirectMessagesScreen.tsx:96
+#: components/screens/DirectMessagesScreen.tsx:158
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
 msgstr "ಸಂದೇಶಗಳಿಲ್ಲ"
+
+#: components/screens/DirectMessagesScreen.tsx:154
+msgid "No results found"
+msgstr "ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬರಲಿಲ್ಲ"
 
 #: components/screens/ContactScreen.tsx:192
 msgid "Not a valid account id"
@@ -459,8 +463,13 @@ msgid "Save draft"
 msgstr "ಡ್ರಾಫ್ಟ್ ಉಳಿಸಿ"
 
 #: components/screens/DirectConversationScreen.tsx:362
+#: components/screens/DirectMessagesScreen.tsx:80
 msgid "Search"
 msgstr "ಹುಡುಕಿ"
+
+#: components/screens/DirectMessagesScreen.tsx:48
+msgid "Search contacts"
+msgstr "연락ದ ವ್ಯಕ್ತಿಗಳನ್ನು ಹುಡುಕಿ"
 
 #: components/ui/MessageCompose.tsx:169
 msgid "Send message"
@@ -485,6 +494,10 @@ msgstr "QR ಕೋಡ್ ತೋರಿಸಿ"
 #: components/screens/DeviceSettingsScreen.tsx:56
 msgid "Spanish"
 msgstr "ಸ್ಪ್ಯಾನಿಶ್"
+
+#: components/screens/DirectMessagesScreen.tsx:67
+msgid "Stop searching"
+msgstr "ಹುಡುಕಾಟವನ್ನು ನಿಲ್ಲಿಸಿ"
 
 #: components/screens/DeviceSettingsScreen.tsx:106
 msgid "Swahili"
