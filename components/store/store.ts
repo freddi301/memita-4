@@ -19,7 +19,7 @@ type StoreInInterface<StoreItem> = {
 export type StoreOutInterface<StoreItem> = {
   add(item: StoreItem): Promise<void>;
   all(): Promise<Array<StoreItem>>;
-  isContactConnected(contactId: AccountId): Promise<boolean>;
+  getContactConnectedDevices(contactId: AccountId): Promise<Array<DeviceId>>;
 };
 
 type StorageInterface<StoreItem> = {
@@ -82,7 +82,7 @@ export function createStore<StoreItem>({
   ]);
   // type ProtocolMessage = z.infer<typeof ProtocolMessageSchema>;
 
-  const receivedHeartbeats = new Map<AccountId, number>();
+  const heartbeats = makeHeartbeatRepository();
 
   const network = networkFactory({
     async received(deviceId, fromDeviceId, data) {
@@ -97,7 +97,7 @@ export function createStore<StoreItem>({
           break;
         }
         case "accountHeartbeat": {
-          receivedHeartbeats.set(parsed.accountId, Date.now());
+          heartbeats.add(parsed.accountId, deviceId);
           break;
         }
       }
@@ -177,10 +177,34 @@ export function createStore<StoreItem>({
     async all() {
       return await storage.all();
     },
-    async isContactConnected(accountId) {
-      const now = Date.now();
-      const timestamp = receivedHeartbeats.get(accountId);
-      return timestamp !== undefined && now - timestamp < 4000;
+    async getContactConnectedDevices(contactId: AccountId) {
+      return heartbeats.getAccountConnectedDevices(contactId);
     },
   };
+}
+
+function makeHeartbeatRepository() {
+  const byAccountId = new Map<AccountId, Map<DeviceId, number>>();
+  const byDeviceId = new Map<DeviceId, Map<AccountId, number>>();
+  const add = (accountId: AccountId, deviceId: DeviceId) => {
+    const now = Date.now();
+    if (!byAccountId.has(accountId)) {
+      byAccountId.set(accountId, new Map());
+    }
+    if (!byDeviceId.has(deviceId)) {
+      byDeviceId.set(deviceId, new Map());
+    }
+    byAccountId.get(accountId)!.set(deviceId, now);
+    byDeviceId.get(deviceId)!.set(accountId, now);
+  };
+  const getAccountConnectedDevices = (accountId: AccountId) => {
+    const now = Date.now();
+    return Array.from(
+      (byAccountId.get(accountId) ?? new Map<DeviceId, number>())
+        ?.entries()
+        .filter(([_, timestamp]) => now - timestamp < 4000)
+        .map(([deviceId, _]) => deviceId),
+    );
+  };
+  return { add, getAccountConnectedDevices };
 }

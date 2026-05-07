@@ -175,7 +175,7 @@ export function DirectConversationScreen({
           to={<ProfileScreen accountId={accountId} contactId={contactId} />}
           styleOverride={{ flexDirection: "row", flexGrow: 1 }}
         >
-          <CryptoAvatar accountId={contactId} />
+          <CryptoAvatar accountId={accountId} contactId={contactId} />
           <Text
             style={{
               ...theme.textStyle,
@@ -258,7 +258,7 @@ export function DirectConversationScreen({
               }}
             >
               <View style={{ flexDirection: "row", gap: 8 }}>
-                <CryptoAvatar accountId={item.senderId} />
+                <CryptoAvatar accountId={accountId} contactId={item.senderId} />
                 <View style={{ flexGrow: 1 }}>
                   <View style={{ flexDirection: "row", gap: 8 }}>
                     <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>

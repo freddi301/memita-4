@@ -40,7 +40,7 @@ export function ProfileDeepLinkScreen({
         </Text>
       </View>
       <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-        <CryptoAvatar accountId={contactId} />
+        <CryptoAvatar accountId={contactId} contactId={contactId} />
       </View>
       <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
         <Text style={theme.secondaryTextStyle}>{t`Contact account id`}</Text>
@@ -77,7 +77,10 @@ export function ProfileDeepLinkScreen({
               marginVertical: 4,
             }}
           >
-            <CryptoAvatar accountId={item.accountId} />
+            <CryptoAvatar
+              accountId={item.accountId}
+              contactId={item.accountId}
+            />
             <Text
               style={{
                 ...theme.textStyle,

@@ -138,7 +138,10 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
               setNewAccountSecret(generateAccountSecret());
             }}
           >
-            <CryptoAvatar accountId={accountId ?? newAccountId} />
+            <CryptoAvatar
+              accountId={accountId ?? newAccountId}
+              contactId={accountId ?? newAccountId}
+            />
           </Pressable>
           {!accountId && (
             <View style={{ flex: 1 }}>

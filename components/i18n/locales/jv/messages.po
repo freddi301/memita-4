@@ -13,11 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: components/screens/AccountScreen.tsx:187
+#: components/screens/AccountScreen.tsx:190
 msgid "Account ID"
 msgstr "ID Akun"
 
-#: components/screens/AccountScreen.tsx:155
+#: components/screens/AccountScreen.tsx:158
 #: components/screens/ImportAccountScreen.tsx:80
 msgid "Account name"
 msgstr "Jeneng akun"
@@ -51,7 +51,7 @@ msgstr "Bali menyang layar akun"
 msgid "Back to account selection"
 msgstr "Bali menyang pilihan akun"
 
-#: components/screens/ContactScreen.tsx:63
+#: components/screens/ContactScreen.tsx:73
 msgid "Back to direct messages"
 msgstr "Bali menyang pesan langsung"
 
@@ -75,20 +75,24 @@ msgstr "Konfirmasi ekspor"
 msgid "Confirm import"
 msgstr "Konfirmasi impor"
 
-#: components/screens/ContactScreen.tsx:151
+#: components/screens/ContactScreen.tsx:205
+msgid "Connected devices"
+msgstr "Perangkat yang terhubung"
+
+#: components/screens/ContactScreen.tsx:162
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "ID akun kontak"
 
-#: components/screens/ContactScreen.tsx:174
+#: components/screens/ContactScreen.tsx:185
 msgid "Contact name"
 msgstr "Jeneng kontak"
 
-#: components/screens/AccountScreen.tsx:200
+#: components/screens/AccountScreen.tsx:203
 msgid "Copy account id to clipboard"
 msgstr "Salin ID akun menyang clipboard"
 
-#: components/screens/AccountScreen.tsx:231
+#: components/screens/AccountScreen.tsx:234
 msgid "Copy device id to clipboard"
 msgstr "Salin ID piranti menyang clipboard"
 
@@ -100,7 +104,7 @@ msgstr "Gawe akun"
 msgid "Create article"
 msgstr "Gawe artikel"
 
-#: components/screens/ContactScreen.tsx:133
+#: components/screens/ContactScreen.tsx:143
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
@@ -134,12 +138,12 @@ msgstr "Busak"
 msgid "Delete article"
 msgstr "Busak artikel"
 
-#: components/screens/ContactScreen.tsx:84
+#: components/screens/ContactScreen.tsx:94
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "Busak kontak"
 
-#: components/screens/AccountScreen.tsx:218
+#: components/screens/AccountScreen.tsx:221
 msgid "Device ID"
 msgstr "ID Piranti"
 
@@ -147,14 +151,14 @@ msgstr "ID Piranti"
 msgid "Device Settings"
 msgstr "Setelan Piranti"
 
-#: components/screens/ContactScreen.tsx:203
+#: components/screens/ContactScreen.tsx:237
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Pesan langsung"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:98
+#: components/screens/ContactScreen.tsx:108
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -189,7 +193,7 @@ msgstr "Acara"
 msgid "Events"
 msgstr "Acara-acara"
 
-#: components/screens/AccountScreen.tsx:243
+#: components/screens/AccountScreen.tsx:246
 #: components/screens/ExportAccountScreen.tsx:49
 msgid "Export account"
 msgstr "Ekspor akun"
@@ -265,6 +269,10 @@ msgstr "Basa Indonesia"
 msgid "Invalid account secret or password"
 msgstr "Rahasia akun utawa sandi ora valid"
 
+#: components/screens/ContactScreen.tsx:224
+msgid "It takes two. Add each other as contacts to start chatting!"
+msgstr "Butuh dua orang. Tambahkan satu sama lain sebagai kontak untuk mulai mengobrol!"
+
 #: components/screens/DeviceSettingsScreen.tsx:90
 msgid "Italian"
 msgstr "Italia"
@@ -330,14 +338,18 @@ msgstr "Draf anyar"
 msgid "Next occurrence"
 msgstr "Kejadian sabanjure"
 
-#: components/screens/ProfileDeepLinkScreen.tsx:101
-#: components/screens/SelectAccountScreen.tsx:92
+#: components/screens/ProfileDeepLinkScreen.tsx:104
+#: components/screens/SelectAccountScreen.tsx:95
 msgid "No accounts on this device"
 msgstr "Ora ana akun ing piranti iki"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
 msgstr "Ora ana artikel"
+
+#: components/screens/ContactScreen.tsx:212
+msgid "No connected devices"
+msgstr "Tidak ada perangkat yang terhubung"
 
 #: components/screens/DirectConversationScreen.tsx:341
 #: components/screens/DirectMessagesScreen.tsx:96
@@ -346,7 +358,7 @@ msgstr "Ora ana artikel"
 msgid "No messages"
 msgstr "Ora ana pesan"
 
-#: components/screens/ContactScreen.tsx:167
+#: components/screens/ContactScreen.tsx:178
 msgid "Not a valid account id"
 msgstr "ID akun ora valid"
 
@@ -374,7 +386,7 @@ msgstr "Sandi"
 msgid "Paste here exported account secret"
 msgstr "Tempel ing kene rahasia akun sing diekspor"
 
-#: components/screens/ContactScreen.tsx:162
+#: components/screens/ContactScreen.tsx:173
 msgid "Paste the account id your contact shared with you"
 msgstr "Tempel ID akun sing dikirim kontak marang sampeyan"
 
@@ -399,8 +411,8 @@ msgstr "Basa Portugis"
 msgid "Previous occurrence"
 msgstr "Kejadian sadurunge"
 
-#: components/screens/AccountScreen.tsx:253
-#: components/screens/ContactScreen.tsx:213
+#: components/screens/AccountScreen.tsx:256
+#: components/screens/ContactScreen.tsx:247
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "Profil"
@@ -422,7 +434,7 @@ msgid "Russian"
 msgstr "Basa Rusia"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:133
+#: components/screens/ContactScreen.tsx:143
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
@@ -476,7 +488,7 @@ msgstr "Gawan sistem ({themeName})"
 msgid "Tamil"
 msgstr "Basa Tamil"
 
-#: components/screens/AccountScreen.tsx:148
+#: components/screens/AccountScreen.tsx:151
 msgid "Tap to change"
 msgstr "Tutul kanggo ngganti"
 
@@ -496,16 +508,16 @@ msgstr "Sing sampeyan ketik nalika ekspor"
 msgid "Theme"
 msgstr "Tema"
 
-#: components/screens/ContactScreen.tsx:179
+#: components/screens/ContactScreen.tsx:190
 msgid "This name is only visible to you"
 msgstr "Jeneng iki mung katon kanggo sampeyan"
 
-#: components/screens/AccountScreen.tsx:160
+#: components/screens/AccountScreen.tsx:163
 #: components/screens/ImportAccountScreen.tsx:86
 msgid "This name is only visible to you on this device"
 msgstr "Jeneng iki mung katon kanggo sampeyan ing piranti iki"
 
-#: components/screens/AccountScreen.tsx:147
+#: components/screens/AccountScreen.tsx:150
 msgid "This will your avatar forever, choose wisely"
 msgstr "Iki bakal dadi avatar sampeyan selawase, piliha kanthi wicaksana"
 

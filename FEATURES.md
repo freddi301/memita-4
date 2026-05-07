@@ -1,15 +1,10 @@
 # Contacts
 
-- [ ] contact online status (off by default)
-- [ ] contact network connection status
-- [ ] contact lists (this will be used for: pin converstaion, archive conversation)
 - [ ] edit history
 - [ ] text search
 - [ ] send invite to download app
-- [ ] privacy
-  - [x] block/report is simply deletion
-  - [x] both users must have each other in contact list to comunicate (contact exchange happens off band)
-- [ ] message request (we explicitly dont want this)
+- [ ] contact lists (this will be used for: pin converstaion, archive conversation)
+- [ ] contact online status (off by default)
 
 # Direct messages
 

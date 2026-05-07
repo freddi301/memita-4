@@ -37,7 +37,7 @@ export function ExportAccountScreen({ accountId }: { accountId: AccountId }) {
           hideLabel
           label={t`Back to account screen`}
         />
-        <CryptoAvatar accountId={accountId} />
+        <CryptoAvatar accountId={accountId} contactId={accountId} />
         <Text
           style={{
             ...theme.textStyle,

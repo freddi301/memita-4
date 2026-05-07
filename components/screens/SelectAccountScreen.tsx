@@ -68,7 +68,10 @@ export function SelectAccountScreen() {
               marginVertical: 4,
             }}
           >
-            <CryptoAvatar accountId={item.accountId} />
+            <CryptoAvatar
+              accountId={item.accountId}
+              contactId={item.accountId}
+            />
             <Text
               style={{
                 ...theme.textStyle,

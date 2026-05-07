@@ -47,7 +47,7 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
                 flexGrow: 1,
               }}
             >
-              <CryptoAvatar accountId={item.contactId} />
+              <CryptoAvatar accountId={accountId} contactId={item.contactId} />
               <View style={{ flexGrow: 1 }}>
                 <View style={{ flexDirection: "row" }}>
                   <Text style={{ ...theme.linkTextStyle, flexGrow: 1 }}>

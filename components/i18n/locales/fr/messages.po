@@ -13,11 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: components/screens/AccountScreen.tsx:187
+#: components/screens/AccountScreen.tsx:190
 msgid "Account ID"
 msgstr "ID du compte"
 
-#: components/screens/AccountScreen.tsx:155
+#: components/screens/AccountScreen.tsx:158
 #: components/screens/ImportAccountScreen.tsx:80
 msgid "Account name"
 msgstr "Nom du compte"
@@ -51,7 +51,7 @@ msgstr "Retour à l'écran du compte"
 msgid "Back to account selection"
 msgstr "Retour à la sélection du compte"
 
-#: components/screens/ContactScreen.tsx:63
+#: components/screens/ContactScreen.tsx:73
 msgid "Back to direct messages"
 msgstr "Retour aux messages directs"
 
@@ -75,20 +75,24 @@ msgstr "Confirmer l'exportation"
 msgid "Confirm import"
 msgstr "Confirmer l'importation"
 
-#: components/screens/ContactScreen.tsx:151
+#: components/screens/ContactScreen.tsx:205
+msgid "Connected devices"
+msgstr "Appareils connectés"
+
+#: components/screens/ContactScreen.tsx:162
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "ID du compte du contact"
 
-#: components/screens/ContactScreen.tsx:174
+#: components/screens/ContactScreen.tsx:185
 msgid "Contact name"
 msgstr "Nom du contact"
 
-#: components/screens/AccountScreen.tsx:200
+#: components/screens/AccountScreen.tsx:203
 msgid "Copy account id to clipboard"
 msgstr "Copier l'ID du compte dans le presse-papiers"
 
-#: components/screens/AccountScreen.tsx:231
+#: components/screens/AccountScreen.tsx:234
 msgid "Copy device id to clipboard"
 msgstr "Copier l'ID de l'appareil dans le presse-papiers"
 
@@ -100,7 +104,7 @@ msgstr "Créer un compte"
 msgid "Create article"
 msgstr "Créer un article"
 
-#: components/screens/ContactScreen.tsx:133
+#: components/screens/ContactScreen.tsx:143
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
@@ -134,12 +138,12 @@ msgstr "Supprimer"
 msgid "Delete article"
 msgstr "Supprimer l'article"
 
-#: components/screens/ContactScreen.tsx:84
+#: components/screens/ContactScreen.tsx:94
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "Supprimer le contact"
 
-#: components/screens/AccountScreen.tsx:218
+#: components/screens/AccountScreen.tsx:221
 msgid "Device ID"
 msgstr "ID de l'appareil"
 
@@ -147,14 +151,14 @@ msgstr "ID de l'appareil"
 msgid "Device Settings"
 msgstr "Paramètres de l'appareil"
 
-#: components/screens/ContactScreen.tsx:203
+#: components/screens/ContactScreen.tsx:237
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Messages directs"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:98
+#: components/screens/ContactScreen.tsx:108
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -189,7 +193,7 @@ msgstr "Événement"
 msgid "Events"
 msgstr "Événements"
 
-#: components/screens/AccountScreen.tsx:243
+#: components/screens/AccountScreen.tsx:246
 #: components/screens/ExportAccountScreen.tsx:49
 msgid "Export account"
 msgstr "Exporter le compte"
@@ -265,6 +269,10 @@ msgstr "Indonésien"
 msgid "Invalid account secret or password"
 msgstr "Secret de compte ou mot de passe invalide"
 
+#: components/screens/ContactScreen.tsx:224
+msgid "It takes two. Add each other as contacts to start chatting!"
+msgstr "Il faut deux personnes. Ajoutez-vous mutuellement comme contacts pour commencer à discuter !"
+
 #: components/screens/DeviceSettingsScreen.tsx:90
 msgid "Italian"
 msgstr "Italien"
@@ -330,14 +338,18 @@ msgstr "Nouveau brouillon"
 msgid "Next occurrence"
 msgstr "Occurrence suivante"
 
-#: components/screens/ProfileDeepLinkScreen.tsx:101
-#: components/screens/SelectAccountScreen.tsx:92
+#: components/screens/ProfileDeepLinkScreen.tsx:104
+#: components/screens/SelectAccountScreen.tsx:95
 msgid "No accounts on this device"
 msgstr "Aucun compte sur cet appareil"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
 msgstr "Aucun article"
+
+#: components/screens/ContactScreen.tsx:212
+msgid "No connected devices"
+msgstr "Aucun appareil connecté"
 
 #: components/screens/DirectConversationScreen.tsx:341
 #: components/screens/DirectMessagesScreen.tsx:96
@@ -346,7 +358,7 @@ msgstr "Aucun article"
 msgid "No messages"
 msgstr "Aucun message"
 
-#: components/screens/ContactScreen.tsx:167
+#: components/screens/ContactScreen.tsx:178
 msgid "Not a valid account id"
 msgstr "ID de compte invalide"
 
@@ -374,7 +386,7 @@ msgstr "Mot de passe"
 msgid "Paste here exported account secret"
 msgstr "Collez ici le secret du compte exporté"
 
-#: components/screens/ContactScreen.tsx:162
+#: components/screens/ContactScreen.tsx:173
 msgid "Paste the account id your contact shared with you"
 msgstr "Collez l'ID du compte que votre contact a partagé avec vous"
 
@@ -399,8 +411,8 @@ msgstr "Portugais"
 msgid "Previous occurrence"
 msgstr "Occurrence précédente"
 
-#: components/screens/AccountScreen.tsx:253
-#: components/screens/ContactScreen.tsx:213
+#: components/screens/AccountScreen.tsx:256
+#: components/screens/ContactScreen.tsx:247
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "Profil"
@@ -422,7 +434,7 @@ msgid "Russian"
 msgstr "Russe"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:133
+#: components/screens/ContactScreen.tsx:143
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
@@ -476,7 +488,7 @@ msgstr "Défaut du système ({themeName})"
 msgid "Tamil"
 msgstr "Tamoul"
 
-#: components/screens/AccountScreen.tsx:148
+#: components/screens/AccountScreen.tsx:151
 msgid "Tap to change"
 msgstr "Appuyer pour modifier"
 
@@ -496,16 +508,16 @@ msgstr "Celui que vous avez saisi lors de l'exportation"
 msgid "Theme"
 msgstr "Thème"
 
-#: components/screens/ContactScreen.tsx:179
+#: components/screens/ContactScreen.tsx:190
 msgid "This name is only visible to you"
 msgstr "Ce nom n'est visible que par vous"
 
-#: components/screens/AccountScreen.tsx:160
+#: components/screens/AccountScreen.tsx:163
 #: components/screens/ImportAccountScreen.tsx:86
 msgid "This name is only visible to you on this device"
 msgstr "Ce nom n'est visible que par vous sur cet appareil"
 
-#: components/screens/AccountScreen.tsx:147
+#: components/screens/AccountScreen.tsx:150
 msgid "This will your avatar forever, choose wisely"
 msgstr "Ceci sera votre avatar pour toujours, choisissez judicieusement"
 

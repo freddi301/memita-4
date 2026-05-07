@@ -3,6 +3,7 @@ import {
   useMutation,
   useQueryClient,
   useSuspenseQuery,
+  UseSuspenseQueryOptions,
 } from "@tanstack/react-query";
 import { use } from "react";
 import { useCurrentScreenForceSuspend } from "../Routing";
@@ -23,12 +24,14 @@ export function createMemitaQueryClient() {
 export function useMemitaQuery<Params, Result>(
   queryFactory: MemitaQuery<Params, Result>,
   params: Params,
+  options?: Omit<UseSuspenseQueryOptions<Result>, "queryKey" | "queryFn">,
 ): Result {
   const feApi = use(FeApiContext);
   const queryClient = useQueryClient();
   const forceSuspend = useCurrentScreenForceSuspend();
   return useSuspenseQuery(
     {
+      ...options,
       queryKey: [queryFactory.name, params, forceSuspend],
       async queryFn(): Promise<Result> {
         // await new Promise((resolve) => setTimeout(resolve, 500));

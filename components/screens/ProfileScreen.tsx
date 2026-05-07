@@ -79,7 +79,7 @@ export function ProfileScreen({
       <View
         style={{ flexDirection: "row", alignItems: "center", paddingLeft: 16 }}
       >
-        <CryptoAvatar accountId={contactId} />
+        <CryptoAvatar accountId={accountId} contactId={contactId} />
         <Text
           style={{
             ...theme.textStyle,

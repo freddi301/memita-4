@@ -13,11 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: components/screens/AccountScreen.tsx:187
+#: components/screens/AccountScreen.tsx:190
 msgid "Account ID"
 msgstr "รหัสบัญชี"
 
-#: components/screens/AccountScreen.tsx:155
+#: components/screens/AccountScreen.tsx:158
 #: components/screens/ImportAccountScreen.tsx:80
 msgid "Account name"
 msgstr "ชื่อบัญชี"
@@ -51,7 +51,7 @@ msgstr "กลับไปหน้าบัญชี"
 msgid "Back to account selection"
 msgstr "กลับไปเลือกบัญชี"
 
-#: components/screens/ContactScreen.tsx:63
+#: components/screens/ContactScreen.tsx:73
 msgid "Back to direct messages"
 msgstr "กลับไปข้อความโดยตรง"
 
@@ -75,20 +75,24 @@ msgstr "ยืนยันการส่งออก"
 msgid "Confirm import"
 msgstr "ยืนยันการนำเข้า"
 
-#: components/screens/ContactScreen.tsx:151
+#: components/screens/ContactScreen.tsx:205
+msgid "Connected devices"
+msgstr "อุปกรณ์ที่เชื่อมต่อ"
+
+#: components/screens/ContactScreen.tsx:162
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "รหัสบัญชีผู้ติดต่อ"
 
-#: components/screens/ContactScreen.tsx:174
+#: components/screens/ContactScreen.tsx:185
 msgid "Contact name"
 msgstr "ชื่อผู้ติดต่อ"
 
-#: components/screens/AccountScreen.tsx:200
+#: components/screens/AccountScreen.tsx:203
 msgid "Copy account id to clipboard"
 msgstr "คัดลอกรหัสบัญชีไปยังคลิปบอร์ด"
 
-#: components/screens/AccountScreen.tsx:231
+#: components/screens/AccountScreen.tsx:234
 msgid "Copy device id to clipboard"
 msgstr "คัดลอกรหัสอุปกรณ์ไปยังคลิปบอร์ด"
 
@@ -100,7 +104,7 @@ msgstr "สร้างบัญชี"
 msgid "Create article"
 msgstr "สร้างบทความ"
 
-#: components/screens/ContactScreen.tsx:133
+#: components/screens/ContactScreen.tsx:143
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
@@ -134,12 +138,12 @@ msgstr "ลบ"
 msgid "Delete article"
 msgstr "ลบบทความ"
 
-#: components/screens/ContactScreen.tsx:84
+#: components/screens/ContactScreen.tsx:94
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "ลบผู้ติดต่อ"
 
-#: components/screens/AccountScreen.tsx:218
+#: components/screens/AccountScreen.tsx:221
 msgid "Device ID"
 msgstr "รหัสอุปกรณ์"
 
@@ -147,14 +151,14 @@ msgstr "รหัสอุปกรณ์"
 msgid "Device Settings"
 msgstr "การตั้งค่าอุปกรณ์"
 
-#: components/screens/ContactScreen.tsx:203
+#: components/screens/ContactScreen.tsx:237
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "ข้อความโดยตรง"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:98
+#: components/screens/ContactScreen.tsx:108
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -189,7 +193,7 @@ msgstr "กิจกรรม"
 msgid "Events"
 msgstr "กิจกรรม"
 
-#: components/screens/AccountScreen.tsx:243
+#: components/screens/AccountScreen.tsx:246
 #: components/screens/ExportAccountScreen.tsx:49
 msgid "Export account"
 msgstr "ส่งออกบัญชี"
@@ -265,6 +269,10 @@ msgstr "ภาษาอินโดนีเซีย"
 msgid "Invalid account secret or password"
 msgstr "ความลับบัญชีหรือรหัสผ่านไม่ถูกต้อง"
 
+#: components/screens/ContactScreen.tsx:224
+msgid "It takes two. Add each other as contacts to start chatting!"
+msgstr "ต้องใช้สองคน เพิ่มกันเป็นเพื่อนเพื่อเริ่มแชท!"
+
 #: components/screens/DeviceSettingsScreen.tsx:90
 msgid "Italian"
 msgstr "ภาษาอิตาลี"
@@ -330,14 +338,18 @@ msgstr "ร่างใหม่"
 msgid "Next occurrence"
 msgstr "การเกิดขึ้นครั้งถัดไป"
 
-#: components/screens/ProfileDeepLinkScreen.tsx:101
-#: components/screens/SelectAccountScreen.tsx:92
+#: components/screens/ProfileDeepLinkScreen.tsx:104
+#: components/screens/SelectAccountScreen.tsx:95
 msgid "No accounts on this device"
 msgstr "ไม่มีบัญชีในอุปกรณ์นี้"
 
 #: components/screens/ArticlesScreen.tsx:86
 msgid "No articles"
 msgstr "ไม่มีบทความ"
+
+#: components/screens/ContactScreen.tsx:212
+msgid "No connected devices"
+msgstr "ไม่มีอุปกรณ์ที่เชื่อมต่อ"
 
 #: components/screens/DirectConversationScreen.tsx:341
 #: components/screens/DirectMessagesScreen.tsx:96
@@ -346,7 +358,7 @@ msgstr "ไม่มีบทความ"
 msgid "No messages"
 msgstr "ไม่มีข้อความ"
 
-#: components/screens/ContactScreen.tsx:167
+#: components/screens/ContactScreen.tsx:178
 msgid "Not a valid account id"
 msgstr "รหัสบัญชีไม่ถูกต้อง"
 
@@ -374,7 +386,7 @@ msgstr "รหัสผ่าน"
 msgid "Paste here exported account secret"
 msgstr "วางความลับบัญชีที่ส่งออกที่นี่"
 
-#: components/screens/ContactScreen.tsx:162
+#: components/screens/ContactScreen.tsx:173
 msgid "Paste the account id your contact shared with you"
 msgstr "วางรหัสบัญชีที่ผู้ติดต่อแบ่งปันกับคุณ"
 
@@ -399,8 +411,8 @@ msgstr "ภาษาโปรตุเกส"
 msgid "Previous occurrence"
 msgstr "การเกิดขึ้นครั้งก่อน"
 
-#: components/screens/AccountScreen.tsx:253
-#: components/screens/ContactScreen.tsx:213
+#: components/screens/AccountScreen.tsx:256
+#: components/screens/ContactScreen.tsx:247
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "โปรไฟล์"
@@ -422,7 +434,7 @@ msgid "Russian"
 msgstr "ภาษารัสเซีย"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:133
+#: components/screens/ContactScreen.tsx:143
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
@@ -476,7 +488,7 @@ msgstr "ค่าเริ่มต้นระบบ ({themeName})"
 msgid "Tamil"
 msgstr "ภาษาทมิฬ"
 
-#: components/screens/AccountScreen.tsx:148
+#: components/screens/AccountScreen.tsx:151
 msgid "Tap to change"
 msgstr "แตะเพื่อเปลี่ยน"
 
@@ -496,16 +508,16 @@ msgstr "ที่คุณพิมพ์ระหว่างการส่ง
 msgid "Theme"
 msgstr "ธีม"
 
-#: components/screens/ContactScreen.tsx:179
+#: components/screens/ContactScreen.tsx:190
 msgid "This name is only visible to you"
 msgstr "ชื่อนี้มองเห็นได้เฉพาะคุณเท่านั้น"
 
-#: components/screens/AccountScreen.tsx:160
+#: components/screens/AccountScreen.tsx:163
 #: components/screens/ImportAccountScreen.tsx:86
 msgid "This name is only visible to you on this device"
 msgstr "ชื่อนี้มองเห็นได้เฉพาะคุณในอุปกรณ์นี้เท่านั้น"
 
-#: components/screens/AccountScreen.tsx:147
+#: components/screens/AccountScreen.tsx:150
 msgid "This will your avatar forever, choose wisely"
 msgstr "นี่จะเป็นอวตารของคุณตลอดไป เลือกอย่างชาญฉลาด"
 

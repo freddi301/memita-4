@@ -3,7 +3,11 @@ import { Fragment, useEffect, useMemo, useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import { AccountId, accountIdFromString } from "../cryptography/cryptography";
-import { getContact, updateContact } from "../queries/contacts";
+import {
+  getContact,
+  getContactConnectedDevices,
+  updateContact,
+} from "../queries/contacts";
 import { ScreenLink } from "../Routing";
 import {
   useMemitaMutation,
@@ -51,6 +55,12 @@ export function ContactScreen({
 
   const canSave =
     (contactId ? true : validContactIdInput) && nameInput !== nameOriginal;
+
+  const connectedDevices = useMemitaQuery(
+    getContactConnectedDevices,
+    { contactId: contactId },
+    { refetchInterval: 1000 },
+  );
 
   return (
     <Fragment>
@@ -142,7 +152,8 @@ export function ContactScreen({
       >
         <View style={{ paddingHorizontal: 16, paddingVertical: 8 }}>
           <CryptoAvatar
-            accountId={
+            accountId={accountId}
+            contactId={
               contactId ?? validContactIdInput ?? (contactIdInput as AccountId)
             }
           />
@@ -189,6 +200,29 @@ export function ContactScreen({
             </Text>
           ) : null}
         </View>
+        {contactId && (
+          <View style={{ paddingHorizontal: 16, paddingVertical: 8 }}>
+            <Text style={theme.secondaryTextStyle}>{t`Connected devices`}</Text>
+            {connectedDevices.map((deviceId) => (
+              <Text key={deviceId} style={theme.textStyle}>
+                {deviceId}
+              </Text>
+            ))}
+            {connectedDevices.length === 0 && (
+              <Text style={theme.textStyle}>{t`No connected devices`}</Text>
+            )}
+          </View>
+        )}
+        <Text
+          style={{
+            ...theme.textStyle,
+            paddingHorizontal: 16,
+            paddingVertical: 8,
+            color: "orange",
+          }}
+        >
+          {t`It takes two. Add each other as contacts to start chatting!`}
+        </Text>
       </ScrollView>
       {contactId !== undefined && (
         <ScreenLink

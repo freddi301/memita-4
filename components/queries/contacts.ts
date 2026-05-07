@@ -1,5 +1,9 @@
 import * as z from "zod";
-import { AccountId, AccountIdSchema } from "../cryptography/cryptography";
+import {
+  AccountId,
+  AccountIdSchema,
+  DeviceId,
+} from "../cryptography/cryptography";
 import { MemitaMutation, MemitaQuery } from "../store/feApi";
 import { groupBy, maxBy } from "./helpers";
 import { DataItem } from "./Queries";
@@ -86,8 +90,12 @@ export const getContact: MemitaQuery<
     return contactLatest({ accountId: accountId!, contactId: contactId! })(all);
   };
 
-const isContactConnected: MemitaQuery<{ contactId: AccountId }, boolean> =
+export const getContactConnectedDevices: MemitaQuery<
+  { contactId: AccountId | undefined },
+  Array<DeviceId>
+> =
   ({ contactId }) =>
   async ({ store }) => {
-    return await store.isContactConnected(contactId);
+    if (!contactId) return [];
+    return await store.getContactConnectedDevices(contactId);
   };
