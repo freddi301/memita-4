@@ -22,9 +22,21 @@ msgstr "账户 ID"
 msgid "Account name"
 msgstr "账户名称"
 
-#: components/screens/ProfileScreen.tsx:235
+#: components/screens/ProfileScreen.tsx:244
 msgid "Account settings"
 msgstr "账户设置"
+
+#: components/screens/ContactListScreen.tsx:234
+msgid "Add contact to list"
+msgstr "将联系人添加到列表"
+
+#: components/screens/ContactScreen.tsx:329
+msgid "Add to contact list"
+msgstr "添加到联系人列表"
+
+#: components/screens/ContactListsScreen.tsx:39
+msgid "All messages"
+msgstr "所有消息"
 
 #: components/screens/ExportAccountScreen.tsx:87
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
@@ -34,7 +46,7 @@ msgstr "任何能够导入密钥的人将永久拥有对该账户的完全访问
 msgid "Arabic"
 msgstr "阿拉伯语"
 
-#: components/ui/MessageCompose.tsx:102
+#: components/ui/MessageCompose.tsx:107
 msgid "Attach file"
 msgstr "附加文件"
 
@@ -55,7 +67,11 @@ msgstr "返回账户选择"
 msgid "Back to contact"
 msgstr "返回联系"
 
-#: components/screens/ContactScreen.tsx:74
+#: components/screens/ContactListScreen.tsx:84
+msgid "Back to contact lists"
+msgstr "返回联系人列表"
+
+#: components/screens/ContactScreen.tsx:104
 msgid "Back to direct messages"
 msgstr "返回私信"
 
@@ -68,7 +84,7 @@ msgid "Biography"
 msgstr "个人简介"
 
 #: components/screens/ContactChangesHistoryScreen.tsx:48
-#: components/screens/ContactScreen.tsx:88
+#: components/screens/ContactScreen.tsx:118
 msgid "Changes history"
 msgstr "修改历史"
 
@@ -84,17 +100,25 @@ msgstr "确认导出"
 msgid "Confirm import"
 msgstr "确认导入"
 
-#: components/screens/ContactScreen.tsx:219
+#: components/screens/ContactScreen.tsx:249
 msgid "Connected devices"
 msgstr "已连接的设备"
 
-#: components/screens/ContactScreen.tsx:176
+#: components/screens/ContactScreen.tsx:206
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "联系人账户 ID"
 
+#: components/screens/ContactListScreen.tsx:156
+msgid "Contact list name"
+msgstr "联系人列表名称"
+
+#: components/screens/DirectMessagesScreen.tsx:125
+msgid "Contact lists"
+msgstr "联系人列表"
+
 #: components/screens/ContactChangesHistoryScreen.tsx:70
-#: components/screens/ContactScreen.tsx:199
+#: components/screens/ContactScreen.tsx:229
 msgid "Contact name"
 msgstr "联系人姓名"
 
@@ -114,11 +138,16 @@ msgstr "创建账户"
 msgid "Create article"
 msgstr "创建文章"
 
-#: components/screens/ContactScreen.tsx:157
+#: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
 msgstr "创建联系人"
+
+#: components/screens/ContactListScreen.tsx:152
+#: components/screens/ContactListsScreen.tsx:53
+msgid "Create contact list"
+msgstr "创建联系人列表"
 
 #: components/screens/SelectAccountScreen.tsx:56
 msgid "Create new account"
@@ -128,7 +157,7 @@ msgstr "创建新账户"
 msgid "Create new article"
 msgstr "创建新文章"
 
-#: components/screens/DirectMessagesScreen.tsx:54
+#: components/screens/DirectMessagesScreen.tsx:86
 msgid "Create new contact"
 msgstr "创建新联系人"
 
@@ -140,7 +169,7 @@ msgstr "创建新群组"
 msgid "Dark"
 msgstr "深色"
 
-#: components/ui/MessageCompose.tsx:205
+#: components/ui/MessageCompose.tsx:210
 msgid "Delete"
 msgstr "删除"
 
@@ -148,10 +177,14 @@ msgstr "删除"
 msgid "Delete article"
 msgstr "删除文章"
 
-#: components/screens/ContactScreen.tsx:108
+#: components/screens/ContactScreen.tsx:138
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "删除联系人"
+
+#: components/screens/ContactListScreen.tsx:104
+msgid "Delete contact list"
+msgstr "删除联系人列表"
 
 #: components/screens/AccountScreen.tsx:221
 msgid "Device ID"
@@ -161,14 +194,15 @@ msgstr "设备 ID"
 msgid "Device Settings"
 msgstr "设备设置"
 
-#: components/screens/ContactScreen.tsx:251
+#: components/screens/ContactScreen.tsx:355
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "私信"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:122
+#: components/screens/ContactListScreen.tsx:118
+#: components/screens/ContactScreen.tsx:152
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -179,7 +213,7 @@ msgstr "放弃更改"
 msgid "Edit article"
 msgstr "编辑文章"
 
-#: components/screens/ProfileScreen.tsx:244
+#: components/screens/ProfileScreen.tsx:239
 msgid "Edit contact"
 msgstr "编辑联系人"
 
@@ -194,6 +228,10 @@ msgstr "编辑时间"
 #: components/screens/DeviceSettingsScreen.tsx:52
 msgid "English"
 msgstr "英语"
+
+#: components/screens/ContactListScreen.tsx:161
+msgid "Enter a name for this contact list"
+msgstr "请输入此联系人列表的名称"
 
 #: components/screens/EditArticleScreen.tsx:138
 msgid "Event"
@@ -254,14 +292,6 @@ msgstr "群组消息"
 msgid "Group name"
 msgstr "群组名称"
 
-#: components/screens/DeviceSettingsScreen.tsx:94
-msgid "Gujarati"
-msgstr "古吉拉特语"
-
-#: components/screens/DeviceSettingsScreen.tsx:96
-msgid "Hausa"
-msgstr "豪萨语"
-
 #: components/screens/DeviceSettingsScreen.tsx:58
 msgid "Hindi"
 msgstr "印地语"
@@ -271,15 +301,11 @@ msgstr "印地语"
 msgid "Import account"
 msgstr "导入账户"
 
-#: components/screens/DeviceSettingsScreen.tsx:104
-msgid "Indonesian"
-msgstr "印度尼西亚语"
-
 #: components/screens/ImportAccountScreen.tsx:61
 msgid "Invalid account secret or password"
 msgstr "账户密钥或密码无效"
 
-#: components/screens/ContactScreen.tsx:238
+#: components/screens/ContactScreen.tsx:268
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "需要双方共同参与。请互相添加为联系人，即可开始聊天！"
 
@@ -294,10 +320,6 @@ msgstr "日语"
 #: components/screens/DeviceSettingsScreen.tsx:88
 msgid "Javanese"
 msgstr "爪哇语"
-
-#: components/screens/DeviceSettingsScreen.tsx:98
-msgid "Kannada"
-msgstr "卡纳达语"
 
 #: components/screens/DeviceSettingsScreen.tsx:76
 msgid "Korean"
@@ -323,15 +345,23 @@ msgstr "普通话"
 msgid "Marathi"
 msgstr "马拉地语"
 
-#: components/screens/DirectConversationScreen.tsx:420
+#: components/screens/DirectConversationScreen.tsx:430
 msgid "Mark as read"
 msgstr "标记为已读"
+
+#: components/screens/ContactScreen.tsx:284
+msgid "Member of contact lists"
+msgstr "在联系人列表中的成员"
+
+#: components/screens/ContactListScreen.tsx:186
+msgid "Members"
+msgstr "成员"
 
 #: components/screens/SelectAccountScreen.tsx:43
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:189
+#: components/ui/MessageCompose.tsx:194
 msgid "Modify message"
 msgstr "修改消息"
 
@@ -339,12 +369,12 @@ msgstr "修改消息"
 msgid "New article"
 msgstr "新文章"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:140
 msgid "New draft"
 msgstr "新草稿"
 
-#: components/screens/DirectConversationScreen.tsx:449
-#: components/screens/DirectConversationScreen.tsx:533
+#: components/screens/DirectConversationScreen.tsx:459
+#: components/screens/DirectConversationScreen.tsx:543
 msgid "Next occurrence"
 msgstr "下一个匹配"
 
@@ -361,22 +391,34 @@ msgstr "没有文章"
 msgid "No changes yet"
 msgstr "目前还没有更改"
 
-#: components/screens/ContactScreen.tsx:226
+#: components/screens/ContactScreen.tsx:256
 msgid "No connected devices"
 msgstr "未连接任何设备。"
 
-#: components/screens/DirectConversationScreen.tsx:341
-#: components/screens/DirectMessagesScreen.tsx:158
+#: components/screens/ContactListsScreen.tsx:136
+#: components/screens/ContactScreen.tsx:338
+msgid "No contact lists"
+msgstr "无联系人列表"
+
+#: components/screens/ContactListScreen.tsx:250
+msgid "No contacts"
+msgstr "未添加联系人"
+
+#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
 msgstr "没有消息"
 
-#: components/screens/DirectMessagesScreen.tsx:154
+#: components/screens/ContactListScreen.tsx:250
+#: components/screens/ContactListsScreen.tsx:126
+#: components/screens/ContactScreen.tsx:337
+#: components/screens/DirectMessagesScreen.tsx:213
 msgid "No results found"
 msgstr "未找到结果"
 
-#: components/screens/ContactScreen.tsx:192
+#: components/screens/ContactScreen.tsx:222
 msgid "Not a valid account id"
 msgstr "账户 ID 无效"
 
@@ -404,33 +446,25 @@ msgstr "密码"
 msgid "Paste here exported account secret"
 msgstr "在此粘贴导出的账户密钥"
 
-#: components/screens/ContactScreen.tsx:187
+#: components/screens/ContactScreen.tsx:217
 msgid "Paste the account id your contact shared with you"
 msgstr "粘贴联系人与您共享的账户 ID"
-
-#: components/screens/DeviceSettingsScreen.tsx:100
-msgid "Persian"
-msgstr "波斯语"
 
 #: components/ui/BottomTabNavigation.tsx:54
 msgid "Places"
 msgstr "地点"
 
-#: components/screens/DeviceSettingsScreen.tsx:102
-msgid "Polish"
-msgstr "波兰语"
-
 #: components/screens/DeviceSettingsScreen.tsx:62
 msgid "Portuguese"
 msgstr "葡萄牙语"
 
-#: components/screens/DirectConversationScreen.tsx:385
-#: components/screens/DirectConversationScreen.tsx:507
+#: components/screens/DirectConversationScreen.tsx:395
+#: components/screens/DirectConversationScreen.tsx:517
 msgid "Previous occurrence"
 msgstr "上一个匹配"
 
 #: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:261
+#: components/screens/ContactScreen.tsx:365
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "个人资料"
@@ -439,7 +473,7 @@ msgstr "个人资料"
 msgid "Profile ID copied to clipboard"
 msgstr "个人资料 ID 已复制到剪贴板"
 
-#: components/ui/MessageCompose.tsx:65
+#: components/ui/MessageCompose.tsx:70
 msgid "Remove"
 msgstr "移除"
 
@@ -447,31 +481,47 @@ msgstr "移除"
 msgid "Remove account from this device"
 msgstr "从此设备移除账户"
 
+#: components/screens/ContactListScreen.tsx:233
+msgid "Remove contact from list"
+msgstr "从联系人列表中移除"
+
+#: components/screens/ContactScreen.tsx:328
+msgid "Remove from contact list"
+msgstr "从联系人列表中移除"
+
 #: components/screens/DeviceSettingsScreen.tsx:64
 msgid "Russian"
 msgstr "俄语"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:157
+#: components/screens/ContactListScreen.tsx:152
+#: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
 msgstr "保存更改"
 
-#: components/ui/MessageCompose.tsx:151
+#: components/ui/MessageCompose.tsx:156
 msgid "Save draft"
 msgstr "保存草稿"
 
-#: components/screens/DirectConversationScreen.tsx:362
-#: components/screens/DirectMessagesScreen.tsx:80
+#: components/screens/ContactListsScreen.tsx:79
+#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "搜索"
 
-#: components/screens/DirectMessagesScreen.tsx:48
+#: components/screens/ContactListsScreen.tsx:47
+#: components/screens/ContactScreen.tsx:290
+msgid "Search contact lists"
+msgstr "搜索联系人列表"
+
+#: components/screens/ContactListScreen.tsx:191
+#: components/screens/DirectMessagesScreen.tsx:80
 msgid "Search contacts"
 msgstr "搜索联系人"
 
-#: components/ui/MessageCompose.tsx:169
+#: components/ui/MessageCompose.tsx:174
 msgid "Send message"
 msgstr "发送消息"
 
@@ -495,13 +545,10 @@ msgstr "显示二维码"
 msgid "Spanish"
 msgstr "西班牙语"
 
-#: components/screens/DirectMessagesScreen.tsx:67
+#: components/screens/ContactListsScreen.tsx:66
+#: components/screens/DirectMessagesScreen.tsx:99
 msgid "Stop searching"
 msgstr "停止搜索"
-
-#: components/screens/DeviceSettingsScreen.tsx:106
-msgid "Swahili"
-msgstr "斯瓦希里语"
 
 #: components/screens/DeviceSettingsScreen.tsx:114
 msgid "System default ({languageName})"
@@ -523,10 +570,6 @@ msgstr "点击更改"
 msgid "Telugu"
 msgstr "泰卢固语"
 
-#: components/screens/DeviceSettingsScreen.tsx:92
-msgid "Thai"
-msgstr "泰语"
-
 #: components/screens/ImportAccountScreen.tsx:100
 msgid "The one you typed in during export"
 msgstr "您在导出时输入的密码"
@@ -535,7 +578,7 @@ msgstr "您在导出时输入的密码"
 msgid "Theme"
 msgstr "主题"
 
-#: components/screens/ContactScreen.tsx:204
+#: components/screens/ContactScreen.tsx:234
 msgid "This name is only visible to you"
 msgstr "此名称仅对您可见"
 
@@ -552,7 +595,7 @@ msgstr "这将永久成为您的头像，请谨慎选择"
 msgid "Turkish"
 msgstr "土耳其语"
 
-#: components/screens/DirectConversationScreen.tsx:470
+#: components/screens/DirectConversationScreen.tsx:480
 msgid "Unread messages"
 msgstr "未读消息"
 
@@ -576,7 +619,7 @@ msgstr "越南语"
 msgid "Will be needed to import later"
 msgstr "稍后导入时将需要此密码"
 
-#: components/ui/MessageCompose.tsx:107
+#: components/ui/MessageCompose.tsx:112
 msgid "Write a message"
 msgstr "写一条消息"
 

@@ -1,5 +1,5 @@
 review features secion, normalize items -> transform into tests
-setup electron forge build
+remove onLongPress on messages to edit
 put hardcoced colors into theme
 use rn lucide icons
 on screenLink, web hover, mobile longpress show tooltip with label

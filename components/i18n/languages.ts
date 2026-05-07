@@ -19,16 +19,14 @@ export const languagesDict = {
   ur: "Urdu",
   jv: "Javanese",
   it: "Italian",
-  th: "Thai",
-  gu: "Gujarati",
-  ha: "Hausa",
-  kn: "Kannada",
-  fa: "Persian",
-  pl: "Polish",
-  id: "Indonesian",
-  sw: "Swahili",
-  // till here languages were ranked by number of speakers
-  sk: "Slovak",
+  // th: "Thai",
+  // gu: "Gujarati",
+  // ha: "Hausa",
+  // kn: "Kannada",
+  // fa: "Persian",
+  // pl: "Polish",
+  // id: "Indonesian",
+  // sw: "Swahili",
 };
 
 export const languages = Object.keys(languagesDict) as Array<

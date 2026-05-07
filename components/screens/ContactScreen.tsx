@@ -1,8 +1,12 @@
 import { useLingui } from "@lingui/react/macro";
 import { Fragment, useEffect, useMemo, useState } from "react";
-import { ScrollView, Text, TextInput, View } from "react-native";
+import { FlatList, ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import { AccountId, accountIdFromString } from "../cryptography/cryptography";
+import {
+  getContactListsForContact,
+  updateContactListMembership,
+} from "../queries/contactList";
 import {
   getContact,
   getContactConnectedDevices,
@@ -43,6 +47,7 @@ export function ContactScreen({
   const [contactIdInput, setContactIdInput] = useState(
     openedFromDeepLinkWithContactId ?? "",
   );
+  // TODO fix to accept deeplink
   const validContactIdInput = useMemo(
     () =>
       openedFromDeepLinkWithContactId ?? accountIdFromString(contactIdInput),
@@ -61,6 +66,31 @@ export function ContactScreen({
     getContactConnectedDevices,
     { contactId: contactId },
     { refetchInterval: 1000 },
+  );
+  const contactLists = useMemitaQuery(getContactListsForContact, {
+    accountId,
+    contactId,
+  });
+  const updateContactListMember = useMemitaMutation(
+    updateContactListMembership,
+  );
+  const [contactListSearchText, setContactListSearchText] = useState("");
+  const normalizedContactListSearchText = contactListSearchText
+    .trim()
+    .toLowerCase();
+  const visibleContactLists = useMemo(() => {
+    if (normalizedContactListSearchText) {
+      return contactLists.filter((item) =>
+        item.name.toLowerCase().includes(normalizedContactListSearchText),
+      );
+    }
+    const memberLists = contactLists.filter((item) => item.isMember);
+    const nonMemberLists = contactLists.filter((item) => !item.isMember);
+    return [...memberLists, ...nonMemberLists];
+  }, [contactLists, normalizedContactListSearchText]);
+  const memberContactListsCount = useMemo(
+    () => contactLists.filter((item) => item.isMember).length,
+    [contactLists],
   );
 
   return (
@@ -237,6 +267,80 @@ export function ContactScreen({
         >
           {t`It takes two. Add each other as contacts to start chatting!`}
         </Text>
+        {contactId && (
+          <Fragment>
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 16 }}
+            >
+              <View
+                style={{
+                  paddingHorizontal: 16,
+                  paddingVertical: 8,
+                  gap: 4,
+                  flexGrow: 1,
+                }}
+              >
+                <Text style={theme.secondaryTextStyle}>
+                  {t`Member of contact lists`}
+                </Text>
+                <TextInput
+                  value={contactListSearchText}
+                  onChangeText={setContactListSearchText}
+                  style={theme.textInputStyle(contactListSearchText)}
+                  placeholder={t`Search contact lists`}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                />
+              </View>
+              <Text style={{ ...theme.textStyle, paddingRight: 16 }}>
+                {memberContactListsCount}
+              </Text>
+            </View>
+            <FlatList
+              data={visibleContactLists}
+              keyExtractor={(item) => String(item.createdAt)}
+              style={{ maxHeight: 200 }}
+              renderItem={({ item }) => (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    paddingVertical: 4,
+                    paddingLeft: 16,
+                  }}
+                >
+                  <Text style={{ ...theme.textStyle, flex: 1 }}>
+                    {item.name}
+                  </Text>
+                  <ScreenLink
+                    to={async () => {
+                      await updateContactListMember({
+                        accountId,
+                        createdAt: item.createdAt,
+                        contactId,
+                        isMember: !item.isMember,
+                      });
+                    }}
+                    icon={item.isMember ? "check-square-o" : "square-o"}
+                    hideLabel
+                    label={
+                      item.isMember
+                        ? t`Remove from contact list`
+                        : t`Add to contact list`
+                    }
+                  />
+                </View>
+              )}
+              ListEmptyComponent={
+                <Text style={theme.secondaryTextStyle}>
+                  {normalizedContactListSearchText
+                    ? t`No results found`
+                    : t`No contact lists`}
+                </Text>
+              }
+            />
+          </Fragment>
+        )}
       </ScrollView>
       {contactId !== undefined && (
         <ScreenLink

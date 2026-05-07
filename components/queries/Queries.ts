@@ -1,6 +1,10 @@
 import * as z from "zod";
 import { ArticleUpdateSchema } from "./articles";
 import { BiographyUpdateSchema } from "./biography";
+import {
+  ContactListMembershipUpdateSchema,
+  ContactListUpdateSchema,
+} from "./contactList";
 import { ContactUpdateSchema } from "./contacts";
 import {
   DidReadDirectMessageUpdateSchema,
@@ -11,6 +15,8 @@ import { GroupUpdateSchema } from "./groups";
 
 export const DataItemSchema = z.discriminatedUnion("type", [
   ContactUpdateSchema,
+  ContactListUpdateSchema,
+  ContactListMembershipUpdateSchema,
   DirectMessageUpdateSchema,
   DidReadDirectMessageUpdateSchema,
   GroupUpdateSchema,

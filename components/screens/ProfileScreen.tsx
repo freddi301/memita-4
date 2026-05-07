@@ -229,19 +229,19 @@ export function ProfileScreen({
         }
         label={t`Direct messages`}
       />
-      {accountId === contactId ? (
+
+      <ScreenLink
+        to={
+          canSave ? undefined : (
+            <ContactScreen accountId={accountId} contactId={contactId} />
+          )
+        }
+        label={t`Edit contact`}
+      />
+      {accountId === contactId && (
         <ScreenLink
           to={canSave ? undefined : <AccountScreen accountId={accountId} />}
           label={t`Account settings`}
-        />
-      ) : (
-        <ScreenLink
-          to={
-            canSave ? undefined : (
-              <ContactScreen accountId={accountId} contactId={contactId} />
-            )
-          }
-          label={t`Edit contact`}
         />
       )}
       {contactId === accountId ? (

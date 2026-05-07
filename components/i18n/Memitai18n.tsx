@@ -93,21 +93,21 @@ const loadMessages = memoizeSimple(async (language: Language) => {
       return (await import("./locales/jv/messages")).messages;
     case "it":
       return (await import("./locales/it/messages")).messages;
-    case "th":
-      return (await import("./locales/th/messages")).messages;
-    case "gu":
-      return (await import("./locales/gu/messages")).messages;
-    case "ha":
-      return (await import("./locales/ha/messages")).messages;
-    case "kn":
-      return (await import("./locales/kn/messages")).messages;
-    case "fa":
-      return (await import("./locales/fa/messages")).messages;
-    case "pl":
-      return (await import("./locales/pl/messages")).messages;
-    case "id":
-      return (await import("./locales/id/messages")).messages;
-    case "sw":
-      return (await import("./locales/sw/messages")).messages;
+    // case "th":
+    //   return (await import("./locales/th/messages")).messages;
+    // case "gu":
+    //   return (await import("./locales/gu/messages")).messages;
+    // case "ha":
+    //   return (await import("./locales/ha/messages")).messages;
+    // case "kn":
+    //   return (await import("./locales/kn/messages")).messages;
+    // case "fa":
+    //   return (await import("./locales/fa/messages")).messages;
+    // case "pl":
+    //   return (await import("./locales/pl/messages")).messages;
+    // case "id":
+    //   return (await import("./locales/id/messages")).messages;
+    // case "sw":
+    //   return (await import("./locales/sw/messages")).messages;
   }
 });

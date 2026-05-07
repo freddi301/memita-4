@@ -8,7 +8,8 @@
   "ignore": [
     "babel.config.js",
     "lingui.config.ts",
-    "components/i18n/locales/*/messages.js"
+    "components/i18n/locales/*/messages.js",
+    "desktop/**"
   ],
   "ignoreDependencies": ["@types/streamx", "babel-plugin-dynamic-import-node"]
 }

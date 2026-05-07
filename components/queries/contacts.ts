@@ -65,6 +65,18 @@ export function contactList({ accountId }: { accountId: AccountId }) {
   };
 }
 
+export const getContacts: MemitaQuery<
+  { accountId: AccountId | undefined },
+  Array<{ contactId: AccountId; name: string }>
+> =
+  ({ accountId }) =>
+  async ({ appStorage }) => {
+    if (!accountId) return [];
+    const current = await appStorage.read();
+    const all = current.data;
+    return contactList({ accountId })(all);
+  };
+
 export function contactLatest({
   accountId,
   contactId,

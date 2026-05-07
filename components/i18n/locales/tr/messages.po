@@ -22,9 +22,21 @@ msgstr "Hesap Kimliği"
 msgid "Account name"
 msgstr "Hesap adı"
 
-#: components/screens/ProfileScreen.tsx:235
+#: components/screens/ProfileScreen.tsx:244
 msgid "Account settings"
 msgstr "Hesap ayarları"
+
+#: components/screens/ContactListScreen.tsx:234
+msgid "Add contact to list"
+msgstr "İletişime listeye ekle"
+
+#: components/screens/ContactScreen.tsx:329
+msgid "Add to contact list"
+msgstr "İletişim listesine ekle"
+
+#: components/screens/ContactListsScreen.tsx:39
+msgid "All messages"
+msgstr "Tüm mesajlar"
 
 #: components/screens/ExportAccountScreen.tsx:87
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
@@ -34,7 +46,7 @@ msgstr "Sırrı içe aktarabilecek herkes hesaba sonsuza kadar tam erişime sahi
 msgid "Arabic"
 msgstr "Arapça"
 
-#: components/ui/MessageCompose.tsx:102
+#: components/ui/MessageCompose.tsx:107
 msgid "Attach file"
 msgstr "Dosya ekle"
 
@@ -55,7 +67,11 @@ msgstr "Hesap seçimine geri dön"
 msgid "Back to contact"
 msgstr "İletişim sayfasına dön"
 
-#: components/screens/ContactScreen.tsx:74
+#: components/screens/ContactListScreen.tsx:84
+msgid "Back to contact lists"
+msgstr "Geri dön: İletişim listelerine"
+
+#: components/screens/ContactScreen.tsx:104
 msgid "Back to direct messages"
 msgstr "Doğrudan mesajlara geri dön"
 
@@ -68,7 +84,7 @@ msgid "Biography"
 msgstr "Biyografi"
 
 #: components/screens/ContactChangesHistoryScreen.tsx:48
-#: components/screens/ContactScreen.tsx:88
+#: components/screens/ContactScreen.tsx:118
 msgid "Changes history"
 msgstr "Değişiklik geçmişi"
 
@@ -84,17 +100,25 @@ msgstr "Dışa aktarmayı onayla"
 msgid "Confirm import"
 msgstr "İçe aktarmayı onayla"
 
-#: components/screens/ContactScreen.tsx:219
+#: components/screens/ContactScreen.tsx:249
 msgid "Connected devices"
 msgstr "Bağlı cihazlar"
 
-#: components/screens/ContactScreen.tsx:176
+#: components/screens/ContactScreen.tsx:206
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "Kişi hesap kimliği"
 
+#: components/screens/ContactListScreen.tsx:156
+msgid "Contact list name"
+msgstr "İletişim listesi adı"
+
+#: components/screens/DirectMessagesScreen.tsx:125
+msgid "Contact lists"
+msgstr "İletişim listeleri"
+
 #: components/screens/ContactChangesHistoryScreen.tsx:70
-#: components/screens/ContactScreen.tsx:199
+#: components/screens/ContactScreen.tsx:229
 msgid "Contact name"
 msgstr "Kişi adı"
 
@@ -114,11 +138,16 @@ msgstr "Hesap oluştur"
 msgid "Create article"
 msgstr "Makale oluştur"
 
-#: components/screens/ContactScreen.tsx:157
+#: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
 msgstr "Kişi oluştur"
+
+#: components/screens/ContactListScreen.tsx:152
+#: components/screens/ContactListsScreen.tsx:53
+msgid "Create contact list"
+msgstr "İletişim listesi oluştur"
 
 #: components/screens/SelectAccountScreen.tsx:56
 msgid "Create new account"
@@ -128,7 +157,7 @@ msgstr "Yeni hesap oluştur"
 msgid "Create new article"
 msgstr "Yeni makale oluştur"
 
-#: components/screens/DirectMessagesScreen.tsx:54
+#: components/screens/DirectMessagesScreen.tsx:86
 msgid "Create new contact"
 msgstr "Yeni kişi oluştur"
 
@@ -140,7 +169,7 @@ msgstr "Yeni grup oluştur"
 msgid "Dark"
 msgstr "Koyu"
 
-#: components/ui/MessageCompose.tsx:205
+#: components/ui/MessageCompose.tsx:210
 msgid "Delete"
 msgstr "Sil"
 
@@ -148,10 +177,14 @@ msgstr "Sil"
 msgid "Delete article"
 msgstr "Makaleyi sil"
 
-#: components/screens/ContactScreen.tsx:108
+#: components/screens/ContactScreen.tsx:138
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "Kişiyi sil"
+
+#: components/screens/ContactListScreen.tsx:104
+msgid "Delete contact list"
+msgstr "İletişim listesini sil"
 
 #: components/screens/AccountScreen.tsx:221
 msgid "Device ID"
@@ -161,14 +194,15 @@ msgstr "Cihaz Kimliği"
 msgid "Device Settings"
 msgstr "Cihaz Ayarları"
 
-#: components/screens/ContactScreen.tsx:251
+#: components/screens/ContactScreen.tsx:355
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Doğrudan mesajlar"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:122
+#: components/screens/ContactListScreen.tsx:118
+#: components/screens/ContactScreen.tsx:152
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -179,7 +213,7 @@ msgstr "Değişiklikleri iptal et"
 msgid "Edit article"
 msgstr "Makaleyi düzenle"
 
-#: components/screens/ProfileScreen.tsx:244
+#: components/screens/ProfileScreen.tsx:239
 msgid "Edit contact"
 msgstr "Kişiyi düzenle"
 
@@ -194,6 +228,10 @@ msgstr "Saati düzenle"
 #: components/screens/DeviceSettingsScreen.tsx:52
 msgid "English"
 msgstr "İngilizce"
+
+#: components/screens/ContactListScreen.tsx:161
+msgid "Enter a name for this contact list"
+msgstr "Bu iletişim listesi için bir ad girin"
 
 #: components/screens/EditArticleScreen.tsx:138
 msgid "Event"
@@ -254,14 +292,6 @@ msgstr "Grup mesajları"
 msgid "Group name"
 msgstr "Grup adı"
 
-#: components/screens/DeviceSettingsScreen.tsx:94
-msgid "Gujarati"
-msgstr "Güceratça"
-
-#: components/screens/DeviceSettingsScreen.tsx:96
-msgid "Hausa"
-msgstr "Hausa dili"
-
 #: components/screens/DeviceSettingsScreen.tsx:58
 msgid "Hindi"
 msgstr "Hintçe"
@@ -271,15 +301,11 @@ msgstr "Hintçe"
 msgid "Import account"
 msgstr "Hesabı içe aktar"
 
-#: components/screens/DeviceSettingsScreen.tsx:104
-msgid "Indonesian"
-msgstr "Endonezce"
-
 #: components/screens/ImportAccountScreen.tsx:61
 msgid "Invalid account secret or password"
 msgstr "Geçersiz hesap sırrı veya şifre"
 
-#: components/screens/ContactScreen.tsx:238
+#: components/screens/ContactScreen.tsx:268
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "İki kişinin katılımıyla başlar. Sohbet başlatmak için birbirinizi iletişim kişileri olarak ekleyin!"
 
@@ -294,10 +320,6 @@ msgstr "Japonca"
 #: components/screens/DeviceSettingsScreen.tsx:88
 msgid "Javanese"
 msgstr "Cava dili"
-
-#: components/screens/DeviceSettingsScreen.tsx:98
-msgid "Kannada"
-msgstr "Kannada dili"
 
 #: components/screens/DeviceSettingsScreen.tsx:76
 msgid "Korean"
@@ -323,15 +345,23 @@ msgstr "Mandarin Çincesi"
 msgid "Marathi"
 msgstr "Marathi dili"
 
-#: components/screens/DirectConversationScreen.tsx:420
+#: components/screens/DirectConversationScreen.tsx:430
 msgid "Mark as read"
 msgstr "Okundu olarak işaretle"
+
+#: components/screens/ContactScreen.tsx:284
+msgid "Member of contact lists"
+msgstr "İletişim listelerinde yer alan"
+
+#: components/screens/ContactListScreen.tsx:186
+msgid "Members"
+msgstr "Üyeler"
 
 #: components/screens/SelectAccountScreen.tsx:43
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:189
+#: components/ui/MessageCompose.tsx:194
 msgid "Modify message"
 msgstr "Mesajı değiştir"
 
@@ -339,12 +369,12 @@ msgstr "Mesajı değiştir"
 msgid "New article"
 msgstr "Yeni makale"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:140
 msgid "New draft"
 msgstr "Yeni taslak"
 
-#: components/screens/DirectConversationScreen.tsx:449
-#: components/screens/DirectConversationScreen.tsx:533
+#: components/screens/DirectConversationScreen.tsx:459
+#: components/screens/DirectConversationScreen.tsx:543
 msgid "Next occurrence"
 msgstr "Sonraki eşleşme"
 
@@ -361,22 +391,34 @@ msgstr "Makale yok"
 msgid "No changes yet"
 msgstr "Henüz herhangi bir değişiklik yapılmadı"
 
-#: components/screens/ContactScreen.tsx:226
+#: components/screens/ContactScreen.tsx:256
 msgid "No connected devices"
 msgstr "Bağlı cihaz bulunamadı"
 
-#: components/screens/DirectConversationScreen.tsx:341
-#: components/screens/DirectMessagesScreen.tsx:158
+#: components/screens/ContactListsScreen.tsx:136
+#: components/screens/ContactScreen.tsx:338
+msgid "No contact lists"
+msgstr "İletişim listeleri yok"
+
+#: components/screens/ContactListScreen.tsx:250
+msgid "No contacts"
+msgstr "Hiçbir iletişim"
+
+#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
 msgstr "Mesaj yok"
 
-#: components/screens/DirectMessagesScreen.tsx:154
+#: components/screens/ContactListScreen.tsx:250
+#: components/screens/ContactListsScreen.tsx:126
+#: components/screens/ContactScreen.tsx:337
+#: components/screens/DirectMessagesScreen.tsx:213
 msgid "No results found"
 msgstr "Hiçbir sonuç bulunamadı"
 
-#: components/screens/ContactScreen.tsx:192
+#: components/screens/ContactScreen.tsx:222
 msgid "Not a valid account id"
 msgstr "Geçerli bir hesap kimliği değil"
 
@@ -404,33 +446,25 @@ msgstr "Şifre"
 msgid "Paste here exported account secret"
 msgstr "Dışa aktarılan hesap sırrını buraya yapıştırın"
 
-#: components/screens/ContactScreen.tsx:187
+#: components/screens/ContactScreen.tsx:217
 msgid "Paste the account id your contact shared with you"
 msgstr "Kişinizin sizinle paylaştığı hesap kimliğini yapıştırın"
-
-#: components/screens/DeviceSettingsScreen.tsx:100
-msgid "Persian"
-msgstr "Farsça"
 
 #: components/ui/BottomTabNavigation.tsx:54
 msgid "Places"
 msgstr "Yerler"
 
-#: components/screens/DeviceSettingsScreen.tsx:102
-msgid "Polish"
-msgstr "Lehçe"
-
 #: components/screens/DeviceSettingsScreen.tsx:62
 msgid "Portuguese"
 msgstr "Portekizce"
 
-#: components/screens/DirectConversationScreen.tsx:385
-#: components/screens/DirectConversationScreen.tsx:507
+#: components/screens/DirectConversationScreen.tsx:395
+#: components/screens/DirectConversationScreen.tsx:517
 msgid "Previous occurrence"
 msgstr "Önceki eşleşme"
 
 #: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:261
+#: components/screens/ContactScreen.tsx:365
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "Profil"
@@ -439,7 +473,7 @@ msgstr "Profil"
 msgid "Profile ID copied to clipboard"
 msgstr "Profil kimliği panoya kopyalandı"
 
-#: components/ui/MessageCompose.tsx:65
+#: components/ui/MessageCompose.tsx:70
 msgid "Remove"
 msgstr "Kaldır"
 
@@ -447,31 +481,47 @@ msgstr "Kaldır"
 msgid "Remove account from this device"
 msgstr "Hesabı bu cihazdan kaldır"
 
+#: components/screens/ContactListScreen.tsx:233
+msgid "Remove contact from list"
+msgstr "Kontaktan listeyi kaldır"
+
+#: components/screens/ContactScreen.tsx:328
+msgid "Remove from contact list"
+msgstr "İletişim listesinden kaldır"
+
 #: components/screens/DeviceSettingsScreen.tsx:64
 msgid "Russian"
 msgstr "Rusça"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:157
+#: components/screens/ContactListScreen.tsx:152
+#: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
 msgstr "Değişiklikleri kaydet"
 
-#: components/ui/MessageCompose.tsx:151
+#: components/ui/MessageCompose.tsx:156
 msgid "Save draft"
 msgstr "Taslağı kaydet"
 
-#: components/screens/DirectConversationScreen.tsx:362
-#: components/screens/DirectMessagesScreen.tsx:80
+#: components/screens/ContactListsScreen.tsx:79
+#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "Ara"
 
-#: components/screens/DirectMessagesScreen.tsx:48
+#: components/screens/ContactListsScreen.tsx:47
+#: components/screens/ContactScreen.tsx:290
+msgid "Search contact lists"
+msgstr "İletişim listelerini arayın"
+
+#: components/screens/ContactListScreen.tsx:191
+#: components/screens/DirectMessagesScreen.tsx:80
 msgid "Search contacts"
 msgstr "İletişim kişilerini arayın"
 
-#: components/ui/MessageCompose.tsx:169
+#: components/ui/MessageCompose.tsx:174
 msgid "Send message"
 msgstr "Mesaj gönder"
 
@@ -495,13 +545,10 @@ msgstr "QR kodunu göster"
 msgid "Spanish"
 msgstr "İspanyolca"
 
-#: components/screens/DirectMessagesScreen.tsx:67
+#: components/screens/ContactListsScreen.tsx:66
+#: components/screens/DirectMessagesScreen.tsx:99
 msgid "Stop searching"
 msgstr "Aramayı durdurun"
-
-#: components/screens/DeviceSettingsScreen.tsx:106
-msgid "Swahili"
-msgstr "Svahilice"
 
 #: components/screens/DeviceSettingsScreen.tsx:114
 msgid "System default ({languageName})"
@@ -523,10 +570,6 @@ msgstr "Değiştirmek için dokunun"
 msgid "Telugu"
 msgstr "Telugu dili"
 
-#: components/screens/DeviceSettingsScreen.tsx:92
-msgid "Thai"
-msgstr "Tayca"
-
 #: components/screens/ImportAccountScreen.tsx:100
 msgid "The one you typed in during export"
 msgstr "Dışa aktarma sırasında yazdığınız"
@@ -535,7 +578,7 @@ msgstr "Dışa aktarma sırasında yazdığınız"
 msgid "Theme"
 msgstr "Tema"
 
-#: components/screens/ContactScreen.tsx:204
+#: components/screens/ContactScreen.tsx:234
 msgid "This name is only visible to you"
 msgstr "Bu ad yalnızca size görünür"
 
@@ -552,7 +595,7 @@ msgstr "Bu sonsuza kadar avatarınız olacak, akıllıca seçin"
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: components/screens/DirectConversationScreen.tsx:470
+#: components/screens/DirectConversationScreen.tsx:480
 msgid "Unread messages"
 msgstr "Okunmamış mesajlar"
 
@@ -576,7 +619,7 @@ msgstr "Vietnamca"
 msgid "Will be needed to import later"
 msgstr "Daha sonra içe aktarmak için gerekli olacak"
 
-#: components/ui/MessageCompose.tsx:107
+#: components/ui/MessageCompose.tsx:112
 msgid "Write a message"
 msgstr "Bir mesaj yaz"
 

@@ -88,22 +88,22 @@ export function DeviceSettingsScreen() {
                     return "🇮🇩 " + t`Javanese`;
                   case "it":
                     return "🇮🇹 " + t`Italian`;
-                  case "th":
-                    return "🇹🇭 " + t`Thai`;
-                  case "gu":
-                    return "🇮🇳 " + t`Gujarati`;
-                  case "ha":
-                    return "🇳🇬 " + t`Hausa`;
-                  case "kn":
-                    return "🇮🇳 " + t`Kannada`;
-                  case "fa":
-                    return "🇮🇷 " + t`Persian`;
-                  case "pl":
-                    return "🇵🇱 " + t`Polish`;
-                  case "id":
-                    return "🇮🇩 " + t`Indonesian`;
-                  case "sw":
-                    return "🇰🇪 " + t`Swahili`;
+                  // case "th":
+                  //   return "🇹🇭 " + t`Thai`;
+                  // case "gu":
+                  //   return "🇮🇳 " + t`Gujarati`;
+                  // case "ha":
+                  //   return "🇳🇬 " + t`Hausa`;
+                  // case "kn":
+                  //   return "🇮🇳 " + t`Kannada`;
+                  // case "fa":
+                  //   return "🇮🇷 " + t`Persian`;
+                  // case "pl":
+                  //   return "🇵🇱 " + t`Polish`;
+                  // case "id":
+                  //   return "🇮🇩 " + t`Indonesian`;
+                  // case "sw":
+                  //   return "🇰🇪 " + t`Swahili`;
                 }
               };
               const languageName = language

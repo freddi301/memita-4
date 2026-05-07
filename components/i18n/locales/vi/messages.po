@@ -22,9 +22,21 @@ msgstr "ID tài khoản"
 msgid "Account name"
 msgstr "Tên tài khoản"
 
-#: components/screens/ProfileScreen.tsx:235
+#: components/screens/ProfileScreen.tsx:244
 msgid "Account settings"
 msgstr "Cài đặt tài khoản"
+
+#: components/screens/ContactListScreen.tsx:234
+msgid "Add contact to list"
+msgstr "Thêm liên hệ vào danh sách"
+
+#: components/screens/ContactScreen.tsx:329
+msgid "Add to contact list"
+msgstr "Thêm vào danh sách liên hệ"
+
+#: components/screens/ContactListsScreen.tsx:39
+msgid "All messages"
+msgstr "Tất cả các tin nhắn"
 
 #: components/screens/ExportAccountScreen.tsx:87
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
@@ -34,7 +46,7 @@ msgstr "Bất kỳ ai có thể nhập khóa bí mật sẽ có toàn quyền tr
 msgid "Arabic"
 msgstr "Tiếng Ả Rập"
 
-#: components/ui/MessageCompose.tsx:102
+#: components/ui/MessageCompose.tsx:107
 msgid "Attach file"
 msgstr "Đính kèm tệp"
 
@@ -55,7 +67,11 @@ msgstr "Quay lại chọn tài khoản"
 msgid "Back to contact"
 msgstr "Quay lại liên hệ"
 
-#: components/screens/ContactScreen.tsx:74
+#: components/screens/ContactListScreen.tsx:84
+msgid "Back to contact lists"
+msgstr "Quay lại danh sách liên hệ"
+
+#: components/screens/ContactScreen.tsx:104
 msgid "Back to direct messages"
 msgstr "Quay lại tin nhắn trực tiếp"
 
@@ -68,7 +84,7 @@ msgid "Biography"
 msgstr "Tiểu sử"
 
 #: components/screens/ContactChangesHistoryScreen.tsx:48
-#: components/screens/ContactScreen.tsx:88
+#: components/screens/ContactScreen.tsx:118
 msgid "Changes history"
 msgstr "Lịch sử thay đổi"
 
@@ -84,17 +100,25 @@ msgstr "Xác nhận xuất"
 msgid "Confirm import"
 msgstr "Xác nhận nhập"
 
-#: components/screens/ContactScreen.tsx:219
+#: components/screens/ContactScreen.tsx:249
 msgid "Connected devices"
 msgstr "Thiết bị đã kết nối"
 
-#: components/screens/ContactScreen.tsx:176
+#: components/screens/ContactScreen.tsx:206
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "ID tài khoản liên lạc"
 
+#: components/screens/ContactListScreen.tsx:156
+msgid "Contact list name"
+msgstr "Tên danh sách liên hệ"
+
+#: components/screens/DirectMessagesScreen.tsx:125
+msgid "Contact lists"
+msgstr "Danh sách liên hệ"
+
 #: components/screens/ContactChangesHistoryScreen.tsx:70
-#: components/screens/ContactScreen.tsx:199
+#: components/screens/ContactScreen.tsx:229
 msgid "Contact name"
 msgstr "Tên liên lạc"
 
@@ -114,11 +138,16 @@ msgstr "Tạo tài khoản"
 msgid "Create article"
 msgstr "Tạo bài viết"
 
-#: components/screens/ContactScreen.tsx:157
+#: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
 msgstr "Tạo liên lạc"
+
+#: components/screens/ContactListScreen.tsx:152
+#: components/screens/ContactListsScreen.tsx:53
+msgid "Create contact list"
+msgstr "Tạo danh sách liên hệ"
 
 #: components/screens/SelectAccountScreen.tsx:56
 msgid "Create new account"
@@ -128,7 +157,7 @@ msgstr "Tạo tài khoản mới"
 msgid "Create new article"
 msgstr "Tạo bài viết mới"
 
-#: components/screens/DirectMessagesScreen.tsx:54
+#: components/screens/DirectMessagesScreen.tsx:86
 msgid "Create new contact"
 msgstr "Tạo liên lạc mới"
 
@@ -140,7 +169,7 @@ msgstr "Tạo nhóm mới"
 msgid "Dark"
 msgstr "Tối"
 
-#: components/ui/MessageCompose.tsx:205
+#: components/ui/MessageCompose.tsx:210
 msgid "Delete"
 msgstr "Xóa"
 
@@ -148,10 +177,14 @@ msgstr "Xóa"
 msgid "Delete article"
 msgstr "Xóa bài viết"
 
-#: components/screens/ContactScreen.tsx:108
+#: components/screens/ContactScreen.tsx:138
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "Xóa liên lạc"
+
+#: components/screens/ContactListScreen.tsx:104
+msgid "Delete contact list"
+msgstr "Xóa danh sách liên hệ"
 
 #: components/screens/AccountScreen.tsx:221
 msgid "Device ID"
@@ -161,14 +194,15 @@ msgstr "ID thiết bị"
 msgid "Device Settings"
 msgstr "Cài đặt thiết bị"
 
-#: components/screens/ContactScreen.tsx:251
+#: components/screens/ContactScreen.tsx:355
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Tin nhắn trực tiếp"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:122
+#: components/screens/ContactListScreen.tsx:118
+#: components/screens/ContactScreen.tsx:152
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -179,7 +213,7 @@ msgstr "Hủy thay đổi"
 msgid "Edit article"
 msgstr "Chỉnh sửa bài viết"
 
-#: components/screens/ProfileScreen.tsx:244
+#: components/screens/ProfileScreen.tsx:239
 msgid "Edit contact"
 msgstr "Chỉnh sửa liên lạc"
 
@@ -194,6 +228,10 @@ msgstr "Chỉnh sửa giờ"
 #: components/screens/DeviceSettingsScreen.tsx:52
 msgid "English"
 msgstr "Tiếng Anh"
+
+#: components/screens/ContactListScreen.tsx:161
+msgid "Enter a name for this contact list"
+msgstr "Nhập tên cho danh sách liên hệ này"
 
 #: components/screens/EditArticleScreen.tsx:138
 msgid "Event"
@@ -254,14 +292,6 @@ msgstr "Tin nhắn nhóm"
 msgid "Group name"
 msgstr "Tên nhóm"
 
-#: components/screens/DeviceSettingsScreen.tsx:94
-msgid "Gujarati"
-msgstr "Tiếng Gujarati"
-
-#: components/screens/DeviceSettingsScreen.tsx:96
-msgid "Hausa"
-msgstr "Tiếng Hausa"
-
 #: components/screens/DeviceSettingsScreen.tsx:58
 msgid "Hindi"
 msgstr "Tiếng Hindi"
@@ -271,15 +301,11 @@ msgstr "Tiếng Hindi"
 msgid "Import account"
 msgstr "Nhập tài khoản"
 
-#: components/screens/DeviceSettingsScreen.tsx:104
-msgid "Indonesian"
-msgstr "Tiếng Indonesia"
-
 #: components/screens/ImportAccountScreen.tsx:61
 msgid "Invalid account secret or password"
 msgstr "Khóa bí mật hoặc mật khẩu tài khoản không hợp lệ"
 
-#: components/screens/ContactScreen.tsx:238
+#: components/screens/ContactScreen.tsx:268
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "Cần có hai người. Thêm người kia vào danh sách liên hệ của bạn để bắt đầu trò chuyện!"
 
@@ -294,10 +320,6 @@ msgstr "Tiếng Nhật"
 #: components/screens/DeviceSettingsScreen.tsx:88
 msgid "Javanese"
 msgstr "Tiếng Java"
-
-#: components/screens/DeviceSettingsScreen.tsx:98
-msgid "Kannada"
-msgstr "Tiếng Kannada"
 
 #: components/screens/DeviceSettingsScreen.tsx:76
 msgid "Korean"
@@ -323,15 +345,23 @@ msgstr "Tiếng Quan Thoại"
 msgid "Marathi"
 msgstr "Tiếng Marathi"
 
-#: components/screens/DirectConversationScreen.tsx:420
+#: components/screens/DirectConversationScreen.tsx:430
 msgid "Mark as read"
 msgstr "Đánh dấu là đã đọc"
+
+#: components/screens/ContactScreen.tsx:284
+msgid "Member of contact lists"
+msgstr "Thành viên trong danh sách liên hệ"
+
+#: components/screens/ContactListScreen.tsx:186
+msgid "Members"
+msgstr "Thành viên"
 
 #: components/screens/SelectAccountScreen.tsx:43
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:189
+#: components/ui/MessageCompose.tsx:194
 msgid "Modify message"
 msgstr "Chỉnh sửa tin nhắn"
 
@@ -339,12 +369,12 @@ msgstr "Chỉnh sửa tin nhắn"
 msgid "New article"
 msgstr "Bài viết mới"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:140
 msgid "New draft"
 msgstr "Bản nháp mới"
 
-#: components/screens/DirectConversationScreen.tsx:449
-#: components/screens/DirectConversationScreen.tsx:533
+#: components/screens/DirectConversationScreen.tsx:459
+#: components/screens/DirectConversationScreen.tsx:543
 msgid "Next occurrence"
 msgstr "Lần xuất hiện tiếp theo"
 
@@ -361,22 +391,34 @@ msgstr "Không có bài viết"
 msgid "No changes yet"
 msgstr "Chưa có thay đổi nào"
 
-#: components/screens/ContactScreen.tsx:226
+#: components/screens/ContactScreen.tsx:256
 msgid "No connected devices"
 msgstr "Không có thiết bị nào được kết nối"
 
-#: components/screens/DirectConversationScreen.tsx:341
-#: components/screens/DirectMessagesScreen.tsx:158
+#: components/screens/ContactListsScreen.tsx:136
+#: components/screens/ContactScreen.tsx:338
+msgid "No contact lists"
+msgstr "Không có danh sách liên hệ"
+
+#: components/screens/ContactListScreen.tsx:250
+msgid "No contacts"
+msgstr "Không có liên hệ"
+
+#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
 msgstr "Không có tin nhắn"
 
-#: components/screens/DirectMessagesScreen.tsx:154
+#: components/screens/ContactListScreen.tsx:250
+#: components/screens/ContactListsScreen.tsx:126
+#: components/screens/ContactScreen.tsx:337
+#: components/screens/DirectMessagesScreen.tsx:213
 msgid "No results found"
 msgstr "Không tìm thấy kết quả"
 
-#: components/screens/ContactScreen.tsx:192
+#: components/screens/ContactScreen.tsx:222
 msgid "Not a valid account id"
 msgstr "ID tài khoản không hợp lệ"
 
@@ -404,33 +446,25 @@ msgstr "Mật khẩu"
 msgid "Paste here exported account secret"
 msgstr "Dán khóa bí mật tài khoản đã xuất vào đây"
 
-#: components/screens/ContactScreen.tsx:187
+#: components/screens/ContactScreen.tsx:217
 msgid "Paste the account id your contact shared with you"
 msgstr "Dán ID tài khoản mà liên lạc của bạn đã chia sẻ"
-
-#: components/screens/DeviceSettingsScreen.tsx:100
-msgid "Persian"
-msgstr "Tiếng Ba Tư"
 
 #: components/ui/BottomTabNavigation.tsx:54
 msgid "Places"
 msgstr "Địa điểm"
 
-#: components/screens/DeviceSettingsScreen.tsx:102
-msgid "Polish"
-msgstr "Tiếng Ba Lan"
-
 #: components/screens/DeviceSettingsScreen.tsx:62
 msgid "Portuguese"
 msgstr "Tiếng Bồ Đào Nha"
 
-#: components/screens/DirectConversationScreen.tsx:385
-#: components/screens/DirectConversationScreen.tsx:507
+#: components/screens/DirectConversationScreen.tsx:395
+#: components/screens/DirectConversationScreen.tsx:517
 msgid "Previous occurrence"
 msgstr "Lần xuất hiện trước"
 
 #: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:261
+#: components/screens/ContactScreen.tsx:365
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "Hồ sơ"
@@ -439,7 +473,7 @@ msgstr "Hồ sơ"
 msgid "Profile ID copied to clipboard"
 msgstr "Đã sao chép ID hồ sơ vào clipboard"
 
-#: components/ui/MessageCompose.tsx:65
+#: components/ui/MessageCompose.tsx:70
 msgid "Remove"
 msgstr "Xóa"
 
@@ -447,31 +481,47 @@ msgstr "Xóa"
 msgid "Remove account from this device"
 msgstr "Xóa tài khoản khỏi thiết bị này"
 
+#: components/screens/ContactListScreen.tsx:233
+msgid "Remove contact from list"
+msgstr "Xóa liên hệ khỏi danh sách"
+
+#: components/screens/ContactScreen.tsx:328
+msgid "Remove from contact list"
+msgstr "Xóa khỏi danh sách liên hệ"
+
 #: components/screens/DeviceSettingsScreen.tsx:64
 msgid "Russian"
 msgstr "Tiếng Nga"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:157
+#: components/screens/ContactListScreen.tsx:152
+#: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
 msgstr "Lưu thay đổi"
 
-#: components/ui/MessageCompose.tsx:151
+#: components/ui/MessageCompose.tsx:156
 msgid "Save draft"
 msgstr "Lưu bản nháp"
 
-#: components/screens/DirectConversationScreen.tsx:362
-#: components/screens/DirectMessagesScreen.tsx:80
+#: components/screens/ContactListsScreen.tsx:79
+#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: components/screens/DirectMessagesScreen.tsx:48
+#: components/screens/ContactListsScreen.tsx:47
+#: components/screens/ContactScreen.tsx:290
+msgid "Search contact lists"
+msgstr "Tìm kiếm danh sách liên hệ"
+
+#: components/screens/ContactListScreen.tsx:191
+#: components/screens/DirectMessagesScreen.tsx:80
 msgid "Search contacts"
 msgstr "Tìm kiếm liên hệ"
 
-#: components/ui/MessageCompose.tsx:169
+#: components/ui/MessageCompose.tsx:174
 msgid "Send message"
 msgstr "Gửi tin nhắn"
 
@@ -495,13 +545,10 @@ msgstr "Hiển thị mã QR"
 msgid "Spanish"
 msgstr "Tiếng Tây Ban Nha"
 
-#: components/screens/DirectMessagesScreen.tsx:67
+#: components/screens/ContactListsScreen.tsx:66
+#: components/screens/DirectMessagesScreen.tsx:99
 msgid "Stop searching"
 msgstr "Dừng tìm kiếm"
-
-#: components/screens/DeviceSettingsScreen.tsx:106
-msgid "Swahili"
-msgstr "Tiếng Swahili"
 
 #: components/screens/DeviceSettingsScreen.tsx:114
 msgid "System default ({languageName})"
@@ -523,10 +570,6 @@ msgstr "Nhấn để thay đổi"
 msgid "Telugu"
 msgstr "Tiếng Telugu"
 
-#: components/screens/DeviceSettingsScreen.tsx:92
-msgid "Thai"
-msgstr "Tiếng Thái"
-
 #: components/screens/ImportAccountScreen.tsx:100
 msgid "The one you typed in during export"
 msgstr "Cái bạn đã nhập trong quá trình xuất"
@@ -535,7 +578,7 @@ msgstr "Cái bạn đã nhập trong quá trình xuất"
 msgid "Theme"
 msgstr "Chủ đề"
 
-#: components/screens/ContactScreen.tsx:204
+#: components/screens/ContactScreen.tsx:234
 msgid "This name is only visible to you"
 msgstr "Tên này chỉ hiển thị với bạn"
 
@@ -552,7 +595,7 @@ msgstr "Đây sẽ là avatar của bạn mãi mãi, hãy chọn thật khôn ng
 msgid "Turkish"
 msgstr "Tiếng Thổ Nhĩ Kỳ"
 
-#: components/screens/DirectConversationScreen.tsx:470
+#: components/screens/DirectConversationScreen.tsx:480
 msgid "Unread messages"
 msgstr "Tin nhắn chưa đọc"
 
@@ -576,7 +619,7 @@ msgstr "Tiếng Việt"
 msgid "Will be needed to import later"
 msgstr "Sẽ cần để nhập sau"
 
-#: components/ui/MessageCompose.tsx:107
+#: components/ui/MessageCompose.tsx:112
 msgid "Write a message"
 msgstr "Viết tin nhắn"
 

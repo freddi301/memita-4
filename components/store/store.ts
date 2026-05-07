@@ -6,13 +6,14 @@ import {
   deviceIdFromDeviceSecret,
   DeviceSecret,
 } from "../cryptography/cryptography";
+import { ShouldSendProps } from "../queries/shouldSend";
 
 type StoreInInterface<StoreItem> = {
   parse(item: unknown): StoreItem;
   onAdd(item: StoreItem): Promise<void>;
   storage: StorageInterface<StoreItem>;
   networkFactory: NetworkFactory;
-  shouldSend(item: StoreItem): boolean;
+  shouldSend(props: ShouldSendProps<StoreItem>): boolean;
   getDeviceByAccounts(): Promise<Map<AccountId, DeviceSecret>>;
 };
 
@@ -107,7 +108,13 @@ export function createStore<StoreItem>({
       // TODO discriminate to which devices to send
       await Promise.all(
         all
-          .filter((item) => shouldSend(item))
+          .filter((item) =>
+            shouldSend({
+              thisAccountId: null as any, // TODO
+              otherAccountId: null as any, // TODO
+              storeItem: item,
+            }),
+          )
           .map(async (item) =>
             network.send(deviceId, otherDeviceId, {
               type: "data",
@@ -155,7 +162,14 @@ export function createStore<StoreItem>({
   return {
     async add(item) {
       const didAdd = await storage.add(item);
-      if (didAdd && shouldSend(item)) {
+      if (
+        didAdd &&
+        shouldSend({
+          thisAccountId: null as any, // TODO
+          otherAccountId: null as any, // TODO
+          storeItem: item,
+        })
+      ) {
         await onAdd(item);
         // TODO do not block ui while sending
         void (async () => {

@@ -1,7 +1,3 @@
-# Contacts
-
-- [ ] contact lists (this will be used for: pin converstaion, archive conversation)
-
 # Direct messages
 
 - [x] message list

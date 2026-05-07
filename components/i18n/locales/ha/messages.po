@@ -22,9 +22,21 @@ msgstr "ID na Asusun"
 msgid "Account name"
 msgstr "Sunan asusun"
 
-#: components/screens/ProfileScreen.tsx:235
+#: components/screens/ProfileScreen.tsx:244
 msgid "Account settings"
 msgstr "Saitunan asusun"
+
+#: components/screens/ContactListScreen.tsx:234
+msgid "Add contact to list"
+msgstr ""
+
+#: components/screens/ContactScreen.tsx:329
+msgid "Add to contact list"
+msgstr ""
+
+#: components/screens/ContactListsScreen.tsx:39
+msgid "All messages"
+msgstr ""
 
 #: components/screens/ExportAccountScreen.tsx:87
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
@@ -34,7 +46,7 @@ msgstr "Duk wanda zai iya shigo da sirrin zai samu cikakken damar asusun har aba
 msgid "Arabic"
 msgstr "Larabci"
 
-#: components/ui/MessageCompose.tsx:102
+#: components/ui/MessageCompose.tsx:107
 msgid "Attach file"
 msgstr "Haɗa fayil"
 
@@ -55,7 +67,11 @@ msgstr "Koma zaɓin asusun"
 msgid "Back to contact"
 msgstr "د Backward to contact"
 
-#: components/screens/ContactScreen.tsx:74
+#: components/screens/ContactListScreen.tsx:84
+msgid "Back to contact lists"
+msgstr ""
+
+#: components/screens/ContactScreen.tsx:104
 msgid "Back to direct messages"
 msgstr "Koma saƙonnin kai tsaye"
 
@@ -68,7 +84,7 @@ msgid "Biography"
 msgstr "Tarihin rayuwa"
 
 #: components/screens/ContactChangesHistoryScreen.tsx:48
-#: components/screens/ContactScreen.tsx:88
+#: components/screens/ContactScreen.tsx:118
 msgid "Changes history"
 msgstr "تاريخ التغييرات"
 
@@ -84,17 +100,25 @@ msgstr "Tabbatar da fitarwa"
 msgid "Confirm import"
 msgstr "Tabbatar da shigarwa"
 
-#: components/screens/ContactScreen.tsx:219
+#: components/screens/ContactScreen.tsx:249
 msgid "Connected devices"
 msgstr "الأجهزة المترابطة"
 
-#: components/screens/ContactScreen.tsx:176
+#: components/screens/ContactScreen.tsx:206
 #: components/screens/ProfileDeepLinkScreen.tsx:46
 msgid "Contact account id"
 msgstr "ID na asusun tuntuɓe"
 
+#: components/screens/ContactListScreen.tsx:156
+msgid "Contact list name"
+msgstr ""
+
+#: components/screens/DirectMessagesScreen.tsx:125
+msgid "Contact lists"
+msgstr ""
+
 #: components/screens/ContactChangesHistoryScreen.tsx:70
-#: components/screens/ContactScreen.tsx:199
+#: components/screens/ContactScreen.tsx:229
 msgid "Contact name"
 msgstr "Sunan tuntuɓe"
 
@@ -114,11 +138,16 @@ msgstr "Ƙirƙiri asusun"
 msgid "Create article"
 msgstr "Ƙirƙiri labari"
 
-#: components/screens/ContactScreen.tsx:157
+#: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Create contact"
 msgstr "Ƙirƙiri tuntuɓe"
+
+#: components/screens/ContactListScreen.tsx:152
+#: components/screens/ContactListsScreen.tsx:53
+msgid "Create contact list"
+msgstr ""
 
 #: components/screens/SelectAccountScreen.tsx:56
 msgid "Create new account"
@@ -128,7 +157,7 @@ msgstr "Ƙirƙiri sabon asusun"
 msgid "Create new article"
 msgstr "Ƙirƙiri sabon labari"
 
-#: components/screens/DirectMessagesScreen.tsx:54
+#: components/screens/DirectMessagesScreen.tsx:86
 msgid "Create new contact"
 msgstr "Ƙirƙiri sabon tuntuɓe"
 
@@ -140,7 +169,7 @@ msgstr "Ƙirƙiri sabon ƙungiya"
 msgid "Dark"
 msgstr "Duhu"
 
-#: components/ui/MessageCompose.tsx:205
+#: components/ui/MessageCompose.tsx:210
 msgid "Delete"
 msgstr "Goge"
 
@@ -148,10 +177,14 @@ msgstr "Goge"
 msgid "Delete article"
 msgstr "Goge labari"
 
-#: components/screens/ContactScreen.tsx:108
+#: components/screens/ContactScreen.tsx:138
 #: components/screens/GroupScreen.tsx:79
 msgid "Delete contact"
 msgstr "Goge tuntuɓe"
+
+#: components/screens/ContactListScreen.tsx:104
+msgid "Delete contact list"
+msgstr ""
 
 #: components/screens/AccountScreen.tsx:221
 msgid "Device ID"
@@ -161,14 +194,15 @@ msgstr "ID na Na'ura"
 msgid "Device Settings"
 msgstr "Saitunan Na'ura"
 
-#: components/screens/ContactScreen.tsx:251
+#: components/screens/ContactScreen.tsx:355
 #: components/screens/ProfileScreen.tsx:230
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Saƙonnin kai tsaye"
 
 #: components/screens/AccountScreen.tsx:87
-#: components/screens/ContactScreen.tsx:122
+#: components/screens/ContactListScreen.tsx:118
+#: components/screens/ContactScreen.tsx:152
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:171
@@ -179,7 +213,7 @@ msgstr "Jefar da canje-canje"
 msgid "Edit article"
 msgstr "Gyara labari"
 
-#: components/screens/ProfileScreen.tsx:244
+#: components/screens/ProfileScreen.tsx:239
 msgid "Edit contact"
 msgstr "Gyara tuntuɓe"
 
@@ -194,6 +228,10 @@ msgstr "Gyara lokaci"
 #: components/screens/DeviceSettingsScreen.tsx:52
 msgid "English"
 msgstr "Turanci"
+
+#: components/screens/ContactListScreen.tsx:161
+msgid "Enter a name for this contact list"
+msgstr ""
 
 #: components/screens/EditArticleScreen.tsx:138
 msgid "Event"
@@ -279,7 +317,7 @@ msgstr "Indonesiya"
 msgid "Invalid account secret or password"
 msgstr "Sirrin asusun ko kalmar sirri ba ta dace ba"
 
-#: components/screens/ContactScreen.tsx:238
+#: components/screens/ContactScreen.tsx:268
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "غাবيا. ساو wannan, саки да саки cikin \"Contacts\" да би да баغا"
 
@@ -323,15 +361,23 @@ msgstr "Mandarin Sinanci"
 msgid "Marathi"
 msgstr "Marathi"
 
-#: components/screens/DirectConversationScreen.tsx:420
+#: components/screens/DirectConversationScreen.tsx:430
 msgid "Mark as read"
 msgstr "Alama a matsayin an karanta"
+
+#: components/screens/ContactScreen.tsx:284
+msgid "Member of contact lists"
+msgstr ""
+
+#: components/screens/ContactListScreen.tsx:186
+msgid "Members"
+msgstr ""
 
 #: components/screens/SelectAccountScreen.tsx:43
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:189
+#: components/ui/MessageCompose.tsx:194
 msgid "Modify message"
 msgstr "Gyara saƙo"
 
@@ -339,12 +385,12 @@ msgstr "Gyara saƙo"
 msgid "New article"
 msgstr "Sabon labari"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:140
 msgid "New draft"
 msgstr "Sabon daftari"
 
-#: components/screens/DirectConversationScreen.tsx:449
-#: components/screens/DirectConversationScreen.tsx:533
+#: components/screens/DirectConversationScreen.tsx:459
+#: components/screens/DirectConversationScreen.tsx:543
 msgid "Next occurrence"
 msgstr "Na gaba"
 
@@ -361,22 +407,34 @@ msgstr "Babu labarun"
 msgid "No changes yet"
 msgstr "حاليًا لا توجد أي تغيير"
 
-#: components/screens/ContactScreen.tsx:226
+#: components/screens/ContactScreen.tsx:256
 msgid "No connected devices"
 msgstr "لا توجد أجهزة مُوصّلة"
 
-#: components/screens/DirectConversationScreen.tsx:341
-#: components/screens/DirectMessagesScreen.tsx:158
+#: components/screens/ContactListsScreen.tsx:136
+#: components/screens/ContactScreen.tsx:338
+msgid "No contact lists"
+msgstr ""
+
+#: components/screens/ContactListScreen.tsx:250
+msgid "No contacts"
+msgstr ""
+
+#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
 msgstr "Babu saƙonnin"
 
-#: components/screens/DirectMessagesScreen.tsx:154
+#: components/screens/ContactListScreen.tsx:250
+#: components/screens/ContactListsScreen.tsx:126
+#: components/screens/ContactScreen.tsx:337
+#: components/screens/DirectMessagesScreen.tsx:213
 msgid "No results found"
 msgstr "لم يُعثر على أي نتائج"
 
-#: components/screens/ContactScreen.tsx:192
+#: components/screens/ContactScreen.tsx:222
 msgid "Not a valid account id"
 msgstr "ID na asusun ba ta dace ba"
 
@@ -404,7 +462,7 @@ msgstr "Kalmar sirri"
 msgid "Paste here exported account secret"
 msgstr "Manna sirrin asusun da aka fitar a nan"
 
-#: components/screens/ContactScreen.tsx:187
+#: components/screens/ContactScreen.tsx:217
 msgid "Paste the account id your contact shared with you"
 msgstr "Manna ID na asusun da tuntuɓenka ya raba da kai"
 
@@ -424,13 +482,13 @@ msgstr "Polanci"
 msgid "Portuguese"
 msgstr "Fotigal"
 
-#: components/screens/DirectConversationScreen.tsx:385
-#: components/screens/DirectConversationScreen.tsx:507
+#: components/screens/DirectConversationScreen.tsx:395
+#: components/screens/DirectConversationScreen.tsx:517
 msgid "Previous occurrence"
 msgstr "Na baya"
 
 #: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:261
+#: components/screens/ContactScreen.tsx:365
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "Bayanin martaba"
@@ -439,7 +497,7 @@ msgstr "Bayanin martaba"
 msgid "Profile ID copied to clipboard"
 msgstr "An kwafi ID na bayanin martaba zuwa clipboard"
 
-#: components/ui/MessageCompose.tsx:65
+#: components/ui/MessageCompose.tsx:70
 msgid "Remove"
 msgstr "Cire"
 
@@ -447,31 +505,47 @@ msgstr "Cire"
 msgid "Remove account from this device"
 msgstr "Cire asusun daga wannan na'ura"
 
+#: components/screens/ContactListScreen.tsx:233
+msgid "Remove contact from list"
+msgstr ""
+
+#: components/screens/ContactScreen.tsx:328
+msgid "Remove from contact list"
+msgstr ""
+
 #: components/screens/DeviceSettingsScreen.tsx:64
 msgid "Russian"
 msgstr "Rashanci"
 
 #: components/screens/AccountScreen.tsx:117
-#: components/screens/ContactScreen.tsx:157
+#: components/screens/ContactListScreen.tsx:152
+#: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
 #: components/screens/ProfileScreen.tsx:187
 msgid "Save changes"
 msgstr "Ajiye canje-canje"
 
-#: components/ui/MessageCompose.tsx:151
+#: components/ui/MessageCompose.tsx:156
 msgid "Save draft"
 msgstr "Ajiye daftari"
 
-#: components/screens/DirectConversationScreen.tsx:362
-#: components/screens/DirectMessagesScreen.tsx:80
+#: components/screens/ContactListsScreen.tsx:79
+#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "Bincika"
 
-#: components/screens/DirectMessagesScreen.tsx:48
+#: components/screens/ContactListsScreen.tsx:47
+#: components/screens/ContactScreen.tsx:290
+msgid "Search contact lists"
+msgstr ""
+
+#: components/screens/ContactListScreen.tsx:191
+#: components/screens/DirectMessagesScreen.tsx:80
 msgid "Search contacts"
 msgstr "البحث عن مخاطبات"
 
-#: components/ui/MessageCompose.tsx:169
+#: components/ui/MessageCompose.tsx:174
 msgid "Send message"
 msgstr "Aika saƙo"
 
@@ -495,7 +569,8 @@ msgstr "Nuna lamba QR"
 msgid "Spanish"
 msgstr "Sipaniyanci"
 
-#: components/screens/DirectMessagesScreen.tsx:67
+#: components/screens/ContactListsScreen.tsx:66
+#: components/screens/DirectMessagesScreen.tsx:99
 msgid "Stop searching"
 msgstr "توقف عن البحث"
 
@@ -535,7 +610,7 @@ msgstr "Wanda ka rubuta yayin fitarwa"
 msgid "Theme"
 msgstr "Jigo"
 
-#: components/screens/ContactScreen.tsx:204
+#: components/screens/ContactScreen.tsx:234
 msgid "This name is only visible to you"
 msgstr "Wannan sunan ka kaɗai ne zai ganshi"
 
@@ -552,7 +627,7 @@ msgstr "Wannan zai zama hoton ka har abada, zaɓa da hikima"
 msgid "Turkish"
 msgstr "Turkanci"
 
-#: components/screens/DirectConversationScreen.tsx:470
+#: components/screens/DirectConversationScreen.tsx:480
 msgid "Unread messages"
 msgstr "Saƙonnin da ba a karanta ba"
 
@@ -576,7 +651,7 @@ msgstr "Vietnamanci"
 msgid "Will be needed to import later"
 msgstr "Za a buƙata don shigarwa daga baya"
 
-#: components/ui/MessageCompose.tsx:107
+#: components/ui/MessageCompose.tsx:112
 msgid "Write a message"
 msgstr "Rubuta saƙo"
 

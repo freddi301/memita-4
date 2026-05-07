@@ -1,19 +1,30 @@
+import { FontAwesome } from "@expo/vector-icons";
 import { useLingui } from "@lingui/react/macro";
 import { Fragment, useMemo, useState } from "react";
 import { FlatList, Text, TextInput, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
+import { getContactList, getContactListMembers } from "../queries/contactList";
 import { getDirectMessagesSummary } from "../queries/directMessages";
+import { Timestamp } from "../queries/Timestamp";
 import { ScreenLink } from "../Routing";
 import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
+import { ContactListScreen } from "./ContactListScreen";
+import { ContactListsScreen } from "./ContactListsScreen";
 import { ContactScreen } from "./ContactScreen";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 
 // TODO make the search more powerful
 
-export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
+export function DirectMessagesScreen({
+  accountId,
+  contactListCreatedAt,
+}: {
+  accountId: AccountId;
+  contactListCreatedAt?: Timestamp;
+}) {
   const { t } = useLingui();
   const theme = useTheme();
   const refreshMemitaQueries = useRefreshMemitaQueries();
@@ -22,7 +33,7 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
   >({ type: "default" });
 
   const conversations = useMemitaQuery(getDirectMessagesSummary, { accountId });
-  const filteredConversations = useMemo(() => {
+  const searchMatchingConversations = useMemo(() => {
     if (toolbarState.type === "default" || !toolbarState.text.trim()) {
       return conversations;
     }
@@ -31,6 +42,27 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
       item.contactName.toLowerCase().includes(needle),
     );
   }, [conversations, toolbarState]);
+
+  const contactListMembers = useMemitaQuery(getContactListMembers, {
+    accountId,
+    createdAt: contactListCreatedAt,
+  });
+
+  const contactListMatchingConversations = useMemo(() => {
+    if (!contactListCreatedAt) {
+      return searchMatchingConversations;
+    }
+    return searchMatchingConversations.filter((item) =>
+      contactListMembers.includes(item.contactId),
+    );
+  }, [searchMatchingConversations, contactListCreatedAt, contactListMembers]);
+
+  const filteredConversations = contactListMatchingConversations;
+
+  const contactList = useMemitaQuery(getContactList, {
+    accountId,
+    createdAt: contactListCreatedAt,
+  });
 
   return (
     <Fragment>
@@ -85,6 +117,33 @@ export function DirectMessagesScreen({ accountId }: { accountId: AccountId }) {
             );
         }
       })()}
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <ScreenLink
+          to={<ContactListsScreen accountId={accountId} />}
+          icon="folder"
+          hideLabel
+          label={t`Contact lists`}
+        />
+        {contactList && (
+          <Fragment>
+            <FontAwesome
+              name="angle-right"
+              size={16}
+              color={theme.secondaryTextColor}
+            />
+            <ScreenLink
+              to={
+                <ContactListScreen
+                  accountId={accountId}
+                  createdAt={contactListCreatedAt}
+                />
+              }
+              label={contactList.name}
+              styleOverride={{ flexGrow: 1 }}
+            />
+          </Fragment>
+        )}
+      </View>
       <FlatList
         data={filteredConversations}
         renderItem={({ item }) => (
