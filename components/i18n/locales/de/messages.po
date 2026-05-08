@@ -22,7 +22,7 @@ msgstr "Konto-ID"
 msgid "Account name"
 msgstr "Kontoname"
 
-#: components/screens/ProfileScreen.tsx:244
+#: components/screens/ProfileScreen.tsx:241
 msgid "Account settings"
 msgstr "Kontoeinstellungen"
 
@@ -79,7 +79,7 @@ msgstr "Zurück zu Direktnachrichten"
 msgid "Bengali"
 msgstr "Bengalisch"
 
-#: components/screens/ProfileScreen.tsx:206
+#: components/screens/ProfileScreen.tsx:203
 msgid "Biography"
 msgstr "Biografie"
 
@@ -140,7 +140,7 @@ msgstr "Artikel erstellen"
 
 #: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
-#: components/screens/ProfileScreen.tsx:187
+#: components/screens/ProfileScreen.tsx:184
 msgid "Create contact"
 msgstr "Kontakt erstellen"
 
@@ -149,7 +149,7 @@ msgstr "Kontakt erstellen"
 msgid "Create contact list"
 msgstr "Erstelle eine Adressliste"
 
-#: components/screens/SelectAccountScreen.tsx:56
+#: components/screens/SelectAccountScreen.tsx:55
 msgid "Create new account"
 msgstr "Neues Konto erstellen"
 
@@ -169,7 +169,7 @@ msgstr "Neue Gruppe erstellen"
 msgid "Dark"
 msgstr "Dunkel"
 
-#: components/ui/MessageCompose.tsx:210
+#: components/ui/MessageCompose.tsx:208
 msgid "Delete"
 msgstr "Löschen"
 
@@ -195,7 +195,7 @@ msgid "Device Settings"
 msgstr "Geräteeinstellungen"
 
 #: components/screens/ContactScreen.tsx:355
-#: components/screens/ProfileScreen.tsx:230
+#: components/screens/ProfileScreen.tsx:227
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Direktnachrichten"
@@ -205,7 +205,7 @@ msgstr "Direktnachrichten"
 #: components/screens/ContactScreen.tsx:152
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
-#: components/screens/ProfileScreen.tsx:171
+#: components/screens/ProfileScreen.tsx:168
 msgid "Discard changes"
 msgstr "Änderungen verwerfen"
 
@@ -213,7 +213,7 @@ msgstr "Änderungen verwerfen"
 msgid "Edit article"
 msgstr "Artikel bearbeiten"
 
-#: components/screens/ProfileScreen.tsx:239
+#: components/screens/ProfileScreen.tsx:236
 msgid "Edit contact"
 msgstr "Kontakt bearbeiten"
 
@@ -221,7 +221,7 @@ msgstr "Kontakt bearbeiten"
 msgid "Edit date"
 msgstr "Datum bearbeiten"
 
-#: components/screens/DirectConversationScreen.tsx:381
+#: components/screens/DirectConversationScreen.tsx:376
 msgid "Edit message"
 msgstr "Nachricht bearbeiten"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "Hindi"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:50
+#: components/screens/SelectAccountScreen.tsx:49
 msgid "Import account"
 msgstr "Konto importieren"
 
@@ -337,7 +337,7 @@ msgstr "Sprache"
 msgid "Light"
 msgstr "Hell"
 
-#: components/screens/ProfileScreen.tsx:201
+#: components/screens/ProfileScreen.tsx:198
 msgid "Location"
 msgstr "Ort"
 
@@ -349,7 +349,7 @@ msgstr "Mandarin-Chinesisch"
 msgid "Marathi"
 msgstr "Marathi"
 
-#: components/screens/DirectConversationScreen.tsx:439
+#: components/screens/DirectConversationScreen.tsx:434
 msgid "Mark as read"
 msgstr "Als gelesen markieren"
 
@@ -361,11 +361,11 @@ msgstr "Mitglieder in den Kontaktlisten"
 msgid "Members"
 msgstr "Mitglieder"
 
-#: components/screens/SelectAccountScreen.tsx:43
+#: components/screens/SelectAccountScreen.tsx:42
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:194
+#: components/ui/MessageCompose.tsx:192
 msgid "Modify message"
 msgstr "Nachricht ändern"
 
@@ -373,17 +373,17 @@ msgstr "Nachricht ändern"
 msgid "New article"
 msgstr "Neuer Artikel"
 
-#: components/ui/MessageCompose.tsx:140
+#: components/ui/MessageCompose.tsx:138
 msgid "New draft"
 msgstr "Neuer Entwurf"
 
-#: components/screens/DirectConversationScreen.tsx:468
-#: components/screens/DirectConversationScreen.tsx:552
+#: components/screens/DirectConversationScreen.tsx:463
+#: components/screens/DirectConversationScreen.tsx:547
 msgid "Next occurrence"
 msgstr "Nächstes Vorkommen"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:95
+#: components/screens/SelectAccountScreen.tsx:96
 msgid "No accounts on this device"
 msgstr "Keine Konten auf diesem Gerät"
 
@@ -408,8 +408,8 @@ msgstr "Keine Kontaktlisten"
 msgid "No contacts"
 msgstr "Keine Kontakte"
 
-#: components/screens/DirectConversationScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:333
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
@@ -418,7 +418,7 @@ msgstr "Keine Nachrichten"
 #: components/screens/ContactListScreen.tsx:250
 #: components/screens/ContactListsScreen.tsx:126
 #: components/screens/ContactScreen.tsx:337
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "Keine Ergebnisse gefunden"
 
@@ -462,8 +462,8 @@ msgstr "Orte"
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
-#: components/screens/DirectConversationScreen.tsx:404
-#: components/screens/DirectConversationScreen.tsx:526
+#: components/screens/DirectConversationScreen.tsx:399
+#: components/screens/DirectConversationScreen.tsx:521
 msgid "Previous occurrence"
 msgstr "Vorheriges Vorkommen"
 
@@ -473,7 +473,7 @@ msgstr "Vorheriges Vorkommen"
 msgid "Profile"
 msgstr "Profil"
 
-#: components/screens/ProfileScreen.tsx:149
+#: components/screens/ProfileScreen.tsx:146
 msgid "Profile ID copied to clipboard"
 msgstr "Profil-ID in die Zwischenablage kopiert"
 
@@ -501,16 +501,16 @@ msgstr "Russisch"
 #: components/screens/ContactListScreen.tsx:152
 #: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
-#: components/screens/ProfileScreen.tsx:187
+#: components/screens/ProfileScreen.tsx:184
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
-#: components/ui/MessageCompose.tsx:156
+#: components/ui/MessageCompose.tsx:154
 msgid "Save draft"
 msgstr "Entwurf speichern"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:359
+#: components/screens/DirectConversationScreen.tsx:354
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "Suchen"
@@ -525,7 +525,7 @@ msgstr "Kontakte suchen"
 msgid "Search contacts"
 msgstr "Kontakte suchen"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:172
 msgid "Send message"
 msgstr "Nachricht senden"
 
@@ -533,15 +533,15 @@ msgstr "Nachricht senden"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: components/screens/ProfileScreen.tsx:156
+#: components/screens/ProfileScreen.tsx:153
 msgid "Share profile"
 msgstr "Profil teilen"
 
-#: components/ui/CoordsInput.tsx:47
+#: components/ui/CoordsInput.tsx:45
 msgid "Show on map"
 msgstr "Auf Karte anzeigen"
 
-#: components/screens/ProfileScreen.tsx:100
+#: components/screens/ProfileScreen.tsx:97
 msgid "Show QR code"
 msgstr "QR-Code anzeigen"
 
@@ -599,7 +599,7 @@ msgstr "Das wird Ihr Avatar für immer sein, wählen Sie weise"
 msgid "Turkish"
 msgstr "Türkisch"
 
-#: components/screens/DirectConversationScreen.tsx:489
+#: components/screens/DirectConversationScreen.tsx:484
 msgid "Unread messages"
 msgstr "Ungelesene Nachrichten"
 

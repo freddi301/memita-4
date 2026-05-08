@@ -34,11 +34,10 @@ export function SelectAccountScreen() {
           style={{ width: 100, height: 100 }}
         />
         <Text
-          style={{
-            ...theme.textStyle,
-            fontSize: theme.fontSize * 2,
-            fontWeight: "bold",
-          }}
+          style={[
+            theme.textStyle,
+            { fontSize: theme.fontSize * 2, fontWeight: "bold" },
+          ]}
         >
           {t`Memita`}
         </Text>
@@ -73,12 +72,14 @@ export function SelectAccountScreen() {
               contactId={item.accountId}
             />
             <Text
-              style={{
-                ...theme.textStyle,
-                color: theme.linkTextColor,
-                fontWeight: "bold",
-                paddingTop: 10,
-              }}
+              style={[
+                theme.textStyle,
+                {
+                  color: theme.linkTextColor,
+                  fontWeight: "bold",
+                  paddingTop: 10,
+                },
+              ]}
             >
               {item.name}
             </Text>

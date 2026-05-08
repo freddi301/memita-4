@@ -29,6 +29,7 @@
     "@dicebear/collection": "^9.4.2",
     "@dicebear/core": "^9.4.2",
     "@expo/vector-icons": "^15.0.3",
+    "@floating-ui/react-native": "^0.10.9",
     "@jest/globals": "^30.3.0",
     "@lingui/babel-plugin-lingui-macro": "^5.9.5",
     "@lingui/cli": "^5.9.5",

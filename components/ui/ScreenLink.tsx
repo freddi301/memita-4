@@ -3,6 +3,7 @@ import { Fragment, ReactNode, useState } from "react";
 import { Pressable, StyleProp, Text, ViewStyle } from "react-native";
 import { To, useRouterContext } from "../Routing";
 import { useTheme } from "../Theme";
+import { useInfoTooltip } from "./InfoTooltip";
 
 // TODO refactor Icons to thin wrapper
 type IconName = keyof typeof FontAwesome.glyphMap;
@@ -15,7 +16,13 @@ export function ScreenLink({
   hideLabel,
   children,
   styleOverride,
-}: { to: To; color?: string; styleOverride?: StyleProp<ViewStyle> } & (
+  description,
+}: {
+  to: To;
+  color?: string;
+  styleOverride?: StyleProp<ViewStyle>;
+  description?: ReactNode;
+} & (
   | {
       label: string;
       icon?: IconName;
@@ -42,9 +49,27 @@ export function ScreenLink({
     : isPressing && !isDisabled
       ? theme.pressedBackgroundColor
       : theme.backgroundColor;
+  const tooltip = useInfoTooltip({
+    content: description ? (
+      description
+    ) : (
+      <Text
+        style={[
+          theme.secondaryTextStyle,
+          { paddingHorizontal: 8, paddingVertical: 4 },
+        ]}
+      >
+        {label}
+      </Text>
+    ),
+  });
   return (
     <Pressable
       accessibilityRole="button"
+      ref={tooltip.referenceRef}
+      onLongPress={
+        children ? (description ? tooltip.open : undefined) : tooltip.open
+      }
       onPress={() => {
         if (isDisabled) {
           return;
@@ -96,6 +121,7 @@ export function ScreenLink({
           )}
         </Fragment>
       )}
+      {tooltip.element}
     </Pressable>
   );
 }

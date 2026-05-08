@@ -166,16 +166,15 @@ export function DirectMessagesScreen({
               <CryptoAvatar accountId={accountId} contactId={item.contactId} />
               <View style={{ flexGrow: 1 }}>
                 <View style={{ flexDirection: "row" }}>
-                  <Text style={{ ...theme.linkTextStyle, flexGrow: 1 }}>
+                  <Text style={[theme.linkTextStyle, { flexGrow: 1 }]}>
                     {item.contactName}
                   </Text>
                   {item.lastMesssageCreatedAt && (
                     <Text
-                      style={{
-                        ...theme.textStyle,
-                        color: theme.secondaryTextColor,
-                        alignSelf: "flex-end",
-                      }}
+                      style={[
+                        theme.secondaryTextStyle,
+                        { alignSelf: "flex-end" },
+                      ]}
                     >
                       {new Date(item.lastMesssageCreatedAt).toLocaleString()}
                     </Text>
@@ -186,16 +185,18 @@ export function DirectMessagesScreen({
                 >
                   {item.unread > 0 && (
                     <Text
-                      style={{
-                        ...theme.textStyle,
-                        fontWeight: "bold",
-                        backgroundColor: theme.linkTextColor,
-                        color: theme.backgroundColor,
-                        paddingHorizontal: 4,
-                        borderRadius: 8,
-                        minWidth: 24,
-                        textAlign: "center",
-                      }}
+                      style={[
+                        theme.textStyle,
+                        {
+                          fontWeight: "bold",
+                          backgroundColor: theme.linkTextColor,
+                          color: theme.backgroundColor,
+                          paddingHorizontal: 4,
+                          borderRadius: 8,
+                          minWidth: 24,
+                          textAlign: "center",
+                        },
+                      ]}
                     >
                       {item.unread}
                     </Text>

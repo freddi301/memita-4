@@ -22,7 +22,7 @@ msgstr "Account ID"
 msgid "Account name"
 msgstr "Account name"
 
-#: components/screens/ProfileScreen.tsx:244
+#: components/screens/ProfileScreen.tsx:241
 msgid "Account settings"
 msgstr "Account settings"
 
@@ -79,7 +79,7 @@ msgstr "Back to direct messages"
 msgid "Bengali"
 msgstr "Bengali"
 
-#: components/screens/ProfileScreen.tsx:206
+#: components/screens/ProfileScreen.tsx:203
 msgid "Biography"
 msgstr "Biography"
 
@@ -140,7 +140,7 @@ msgstr "Create article"
 
 #: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
-#: components/screens/ProfileScreen.tsx:187
+#: components/screens/ProfileScreen.tsx:184
 msgid "Create contact"
 msgstr "Create contact"
 
@@ -149,7 +149,7 @@ msgstr "Create contact"
 msgid "Create contact list"
 msgstr "Create contact list"
 
-#: components/screens/SelectAccountScreen.tsx:56
+#: components/screens/SelectAccountScreen.tsx:55
 msgid "Create new account"
 msgstr "Create new account"
 
@@ -169,7 +169,7 @@ msgstr "Create new group"
 msgid "Dark"
 msgstr "Dark"
 
-#: components/ui/MessageCompose.tsx:210
+#: components/ui/MessageCompose.tsx:208
 msgid "Delete"
 msgstr "Delete"
 
@@ -195,7 +195,7 @@ msgid "Device Settings"
 msgstr "Device Settings"
 
 #: components/screens/ContactScreen.tsx:355
-#: components/screens/ProfileScreen.tsx:230
+#: components/screens/ProfileScreen.tsx:227
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Direct messages"
@@ -205,7 +205,7 @@ msgstr "Direct messages"
 #: components/screens/ContactScreen.tsx:152
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
-#: components/screens/ProfileScreen.tsx:171
+#: components/screens/ProfileScreen.tsx:168
 msgid "Discard changes"
 msgstr "Discard changes"
 
@@ -213,7 +213,7 @@ msgstr "Discard changes"
 msgid "Edit article"
 msgstr "Edit article"
 
-#: components/screens/ProfileScreen.tsx:239
+#: components/screens/ProfileScreen.tsx:236
 msgid "Edit contact"
 msgstr "Edit contact"
 
@@ -221,7 +221,7 @@ msgstr "Edit contact"
 msgid "Edit date"
 msgstr "Edit date"
 
-#: components/screens/DirectConversationScreen.tsx:381
+#: components/screens/DirectConversationScreen.tsx:376
 msgid "Edit message"
 msgstr "Edit message"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "Hindi"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:50
+#: components/screens/SelectAccountScreen.tsx:49
 msgid "Import account"
 msgstr "Import account"
 
@@ -337,7 +337,7 @@ msgstr "Language"
 msgid "Light"
 msgstr "Light"
 
-#: components/screens/ProfileScreen.tsx:201
+#: components/screens/ProfileScreen.tsx:198
 msgid "Location"
 msgstr "Location"
 
@@ -349,7 +349,7 @@ msgstr "Mandarin Chinese"
 msgid "Marathi"
 msgstr "Marathi"
 
-#: components/screens/DirectConversationScreen.tsx:439
+#: components/screens/DirectConversationScreen.tsx:434
 msgid "Mark as read"
 msgstr "Mark as read"
 
@@ -361,11 +361,11 @@ msgstr "Member of contact lists"
 msgid "Members"
 msgstr "Members"
 
-#: components/screens/SelectAccountScreen.tsx:43
+#: components/screens/SelectAccountScreen.tsx:42
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:194
+#: components/ui/MessageCompose.tsx:192
 msgid "Modify message"
 msgstr "Modify message"
 
@@ -373,17 +373,17 @@ msgstr "Modify message"
 msgid "New article"
 msgstr "New article"
 
-#: components/ui/MessageCompose.tsx:140
+#: components/ui/MessageCompose.tsx:138
 msgid "New draft"
 msgstr "New draft"
 
-#: components/screens/DirectConversationScreen.tsx:468
-#: components/screens/DirectConversationScreen.tsx:552
+#: components/screens/DirectConversationScreen.tsx:463
+#: components/screens/DirectConversationScreen.tsx:547
 msgid "Next occurrence"
 msgstr "Next occurrence"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:95
+#: components/screens/SelectAccountScreen.tsx:96
 msgid "No accounts on this device"
 msgstr "No accounts on this device"
 
@@ -408,8 +408,8 @@ msgstr "No contact lists"
 msgid "No contacts"
 msgstr "No contacts"
 
-#: components/screens/DirectConversationScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:333
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
@@ -418,7 +418,7 @@ msgstr "No messages"
 #: components/screens/ContactListScreen.tsx:250
 #: components/screens/ContactListsScreen.tsx:126
 #: components/screens/ContactScreen.tsx:337
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "No results found"
 
@@ -462,8 +462,8 @@ msgstr "Places"
 msgid "Portuguese"
 msgstr "Portuguese"
 
-#: components/screens/DirectConversationScreen.tsx:404
-#: components/screens/DirectConversationScreen.tsx:526
+#: components/screens/DirectConversationScreen.tsx:399
+#: components/screens/DirectConversationScreen.tsx:521
 msgid "Previous occurrence"
 msgstr "Previous occurrence"
 
@@ -473,7 +473,7 @@ msgstr "Previous occurrence"
 msgid "Profile"
 msgstr "Profile"
 
-#: components/screens/ProfileScreen.tsx:149
+#: components/screens/ProfileScreen.tsx:146
 msgid "Profile ID copied to clipboard"
 msgstr "Profile ID copied to clipboard"
 
@@ -501,16 +501,16 @@ msgstr "Russian"
 #: components/screens/ContactListScreen.tsx:152
 #: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
-#: components/screens/ProfileScreen.tsx:187
+#: components/screens/ProfileScreen.tsx:184
 msgid "Save changes"
 msgstr "Save changes"
 
-#: components/ui/MessageCompose.tsx:156
+#: components/ui/MessageCompose.tsx:154
 msgid "Save draft"
 msgstr "Save draft"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:359
+#: components/screens/DirectConversationScreen.tsx:354
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "Search"
@@ -525,7 +525,7 @@ msgstr "Search contact lists"
 msgid "Search contacts"
 msgstr "Search contacts"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:172
 msgid "Send message"
 msgstr "Send message"
 
@@ -533,15 +533,15 @@ msgstr "Send message"
 msgid "Settings"
 msgstr "Settings"
 
-#: components/screens/ProfileScreen.tsx:156
+#: components/screens/ProfileScreen.tsx:153
 msgid "Share profile"
 msgstr "Share profile"
 
-#: components/ui/CoordsInput.tsx:47
+#: components/ui/CoordsInput.tsx:45
 msgid "Show on map"
 msgstr "Show on map"
 
-#: components/screens/ProfileScreen.tsx:100
+#: components/screens/ProfileScreen.tsx:97
 msgid "Show QR code"
 msgstr "Show QR code"
 
@@ -599,7 +599,7 @@ msgstr "This will your avatar forever, choose wisely"
 msgid "Turkish"
 msgstr "Turkish"
 
-#: components/screens/DirectConversationScreen.tsx:489
+#: components/screens/DirectConversationScreen.tsx:484
 msgid "Unread messages"
 msgstr "Unread messages"
 

@@ -81,13 +81,10 @@ export function ProfileScreen({
       >
         <CryptoAvatar accountId={accountId} contactId={contactId} />
         <Text
-          style={{
-            ...theme.textStyle,
-            fontWeight: "bold",
-            flexGrow: 1,
-            paddingLeft: 8,
-            paddingTop: 6,
-          }}
+          style={[
+            theme.textStyle,
+            { fontWeight: "bold", flexGrow: 1, paddingLeft: 8, paddingTop: 6 },
+          ]}
         >
           {contact.name}
         </Text>
@@ -197,7 +194,7 @@ export function ProfileScreen({
         }
       >
         <View style={{ gap: 2, paddingVertical: 8 }}>
-          <Text style={{ ...theme.secondaryTextStyle, paddingHorizontal: 16 }}>
+          <Text style={[theme.secondaryTextStyle, { paddingHorizontal: 16 }]}>
             {t`Location`}
           </Text>
           <CoordsInput value={locationInput} onChange={setLocationInput} />
@@ -208,11 +205,11 @@ export function ProfileScreen({
             <TextInput
               value={bioInput}
               onChangeText={setBioInput}
-              style={{ ...theme.textInputStyle(bioInput), maxHeight: "100%" }}
+              style={[theme.textInputStyle(bioInput), { maxHeight: "100%" }]}
               multiline
             />
           ) : (
-            <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
+            <Text style={[theme.textStyle, { paddingHorizontal: 16 }]}>
               {biography.content}
             </Text>
           )}

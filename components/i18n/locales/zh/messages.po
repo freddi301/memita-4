@@ -22,7 +22,7 @@ msgstr "账户 ID"
 msgid "Account name"
 msgstr "账户名称"
 
-#: components/screens/ProfileScreen.tsx:244
+#: components/screens/ProfileScreen.tsx:241
 msgid "Account settings"
 msgstr "账户设置"
 
@@ -79,7 +79,7 @@ msgstr "返回私信"
 msgid "Bengali"
 msgstr "孟加拉语"
 
-#: components/screens/ProfileScreen.tsx:206
+#: components/screens/ProfileScreen.tsx:203
 msgid "Biography"
 msgstr "个人简介"
 
@@ -140,7 +140,7 @@ msgstr "创建文章"
 
 #: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
-#: components/screens/ProfileScreen.tsx:187
+#: components/screens/ProfileScreen.tsx:184
 msgid "Create contact"
 msgstr "创建联系人"
 
@@ -149,7 +149,7 @@ msgstr "创建联系人"
 msgid "Create contact list"
 msgstr "创建联系人列表"
 
-#: components/screens/SelectAccountScreen.tsx:56
+#: components/screens/SelectAccountScreen.tsx:55
 msgid "Create new account"
 msgstr "创建新账户"
 
@@ -169,7 +169,7 @@ msgstr "创建新群组"
 msgid "Dark"
 msgstr "深色"
 
-#: components/ui/MessageCompose.tsx:210
+#: components/ui/MessageCompose.tsx:208
 msgid "Delete"
 msgstr "删除"
 
@@ -195,7 +195,7 @@ msgid "Device Settings"
 msgstr "设备设置"
 
 #: components/screens/ContactScreen.tsx:355
-#: components/screens/ProfileScreen.tsx:230
+#: components/screens/ProfileScreen.tsx:227
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "私信"
@@ -205,7 +205,7 @@ msgstr "私信"
 #: components/screens/ContactScreen.tsx:152
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
-#: components/screens/ProfileScreen.tsx:171
+#: components/screens/ProfileScreen.tsx:168
 msgid "Discard changes"
 msgstr "放弃更改"
 
@@ -213,7 +213,7 @@ msgstr "放弃更改"
 msgid "Edit article"
 msgstr "编辑文章"
 
-#: components/screens/ProfileScreen.tsx:239
+#: components/screens/ProfileScreen.tsx:236
 msgid "Edit contact"
 msgstr "编辑联系人"
 
@@ -221,7 +221,7 @@ msgstr "编辑联系人"
 msgid "Edit date"
 msgstr "编辑日期"
 
-#: components/screens/DirectConversationScreen.tsx:381
+#: components/screens/DirectConversationScreen.tsx:376
 msgid "Edit message"
 msgstr "编辑消息"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "印地语"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:50
+#: components/screens/SelectAccountScreen.tsx:49
 msgid "Import account"
 msgstr "导入账户"
 
@@ -337,7 +337,7 @@ msgstr "语言"
 msgid "Light"
 msgstr "浅色"
 
-#: components/screens/ProfileScreen.tsx:201
+#: components/screens/ProfileScreen.tsx:198
 msgid "Location"
 msgstr "位置"
 
@@ -349,7 +349,7 @@ msgstr "普通话"
 msgid "Marathi"
 msgstr "马拉地语"
 
-#: components/screens/DirectConversationScreen.tsx:439
+#: components/screens/DirectConversationScreen.tsx:434
 msgid "Mark as read"
 msgstr "标记为已读"
 
@@ -361,11 +361,11 @@ msgstr "在联系人列表中的成员"
 msgid "Members"
 msgstr "成员"
 
-#: components/screens/SelectAccountScreen.tsx:43
+#: components/screens/SelectAccountScreen.tsx:42
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:194
+#: components/ui/MessageCompose.tsx:192
 msgid "Modify message"
 msgstr "修改消息"
 
@@ -373,17 +373,17 @@ msgstr "修改消息"
 msgid "New article"
 msgstr "新文章"
 
-#: components/ui/MessageCompose.tsx:140
+#: components/ui/MessageCompose.tsx:138
 msgid "New draft"
 msgstr "新草稿"
 
-#: components/screens/DirectConversationScreen.tsx:468
-#: components/screens/DirectConversationScreen.tsx:552
+#: components/screens/DirectConversationScreen.tsx:463
+#: components/screens/DirectConversationScreen.tsx:547
 msgid "Next occurrence"
 msgstr "下一个匹配"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:95
+#: components/screens/SelectAccountScreen.tsx:96
 msgid "No accounts on this device"
 msgstr "此设备上没有账户"
 
@@ -408,8 +408,8 @@ msgstr "无联系人列表"
 msgid "No contacts"
 msgstr "未添加联系人"
 
-#: components/screens/DirectConversationScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:333
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
@@ -418,7 +418,7 @@ msgstr "没有消息"
 #: components/screens/ContactListScreen.tsx:250
 #: components/screens/ContactListsScreen.tsx:126
 #: components/screens/ContactScreen.tsx:337
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "未找到结果"
 
@@ -462,8 +462,8 @@ msgstr "地点"
 msgid "Portuguese"
 msgstr "葡萄牙语"
 
-#: components/screens/DirectConversationScreen.tsx:404
-#: components/screens/DirectConversationScreen.tsx:526
+#: components/screens/DirectConversationScreen.tsx:399
+#: components/screens/DirectConversationScreen.tsx:521
 msgid "Previous occurrence"
 msgstr "上一个匹配"
 
@@ -473,7 +473,7 @@ msgstr "上一个匹配"
 msgid "Profile"
 msgstr "个人资料"
 
-#: components/screens/ProfileScreen.tsx:149
+#: components/screens/ProfileScreen.tsx:146
 msgid "Profile ID copied to clipboard"
 msgstr "个人资料 ID 已复制到剪贴板"
 
@@ -501,16 +501,16 @@ msgstr "俄语"
 #: components/screens/ContactListScreen.tsx:152
 #: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
-#: components/screens/ProfileScreen.tsx:187
+#: components/screens/ProfileScreen.tsx:184
 msgid "Save changes"
 msgstr "保存更改"
 
-#: components/ui/MessageCompose.tsx:156
+#: components/ui/MessageCompose.tsx:154
 msgid "Save draft"
 msgstr "保存草稿"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:359
+#: components/screens/DirectConversationScreen.tsx:354
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "搜索"
@@ -525,7 +525,7 @@ msgstr "搜索联系人列表"
 msgid "Search contacts"
 msgstr "搜索联系人"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:172
 msgid "Send message"
 msgstr "发送消息"
 
@@ -533,15 +533,15 @@ msgstr "发送消息"
 msgid "Settings"
 msgstr "设置"
 
-#: components/screens/ProfileScreen.tsx:156
+#: components/screens/ProfileScreen.tsx:153
 msgid "Share profile"
 msgstr "分享个人资料"
 
-#: components/ui/CoordsInput.tsx:47
+#: components/ui/CoordsInput.tsx:45
 msgid "Show on map"
 msgstr "在地图上显示"
 
-#: components/screens/ProfileScreen.tsx:100
+#: components/screens/ProfileScreen.tsx:97
 msgid "Show QR code"
 msgstr "显示二维码"
 
@@ -599,7 +599,7 @@ msgstr "这将永久成为您的头像，请谨慎选择"
 msgid "Turkish"
 msgstr "土耳其语"
 
-#: components/screens/DirectConversationScreen.tsx:489
+#: components/screens/DirectConversationScreen.tsx:484
 msgid "Unread messages"
 msgstr "未读消息"
 

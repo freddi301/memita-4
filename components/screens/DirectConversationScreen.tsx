@@ -178,12 +178,7 @@ export function DirectConversationScreen({
         >
           <CryptoAvatar accountId={accountId} contactId={contactId} />
           <Text
-            style={{
-              ...theme.textStyle,
-              color: theme.linkTextColor,
-              paddingLeft: 16,
-              paddingTop: 10,
-            }}
+            style={[theme.linkTextStyle, { paddingLeft: 16, paddingTop: 10 }]}
           >
             {contact?.name ?? ""}
           </Text>
@@ -248,7 +243,7 @@ export function DirectConversationScreen({
                 <CryptoAvatar accountId={accountId} contactId={item.senderId} />
                 <View style={{ flexGrow: 1 }}>
                   <View style={{ flexDirection: "row", gap: 8 }}>
-                    <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>
+                    <Text style={[theme.textStyle, { fontWeight: "bold" }]}>
                       {item.senderId === accountId
                         ? (account?.name ?? "")
                         : item.senderId === contactId
@@ -273,7 +268,7 @@ export function DirectConversationScreen({
                       }
                     />
                   </View>
-                  <Text style={{ ...theme.textStyle }}>
+                  <Text style={theme.textStyle}>
                     {toolbarState.type === "search"
                       ? item.content
                           .split(new RegExp(`(${toolbarState.text})`, "i"))

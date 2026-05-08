@@ -22,20 +22,18 @@ export function CoordsInput({
       <View style={{ flexDirection: "row" }}>
         <TextInput
           value={value?.latitude.toString() ?? ""}
-          style={{
-            ...theme.textInputStyle(value?.latitude.toString() ?? ""),
-            flex: 1,
-            marginRight: 8,
-            marginLeft: 16,
-          }}
+          style={[
+            theme.textInputStyle(value?.latitude.toString() ?? ""),
+            { flex: 1, marginRight: 8, marginLeft: 16 },
+          ]}
           readOnly
         />
         <TextInput
           value={value?.longitude.toString() ?? ""}
-          style={{
-            ...theme.textInputStyle(value?.longitude.toString() ?? ""),
-            flex: 1,
-          }}
+          style={[
+            theme.textInputStyle(value?.longitude.toString() ?? ""),
+            { flex: 1 },
+          ]}
           readOnly
         />
         <ScreenLink

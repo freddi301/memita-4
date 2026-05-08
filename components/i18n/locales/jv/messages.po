@@ -22,7 +22,7 @@ msgstr "ID Akun"
 msgid "Account name"
 msgstr "Jeneng akun"
 
-#: components/screens/ProfileScreen.tsx:244
+#: components/screens/ProfileScreen.tsx:241
 msgid "Account settings"
 msgstr "Setelan akun"
 
@@ -79,7 +79,7 @@ msgstr "Bali menyang pesan langsung"
 msgid "Bengali"
 msgstr "Basa Bengali"
 
-#: components/screens/ProfileScreen.tsx:206
+#: components/screens/ProfileScreen.tsx:203
 msgid "Biography"
 msgstr "Biografi"
 
@@ -140,7 +140,7 @@ msgstr "Gawe artikel"
 
 #: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
-#: components/screens/ProfileScreen.tsx:187
+#: components/screens/ProfileScreen.tsx:184
 msgid "Create contact"
 msgstr "Gawe kontak"
 
@@ -149,7 +149,7 @@ msgstr "Gawe kontak"
 msgid "Create contact list"
 msgstr "Buat daftar kontak"
 
-#: components/screens/SelectAccountScreen.tsx:56
+#: components/screens/SelectAccountScreen.tsx:55
 msgid "Create new account"
 msgstr "Gawe akun anyar"
 
@@ -169,7 +169,7 @@ msgstr "Gawe grup anyar"
 msgid "Dark"
 msgstr "Peteng"
 
-#: components/ui/MessageCompose.tsx:210
+#: components/ui/MessageCompose.tsx:208
 msgid "Delete"
 msgstr "Busak"
 
@@ -195,7 +195,7 @@ msgid "Device Settings"
 msgstr "Setelan Piranti"
 
 #: components/screens/ContactScreen.tsx:355
-#: components/screens/ProfileScreen.tsx:230
+#: components/screens/ProfileScreen.tsx:227
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "Pesan langsung"
@@ -205,7 +205,7 @@ msgstr "Pesan langsung"
 #: components/screens/ContactScreen.tsx:152
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
-#: components/screens/ProfileScreen.tsx:171
+#: components/screens/ProfileScreen.tsx:168
 msgid "Discard changes"
 msgstr "Buang owahan"
 
@@ -213,7 +213,7 @@ msgstr "Buang owahan"
 msgid "Edit article"
 msgstr "Sunting artikel"
 
-#: components/screens/ProfileScreen.tsx:239
+#: components/screens/ProfileScreen.tsx:236
 msgid "Edit contact"
 msgstr "Sunting kontak"
 
@@ -221,7 +221,7 @@ msgstr "Sunting kontak"
 msgid "Edit date"
 msgstr "Sunting tanggal"
 
-#: components/screens/DirectConversationScreen.tsx:381
+#: components/screens/DirectConversationScreen.tsx:376
 msgid "Edit message"
 msgstr "Sunting pesan"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "Basa Hindi"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:50
+#: components/screens/SelectAccountScreen.tsx:49
 msgid "Import account"
 msgstr "Impor akun"
 
@@ -337,7 +337,7 @@ msgstr "Basa"
 msgid "Light"
 msgstr "Padhang"
 
-#: components/screens/ProfileScreen.tsx:201
+#: components/screens/ProfileScreen.tsx:198
 msgid "Location"
 msgstr "Lokasi"
 
@@ -349,7 +349,7 @@ msgstr "Basa Mandarin"
 msgid "Marathi"
 msgstr "Basa Marathi"
 
-#: components/screens/DirectConversationScreen.tsx:439
+#: components/screens/DirectConversationScreen.tsx:434
 msgid "Mark as read"
 msgstr "Tandai wis diwaca"
 
@@ -361,11 +361,11 @@ msgstr "Anggota daftar kontak"
 msgid "Members"
 msgstr "Anggota"
 
-#: components/screens/SelectAccountScreen.tsx:43
+#: components/screens/SelectAccountScreen.tsx:42
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:194
+#: components/ui/MessageCompose.tsx:192
 msgid "Modify message"
 msgstr "Owahi pesan"
 
@@ -373,17 +373,17 @@ msgstr "Owahi pesan"
 msgid "New article"
 msgstr "Artikel anyar"
 
-#: components/ui/MessageCompose.tsx:140
+#: components/ui/MessageCompose.tsx:138
 msgid "New draft"
 msgstr "Draf anyar"
 
-#: components/screens/DirectConversationScreen.tsx:468
-#: components/screens/DirectConversationScreen.tsx:552
+#: components/screens/DirectConversationScreen.tsx:463
+#: components/screens/DirectConversationScreen.tsx:547
 msgid "Next occurrence"
 msgstr "Kejadian sabanjure"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:95
+#: components/screens/SelectAccountScreen.tsx:96
 msgid "No accounts on this device"
 msgstr "Ora ana akun ing piranti iki"
 
@@ -408,8 +408,8 @@ msgstr "Tidak ada daftar kontak"
 msgid "No contacts"
 msgstr "Tidak ada kontak"
 
-#: components/screens/DirectConversationScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:333
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
@@ -418,7 +418,7 @@ msgstr "Ora ana pesan"
 #: components/screens/ContactListScreen.tsx:250
 #: components/screens/ContactListsScreen.tsx:126
 #: components/screens/ContactScreen.tsx:337
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "Tidak ketemu hasil"
 
@@ -462,8 +462,8 @@ msgstr "Panggonan"
 msgid "Portuguese"
 msgstr "Basa Portugis"
 
-#: components/screens/DirectConversationScreen.tsx:404
-#: components/screens/DirectConversationScreen.tsx:526
+#: components/screens/DirectConversationScreen.tsx:399
+#: components/screens/DirectConversationScreen.tsx:521
 msgid "Previous occurrence"
 msgstr "Kejadian sadurunge"
 
@@ -473,7 +473,7 @@ msgstr "Kejadian sadurunge"
 msgid "Profile"
 msgstr "Profil"
 
-#: components/screens/ProfileScreen.tsx:149
+#: components/screens/ProfileScreen.tsx:146
 msgid "Profile ID copied to clipboard"
 msgstr "ID profil disalin menyang clipboard"
 
@@ -501,16 +501,16 @@ msgstr "Basa Rusia"
 #: components/screens/ContactListScreen.tsx:152
 #: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
-#: components/screens/ProfileScreen.tsx:187
+#: components/screens/ProfileScreen.tsx:184
 msgid "Save changes"
 msgstr "Simpen owahan"
 
-#: components/ui/MessageCompose.tsx:156
+#: components/ui/MessageCompose.tsx:154
 msgid "Save draft"
 msgstr "Simpen draf"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:359
+#: components/screens/DirectConversationScreen.tsx:354
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "Goleki"
@@ -525,7 +525,7 @@ msgstr "Cari daftar kontak"
 msgid "Search contacts"
 msgstr "Cari kontak"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:172
 msgid "Send message"
 msgstr "Kirim pesan"
 
@@ -533,15 +533,15 @@ msgstr "Kirim pesan"
 msgid "Settings"
 msgstr "Setelan"
 
-#: components/screens/ProfileScreen.tsx:156
+#: components/screens/ProfileScreen.tsx:153
 msgid "Share profile"
 msgstr "Barengake profil"
 
-#: components/ui/CoordsInput.tsx:47
+#: components/ui/CoordsInput.tsx:45
 msgid "Show on map"
 msgstr "Tampilake ing peta"
 
-#: components/screens/ProfileScreen.tsx:100
+#: components/screens/ProfileScreen.tsx:97
 msgid "Show QR code"
 msgstr "Tampilake kode QR"
 
@@ -599,7 +599,7 @@ msgstr "Iki bakal dadi avatar sampeyan selawase, piliha kanthi wicaksana"
 msgid "Turkish"
 msgstr "Basa Turki"
 
-#: components/screens/DirectConversationScreen.tsx:489
+#: components/screens/DirectConversationScreen.tsx:484
 msgid "Unread messages"
 msgstr "Pesan durung diwaca"
 

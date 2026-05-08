@@ -48,12 +48,10 @@ export function AttachmentPreview({
           <FontAwesome name="file" size={24} color={theme.secondaryTextColor} />
           <View style={{ flexGrow: 1 }} />
           <Text
-            style={{
-              ...theme.textStyle,
-              color: theme.secondaryTextColor,
-              fontSize: 14,
-              textAlign: "center",
-            }}
+            style={[
+              theme.secondaryTextStyle,
+              { fontSize: 14, textAlign: "center" },
+            ]}
           >
             {file.name}
           </Text>

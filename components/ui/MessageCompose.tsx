@@ -112,12 +112,10 @@ export function MessageCompose({
           placeholder={t`Write a message`}
           multiline
           numberOfLines={Platform.OS === "web" ? 1 : undefined}
-          style={{
-            ...theme.textInputStyle(text),
-            flex: 1,
-            paddingVertical: 8,
-            maxHeight: 400,
-          }}
+          style={[
+            theme.textInputStyle(text),
+            { flex: 1, paddingVertical: 8, maxHeight: 400 },
+          ]}
         />
         {(() => {
           if (!toModify) {

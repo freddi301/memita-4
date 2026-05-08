@@ -22,7 +22,7 @@ msgstr "खाता आईडी"
 msgid "Account name"
 msgstr "खाते का नाम"
 
-#: components/screens/ProfileScreen.tsx:244
+#: components/screens/ProfileScreen.tsx:241
 msgid "Account settings"
 msgstr "खाता सेटिंग"
 
@@ -79,7 +79,7 @@ msgstr "सीधे संदेशों पर वापस जाएं"
 msgid "Bengali"
 msgstr "बंगाली"
 
-#: components/screens/ProfileScreen.tsx:206
+#: components/screens/ProfileScreen.tsx:203
 msgid "Biography"
 msgstr "जीवनी"
 
@@ -140,7 +140,7 @@ msgstr "लेख बनाएं"
 
 #: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
-#: components/screens/ProfileScreen.tsx:187
+#: components/screens/ProfileScreen.tsx:184
 msgid "Create contact"
 msgstr "संपर्क बनाएं"
 
@@ -149,7 +149,7 @@ msgstr "संपर्क बनाएं"
 msgid "Create contact list"
 msgstr "संपर्क सूची बनाएँ"
 
-#: components/screens/SelectAccountScreen.tsx:56
+#: components/screens/SelectAccountScreen.tsx:55
 msgid "Create new account"
 msgstr "नया खाता बनाएं"
 
@@ -169,7 +169,7 @@ msgstr "नया समूह बनाएं"
 msgid "Dark"
 msgstr "गहरा"
 
-#: components/ui/MessageCompose.tsx:210
+#: components/ui/MessageCompose.tsx:208
 msgid "Delete"
 msgstr "हटाएं"
 
@@ -195,7 +195,7 @@ msgid "Device Settings"
 msgstr "डिवाइस सेटिंग"
 
 #: components/screens/ContactScreen.tsx:355
-#: components/screens/ProfileScreen.tsx:230
+#: components/screens/ProfileScreen.tsx:227
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "सीधे संदेश"
@@ -205,7 +205,7 @@ msgstr "सीधे संदेश"
 #: components/screens/ContactScreen.tsx:152
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
-#: components/screens/ProfileScreen.tsx:171
+#: components/screens/ProfileScreen.tsx:168
 msgid "Discard changes"
 msgstr "परिवर्तन छोड़ें"
 
@@ -213,7 +213,7 @@ msgstr "परिवर्तन छोड़ें"
 msgid "Edit article"
 msgstr "लेख संपादित करें"
 
-#: components/screens/ProfileScreen.tsx:239
+#: components/screens/ProfileScreen.tsx:236
 msgid "Edit contact"
 msgstr "संपर्क संपादित करें"
 
@@ -221,7 +221,7 @@ msgstr "संपर्क संपादित करें"
 msgid "Edit date"
 msgstr "तारीख संपादित करें"
 
-#: components/screens/DirectConversationScreen.tsx:381
+#: components/screens/DirectConversationScreen.tsx:376
 msgid "Edit message"
 msgstr "संदेश संपादित करें"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "हिंदी"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:50
+#: components/screens/SelectAccountScreen.tsx:49
 msgid "Import account"
 msgstr "खाता आयात करें"
 
@@ -337,7 +337,7 @@ msgstr "भाषा"
 msgid "Light"
 msgstr "हल्का"
 
-#: components/screens/ProfileScreen.tsx:201
+#: components/screens/ProfileScreen.tsx:198
 msgid "Location"
 msgstr "स्थान"
 
@@ -349,7 +349,7 @@ msgstr "मंदारिन चीनी"
 msgid "Marathi"
 msgstr "मराठी"
 
-#: components/screens/DirectConversationScreen.tsx:439
+#: components/screens/DirectConversationScreen.tsx:434
 msgid "Mark as read"
 msgstr "पढ़ा हुआ चिह्नित करें"
 
@@ -361,11 +361,11 @@ msgstr "संपर्क सूची में सदस्य"
 msgid "Members"
 msgstr "सदस्य"
 
-#: components/screens/SelectAccountScreen.tsx:43
+#: components/screens/SelectAccountScreen.tsx:42
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:194
+#: components/ui/MessageCompose.tsx:192
 msgid "Modify message"
 msgstr "संदेश संशोधित करें"
 
@@ -373,17 +373,17 @@ msgstr "संदेश संशोधित करें"
 msgid "New article"
 msgstr "नया लेख"
 
-#: components/ui/MessageCompose.tsx:140
+#: components/ui/MessageCompose.tsx:138
 msgid "New draft"
 msgstr "नया मसौदा"
 
-#: components/screens/DirectConversationScreen.tsx:468
-#: components/screens/DirectConversationScreen.tsx:552
+#: components/screens/DirectConversationScreen.tsx:463
+#: components/screens/DirectConversationScreen.tsx:547
 msgid "Next occurrence"
 msgstr "अगली घटना"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:95
+#: components/screens/SelectAccountScreen.tsx:96
 msgid "No accounts on this device"
 msgstr "इस डिवाइस पर कोई खाता नहीं है"
 
@@ -408,8 +408,8 @@ msgstr "कोई संपर्क सूची नहीं"
 msgid "No contacts"
 msgstr "कोई संपर्क नहीं"
 
-#: components/screens/DirectConversationScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:333
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
@@ -418,7 +418,7 @@ msgstr "कोई संदेश नहीं"
 #: components/screens/ContactListScreen.tsx:250
 #: components/screens/ContactListsScreen.tsx:126
 #: components/screens/ContactScreen.tsx:337
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "कोई परिणाम नहीं मिला"
 
@@ -462,8 +462,8 @@ msgstr "स्थान"
 msgid "Portuguese"
 msgstr "पुर्तगाली"
 
-#: components/screens/DirectConversationScreen.tsx:404
-#: components/screens/DirectConversationScreen.tsx:526
+#: components/screens/DirectConversationScreen.tsx:399
+#: components/screens/DirectConversationScreen.tsx:521
 msgid "Previous occurrence"
 msgstr "पिछली घटना"
 
@@ -473,7 +473,7 @@ msgstr "पिछली घटना"
 msgid "Profile"
 msgstr "प्रोफ़ाइल"
 
-#: components/screens/ProfileScreen.tsx:149
+#: components/screens/ProfileScreen.tsx:146
 msgid "Profile ID copied to clipboard"
 msgstr "प्रोफ़ाइल आईडी क्लिपबोर्ड पर कॉपी की गई"
 
@@ -501,16 +501,16 @@ msgstr "रूसी"
 #: components/screens/ContactListScreen.tsx:152
 #: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
-#: components/screens/ProfileScreen.tsx:187
+#: components/screens/ProfileScreen.tsx:184
 msgid "Save changes"
 msgstr "परिवर्तन सहेजें"
 
-#: components/ui/MessageCompose.tsx:156
+#: components/ui/MessageCompose.tsx:154
 msgid "Save draft"
 msgstr "मसौदा सहेजें"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:359
+#: components/screens/DirectConversationScreen.tsx:354
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "खोजें"
@@ -525,7 +525,7 @@ msgstr "संपर्क सूची खोजें"
 msgid "Search contacts"
 msgstr "संपर्कों की खोज करें"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:172
 msgid "Send message"
 msgstr "संदेश भेजें"
 
@@ -533,15 +533,15 @@ msgstr "संदेश भेजें"
 msgid "Settings"
 msgstr "सेटिंग"
 
-#: components/screens/ProfileScreen.tsx:156
+#: components/screens/ProfileScreen.tsx:153
 msgid "Share profile"
 msgstr "प्रोफ़ाइल साझा करें"
 
-#: components/ui/CoordsInput.tsx:47
+#: components/ui/CoordsInput.tsx:45
 msgid "Show on map"
 msgstr "मानचित्र पर दिखाएं"
 
-#: components/screens/ProfileScreen.tsx:100
+#: components/screens/ProfileScreen.tsx:97
 msgid "Show QR code"
 msgstr "QR कोड दिखाएं"
 
@@ -599,7 +599,7 @@ msgstr "यह हमेशा के लिए आपका अवतार ह
 msgid "Turkish"
 msgstr "तुर्की"
 
-#: components/screens/DirectConversationScreen.tsx:489
+#: components/screens/DirectConversationScreen.tsx:484
 msgid "Unread messages"
 msgstr "अपठित संदेश"
 
