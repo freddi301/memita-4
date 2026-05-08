@@ -40,3 +40,11 @@ for each legacy string icon, tell me line of code so i can decide to what type o
 ## ScreenLink instances icons
 
 All <ScreenLink/> with label and no children should have an icon. stop, point out the line of code (clickable), propose relevant icons based on context (check Icon.tsx first), expect answer optionNumber/otherDetails.
+
+## Accessible labels
+
+<ScreenLink/> with hideLabel should have explanatory label, not too lonk but usually not single word.
+
+## Form field like layouts
+
+for <View><Text/><Input/></View> groups, check if the view has the style like in theme.formFieldContainerStyle, if so refactor

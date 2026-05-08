@@ -93,6 +93,11 @@ export function useTheme() {
       padding: 0,
     },
   ];
+  const formFieldContainerStyle = {
+    gap: 2,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  };
   return {
     ...baseTheme,
     ...themeProps,
@@ -100,6 +105,7 @@ export function useTheme() {
     secondaryTextStyle,
     validationErrorTextStyle,
     linkTextStyle,
+    formFieldContainerStyle,
     textInputStyle(value: string) {
       return [
         baseTextInputStyle,

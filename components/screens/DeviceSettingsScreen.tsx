@@ -6,6 +6,7 @@ import { getLanguage, setLanguage, systemLanguage } from "../i18n/Memitai18n";
 import { Language, Theme, themes } from "../storage/storageSchema";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { getTheme, setTheme, useSystemTheme, useTheme } from "../Theme";
+import { BackIcon } from "../ui/Icon";
 import { ScreenLink } from "../ui/ScreenLink";
 import { Select } from "../ui/Select";
 import { SelectAccountScreen } from "./SelectAccountScreen";
@@ -23,20 +24,20 @@ export function DeviceSettingsScreen() {
 
   return (
     <Fragment>
-      <View style={{ flexDirection: "row", alignItems: "baseline" }}>
+      <View style={[{ flexDirection: "row", alignItems: "center" }]}>
         <ScreenLink
           to={<SelectAccountScreen />}
-          icon="arrow-left"
+          icon={BackIcon}
           hideLabel
           label={t`Back`}
         />
-        <Text style={{ ...theme.textStyle, fontWeight: "bold", paddingTop: 2 }}>
+        <Text style={[theme.textStyle, { fontWeight: "bold", paddingTop: 2 }]}>
           {t`Device Settings`}
         </Text>
       </View>
       <ScrollView>
-        <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={theme.secondaryTextStyle}>{t`Language`}</Text>
+        <View style={[theme.formFieldContainerStyle]}>
+          <Text style={[theme.secondaryTextStyle]}>{t`Language`}</Text>
           <Select
             options={[undefined, ...languages]}
             value={savedLanguage}
@@ -115,8 +116,8 @@ export function DeviceSettingsScreen() {
             }}
           />
         </View>
-        <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={theme.secondaryTextStyle}>{t`Theme`}</Text>
+        <View style={[theme.formFieldContainerStyle]}>
+          <Text style={[theme.secondaryTextStyle]}>{t`Theme`}</Text>
           <Select
             options={[undefined, ...themes]}
             value={savedTheme}

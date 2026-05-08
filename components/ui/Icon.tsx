@@ -1,4 +1,4 @@
-import { Cog, LogIn, UserRoundPlus } from "lucide-react-native";
+import { ArrowLeft, Cog, LogIn, UserRoundPlus } from "lucide-react-native";
 import { ComponentType } from "react";
 import { View } from "react-native";
 // import "@expo/vector-icons/"
@@ -13,6 +13,14 @@ export function DeviceSettingsIcon(props: IconProps) {
   return (
     <View testID="DeviceSettingsIcon">
       <Cog {...props} />
+    </View>
+  );
+}
+
+export function BackIcon(props: IconProps) {
+  return (
+    <View testID="BackIcon">
+      <ArrowLeft {...props} />
     </View>
   );
 }
