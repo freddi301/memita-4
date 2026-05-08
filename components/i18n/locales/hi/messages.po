@@ -221,6 +221,10 @@ msgstr "संपर्क संपादित करें"
 msgid "Edit date"
 msgstr "तारीख संपादित करें"
 
+#: components/screens/DirectConversationScreen.tsx:381
+msgid "Edit message"
+msgstr "संदेश संपादित करें"
+
 #: components/ui/DateTimeInput.tsx:89
 msgid "Edit time"
 msgstr "समय संपादित करें"
@@ -275,7 +279,7 @@ msgstr "लेखों पर जाएं"
 msgid "Go to conversation"
 msgstr "बातचीत पर जाएं"
 
-#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/DirectConversationScreen.tsx:173
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "संदेशों पर जाएं"
@@ -345,7 +349,7 @@ msgstr "मंदारिन चीनी"
 msgid "Marathi"
 msgstr "मराठी"
 
-#: components/screens/DirectConversationScreen.tsx:430
+#: components/screens/DirectConversationScreen.tsx:439
 msgid "Mark as read"
 msgstr "पढ़ा हुआ चिह्नित करें"
 
@@ -373,8 +377,8 @@ msgstr "नया लेख"
 msgid "New draft"
 msgstr "नया मसौदा"
 
-#: components/screens/DirectConversationScreen.tsx:459
-#: components/screens/DirectConversationScreen.tsx:543
+#: components/screens/DirectConversationScreen.tsx:468
+#: components/screens/DirectConversationScreen.tsx:552
 msgid "Next occurrence"
 msgstr "अगली घटना"
 
@@ -404,7 +408,7 @@ msgstr "कोई संपर्क सूची नहीं"
 msgid "No contacts"
 msgstr "कोई संपर्क नहीं"
 
-#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectConversationScreen.tsx:338
 #: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,8 +462,8 @@ msgstr "स्थान"
 msgid "Portuguese"
 msgstr "पुर्तगाली"
 
-#: components/screens/DirectConversationScreen.tsx:395
-#: components/screens/DirectConversationScreen.tsx:517
+#: components/screens/DirectConversationScreen.tsx:404
+#: components/screens/DirectConversationScreen.tsx:526
 msgid "Previous occurrence"
 msgstr "पिछली घटना"
 
@@ -506,7 +510,7 @@ msgid "Save draft"
 msgstr "मसौदा सहेजें"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectConversationScreen.tsx:359
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "खोजें"
@@ -595,7 +599,7 @@ msgstr "यह हमेशा के लिए आपका अवतार ह
 msgid "Turkish"
 msgstr "तुर्की"
 
-#: components/screens/DirectConversationScreen.tsx:480
+#: components/screens/DirectConversationScreen.tsx:489
 msgid "Unread messages"
 msgstr "अपठित संदेश"
 

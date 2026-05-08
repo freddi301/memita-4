@@ -1,5 +1,4 @@
 review features secion, normalize items -> transform into tests
-remove onLongPress on messages to edit
 put hardcoced colors into theme
 use rn lucide icons
 on screenLink, web hover, mobile longpress show tooltip with label

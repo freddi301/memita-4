@@ -221,6 +221,10 @@ msgstr "தொடர்பை திருத்தவும்"
 msgid "Edit date"
 msgstr "தேதியை திருத்தவும்"
 
+#: components/screens/DirectConversationScreen.tsx:381
+msgid "Edit message"
+msgstr "செய்தியை திருத்து"
+
 #: components/ui/DateTimeInput.tsx:89
 msgid "Edit time"
 msgstr "நேரத்தை திருத்தவும்"
@@ -275,7 +279,7 @@ msgstr "கட்டுரைகளுக்கு செல்லவும்"
 msgid "Go to conversation"
 msgstr "உரையாடலுக்கு செல்லவும்"
 
-#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/DirectConversationScreen.tsx:173
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "செய்திகளுக்கு செல்லவும்"
@@ -345,7 +349,7 @@ msgstr "மாண்டரின் சீனம்"
 msgid "Marathi"
 msgstr "மராத்தி"
 
-#: components/screens/DirectConversationScreen.tsx:430
+#: components/screens/DirectConversationScreen.tsx:439
 msgid "Mark as read"
 msgstr "படிக்கப்பட்டதாக குறிக்கவும்"
 
@@ -373,8 +377,8 @@ msgstr "புதிய கட்டுரை"
 msgid "New draft"
 msgstr "புதிய வரைவு"
 
-#: components/screens/DirectConversationScreen.tsx:459
-#: components/screens/DirectConversationScreen.tsx:543
+#: components/screens/DirectConversationScreen.tsx:468
+#: components/screens/DirectConversationScreen.tsx:552
 msgid "Next occurrence"
 msgstr "அடுத்த நிகழ்வு"
 
@@ -404,7 +408,7 @@ msgstr "தொடர்புப் பட்டியல்கள் எது�
 msgid "No contacts"
 msgstr "எந்த தொடர்புகளும் இல்லை"
 
-#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectConversationScreen.tsx:338
 #: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,8 +462,8 @@ msgstr "இடங்கள்"
 msgid "Portuguese"
 msgstr "போர்ச்சுகீஸ்"
 
-#: components/screens/DirectConversationScreen.tsx:395
-#: components/screens/DirectConversationScreen.tsx:517
+#: components/screens/DirectConversationScreen.tsx:404
+#: components/screens/DirectConversationScreen.tsx:526
 msgid "Previous occurrence"
 msgstr "முந்தைய நிகழ்வு"
 
@@ -506,7 +510,7 @@ msgid "Save draft"
 msgstr "வரைவை சேமிக்கவும்"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectConversationScreen.tsx:359
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "தேடு"
@@ -595,7 +599,7 @@ msgstr "இது உங்கள் அவதாரமாக என்றும
 msgid "Turkish"
 msgstr "துர்க்கிஷ்"
 
-#: components/screens/DirectConversationScreen.tsx:480
+#: components/screens/DirectConversationScreen.tsx:489
 msgid "Unread messages"
 msgstr "படிக்காத செய்திகள்"
 

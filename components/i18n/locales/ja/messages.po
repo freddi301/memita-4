@@ -221,6 +221,10 @@ msgstr "連絡先を編集"
 msgid "Edit date"
 msgstr "日付を編集"
 
+#: components/screens/DirectConversationScreen.tsx:381
+msgid "Edit message"
+msgstr "メッセージを編集する"
+
 #: components/ui/DateTimeInput.tsx:89
 msgid "Edit time"
 msgstr "時刻を編集"
@@ -275,7 +279,7 @@ msgstr "記事へ移動"
 msgid "Go to conversation"
 msgstr "会話へ移動"
 
-#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/DirectConversationScreen.tsx:173
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "メッセージへ移動"
@@ -345,7 +349,7 @@ msgstr "中国語（北京語）"
 msgid "Marathi"
 msgstr "マラーティー語"
 
-#: components/screens/DirectConversationScreen.tsx:430
+#: components/screens/DirectConversationScreen.tsx:439
 msgid "Mark as read"
 msgstr "既読にする"
 
@@ -373,8 +377,8 @@ msgstr "新しい記事"
 msgid "New draft"
 msgstr "新しい下書き"
 
-#: components/screens/DirectConversationScreen.tsx:459
-#: components/screens/DirectConversationScreen.tsx:543
+#: components/screens/DirectConversationScreen.tsx:468
+#: components/screens/DirectConversationScreen.tsx:552
 msgid "Next occurrence"
 msgstr "次の一致"
 
@@ -404,7 +408,7 @@ msgstr "連絡先リストはありません"
 msgid "No contacts"
 msgstr "連絡先がありません"
 
-#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectConversationScreen.tsx:338
 #: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,8 +462,8 @@ msgstr "場所"
 msgid "Portuguese"
 msgstr "ポルトガル語"
 
-#: components/screens/DirectConversationScreen.tsx:395
-#: components/screens/DirectConversationScreen.tsx:517
+#: components/screens/DirectConversationScreen.tsx:404
+#: components/screens/DirectConversationScreen.tsx:526
 msgid "Previous occurrence"
 msgstr "前の一致"
 
@@ -506,7 +510,7 @@ msgid "Save draft"
 msgstr "下書きを保存"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectConversationScreen.tsx:359
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "検索"
@@ -595,7 +599,7 @@ msgstr "これがあなたのアバターになります。慎重に選んでく
 msgid "Turkish"
 msgstr "トルコ語"
 
-#: components/screens/DirectConversationScreen.tsx:480
+#: components/screens/DirectConversationScreen.tsx:489
 msgid "Unread messages"
 msgstr "未読メッセージ"
 

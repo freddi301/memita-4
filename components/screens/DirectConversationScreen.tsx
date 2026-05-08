@@ -85,6 +85,7 @@ export function DirectConversationScreen({
       item.senderId === currentViewingMessageId?.senderId &&
       item.receiverId === currentViewingMessageId?.receiverId,
   );
+  const currentViewingMessage = conversation[currentViewingMessageIndex];
 
   const flatListRef = useRef<FlatList<(typeof conversation)[number]>>(null);
 
@@ -227,20 +228,6 @@ export function DirectConversationScreen({
             item.receiverId === currentViewingMessageId.receiverId;
           return (
             <Pressable
-              onLongPress={() => {
-                if (item.senderId === accountId) {
-                  setToModifyMessage(
-                    item.createdAt === toModifyMessage?.createdAt
-                      ? undefined
-                      : {
-                          createdAt: item.createdAt,
-                          isDraft: item.isDraft,
-                          content: item.content,
-                          attachments: item.attachments,
-                        },
-                  );
-                }
-              }}
               style={{
                 backgroundColor:
                   item.createdAt === toModifyMessage?.createdAt
@@ -370,6 +357,28 @@ export function DirectConversationScreen({
                   icon="eye"
                   hideLabel
                   label={t`Search`}
+                />
+                <View style={{ flexGrow: 1 }} />
+                <ScreenLink
+                  to={(() => {
+                    if (
+                      currentViewingMessage &&
+                      currentViewingMessage.senderId === accountId &&
+                      !toModifyMessage
+                    ) {
+                      return async () => {
+                        setToModifyMessage({
+                          createdAt: currentViewingMessage.createdAt,
+                          isDraft: currentViewingMessage.isDraft,
+                          content: currentViewingMessage.content,
+                          attachments: currentViewingMessage.attachments,
+                        });
+                      };
+                    }
+                  })()}
+                  icon="edit"
+                  hideLabel
+                  label={t`Edit message`}
                 />
                 <View style={{ flexGrow: 1 }} />
                 <ScreenLink

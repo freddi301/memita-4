@@ -221,6 +221,10 @@ msgstr "Редактировать контакт"
 msgid "Edit date"
 msgstr "Редактировать дату"
 
+#: components/screens/DirectConversationScreen.tsx:381
+msgid "Edit message"
+msgstr "Редактировать сообщение"
+
 #: components/ui/DateTimeInput.tsx:89
 msgid "Edit time"
 msgstr "Редактировать время"
@@ -275,7 +279,7 @@ msgstr "Перейти к статьям"
 msgid "Go to conversation"
 msgstr "Перейти к разговору"
 
-#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/DirectConversationScreen.tsx:173
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "Перейти к сообщениям"
@@ -345,7 +349,7 @@ msgstr "Китайский мандарин"
 msgid "Marathi"
 msgstr "Маратхи"
 
-#: components/screens/DirectConversationScreen.tsx:430
+#: components/screens/DirectConversationScreen.tsx:439
 msgid "Mark as read"
 msgstr "Отметить как прочитанное"
 
@@ -373,8 +377,8 @@ msgstr "Новая статья"
 msgid "New draft"
 msgstr "Новый черновик"
 
-#: components/screens/DirectConversationScreen.tsx:459
-#: components/screens/DirectConversationScreen.tsx:543
+#: components/screens/DirectConversationScreen.tsx:468
+#: components/screens/DirectConversationScreen.tsx:552
 msgid "Next occurrence"
 msgstr "Следующее совпадение"
 
@@ -404,7 +408,7 @@ msgstr "Отсутствуют списки контактов"
 msgid "No contacts"
 msgstr "Нет контактов"
 
-#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectConversationScreen.tsx:338
 #: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,8 +462,8 @@ msgstr "Места"
 msgid "Portuguese"
 msgstr "Португальский"
 
-#: components/screens/DirectConversationScreen.tsx:395
-#: components/screens/DirectConversationScreen.tsx:517
+#: components/screens/DirectConversationScreen.tsx:404
+#: components/screens/DirectConversationScreen.tsx:526
 msgid "Previous occurrence"
 msgstr "Предыдущее совпадение"
 
@@ -506,7 +510,7 @@ msgid "Save draft"
 msgstr "Сохранить черновик"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectConversationScreen.tsx:359
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "Поиск"
@@ -595,7 +599,7 @@ msgstr "Это будет вашим аватаром навсегда, выби
 msgid "Turkish"
 msgstr "Турецкий"
 
-#: components/screens/DirectConversationScreen.tsx:480
+#: components/screens/DirectConversationScreen.tsx:489
 msgid "Unread messages"
 msgstr "Непрочитанные сообщения"
 

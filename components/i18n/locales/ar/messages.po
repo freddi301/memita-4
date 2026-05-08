@@ -221,6 +221,10 @@ msgstr "تعديل جهة الاتصال"
 msgid "Edit date"
 msgstr "تعديل التاريخ"
 
+#: components/screens/DirectConversationScreen.tsx:381
+msgid "Edit message"
+msgstr "عدّل الرسالة"
+
 #: components/ui/DateTimeInput.tsx:89
 msgid "Edit time"
 msgstr "تعديل الوقت"
@@ -275,7 +279,7 @@ msgstr "الذهاب إلى المقالات"
 msgid "Go to conversation"
 msgstr "الذهاب إلى المحادثة"
 
-#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/DirectConversationScreen.tsx:173
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "الذهاب إلى الرسائل"
@@ -345,7 +349,7 @@ msgstr "الصينية الماندرينية"
 msgid "Marathi"
 msgstr "الماراثية"
 
-#: components/screens/DirectConversationScreen.tsx:430
+#: components/screens/DirectConversationScreen.tsx:439
 msgid "Mark as read"
 msgstr "تحديد كمقروء"
 
@@ -373,8 +377,8 @@ msgstr "مقال جديد"
 msgid "New draft"
 msgstr "مسودة جديدة"
 
-#: components/screens/DirectConversationScreen.tsx:459
-#: components/screens/DirectConversationScreen.tsx:543
+#: components/screens/DirectConversationScreen.tsx:468
+#: components/screens/DirectConversationScreen.tsx:552
 msgid "Next occurrence"
 msgstr "التكرار التالي"
 
@@ -404,7 +408,7 @@ msgstr "قائمة جهات الاتصال غير متوفرة"
 msgid "No contacts"
 msgstr "لا يوجد جهات اتصال"
 
-#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectConversationScreen.tsx:338
 #: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,8 +462,8 @@ msgstr "الأماكن"
 msgid "Portuguese"
 msgstr "البرتغالية"
 
-#: components/screens/DirectConversationScreen.tsx:395
-#: components/screens/DirectConversationScreen.tsx:517
+#: components/screens/DirectConversationScreen.tsx:404
+#: components/screens/DirectConversationScreen.tsx:526
 msgid "Previous occurrence"
 msgstr "التكرار السابق"
 
@@ -506,7 +510,7 @@ msgid "Save draft"
 msgstr "حفظ المسودة"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectConversationScreen.tsx:359
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "بحث"
@@ -595,7 +599,7 @@ msgstr "سيكون هذا صورتك الرمزية إلى الأبد، اختر
 msgid "Turkish"
 msgstr "التركية"
 
-#: components/screens/DirectConversationScreen.tsx:480
+#: components/screens/DirectConversationScreen.tsx:489
 msgid "Unread messages"
 msgstr "الرسائل غير المقروءة"
 

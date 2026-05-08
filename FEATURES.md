@@ -36,6 +36,7 @@
     - [ ] camera inline
     - [ ] audio inline
 - [ ] videocall
+- [ ] braodcast lists (send same message to multiple contacts)
 - [ ] save scroll state
 - [x] text search
   - [x] empty search state

@@ -221,6 +221,10 @@ msgstr "Sunting kontak"
 msgid "Edit date"
 msgstr "Sunting tanggal"
 
+#: components/screens/DirectConversationScreen.tsx:381
+msgid "Edit message"
+msgstr "Sunting pesan"
+
 #: components/ui/DateTimeInput.tsx:89
 msgid "Edit time"
 msgstr "Sunting wektu"
@@ -275,7 +279,7 @@ msgstr "Menyang artikel"
 msgid "Go to conversation"
 msgstr "Menyang obrolan"
 
-#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/DirectConversationScreen.tsx:173
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "Menyang pesan"
@@ -345,7 +349,7 @@ msgstr "Basa Mandarin"
 msgid "Marathi"
 msgstr "Basa Marathi"
 
-#: components/screens/DirectConversationScreen.tsx:430
+#: components/screens/DirectConversationScreen.tsx:439
 msgid "Mark as read"
 msgstr "Tandai wis diwaca"
 
@@ -373,8 +377,8 @@ msgstr "Artikel anyar"
 msgid "New draft"
 msgstr "Draf anyar"
 
-#: components/screens/DirectConversationScreen.tsx:459
-#: components/screens/DirectConversationScreen.tsx:543
+#: components/screens/DirectConversationScreen.tsx:468
+#: components/screens/DirectConversationScreen.tsx:552
 msgid "Next occurrence"
 msgstr "Kejadian sabanjure"
 
@@ -404,7 +408,7 @@ msgstr "Tidak ada daftar kontak"
 msgid "No contacts"
 msgstr "Tidak ada kontak"
 
-#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectConversationScreen.tsx:338
 #: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,8 +462,8 @@ msgstr "Panggonan"
 msgid "Portuguese"
 msgstr "Basa Portugis"
 
-#: components/screens/DirectConversationScreen.tsx:395
-#: components/screens/DirectConversationScreen.tsx:517
+#: components/screens/DirectConversationScreen.tsx:404
+#: components/screens/DirectConversationScreen.tsx:526
 msgid "Previous occurrence"
 msgstr "Kejadian sadurunge"
 
@@ -506,7 +510,7 @@ msgid "Save draft"
 msgstr "Simpen draf"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectConversationScreen.tsx:359
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "Goleki"
@@ -595,7 +599,7 @@ msgstr "Iki bakal dadi avatar sampeyan selawase, piliha kanthi wicaksana"
 msgid "Turkish"
 msgstr "Basa Turki"
 
-#: components/screens/DirectConversationScreen.tsx:480
+#: components/screens/DirectConversationScreen.tsx:489
 msgid "Unread messages"
 msgstr "Pesan durung diwaca"
 

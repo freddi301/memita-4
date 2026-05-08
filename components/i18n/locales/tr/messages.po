@@ -221,6 +221,10 @@ msgstr "Kişiyi düzenle"
 msgid "Edit date"
 msgstr "Tarihi düzenle"
 
+#: components/screens/DirectConversationScreen.tsx:381
+msgid "Edit message"
+msgstr "Mesajı düzenle"
+
 #: components/ui/DateTimeInput.tsx:89
 msgid "Edit time"
 msgstr "Saati düzenle"
@@ -275,7 +279,7 @@ msgstr "Makalelere git"
 msgid "Go to conversation"
 msgstr "Sohbete git"
 
-#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/DirectConversationScreen.tsx:173
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "Mesajlara git"
@@ -345,7 +349,7 @@ msgstr "Mandarin Çincesi"
 msgid "Marathi"
 msgstr "Marathi dili"
 
-#: components/screens/DirectConversationScreen.tsx:430
+#: components/screens/DirectConversationScreen.tsx:439
 msgid "Mark as read"
 msgstr "Okundu olarak işaretle"
 
@@ -373,8 +377,8 @@ msgstr "Yeni makale"
 msgid "New draft"
 msgstr "Yeni taslak"
 
-#: components/screens/DirectConversationScreen.tsx:459
-#: components/screens/DirectConversationScreen.tsx:543
+#: components/screens/DirectConversationScreen.tsx:468
+#: components/screens/DirectConversationScreen.tsx:552
 msgid "Next occurrence"
 msgstr "Sonraki eşleşme"
 
@@ -404,7 +408,7 @@ msgstr "İletişim listeleri yok"
 msgid "No contacts"
 msgstr "Hiçbir iletişim"
 
-#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectConversationScreen.tsx:338
 #: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,8 +462,8 @@ msgstr "Yerler"
 msgid "Portuguese"
 msgstr "Portekizce"
 
-#: components/screens/DirectConversationScreen.tsx:395
-#: components/screens/DirectConversationScreen.tsx:517
+#: components/screens/DirectConversationScreen.tsx:404
+#: components/screens/DirectConversationScreen.tsx:526
 msgid "Previous occurrence"
 msgstr "Önceki eşleşme"
 
@@ -506,7 +510,7 @@ msgid "Save draft"
 msgstr "Taslağı kaydet"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectConversationScreen.tsx:359
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "Ara"
@@ -595,7 +599,7 @@ msgstr "Bu sonsuza kadar avatarınız olacak, akıllıca seçin"
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: components/screens/DirectConversationScreen.tsx:480
+#: components/screens/DirectConversationScreen.tsx:489
 msgid "Unread messages"
 msgstr "Okunmamış mesajlar"
 

@@ -221,6 +221,10 @@ msgstr "Chỉnh sửa liên lạc"
 msgid "Edit date"
 msgstr "Chỉnh sửa ngày"
 
+#: components/screens/DirectConversationScreen.tsx:381
+msgid "Edit message"
+msgstr "Chỉnh sửa tin nhắn"
+
 #: components/ui/DateTimeInput.tsx:89
 msgid "Edit time"
 msgstr "Chỉnh sửa giờ"
@@ -275,7 +279,7 @@ msgstr "Đến bài viết"
 msgid "Go to conversation"
 msgstr "Đến cuộc trò chuyện"
 
-#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/DirectConversationScreen.tsx:173
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "Đến tin nhắn"
@@ -345,7 +349,7 @@ msgstr "Tiếng Quan Thoại"
 msgid "Marathi"
 msgstr "Tiếng Marathi"
 
-#: components/screens/DirectConversationScreen.tsx:430
+#: components/screens/DirectConversationScreen.tsx:439
 msgid "Mark as read"
 msgstr "Đánh dấu là đã đọc"
 
@@ -373,8 +377,8 @@ msgstr "Bài viết mới"
 msgid "New draft"
 msgstr "Bản nháp mới"
 
-#: components/screens/DirectConversationScreen.tsx:459
-#: components/screens/DirectConversationScreen.tsx:543
+#: components/screens/DirectConversationScreen.tsx:468
+#: components/screens/DirectConversationScreen.tsx:552
 msgid "Next occurrence"
 msgstr "Lần xuất hiện tiếp theo"
 
@@ -404,7 +408,7 @@ msgstr "Không có danh sách liên hệ"
 msgid "No contacts"
 msgstr "Không có liên hệ"
 
-#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectConversationScreen.tsx:338
 #: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,8 +462,8 @@ msgstr "Địa điểm"
 msgid "Portuguese"
 msgstr "Tiếng Bồ Đào Nha"
 
-#: components/screens/DirectConversationScreen.tsx:395
-#: components/screens/DirectConversationScreen.tsx:517
+#: components/screens/DirectConversationScreen.tsx:404
+#: components/screens/DirectConversationScreen.tsx:526
 msgid "Previous occurrence"
 msgstr "Lần xuất hiện trước"
 
@@ -506,7 +510,7 @@ msgid "Save draft"
 msgstr "Lưu bản nháp"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectConversationScreen.tsx:359
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "Tìm kiếm"
@@ -595,7 +599,7 @@ msgstr "Đây sẽ là avatar của bạn mãi mãi, hãy chọn thật khôn ng
 msgid "Turkish"
 msgstr "Tiếng Thổ Nhĩ Kỳ"
 
-#: components/screens/DirectConversationScreen.tsx:480
+#: components/screens/DirectConversationScreen.tsx:489
 msgid "Unread messages"
 msgstr "Tin nhắn chưa đọc"
 

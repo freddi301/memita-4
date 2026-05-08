@@ -221,6 +221,10 @@ msgstr "సంప్రదింపు సవరించు"
 msgid "Edit date"
 msgstr "తేదీ సవరించు"
 
+#: components/screens/DirectConversationScreen.tsx:381
+msgid "Edit message"
+msgstr "సందేశాన్ని సవరించండి"
+
 #: components/ui/DateTimeInput.tsx:89
 msgid "Edit time"
 msgstr "సమయం సవరించు"
@@ -275,7 +279,7 @@ msgstr "వ్యాసాలకు వెళ్ళు"
 msgid "Go to conversation"
 msgstr "సంభాషణకు వెళ్ళు"
 
-#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/DirectConversationScreen.tsx:173
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "సందేశాలకు వెళ్ళు"
@@ -345,7 +349,7 @@ msgstr "మాండరిన్ చైనీస్"
 msgid "Marathi"
 msgstr "మరాఠీ"
 
-#: components/screens/DirectConversationScreen.tsx:430
+#: components/screens/DirectConversationScreen.tsx:439
 msgid "Mark as read"
 msgstr "చదివినట్లు గుర్తించు"
 
@@ -373,8 +377,8 @@ msgstr "కొత్త వ్యాసం"
 msgid "New draft"
 msgstr "కొత్త ముసాయిదా"
 
-#: components/screens/DirectConversationScreen.tsx:459
-#: components/screens/DirectConversationScreen.tsx:543
+#: components/screens/DirectConversationScreen.tsx:468
+#: components/screens/DirectConversationScreen.tsx:552
 msgid "Next occurrence"
 msgstr "తదుపరి సారి"
 
@@ -404,7 +408,7 @@ msgstr "సంప్రదింపు జాబితాలు లేవు"
 msgid "No contacts"
 msgstr "సంప్రదించగల వ్యక్తులు లేరు"
 
-#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectConversationScreen.tsx:338
 #: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,8 +462,8 @@ msgstr "స్థలాలు"
 msgid "Portuguese"
 msgstr "పోర్తుగీస్"
 
-#: components/screens/DirectConversationScreen.tsx:395
-#: components/screens/DirectConversationScreen.tsx:517
+#: components/screens/DirectConversationScreen.tsx:404
+#: components/screens/DirectConversationScreen.tsx:526
 msgid "Previous occurrence"
 msgstr "మునుపటి సారి"
 
@@ -506,7 +510,7 @@ msgid "Save draft"
 msgstr "ముసాయిదా సేవ్ చేయి"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectConversationScreen.tsx:359
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "శోధించు"
@@ -595,7 +599,7 @@ msgstr "ఇది మీ అవతారం శాశ్వతంగా ఉం�
 msgid "Turkish"
 msgstr "టర్కిష్"
 
-#: components/screens/DirectConversationScreen.tsx:480
+#: components/screens/DirectConversationScreen.tsx:489
 msgid "Unread messages"
 msgstr "చదవని సందేశాలు"
 

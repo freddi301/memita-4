@@ -221,6 +221,10 @@ msgstr "编辑联系人"
 msgid "Edit date"
 msgstr "编辑日期"
 
+#: components/screens/DirectConversationScreen.tsx:381
+msgid "Edit message"
+msgstr "编辑消息"
+
 #: components/ui/DateTimeInput.tsx:89
 msgid "Edit time"
 msgstr "编辑时间"
@@ -275,7 +279,7 @@ msgstr "前往文章"
 msgid "Go to conversation"
 msgstr "前往对话"
 
-#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/DirectConversationScreen.tsx:173
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "前往消息"
@@ -345,7 +349,7 @@ msgstr "普通话"
 msgid "Marathi"
 msgstr "马拉地语"
 
-#: components/screens/DirectConversationScreen.tsx:430
+#: components/screens/DirectConversationScreen.tsx:439
 msgid "Mark as read"
 msgstr "标记为已读"
 
@@ -373,8 +377,8 @@ msgstr "新文章"
 msgid "New draft"
 msgstr "新草稿"
 
-#: components/screens/DirectConversationScreen.tsx:459
-#: components/screens/DirectConversationScreen.tsx:543
+#: components/screens/DirectConversationScreen.tsx:468
+#: components/screens/DirectConversationScreen.tsx:552
 msgid "Next occurrence"
 msgstr "下一个匹配"
 
@@ -404,7 +408,7 @@ msgstr "无联系人列表"
 msgid "No contacts"
 msgstr "未添加联系人"
 
-#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectConversationScreen.tsx:338
 #: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,8 +462,8 @@ msgstr "地点"
 msgid "Portuguese"
 msgstr "葡萄牙语"
 
-#: components/screens/DirectConversationScreen.tsx:395
-#: components/screens/DirectConversationScreen.tsx:517
+#: components/screens/DirectConversationScreen.tsx:404
+#: components/screens/DirectConversationScreen.tsx:526
 msgid "Previous occurrence"
 msgstr "上一个匹配"
 
@@ -506,7 +510,7 @@ msgid "Save draft"
 msgstr "保存草稿"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectConversationScreen.tsx:359
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "搜索"
@@ -595,7 +599,7 @@ msgstr "这将永久成为您的头像，请谨慎选择"
 msgid "Turkish"
 msgstr "土耳其语"
 
-#: components/screens/DirectConversationScreen.tsx:480
+#: components/screens/DirectConversationScreen.tsx:489
 msgid "Unread messages"
 msgstr "未读消息"
 

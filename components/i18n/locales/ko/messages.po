@@ -221,6 +221,10 @@ msgstr "연락처 편집"
 msgid "Edit date"
 msgstr "날짜 편집"
 
+#: components/screens/DirectConversationScreen.tsx:381
+msgid "Edit message"
+msgstr "메시지 수정"
+
 #: components/ui/DateTimeInput.tsx:89
 msgid "Edit time"
 msgstr "시간 편집"
@@ -275,7 +279,7 @@ msgstr "게시물로 이동"
 msgid "Go to conversation"
 msgstr "대화로 이동"
 
-#: components/screens/DirectConversationScreen.tsx:172
+#: components/screens/DirectConversationScreen.tsx:173
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "메시지로 이동"
@@ -345,7 +349,7 @@ msgstr "중국어(만다린)"
 msgid "Marathi"
 msgstr "마라티어"
 
-#: components/screens/DirectConversationScreen.tsx:430
+#: components/screens/DirectConversationScreen.tsx:439
 msgid "Mark as read"
 msgstr "읽음으로 표시"
 
@@ -373,8 +377,8 @@ msgstr "새 게시물"
 msgid "New draft"
 msgstr "새 초안"
 
-#: components/screens/DirectConversationScreen.tsx:459
-#: components/screens/DirectConversationScreen.tsx:543
+#: components/screens/DirectConversationScreen.tsx:468
+#: components/screens/DirectConversationScreen.tsx:552
 msgid "Next occurrence"
 msgstr "다음 항목"
 
@@ -404,7 +408,7 @@ msgstr "연락처 목록 없음"
 msgid "No contacts"
 msgstr "연락처 없음"
 
-#: components/screens/DirectConversationScreen.tsx:351
+#: components/screens/DirectConversationScreen.tsx:338
 #: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,8 +462,8 @@ msgstr "장소"
 msgid "Portuguese"
 msgstr "포르투갈어"
 
-#: components/screens/DirectConversationScreen.tsx:395
-#: components/screens/DirectConversationScreen.tsx:517
+#: components/screens/DirectConversationScreen.tsx:404
+#: components/screens/DirectConversationScreen.tsx:526
 msgid "Previous occurrence"
 msgstr "이전 항목"
 
@@ -506,7 +510,7 @@ msgid "Save draft"
 msgstr "초안 저장"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:372
+#: components/screens/DirectConversationScreen.tsx:359
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "검색"
@@ -595,7 +599,7 @@ msgstr "이것이 영원히 당신의 아바타가 됩니다, 신중하게 선�
 msgid "Turkish"
 msgstr "터키어"
 
-#: components/screens/DirectConversationScreen.tsx:480
+#: components/screens/DirectConversationScreen.tsx:489
 msgid "Unread messages"
 msgstr "읽지 않은 메시지"
 
