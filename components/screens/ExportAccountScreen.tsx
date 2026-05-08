@@ -2,12 +2,12 @@ import { useLingui } from "@lingui/react/macro";
 import * as Clipboard from "expo-clipboard";
 import { Fragment, useState } from "react";
 import {
-    Alert,
-    Platform,
-    ScrollView,
-    Text,
-    TextInput,
-    View,
+  Alert,
+  Platform,
+  ScrollView,
+  Text,
+  TextInput,
+  View,
 } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import { exportAccountSecret } from "../cryptography/accountBackup";

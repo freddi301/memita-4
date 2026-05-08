@@ -1,28 +1,28 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { useLingui } from "@lingui/react/macro";
 import {
-    Fragment,
-    useCallback,
-    useEffect,
-    useLayoutEffect,
-    useRef,
-    useState,
+  Fragment,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
 } from "react";
 import {
-    FlatList,
-    Pressable,
-    Text,
-    TextInput,
-    View,
-    ViewToken,
+  FlatList,
+  Pressable,
+  Text,
+  TextInput,
+  View,
+  ViewToken,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { AccountId } from "../cryptography/cryptography";
 import { getContact } from "../queries/contacts";
 import {
-    getDirectMessages,
-    updateDidReadDirectMessage,
-    updateDirectMessage,
+  getDirectMessages,
+  updateDidReadDirectMessage,
+  updateDirectMessage,
 } from "../queries/directMessages";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
@@ -98,8 +98,8 @@ export function DirectConversationScreen({
     return (
       itemVerticalMarginHalf * 2 +
       itemVerticalBorderWidth * 2 +
-      +theme.textStyle.lineHeight + // contact name
-      theme.textStyle.lineHeight * item.content.split("\n").length +
+      +theme.lineHeight + // contact name
+      theme.lineHeight * item.content.split("\n").length +
       (item.attachments.length > 0 ? itemAttachementHeight : 0)
     );
   };
@@ -332,7 +332,7 @@ export function DirectConversationScreen({
             style={{
               ...theme.secondaryTextStyle,
               textAlign: "center",
-              marginTop: -theme.textStyle.lineHeight * 2,
+              marginTop: -theme.lineHeight * 2,
             }}
           >
             {t`No messages`}

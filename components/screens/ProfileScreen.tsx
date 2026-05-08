@@ -3,14 +3,14 @@ import * as Clipboard from "expo-clipboard";
 import { Image } from "expo-image";
 import { Fragment, useEffect, useState } from "react";
 import {
-    Modal,
-    Platform,
-    Pressable,
-    ScrollView,
-    Share,
-    Text,
-    TextInput,
-    View,
+  Modal,
+  Platform,
+  Pressable,
+  ScrollView,
+  Share,
+  Text,
+  TextInput,
+  View,
 } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import QRCode from "react-qr-code";
@@ -18,9 +18,9 @@ import { AccountId } from "../cryptography/cryptography";
 import { getBiography, updateBiography } from "../queries/biography";
 import { getContact } from "../queries/contacts";
 import {
-    useMemitaMutation,
-    useMemitaQuery,
-    useRefreshMemitaQueries,
+  useMemitaMutation,
+  useMemitaQuery,
+  useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";

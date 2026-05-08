@@ -1,6 +1,6 @@
 review features secion, normalize items -> transform into tests
 put hardcoced colors into theme
-use rn lucide icons
+create icon thin wrapper (use more rn lucide icons)
 on screenLink, web hover, mobile longpress show tooltip with label
 while editing a direct message, dont let user do anything to inadvertently lose chages
 do not send draft messages

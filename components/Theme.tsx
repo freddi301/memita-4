@@ -21,12 +21,22 @@ export const setTheme: MemitaMutation<Theme | undefined> =
     });
   };
 
+export function useSystemTheme() {
+  const systemColorScheme = useColorScheme();
+  return ThemeSchema.parse(systemColorScheme === "light" ? "light" : "dark");
+}
+
+type ThemeProps = typeof darkTheme;
+
+const baseTheme = { fontSize: 16, lineHeight: 18 };
+
 const darkTheme = {
   backgroundColor: "#1d1d1d",
   backgroundBackColor: "#131313",
   textColor: "#e9e9e9",
-  separatorColor: "#4a4a4a",
   secondaryTextColor: "#939393",
+  separatorColor: "#4a4a4a",
+  borderColor: "#4a4a4a",
   linkTextColor: "#60a0ff",
   pressedBackgroundColor: "#2a2a2a",
   activeActionBackgroundColor: "#1a2332",
@@ -34,14 +44,13 @@ const darkTheme = {
   selectedItemBackgroundColor: "#353344",
 };
 
-type ThemeProps = typeof darkTheme;
-
 const lightTheme: ThemeProps = {
   backgroundColor: "#fbfbfb",
   backgroundBackColor: "#e1e1e1",
   textColor: "#191919",
-  separatorColor: "#cecece",
   secondaryTextColor: "#838383",
+  separatorColor: "#cecece",
+  borderColor: "#cecece",
   linkTextColor: "#2d74df",
   pressedBackgroundColor: "#d0d0d0",
   activeActionBackgroundColor: "#9bb7e2",
@@ -49,44 +58,53 @@ const lightTheme: ThemeProps = {
   selectedItemBackgroundColor: "#cdc6f6",
 };
 
-export function useSystemTheme() {
-  const systemColorScheme = useColorScheme();
-  return ThemeSchema.parse(systemColorScheme === "light" ? "light" : "dark");
-}
-
 export function useTheme() {
   const themeFromStorage = useMemitaQuery(getTheme, undefined);
   const systemColorScheme = useSystemTheme();
   const colorScheme = themeFromStorage ?? systemColorScheme;
   const themeProps = colorScheme === "light" ? lightTheme : darkTheme;
-  const textStyle = {
-    color: themeProps.textColor,
-    fontFamily: "sans-serif",
-    fontSize: 16,
-    lineHeight: 18,
-    includeFontPadding: false, // Android only, ignored on web
-  };
+  const textStyle = [
+    baseTheme,
+    {
+      ...baseTheme,
+      color: themeProps.textColor,
+      fontFamily: "sans-serif",
+      includeFontPadding: false, // Android only, ignored on web
+    },
+  ];
+  const secondaryTextStyle = [
+    textStyle,
+    { color: themeProps.secondaryTextColor },
+  ];
+  const validationErrorTextStyle = [
+    textStyle,
+    { color: themeProps.validationErrorTextColor },
+  ];
+  const linkTextStyle = [textStyle, { color: themeProps.linkTextColor }];
+  const baseTextInputStyle = [
+    textStyle,
+    {
+      borderColor: themeProps.linkTextColor,
+      borderBottomWidth: 1,
+      borderTopWidth: 0,
+      borderLeftWidth: 0,
+      borderRightWidth: 0,
+      outline: "none" as const,
+      padding: 0,
+    },
+  ];
   return {
+    ...baseTheme,
     ...themeProps,
     textStyle,
-    secondaryTextStyle: { ...textStyle, color: themeProps.secondaryTextColor },
-    validationErrorTextStyle: {
-      ...textStyle,
-      color: themeProps.validationErrorTextColor,
-    },
-    linkTextStyle: { ...textStyle, color: themeProps.linkTextColor },
+    secondaryTextStyle,
+    validationErrorTextStyle,
+    linkTextStyle,
     textInputStyle(value: string) {
-      return {
-        ...textStyle,
-        color: value ? themeProps.textColor : themeProps.secondaryTextColor,
-        borderColor: themeProps.linkTextColor,
-        borderBottomWidth: 1,
-        borderTopWidth: 0,
-        borderLeftWidth: 0,
-        borderRightWidth: 0,
-        outline: "none" as const,
-        padding: 0,
-      };
+      return [
+        baseTextInputStyle,
+        { color: value ? themeProps.textColor : themeProps.secondaryTextColor },
+      ];
     },
   };
 }

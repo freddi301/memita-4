@@ -1,9 +1,9 @@
 import { useLingui } from "@lingui/react/macro";
 import DateTimePicker, {
-    DateTimePickerAndroid,
+  DateTimePickerAndroid,
 } from "@react-native-community/datetimepicker";
 import { useState } from "react";
-import { Platform, TextInput, View } from "react-native";
+import { Platform, StyleSheet, TextInput, View } from "react-native";
 import { useTheme } from "../Theme";
 import { ScreenLink } from "./ScreenLink";
 
@@ -40,8 +40,10 @@ export function DateTimeInput({
       <input
         type="datetime-local"
         style={{
-          ...theme.textInputStyle(
-            value ? new Date(value).toISOString().slice(0, 16) : "",
+          ...StyleSheet.flatten(
+            theme.textInputStyle(
+              value ? new Date(value).toISOString().slice(0, 16) : "",
+            ) as any,
           ),
           flexGrow: 1,
           marginRight: 16,

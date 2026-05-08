@@ -1,9 +1,10 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { Fragment, ReactNode, useState } from "react";
 import { Pressable, StyleProp, Text, ViewStyle } from "react-native";
-import { useRouterContext } from "../Routing";
+import { To, useRouterContext } from "../Routing";
 import { useTheme } from "../Theme";
 
+// TODO refactor Icons to thin wrapper
 type IconName = keyof typeof FontAwesome.glyphMap;
 
 export function ScreenLink({
@@ -14,11 +15,7 @@ export function ScreenLink({
   hideLabel,
   children,
   styleOverride,
-}: {
-  to: ReactNode | (() => Promise<ReactNode | void>);
-  color?: string;
-  styleOverride?: StyleProp<ViewStyle>;
-} & (
+}: { to: To; color?: string; styleOverride?: StyleProp<ViewStyle> } & (
   | {
       label: string;
       icon?: IconName;
@@ -36,20 +33,20 @@ export function ScreenLink({
   const { isPending, navigate } = useRouterContext();
   const [isPressing, setIsPressing] = useState(false);
   const [isPerforming, setIsPerforming] = useState(false);
-  const textColor =
-    isPending || !to
-      ? theme.secondaryTextColor
-      : (color ?? theme.linkTextColor);
+  const isDisabled = isPending || !to || isPerforming;
+  const textColor = isDisabled
+    ? theme.secondaryTextColor
+    : (color ?? theme.linkTextColor);
   const backgroundColor = isPerforming
     ? theme.activeActionBackgroundColor
-    : isPressing && to
+    : isPressing && !isDisabled
       ? theme.pressedBackgroundColor
       : theme.backgroundColor;
   return (
     <Pressable
       accessibilityRole="button"
       onPress={() => {
-        if (isPending || !to || isPerforming) {
+        if (isDisabled) {
           return;
         }
         setIsPerforming(true);
@@ -62,19 +59,21 @@ export function ScreenLink({
       }}
       style={
         children
-          ? { backgroundColor, ...styleOverride }
-          : {
-              paddingVertical: 8,
-              paddingHorizontal: 16,
-              // @ts-ignore
-              outline: "none",
-              backgroundColor,
-              flexDirection: "row",
-              gap: 8,
-              alignItems: "center",
-              minHeight: 36,
-              ...styleOverride,
-            }
+          ? [{ backgroundColor }, styleOverride]
+          : [
+              {
+                paddingVertical: 8,
+                paddingHorizontal: 16,
+                // @ts-ignore
+                outline: "none",
+                backgroundColor,
+                flexDirection: "row",
+                gap: 8,
+                alignItems: "center",
+                minHeight: 36,
+              },
+              styleOverride,
+            ]
       }
       onPressIn={() => {
         setIsPressing(true);
@@ -90,11 +89,7 @@ export function ScreenLink({
           {icon && <FontAwesome name={icon} color={textColor} size={16} />}
           {!hideLabel && (
             <Text
-              style={{
-                ...theme.linkTextStyle,
-                color: textColor,
-                paddingTop: 2,
-              }}
+              style={[theme.linkTextStyle, { color: textColor, paddingTop: 2 }]}
             >
               {label}
             </Text>

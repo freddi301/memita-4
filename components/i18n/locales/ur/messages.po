@@ -88,7 +88,7 @@ msgstr "سوانح عمری"
 msgid "Changes history"
 msgstr "م Modifications کی تاریخ"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "تاریخ صاف کریں"
 
@@ -217,7 +217,7 @@ msgstr "مضمون میں ترمیم کریں"
 msgid "Edit contact"
 msgstr "رابطے میں ترمیم کریں"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "تاریخ میں ترمیم کریں"
 
@@ -225,7 +225,7 @@ msgstr "تاریخ میں ترمیم کریں"
 msgid "Edit message"
 msgstr "پیغام کو تبدیل کریں"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "وقت میں ترمیم کریں"
 

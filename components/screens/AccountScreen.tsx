@@ -4,16 +4,16 @@ import { Fragment, useEffect, useState } from "react";
 import { Pressable, ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import {
-    AccountId,
-    accountIdFromAccountSecret,
-    generateAccountSecret,
+  AccountId,
+  accountIdFromAccountSecret,
+  generateAccountSecret,
 } from "../cryptography/cryptography";
 import { addAccount, getDeviceId, removeAccount } from "../queries/accounts";
 import { getContact, updateContact } from "../queries/contacts";
 import {
-    useMemitaMutation,
-    useMemitaQuery,
-    useRefreshMemitaQueries,
+  useMemitaMutation,
+  useMemitaQuery,
+  useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { CryptoAvatar } from "../ui/CryptoAvatar";

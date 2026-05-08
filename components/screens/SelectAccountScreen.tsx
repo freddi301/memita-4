@@ -36,7 +36,7 @@ export function SelectAccountScreen() {
         <Text
           style={{
             ...theme.textStyle,
-            fontSize: theme.textStyle.fontSize * 2,
+            fontSize: theme.fontSize * 2,
             fontWeight: "bold",
           }}
         >

@@ -88,7 +88,7 @@ msgstr "个人简介"
 msgid "Changes history"
 msgstr "修改历史"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "清除日期"
 
@@ -217,7 +217,7 @@ msgstr "编辑文章"
 msgid "Edit contact"
 msgstr "编辑联系人"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "编辑日期"
 
@@ -225,7 +225,7 @@ msgstr "编辑日期"
 msgid "Edit message"
 msgstr "编辑消息"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "编辑时间"
 

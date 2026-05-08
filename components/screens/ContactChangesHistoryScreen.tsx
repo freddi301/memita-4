@@ -57,7 +57,7 @@ export function ContactChangesHistoryScreen({
             <View style={{ flexDirection: "row", alignItems: "baseline" }}>
               <FontAwesome
                 name={item.deleted ? "trash" : "pencil"}
-                size={theme.textStyle.fontSize}
+                size={theme.fontSize}
                 color={item.deleted ? "red" : "green"}
               />
               <View style={{ flexGrow: 1 }} />
@@ -76,7 +76,7 @@ export function ContactChangesHistoryScreen({
             >
               <FontAwesome
                 name="mobile"
-                size={theme.textStyle.fontSize * 2}
+                size={theme.fontSize * 2}
                 color={theme.secondaryTextColor}
               />
               <Text

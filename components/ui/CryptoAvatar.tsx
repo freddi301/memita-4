@@ -55,7 +55,7 @@ export function CryptoAvatar({
 
 function Avatar({ accountId }: { accountId: AccountId }) {
   const theme = useTheme();
-  const size = theme.textStyle.lineHeight * 2;
+  const size = theme.lineHeight * 2;
   const svg = useMemo(
     () => createAvatar(funEmoji, { seed: accountId, size: size }).toString(),
     [accountId, size],

@@ -88,7 +88,7 @@ msgstr "プロフィール"
 msgid "Changes history"
 msgstr "変更履歴"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "日付をクリア"
 
@@ -217,7 +217,7 @@ msgstr "記事を編集"
 msgid "Edit contact"
 msgstr "連絡先を編集"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "日付を編集"
 
@@ -225,7 +225,7 @@ msgstr "日付を編集"
 msgid "Edit message"
 msgstr "メッセージを編集する"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "時刻を編集"
 

@@ -88,7 +88,7 @@ msgstr "السيرة الذاتية"
 msgid "Changes history"
 msgstr "سجل التغييرات"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "مسح التاريخ"
 
@@ -217,7 +217,7 @@ msgstr "تعديل المقال"
 msgid "Edit contact"
 msgstr "تعديل جهة الاتصال"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "تعديل التاريخ"
 
@@ -225,7 +225,7 @@ msgstr "تعديل التاريخ"
 msgid "Edit message"
 msgstr "عدّل الرسالة"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "تعديل الوقت"
 

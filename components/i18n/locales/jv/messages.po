@@ -88,7 +88,7 @@ msgstr "Biografi"
 msgid "Changes history"
 msgstr "Riwayat perubahan"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "Resiki tanggal"
 
@@ -217,7 +217,7 @@ msgstr "Sunting artikel"
 msgid "Edit contact"
 msgstr "Sunting kontak"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "Sunting tanggal"
 
@@ -225,7 +225,7 @@ msgstr "Sunting tanggal"
 msgid "Edit message"
 msgstr "Sunting pesan"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "Sunting wektu"
 

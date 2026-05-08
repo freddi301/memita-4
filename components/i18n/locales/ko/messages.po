@@ -88,7 +88,7 @@ msgstr "자기소개"
 msgid "Changes history"
 msgstr "변경 이력"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "날짜 지우기"
 
@@ -217,7 +217,7 @@ msgstr "게시물 편집"
 msgid "Edit contact"
 msgstr "연락처 편집"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "날짜 편집"
 
@@ -225,7 +225,7 @@ msgstr "날짜 편집"
 msgid "Edit message"
 msgstr "메시지 수정"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "시간 편집"
 

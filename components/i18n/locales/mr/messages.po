@@ -88,7 +88,7 @@ msgstr "चरित्र"
 msgid "Changes history"
 msgstr "बदल इतिहास"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "तारीख साफ करा"
 
@@ -217,7 +217,7 @@ msgstr "लेख संपादित करा"
 msgid "Edit contact"
 msgstr "संपर्क संपादित करा"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "तारीख संपादित करा"
 
@@ -225,7 +225,7 @@ msgstr "तारीख संपादित करा"
 msgid "Edit message"
 msgstr "संदेश संपादित करा"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "वेळ संपादित करा"
 

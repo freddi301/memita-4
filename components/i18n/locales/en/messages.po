@@ -88,7 +88,7 @@ msgstr "Biography"
 msgid "Changes history"
 msgstr "Changes history"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "Clear date"
 
@@ -217,7 +217,7 @@ msgstr "Edit article"
 msgid "Edit contact"
 msgstr "Edit contact"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "Edit date"
 
@@ -225,7 +225,7 @@ msgstr "Edit date"
 msgid "Edit message"
 msgstr "Edit message"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "Edit time"
 

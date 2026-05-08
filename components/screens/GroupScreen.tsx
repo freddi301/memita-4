@@ -5,9 +5,9 @@ import { RefreshControl } from "react-native-web-refresh-control";
 import { AccountId } from "../cryptography/cryptography";
 import { getGroup, updateGroup } from "../queries/groups";
 import {
-    useMemitaMutation,
-    useMemitaQuery,
-    useRefreshMemitaQueries,
+  useMemitaMutation,
+  useMemitaQuery,
+  useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { ScreenLink } from "../ui/ScreenLink";

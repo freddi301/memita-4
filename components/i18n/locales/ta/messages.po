@@ -88,7 +88,7 @@ msgstr "சுயவிவரம்"
 msgid "Changes history"
 msgstr "மாற்றிய விவரம்"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "தேதியை அழி"
 
@@ -217,7 +217,7 @@ msgstr "கட்டுரையை திருத்தவும்"
 msgid "Edit contact"
 msgstr "தொடர்பை திருத்தவும்"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "தேதியை திருத்தவும்"
 
@@ -225,7 +225,7 @@ msgstr "தேதியை திருத்தவும்"
 msgid "Edit message"
 msgstr "செய்தியை திருத்து"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "நேரத்தை திருத்தவும்"
 

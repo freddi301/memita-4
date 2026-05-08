@@ -88,7 +88,7 @@ msgstr "జీవిత చరిత్ర"
 msgid "Changes history"
 msgstr "మార్పుల చరిత్ర"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "తేదీ తొలగించు"
 
@@ -217,7 +217,7 @@ msgstr "వ్యాసం సవరించు"
 msgid "Edit contact"
 msgstr "సంప్రదింపు సవరించు"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "తేదీ సవరించు"
 
@@ -225,7 +225,7 @@ msgstr "తేదీ సవరించు"
 msgid "Edit message"
 msgstr "సందేశాన్ని సవరించండి"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "సమయం సవరించు"
 

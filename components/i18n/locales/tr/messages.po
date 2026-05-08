@@ -88,7 +88,7 @@ msgstr "Biyografi"
 msgid "Changes history"
 msgstr "Değişiklik geçmişi"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "Tarihi temizle"
 
@@ -217,7 +217,7 @@ msgstr "Makaleyi düzenle"
 msgid "Edit contact"
 msgstr "Kişiyi düzenle"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "Tarihi düzenle"
 
@@ -225,7 +225,7 @@ msgstr "Tarihi düzenle"
 msgid "Edit message"
 msgstr "Mesajı düzenle"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "Saati düzenle"
 

@@ -88,7 +88,7 @@ msgstr "Tiểu sử"
 msgid "Changes history"
 msgstr "Lịch sử thay đổi"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "Xóa ngày"
 
@@ -217,7 +217,7 @@ msgstr "Chỉnh sửa bài viết"
 msgid "Edit contact"
 msgstr "Chỉnh sửa liên lạc"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "Chỉnh sửa ngày"
 
@@ -225,7 +225,7 @@ msgstr "Chỉnh sửa ngày"
 msgid "Edit message"
 msgstr "Chỉnh sửa tin nhắn"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "Chỉnh sửa giờ"
 

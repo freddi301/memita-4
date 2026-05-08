@@ -6,9 +6,9 @@ import { getGroupMessages, updateGroupMessage } from "../queries/groupMessages";
 import { getGroup } from "../queries/groups";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import {
-    useMemitaMutation,
-    useMemitaQuery,
-    useRefreshMemitaQueries,
+  useMemitaMutation,
+  useMemitaQuery,
+  useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { MessageCompose } from "../ui/MessageCompose";

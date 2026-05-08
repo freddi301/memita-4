@@ -88,7 +88,7 @@ msgstr "জীবনী"
 msgid "Changes history"
 msgstr "পরিবর্তনের ইতিহাস"
 
-#: components/ui/DateTimeInput.tsx:97
+#: components/ui/DateTimeInput.tsx:99
 msgid "Clear date"
 msgstr "তারিখ মুছুন"
 
@@ -217,7 +217,7 @@ msgstr "নিবন্ধ সম্পাদনা করুন"
 msgid "Edit contact"
 msgstr "যোগাযোগ সম্পাদনা করুন"
 
-#: components/ui/DateTimeInput.tsx:81
+#: components/ui/DateTimeInput.tsx:83
 msgid "Edit date"
 msgstr "তারিখ সম্পাদনা করুন"
 
@@ -225,7 +225,7 @@ msgstr "তারিখ সম্পাদনা করুন"
 msgid "Edit message"
 msgstr "বার্তা সম্পাদনা করুন"
 
-#: components/ui/DateTimeInput.tsx:89
+#: components/ui/DateTimeInput.tsx:91
 msgid "Edit time"
 msgstr "সময় সম্পাদনা করুন"
 

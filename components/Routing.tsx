@@ -16,24 +16,17 @@ const MAX_ALIVE_SCREENS = 15;
 
 const CURRENT = Symbol("current");
 
-type RouterContextType = {
-  [CURRENT]: ScreenEntry;
-  isPending: boolean;
-  navigate({
-    to,
-  }: {
-    to: ReactNode | (() => Promise<ReactNode | void>);
-    onDone?(): void;
-  }): void;
-};
+export type To = ReactNode | (() => Promise<ReactNode | void>);
 
 type ScreenEntry = { key: string; forceSuspend: string; element: ReactNode };
 
-const RouterContext = createContext<RouterContextType>(null as any);
+type RouterContextType = {
+  [CURRENT]: ScreenEntry;
+  isPending: boolean;
+  navigate({ to }: { to: To; onDone?(): void }): void;
+};
 
-export function useRouterContext() {
-  return use(RouterContext);
-}
+const RouterContext = createContext<RouterContextType>(null as any);
 
 export function RouterRoot({
   initial,
@@ -136,24 +129,30 @@ export function RouterRoot({
   );
 }
 
+export function useRouterContext() {
+  return use(RouterContext);
+}
+
 export function useCurrentScreenForceSuspend() {
   return use(RouterContext)?.[CURRENT].forceSuspend;
 }
 
 function compareScreens(left: ReactNode, right: ReactNode): boolean {
-  if (
-    typeof left === "object" &&
-    left !== null &&
-    "type" in left &&
-    typeof left.type === "function" &&
-    typeof right === "object" &&
-    right !== null &&
-    "type" in right &&
-    typeof right.type === "function"
-  ) {
+  if (isFunctionComponentNode(left) && isFunctionComponentNode(right)) {
     return (
       left.type.name === right.type.name && isEqual(left.props, right.props)
     );
   }
   return false;
+}
+
+function isFunctionComponentNode(
+  value: unknown,
+): value is { type: (...args: Array<any>) => any; props: unknown } {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "type" in value &&
+    typeof value.type === "function"
+  );
 }

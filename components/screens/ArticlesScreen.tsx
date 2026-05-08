@@ -65,7 +65,7 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
               <View style={{ flexDirection: "row", gap: 8 }}>
                 <FontAwesome
                   name="calendar"
-                  color={theme.secondaryTextStyle.color}
+                  color={theme.secondaryTextColor}
                   size={18}
                 />
                 <Text style={{ ...theme.secondaryTextStyle }}>
