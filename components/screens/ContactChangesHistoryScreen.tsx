@@ -4,10 +4,10 @@ import { Fragment } from "react";
 import { FlatList, Platform, Text, View } from "react-native";
 import { AccountId, deviceIdToString } from "../cryptography/cryptography";
 import { getContactChangesHistory } from "../queries/contacts";
-import { ScreenLink } from "../Routing";
 import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
+import { ScreenLink } from "../ui/ScreenLink";
 import { ContactScreen } from "./ContactScreen";
 
 export function ContactChangesHistoryScreen({

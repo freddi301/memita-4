@@ -3,21 +3,21 @@ import { Fragment, useEffect, useMemo, useState } from "react";
 import { FlatList, Text, TextInput, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
 import {
-  getContactList,
-  getContactListMembers,
-  updateContactList,
-  updateContactListMembership,
+    getContactList,
+    getContactListMembers,
+    updateContactList,
+    updateContactListMembership,
 } from "../queries/contactList";
 import { getContacts } from "../queries/contacts";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
-import { ScreenLink } from "../Routing";
 import {
-  useMemitaMutation,
-  useMemitaQuery,
-  useRefreshMemitaQueries,
+    useMemitaMutation,
+    useMemitaQuery,
+    useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
+import { ScreenLink } from "../ui/ScreenLink";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 
 export function ContactListScreen({

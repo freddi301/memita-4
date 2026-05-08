@@ -3,9 +3,9 @@ import { Fragment, useMemo, useState } from "react";
 import { FlatList, Text, TextInput, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
 import { getContactLists } from "../queries/contactList";
-import { ScreenLink } from "../Routing";
 import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
+import { ScreenLink } from "../ui/ScreenLink";
 import { ContactListScreen } from "./ContactListScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 

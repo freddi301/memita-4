@@ -4,22 +4,22 @@ import { FlatList, ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import { AccountId, accountIdFromString } from "../cryptography/cryptography";
 import {
-  getContactListsForContact,
-  updateContactListMembership,
+    getContactListsForContact,
+    updateContactListMembership,
 } from "../queries/contactList";
 import {
-  getContact,
-  getContactConnectedDevices,
-  updateContact,
+    getContact,
+    getContactConnectedDevices,
+    updateContact,
 } from "../queries/contacts";
-import { ScreenLink } from "../Routing";
 import {
-  useMemitaMutation,
-  useMemitaQuery,
-  useRefreshMemitaQueries,
+    useMemitaMutation,
+    useMemitaQuery,
+    useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
+import { ScreenLink } from "../ui/ScreenLink";
 import { ContactChangesHistoryScreen } from "./ContactChangesHistoryScreen";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";

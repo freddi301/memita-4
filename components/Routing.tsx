@@ -1,9 +1,7 @@
-import { FontAwesome } from "@expo/vector-icons";
 import { isEqual } from "lodash";
 import {
   Activity,
   createContext,
-  Fragment,
   ReactNode,
   use,
   useCallback,
@@ -11,23 +9,31 @@ import {
   useState,
   useTransition,
 } from "react";
-import { Pressable, StyleProp, Text, ViewStyle } from "react-native";
-import { useTheme } from "./Theme";
 
 const IS_TESTING = process.env.NODE_ENV === "test";
 
 const MAX_ALIVE_SCREENS = 15;
 
+const CURRENT = Symbol("current");
+
 type RouterContextType = {
-  current: ScreenEntry;
-  onChange(to: ReactNode): void;
+  [CURRENT]: ScreenEntry;
   isPending: boolean;
-  startTransition(callback: (() => void) | (() => Promise<void>)): void;
+  navigate({
+    to,
+  }: {
+    to: ReactNode | (() => Promise<ReactNode | void>);
+    onDone?(): void;
+  }): void;
 };
 
 type ScreenEntry = { key: string; forceSuspend: string; element: ReactNode };
 
 const RouterContext = createContext<RouterContextType>(null as any);
+
+export function useRouterContext() {
+  return use(RouterContext);
+}
 
 export function RouterRoot({
   initial,
@@ -79,10 +85,33 @@ export function RouterRoot({
       };
     });
   }, []);
+  const navigate = useCallback(
+    ({
+      to,
+      onDone,
+    }: {
+      to: ReactNode | (() => Promise<ReactNode | void>);
+      onDone?(): void;
+    }) => {
+      if (typeof to === "function") {
+        startTransition(async () => {
+          const result = await to();
+          if (result) onChange(result);
+          onDone?.();
+        });
+      } else {
+        startTransition(() => {
+          onChange(to);
+          onDone?.();
+        });
+      }
+    },
+    [onChange, startTransition],
+  );
   const current = state.screens[0]!;
   const value = useMemo(
-    () => ({ current, onChange, isPending, startTransition }),
-    [onChange, isPending, current],
+    (): RouterContextType => ({ [CURRENT]: current, isPending, navigate }),
+    [current, isPending, navigate],
   );
   return (
     <RouterContext value={value}>
@@ -108,7 +137,7 @@ export function RouterRoot({
 }
 
 export function useCurrentScreenForceSuspend() {
-  return use(RouterContext)?.current.forceSuspend;
+  return use(RouterContext)?.[CURRENT].forceSuspend;
 }
 
 function compareScreens(left: ReactNode, right: ReactNode): boolean {
@@ -127,113 +156,4 @@ function compareScreens(left: ReactNode, right: ReactNode): boolean {
     );
   }
   return false;
-}
-
-type IconName = keyof typeof FontAwesome.glyphMap;
-
-export function ScreenLink({
-  to,
-  label,
-  icon,
-  color,
-  hideLabel,
-  children,
-  styleOverride,
-}: {
-  to: ReactNode | (() => Promise<ReactNode | void>);
-  color?: string;
-  styleOverride?: StyleProp<ViewStyle>;
-} & (
-  | {
-      label: string;
-      icon?: IconName;
-      hideLabel?: boolean;
-      children?: undefined;
-    }
-  | {
-      label?: undefined;
-      icon?: undefined;
-      hideLabel?: undefined;
-      children: ReactNode;
-    }
-)) {
-  const theme = useTheme();
-  const { current, onChange, isPending, startTransition } = use(RouterContext);
-  const [isPressing, setIsPressing] = useState(false);
-  const [isPerforming, setIsPerforming] = useState(false);
-  const textColor =
-    isPending || !to
-      ? theme.secondaryTextColor
-      : (color ?? theme.linkTextColor);
-  const isCurrentScreen =
-    typeof to !== "function" ? compareScreens(to, current.element) : false;
-  const backgroundColor =
-    isPerforming || isCurrentScreen
-      ? theme.activeActionBackgroundColor
-      : isPressing && to
-        ? theme.pressedBackgroundColor
-        : theme.backgroundColor;
-  return (
-    <Pressable
-      accessibilityRole="button"
-      onPress={() => {
-        if (isPending || !to) {
-          return;
-        }
-        if (typeof to === "function") {
-          setIsPerforming(true);
-          startTransition(async () => {
-            const result = await to();
-            if (result) onChange(result);
-            setIsPerforming(false);
-          });
-        } else {
-          startTransition(async () => {
-            onChange(to);
-          });
-        }
-      }}
-      style={
-        children
-          ? { backgroundColor, ...styleOverride }
-          : {
-              paddingVertical: 8,
-              paddingHorizontal: 16,
-              // @ts-ignore
-              outline: "none",
-              backgroundColor,
-              flexDirection: "row",
-              gap: 8,
-              alignItems: "center",
-              minHeight: 36,
-              ...styleOverride,
-            }
-      }
-      onPressIn={() => {
-        setIsPressing(true);
-      }}
-      onPressOut={() => {
-        setIsPressing(false);
-      }}
-    >
-      {children ? (
-        children
-      ) : (
-        <Fragment>
-          {icon && <FontAwesome name={icon} color={textColor} size={16} />}
-          {!hideLabel && (
-            <Text
-              style={{
-                ...theme.linkTextStyle,
-                color: textColor,
-                paddingTop: 2,
-              }}
-            >
-              {label}
-            </Text>
-          )}
-        </Fragment>
-      )}
-    </Pressable>
-  );
 }

@@ -1,37 +1,37 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { useLingui } from "@lingui/react/macro";
 import {
-  Fragment,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
+    Fragment,
+    useCallback,
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState,
 } from "react";
 import {
-  FlatList,
-  Pressable,
-  Text,
-  TextInput,
-  View,
-  ViewToken,
+    FlatList,
+    Pressable,
+    Text,
+    TextInput,
+    View,
+    ViewToken,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { AccountId } from "../cryptography/cryptography";
 import { getContact } from "../queries/contacts";
 import {
-  getDirectMessages,
-  updateDidReadDirectMessage,
-  updateDirectMessage,
+    getDirectMessages,
+    updateDidReadDirectMessage,
+    updateDirectMessage,
 } from "../queries/directMessages";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
-import { ScreenLink } from "../Routing";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { ContentAddress } from "../store/fileStore";
 import { useTheme } from "../Theme";
 import { AttachmentPreview } from "../ui/AttachmentPreview";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
 import { MessageCompose } from "../ui/MessageCompose";
+import { ScreenLink } from "../ui/ScreenLink";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 import { ProfileScreen } from "./ProfileScreen";
 

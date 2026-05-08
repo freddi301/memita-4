@@ -4,13 +4,13 @@ import { ScrollView, Text, TextInput, View } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import { AccountId } from "../cryptography/cryptography";
 import { getGroup, updateGroup } from "../queries/groups";
-import { ScreenLink } from "../Routing";
 import {
-  useMemitaMutation,
-  useMemitaQuery,
-  useRefreshMemitaQueries,
+    useMemitaMutation,
+    useMemitaQuery,
+    useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
+import { ScreenLink } from "../ui/ScreenLink";
 import { GroupConversationScreen } from "./GroupConversationScreen";
 import { GroupMessagesScreen } from "./GroupMessagesScreen";
 

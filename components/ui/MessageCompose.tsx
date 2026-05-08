@@ -3,10 +3,10 @@ import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
 import { useEffect, useState } from "react";
 import { Platform, Pressable, ScrollView, TextInput, View } from "react-native";
-import { ScreenLink } from "../Routing";
 import { ContentAddress, storeFile } from "../store/fileStore";
 import { useTheme } from "../Theme";
 import { AttachmentPreview } from "./AttachmentPreview";
+import { ScreenLink } from "./ScreenLink";
 
 // refactor this to DirectMessageCompose and split to smaller files
 

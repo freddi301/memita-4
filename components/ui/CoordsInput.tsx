@@ -1,9 +1,9 @@
 import { useLingui } from "@lingui/react/macro";
 import { Fragment, useState } from "react";
 import { Dimensions, TextInput, View } from "react-native";
-import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
 import { GeoMap } from "./GeoMap";
+import { ScreenLink } from "./ScreenLink";
 
 export function CoordsInput({
   value,

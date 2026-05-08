@@ -1,13 +1,13 @@
+import { useLingui } from "@lingui/react/macro";
 import { View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
-import { ScreenLink } from "../Routing";
 import { ArticlesScreen } from "../screens/ArticlesScreen";
 import { DirectMessagesScreen } from "../screens/DirectMessagesScreen";
 import { EventsScreen } from "../screens/EventsScreen";
 import { GroupMessagesScreen } from "../screens/GroupMessagesScreen";
 import { PlacesScreen } from "../screens/PlacesScreen";
 import { ProfileScreen } from "../screens/ProfileScreen";
-import { useLingui } from "@lingui/react/macro";
+import { ScreenLink } from "./ScreenLink";
 
 export function BottomTabNavigation({
   accountId,

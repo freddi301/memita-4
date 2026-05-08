@@ -3,10 +3,10 @@ import { Fragment, startTransition } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { languages } from "../i18n/languages";
 import { getLanguage, setLanguage, systemLanguage } from "../i18n/Memitai18n";
-import { ScreenLink } from "../Routing";
 import { Language, Theme, themes } from "../storage/storageSchema";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { getTheme, setTheme, useSystemTheme, useTheme } from "../Theme";
+import { ScreenLink } from "../ui/ScreenLink";
 import { Select } from "../ui/Select";
 import { SelectAccountScreen } from "./SelectAccountScreen";
 

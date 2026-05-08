@@ -5,14 +5,14 @@ import { AccountId } from "../cryptography/cryptography";
 import { getGroupMessages, updateGroupMessage } from "../queries/groupMessages";
 import { getGroup } from "../queries/groups";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
-import { ScreenLink } from "../Routing";
 import {
-  useMemitaMutation,
-  useMemitaQuery,
-  useRefreshMemitaQueries,
+    useMemitaMutation,
+    useMemitaQuery,
+    useRefreshMemitaQueries,
 } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { MessageCompose } from "../ui/MessageCompose";
+import { ScreenLink } from "../ui/ScreenLink";
 import { GroupMessagesScreen } from "./GroupMessagesScreen";
 import { GroupScreen } from "./GroupScreen";
 

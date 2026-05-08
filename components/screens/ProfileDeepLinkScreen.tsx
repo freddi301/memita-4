@@ -3,10 +3,10 @@ import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
 import { getAccounts } from "../queries/accounts";
-import { ScreenLink } from "../Routing";
 import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
+import { ScreenLink } from "../ui/ScreenLink";
 import { ContactScreen } from "./ContactScreen";
 import { SelectAccountScreen } from "./SelectAccountScreen";
 

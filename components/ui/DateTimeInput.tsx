@@ -1,11 +1,11 @@
 import { useLingui } from "@lingui/react/macro";
 import DateTimePicker, {
-  DateTimePickerAndroid,
+    DateTimePickerAndroid,
 } from "@react-native-community/datetimepicker";
 import { useState } from "react";
 import { Platform, TextInput, View } from "react-native";
-import { ScreenLink } from "../Routing";
 import { useTheme } from "../Theme";
+import { ScreenLink } from "./ScreenLink";
 
 export function DateTimeInput({
   value,

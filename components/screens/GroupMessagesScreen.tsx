@@ -3,10 +3,10 @@ import { Fragment } from "react";
 import { FlatList, Text, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
 import { getGroupMessagesSummary } from "../queries/groupMessages";
-import { ScreenLink } from "../Routing";
 import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { BottomTabNavigation } from "../ui/BottomTabNavigation";
+import { ScreenLink } from "../ui/ScreenLink";
 import { GroupConversationScreen } from "./GroupConversationScreen";
 import { GroupScreen } from "./GroupScreen";
 

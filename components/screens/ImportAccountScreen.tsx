@@ -5,9 +5,9 @@ import { RefreshControl } from "react-native-web-refresh-control";
 import { importAccountSecret } from "../cryptography/accountBackup";
 import { accountIdFromAccountSecret } from "../cryptography/cryptography";
 import { addAccount } from "../queries/accounts";
-import { ScreenLink } from "../Routing";
 import { useMemitaMutation, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
+import { ScreenLink } from "../ui/ScreenLink";
 import { ProfileScreen } from "./ProfileScreen";
 import { SelectAccountScreen } from "./SelectAccountScreen";
 

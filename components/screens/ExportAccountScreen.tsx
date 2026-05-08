@@ -2,21 +2,21 @@ import { useLingui } from "@lingui/react/macro";
 import * as Clipboard from "expo-clipboard";
 import { Fragment, useState } from "react";
 import {
-  Alert,
-  Platform,
-  ScrollView,
-  Text,
-  TextInput,
-  View,
+    Alert,
+    Platform,
+    ScrollView,
+    Text,
+    TextInput,
+    View,
 } from "react-native";
 import { RefreshControl } from "react-native-web-refresh-control";
 import { exportAccountSecret } from "../cryptography/accountBackup";
 import { AccountId } from "../cryptography/cryptography";
 import { getAccountSecret } from "../queries/accounts";
-import { ScreenLink } from "../Routing";
 import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
+import { ScreenLink } from "../ui/ScreenLink";
 import { AccountScreen } from "./AccountScreen";
 
 export function ExportAccountScreen({ accountId }: { accountId: AccountId }) {

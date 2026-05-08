@@ -4,10 +4,10 @@ import { ScrollView, Text, TextInput, View } from "react-native";
 import { AccountId } from "../cryptography/cryptography";
 import { getArticle, updateArticle } from "../queries/articles";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
-import { ScreenLink } from "../Routing";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { DateTimeInput } from "../ui/DateTimeInput";
+import { ScreenLink } from "../ui/ScreenLink";
 import { ArticlesScreen } from "./ArticlesScreen";
 
 export function EditArticleScreen({
