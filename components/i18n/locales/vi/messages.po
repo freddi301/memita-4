@@ -149,7 +149,7 @@ msgstr "Tạo liên lạc"
 msgid "Create contact list"
 msgstr "Tạo danh sách liên hệ"
 
-#: components/screens/SelectAccountScreen.tsx:55
+#: components/screens/SelectAccountScreen.tsx:60
 msgid "Create new account"
 msgstr "Tạo tài khoản mới"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "Tiếng Hindi"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:49
+#: components/screens/SelectAccountScreen.tsx:54
 msgid "Import account"
 msgstr "Nhập tài khoản"
 
@@ -361,7 +361,7 @@ msgstr "Thành viên trong danh sách liên hệ"
 msgid "Members"
 msgstr "Thành viên"
 
-#: components/screens/SelectAccountScreen.tsx:42
+#: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
 
@@ -383,7 +383,7 @@ msgid "Next occurrence"
 msgstr "Lần xuất hiện tiếp theo"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:96
+#: components/screens/SelectAccountScreen.tsx:98
 msgid "No accounts on this device"
 msgstr "Không có tài khoản nào trên thiết bị này"
 
@@ -529,7 +529,7 @@ msgstr "Tìm kiếm liên hệ"
 msgid "Send message"
 msgstr "Gửi tin nhắn"
 
-#: components/screens/SelectAccountScreen.tsx:28
+#: components/screens/SelectAccountScreen.tsx:33
 msgid "Settings"
 msgstr "Cài đặt"
 

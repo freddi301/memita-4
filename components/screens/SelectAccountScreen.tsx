@@ -6,6 +6,11 @@ import { getAccounts } from "../queries/accounts";
 import { useMemitaQuery, useRefreshMemitaQueries } from "../store/dataApi";
 import { useTheme } from "../Theme";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
+import {
+  CreateAccountIcon,
+  DeviceSettingsIcon,
+  ImportAccountIcon,
+} from "../ui/Icon";
 import { ScreenLink } from "../ui/ScreenLink";
 import { AccountScreen } from "./AccountScreen";
 import { DeviceSettingsScreen } from "./DeviceSettingsScreen";
@@ -21,17 +26,17 @@ export function SelectAccountScreen() {
 
   return (
     <Fragment>
-      <View style={{ flexDirection: "row" }}>
+      <View style={[{ flexDirection: "row" }]}>
         <ScreenLink
-          icon="gear"
+          icon={DeviceSettingsIcon}
           to={<DeviceSettingsScreen />}
           label={t`Settings`}
         />
       </View>
-      <View style={{ alignItems: "center", gap: 16, padding: 16 }}>
+      <View style={[{ alignItems: "center", gap: 16, padding: 16 }]}>
         <Image
           source={require("../../assets/images/icon.png")}
-          style={{ width: 100, height: 100 }}
+          style={[{ width: 100, height: 100 }]}
         />
         <Text
           style={[
@@ -42,16 +47,16 @@ export function SelectAccountScreen() {
           {t`Memita`}
         </Text>
       </View>
-      <View style={{ alignItems: "flex-end" }}>
+      <View style={[{ alignItems: "flex-end" }]}>
         <ScreenLink
           to={<ImportAccountScreen />}
-          icon="download"
+          icon={ImportAccountIcon}
           label={t`Import account`}
         />
-        <View style={{ flexGrow: 1 }} />
+        <View style={[{ flexGrow: 1 }]} />
         <ScreenLink
           to={<AccountScreen />}
-          icon="plus"
+          icon={CreateAccountIcon}
           label={t`Create new account`}
         />
       </View>
@@ -60,12 +65,14 @@ export function SelectAccountScreen() {
         renderItem={({ item }) => (
           <ScreenLink
             to={<DirectMessagesScreen accountId={item.accountId} />}
-            styleOverride={{
-              flexDirection: "row",
-              paddingHorizontal: 8,
-              gap: 8,
-              marginVertical: 4,
-            }}
+            styleOverride={[
+              {
+                flexDirection: "row",
+                paddingHorizontal: 8,
+                gap: 8,
+                marginVertical: 4,
+              },
+            ]}
           >
             <CryptoAvatar
               accountId={item.accountId}
@@ -73,12 +80,8 @@ export function SelectAccountScreen() {
             />
             <Text
               style={[
-                theme.textStyle,
-                {
-                  color: theme.linkTextColor,
-                  fontWeight: "bold",
-                  paddingTop: 10,
-                },
+                theme.linkTextStyle,
+                { fontWeight: "bold", paddingTop: 10 },
               ]}
             >
               {item.name}
@@ -87,21 +90,18 @@ export function SelectAccountScreen() {
         )}
         ListEmptyComponent={
           <Text
-            style={{
-              ...theme.secondaryTextStyle,
-              padding: 16,
-              textAlign: "center",
-            }}
+            style={[
+              theme.secondaryTextStyle,
+              { padding: 16, textAlign: "center" },
+            ]}
           >
             {t`No accounts on this device`}
           </Text>
         }
-        style={{ flex: 1 }}
-        contentContainerStyle={{
-          flexGrow: 1,
-          justifyContent: "flex-end",
-          paddingBottom: 4,
-        }}
+        style={[{ flex: 1 }]}
+        contentContainerStyle={[
+          { flexGrow: 1, justifyContent: "flex-end", paddingBottom: 4 },
+        ]}
         refreshing={false}
         onRefresh={refreshMemitaQueries}
       />

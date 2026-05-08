@@ -302,24 +302,3 @@ Audit all decisions:
 ```bash
 grep -r "wont:" test/
 ```
-
----
-
-## End-of-run summary
-
-Print:
-
-```
-Debt / smells:        <up to 3 lines, or "none found">
-Observed convention:     <one-line description of inferred test structure>
-Target source:           <path>  [Tier A / B / C]
-Correlated test files:   <list of all found>
-Split performed:         yes → <list of files created/modified> | no
-Target test file:        <path> (created | updated)
-Source last commit:      <date>
-Target test last commit: <date> (or "none — file created")
-Todos added:             <n>
-Tier(s) covered:         <e.g. Tier 1, Tier 2>
-File line count:         <n>/500
-Next target source:      <path>  [Tier A / B / C]
-```

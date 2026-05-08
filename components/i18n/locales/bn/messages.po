@@ -149,7 +149,7 @@ msgstr "যোগাযোগ তৈরি করুন"
 msgid "Create contact list"
 msgstr "যোগাযোগের তালিকা তৈরি করুন"
 
-#: components/screens/SelectAccountScreen.tsx:55
+#: components/screens/SelectAccountScreen.tsx:60
 msgid "Create new account"
 msgstr "নতুন অ্যাকাউন্ট তৈরি করুন"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "হিন্দি"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:49
+#: components/screens/SelectAccountScreen.tsx:54
 msgid "Import account"
 msgstr "অ্যাকাউন্ট আমদানি করুন"
 
@@ -361,7 +361,7 @@ msgstr "যোগাযোগের তালিকায় থাকা সদস
 msgid "Members"
 msgstr "সদস্য"
 
-#: components/screens/SelectAccountScreen.tsx:42
+#: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
 
@@ -383,7 +383,7 @@ msgid "Next occurrence"
 msgstr "পরবর্তী মিল"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:96
+#: components/screens/SelectAccountScreen.tsx:98
 msgid "No accounts on this device"
 msgstr "এই ডিভাইসে কোনো অ্যাকাউন্ট নেই"
 
@@ -529,7 +529,7 @@ msgstr "যোগাযোগের তালিকা অনুসন্ধা�
 msgid "Send message"
 msgstr "বার্তা পাঠান"
 
-#: components/screens/SelectAccountScreen.tsx:28
+#: components/screens/SelectAccountScreen.tsx:33
 msgid "Settings"
 msgstr "সেটিংস"
 

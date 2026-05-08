@@ -149,7 +149,7 @@ msgstr "సంప్రదింపు సృష్టించు"
 msgid "Create contact list"
 msgstr "సంప్రదింపు జాబితాను సృష్టించండి"
 
-#: components/screens/SelectAccountScreen.tsx:55
+#: components/screens/SelectAccountScreen.tsx:60
 msgid "Create new account"
 msgstr "కొత్త ఖాతా సృష్టించు"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "హిందీ"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:49
+#: components/screens/SelectAccountScreen.tsx:54
 msgid "Import account"
 msgstr "ఖాతా దిగుమతి చేయి"
 
@@ -361,7 +361,7 @@ msgstr "సంప్రదింపు జాబితాలోని సభ్�
 msgid "Members"
 msgstr "సభ్యులు"
 
-#: components/screens/SelectAccountScreen.tsx:42
+#: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
 
@@ -383,7 +383,7 @@ msgid "Next occurrence"
 msgstr "తదుపరి సారి"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:96
+#: components/screens/SelectAccountScreen.tsx:98
 msgid "No accounts on this device"
 msgstr "ఈ పరికరంలో ఖాతాలు లేవు"
 
@@ -529,7 +529,7 @@ msgstr "సంప్రదించగల వారిని వెతకండ�
 msgid "Send message"
 msgstr "సందేశం పంపు"
 
-#: components/screens/SelectAccountScreen.tsx:28
+#: components/screens/SelectAccountScreen.tsx:33
 msgid "Settings"
 msgstr "సెట్టింగులు"
 

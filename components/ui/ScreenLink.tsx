@@ -3,6 +3,7 @@ import { Fragment, ReactNode, useState } from "react";
 import { Pressable, StyleProp, Text, ViewStyle } from "react-native";
 import { To, useRouterContext } from "../Routing";
 import { useTheme } from "../Theme";
+import { Icon } from "./Icon";
 import { useInfoTooltip } from "./InfoTooltip";
 
 // TODO refactor Icons to thin wrapper
@@ -25,7 +26,7 @@ export function ScreenLink({
 } & (
   | {
       label: string;
-      icon?: IconName;
+      icon?: IconName | Icon;
       hideLabel?: boolean;
       children?: undefined;
     }
@@ -63,6 +64,7 @@ export function ScreenLink({
       </Text>
     ),
   });
+  const Icon = icon;
   return (
     <Pressable
       accessibilityRole="button"
@@ -111,7 +113,11 @@ export function ScreenLink({
         children
       ) : (
         <Fragment>
-          {icon && <FontAwesome name={icon} color={textColor} size={16} />}
+          {Icon && typeof Icon === "string" ? (
+            <FontAwesome name={Icon} color={textColor} size={16} />
+          ) : (
+            Icon && <Icon size={16} color={textColor} />
+          )}
           {!hideLabel && (
             <Text
               style={[theme.linkTextStyle, { color: textColor, paddingTop: 2 }]}

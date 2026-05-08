@@ -1,10 +1,12 @@
-This skill is for keeping code quality high.
+This skill is for keeping code quality high and keep track of incremental refactors.
 
 There is a checklist to satisfy.
 
 Only in the current opened file.
 
-Interactively propose changes one by one from the checklist. And expect that i might answer yes/no or other details.
+Interactively propose changes one by one from the checklist. And expect that i might answer yes/no or other details. In the question tell me code region, clicable lines.
+
+Recursively cycle the checklist in the opened file until all items are satisfied or marked as not wanted in current section.
 
 # Checklist
 
@@ -27,3 +29,14 @@ The code is biased to composition to avoid hasty abstractions, so consider code 
 ## Code style
 
 Prefer inlined code to prevent excessive indiretion
+
+## Icon refactor
+
+Whenever you encounter an icon as string, refactor to new pattern:
+import from ./components/ui/Icon and use as component. If it doesnt exist create it.
+also update related tests (search for findIcon(screen, "icon-name") and change to findIcon(screen, IconComponent)). If it is uncertain how to name the new icon, ask. Prefer lucide icons, i will tell you which one case by case.
+for each legacy string icon, tell me line of code so i can decide to what type of icon change it to.
+
+## ScreenLink instances icons
+
+All <ScreenLink/> with label and no children should have an icon. stop, point out the line of code (clickable), propose relevant icons based on context (check Icon.tsx first), expect answer optionNumber/otherDetails.

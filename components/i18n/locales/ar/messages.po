@@ -149,7 +149,7 @@ msgstr "إنشاء جهة اتصال"
 msgid "Create contact list"
 msgstr "إنشاء قائمة جهات الاتصال"
 
-#: components/screens/SelectAccountScreen.tsx:55
+#: components/screens/SelectAccountScreen.tsx:60
 msgid "Create new account"
 msgstr "إنشاء حساب جديد"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "الهندية"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:49
+#: components/screens/SelectAccountScreen.tsx:54
 msgid "Import account"
 msgstr "استيراد الحساب"
 
@@ -361,7 +361,7 @@ msgstr "عضو في قوائم الاتصال"
 msgid "Members"
 msgstr "الأعضاء"
 
-#: components/screens/SelectAccountScreen.tsx:42
+#: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
 
@@ -383,7 +383,7 @@ msgid "Next occurrence"
 msgstr "التكرار التالي"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:96
+#: components/screens/SelectAccountScreen.tsx:98
 msgid "No accounts on this device"
 msgstr "لا توجد حسابات على هذا الجهاز"
 
@@ -529,7 +529,7 @@ msgstr "بحث عن جهات الاتصال"
 msgid "Send message"
 msgstr "إرسال الرسالة"
 
-#: components/screens/SelectAccountScreen.tsx:28
+#: components/screens/SelectAccountScreen.tsx:33
 msgid "Settings"
 msgstr "الإعدادات"
 

@@ -149,7 +149,7 @@ msgstr "தொடர்பை உருவாக்கவும்"
 msgid "Create contact list"
 msgstr "தொடர்புப் பட்டியலை உருவாக்கு"
 
-#: components/screens/SelectAccountScreen.tsx:55
+#: components/screens/SelectAccountScreen.tsx:60
 msgid "Create new account"
 msgstr "புதிய கணக்கை உருவாக்கவும்"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "இந்தி"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:49
+#: components/screens/SelectAccountScreen.tsx:54
 msgid "Import account"
 msgstr "கணக்கை இறக்குமதி செய்யவும்"
 
@@ -361,7 +361,7 @@ msgstr "தொடர்பு பட்டியலில் உள்ள உற
 msgid "Members"
 msgstr "உறுப்பினர்கள்"
 
-#: components/screens/SelectAccountScreen.tsx:42
+#: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
 
@@ -383,7 +383,7 @@ msgid "Next occurrence"
 msgstr "அடுத்த நிகழ்வு"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:96
+#: components/screens/SelectAccountScreen.tsx:98
 msgid "No accounts on this device"
 msgstr "இந்த சாதனத்தில் கணக்குகள் இல்லை"
 
@@ -529,7 +529,7 @@ msgstr "தொடர்புகளைத் தேடு"
 msgid "Send message"
 msgstr "செய்தி அனுப்பவும்"
 
-#: components/screens/SelectAccountScreen.tsx:28
+#: components/screens/SelectAccountScreen.tsx:33
 msgid "Settings"
 msgstr "அமைப்புகள்"
 

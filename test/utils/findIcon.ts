@@ -1,5 +1,6 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { render } from "@testing-library/react-native";
+import { Icon } from "../../components/ui/Icon";
 
 type IconName = keyof typeof FontAwesome.glyphMap;
 
@@ -10,8 +11,12 @@ function iconGlyph(name: IconName) {
 
 export async function findIcon(
   screen: Awaited<ReturnType<typeof render>>,
-  iconName: IconName,
+  icon: IconName | Icon,
 ) {
-  const glyph = iconGlyph(iconName);
-  return await screen.findByText(glyph);
+  if (typeof icon === "string") {
+    const glyph = iconGlyph(icon);
+    return await screen.findByText(glyph);
+  } else {
+    return await screen.findByTestId(icon.name);
+  }
 }

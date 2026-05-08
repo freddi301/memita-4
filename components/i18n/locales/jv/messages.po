@@ -149,7 +149,7 @@ msgstr "Gawe kontak"
 msgid "Create contact list"
 msgstr "Buat daftar kontak"
 
-#: components/screens/SelectAccountScreen.tsx:55
+#: components/screens/SelectAccountScreen.tsx:60
 msgid "Create new account"
 msgstr "Gawe akun anyar"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "Basa Hindi"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:49
+#: components/screens/SelectAccountScreen.tsx:54
 msgid "Import account"
 msgstr "Impor akun"
 
@@ -361,7 +361,7 @@ msgstr "Anggota daftar kontak"
 msgid "Members"
 msgstr "Anggota"
 
-#: components/screens/SelectAccountScreen.tsx:42
+#: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
 
@@ -383,7 +383,7 @@ msgid "Next occurrence"
 msgstr "Kejadian sabanjure"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:96
+#: components/screens/SelectAccountScreen.tsx:98
 msgid "No accounts on this device"
 msgstr "Ora ana akun ing piranti iki"
 
@@ -529,7 +529,7 @@ msgstr "Cari kontak"
 msgid "Send message"
 msgstr "Kirim pesan"
 
-#: components/screens/SelectAccountScreen.tsx:28
+#: components/screens/SelectAccountScreen.tsx:33
 msgid "Settings"
 msgstr "Setelan"
 

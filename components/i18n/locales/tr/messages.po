@@ -149,7 +149,7 @@ msgstr "Kişi oluştur"
 msgid "Create contact list"
 msgstr "İletişim listesi oluştur"
 
-#: components/screens/SelectAccountScreen.tsx:55
+#: components/screens/SelectAccountScreen.tsx:60
 msgid "Create new account"
 msgstr "Yeni hesap oluştur"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "Hintçe"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:49
+#: components/screens/SelectAccountScreen.tsx:54
 msgid "Import account"
 msgstr "Hesabı içe aktar"
 
@@ -361,7 +361,7 @@ msgstr "İletişim listelerinde yer alan"
 msgid "Members"
 msgstr "Üyeler"
 
-#: components/screens/SelectAccountScreen.tsx:42
+#: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
 
@@ -383,7 +383,7 @@ msgid "Next occurrence"
 msgstr "Sonraki eşleşme"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:96
+#: components/screens/SelectAccountScreen.tsx:98
 msgid "No accounts on this device"
 msgstr "Bu cihazda hesap yok"
 
@@ -529,7 +529,7 @@ msgstr "İletişim kişilerini arayın"
 msgid "Send message"
 msgstr "Mesaj gönder"
 
-#: components/screens/SelectAccountScreen.tsx:28
+#: components/screens/SelectAccountScreen.tsx:33
 msgid "Settings"
 msgstr "Ayarlar"
 

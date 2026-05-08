@@ -149,7 +149,7 @@ msgstr "संपर्क बनाएं"
 msgid "Create contact list"
 msgstr "संपर्क सूची बनाएँ"
 
-#: components/screens/SelectAccountScreen.tsx:55
+#: components/screens/SelectAccountScreen.tsx:60
 msgid "Create new account"
 msgstr "नया खाता बनाएं"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "हिंदी"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:49
+#: components/screens/SelectAccountScreen.tsx:54
 msgid "Import account"
 msgstr "खाता आयात करें"
 
@@ -361,7 +361,7 @@ msgstr "संपर्क सूची में सदस्य"
 msgid "Members"
 msgstr "सदस्य"
 
-#: components/screens/SelectAccountScreen.tsx:42
+#: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
 
@@ -383,7 +383,7 @@ msgid "Next occurrence"
 msgstr "अगली घटना"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:96
+#: components/screens/SelectAccountScreen.tsx:98
 msgid "No accounts on this device"
 msgstr "इस डिवाइस पर कोई खाता नहीं है"
 
@@ -529,7 +529,7 @@ msgstr "संपर्कों की खोज करें"
 msgid "Send message"
 msgstr "संदेश भेजें"
 
-#: components/screens/SelectAccountScreen.tsx:28
+#: components/screens/SelectAccountScreen.tsx:33
 msgid "Settings"
 msgstr "सेटिंग"
 

@@ -149,7 +149,7 @@ msgstr "Créer un contact"
 msgid "Create contact list"
 msgstr "Créer une liste de contacts"
 
-#: components/screens/SelectAccountScreen.tsx:55
+#: components/screens/SelectAccountScreen.tsx:60
 msgid "Create new account"
 msgstr "Créer un nouveau compte"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "Hindi"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:49
+#: components/screens/SelectAccountScreen.tsx:54
 msgid "Import account"
 msgstr "Importer le compte"
 
@@ -361,7 +361,7 @@ msgstr "Membre des listes de contacts"
 msgid "Members"
 msgstr "Membres"
 
-#: components/screens/SelectAccountScreen.tsx:42
+#: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
 
@@ -383,7 +383,7 @@ msgid "Next occurrence"
 msgstr "Occurrence suivante"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:96
+#: components/screens/SelectAccountScreen.tsx:98
 msgid "No accounts on this device"
 msgstr "Aucun compte sur cet appareil"
 
@@ -529,7 +529,7 @@ msgstr "Rechercher des contacts"
 msgid "Send message"
 msgstr "Envoyer le message"
 
-#: components/screens/SelectAccountScreen.tsx:28
+#: components/screens/SelectAccountScreen.tsx:33
 msgid "Settings"
 msgstr "Paramètres"
 

@@ -149,7 +149,7 @@ msgstr "連絡先を作成"
 msgid "Create contact list"
 msgstr "連絡先リストを作成する"
 
-#: components/screens/SelectAccountScreen.tsx:55
+#: components/screens/SelectAccountScreen.tsx:60
 msgid "Create new account"
 msgstr "新しいアカウントを作成"
 
@@ -301,7 +301,7 @@ msgid "Hindi"
 msgstr "ヒンディー語"
 
 #: components/screens/ImportAccountScreen.tsx:37
-#: components/screens/SelectAccountScreen.tsx:49
+#: components/screens/SelectAccountScreen.tsx:54
 msgid "Import account"
 msgstr "アカウントをインポート"
 
@@ -361,7 +361,7 @@ msgstr "連絡先リストに登録されているメンバー"
 msgid "Members"
 msgstr "メンバー"
 
-#: components/screens/SelectAccountScreen.tsx:42
+#: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
 
@@ -383,7 +383,7 @@ msgid "Next occurrence"
 msgstr "次の一致"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:104
-#: components/screens/SelectAccountScreen.tsx:96
+#: components/screens/SelectAccountScreen.tsx:98
 msgid "No accounts on this device"
 msgstr "このデバイスにアカウントがありません"
 
@@ -529,7 +529,7 @@ msgstr "連絡先を検索する"
 msgid "Send message"
 msgstr "メッセージを送信"
 
-#: components/screens/SelectAccountScreen.tsx:28
+#: components/screens/SelectAccountScreen.tsx:33
 msgid "Settings"
 msgstr "設定"
 
