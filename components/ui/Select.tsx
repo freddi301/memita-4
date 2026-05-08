@@ -19,55 +19,57 @@ export function Select<T = string>({
 }) {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+
+  function renderStringNode(node: React.ReactNode, style: object) {
+    return typeof node === "string" ? (
+      <Text style={[theme.textStyle, style]}>{node}</Text>
+    ) : (
+      node
+    );
+  }
+
   return (
     <View
-      style={{
-        position: "relative",
-        flexGrow: flexGrow1 ? 1 : undefined,
-        borderWidth: 1,
-        borderColor: theme.separatorColor,
-        borderRadius: 4,
-      }}
+      style={[
+        {
+          position: "relative",
+          flexGrow: flexGrow1 ? 1 : undefined,
+          borderWidth: 1,
+          borderColor: theme.separatorColor,
+          borderRadius: 4,
+        },
+      ]}
     >
       <Pressable onPress={() => setIsOpen((open) => !open)}>
-        {(() => {
-          const renderedValue = renderValue(value);
-          return typeof renderedValue === "string" ? (
-            <Text
-              style={{
-                ...theme.textStyle,
-                paddingHorizontal: 8,
-                paddingBottom: 4,
-                paddingTop: 6,
-              }}
-            >
-              {renderedValue}
-            </Text>
-          ) : (
-            renderedValue
-          );
-        })()}
+        {renderStringNode(renderValue(value), {
+          paddingHorizontal: 8,
+          paddingBottom: 4,
+          paddingTop: 6,
+        })}
       </Pressable>
       <Modal visible={isOpen} transparent animationType="fade">
         <Pressable
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            flex: 1,
-            backgroundColor: "#000000cc",
-          }}
+          style={[
+            {
+              justifyContent: "center",
+              alignItems: "center",
+              flex: 1,
+              backgroundColor: theme.overlayBackgroundColor,
+            },
+          ]}
           onPress={() => setIsOpen(false)}
         >
           <ScrollView
-            style={{
-              backgroundColor: theme.backgroundColor,
-              borderRadius: 8,
-              minWidth: 200,
-              margin: 16,
-            }}
+            style={[
+              {
+                backgroundColor: theme.backgroundColor,
+                borderRadius: 8,
+                minWidth: 200,
+                margin: 16,
+              },
+            ]}
           >
             {options.map((option, index) => {
-              const renderedOption = renderOption(option);
               return (
                 <Pressable
                   key={index}
@@ -76,19 +78,10 @@ export function Select<T = string>({
                     setIsOpen(false);
                   }}
                 >
-                  {typeof renderedOption === "string" ? (
-                    <Text
-                      style={{
-                        ...theme.textStyle,
-                        paddingHorizontal: 16,
-                        paddingVertical: 8,
-                      }}
-                    >
-                      {renderedOption}
-                    </Text>
-                  ) : (
-                    renderedOption
-                  )}
+                  {renderStringNode(renderOption(option), {
+                    paddingHorizontal: 16,
+                    paddingVertical: 8,
+                  })}
                 </Pressable>
               );
             })}

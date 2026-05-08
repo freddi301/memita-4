@@ -28,7 +28,11 @@ export function useSystemTheme() {
 
 type ThemeProps = typeof darkTheme;
 
-const baseTheme = { fontSize: 16, lineHeight: 18 };
+const baseTheme = {
+  fontSize: 16,
+  lineHeight: 18,
+  overlayBackgroundColor: "#000000cc",
+};
 
 const darkTheme = {
   backgroundColor: "#1d1d1d",
