@@ -15,7 +15,7 @@ export async function findIcon(
 ) {
   if (typeof icon === "string") {
     const glyph = iconGlyph(icon);
-    return await screen.findByText(glyph);
+    return await screen.findByText(glyph, {}, { timeout: 5000 });
   } else {
     return await screen.findByTestId(icon.name);
   }

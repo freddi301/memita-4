@@ -9,34 +9,36 @@ export type ShouldSendProps<StoreItem> = {
   storeItem: StoreItem;
 };
 
+/** This function determines whether an information should be shared */
 export function shouldSend({
   thisAccountId,
   otherAccountId,
   storeItem,
 }: ShouldSendProps<DataItem>): boolean {
-  if (storeItem.type === "ContactUpdate") {
-    if (
-      thisAccountId === otherAccountId &&
-      storeItem.accountId === thisAccountId
-    ) {
-      return true;
+  if (otherAccountId === thisAccountId) {
+    if (storeItem.type === "ContactUpdate") {
+      if (storeItem.accountId === thisAccountId) {
+        return true;
+      }
+    }
+    if (storeItem.type === "DirectMessageUpdate") {
+      if (
+        storeItem.senderId === thisAccountId ||
+        storeItem.receiverId === thisAccountId
+      ) {
+        return true;
+      }
     }
   }
+
   if (storeItem.type === "DirectMessageUpdate") {
     if (
-      storeItem.isDraft &&
-      storeItem.senderId === thisAccountId &&
-      thisAccountId === otherAccountId
+      (storeItem.senderId === thisAccountId &&
+        storeItem.receiverId === otherAccountId) ||
+      (storeItem.senderId === otherAccountId &&
+        storeItem.receiverId === thisAccountId)
     ) {
-      return true;
-    }
-    if (!storeItem.isDraft) {
-      if (
-        (storeItem.senderId === thisAccountId &&
-          storeItem.receiverId === otherAccountId) ||
-        (storeItem.senderId === otherAccountId &&
-          storeItem.receiverId === thisAccountId)
-      ) {
+      if (!storeItem.isDraft) {
         return true;
       }
     }

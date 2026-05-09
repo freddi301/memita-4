@@ -1,6 +1,4 @@
 review features secion, normalize items -> transform into tests
-create icon thin wrapper (use more rn lucide icons) + add to code quality skill
-while editing a direct message, dont let user do anything to inadvertently lose chages
 do not send draft messages
 dont accept future timestamps
 do not replicate deleted stuff? (ponder)
@@ -26,6 +24,7 @@ Biography - for Profile and places
 
 # More
 
+- [ ] while editing a message, dont let user do anything to inadvertently lose chages
 - [ ] contact presence status (off by default, research carefully bhow to implement)
 - [ ] send invite to download app
 - [ ] app lock pin

@@ -119,6 +119,7 @@
   "private": true,
   "jest": {
     "preset": "jest-expo",
+    "testEnvironment": "node",
     "testTimeout": 10000,
     "moduleNameMapper": {
       "^expo-modules-core(|/.*)$": "<rootDir>/node_modules/expo/node_modules/expo-modules-core$1"

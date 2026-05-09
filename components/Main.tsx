@@ -20,9 +20,11 @@ import {
   AccountSecret,
 } from "./cryptography/cryptography";
 import { Memitai18n } from "./i18n/Memitai18n";
+import { hyperswarmNetworkFactory } from "./network/hyperswarmNetwork";
 import { networkDummy } from "./network/netoworkDummy";
 import { bareNetworkFactory } from "./network/networkBare";
 import { websocketNetworkFactory } from "./network/networkWebsocketClient";
+import { contactList } from "./queries/contacts";
 import {
   directMessagesList,
   directMessagesSummary,
@@ -46,7 +48,7 @@ export function createApp({ storage }: { storage: StorageInterface }) {
 
   const networkFactory = (() => {
     if (process.env.NODE_ENV === "test") {
-      return networkDummy;
+      return hyperswarmNetworkFactory;
     }
     if (Platform.OS === "web") {
       if (navigator.userAgent.includes("Electron")) {
@@ -96,6 +98,13 @@ export function createApp({ storage }: { storage: StorageInterface }) {
             deviceSecret,
           ],
         ),
+      );
+    },
+    async getContacts(accountId) {
+      const current = await appStorage.read();
+      const all = current.data;
+      return (await contactList({ accountId })(all)).map(
+        (contact) => contact.contactId,
       );
     },
   });

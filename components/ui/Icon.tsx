@@ -2,8 +2,7 @@ import { ArrowLeft, Cog, LogIn, UserRoundPlus } from "lucide-react-native";
 import { ComponentType } from "react";
 import { View } from "react-native";
 // import "@expo/vector-icons/"
-import { coconut } from "@lucide/lab";
-console.log(coconut);
+// import { coconut } from "@lucide/lab";
 /* <Icon iconNode={coconut} size={24} color="black" /> */
 
 type IconProps = { size: number; color?: string };

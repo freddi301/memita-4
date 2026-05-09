@@ -15,12 +15,14 @@ type StoreInInterface<StoreItem> = {
   networkFactory: NetworkFactory;
   shouldSend(props: ShouldSendProps<StoreItem>): boolean;
   getDeviceByAccounts(): Promise<Map<AccountId, DeviceSecret>>;
+  getContacts(accountId: AccountId): Promise<Array<AccountId>>;
 };
 
 export type StoreOutInterface<StoreItem> = {
   add(item: StoreItem): Promise<void>;
   all(): Promise<Array<StoreItem>>;
   getContactConnectedDevices(contactId: AccountId): Promise<Array<DeviceId>>;
+  stop(): Promise<void>;
 };
 
 type StorageInterface<StoreItem> = {
@@ -47,6 +49,8 @@ export type NetworkOutInterface = {
   ): Promise<void>;
   getStartedDevices(): Promise<Array<DeviceId>>;
   getConnectedDevices(deviceId: DeviceId): Promise<Array<DeviceId>>;
+  join(deviceId: DeviceId, topic: AccountId): Promise<void>;
+  leave(deviceId: DeviceId, topic: AccountId): Promise<void>;
 };
 
 export type NetworkFactory = (out: NetworkInInterface) => NetworkOutInterface;
@@ -60,6 +64,7 @@ export function createStore<StoreItem>({
   networkFactory,
   shouldSend,
   getDeviceByAccounts,
+  getContacts,
 }: StoreInInterface<StoreItem>): StoreOutInterface<StoreItem> {
   const ProtocolMessageSchema = z.discriminatedUnion("type", [
     z.object({
@@ -124,7 +129,11 @@ export function createStore<StoreItem>({
       );
     },
   });
+
+  let isStopped = false;
+
   async function startStopDevices() {
+    if (isStopped) return;
     const deviceByAccounts = await getDeviceByAccounts();
     const devicesToActivateSecrets = new Set(deviceByAccounts.values());
     const devicesToActivatateIds = new Set(
@@ -144,7 +153,9 @@ export function createStore<StoreItem>({
     await startStopDevices();
   }
   void startStopDevices();
+
   async function heartbeat() {
+    if (isStopped) return;
     const deviceByAccounts = await getDeviceByAccounts();
     for (const [accountId, deviceSecret] of deviceByAccounts) {
       const deviceId = deviceIdFromDeviceSecret(deviceSecret);
@@ -159,6 +170,24 @@ export function createStore<StoreItem>({
     await heartbeat();
   }
   void heartbeat();
+
+  // TODO leave topics
+  async function joinLeaveTopics() {
+    if (isStopped) return;
+    const deviceByAccounts = await getDeviceByAccounts();
+    for (const [accountId, deviceSecret] of deviceByAccounts) {
+      const deviceId = deviceIdFromDeviceSecret(deviceSecret);
+      await network.join(deviceId, accountId);
+      const contacts = await getContacts(accountId);
+      for (const contactId of contacts) {
+        await network.join(deviceId, contactId);
+      }
+    }
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await joinLeaveTopics();
+  }
+  void joinLeaveTopics();
+
   return {
     async add(item) {
       const didAdd = await storage.add(item);
@@ -193,6 +222,12 @@ export function createStore<StoreItem>({
     },
     async getContactConnectedDevices(contactId: AccountId) {
       return heartbeats.getAccountConnectedDevices(contactId);
+    },
+    async stop() {
+      isStopped = true;
+      for (const deviceId of await network.getStartedDevices()) {
+        await network.stop(deviceId);
+      }
     },
   };
 }

@@ -61,6 +61,10 @@ export const AccountIdSchema = z.string().brand("AccountId");
 /** ED25519 Public key, hex string */
 export type AccountId = z.infer<typeof AccountIdSchema>;
 
+export function accountIdToUint8Array(accountId: AccountId): Uint8Array {
+  return hexToBytes(accountId);
+}
+
 function accountIdFromUint8Array(uint8Array: Uint8Array): AccountId {
   if (uint8Array.length !== 32) {
     throw new Error(`Invalid accountId length: ${uint8Array.length}`);

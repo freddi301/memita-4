@@ -1,7 +1,8 @@
 import { decodeMultiStream, encode } from "@msgpack/msgpack";
-import DHT from "hyperdht";
 import Hyperswarm, { type Connection } from "hyperswarm";
 import {
+  AccountId,
+  accountIdToUint8Array,
   type DeviceId,
   deviceIdFromDeviceSecret,
   deviceIdFromUint8Array,
@@ -63,6 +64,20 @@ export const hyperswarmNetworkFactory: NetworkFactory = ({
     async getStartedDevices() {
       return Array.from(hyperswarmNodes.keys());
     },
+    async join(deviceId, topic) {
+      const hyperswarmNode = await hyperswarmNodes.get(deviceId);
+      if (!hyperswarmNode) {
+        throw new Error(`Device ${deviceId} not started`);
+      }
+      await hyperswarmNode.join(topic);
+    },
+    async leave(deviceId, topic) {
+      const hyperswarmNode = await hyperswarmNodes.get(deviceId);
+      if (!hyperswarmNode) {
+        throw new Error(`Device ${deviceId} not started`);
+      }
+      await hyperswarmNode.leave(topic);
+    },
   };
 };
 
@@ -90,7 +105,8 @@ async function hyperswarmNodeFactory({
       "127.0.0.1:50000", // ios
       "10.0.2.2:50000", // android
       // internet bootstrap nodes
-      ...DHT.BOOTSTRAP,
+      // TODO reenable to make it work over internet
+      // ...DHT.BOOTSTRAP,
     ],
     firewall(remotePublicKey) {
       const otherDeviceId = deviceIdFromUint8Array(remotePublicKey);
@@ -124,11 +140,6 @@ async function hyperswarmNodeFactory({
     }
   });
 
-  console.log("Joining swarm with topic 'memita'");
-  const topic = Buffer.alloc(32).fill("memita");
-  const discovery = await swarm.join(topic, { server: true, client: true });
-  await discovery.flushed();
-
   return {
     async getConnectedDevices() {
       return Array.from(connectionByDeviceId.keys());
@@ -145,6 +156,19 @@ async function hyperswarmNodeFactory({
     },
     async stop() {
       await swarm.destroy();
+    },
+    async join(contactId: AccountId) {
+      // console.log("Joining swarm with topic 'memita'");
+      const topic = Buffer.from(accountIdToUint8Array(contactId));
+      const discovery = await swarm.join(topic, { server: true, client: true });
+      // await discovery.flushed();
+      // console.log("Joined swarm with topic 'memita'");
+    },
+    async leave(contactId: AccountId) {
+      // console.log("Leaving swarm with topic 'memita'");
+      const topic = Buffer.from(accountIdToUint8Array(contactId));
+      await swarm.leave(topic);
+      // console.log("Left swarm with topic 'memita'");
     },
   };
 }
