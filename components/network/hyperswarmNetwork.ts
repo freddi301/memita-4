@@ -12,6 +12,8 @@ import {
 } from "../cryptography/cryptography";
 import { type NetworkFactory } from "../store/store";
 
+const isTest = process.env.NODE_ENV === "test";
+
 export const hyperswarmNetworkFactory: NetworkFactory = ({
   connected,
   received,
@@ -101,14 +103,14 @@ async function hyperswarmNodeFactory({
         Buffer.from(deviceIdToUint8Array(deviceId)),
       ]),
     },
-    bootstrap: [
-      // local bootstrap nodes for development
-      "127.0.0.1:50000", // ios
-      "10.0.2.2:50000", // android
-      // internet bootstrap nodes
-      // TODO reenable to make it work over internet
-      // ...DHT.BOOTSTRAP,
-    ],
+    bootstrap: isTest
+      ? [
+          // local bootstrap nodes for development
+          "127.0.0.1:50000", // ios, desktop
+          "10.0.2.2:50000", // android
+        ]
+      : // internet bootstrap nodes
+        DHT.BOOTSTRAP,
     firewall(remotePublicKey) {
       const otherDeviceId = deviceIdFromUint8Array(remotePublicKey);
       const isMe = otherDeviceId === deviceId;
@@ -133,13 +135,21 @@ async function hyperswarmNodeFactory({
       }
     } catch (error) {
       // should behave as connection.on("error", (error) => {});
-      console.log(`Connection error ${deviceIdString}`, error);
+      // console.log(`Connection error ${deviceIdString}`, error);
     } finally {
       // should behave as connection.on("close", () => {});
       connectionByDeviceId.delete(deviceIdString);
       console.log(`Connection closed ${deviceIdString}`);
     }
   });
+
+  const topicSubscriptionStatus = new Map<
+    AccountId,
+    | { type: "joining"; promise: Promise<void> }
+    | { type: "joined" }
+    | { type: "leaving"; promise: Promise<void> }
+    | { type: "left" }
+  >();
 
   return {
     async getConnectedDevices() {
@@ -160,17 +170,36 @@ async function hyperswarmNodeFactory({
       await swarm.destroy();
     },
     async join(contactId: AccountId) {
-      // console.log("Joining swarm with topic 'memita'");
-      const topic = Buffer.from(accountIdToUint8Array(contactId));
-      const discovery = await swarm.join(topic, { server: true, client: true });
-      // await discovery.flushed();
-      // console.log("Joined swarm with topic 'memita'");
+      const status = topicSubscriptionStatus.get(contactId) ?? { type: "left" };
+      if (status.type === "left" || status.type === "leaving") {
+        topicSubscriptionStatus.set(contactId, {
+          type: "joining",
+          promise: (async () => {
+            if (status.type === "leaving") await status.promise;
+            // console.log(`Joining swarm with topic ${contactId}`);
+            const topic = Buffer.from(accountIdToUint8Array(contactId));
+            await swarm.join(topic, { server: true, client: true });
+            topicSubscriptionStatus.set(contactId, { type: "joined" });
+            // console.log(`Joined swarm with topic ${contactId}`);
+          })(),
+        });
+      }
     },
     async leave(contactId: AccountId) {
-      // console.log("Leaving swarm with topic 'memita'");
-      const topic = Buffer.from(accountIdToUint8Array(contactId));
-      await swarm.leave(topic);
-      // console.log("Left swarm with topic 'memita'");
+      const status = topicSubscriptionStatus.get(contactId) ?? { type: "left" };
+      if (status.type === "joined" || status.type === "joining") {
+        topicSubscriptionStatus.set(contactId, {
+          type: "leaving",
+          promise: (async () => {
+            if (status.type === "joining") await status.promise;
+            // console.log(`Leaving swarm with topic ${contactId}`);
+            const topic = Buffer.from(accountIdToUint8Array(contactId));
+            await swarm.leave(topic);
+            topicSubscriptionStatus.set(contactId, { type: "left" });
+            // console.log(`Left swarm with topic ${contactId}`);
+          })(),
+        });
+      }
     },
   };
 }

@@ -24,7 +24,8 @@ const identifier = "memita_has_something_for_you";
 
 export async function triggerNotification() {
   if (Platform.OS !== "web") {
-    const presented = await Notifications.getPresentedNotificationsAsync();
+    const presented =
+      (await Notifications.getPresentedNotificationsAsync()) ?? [];
     const alreadyPresent = presented.some(
       (notification) => notification.request.identifier === identifier,
     );

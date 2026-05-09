@@ -8,6 +8,19 @@ import {
 } from "../cryptography/cryptography";
 import { ShouldSendProps } from "../queries/shouldSend";
 
+// ARCHITECTURE: Account/Device/Replication Model
+// Each app instance manages one or more accounts.
+// Each account has a single deviceId tied to its DHT identity (derived from account secret).
+// Replicated data is authored with (accountId, deviceId) pair:
+//   - accountId: the author's account
+//   - deviceId: the device from which the author authored this data
+// At networking/store level, a device connection can carry data from multiple accounts
+// (e.g., peer's device may authenticate as peer1's deviceId but carry peer2's messages).
+// At app level currently, each account strictly uses its own deviceId (1:1 mapping).
+// The store filters replication using shouldSend(thisAccountId, otherAccountId, storeItem)
+// which determines if data authored by otherAccountId should be shared to thisAccountId
+// across a device connection between devices that may manage multiple accounts each.
+
 type StoreInInterface<StoreItem> = {
   parse(item: unknown): StoreItem;
   onAdd(item: StoreItem): Promise<void>;
@@ -90,12 +103,126 @@ export function createStore<StoreItem>({
 
   const heartbeats = makeHeartbeatRepository();
 
+  const getOwnedAccountsByDevice = async () => {
+    const accountByDevice = new Map<DeviceId, Array<AccountId>>();
+    const deviceByAccounts = await getDeviceByAccounts();
+    for (const [accountId, deviceSecret] of deviceByAccounts) {
+      const deviceId = deviceIdFromDeviceSecret(deviceSecret);
+      if (!accountByDevice.has(deviceId)) {
+        accountByDevice.set(deviceId, []);
+      }
+      accountByDevice.get(deviceId)!.push(accountId);
+    }
+    return accountByDevice;
+  };
+
+  const shouldSendForDevicePair = ({
+    storeItem,
+    thisAccountIds,
+    otherAccountIds,
+  }: {
+    storeItem: StoreItem;
+    thisAccountIds: Array<AccountId>;
+    otherAccountIds: Array<AccountId>;
+  }) => {
+    for (const thisAccountId of thisAccountIds) {
+      for (const otherAccountId of otherAccountIds) {
+        if (shouldSend({ thisAccountId, otherAccountId, storeItem })) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  const inferAccountIdsFromStoreItem = (storeItem: StoreItem) => {
+    const accountIds = new Set<AccountId>();
+    if (typeof storeItem !== "object" || storeItem === null) {
+      return [] as Array<AccountId>;
+    }
+    const candidate = storeItem as Record<string, unknown>;
+
+    // For DirectMessageUpdate, only include the recipient, not the sender.
+    // The sender is likely local; we want to reach the recipient (other account).
+    if (candidate.type === "DirectMessageUpdate") {
+      const receiverId = candidate.receiverId;
+      if (typeof receiverId === "string") {
+        accountIds.add(receiverId as AccountId);
+      }
+      return Array.from(accountIds);
+    }
+
+    // For other types, collect all account-like fields as fallback.
+    const possibleKeys = ["accountId", "contactId", "senderId", "receiverId"];
+    for (const key of possibleKeys) {
+      const value = candidate[key];
+      if (typeof value === "string") {
+        accountIds.add(value as AccountId);
+      }
+    }
+    return Array.from(accountIds);
+  };
+
+  const getOtherAccountIdsForDevice = ({
+    otherDeviceId,
+    storeItem,
+  }: {
+    otherDeviceId: DeviceId;
+    storeItem: StoreItem;
+  }) => {
+    const fromHeartbeats = heartbeats.getDeviceConnectedAccounts(otherDeviceId);
+    if (fromHeartbeats.length > 0) {
+      return fromHeartbeats;
+    }
+    return inferAccountIdsFromStoreItem(storeItem);
+  };
+
+  const sendItemToDevice = async (
+    deviceId: DeviceId,
+    toDeviceId: DeviceId,
+    item: StoreItem,
+  ) => {
+    await network.send(deviceId, toDeviceId, { type: "data", data: item });
+  };
+
+  const syncExistingItemsToDevice = async (
+    deviceId: DeviceId,
+    toDeviceId: DeviceId,
+  ) => {
+    const all = await storage.all();
+    const ownedAccountsByDevice = await getOwnedAccountsByDevice();
+    const thisAccountIds = ownedAccountsByDevice.get(deviceId) ?? [];
+
+    if (thisAccountIds.length === 0) {
+      return;
+    }
+
+    const itemsToSend = all.filter((item) => {
+      const otherAccountIds = getOtherAccountIdsForDevice({
+        otherDeviceId: toDeviceId,
+        storeItem: item,
+      });
+      if (otherAccountIds.length === 0) {
+        return false;
+      }
+      return shouldSendForDevicePair({
+        storeItem: item,
+        thisAccountIds,
+        otherAccountIds,
+      });
+    });
+
+    await Promise.all(
+      itemsToSend.map((item) => sendItemToDevice(deviceId, toDeviceId, item)),
+    );
+  };
+
   const network = networkFactory({
     async received(deviceId, fromDeviceId, data) {
       const parsed = ProtocolMessageSchema.parse(data);
       switch (parsed.type) {
         case "data": {
-          const item = parse(data);
+          const item = parsed.data;
           const didAdd = await storage.add(item);
           if (didAdd) {
             await onAdd(item);
@@ -103,30 +230,16 @@ export function createStore<StoreItem>({
           break;
         }
         case "accountHeartbeat": {
-          heartbeats.add(parsed.accountId, deviceId);
+          // Just register the heartbeat, don't send anything.
+          // Syncing happens via the connected() callback when first connecting,
+          // and via fanout in add() when new items are created.
+          heartbeats.add(parsed.accountId, fromDeviceId);
           break;
         }
       }
     },
     async connected(deviceId, otherDeviceId) {
-      const all = await storage.all();
-      // TODO discriminate to which devices to send
-      await Promise.all(
-        all
-          .filter((item) =>
-            shouldSend({
-              thisAccountId: null as any, // TODO
-              otherAccountId: null as any, // TODO
-              storeItem: item,
-            }),
-          )
-          .map(async (item) =>
-            network.send(deviceId, otherDeviceId, {
-              type: "data",
-              data: await item,
-            }),
-          ),
-      );
+      await syncExistingItemsToDevice(deviceId, otherDeviceId);
     },
   });
 
@@ -200,33 +313,40 @@ export function createStore<StoreItem>({
   }
   void joinLeaveTopics();
 
+  const fanoutNewItem = async (item: StoreItem) => {
+    const ownedAccountsByDevice = await getOwnedAccountsByDevice();
+    for (const deviceId of await network.getStartedDevices()) {
+      const thisAccountIds = ownedAccountsByDevice.get(deviceId) ?? [];
+      if (thisAccountIds.length === 0) {
+        continue;
+      }
+      for (const toDeviceId of await network.getConnectedDevices(deviceId)) {
+        const otherAccountIds = getOtherAccountIdsForDevice({
+          otherDeviceId: toDeviceId,
+          storeItem: item,
+        });
+        if (otherAccountIds.length === 0) {
+          continue;
+        }
+        if (
+          shouldSendForDevicePair({
+            thisAccountIds,
+            otherAccountIds,
+            storeItem: item,
+          })
+        ) {
+          await sendItemToDevice(deviceId, toDeviceId, item);
+        }
+      }
+    }
+  };
+
   return {
     async add(item) {
       const didAdd = await storage.add(item);
-      if (
-        didAdd &&
-        shouldSend({
-          thisAccountId: null as any, // TODO
-          otherAccountId: null as any, // TODO
-          storeItem: item,
-        })
-      ) {
+      if (didAdd) {
         await onAdd(item);
-        // TODO do not block ui while sending
-        void (async () => {
-          for (const deviceId of await network.getStartedDevices()) {
-            for (const toDeviceId of await network.getConnectedDevices(
-              deviceId,
-            )) {
-              // TODO discriminate to which devices to send
-              await network.send(deviceId, toDeviceId, {
-                type: "data",
-                data: await item,
-              });
-              // TODO send over files too
-            }
-          }
-        })();
+        void fanoutNewItem(item);
       }
     },
     async all() {
@@ -272,5 +392,15 @@ function makeHeartbeatRepository() {
         .map(([deviceId, _]) => deviceId),
     );
   };
-  return { add, getAccountConnectedDevices };
+  const getDeviceConnectedAccounts = (deviceId: DeviceId) => {
+    const now = Date.now();
+    return Array.from(
+      Array.from(
+        (byDeviceId.get(deviceId) ?? new Map<AccountId, number>()).entries(),
+      )
+        .filter(([_, timestamp]) => now - timestamp < 4000)
+        .map(([accountId, _]) => accountId),
+    );
+  };
+  return { add, getAccountConnectedDevices, getDeviceConnectedAccounts };
 }

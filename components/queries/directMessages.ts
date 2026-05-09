@@ -32,24 +32,16 @@ export const updateDirectMessage: MemitaQuery<
   void
 > =
   ({ senderId, receiverId, createdAt, isDraft, content, attachments }) =>
-  async ({ appStorage }) => {
-    await appStorage.write((current) => {
-      return {
-        ...current,
-        data: [
-          ...current.data,
-          {
-            type: "DirectMessageUpdate",
-            senderId,
-            receiverId,
-            createdAt,
-            isDraft,
-            content,
-            attachments,
-            timestamp: nowTimestamp(),
-          },
-        ],
-      };
+  async ({ store }) => {
+    await store.add({
+      type: "DirectMessageUpdate",
+      senderId,
+      receiverId,
+      createdAt,
+      isDraft,
+      content,
+      attachments,
+      timestamp: nowTimestamp(),
     });
   };
 

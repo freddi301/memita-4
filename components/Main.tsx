@@ -65,13 +65,16 @@ export function createApp({ storage }: { storage: StorageInterface }) {
     storage: {
       async add(item) {
         // TODO refactor somehow
-        const didAdd = (await appStorage.read()).data.some((existingItem) =>
-          isEqual(existingItem, item),
+        const alreadyExists = (await appStorage.read()).data.some(
+          (existingItem) => isEqual(existingItem, item),
         );
+        if (alreadyExists) {
+          return false;
+        }
         await appStorage.write((current) => {
           return { ...current, data: [...current.data, item] };
         });
-        return didAdd;
+        return true;
       },
       async all() {
         return (await appStorage.read()).data;
