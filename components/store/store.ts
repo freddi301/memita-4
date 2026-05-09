@@ -131,6 +131,18 @@ export function createStore<StoreItem>({
   });
 
   let isStopped = false;
+  const timeoutIds = new Set<ReturnType<typeof setTimeout>>();
+
+  async function sleep(ms: number) {
+    if (isStopped) return;
+    await new Promise<void>((resolve) => {
+      const timeoutId = setTimeout(() => {
+        timeoutIds.delete(timeoutId);
+        resolve();
+      }, ms);
+      timeoutIds.add(timeoutId);
+    });
+  }
 
   async function startStopDevices() {
     if (isStopped) return;
@@ -149,7 +161,7 @@ export function createStore<StoreItem>({
     for (const deviceSecret of devicesToActivateSecrets) {
       await network.start(deviceSecret);
     }
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await sleep(1000);
     await startStopDevices();
   }
   void startStopDevices();
@@ -166,7 +178,7 @@ export function createStore<StoreItem>({
         });
       }
     }
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await sleep(1000);
     await heartbeat();
   }
   void heartbeat();
@@ -183,7 +195,7 @@ export function createStore<StoreItem>({
         await network.join(deviceId, contactId);
       }
     }
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await sleep(1000);
     await joinLeaveTopics();
   }
   void joinLeaveTopics();
@@ -225,6 +237,10 @@ export function createStore<StoreItem>({
     },
     async stop() {
       isStopped = true;
+      for (const timeoutId of timeoutIds) {
+        clearTimeout(timeoutId);
+      }
+      timeoutIds.clear();
       for (const deviceId of await network.getStartedDevices()) {
         await network.stop(deviceId);
       }

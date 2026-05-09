@@ -9,14 +9,14 @@ import { use } from "react";
 import { useCurrentScreenForceSuspend } from "../Routing";
 import { FeApiContext, MemitaMutation, MemitaQuery } from "./feApi";
 
+const isTest = process.env.NODE_ENV === "test";
+
 export function createMemitaQueryClient() {
+  const gcTime = isTest ? Infinity : undefined;
   return new QueryClient({
     defaultOptions: {
-      queries: {
-        staleTime: 0,
-        refetchOnMount: "always",
-        gcTime: process.env.NODE_ENV === "test" ? Infinity : undefined,
-      },
+      queries: { refetchOnMount: "always", retry: false, gcTime },
+      mutations: { retry: false, gcTime },
     },
   });
 }

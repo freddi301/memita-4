@@ -155,6 +155,7 @@ async function hyperswarmNodeFactory({
       );
     },
     async stop() {
+      console.log(`Stopping swarm ${deviceId}`);
       await swarm.destroy();
     },
     async join(contactId: AccountId) {

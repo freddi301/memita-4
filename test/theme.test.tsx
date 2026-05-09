@@ -14,7 +14,7 @@ test("user sees system theme as default in device settings", async () => {
   ).toBeVisible();
 });
 
-test("user can switch theme to dark", async () => {
+test("user switches theme to dark", async () => {
   const { Main } = await createTestApp();
 
   const user = userEvent.setup();
