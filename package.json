@@ -127,10 +127,10 @@
     "transform": {},
     "transformIgnorePatterns": [],
     "setupFiles": [
-      "./jest.setup.js"
+      "./jest.setup.ts"
     ],
     "setupFilesAfterEnv": [
-      "./jest.setup.after.js"
+      "./jest.setup.after.ts"
     ]
   },
   "lint-staged": {

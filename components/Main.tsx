@@ -143,12 +143,6 @@ export function createApp({ storage }: { storage: StorageInterface }) {
 
     useDisableBack();
 
-    useEffect(() => {
-      return () => {
-        void store.stop();
-      };
-    }, []);
-
     return (
       <FeApiContext value={api}>
         <QueryClientProvider client={queryClient}>

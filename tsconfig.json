@@ -7,5 +7,5 @@
     // "paths": { "@/*": ["./*"] },
     "types": ["jest"]
   },
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx", "jest.setup.ts", "jest.setup.after.js"]
 }

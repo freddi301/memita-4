@@ -66,10 +66,11 @@ export const hyperswarmNetworkFactory: NetworkFactory = ({
     },
     async join(deviceId, topic) {
       const hyperswarmNode = await hyperswarmNodes.get(deviceId);
-      if (!hyperswarmNode) {
-        throw new Error(`Device ${deviceId} not started`);
-      }
-      await hyperswarmNode.join(topic);
+      // TODO
+      // if (!hyperswarmNode) {
+      //   throw new Error(`Device ${deviceId} not started`);
+      // }
+      await hyperswarmNode?.join(topic);
     },
     async leave(deviceId, topic) {
       const hyperswarmNode = await hyperswarmNodes.get(deviceId);
@@ -91,7 +92,7 @@ async function hyperswarmNodeFactory({
   connected(otherDeviceId: DeviceId): Promise<void>;
 }) {
   const deviceId = deviceIdFromDeviceSecret(deviceSecret);
-  console.log(`Starting swarm ${deviceId}`);
+  // console.log(`Starting swarm ${deviceId}`);
   const swarm = new Hyperswarm({
     keyPair: {
       publicKey: Buffer.from(deviceIdToUint8Array(deviceId)),
@@ -117,7 +118,7 @@ async function hyperswarmNodeFactory({
     },
   });
   await swarm.listen();
-  console.log(`Swarm started ${deviceId}`);
+  // console.log(`Swarm started ${deviceId}`);
 
   const connectionByDeviceId = new Map<DeviceId, Connection>();
 
