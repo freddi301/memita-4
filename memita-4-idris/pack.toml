@@ -1,0 +1,10 @@
+[custom.all.memita-4-idris]
+type = "local"
+path = "."
+ipkg = "memita-4-idris.ipkg"
+test = "test/test.ipkg"
+
+[custom.all.memita-4-idris-test]
+type = "local"
+path = "test"
+ipkg = "test.ipkg"
