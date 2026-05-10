@@ -5,7 +5,7 @@ import Data.MMap
 
 import Data.AccountId
 import AppInterface
-import State
+import Control.State
 
 main : IO ()
 main = putStrLn "Hello from Idris2!"
@@ -26,7 +26,7 @@ UserQuery (\a => SimpleSystem -> a) where
       Nothing => Left "Account not found"
       Just accountEntry => Right $ accountEntry.contacts
 
-UserMutation (State SimpleSystem) where
+UserMutation (State SimpleSystem SimpleSystem) where
 
   addAccount accountSecret = do
     let accountId = from accountSecret
