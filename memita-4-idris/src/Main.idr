@@ -14,9 +14,9 @@ interface UserMutation (r : Type -> Type) where
   addContact : (accountId: AccountId) -> (contactId: AccountId) -> r (Either String ())
   removeContact : (accountId: AccountId) -> (contactId: AccountId) -> r (Either String ())
 
-interface UserQuery (system : Type) where
-  allAccounts : system -> List AccountId
-  allContacts : AccountId -> system -> List AccountId
+interface UserQuery (r : Type -> Type) where
+  allAccounts : r (MSet AccountId)
+  allContacts : AccountId -> r (Either String (MSet AccountId))
 
 record AccountEntry where
   constructor MkAccountEntry
@@ -32,6 +32,13 @@ SimpleSystemQuery a = SimpleSystem -> a
 
 SimpleSystemMutation : Type -> Type
 SimpleSystemMutation a = SimpleSystem -> (SimpleSystem, a)
+
+UserQuery SimpleSystemQuery where
+  allAccounts sys = keys sys.accounts
+  allContacts accountId sys =
+    case get accountId sys.accounts of
+      Nothing => Left "Account not found"
+      Just accountEntry => Right $ accountEntry.contacts
 
 UserMutation SimpleSystemMutation where
   addAccount accountSecret sys =
