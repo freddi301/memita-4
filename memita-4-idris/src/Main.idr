@@ -4,19 +4,10 @@ import Data.MSet
 import Data.MMap
 
 import Data.AccountId
+import AppInterface
 
 main : IO ()
 main = putStrLn "Hello from Idris2!"
-
-interface UserMutation (r : Type -> Type) where
-  addAccount : (accountSecret: AccountSecret) -> r (Either String AccountId)
-  removeAccount : (accountId: AccountId) -> r (Either String ())
-  addContact : (accountId: AccountId) -> (contactId: AccountId) -> r (Either String ())
-  removeContact : (accountId: AccountId) -> (contactId: AccountId) -> r (Either String ())
-
-interface UserQuery (r : Type -> Type) where
-  allAccounts : r (MSet AccountId)
-  allContacts : AccountId -> r (Either String (MSet AccountId))
 
 record AccountEntry where
   constructor MkAccountEntry
@@ -44,26 +35,26 @@ UserMutation SimpleSystemMutation where
   addAccount accountSecret sys =
     let accountId = from accountSecret in
     case get accountId sys.accounts of
-      Just _ => (sys, Left "Already added")
+      Just _ => (sys, Left AccountAlreadyExists)
       Nothing => ({ accounts $= set accountId (MkAccountEntry accountSecret empty) } sys, Right accountId)
   removeAccount accountId sys =
     case get accountId sys.accounts of
-      Nothing => (sys, Left "Account not found")
+      Nothing => (sys, Left AccountNotFound)
       Just _ => ({ accounts $= rem accountId } sys, Right ())
   addContact accountId contactId sys =
     case get accountId sys.accounts of
-      Nothing => (sys, Left "Account not found")
+      Nothing => (sys, Left AddContactAccountNotFound)
       Just accountEntry =>
         case has contactId accountEntry.contacts of
-          True => (sys, Left "Contact already exists")
+          True => (sys, Left ContactAlreadyExists)
           False =>
             ({ accounts $= set accountId ({ contacts $= add contactId } accountEntry) } sys, Right ())
   removeContact accountId contactId sys =
     case get accountId sys.accounts of
-      Nothing => (sys, Left "Account not found")
+      Nothing => (sys, Left RemoveContactAccountNotFound)
       Just accountEntry =>
         case has contactId accountEntry.contacts of
-          False => (sys, Left "Contact not found")
+          False => (sys, Left ContactNotFound)
           True =>
             ({ accounts $= set accountId ({ contacts $= rem contactId } accountEntry) } sys, Right ())
 
