@@ -324,11 +324,10 @@ export function DirectConversationScreen({
         }}
         ListEmptyComponent={() => (
           <Text
-            style={{
-              ...theme.secondaryTextStyle,
-              textAlign: "center",
-              marginTop: -theme.lineHeight * 2,
-            }}
+            style={[
+              theme.secondaryTextStyle,
+              { textAlign: "center", marginTop: -theme.lineHeight * 2 },
+            ]}
           >
             {t`No messages`}
           </Text>
@@ -484,11 +483,10 @@ export function DirectConversationScreen({
                   label={t`Unread messages`}
                 />
                 <TextInput
-                  style={{
-                    ...theme.textInputStyle(toolbarState.text),
-                    paddingBottom: 5,
-                    flexGrow: 1,
-                  }}
+                  style={[
+                    theme.textInputStyle(toolbarState.text),
+                    { paddingBottom: 5, flexGrow: 1 },
+                  ]}
                   value={toolbarState.text}
                   onChangeText={(text) =>
                     setToolbarState({ type: "search", text })
@@ -622,6 +620,10 @@ export function DirectConversationScreen({
           } else {
             throw new Error("Invalid state");
           }
+        }}
+        onCancel={() => {
+          // TODO add checks for unsaved changes
+          setToModifyMessage(undefined);
         }}
       />
     </Fragment>

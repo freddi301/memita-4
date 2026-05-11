@@ -114,7 +114,12 @@ export function ScreenLink({
       ) : (
         <Fragment>
           {Icon && typeof Icon === "string" ? (
-            <FontAwesome name={Icon} color={textColor} size={16} />
+            <FontAwesome
+              name={Icon}
+              color={textColor}
+              size={16}
+              aria-label={icon as string}
+            />
           ) : (
             Icon && <Icon size={16} color={textColor} />
           )}

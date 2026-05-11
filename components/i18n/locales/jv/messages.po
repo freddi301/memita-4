@@ -42,15 +42,15 @@ msgstr "Semua pesan"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "Sapa wae sing bisa ngimpor rahasia bakal duwe akses penuh menyang akun kanggo selawase!"
 
-#: components/screens/DeviceSettingsScreen.tsx:82
+#: components/screens/DeviceSettingsScreen.tsx:83
 msgid "Arabic"
 msgstr "Basa Arab"
 
-#: components/ui/MessageCompose.tsx:107
+#: components/ui/MessageCompose.tsx:109
 msgid "Attach file"
 msgstr "Lampirake file"
 
-#: components/screens/DeviceSettingsScreen.tsx:31
+#: components/screens/DeviceSettingsScreen.tsx:32
 #: components/screens/ProfileDeepLinkScreen.tsx:36
 msgid "Back"
 msgstr "Bali"
@@ -75,7 +75,7 @@ msgstr "Kembali ke daftar kontak"
 msgid "Back to direct messages"
 msgstr "Bali menyang pesan langsung"
 
-#: components/screens/DeviceSettingsScreen.tsx:60
+#: components/screens/DeviceSettingsScreen.tsx:61
 msgid "Bengali"
 msgstr "Basa Bengali"
 
@@ -165,11 +165,11 @@ msgstr "Gawe kontak anyar"
 msgid "Create new group"
 msgstr "Gawe grup anyar"
 
-#: components/screens/DeviceSettingsScreen.tsx:134
+#: components/screens/DeviceSettingsScreen.tsx:135
 msgid "Dark"
 msgstr "Peteng"
 
-#: components/ui/MessageCompose.tsx:208
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "Busak"
 
@@ -190,7 +190,7 @@ msgstr "Hapus daftar kontak"
 msgid "Device ID"
 msgstr "ID Piranti"
 
-#: components/screens/DeviceSettingsScreen.tsx:34
+#: components/screens/DeviceSettingsScreen.tsx:35
 msgid "Device Settings"
 msgstr "Setelan Piranti"
 
@@ -221,7 +221,7 @@ msgstr "Sunting kontak"
 msgid "Edit date"
 msgstr "Sunting tanggal"
 
-#: components/screens/DirectConversationScreen.tsx:376
+#: components/screens/DirectConversationScreen.tsx:375
 msgid "Edit message"
 msgstr "Sunting pesan"
 
@@ -229,7 +229,7 @@ msgstr "Sunting pesan"
 msgid "Edit time"
 msgstr "Sunting wektu"
 
-#: components/screens/DeviceSettingsScreen.tsx:52
+#: components/screens/DeviceSettingsScreen.tsx:53
 msgid "English"
 msgstr "Inggris"
 
@@ -263,11 +263,11 @@ msgstr "Rahasia akun sing diekspor"
 msgid "Exported account secret copied to clipboard"
 msgstr "Rahasia akun sing diekspor disalin menyang clipboard"
 
-#: components/screens/DeviceSettingsScreen.tsx:78
+#: components/screens/DeviceSettingsScreen.tsx:79
 msgid "French"
 msgstr "Basa Prancis"
 
-#: components/screens/DeviceSettingsScreen.tsx:84
+#: components/screens/DeviceSettingsScreen.tsx:85
 msgid "German"
 msgstr "Basa Jerman"
 
@@ -296,7 +296,7 @@ msgstr "Pesan grup"
 msgid "Group name"
 msgstr "Jeneng grup"
 
-#: components/screens/DeviceSettingsScreen.tsx:58
+#: components/screens/DeviceSettingsScreen.tsx:59
 msgid "Hindi"
 msgstr "Basa Hindi"
 
@@ -313,27 +313,27 @@ msgstr "Rahasia akun utawa sandi ora valid"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "Butuh dua orang. Tambahkan satu sama lain sebagai kontak untuk mulai mengobrol!"
 
-#: components/screens/DeviceSettingsScreen.tsx:90
+#: components/screens/DeviceSettingsScreen.tsx:91
 msgid "Italian"
 msgstr "Italia"
 
-#: components/screens/DeviceSettingsScreen.tsx:66
+#: components/screens/DeviceSettingsScreen.tsx:67
 msgid "Japanese"
 msgstr "Basa Jepang"
 
-#: components/screens/DeviceSettingsScreen.tsx:88
+#: components/screens/DeviceSettingsScreen.tsx:89
 msgid "Javanese"
 msgstr "Basa Jawa"
 
-#: components/screens/DeviceSettingsScreen.tsx:76
+#: components/screens/DeviceSettingsScreen.tsx:77
 msgid "Korean"
 msgstr "Basa Korea"
 
-#: components/screens/DeviceSettingsScreen.tsx:39
+#: components/screens/DeviceSettingsScreen.tsx:40
 msgid "Language"
 msgstr "Basa"
 
-#: components/screens/DeviceSettingsScreen.tsx:132
+#: components/screens/DeviceSettingsScreen.tsx:133
 msgid "Light"
 msgstr "Padhang"
 
@@ -341,15 +341,15 @@ msgstr "Padhang"
 msgid "Location"
 msgstr "Lokasi"
 
-#: components/screens/DeviceSettingsScreen.tsx:54
+#: components/screens/DeviceSettingsScreen.tsx:55
 msgid "Mandarin Chinese"
 msgstr "Basa Mandarin"
 
-#: components/screens/DeviceSettingsScreen.tsx:72
+#: components/screens/DeviceSettingsScreen.tsx:73
 msgid "Marathi"
 msgstr "Basa Marathi"
 
-#: components/screens/DirectConversationScreen.tsx:434
+#: components/screens/DirectConversationScreen.tsx:433
 msgid "Mark as read"
 msgstr "Tandai wis diwaca"
 
@@ -365,7 +365,7 @@ msgstr "Anggota"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "Owahi pesan"
 
@@ -373,12 +373,12 @@ msgstr "Owahi pesan"
 msgid "New article"
 msgstr "Artikel anyar"
 
-#: components/ui/MessageCompose.tsx:138
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "Draf anyar"
 
-#: components/screens/DirectConversationScreen.tsx:463
-#: components/screens/DirectConversationScreen.tsx:547
+#: components/screens/DirectConversationScreen.tsx:462
+#: components/screens/DirectConversationScreen.tsx:545
 msgid "Next occurrence"
 msgstr "Kejadian sabanjure"
 
@@ -408,7 +408,7 @@ msgstr "Tidak ada daftar kontak"
 msgid "No contacts"
 msgstr "Tidak ada kontak"
 
-#: components/screens/DirectConversationScreen.tsx:333
+#: components/screens/DirectConversationScreen.tsx:332
 #: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,12 +458,12 @@ msgstr "Tempel ID akun sing dikirim kontak marang sampeyan"
 msgid "Places"
 msgstr "Panggonan"
 
-#: components/screens/DeviceSettingsScreen.tsx:62
+#: components/screens/DeviceSettingsScreen.tsx:63
 msgid "Portuguese"
 msgstr "Basa Portugis"
 
-#: components/screens/DirectConversationScreen.tsx:399
-#: components/screens/DirectConversationScreen.tsx:521
+#: components/screens/DirectConversationScreen.tsx:398
+#: components/screens/DirectConversationScreen.tsx:519
 msgid "Previous occurrence"
 msgstr "Kejadian sadurunge"
 
@@ -477,7 +477,7 @@ msgstr "Profil"
 msgid "Profile ID copied to clipboard"
 msgstr "ID profil disalin menyang clipboard"
 
-#: components/ui/MessageCompose.tsx:70
+#: components/ui/MessageCompose.tsx:72
 msgid "Remove"
 msgstr "Copot"
 
@@ -493,7 +493,7 @@ msgstr "Hapus kontak saka daftar"
 msgid "Remove from contact list"
 msgstr "Hapus dri daftar kontak"
 
-#: components/screens/DeviceSettingsScreen.tsx:64
+#: components/screens/DeviceSettingsScreen.tsx:65
 msgid "Russian"
 msgstr "Basa Rusia"
 
@@ -505,12 +505,12 @@ msgstr "Basa Rusia"
 msgid "Save changes"
 msgstr "Simpen owahan"
 
-#: components/ui/MessageCompose.tsx:154
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "Simpen draf"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:354
+#: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "Goleki"
@@ -525,7 +525,7 @@ msgstr "Cari daftar kontak"
 msgid "Search contacts"
 msgstr "Cari kontak"
 
-#: components/ui/MessageCompose.tsx:172
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "Kirim pesan"
 
@@ -545,24 +545,28 @@ msgstr "Tampilake ing peta"
 msgid "Show QR code"
 msgstr "Tampilake kode QR"
 
-#: components/screens/DeviceSettingsScreen.tsx:56
+#: components/screens/DeviceSettingsScreen.tsx:57
 msgid "Spanish"
 msgstr "Basa Spanyol"
+
+#: components/ui/MessageCompose.tsx:134
+msgid "Stop editing draft"
+msgstr "Berhenti mengedit draf"
 
 #: components/screens/ContactListsScreen.tsx:66
 #: components/screens/DirectMessagesScreen.tsx:99
 msgid "Stop searching"
 msgstr "Berhenti mencari"
 
-#: components/screens/DeviceSettingsScreen.tsx:114
+#: components/screens/DeviceSettingsScreen.tsx:115
 msgid "System default ({languageName})"
 msgstr "Gawan sistem ({languageName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:140
+#: components/screens/DeviceSettingsScreen.tsx:141
 msgid "System default ({themeName})"
 msgstr "Gawan sistem ({themeName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:80
+#: components/screens/DeviceSettingsScreen.tsx:81
 msgid "Tamil"
 msgstr "Basa Tamil"
 
@@ -570,7 +574,7 @@ msgstr "Basa Tamil"
 msgid "Tap to change"
 msgstr "Tutul kanggo ngganti"
 
-#: components/screens/DeviceSettingsScreen.tsx:74
+#: components/screens/DeviceSettingsScreen.tsx:75
 msgid "Telugu"
 msgstr "Basa Telugu"
 
@@ -578,7 +582,7 @@ msgstr "Basa Telugu"
 msgid "The one you typed in during export"
 msgstr "Sing sampeyan ketik nalika ekspor"
 
-#: components/screens/DeviceSettingsScreen.tsx:119
+#: components/screens/DeviceSettingsScreen.tsx:120
 msgid "Theme"
 msgstr "Tema"
 
@@ -595,11 +599,11 @@ msgstr "Jeneng iki mung katon kanggo sampeyan ing piranti iki"
 msgid "This will your avatar forever, choose wisely"
 msgstr "Iki bakal dadi avatar sampeyan selawase, piliha kanthi wicaksana"
 
-#: components/screens/DeviceSettingsScreen.tsx:70
+#: components/screens/DeviceSettingsScreen.tsx:71
 msgid "Turkish"
 msgstr "Basa Turki"
 
-#: components/screens/DirectConversationScreen.tsx:484
+#: components/screens/DirectConversationScreen.tsx:483
 msgid "Unread messages"
 msgstr "Pesan durung diwaca"
 
@@ -607,7 +611,7 @@ msgstr "Pesan durung diwaca"
 msgid "Update article"
 msgstr "Nganyarke artikel"
 
-#: components/screens/DeviceSettingsScreen.tsx:86
+#: components/screens/DeviceSettingsScreen.tsx:87
 msgid "Urdu"
 msgstr "Basa Urdu"
 
@@ -615,7 +619,7 @@ msgstr "Basa Urdu"
 msgid "Use another account"
 msgstr "Gunakake akun liyane"
 
-#: components/screens/DeviceSettingsScreen.tsx:68
+#: components/screens/DeviceSettingsScreen.tsx:69
 msgid "Vietnamese"
 msgstr "Basa Vietnam"
 
@@ -623,7 +627,7 @@ msgstr "Basa Vietnam"
 msgid "Will be needed to import later"
 msgstr "Bakal dibutuhake kanggo impor mengko"
 
-#: components/ui/MessageCompose.tsx:112
+#: components/ui/MessageCompose.tsx:114
 msgid "Write a message"
 msgstr "Tulis pesen"
 

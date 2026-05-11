@@ -42,15 +42,15 @@ msgstr "அனைத்து செய்திகளும்"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "ரகசியத்தை இறக்குமதி செய்யக்கூடியவர்களுக்கு கணக்கிற்கு எப்போதும் முழு அணுகல் இருக்கும்!"
 
-#: components/screens/DeviceSettingsScreen.tsx:82
+#: components/screens/DeviceSettingsScreen.tsx:83
 msgid "Arabic"
 msgstr "அரபிக்"
 
-#: components/ui/MessageCompose.tsx:107
+#: components/ui/MessageCompose.tsx:109
 msgid "Attach file"
 msgstr "கோப்பு இணைக்கவும்"
 
-#: components/screens/DeviceSettingsScreen.tsx:31
+#: components/screens/DeviceSettingsScreen.tsx:32
 #: components/screens/ProfileDeepLinkScreen.tsx:36
 msgid "Back"
 msgstr "திரும்பு"
@@ -75,7 +75,7 @@ msgstr "தொடர்புப் பட்டியல்களுக்க�
 msgid "Back to direct messages"
 msgstr "நேரடி செய்திகளுக்கு திரும்பு"
 
-#: components/screens/DeviceSettingsScreen.tsx:60
+#: components/screens/DeviceSettingsScreen.tsx:61
 msgid "Bengali"
 msgstr "பெங்காலி"
 
@@ -165,11 +165,11 @@ msgstr "புதிய தொடர்பை உருவாக்கவும�
 msgid "Create new group"
 msgstr "புதிய குழுவை உருவாக்கவும்"
 
-#: components/screens/DeviceSettingsScreen.tsx:134
+#: components/screens/DeviceSettingsScreen.tsx:135
 msgid "Dark"
 msgstr "இருண்ட"
 
-#: components/ui/MessageCompose.tsx:208
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "நீக்கு"
 
@@ -190,7 +190,7 @@ msgstr "தொடர்புப் பட்டியலை நீக்கவ�
 msgid "Device ID"
 msgstr "சாதன ID"
 
-#: components/screens/DeviceSettingsScreen.tsx:34
+#: components/screens/DeviceSettingsScreen.tsx:35
 msgid "Device Settings"
 msgstr "சாதன அமைப்புகள்"
 
@@ -221,7 +221,7 @@ msgstr "தொடர்பை திருத்தவும்"
 msgid "Edit date"
 msgstr "தேதியை திருத்தவும்"
 
-#: components/screens/DirectConversationScreen.tsx:376
+#: components/screens/DirectConversationScreen.tsx:375
 msgid "Edit message"
 msgstr "செய்தியை திருத்து"
 
@@ -229,7 +229,7 @@ msgstr "செய்தியை திருத்து"
 msgid "Edit time"
 msgstr "நேரத்தை திருத்தவும்"
 
-#: components/screens/DeviceSettingsScreen.tsx:52
+#: components/screens/DeviceSettingsScreen.tsx:53
 msgid "English"
 msgstr "ஆங்கிலம்"
 
@@ -263,11 +263,11 @@ msgstr "ஏற்றுமதி செய்யப்பட்ட கணக்�
 msgid "Exported account secret copied to clipboard"
 msgstr "ஏற்றுமதி செய்யப்பட்ட கணக்கு ரகசியம் கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
-#: components/screens/DeviceSettingsScreen.tsx:78
+#: components/screens/DeviceSettingsScreen.tsx:79
 msgid "French"
 msgstr "பிரெஞ்சு"
 
-#: components/screens/DeviceSettingsScreen.tsx:84
+#: components/screens/DeviceSettingsScreen.tsx:85
 msgid "German"
 msgstr "ஜெர்மன்"
 
@@ -296,7 +296,7 @@ msgstr "குழு செய்திகள்"
 msgid "Group name"
 msgstr "குழு பெயர்"
 
-#: components/screens/DeviceSettingsScreen.tsx:58
+#: components/screens/DeviceSettingsScreen.tsx:59
 msgid "Hindi"
 msgstr "இந்தி"
 
@@ -313,27 +313,27 @@ msgstr "தவறான கணக்கு ரகசியம் அல்லத
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "இரண்டு நபர்கள் தேவை. அரட்டைப் பழக்கத்தைத் தொடங்க, ஒருவரை ஒருவர் தொடர்புகளாகச் சேர்க்கவும்!"
 
-#: components/screens/DeviceSettingsScreen.tsx:90
+#: components/screens/DeviceSettingsScreen.tsx:91
 msgid "Italian"
 msgstr "இத்தாலியன்"
 
-#: components/screens/DeviceSettingsScreen.tsx:66
+#: components/screens/DeviceSettingsScreen.tsx:67
 msgid "Japanese"
 msgstr "ஜப்பானிய"
 
-#: components/screens/DeviceSettingsScreen.tsx:88
+#: components/screens/DeviceSettingsScreen.tsx:89
 msgid "Javanese"
 msgstr "ஜாவானீஸ்"
 
-#: components/screens/DeviceSettingsScreen.tsx:76
+#: components/screens/DeviceSettingsScreen.tsx:77
 msgid "Korean"
 msgstr "கொரியன்"
 
-#: components/screens/DeviceSettingsScreen.tsx:39
+#: components/screens/DeviceSettingsScreen.tsx:40
 msgid "Language"
 msgstr "மொழி"
 
-#: components/screens/DeviceSettingsScreen.tsx:132
+#: components/screens/DeviceSettingsScreen.tsx:133
 msgid "Light"
 msgstr "வெளிர்"
 
@@ -341,15 +341,15 @@ msgstr "வெளிர்"
 msgid "Location"
 msgstr "இடம்"
 
-#: components/screens/DeviceSettingsScreen.tsx:54
+#: components/screens/DeviceSettingsScreen.tsx:55
 msgid "Mandarin Chinese"
 msgstr "மாண்டரின் சீனம்"
 
-#: components/screens/DeviceSettingsScreen.tsx:72
+#: components/screens/DeviceSettingsScreen.tsx:73
 msgid "Marathi"
 msgstr "மராத்தி"
 
-#: components/screens/DirectConversationScreen.tsx:434
+#: components/screens/DirectConversationScreen.tsx:433
 msgid "Mark as read"
 msgstr "படிக்கப்பட்டதாக குறிக்கவும்"
 
@@ -365,7 +365,7 @@ msgstr "உறுப்பினர்கள்"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "செய்தியை மாற்றவும்"
 
@@ -373,12 +373,12 @@ msgstr "செய்தியை மாற்றவும்"
 msgid "New article"
 msgstr "புதிய கட்டுரை"
 
-#: components/ui/MessageCompose.tsx:138
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "புதிய வரைவு"
 
-#: components/screens/DirectConversationScreen.tsx:463
-#: components/screens/DirectConversationScreen.tsx:547
+#: components/screens/DirectConversationScreen.tsx:462
+#: components/screens/DirectConversationScreen.tsx:545
 msgid "Next occurrence"
 msgstr "அடுத்த நிகழ்வு"
 
@@ -408,7 +408,7 @@ msgstr "தொடர்புப் பட்டியல்கள் எது�
 msgid "No contacts"
 msgstr "எந்த தொடர்புகளும் இல்லை"
 
-#: components/screens/DirectConversationScreen.tsx:333
+#: components/screens/DirectConversationScreen.tsx:332
 #: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,12 +458,12 @@ msgstr "உங்கள் தொடர்பு உங்களுடன் ப
 msgid "Places"
 msgstr "இடங்கள்"
 
-#: components/screens/DeviceSettingsScreen.tsx:62
+#: components/screens/DeviceSettingsScreen.tsx:63
 msgid "Portuguese"
 msgstr "போர்ச்சுகீஸ்"
 
-#: components/screens/DirectConversationScreen.tsx:399
-#: components/screens/DirectConversationScreen.tsx:521
+#: components/screens/DirectConversationScreen.tsx:398
+#: components/screens/DirectConversationScreen.tsx:519
 msgid "Previous occurrence"
 msgstr "முந்தைய நிகழ்வு"
 
@@ -477,7 +477,7 @@ msgstr "சுயவிவரம்"
 msgid "Profile ID copied to clipboard"
 msgstr "சுயவிவர ID கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
-#: components/ui/MessageCompose.tsx:70
+#: components/ui/MessageCompose.tsx:72
 msgid "Remove"
 msgstr "அகற்று"
 
@@ -493,7 +493,7 @@ msgstr "தொடர்பு நபரை பட்டியலில் இர
 msgid "Remove from contact list"
 msgstr "தொடர்பு பட்டியலில் இருந்து நீக்கு"
 
-#: components/screens/DeviceSettingsScreen.tsx:64
+#: components/screens/DeviceSettingsScreen.tsx:65
 msgid "Russian"
 msgstr "ரஷியன்"
 
@@ -505,12 +505,12 @@ msgstr "ரஷியன்"
 msgid "Save changes"
 msgstr "மாற்றங்களை சேமிக்கவும்"
 
-#: components/ui/MessageCompose.tsx:154
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "வரைவை சேமிக்கவும்"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:354
+#: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "தேடு"
@@ -525,7 +525,7 @@ msgstr "தொடர்பு பட்டியல்களைத் தேட�
 msgid "Search contacts"
 msgstr "தொடர்புகளைத் தேடு"
 
-#: components/ui/MessageCompose.tsx:172
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "செய்தி அனுப்பவும்"
 
@@ -545,24 +545,28 @@ msgstr "வரைபடத்தில் காட்டு"
 msgid "Show QR code"
 msgstr "QR குறியீட்டை காட்டு"
 
-#: components/screens/DeviceSettingsScreen.tsx:56
+#: components/screens/DeviceSettingsScreen.tsx:57
 msgid "Spanish"
 msgstr "ஸ்பானிஷ்"
+
+#: components/ui/MessageCompose.tsx:134
+msgid "Stop editing draft"
+msgstr "வரைவை திருத்துவதை நிறுத்து"
 
 #: components/screens/ContactListsScreen.tsx:66
 #: components/screens/DirectMessagesScreen.tsx:99
 msgid "Stop searching"
 msgstr "தேடலை நிறுத்து"
 
-#: components/screens/DeviceSettingsScreen.tsx:114
+#: components/screens/DeviceSettingsScreen.tsx:115
 msgid "System default ({languageName})"
 msgstr "கணினி இயல்புநிலை ({languageName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:140
+#: components/screens/DeviceSettingsScreen.tsx:141
 msgid "System default ({themeName})"
 msgstr "கணினி இயல்புநிலை ({themeName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:80
+#: components/screens/DeviceSettingsScreen.tsx:81
 msgid "Tamil"
 msgstr "தமிழ்"
 
@@ -570,7 +574,7 @@ msgstr "தமிழ்"
 msgid "Tap to change"
 msgstr "மாற்ற தட்டவும்"
 
-#: components/screens/DeviceSettingsScreen.tsx:74
+#: components/screens/DeviceSettingsScreen.tsx:75
 msgid "Telugu"
 msgstr "தெலுங்கு"
 
@@ -578,7 +582,7 @@ msgstr "தெலுங்கு"
 msgid "The one you typed in during export"
 msgstr "ஏற்றுமதியின் போது நீங்கள் தட்டச்சு செய்தது"
 
-#: components/screens/DeviceSettingsScreen.tsx:119
+#: components/screens/DeviceSettingsScreen.tsx:120
 msgid "Theme"
 msgstr "தீம்"
 
@@ -595,11 +599,11 @@ msgstr "இந்த பெயர் இந்த சாதனத்தில்
 msgid "This will your avatar forever, choose wisely"
 msgstr "இது உங்கள் அவதாரமாக என்றும் இருக்கும், புத்திசாலித்தனமாக தேர்ந்தெடுங்கள்"
 
-#: components/screens/DeviceSettingsScreen.tsx:70
+#: components/screens/DeviceSettingsScreen.tsx:71
 msgid "Turkish"
 msgstr "துர்க்கிஷ்"
 
-#: components/screens/DirectConversationScreen.tsx:484
+#: components/screens/DirectConversationScreen.tsx:483
 msgid "Unread messages"
 msgstr "படிக்காத செய்திகள்"
 
@@ -607,7 +611,7 @@ msgstr "படிக்காத செய்திகள்"
 msgid "Update article"
 msgstr "கட்டுரையை புதுப்பிக்கவும்"
 
-#: components/screens/DeviceSettingsScreen.tsx:86
+#: components/screens/DeviceSettingsScreen.tsx:87
 msgid "Urdu"
 msgstr "உர்து"
 
@@ -615,7 +619,7 @@ msgstr "உர்து"
 msgid "Use another account"
 msgstr "வேறு கணக்கை பயன்படுத்தவும்"
 
-#: components/screens/DeviceSettingsScreen.tsx:68
+#: components/screens/DeviceSettingsScreen.tsx:69
 msgid "Vietnamese"
 msgstr "வியட்நாமீஸ்"
 
@@ -623,7 +627,7 @@ msgstr "வியட்நாமீஸ்"
 msgid "Will be needed to import later"
 msgstr "பின்னர் இறக்குமதி செய்ய தேவைப்படும்"
 
-#: components/ui/MessageCompose.tsx:112
+#: components/ui/MessageCompose.tsx:114
 msgid "Write a message"
 msgstr "ஒரு செய்தி எழுதுங்கள்"
 

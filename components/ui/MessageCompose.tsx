@@ -19,9 +19,11 @@ type MessageShape = {
 export function MessageCompose({
   onUpdate,
   toModify,
+  onCancel,
 }: {
   toModify: MessageShape | undefined;
   onUpdate(params: MessageShape): Promise<void>;
+  onCancel(): void;
 }) {
   const theme = useTheme();
   const { t } = useLingui();
@@ -117,6 +119,23 @@ export function MessageCompose({
             { flex: 1, paddingVertical: 8, maxHeight: 400 },
           ]}
         />
+        {(() => {
+          if (toModify && toModify.isDraft && text === toModify.content) {
+            // TODO better checks, also write tests for unsaved changes and cancelling
+            return (
+              <ScreenLink
+                to={async () => {
+                  onCancel();
+                  setText("");
+                  setFiles([]);
+                }}
+                icon="sticky-note"
+                hideLabel
+                label={t`Stop editing draft`}
+              />
+            );
+          }
+        })()}
         {(() => {
           if (!toModify) {
             // create draft

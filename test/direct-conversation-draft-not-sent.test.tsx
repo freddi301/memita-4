@@ -6,7 +6,7 @@ import {
 import { addAccount } from "../components/queries/accounts";
 import { updateContact } from "../components/queries/contacts";
 import { createTestApp } from "./utils/createTestApp";
-import { findIcon } from "./utils/findIcon";
+import { findIconButton } from "./utils/findIcon";
 
 // TODO reenable when properly implemented networking
 test.skip("a draft direct message is not delivered to the recipient", async () => {
@@ -35,42 +35,50 @@ test.skip("a draft direct message is not delivered to the recipient", async () =
     deleted: false,
   })(bobApi);
 
-  // Alice creates a draft (does not send)
   const aliceUser = userEvent.setup();
   const aliceScreen = await render(<AliceApp />);
 
   await aliceUser.press(await aliceScreen.findByText("Alice"));
   await aliceUser.press(await aliceScreen.findByText("Bob"));
+
+  // Alice sends message "test-message-a"
   await aliceUser.type(
     await aliceScreen.findByPlaceholderText("Write a message"),
-    "Draft only message",
+    "test-message-a",
   );
-  await aliceUser.press(await findIcon(aliceScreen, "sticky-note"));
+  await aliceUser.press(await findIconButton(aliceScreen, "sticky-note"));
+  await aliceUser.press(await findIconButton(aliceScreen, "send"));
+  expect(await aliceScreen.findByText("test-message-a")).toBeVisible();
 
-  // draft is visible in Alice's conversation
-  expect(await aliceScreen.findByText("Draft only message")).toBeVisible();
-
-  // Alice also sends a real (non-draft) message
+  // Alice creates draft "test-draft-b" (does not send)
   await aliceUser.type(
     await aliceScreen.findByPlaceholderText("Write a message"),
-    "Sent message",
+    "test-draft-b",
   );
-  await aliceUser.press(await findIcon(aliceScreen, "sticky-note"));
-  await aliceUser.press(await findIcon(aliceScreen, "send"));
+  await aliceUser.press(await findIconButton(aliceScreen, "sticky-note"));
+  expect(await findIconButton(aliceScreen, "send")).toBeVisible();
+  await aliceUser.press(await findIconButton(aliceScreen, "sticky-note"));
+  expect(await aliceScreen.findByText("test-draft-b")).toBeVisible();
 
-  expect(await aliceScreen.findByText("Sent message")).toBeVisible();
+  // Alice sends message "test-messsage-c"
+  await aliceUser.type(
+    await aliceScreen.findByPlaceholderText("Write a message"),
+    "test-messsage-c",
+  );
+  await aliceUser.press(await findIconButton(aliceScreen, "sticky-note"));
+  await aliceUser.press(await findIconButton(aliceScreen, "send"));
+  expect(await aliceScreen.findByText("test-messsage-c")).toBeVisible();
 
-  // Bob's app: open conversation with Alice — the draft must not appear there
+  // Bob's app: open conversation with Alice — messages appear, draft does not
   const bobUser = userEvent.setup();
   const bobScreen = await render(<BobApp />);
 
   await bobUser.press(await bobScreen.findByText("Bob"));
   await bobUser.press(await bobScreen.findByText("Alice"));
 
-  expect(await bobScreen.findByText("No messages")).toBeVisible();
-  expect(bobScreen.queryByText("Draft only message")).toBeNull();
-
-  // TODO reenable
-  // this will fail until networking is wired up between the two app instances
-  expect(await bobScreen.findByText("Sent message")).toBeVisible();
-});
+  expect(
+    await bobScreen.findByText("test-message-a", {}, { timeout: 10000 }),
+  ).toBeVisible();
+  expect(await bobScreen.findByText("test-messsage-c")).toBeVisible();
+  expect(bobScreen.queryByText("test-draft-b")).not.toBeVisible();
+}, 20000);

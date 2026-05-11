@@ -42,15 +42,15 @@ msgstr "تمام پیغامات"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "جو بھی راز درآمد کر سکتا ہے وہ اکاؤنٹ تک ہمیشہ کے لیے مکمل رسائی حاصل کر لے گا!"
 
-#: components/screens/DeviceSettingsScreen.tsx:82
+#: components/screens/DeviceSettingsScreen.tsx:83
 msgid "Arabic"
 msgstr "عربی"
 
-#: components/ui/MessageCompose.tsx:107
+#: components/ui/MessageCompose.tsx:109
 msgid "Attach file"
 msgstr "فائل منسلک کریں"
 
-#: components/screens/DeviceSettingsScreen.tsx:31
+#: components/screens/DeviceSettingsScreen.tsx:32
 #: components/screens/ProfileDeepLinkScreen.tsx:36
 msgid "Back"
 msgstr "واپس"
@@ -75,7 +75,7 @@ msgstr "تماشا کرنے والوں کی فہرستوں پر لو جائیں"
 msgid "Back to direct messages"
 msgstr "براہ راست پیغامات پر واپس جائیں"
 
-#: components/screens/DeviceSettingsScreen.tsx:60
+#: components/screens/DeviceSettingsScreen.tsx:61
 msgid "Bengali"
 msgstr "بنگالی"
 
@@ -165,11 +165,11 @@ msgstr "نیا رابطہ بنائیں"
 msgid "Create new group"
 msgstr "نیا گروپ بنائیں"
 
-#: components/screens/DeviceSettingsScreen.tsx:134
+#: components/screens/DeviceSettingsScreen.tsx:135
 msgid "Dark"
 msgstr "گہرا"
 
-#: components/ui/MessageCompose.tsx:208
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "حذف کریں"
 
@@ -190,7 +190,7 @@ msgstr "تماسوں کی فہرست حذف کریں"
 msgid "Device ID"
 msgstr "ڈیوائس آئی ڈی"
 
-#: components/screens/DeviceSettingsScreen.tsx:34
+#: components/screens/DeviceSettingsScreen.tsx:35
 msgid "Device Settings"
 msgstr "ڈیوائس کی ترتیبات"
 
@@ -221,7 +221,7 @@ msgstr "رابطے میں ترمیم کریں"
 msgid "Edit date"
 msgstr "تاریخ میں ترمیم کریں"
 
-#: components/screens/DirectConversationScreen.tsx:376
+#: components/screens/DirectConversationScreen.tsx:375
 msgid "Edit message"
 msgstr "پیغام کو تبدیل کریں"
 
@@ -229,7 +229,7 @@ msgstr "پیغام کو تبدیل کریں"
 msgid "Edit time"
 msgstr "وقت میں ترمیم کریں"
 
-#: components/screens/DeviceSettingsScreen.tsx:52
+#: components/screens/DeviceSettingsScreen.tsx:53
 msgid "English"
 msgstr "انگریزی"
 
@@ -263,11 +263,11 @@ msgstr "برآمد شدہ اکاؤنٹ راز"
 msgid "Exported account secret copied to clipboard"
 msgstr "برآمد شدہ اکاؤنٹ راز کلپ بورڈ پر کاپی ہو گیا"
 
-#: components/screens/DeviceSettingsScreen.tsx:78
+#: components/screens/DeviceSettingsScreen.tsx:79
 msgid "French"
 msgstr "فرانسیسی"
 
-#: components/screens/DeviceSettingsScreen.tsx:84
+#: components/screens/DeviceSettingsScreen.tsx:85
 msgid "German"
 msgstr "جرمن"
 
@@ -296,7 +296,7 @@ msgstr "گروپ پیغامات"
 msgid "Group name"
 msgstr "گروپ کا نام"
 
-#: components/screens/DeviceSettingsScreen.tsx:58
+#: components/screens/DeviceSettingsScreen.tsx:59
 msgid "Hindi"
 msgstr "ہندی"
 
@@ -313,27 +313,27 @@ msgstr "غلط اکاؤنٹ راز یا پاس ورڈ"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "یہ دو افراد کے لیے ہے۔ ایک دوسرے کو رابطہ کے طور پر شامل کریں اور شروع کریں!"
 
-#: components/screens/DeviceSettingsScreen.tsx:90
+#: components/screens/DeviceSettingsScreen.tsx:91
 msgid "Italian"
 msgstr "اطالوی"
 
-#: components/screens/DeviceSettingsScreen.tsx:66
+#: components/screens/DeviceSettingsScreen.tsx:67
 msgid "Japanese"
 msgstr "جاپانی"
 
-#: components/screens/DeviceSettingsScreen.tsx:88
+#: components/screens/DeviceSettingsScreen.tsx:89
 msgid "Javanese"
 msgstr "جاوانی"
 
-#: components/screens/DeviceSettingsScreen.tsx:76
+#: components/screens/DeviceSettingsScreen.tsx:77
 msgid "Korean"
 msgstr "کورین"
 
-#: components/screens/DeviceSettingsScreen.tsx:39
+#: components/screens/DeviceSettingsScreen.tsx:40
 msgid "Language"
 msgstr "زبان"
 
-#: components/screens/DeviceSettingsScreen.tsx:132
+#: components/screens/DeviceSettingsScreen.tsx:133
 msgid "Light"
 msgstr "روشن"
 
@@ -341,15 +341,15 @@ msgstr "روشن"
 msgid "Location"
 msgstr "مقام"
 
-#: components/screens/DeviceSettingsScreen.tsx:54
+#: components/screens/DeviceSettingsScreen.tsx:55
 msgid "Mandarin Chinese"
 msgstr "مینڈارن چینی"
 
-#: components/screens/DeviceSettingsScreen.tsx:72
+#: components/screens/DeviceSettingsScreen.tsx:73
 msgid "Marathi"
 msgstr "مراٹھی"
 
-#: components/screens/DirectConversationScreen.tsx:434
+#: components/screens/DirectConversationScreen.tsx:433
 msgid "Mark as read"
 msgstr "پڑھا ہوا نشان کریں"
 
@@ -365,7 +365,7 @@ msgstr "اعضای"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "پیغام میں ترمیم کریں"
 
@@ -373,12 +373,12 @@ msgstr "پیغام میں ترمیم کریں"
 msgid "New article"
 msgstr "نیا مضمون"
 
-#: components/ui/MessageCompose.tsx:138
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "نیا مسودہ"
 
-#: components/screens/DirectConversationScreen.tsx:463
-#: components/screens/DirectConversationScreen.tsx:547
+#: components/screens/DirectConversationScreen.tsx:462
+#: components/screens/DirectConversationScreen.tsx:545
 msgid "Next occurrence"
 msgstr "اگلی موجودگی"
 
@@ -408,7 +408,7 @@ msgstr "کسی بھی رابطہ کی فہرستیں نہیں"
 msgid "No contacts"
 msgstr "کوئی رابطہ نہیں"
 
-#: components/screens/DirectConversationScreen.tsx:333
+#: components/screens/DirectConversationScreen.tsx:332
 #: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,12 +458,12 @@ msgstr "وہ اکاؤنٹ آئی ڈی چسپاں کریں جو آپ کے راب�
 msgid "Places"
 msgstr "مقامات"
 
-#: components/screens/DeviceSettingsScreen.tsx:62
+#: components/screens/DeviceSettingsScreen.tsx:63
 msgid "Portuguese"
 msgstr "پرتگالی"
 
-#: components/screens/DirectConversationScreen.tsx:399
-#: components/screens/DirectConversationScreen.tsx:521
+#: components/screens/DirectConversationScreen.tsx:398
+#: components/screens/DirectConversationScreen.tsx:519
 msgid "Previous occurrence"
 msgstr "پچھلی موجودگی"
 
@@ -477,7 +477,7 @@ msgstr "پروفائل"
 msgid "Profile ID copied to clipboard"
 msgstr "پروفائل آئی ڈی کلپ بورڈ پر کاپی ہو گئی"
 
-#: components/ui/MessageCompose.tsx:70
+#: components/ui/MessageCompose.tsx:72
 msgid "Remove"
 msgstr "ہٹائیں"
 
@@ -493,7 +493,7 @@ msgstr "لسٹ سے رابطہ کو ہٹائیں"
 msgid "Remove from contact list"
 msgstr "تماس کی فہرست سے حذف کریں"
 
-#: components/screens/DeviceSettingsScreen.tsx:64
+#: components/screens/DeviceSettingsScreen.tsx:65
 msgid "Russian"
 msgstr "روسی"
 
@@ -505,12 +505,12 @@ msgstr "روسی"
 msgid "Save changes"
 msgstr "تبدیلیاں محفوظ کریں"
 
-#: components/ui/MessageCompose.tsx:154
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "مسودہ محفوظ کریں"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:354
+#: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "تلاش کریں"
@@ -525,7 +525,7 @@ msgstr "تماسوں کی فہرستیں تلاش کریں"
 msgid "Search contacts"
 msgstr "تماسوں کی تلاش کریں"
 
-#: components/ui/MessageCompose.tsx:172
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "پیغام بھیجیں"
 
@@ -545,24 +545,28 @@ msgstr "نقشے پر دکھائیں"
 msgid "Show QR code"
 msgstr "QR کوڈ دکھائیں"
 
-#: components/screens/DeviceSettingsScreen.tsx:56
+#: components/screens/DeviceSettingsScreen.tsx:57
 msgid "Spanish"
 msgstr "ہسپانوی"
+
+#: components/ui/MessageCompose.tsx:134
+msgid "Stop editing draft"
+msgstr "ڈرافٹ میں مزید ترمیم کرنا بند کریں۔"
 
 #: components/screens/ContactListsScreen.tsx:66
 #: components/screens/DirectMessagesScreen.tsx:99
 msgid "Stop searching"
 msgstr "اب مزید تلاش نہ کریں۔"
 
-#: components/screens/DeviceSettingsScreen.tsx:114
+#: components/screens/DeviceSettingsScreen.tsx:115
 msgid "System default ({languageName})"
 msgstr "سسٹم ڈیفالٹ ({languageName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:140
+#: components/screens/DeviceSettingsScreen.tsx:141
 msgid "System default ({themeName})"
 msgstr "سسٹم ڈیفالٹ ({themeName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:80
+#: components/screens/DeviceSettingsScreen.tsx:81
 msgid "Tamil"
 msgstr "تامل"
 
@@ -570,7 +574,7 @@ msgstr "تامل"
 msgid "Tap to change"
 msgstr "تبدیل کرنے کے لیے ٹیپ کریں"
 
-#: components/screens/DeviceSettingsScreen.tsx:74
+#: components/screens/DeviceSettingsScreen.tsx:75
 msgid "Telugu"
 msgstr "تیلگو"
 
@@ -578,7 +582,7 @@ msgstr "تیلگو"
 msgid "The one you typed in during export"
 msgstr "جو آپ نے برآمد کے دوران ٹائپ کیا"
 
-#: components/screens/DeviceSettingsScreen.tsx:119
+#: components/screens/DeviceSettingsScreen.tsx:120
 msgid "Theme"
 msgstr "تھیم"
 
@@ -595,11 +599,11 @@ msgstr "یہ نام اس ڈیوائس پر صرف آپ کو نظر آتا ہے"
 msgid "This will your avatar forever, choose wisely"
 msgstr "یہ ہمیشہ کے لیے آپ کا اوتار ہوگا، عقلمندی سے چنیں"
 
-#: components/screens/DeviceSettingsScreen.tsx:70
+#: components/screens/DeviceSettingsScreen.tsx:71
 msgid "Turkish"
 msgstr "ترکی"
 
-#: components/screens/DirectConversationScreen.tsx:484
+#: components/screens/DirectConversationScreen.tsx:483
 msgid "Unread messages"
 msgstr "نہ پڑھے گئے پیغامات"
 
@@ -607,7 +611,7 @@ msgstr "نہ پڑھے گئے پیغامات"
 msgid "Update article"
 msgstr "مضمون اپ ڈیٹ کریں"
 
-#: components/screens/DeviceSettingsScreen.tsx:86
+#: components/screens/DeviceSettingsScreen.tsx:87
 msgid "Urdu"
 msgstr "اردو"
 
@@ -615,7 +619,7 @@ msgstr "اردو"
 msgid "Use another account"
 msgstr "دوسرا اکاؤنٹ استعمال کریں"
 
-#: components/screens/DeviceSettingsScreen.tsx:68
+#: components/screens/DeviceSettingsScreen.tsx:69
 msgid "Vietnamese"
 msgstr "ویتنامی"
 
@@ -623,7 +627,7 @@ msgstr "ویتنامی"
 msgid "Will be needed to import later"
 msgstr "بعد میں درآمد کے لیے ضروری ہوگا"
 
-#: components/ui/MessageCompose.tsx:112
+#: components/ui/MessageCompose.tsx:114
 msgid "Write a message"
 msgstr "ایک پیغام لکھیں"
 

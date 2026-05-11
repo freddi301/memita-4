@@ -1,4 +1,5 @@
 import { decodeMultiStream, encode } from "@msgpack/msgpack";
+import DHT from "hyperdht";
 import Hyperswarm, { type Connection } from "hyperswarm";
 import {
   AccountId,
@@ -166,7 +167,7 @@ async function hyperswarmNodeFactory({
       );
     },
     async stop() {
-      console.log(`Stopping swarm ${deviceId}`);
+      // console.log(`Stopping swarm ${deviceId}`);
       await swarm.destroy();
     },
     async join(contactId: AccountId) {

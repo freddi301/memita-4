@@ -114,6 +114,9 @@ export function GroupConversationScreen({
             setToModifyMessage(undefined);
           }
         }}
+        onCancel={() => {
+          setToModifyMessage(undefined);
+        }}
       />
     </Fragment>
   );

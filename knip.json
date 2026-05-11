@@ -11,5 +11,9 @@
     "components/i18n/locales/*/messages.js",
     "desktop/**"
   ],
-  "ignoreDependencies": ["@types/streamx", "babel-plugin-dynamic-import-node"]
+  "ignoreDependencies": [
+    "@types/streamx",
+    "babel-plugin-dynamic-import-node",
+    "@jest/globals"
+  ]
 }

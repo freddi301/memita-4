@@ -42,15 +42,15 @@ msgstr "所有消息"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "任何能够导入密钥的人将永久拥有对该账户的完全访问权限！"
 
-#: components/screens/DeviceSettingsScreen.tsx:82
+#: components/screens/DeviceSettingsScreen.tsx:83
 msgid "Arabic"
 msgstr "阿拉伯语"
 
-#: components/ui/MessageCompose.tsx:107
+#: components/ui/MessageCompose.tsx:109
 msgid "Attach file"
 msgstr "附加文件"
 
-#: components/screens/DeviceSettingsScreen.tsx:31
+#: components/screens/DeviceSettingsScreen.tsx:32
 #: components/screens/ProfileDeepLinkScreen.tsx:36
 msgid "Back"
 msgstr "返回"
@@ -75,7 +75,7 @@ msgstr "返回联系人列表"
 msgid "Back to direct messages"
 msgstr "返回私信"
 
-#: components/screens/DeviceSettingsScreen.tsx:60
+#: components/screens/DeviceSettingsScreen.tsx:61
 msgid "Bengali"
 msgstr "孟加拉语"
 
@@ -165,11 +165,11 @@ msgstr "创建新联系人"
 msgid "Create new group"
 msgstr "创建新群组"
 
-#: components/screens/DeviceSettingsScreen.tsx:134
+#: components/screens/DeviceSettingsScreen.tsx:135
 msgid "Dark"
 msgstr "深色"
 
-#: components/ui/MessageCompose.tsx:208
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "删除"
 
@@ -190,7 +190,7 @@ msgstr "删除联系人列表"
 msgid "Device ID"
 msgstr "设备 ID"
 
-#: components/screens/DeviceSettingsScreen.tsx:34
+#: components/screens/DeviceSettingsScreen.tsx:35
 msgid "Device Settings"
 msgstr "设备设置"
 
@@ -221,7 +221,7 @@ msgstr "编辑联系人"
 msgid "Edit date"
 msgstr "编辑日期"
 
-#: components/screens/DirectConversationScreen.tsx:376
+#: components/screens/DirectConversationScreen.tsx:375
 msgid "Edit message"
 msgstr "编辑消息"
 
@@ -229,7 +229,7 @@ msgstr "编辑消息"
 msgid "Edit time"
 msgstr "编辑时间"
 
-#: components/screens/DeviceSettingsScreen.tsx:52
+#: components/screens/DeviceSettingsScreen.tsx:53
 msgid "English"
 msgstr "英语"
 
@@ -263,11 +263,11 @@ msgstr "已导出的账户密钥"
 msgid "Exported account secret copied to clipboard"
 msgstr "已导出的账户密钥已复制到剪贴板"
 
-#: components/screens/DeviceSettingsScreen.tsx:78
+#: components/screens/DeviceSettingsScreen.tsx:79
 msgid "French"
 msgstr "法语"
 
-#: components/screens/DeviceSettingsScreen.tsx:84
+#: components/screens/DeviceSettingsScreen.tsx:85
 msgid "German"
 msgstr "德语"
 
@@ -296,7 +296,7 @@ msgstr "群组消息"
 msgid "Group name"
 msgstr "群组名称"
 
-#: components/screens/DeviceSettingsScreen.tsx:58
+#: components/screens/DeviceSettingsScreen.tsx:59
 msgid "Hindi"
 msgstr "印地语"
 
@@ -313,27 +313,27 @@ msgstr "账户密钥或密码无效"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "需要双方共同参与。请互相添加为联系人，即可开始聊天！"
 
-#: components/screens/DeviceSettingsScreen.tsx:90
+#: components/screens/DeviceSettingsScreen.tsx:91
 msgid "Italian"
 msgstr "意大利语"
 
-#: components/screens/DeviceSettingsScreen.tsx:66
+#: components/screens/DeviceSettingsScreen.tsx:67
 msgid "Japanese"
 msgstr "日语"
 
-#: components/screens/DeviceSettingsScreen.tsx:88
+#: components/screens/DeviceSettingsScreen.tsx:89
 msgid "Javanese"
 msgstr "爪哇语"
 
-#: components/screens/DeviceSettingsScreen.tsx:76
+#: components/screens/DeviceSettingsScreen.tsx:77
 msgid "Korean"
 msgstr "韩语"
 
-#: components/screens/DeviceSettingsScreen.tsx:39
+#: components/screens/DeviceSettingsScreen.tsx:40
 msgid "Language"
 msgstr "语言"
 
-#: components/screens/DeviceSettingsScreen.tsx:132
+#: components/screens/DeviceSettingsScreen.tsx:133
 msgid "Light"
 msgstr "浅色"
 
@@ -341,15 +341,15 @@ msgstr "浅色"
 msgid "Location"
 msgstr "位置"
 
-#: components/screens/DeviceSettingsScreen.tsx:54
+#: components/screens/DeviceSettingsScreen.tsx:55
 msgid "Mandarin Chinese"
 msgstr "普通话"
 
-#: components/screens/DeviceSettingsScreen.tsx:72
+#: components/screens/DeviceSettingsScreen.tsx:73
 msgid "Marathi"
 msgstr "马拉地语"
 
-#: components/screens/DirectConversationScreen.tsx:434
+#: components/screens/DirectConversationScreen.tsx:433
 msgid "Mark as read"
 msgstr "标记为已读"
 
@@ -365,7 +365,7 @@ msgstr "成员"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "修改消息"
 
@@ -373,12 +373,12 @@ msgstr "修改消息"
 msgid "New article"
 msgstr "新文章"
 
-#: components/ui/MessageCompose.tsx:138
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "新草稿"
 
-#: components/screens/DirectConversationScreen.tsx:463
-#: components/screens/DirectConversationScreen.tsx:547
+#: components/screens/DirectConversationScreen.tsx:462
+#: components/screens/DirectConversationScreen.tsx:545
 msgid "Next occurrence"
 msgstr "下一个匹配"
 
@@ -408,7 +408,7 @@ msgstr "无联系人列表"
 msgid "No contacts"
 msgstr "未添加联系人"
 
-#: components/screens/DirectConversationScreen.tsx:333
+#: components/screens/DirectConversationScreen.tsx:332
 #: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -458,12 +458,12 @@ msgstr "粘贴联系人与您共享的账户 ID"
 msgid "Places"
 msgstr "地点"
 
-#: components/screens/DeviceSettingsScreen.tsx:62
+#: components/screens/DeviceSettingsScreen.tsx:63
 msgid "Portuguese"
 msgstr "葡萄牙语"
 
-#: components/screens/DirectConversationScreen.tsx:399
-#: components/screens/DirectConversationScreen.tsx:521
+#: components/screens/DirectConversationScreen.tsx:398
+#: components/screens/DirectConversationScreen.tsx:519
 msgid "Previous occurrence"
 msgstr "上一个匹配"
 
@@ -477,7 +477,7 @@ msgstr "个人资料"
 msgid "Profile ID copied to clipboard"
 msgstr "个人资料 ID 已复制到剪贴板"
 
-#: components/ui/MessageCompose.tsx:70
+#: components/ui/MessageCompose.tsx:72
 msgid "Remove"
 msgstr "移除"
 
@@ -493,7 +493,7 @@ msgstr "从联系人列表中移除"
 msgid "Remove from contact list"
 msgstr "从联系人列表中移除"
 
-#: components/screens/DeviceSettingsScreen.tsx:64
+#: components/screens/DeviceSettingsScreen.tsx:65
 msgid "Russian"
 msgstr "俄语"
 
@@ -505,12 +505,12 @@ msgstr "俄语"
 msgid "Save changes"
 msgstr "保存更改"
 
-#: components/ui/MessageCompose.tsx:154
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "保存草稿"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:354
+#: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:112
 msgid "Search"
 msgstr "搜索"
@@ -525,7 +525,7 @@ msgstr "搜索联系人列表"
 msgid "Search contacts"
 msgstr "搜索联系人"
 
-#: components/ui/MessageCompose.tsx:172
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "发送消息"
 
@@ -545,24 +545,28 @@ msgstr "在地图上显示"
 msgid "Show QR code"
 msgstr "显示二维码"
 
-#: components/screens/DeviceSettingsScreen.tsx:56
+#: components/screens/DeviceSettingsScreen.tsx:57
 msgid "Spanish"
 msgstr "西班牙语"
+
+#: components/ui/MessageCompose.tsx:134
+msgid "Stop editing draft"
+msgstr "停止编辑草稿"
 
 #: components/screens/ContactListsScreen.tsx:66
 #: components/screens/DirectMessagesScreen.tsx:99
 msgid "Stop searching"
 msgstr "停止搜索"
 
-#: components/screens/DeviceSettingsScreen.tsx:114
+#: components/screens/DeviceSettingsScreen.tsx:115
 msgid "System default ({languageName})"
 msgstr "系统默认（{languageName}）"
 
-#: components/screens/DeviceSettingsScreen.tsx:140
+#: components/screens/DeviceSettingsScreen.tsx:141
 msgid "System default ({themeName})"
 msgstr "系统默认（{themeName}）"
 
-#: components/screens/DeviceSettingsScreen.tsx:80
+#: components/screens/DeviceSettingsScreen.tsx:81
 msgid "Tamil"
 msgstr "泰米尔语"
 
@@ -570,7 +574,7 @@ msgstr "泰米尔语"
 msgid "Tap to change"
 msgstr "点击更改"
 
-#: components/screens/DeviceSettingsScreen.tsx:74
+#: components/screens/DeviceSettingsScreen.tsx:75
 msgid "Telugu"
 msgstr "泰卢固语"
 
@@ -578,7 +582,7 @@ msgstr "泰卢固语"
 msgid "The one you typed in during export"
 msgstr "您在导出时输入的密码"
 
-#: components/screens/DeviceSettingsScreen.tsx:119
+#: components/screens/DeviceSettingsScreen.tsx:120
 msgid "Theme"
 msgstr "主题"
 
@@ -595,11 +599,11 @@ msgstr "此名称仅在此设备上对您可见"
 msgid "This will your avatar forever, choose wisely"
 msgstr "这将永久成为您的头像，请谨慎选择"
 
-#: components/screens/DeviceSettingsScreen.tsx:70
+#: components/screens/DeviceSettingsScreen.tsx:71
 msgid "Turkish"
 msgstr "土耳其语"
 
-#: components/screens/DirectConversationScreen.tsx:484
+#: components/screens/DirectConversationScreen.tsx:483
 msgid "Unread messages"
 msgstr "未读消息"
 
@@ -607,7 +611,7 @@ msgstr "未读消息"
 msgid "Update article"
 msgstr "更新文章"
 
-#: components/screens/DeviceSettingsScreen.tsx:86
+#: components/screens/DeviceSettingsScreen.tsx:87
 msgid "Urdu"
 msgstr "乌尔都语"
 
@@ -615,7 +619,7 @@ msgstr "乌尔都语"
 msgid "Use another account"
 msgstr "使用其他账户"
 
-#: components/screens/DeviceSettingsScreen.tsx:68
+#: components/screens/DeviceSettingsScreen.tsx:69
 msgid "Vietnamese"
 msgstr "越南语"
 
@@ -623,7 +627,7 @@ msgstr "越南语"
 msgid "Will be needed to import later"
 msgstr "稍后导入时将需要此密码"
 
-#: components/ui/MessageCompose.tsx:112
+#: components/ui/MessageCompose.tsx:114
 msgid "Write a message"
 msgstr "写一条消息"
 

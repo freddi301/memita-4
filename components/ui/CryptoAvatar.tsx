@@ -18,7 +18,7 @@ export function CryptoAvatar({
   const { store } = use(FeApiContext);
   useEffect(() => {
     let isActive = true;
-    let timeoutId = 0;
+    let timeoutId = 0 as any;
     const poll = () => {
       if (!isActive) return;
       void store
