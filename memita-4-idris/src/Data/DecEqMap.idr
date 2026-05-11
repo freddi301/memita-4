@@ -2,6 +2,8 @@ module Data.DecEqMap
 
 import Decidable.Equality
 
+import Data.DecEqSet
+
 %default total
 
 mutual
@@ -23,30 +25,37 @@ mutual
   --   _ | No _ = has x xs
 
 export
+empty : DecEq k => DecEqMap k v
+empty = Nil
+
+export
+add : DecEq k => (x : (k, v)) -> (xs : DecEqMap k v) -> {auto 0 prf : has (fst x) xs = False} -> DecEqMap k v
+add = (::)
+
+export
 toList : DecEqMap k v -> List (k, v)
 toList Nil = []
 toList (x :: xs) = x :: toList xs
 
 export
-decHas : (x : k) -> (xs : DecEqMap k v) -> Dec (has x xs = True)
-decHas x Nil = No absurd
-decHas x ((y, _) :: xs) with (decEq x y)
-  decHas x ((x, _) :: xs) | Yes Refl = Yes Refl
-  _ | No xNeqY = decHas x xs
+keys : DecEqMap k v -> DecEqSet k
+keys Nil = empty
+keys ((k, _) :: xs) = add k (keys xs) {prf = ?TODO57}
 
 export
-decHasnt : (x : k) -> (xs : DecEqMap k v) -> Dec (has x xs = False)
-decHasnt x Nil = Yes Refl
-decHasnt x ((y, _) :: xs) with (decEq x y)
-  _ | Yes _ = No absurd
-  _ | No _ = decHasnt x xs
+inside : (x : k) -> (xs : DecEqMap k v) -> Either (has x xs = False) (has x xs = True)
+inside x [] = Left Refl
+inside x ((::) (y, yv) ys {prf = hasY}) with (decEq x y)
+  inside y ((::) (y, yv) ys) | (Yes Refl) = Right Refl
+  inside x ((::) (y, yv) ys) | (No contra) = inside x ys
 
 export
 fromList : DecEq k => List (k, v) -> DecEqMap k v
 fromList [] = Nil
-fromList ((xk, xv) :: xs) with (decHasnt xk (fromList xs))
-  _ | Yes _ = (xk, xv) :: fromList xs
-  _ | No _ = fromList xs
+fromList ((xk, xv) :: xs) = let rest : DecEqMap k v = fromList xs in
+  case inside xk rest of
+    Left _ => (xk, xv) :: rest
+    Right _ => rest
 
 mutual
 
@@ -69,6 +78,21 @@ get x ((y, yv) :: ys) with (decEq x y)
   _ | Yes _ = yv
   _ | No _ = get x ys
 
+mutual
+
+  export
+  set : (x : k) -> (xv : v) -> (s : DecEqMap k v) -> {auto 0 hasX : has x s = True} -> DecEqMap k v
+  set x xv ((::) (y, yv) ys {prf = hasY}) with (decEq x y)
+    set y xv ((::) (y, yv) ys) | (Yes Refl) = (::) (y, xv) ys
+    set x xv ((::) (y, yv) ys) | (No contra) = (::) (y, yv) (set x xv ys) {prf = setLemma x xv y ys hasX hasY}
+
+  0 setLemma : (x : k) -> (xv : v) -> (y : k) -> (ys : DecEqMap k v) -> (hasX : has x ys = True) -> (hasY : has y ys = False) -> has y (set x xv ys) = False
+  setLemma x xv y ((z, zv) :: ys) hasX hasY with (decEq x z)
+    setLemma z xv y ((z, zv) :: ys) hasX hasY | (Yes Refl) with (decEq y z)
+      setLemma z xv y ((z, zv) :: ys) hasX hasY | (Yes Refl) | (No contra) = hasY
+    setLemma x xv y ((z, zv) :: ys) hasX hasY | (No contra) with (decEq y z)
+      setLemma x xv y ((z, zv) :: ys) hasX hasY | (No contra) | (No f) = setLemma x xv y ys hasX hasY
+
 0 proofAddHas : DecEq k => (x : k) -> (xv : v) -> (s : DecEqMap k v) -> (has x s = False) -> has x ((x, xv) :: s) = True
 proofAddHas x xv s hasX with (decEq x x)
   proofAddHas x xv s hasX | (Yes Refl) = Refl
@@ -88,6 +112,21 @@ addWithProof x xv s hasX = ((x, xv) :: s ** proofAddHas x xv s hasX)
 proofAddGet x xv s hasntX with (decEq x x)
   proofAddGet x xv s hasntX | (Yes Refl) = Refl
   proofAddGet x xv s hasntX | (No contra) = absurd (contra Refl)
+
+0 hasXSet : (x : k) -> (xv : v) -> (s : DecEqMap k v) -> (has x s = True) -> has x (set x xv s) = True
+hasXSet x xv ((::) (y , yv) xs {prf = hasY}) hasX with (decEq x y)
+  hasXSet y xv ((::) (y , yv) xs {prf = hasY}) hasX | (Yes Refl) with (decEq y y)
+    hasXSet y xv ((::) (y , yv) xs {prf = hasY}) hasX | (Yes Refl) | (Yes Refl) = Refl
+    hasXSet y xv ((::) (y , yv) xs {prf = hasY}) hasX | (Yes Refl) | (No contra) = absurd (contra Refl)
+  hasXSet x xv ((::) (y , yv) xs {prf = hasY}) hasX | (No contra) with (decEq x y)
+    hasXSet x xv ((::) (y , yv) xs {prf = hasY}) hasX | (No contra) | (Yes prf) = Refl
+    hasXSet x xv ((::) (y , yv) xs {prf = hasY}) hasX | (No contra) | (No f) = hasXSet x xv xs hasX
+
+0 proofSetGet : (x : k) -> (xv : v) -> (s : DecEqMap k v) -> (hasX : has x s = True) ->
+  let u = hasXSet x xv s hasX in get x (set x xv s) = xv
+proofSetGet x xv ((::) (y, yv) xs {prf = hasY}) hasX with (decEq x y)
+  proofSetGet y xv ((::) (y, yv) xs {prf = hasY}) hasX | (Yes Refl) = rewrite decEqSame y in Refl
+  proofSetGet x xv ((::) (y, yv) xs {prf = hasY}) hasX | (No contra) = ?TODO54
 
 
 -- tests

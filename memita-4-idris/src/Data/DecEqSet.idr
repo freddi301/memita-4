@@ -23,30 +23,38 @@ mutual
   --   _ | No _ = has x xs
 
 export
+empty : DecEq a => DecEqSet a
+empty = Nil
+
+export
+add : DecEq a => (x : a) -> (xs : DecEqSet a) -> {auto 0 prf : has x xs = False} -> DecEqSet a
+add = (::)
+
+export
 toList : DecEqSet a -> List a
 toList Nil = []
 toList (x :: xs) = x :: toList xs
 
 export
-decHas : (x : a) -> (xs : DecEqSet a) -> Dec (has x xs = True)
-decHas x Nil = No absurd
-decHas x (y :: xs) with (decEq x y)
-  decHas x (x :: xs) | Yes Refl = Yes Refl
-  _ | No xNeqY = decHas x xs
-
-export
-decHasnt : (x : a) -> (xs : DecEqSet a) -> Dec (has x xs = False)
-decHasnt x Nil = Yes Refl
-decHasnt x (y :: xs) with (decEq x y)
-  _ | Yes _ = No absurd
-  _ | No _ = decHasnt x xs
+inside : (x : a) -> (xs : DecEqSet a) -> Either (has x xs = False) (has x xs = True)
+inside x [] = Left Refl
+inside x ((::) y ys {prf = hasY}) with (decEq x y)
+  inside y ((::) y ys) | (Yes Refl) = Right Refl
+  inside x ((::) y ys) | (No contra) = inside x ys
 
 export
 fromList : DecEq a => List a -> DecEqSet a
 fromList [] = Nil
-fromList (x :: xs) with (decHasnt x (fromList xs))
-  _ | Yes _ = x :: fromList xs
-  _ | No _ = fromList xs
+fromList (x :: xs) = let rest = fromList xs in
+  case inside x rest of
+    Left _ => x :: rest
+    Right _ => rest
+
+export
+decEqSame : DecEq a => (x : a) -> decEq x x = Yes Refl
+decEqSame x with (decEq x x)
+  _ | (Yes Refl) = Refl
+  _ | (No contra) = absurd (contra Refl)
 
 mutual
 
@@ -63,7 +71,7 @@ mutual
     remLemma x y (z :: ys) hasX hasY | (No _) with (decEq y z)
       remLemma x y (z :: ys) hasX hasY | (No _) | (No _) = remLemma x y ys hasX hasY
 
-0 proofAddHas : DecEq a => (x : a) -> (s : DecEqSet a) -> (has x s = False) -> has x (x :: s) = True
+0 proofAddHas : DecEq a => (x : a) -> (s : DecEqSet a) -> (has x s = False) -> has x (add x s) = True
 proofAddHas x s hasX with (decEq x x)
   proofAddHas x s hasX | (Yes Refl) = Refl
   proofAddHas x s hasX | (No contra) = absurd (contra Refl)
