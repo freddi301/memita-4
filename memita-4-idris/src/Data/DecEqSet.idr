@@ -17,6 +17,10 @@ mutual
   has x (y :: xs) = case decEq x y of
     Yes _ => True
     No _ => has x xs
+  -- alternative notation for proofs
+  -- has x (y :: xs) with (decEq x y)
+  --   _ | Yes _ = True
+  --   _ | No _ = has x xs
 
 export
 toList : DecEqSet a -> List a
@@ -48,25 +52,28 @@ mutual
 
   export
   rem : (x : a) -> (xs : DecEqSet a) -> {auto 0 prf : has x xs = True} -> DecEqSet a
-  rem x ((::) y xs {prf = hasY}) with (decEq x y)
-    _ | Yes _ = xs
-    _ | No xNeqY = (::) y (rem x xs) {prf = remLemma x y xNeqY xs prf hasY}
+  rem x ((::) y ys {prf = hasY}) with (decEq x y)
+    _ | Yes _ = ys
+    _ | No _ = (::) y (rem x ys) {prf = remLemma x y ys prf hasY}
 
-  remLemma : (x:a) -> (y:a) -> (Not (x = y)) -> (xs : DecEqSet a) -> (hasX : has x xs = True) -> (hasY : has y xs = False) -> has y (rem x xs) = False
-  remLemma x y xNeqY (z :: ys) hasX hasY with (decEq x z)
-    remLemma z y xNeqY (z :: ys) hasX hasY | (Yes Refl) with (decEq y z)
-      remLemma z y xNeqY (z :: ys) hasX hasY | (Yes Refl) | (No _) = hasY
-    remLemma x y xNeqY (z :: ys) hasX hasY | (No _) with (decEq y z)
-      remLemma x y xNeqY (z :: ys) hasX hasY | (No _) | (No _) = remLemma x y xNeqY ys hasX hasY
+  0 remLemma : (x : a) -> (y : a) -> (xs : DecEqSet a) -> (hasX : has x xs = True) -> (hasY : has y xs = False) -> has y (rem x xs) = False
+  remLemma x y (z :: ys) hasX hasY with (decEq x z)
+    remLemma z y (z :: ys) hasX hasY | (Yes Refl) with (decEq y z)
+      remLemma z y (z :: ys) hasX hasY | (Yes Refl) | (No _) = hasY
+    remLemma x y (z :: ys) hasX hasY | (No _) with (decEq y z)
+      remLemma x y (z :: ys) hasX hasY | (No _) | (No _) = remLemma x y ys hasX hasY
 
-proofAddHas : DecEq a => (x : a) -> (s : DecEqSet a) -> (has x s = False) -> has x (x :: s) = True
+0 proofAddHas : DecEq a => (x : a) -> (s : DecEqSet a) -> (has x s = False) -> has x (x :: s) = True
 proofAddHas x s hasX with (decEq x x)
   proofAddHas x s hasX | (Yes Refl) = Refl
   proofAddHas x s hasX | (No contra) = absurd (contra Refl)
 
-proofRemHas : (x : a) -> (s : DecEqSet a) -> (has x s = True) -> has x (rem x s) = False
-
-
+0 proofRemHas : (x : a) -> (s : DecEqSet a) -> (hasX : has x s = True) -> has x (rem x s) = False
+proofRemHas x ((::) y ys {prf = hasY}) hasX with (decEq x y)
+  proofRemHas y ((::) y ys {prf = hasY}) hasX | (Yes Refl) = hasY
+  proofRemHas x ((::) y ys {prf = hasY}) hasX | (No contra) with (decEq x y)
+    proofRemHas y ((::) y ys {prf = hasY}) hasX | (No contra) | (Yes Refl) = absurd (contra Refl)
+    proofRemHas x ((::) y ys {prf = hasY}) hasX | (No contra) | (No f) = proofRemHas x ys hasX
 
 -- tests
 
