@@ -1,6 +1,6 @@
 module Data.AccountId
 
-export
+public export
 data AccountSecret = MakeAccountSecret String
 
 export
