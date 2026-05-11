@@ -4,6 +4,8 @@ import Decidable.Equality
 
 import Data.DecEqDMap
 
+import Data.SortedSet
+
 data AccountId = MakeAccountId Nat
 
 DecEq AccountId where
