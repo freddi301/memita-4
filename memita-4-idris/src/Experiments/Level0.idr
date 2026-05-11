@@ -3,8 +3,7 @@ module Experiments.Level0
 import Decidable.Equality
 
 import Data.DecEqDMap
-
-import Data.SortedSet
+import Control.DState
 
 data AccountId = MakeAccountId Nat
 
@@ -49,3 +48,10 @@ getContacts : AccountId -> State -> Either String (List AccountId)
 getContacts accountId state = case inside accountId state of
   Left _ => Left "Account does not exist"
   Right _ => Right $ toList (get accountId state) <&> fst
+
+testA = do
+  attempt $ addAccount (MakeAccountId 1)
+  attempt $ addAccount (MakeAccountId 1)
+  accounts <- select getAccounts
+  pure accounts
+testArun = run testA nil
