@@ -22,11 +22,11 @@ indexPage state = """
   """
 
 controller : ServerState -> HttpRequest -> (ServerState, HttpResponse)
-controller state reqest = case reqest.method of
+controller state request = case request.method of
   GET =>
     (state, html 200 $ indexPage state)
   POST =>
-    let newState = {todos $= ("new one" ::)} state in
+    let newState = {todos $= (request.body ::)} state in
     (newState, redirect "/")
   _ =>
     (state, html 404 "Not found")
@@ -34,7 +34,7 @@ controller state reqest = case reqest.method of
 main : IO ()
 main = do
   serverStateRef <- newIORef $ MakeServerState ["add one"]
-  start 9091 $ \request => do
+  start 9090 $ \request => do
     serverState <- readIORef serverStateRef
     let (newState, response) = controller serverState request
     writeIORef serverStateRef newState

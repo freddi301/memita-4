@@ -1,10 +1,6 @@
 module Network.Http.Request
 
-import Data.String
-import Data.List
-import Data.List1
-import Text.Lexer
-import Text.Parser
+import Experiments.Parser
 
 %default total
 
@@ -24,49 +20,52 @@ public export
 record HttpRequest where
   constructor MakeHttpRequest
   method : HttpMethod
+  headers : List (String, String)
+  body : String 
 
--- https://idris2.readthedocs.io/en/latest/cookbook/parsing.html
+export
+implementation Eq HttpRequest where
+  (MakeHttpRequest m1 h1 b1) == (MakeHttpRequest m2 h2 b2) =
+    m1 == m2 && h1 == h2 && b1 == b2
 
-data HttpTokenKind =
-  Method HttpMethod
+httpMethod : Parser Char HttpMethod
+httpMethod =
+  (exact "GET" <&> const GET) <|>
+  (exact "POST" <&> const POST) <|>
+  (exact "PUT" <&> const PUT) <|>
+  (exact "PATCH" <&> const PATCH) <|>
+  (exact "DELETE" <&> const DELETE)
 
-implementation Eq HttpTokenKind where
-  (Method m1) == (Method m2) = m1 == m2
+httpHeader : Parser Char (String, String)
+httpHeader = do
+  name <- many ((alpha) <|> is (== '-')) <&> pack
+  exact ": "
+  value <- many (notChar '\r') <&> pack
+  exact "\r\n"
+  pure (name, value)
 
-implementation TokenKind HttpTokenKind where
-  TokType (Method _) = HttpMethod
-  -- TokType _ = ()
-  tokValue (Method m) _ = m
-  -- tokValue _ _ = ()
-
-HttpToken = Token HttpTokenKind
-
-tokenMap : TokenMap HttpToken
-tokenMap = toTokenMap [
-  (exact "GET", Method GET),
-  (exact "POST", Method POST),
-  (exact "PUT", Method PUT),
-  (exact "PATCH", Method PATCH),
-  (exact "DELETE", Method DELETE)
-]
-
-lexRequest : String -> Maybe (List (WithBounds HttpToken))
-lexRequest string =
-  case lex tokenMap string of
-    (tokens, _, _, rest_of_string) => Just tokens
-    _ => Nothing
-
-req : Grammar state HttpToken True HttpRequest
-req = do
-  method <- match (Method GET) <|> match (Method POST) <|> match (Method PUT) <|> match (Method PATCH) <|> match (Method DELETE)
-  pure $ MakeHttpRequest {method = method}
+request : Parser Char HttpRequest
+request = do
+  method <- httpMethod
+  exact " / "
+  exact "HTTP/1.1\r\n"
+  headers <- many httpHeader
+  exact "\r\n"
+  body <- many One
+  pure $ MakeHttpRequest method headers (pack body)
 
 export
 parseRequest : String -> Maybe HttpRequest
-parseRequest string = do
-  tokens <- lexRequest string
-  case parse req tokens of
-    Right (l, []) => Just l
-    _ => Nothing
+parseRequest string = case parse request (unpack string) of
+  [req] => Just req
+  _ => Nothing
 
-TEST_A = parseRequest "POST / HTTP/1.1\r\nHost: example.com\r\n\r\n" = Just (MakeHttpRequest POST)
+TEST_A = parseRequest "GET / HTTP/1.1\r\n\r\n" == Just (MakeHttpRequest GET [] "")
+TEST_B = parseRequest "POST / HTTP/1.1\r\nHost: example.com\r\n\r\n" == Just (MakeHttpRequest POST [("Host", "example.com")] "")
+TEST_C = parseRequest "PUT / HTTP/1.1\r\nHost: example.com\r\ncustom: val\r\n\r\nbody text" == Just (MakeHttpRequest PUT [("Host", "example.com"), ("custom", "val")] "body text")
+TEST_D_TEXT = """
+GET / HTTP/1.1
+Host: localhost:9091
+Connection: keep-alive
+"""
+TEST_D = parseRequest TEST_D_TEXT
