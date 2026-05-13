@@ -1,4 +1,4 @@
-module Data.DecEqDMap
+module Experiments.DecEqDMap
 
 import Decidable.Equality
 

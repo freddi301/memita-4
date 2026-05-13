@@ -1,4 +1,4 @@
-module Data.DSeq
+module Experiments.DSeq
 
 %default total
 

@@ -1,4 +1,4 @@
-module Data.AccountId
+module Experiments.AccountId
 
 public export
 data AccountSecret = MakeAccountSecret String

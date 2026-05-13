@@ -1,4 +1,4 @@
-module Experiments.HttpServer
+module Experiments.BlockingHttpServer
 
 import Network.Socket
 import Network.Socket.Data

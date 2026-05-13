@@ -1,4 +1,4 @@
-module Control.DState
+module Experiments.DState
 
 export
 record DState sx sy v where
