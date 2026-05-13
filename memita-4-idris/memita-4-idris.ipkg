@@ -13,7 +13,7 @@ authors = "Frederik Batuna"
 -- langversion
 
 -- packages to add to search path
--- depends =
+depends = network
 
 -- modules to install
 -- modules =
