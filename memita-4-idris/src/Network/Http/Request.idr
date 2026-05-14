@@ -1,6 +1,6 @@
 module Network.Http.Request
 
-import Experiments.Parser
+import Data.Parser
 
 %default total
 
@@ -32,27 +32,27 @@ implementation Eq HttpRequest where
 
 httpMethod : Parser Char HttpMethod
 httpMethod =
-  (exact "GET" <&> const GET) <|>
-  (exact "POST" <&> const POST) <|>
-  (exact "PUT" <&> const PUT) <|>
-  (exact "PATCH" <&> const PATCH) <|>
-  (exact "DELETE" <&> const DELETE)
+  (exact (unpack "GET") <&> const GET) <|>
+  (exact (unpack "POST") <&> const POST) <|>
+  (exact (unpack "PUT") <&> const PUT) <|>
+  (exact (unpack "PATCH") <&> const PATCH) <|>
+  (exact (unpack "DELETE") <&> const DELETE)
 
 httpHeader : Parser Char (String, String)
 httpHeader = do
-  name <- many (is $ isAlpha || (== '-')) <&> pack
-  exact ": "
-  value <- many (is $ not (== '\r')) <&> pack
-  exact "\r\n"
+  name <- many (is $ \c => isAlpha c || c == '-') <&> pack
+  exact [':', ' ']
+  value <- many (is $ \c => c /= '\r') <&> pack
+  exact ['\r', '\n']
   pure (name, value)
 
 httpRequest : Parser Char HttpRequest
 httpRequest = do
   method <- httpMethod
-  exact " / "
-  exact "HTTP/1.1\r\n"
+  exact [' ', '/',' ']
+  exact (unpack "HTTP/1.1\r\n")
   headers <- many httpHeader
-  exact "\r\n"
+  exact ['\r', '\n']
   body <- many any
   pure $ MakeHttpRequest method headers (pack body)
 
@@ -63,15 +63,15 @@ parseRequest string = case parse httpRequest (unpack string) of
   _ => Nothing
 
 formBody : Parser Char (List (String, String))
-formBody = separatedBy entry (exact "&") where
+formBody = separatedBy entry (exact ['&']) where
   name : Parser Char String
-  name = many (is $ not (== '=')) <&> pack
+  name = many (is $ \c => c /= '=') <&> pack
   value : Parser Char String
-  value = many (is $ not (== '&')) <&> pack
+  value = many (is $ \c => c /= '&') <&> pack
   entry : Parser Char (String, String)
   entry = do
     name <- name
-    exact "="
+    exact ['=']
     value <- value
     pure (name, value)
 
