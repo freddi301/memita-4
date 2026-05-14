@@ -15,6 +15,7 @@ record HttpResponse where
 codeName : Int -> String
 codeName 200 = "OK"
 codeName 302 = "Found"
+codeName 400 = "Bad Request"
 codeName 404 = "Not Found"
 codeName code = "Unknown"
 

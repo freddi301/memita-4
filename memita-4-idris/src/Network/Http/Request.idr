@@ -28,6 +28,8 @@ implementation Eq HttpRequest where
   (MakeHttpRequest m1 h1 b1) == (MakeHttpRequest m2 h2 b2) =
     m1 == m2 && h1 == h2 && b1 == b2
 
+---
+
 httpMethod : Parser Char HttpMethod
 httpMethod =
   (exact "GET" <&> const GET) <|>
@@ -38,25 +40,44 @@ httpMethod =
 
 httpHeader : Parser Char (String, String)
 httpHeader = do
-  name <- many ((alpha) <|> is (== '-')) <&> pack
+  name <- many (is $ isAlpha || (== '-')) <&> pack
   exact ": "
-  value <- many (notChar '\r') <&> pack
+  value <- many (is $ not (== '\r')) <&> pack
   exact "\r\n"
   pure (name, value)
 
-request : Parser Char HttpRequest
-request = do
+httpRequest : Parser Char HttpRequest
+httpRequest = do
   method <- httpMethod
   exact " / "
   exact "HTTP/1.1\r\n"
   headers <- many httpHeader
   exact "\r\n"
-  body <- many One
+  body <- many any
   pure $ MakeHttpRequest method headers (pack body)
 
 export
 parseRequest : String -> Maybe HttpRequest
-parseRequest string = case parse request (unpack string) of
+parseRequest string = case parse httpRequest (unpack string) of
+  [req] => Just req
+  _ => Nothing
+
+formBody : Parser Char (List (String, String))
+formBody = separatedBy entry (exact "&") where
+  name : Parser Char String
+  name = many (is $ not (== '=')) <&> pack
+  value : Parser Char String
+  value = many (is $ not (== '&')) <&> pack
+  entry : Parser Char (String, String)
+  entry = do
+    name <- name
+    exact "="
+    value <- value
+    pure (name, value)
+
+export
+parseFormBody : String -> Maybe (List (String, String))
+parseFormBody string = case parse formBody (unpack string) of
   [req] => Just req
   _ => Nothing
 
