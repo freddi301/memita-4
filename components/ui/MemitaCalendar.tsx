@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { Text, View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
@@ -19,7 +19,7 @@ type EventPayload = {
 export function MemitaCalendar({ events }: { events: Array<EventPayload> }) {
   const theme = useTheme();
 
-  const baseY = Date.now();
+  const [baseY] = useState(() => Date.now());
 
   const offsetY = useSharedValue(0);
   const startY = useSharedValue(0);

@@ -9,7 +9,8 @@
     "babel.config.js",
     "lingui.config.ts",
     "components/i18n/locales/*/messages.js",
-    "desktop/**"
+    "desktop/**",
+    "components/network/hyperswarmNetwork.native.ts"
   ],
   "ignoreDependencies": [
     "@types/streamx",

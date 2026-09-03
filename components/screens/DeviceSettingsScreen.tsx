@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
 import { Fragment, startTransition } from "react";
 import { ScrollView, Text, View } from "react-native";
-import { languages } from "../i18n/languages";
+import { languages, languagesDict } from "../i18n/languages";
 import { getLanguage, setLanguage, systemLanguage } from "../i18n/Memitai18n";
 import { Language, Theme, themes } from "../storage/storageSchema";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
@@ -21,6 +21,67 @@ export function DeviceSettingsScreen() {
 
   const savedTheme = useMemitaQuery(getTheme, undefined);
   const setThemeMutation = useMemitaMutation(setTheme);
+
+  const getLanguageName = (language: Language) => {
+    switch (language) {
+      case "en":
+        return "🇬🇧 English";
+      case "zh":
+        return "🇨🇳 中文";
+      case "es":
+        return "🇪🇸 Español";
+      case "hi":
+        return "🇮🇳 हिन्दी";
+      case "bn":
+        return "🇧🇩 বাংলা";
+      case "pt":
+        return "🇵🇹 Português";
+      case "ru":
+        return "🇷🇺 Русский";
+      case "ja":
+        return "🇯🇵 日本語";
+      case "vi":
+        return "🇻🇳 Tiếng Việt";
+      case "tr":
+        return "🇹🇷 Türkçe";
+      case "mr":
+        return "🇮🇳 मराठी";
+      case "te":
+        return "🇮🇳 తెలుగు";
+      case "ko":
+        return "🇰🇷 한국어";
+      case "fr":
+        return "🇫🇷 Français";
+      case "ta":
+        return "🇱🇰 தமிழ்";
+      case "ar":
+        return "🇸🇦 العربية";
+      case "de":
+        return "🇩🇪 Deutsch";
+      case "ur":
+        return "🇵🇰 اردو";
+      case "jv":
+        return "🇮🇩 Basa Jawa";
+      case "it":
+        return "🇮🇹 Italiano";
+      // case "th":
+      //   return "🇹🇭 ไทย";
+      // case "gu":
+      //   return "🇮🇳 ગુજરાતી";
+      // case "ha":
+      //   return "🇳🇬 Hausa";
+      // case "kn":
+      //   return "🇮🇳 ಕನ್ನಡ";
+      // case "fa":
+      //   return "🇮🇷 فارسی";
+      // case "pl":
+      //   return "🇵🇱 Polski";
+      // case "id":
+      //   return "🇮🇩 Bahasa Indonesia";
+      // case "sw":
+      //   return "🇰🇪 Kiswahili";
+    }
+  };
 
   return (
     <Fragment>
@@ -47,66 +108,6 @@ export function DeviceSettingsScreen() {
               });
             }}
             renderValue={(language) => {
-              const getLanguageName = (language: Language) => {
-                switch (language) {
-                  case "en":
-                    return "🇬🇧 " + t`English`;
-                  case "zh":
-                    return "🇨🇳 " + t`Mandarin Chinese`;
-                  case "es":
-                    return "🇪🇸 " + t`Spanish`;
-                  case "hi":
-                    return "🇮🇳 " + t`Hindi`;
-                  case "bn":
-                    return "🇧🇩 " + t`Bengali`;
-                  case "pt":
-                    return "🇵🇹 " + t`Portuguese`;
-                  case "ru":
-                    return "🇷🇺 " + t`Russian`;
-                  case "ja":
-                    return "🇯🇵 " + t`Japanese`;
-                  case "vi":
-                    return "🇻🇳 " + t`Vietnamese`;
-                  case "tr":
-                    return "🇹🇷 " + t`Turkish`;
-                  case "mr":
-                    return "🇮🇳 " + t`Marathi`;
-                  case "te":
-                    return "🇮🇳 " + t`Telugu`;
-                  case "ko":
-                    return "🇰🇷 " + t`Korean`;
-                  case "fr":
-                    return "🇫🇷 " + t`French`;
-                  case "ta":
-                    return "🇱🇰 " + t`Tamil`;
-                  case "ar":
-                    return "🇸🇦 " + t`Arabic`;
-                  case "de":
-                    return "🇩🇪 " + t`German`;
-                  case "ur":
-                    return "🇵🇰 " + t`Urdu`;
-                  case "jv":
-                    return "🇮🇩 " + t`Javanese`;
-                  case "it":
-                    return "🇮🇹 " + t`Italian`;
-                  // case "th":
-                  //   return "🇹🇭 " + t`Thai`;
-                  // case "gu":
-                  //   return "🇮🇳 " + t`Gujarati`;
-                  // case "ha":
-                  //   return "🇳🇬 " + t`Hausa`;
-                  // case "kn":
-                  //   return "🇮🇳 " + t`Kannada`;
-                  // case "fa":
-                  //   return "🇮🇷 " + t`Persian`;
-                  // case "pl":
-                  //   return "🇵🇱 " + t`Polish`;
-                  // case "id":
-                  //   return "🇮🇩 " + t`Indonesian`;
-                  // case "sw":
-                  //   return "🇰🇪 " + t`Swahili`;
-                }
-              };
               const languageName = language
                 ? getLanguageName(language)
                 : getLanguageName(systemLanguage);
@@ -114,6 +115,11 @@ export function DeviceSettingsScreen() {
                 ? languageName
                 : t`System default (${languageName})`;
             }}
+            valueSearchableText={(language) =>
+              language
+                ? `${language} ${languagesDict[language]} ${getLanguageName(language)}`
+                : `${t`System default`} ${getLanguageName(systemLanguage)}`
+            }
           />
         </View>
         <View style={[theme.formFieldContainerStyle]}>

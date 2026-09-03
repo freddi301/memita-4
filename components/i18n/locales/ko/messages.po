@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: components/screens/AccountScreen.tsx:190
+#: components/screens/AccountScreen.tsx:191
 msgid "Account ID"
 msgstr "계정 ID"
 
@@ -22,15 +22,15 @@ msgstr "계정 ID"
 msgid "Account name"
 msgstr "계정 이름"
 
-#: components/screens/ProfileScreen.tsx:241
+#: components/screens/ProfileScreen.tsx:242
 msgid "Account settings"
 msgstr "계정 설정"
 
-#: components/screens/ContactListScreen.tsx:234
+#: components/screens/ContactListScreen.tsx:236
 msgid "Add contact to list"
 msgstr "연락처를 목록에 추가"
 
-#: components/screens/ContactScreen.tsx:329
+#: components/screens/ContactScreen.tsx:330
 msgid "Add to contact list"
 msgstr "연락처 목록에 추가"
 
@@ -38,19 +38,15 @@ msgstr "연락처 목록에 추가"
 msgid "All messages"
 msgstr "모든 메시지"
 
-#: components/screens/ExportAccountScreen.tsx:87
+#: components/screens/ExportAccountScreen.tsx:83
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "비밀을 가져올 수 있는 사람은 누구든 영원히 계정에 전체 액세스할 수 있습니다!"
-
-#: components/screens/DeviceSettingsScreen.tsx:83
-msgid "Arabic"
-msgstr "아랍어"
 
 #: components/ui/MessageCompose.tsx:109
 msgid "Attach file"
 msgstr "파일 첨부"
 
-#: components/screens/DeviceSettingsScreen.tsx:32
+#: components/screens/DeviceSettingsScreen.tsx:93
 #: components/screens/ProfileDeepLinkScreen.tsx:36
 msgid "Back"
 msgstr "뒤로"
@@ -75,24 +71,20 @@ msgstr "연락처 목록으로 돌아가기"
 msgid "Back to direct messages"
 msgstr "다이렉트 메시지로 돌아가기"
 
-#: components/screens/DeviceSettingsScreen.tsx:61
-msgid "Bengali"
-msgstr "벵골어"
-
 #: components/screens/ProfileScreen.tsx:203
 msgid "Biography"
 msgstr "자기소개"
 
-#: components/screens/ContactChangesHistoryScreen.tsx:48
+#: components/screens/ContactChangesHistoryScreen.tsx:45
 #: components/screens/ContactScreen.tsx:118
 msgid "Changes history"
 msgstr "변경 이력"
 
-#: components/ui/DateTimeInput.tsx:99
+#: components/ui/DateTimeInput.tsx:96
 msgid "Clear date"
 msgstr "날짜 지우기"
 
-#: components/screens/ExportAccountScreen.tsx:70
+#: components/screens/ExportAccountScreen.tsx:68
 msgid "Confirm export"
 msgstr "내보내기 확인"
 
@@ -100,7 +92,7 @@ msgstr "내보내기 확인"
 msgid "Confirm import"
 msgstr "가져오기 확인"
 
-#: components/screens/ContactScreen.tsx:249
+#: components/screens/ContactScreen.tsx:251
 msgid "Connected devices"
 msgstr "연결된 기기들"
 
@@ -113,20 +105,20 @@ msgstr "연락처 계정 ID"
 msgid "Contact list name"
 msgstr "연락처 목록 이름"
 
-#: components/screens/DirectMessagesScreen.tsx:125
+#: components/screens/DirectMessagesScreen.tsx:124
 msgid "Contact lists"
 msgstr "연락처 목록"
 
-#: components/screens/ContactChangesHistoryScreen.tsx:70
-#: components/screens/ContactScreen.tsx:229
+#: components/screens/ContactChangesHistoryScreen.tsx:67
+#: components/screens/ContactScreen.tsx:230
 msgid "Contact name"
 msgstr "연락처 이름"
 
-#: components/screens/AccountScreen.tsx:203
+#: components/screens/AccountScreen.tsx:204
 msgid "Copy account id to clipboard"
 msgstr "계정 ID를 클립보드에 복사"
 
-#: components/screens/AccountScreen.tsx:234
+#: components/screens/AccountScreen.tsx:235
 msgid "Copy device id to clipboard"
 msgstr "기기 ID를 클립보드에 복사"
 
@@ -165,11 +157,11 @@ msgstr "새 연락처 만들기"
 msgid "Create new group"
 msgstr "새 그룹 만들기"
 
-#: components/screens/DeviceSettingsScreen.tsx:135
+#: components/screens/DeviceSettingsScreen.tsx:141
 msgid "Dark"
 msgstr "어두운"
 
-#: components/ui/MessageCompose.tsx:227
+#: components/ui/MessageCompose.tsx:228
 msgid "Delete"
 msgstr "삭제"
 
@@ -186,16 +178,16 @@ msgstr "연락처 삭제"
 msgid "Delete contact list"
 msgstr "연락처 목록 삭제"
 
-#: components/screens/AccountScreen.tsx:221
+#: components/screens/AccountScreen.tsx:222
 msgid "Device ID"
 msgstr "기기 ID"
 
-#: components/screens/DeviceSettingsScreen.tsx:35
+#: components/screens/DeviceSettingsScreen.tsx:96
 msgid "Device Settings"
 msgstr "기기 설정"
 
-#: components/screens/ContactScreen.tsx:355
-#: components/screens/ProfileScreen.tsx:227
+#: components/screens/ContactScreen.tsx:356
+#: components/screens/ProfileScreen.tsx:228
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "다이렉트 메시지"
@@ -213,11 +205,11 @@ msgstr "변경 사항 버리기"
 msgid "Edit article"
 msgstr "게시물 편집"
 
-#: components/screens/ProfileScreen.tsx:236
+#: components/screens/ProfileScreen.tsx:237
 msgid "Edit contact"
 msgstr "연락처 편집"
 
-#: components/ui/DateTimeInput.tsx:83
+#: components/ui/DateTimeInput.tsx:80
 msgid "Edit date"
 msgstr "날짜 편집"
 
@@ -225,15 +217,11 @@ msgstr "날짜 편집"
 msgid "Edit message"
 msgstr "메시지 수정"
 
-#: components/ui/DateTimeInput.tsx:91
+#: components/ui/DateTimeInput.tsx:88
 msgid "Edit time"
 msgstr "시간 편집"
 
-#: components/screens/DeviceSettingsScreen.tsx:53
-msgid "English"
-msgstr "영어"
-
-#: components/screens/ContactListScreen.tsx:161
+#: components/screens/ContactListScreen.tsx:162
 msgid "Enter a name for this contact list"
 msgstr "이 연락처 목록에 이름을 입력하세요"
 
@@ -245,31 +233,23 @@ msgstr "이벤트"
 msgid "Events"
 msgstr "이벤트"
 
-#: components/screens/AccountScreen.tsx:246
-#: components/screens/ExportAccountScreen.tsx:49
+#: components/screens/AccountScreen.tsx:247
+#: components/screens/ExportAccountScreen.tsx:47
 msgid "Export account"
 msgstr "계정 내보내기"
 
-#: components/screens/ImportAccountScreen.tsx:91
+#: components/screens/ImportAccountScreen.tsx:92
 msgid "Export password"
 msgstr "내보내기 비밀번호"
 
-#: components/screens/ImportAccountScreen.tsx:105
+#: components/screens/ImportAccountScreen.tsx:107
 msgid "Exported account secret"
 msgstr "내보낸 계정 비밀"
 
+#: components/screens/ExportAccountScreen.tsx:60
 #: components/screens/ExportAccountScreen.tsx:62
-#: components/screens/ExportAccountScreen.tsx:64
 msgid "Exported account secret copied to clipboard"
 msgstr "내보낸 계정 비밀이 클립보드에 복사되었습니다"
-
-#: components/screens/DeviceSettingsScreen.tsx:79
-msgid "French"
-msgstr "프랑스어"
-
-#: components/screens/DeviceSettingsScreen.tsx:85
-msgid "German"
-msgstr "독일어"
 
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
@@ -292,13 +272,9 @@ msgstr "그룹 ID"
 msgid "Group messages"
 msgstr "그룹 메시지"
 
-#: components/screens/GroupScreen.tsx:156
+#: components/screens/GroupScreen.tsx:157
 msgid "Group name"
 msgstr "그룹 이름"
-
-#: components/screens/DeviceSettingsScreen.tsx:59
-msgid "Hindi"
-msgstr "힌디어"
 
 #: components/screens/ImportAccountScreen.tsx:37
 #: components/screens/SelectAccountScreen.tsx:54
@@ -313,41 +289,17 @@ msgstr "유효하지 않은 계정 비밀 또는 비밀번호"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "두 사람이 함께 해야 합니다. 채팅을 시작하려면 서로를 친구로 추가하세요!"
 
-#: components/screens/DeviceSettingsScreen.tsx:91
-msgid "Italian"
-msgstr "이탈리아어"
-
-#: components/screens/DeviceSettingsScreen.tsx:67
-msgid "Japanese"
-msgstr "일본어"
-
-#: components/screens/DeviceSettingsScreen.tsx:89
-msgid "Javanese"
-msgstr "자바어"
-
-#: components/screens/DeviceSettingsScreen.tsx:77
-msgid "Korean"
-msgstr "한국어"
-
-#: components/screens/DeviceSettingsScreen.tsx:40
+#: components/screens/DeviceSettingsScreen.tsx:101
 msgid "Language"
 msgstr "언어"
 
-#: components/screens/DeviceSettingsScreen.tsx:133
+#: components/screens/DeviceSettingsScreen.tsx:139
 msgid "Light"
 msgstr "밝은"
 
 #: components/screens/ProfileScreen.tsx:198
 msgid "Location"
 msgstr "위치"
-
-#: components/screens/DeviceSettingsScreen.tsx:55
-msgid "Mandarin Chinese"
-msgstr "중국어(만다린)"
-
-#: components/screens/DeviceSettingsScreen.tsx:73
-msgid "Marathi"
-msgstr "마라티어"
 
 #: components/screens/DirectConversationScreen.tsx:433
 msgid "Mark as read"
@@ -357,7 +309,7 @@ msgstr "읽음으로 표시"
 msgid "Member of contact lists"
 msgstr "연락처 목록에 있는 멤버"
 
-#: components/screens/ContactListScreen.tsx:186
+#: components/screens/ContactListScreen.tsx:187
 msgid "Members"
 msgstr "멤버"
 
@@ -365,7 +317,7 @@ msgstr "멤버"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:211
+#: components/ui/MessageCompose.tsx:212
 msgid "Modify message"
 msgstr "메시지 수정"
 
@@ -373,16 +325,16 @@ msgstr "메시지 수정"
 msgid "New article"
 msgstr "새 게시물"
 
-#: components/ui/MessageCompose.tsx:157
+#: components/ui/MessageCompose.tsx:158
 msgid "New draft"
 msgstr "새 초안"
 
 #: components/screens/DirectConversationScreen.tsx:462
-#: components/screens/DirectConversationScreen.tsx:545
+#: components/screens/DirectConversationScreen.tsx:546
 msgid "Next occurrence"
 msgstr "다음 항목"
 
-#: components/screens/ProfileDeepLinkScreen.tsx:104
+#: components/screens/ProfileDeepLinkScreen.tsx:103
 #: components/screens/SelectAccountScreen.tsx:98
 msgid "No accounts on this device"
 msgstr "이 기기에 계정이 없습니다"
@@ -391,46 +343,46 @@ msgstr "이 기기에 계정이 없습니다"
 msgid "No articles"
 msgstr "게시물 없음"
 
-#: components/screens/ContactChangesHistoryScreen.tsx:103
+#: components/screens/ContactChangesHistoryScreen.tsx:100
 msgid "No changes yet"
 msgstr "아직 변경 없음"
 
-#: components/screens/ContactScreen.tsx:256
+#: components/screens/ContactScreen.tsx:258
 msgid "No connected devices"
 msgstr "연결된 장치가 없습니다"
 
-#: components/screens/ContactListsScreen.tsx:136
-#: components/screens/ContactScreen.tsx:338
+#: components/screens/ContactListsScreen.tsx:133
+#: components/screens/ContactScreen.tsx:339
 msgid "No contact lists"
 msgstr "연락처 목록 없음"
 
-#: components/screens/ContactListScreen.tsx:250
+#: components/screens/ContactListScreen.tsx:251
 msgid "No contacts"
 msgstr "연락처 없음"
 
 #: components/screens/DirectConversationScreen.tsx:332
-#: components/screens/DirectMessagesScreen.tsx:218
+#: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
 msgstr "메시지 없음"
 
-#: components/screens/ContactListScreen.tsx:250
-#: components/screens/ContactListsScreen.tsx:126
-#: components/screens/ContactScreen.tsx:337
-#: components/screens/DirectMessagesScreen.tsx:214
+#: components/screens/ContactListScreen.tsx:251
+#: components/screens/ContactListsScreen.tsx:124
+#: components/screens/ContactScreen.tsx:338
+#: components/screens/DirectMessagesScreen.tsx:213
 msgid "No results found"
 msgstr "결과가 없습니다"
 
-#: components/screens/ContactScreen.tsx:222
+#: components/screens/ContactScreen.tsx:223
 msgid "Not a valid account id"
 msgstr "유효하지 않은 계정 ID"
 
-#: components/screens/GroupScreen.tsx:149
+#: components/screens/GroupScreen.tsx:150
 msgid "Not a valid group id"
 msgstr "유효하지 않은 그룹 ID"
 
-#: components/screens/ExportAccountScreen.tsx:105
+#: components/screens/ExportAccountScreen.tsx:102
 msgid "NOTE: every export has it's own password!"
 msgstr "참고: 각 내보내기에는 고유한 비밀번호가 있습니다!"
 
@@ -438,19 +390,19 @@ msgstr "참고: 각 내보내기에는 고유한 비밀번호가 있습니다!"
 msgid "Open profile"
 msgstr "프로필 열기"
 
-#: components/screens/ProfileDeepLinkScreen.tsx:57
+#: components/screens/ProfileDeepLinkScreen.tsx:55
 msgid "Open with account"
 msgstr "계정으로 열기"
 
-#: components/screens/ExportAccountScreen.tsx:92
+#: components/screens/ExportAccountScreen.tsx:88
 msgid "Password"
 msgstr "비밀번호"
 
-#: components/screens/ImportAccountScreen.tsx:114
+#: components/screens/ImportAccountScreen.tsx:117
 msgid "Paste here exported account secret"
 msgstr "여기에 내보낸 계정 비밀 붙여넣기"
 
-#: components/screens/ContactScreen.tsx:217
+#: components/screens/ContactScreen.tsx:218
 msgid "Paste the account id your contact shared with you"
 msgstr "연락처가 공유한 계정 ID를 붙여넣으세요"
 
@@ -458,17 +410,13 @@ msgstr "연락처가 공유한 계정 ID를 붙여넣으세요"
 msgid "Places"
 msgstr "장소"
 
-#: components/screens/DeviceSettingsScreen.tsx:63
-msgid "Portuguese"
-msgstr "포르투갈어"
-
 #: components/screens/DirectConversationScreen.tsx:398
-#: components/screens/DirectConversationScreen.tsx:519
+#: components/screens/DirectConversationScreen.tsx:520
 msgid "Previous occurrence"
 msgstr "이전 항목"
 
-#: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:365
+#: components/screens/AccountScreen.tsx:257
+#: components/screens/ContactScreen.tsx:366
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "프로필"
@@ -485,17 +433,13 @@ msgstr "제거"
 msgid "Remove account from this device"
 msgstr "이 기기에서 계정 제거"
 
-#: components/screens/ContactListScreen.tsx:233
+#: components/screens/ContactListScreen.tsx:235
 msgid "Remove contact from list"
 msgstr "연락처 목록에서 삭제"
 
-#: components/screens/ContactScreen.tsx:328
+#: components/screens/ContactScreen.tsx:329
 msgid "Remove from contact list"
 msgstr "연락처 목록에서 삭제"
-
-#: components/screens/DeviceSettingsScreen.tsx:65
-msgid "Russian"
-msgstr "러시아어"
 
 #: components/screens/AccountScreen.tsx:117
 #: components/screens/ContactListScreen.tsx:152
@@ -505,27 +449,28 @@ msgstr "러시아어"
 msgid "Save changes"
 msgstr "변경 사항 저장"
 
-#: components/ui/MessageCompose.tsx:173
+#: components/ui/MessageCompose.tsx:174
 msgid "Save draft"
 msgstr "초안 저장"
 
-#: components/screens/ContactListsScreen.tsx:79
+#: components/screens/ContactListsScreen.tsx:78
 #: components/screens/DirectConversationScreen.tsx:353
-#: components/screens/DirectMessagesScreen.tsx:112
+#: components/screens/DirectMessagesScreen.tsx:111
+#: components/ui/Select.tsx:139
 msgid "Search"
 msgstr "검색"
 
 #: components/screens/ContactListsScreen.tsx:47
-#: components/screens/ContactScreen.tsx:290
+#: components/screens/ContactScreen.tsx:291
 msgid "Search contact lists"
 msgstr "연락처 목록 검색"
 
-#: components/screens/ContactListScreen.tsx:191
+#: components/screens/ContactListScreen.tsx:193
 #: components/screens/DirectMessagesScreen.tsx:80
 msgid "Search contacts"
 msgstr "연락처 검색"
 
-#: components/ui/MessageCompose.tsx:191
+#: components/ui/MessageCompose.tsx:192
 msgid "Send message"
 msgstr "메시지 보내기"
 
@@ -545,11 +490,7 @@ msgstr "지도에서 보기"
 msgid "Show QR code"
 msgstr "QR 코드 보기"
 
-#: components/screens/DeviceSettingsScreen.tsx:57
-msgid "Spanish"
-msgstr "스페인어"
-
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "Stop editing draft"
 msgstr "초안 편집 중단"
 
@@ -558,50 +499,42 @@ msgstr "초안 편집 중단"
 msgid "Stop searching"
 msgstr "검색 중단"
 
-#: components/screens/DeviceSettingsScreen.tsx:115
+#: components/screens/DeviceSettingsScreen.tsx:121
+msgid "System default"
+msgstr "시스템 기본 설정"
+
+#: components/screens/DeviceSettingsScreen.tsx:116
 msgid "System default ({languageName})"
 msgstr "시스템 기본값 ({languageName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:141
+#: components/screens/DeviceSettingsScreen.tsx:147
 msgid "System default ({themeName})"
 msgstr "시스템 기본값 ({themeName})"
-
-#: components/screens/DeviceSettingsScreen.tsx:81
-msgid "Tamil"
-msgstr "타밀어"
 
 #: components/screens/AccountScreen.tsx:151
 msgid "Tap to change"
 msgstr "변경하려면 탭하세요"
 
-#: components/screens/DeviceSettingsScreen.tsx:75
-msgid "Telugu"
-msgstr "텔루구어"
-
-#: components/screens/ImportAccountScreen.tsx:100
+#: components/screens/ImportAccountScreen.tsx:102
 msgid "The one you typed in during export"
 msgstr "내보내기 중에 입력한 것"
 
-#: components/screens/DeviceSettingsScreen.tsx:120
+#: components/screens/DeviceSettingsScreen.tsx:126
 msgid "Theme"
 msgstr "테마"
 
-#: components/screens/ContactScreen.tsx:234
+#: components/screens/ContactScreen.tsx:236
 msgid "This name is only visible to you"
 msgstr "이 이름은 당신에게만 표시됩니다"
 
-#: components/screens/AccountScreen.tsx:163
-#: components/screens/ImportAccountScreen.tsx:86
+#: components/screens/AccountScreen.tsx:164
+#: components/screens/ImportAccountScreen.tsx:87
 msgid "This name is only visible to you on this device"
 msgstr "이 이름은 이 기기에서 당신에게만 표시됩니다"
 
 #: components/screens/AccountScreen.tsx:150
 msgid "This will your avatar forever, choose wisely"
 msgstr "이것이 영원히 당신의 아바타가 됩니다, 신중하게 선택하세요"
-
-#: components/screens/DeviceSettingsScreen.tsx:71
-msgid "Turkish"
-msgstr "터키어"
 
 #: components/screens/DirectConversationScreen.tsx:483
 msgid "Unread messages"
@@ -611,19 +544,11 @@ msgstr "읽지 않은 메시지"
 msgid "Update article"
 msgstr "게시물 업데이트"
 
-#: components/screens/DeviceSettingsScreen.tsx:87
-msgid "Urdu"
-msgstr "우르두어"
-
 #: components/screens/AccountScreen.tsx:61
 msgid "Use another account"
 msgstr "다른 계정 사용"
 
-#: components/screens/DeviceSettingsScreen.tsx:69
-msgid "Vietnamese"
-msgstr "베트남어"
-
-#: components/screens/ExportAccountScreen.tsx:101
+#: components/screens/ExportAccountScreen.tsx:98
 msgid "Will be needed to import later"
 msgstr "나중에 가져오기에 필요합니다"
 
@@ -631,6 +556,6 @@ msgstr "나중에 가져오기에 필요합니다"
 msgid "Write a message"
 msgstr "메시지를 작성하세요"
 
-#: components/screens/ExportAccountScreen.tsx:82
+#: components/screens/ExportAccountScreen.tsx:80
 msgid "You can send or store this exported text to import the account on other devices"
 msgstr "이 내보낸 텍스트를 보내거나 저장하여 다른 기기에서 계정을 가져올 수 있습니다"

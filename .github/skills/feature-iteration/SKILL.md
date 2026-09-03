@@ -38,7 +38,7 @@ Observe and internalize:
 - What **naming patterns** correlate files to source files (basename match? kebab-case? folder grouping?)
 - Whether **one file per source** or **multiple concern-split files** is already the norm
 
-Use these observations as the convention for all decisions: where to create new files, what to name them, and how to group concerns when splitting. Do not invent a new convention — extend the one already present. If the project is brand new and `test/` is empty, establish a clean mirrored structure and note it in the summary so it becomes the baseline going forward.
+Use these observations as the convention for all decisions: where to create new files, what to name them, and how to group concerns when splitting. Do not invent a new convention — extend the one already present.
 
 ### 1d — Milestone filter (apply before scoring)
 
@@ -131,7 +131,7 @@ Use the most recent test block as the **exact template** for formatting, describ
 
 ## Step 3 — Understand the domain
 
-This is a **decentralized p2p chat app** currently focused on **Milestone 1: Account · Contacts · Direct Messages**. Draw inspiration from WhatsApp, Telegram, Briar, Slack, and classic email when identifying missing scenarios.
+This is a **decentralized p2p chat app** currently focused on **Milestone 1: Account · Contacts · Direct Messages**. Draw inspiration from WhatsApp, Telegram, Delta Chat, Briar, Slack, and classic email when identifying missing scenarios.
 
 ### In-scope feature areas for this milestone
 

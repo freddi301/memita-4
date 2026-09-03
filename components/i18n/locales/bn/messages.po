@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: components/screens/AccountScreen.tsx:190
+#: components/screens/AccountScreen.tsx:191
 msgid "Account ID"
 msgstr "অ্যাকাউন্ট আইডি"
 
@@ -22,15 +22,15 @@ msgstr "অ্যাকাউন্ট আইডি"
 msgid "Account name"
 msgstr "অ্যাকাউন্টের নাম"
 
-#: components/screens/ProfileScreen.tsx:241
+#: components/screens/ProfileScreen.tsx:242
 msgid "Account settings"
 msgstr "অ্যাকাউন্ট সেটিংস"
 
-#: components/screens/ContactListScreen.tsx:234
+#: components/screens/ContactListScreen.tsx:236
 msgid "Add contact to list"
 msgstr "যোগাযোগের তালিকাটিতে যুক্ত করুন"
 
-#: components/screens/ContactScreen.tsx:329
+#: components/screens/ContactScreen.tsx:330
 msgid "Add to contact list"
 msgstr "যোগাযোগের তালিকায় যুক্ত করুন"
 
@@ -38,19 +38,15 @@ msgstr "যোগাযোগের তালিকায় যুক্ত কর
 msgid "All messages"
 msgstr "সমস্ত বার্তা"
 
-#: components/screens/ExportAccountScreen.tsx:87
+#: components/screens/ExportAccountScreen.tsx:83
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "যে কেউ এই সিক্রেট আমদানি করতে পারবেন তিনি চিরকালের জন্য অ্যাকাউন্টে সম্পূর্ণ অ্যাক্সেস পাবেন!"
-
-#: components/screens/DeviceSettingsScreen.tsx:83
-msgid "Arabic"
-msgstr "আরবি"
 
 #: components/ui/MessageCompose.tsx:109
 msgid "Attach file"
 msgstr "ফাইল সংযুক্ত করুন"
 
-#: components/screens/DeviceSettingsScreen.tsx:32
+#: components/screens/DeviceSettingsScreen.tsx:93
 #: components/screens/ProfileDeepLinkScreen.tsx:36
 msgid "Back"
 msgstr "পিছনে"
@@ -75,24 +71,20 @@ msgstr "যোগাযোগের তালিকাগুলির দিক�
 msgid "Back to direct messages"
 msgstr "সরাসরি বার্তায় ফিরে যান"
 
-#: components/screens/DeviceSettingsScreen.tsx:61
-msgid "Bengali"
-msgstr "বাংলা"
-
 #: components/screens/ProfileScreen.tsx:203
 msgid "Biography"
 msgstr "জীবনী"
 
-#: components/screens/ContactChangesHistoryScreen.tsx:48
+#: components/screens/ContactChangesHistoryScreen.tsx:45
 #: components/screens/ContactScreen.tsx:118
 msgid "Changes history"
 msgstr "পরিবর্তনের ইতিহাস"
 
-#: components/ui/DateTimeInput.tsx:99
+#: components/ui/DateTimeInput.tsx:96
 msgid "Clear date"
 msgstr "তারিখ মুছুন"
 
-#: components/screens/ExportAccountScreen.tsx:70
+#: components/screens/ExportAccountScreen.tsx:68
 msgid "Confirm export"
 msgstr "রপ্তানি নিশ্চিত করুন"
 
@@ -100,7 +92,7 @@ msgstr "রপ্তানি নিশ্চিত করুন"
 msgid "Confirm import"
 msgstr "আমদানি নিশ্চিত করুন"
 
-#: components/screens/ContactScreen.tsx:249
+#: components/screens/ContactScreen.tsx:251
 msgid "Connected devices"
 msgstr "সংযুক্ত ডিভাইসসমূহ।"
 
@@ -113,20 +105,20 @@ msgstr "যোগাযোগের অ্যাকাউন্ট আইডি"
 msgid "Contact list name"
 msgstr "যোগাযোগের তালিকাটির নাম"
 
-#: components/screens/DirectMessagesScreen.tsx:125
+#: components/screens/DirectMessagesScreen.tsx:124
 msgid "Contact lists"
 msgstr "যোগাযোগের তালিকা"
 
-#: components/screens/ContactChangesHistoryScreen.tsx:70
-#: components/screens/ContactScreen.tsx:229
+#: components/screens/ContactChangesHistoryScreen.tsx:67
+#: components/screens/ContactScreen.tsx:230
 msgid "Contact name"
 msgstr "যোগাযোগের নাম"
 
-#: components/screens/AccountScreen.tsx:203
+#: components/screens/AccountScreen.tsx:204
 msgid "Copy account id to clipboard"
 msgstr "অ্যাকাউন্ট আইডি ক্লিপবোর্ডে কপি করুন"
 
-#: components/screens/AccountScreen.tsx:234
+#: components/screens/AccountScreen.tsx:235
 msgid "Copy device id to clipboard"
 msgstr "ডিভাইস আইডি ক্লিপবোর্ডে কপি করুন"
 
@@ -165,11 +157,11 @@ msgstr "নতুন যোগাযোগ তৈরি করুন"
 msgid "Create new group"
 msgstr "নতুন গ্রুপ তৈরি করুন"
 
-#: components/screens/DeviceSettingsScreen.tsx:135
+#: components/screens/DeviceSettingsScreen.tsx:141
 msgid "Dark"
 msgstr "অন্ধকার"
 
-#: components/ui/MessageCompose.tsx:227
+#: components/ui/MessageCompose.tsx:228
 msgid "Delete"
 msgstr "মুছুন"
 
@@ -186,16 +178,16 @@ msgstr "যোগাযোগ মুছুন"
 msgid "Delete contact list"
 msgstr "যোগাযোগের তালিকাটি মুছে ফেলুন"
 
-#: components/screens/AccountScreen.tsx:221
+#: components/screens/AccountScreen.tsx:222
 msgid "Device ID"
 msgstr "ডিভাইস আইডি"
 
-#: components/screens/DeviceSettingsScreen.tsx:35
+#: components/screens/DeviceSettingsScreen.tsx:96
 msgid "Device Settings"
 msgstr "ডিভাইস সেটিংস"
 
-#: components/screens/ContactScreen.tsx:355
-#: components/screens/ProfileScreen.tsx:227
+#: components/screens/ContactScreen.tsx:356
+#: components/screens/ProfileScreen.tsx:228
 #: components/ui/BottomTabNavigation.tsx:30
 msgid "Direct messages"
 msgstr "সরাসরি বার্তা"
@@ -213,11 +205,11 @@ msgstr "পরিবর্তন বাতিল করুন"
 msgid "Edit article"
 msgstr "নিবন্ধ সম্পাদনা করুন"
 
-#: components/screens/ProfileScreen.tsx:236
+#: components/screens/ProfileScreen.tsx:237
 msgid "Edit contact"
 msgstr "যোগাযোগ সম্পাদনা করুন"
 
-#: components/ui/DateTimeInput.tsx:83
+#: components/ui/DateTimeInput.tsx:80
 msgid "Edit date"
 msgstr "তারিখ সম্পাদনা করুন"
 
@@ -225,15 +217,11 @@ msgstr "তারিখ সম্পাদনা করুন"
 msgid "Edit message"
 msgstr "বার্তা সম্পাদনা করুন"
 
-#: components/ui/DateTimeInput.tsx:91
+#: components/ui/DateTimeInput.tsx:88
 msgid "Edit time"
 msgstr "সময় সম্পাদনা করুন"
 
-#: components/screens/DeviceSettingsScreen.tsx:53
-msgid "English"
-msgstr "ইংরেজি"
-
-#: components/screens/ContactListScreen.tsx:161
+#: components/screens/ContactListScreen.tsx:162
 msgid "Enter a name for this contact list"
 msgstr "এই কন্টাক্ট লিস্টের জন্য একটি নাম লিখুন"
 
@@ -245,31 +233,23 @@ msgstr "ইভেন্ট"
 msgid "Events"
 msgstr "ইভেন্টস"
 
-#: components/screens/AccountScreen.tsx:246
-#: components/screens/ExportAccountScreen.tsx:49
+#: components/screens/AccountScreen.tsx:247
+#: components/screens/ExportAccountScreen.tsx:47
 msgid "Export account"
 msgstr "অ্যাকাউন্ট রপ্তানি করুন"
 
-#: components/screens/ImportAccountScreen.tsx:91
+#: components/screens/ImportAccountScreen.tsx:92
 msgid "Export password"
 msgstr "রপ্তানির পাসওয়ার্ড"
 
-#: components/screens/ImportAccountScreen.tsx:105
+#: components/screens/ImportAccountScreen.tsx:107
 msgid "Exported account secret"
 msgstr "রপ্তানি করা অ্যাকাউন্ট সিক্রেট"
 
+#: components/screens/ExportAccountScreen.tsx:60
 #: components/screens/ExportAccountScreen.tsx:62
-#: components/screens/ExportAccountScreen.tsx:64
 msgid "Exported account secret copied to clipboard"
 msgstr "রপ্তানি করা অ্যাকাউন্ট সিক্রেট ক্লিপবোর্ডে কপি করা হয়েছে"
-
-#: components/screens/DeviceSettingsScreen.tsx:79
-msgid "French"
-msgstr "ফরাসি"
-
-#: components/screens/DeviceSettingsScreen.tsx:85
-msgid "German"
-msgstr "জার্মান"
 
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
@@ -292,13 +272,9 @@ msgstr "গ্রুপ আইডি"
 msgid "Group messages"
 msgstr "গ্রুপ বার্তা"
 
-#: components/screens/GroupScreen.tsx:156
+#: components/screens/GroupScreen.tsx:157
 msgid "Group name"
 msgstr "গ্রুপের নাম"
-
-#: components/screens/DeviceSettingsScreen.tsx:59
-msgid "Hindi"
-msgstr "হিন্দি"
 
 #: components/screens/ImportAccountScreen.tsx:37
 #: components/screens/SelectAccountScreen.tsx:54
@@ -313,41 +289,17 @@ msgstr "অবৈধ অ্যাকাউন্ট সিক্রেট বা
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "চ্যাট শুরু করার জন্য, একে অপরের সাথে যোগাযোগ করুন এবং একে অপরকে \"যোগাযোগ\" হিসেবে যুক্ত করুন!"
 
-#: components/screens/DeviceSettingsScreen.tsx:91
-msgid "Italian"
-msgstr "ইতালীয়"
-
-#: components/screens/DeviceSettingsScreen.tsx:67
-msgid "Japanese"
-msgstr "জাপানি"
-
-#: components/screens/DeviceSettingsScreen.tsx:89
-msgid "Javanese"
-msgstr "জাভানিজ"
-
-#: components/screens/DeviceSettingsScreen.tsx:77
-msgid "Korean"
-msgstr "কোরিয়ান"
-
-#: components/screens/DeviceSettingsScreen.tsx:40
+#: components/screens/DeviceSettingsScreen.tsx:101
 msgid "Language"
 msgstr "ভাষা"
 
-#: components/screens/DeviceSettingsScreen.tsx:133
+#: components/screens/DeviceSettingsScreen.tsx:139
 msgid "Light"
 msgstr "আলো"
 
 #: components/screens/ProfileScreen.tsx:198
 msgid "Location"
 msgstr "অবস্থান"
-
-#: components/screens/DeviceSettingsScreen.tsx:55
-msgid "Mandarin Chinese"
-msgstr "ম্যান্ডারিন চীনা"
-
-#: components/screens/DeviceSettingsScreen.tsx:73
-msgid "Marathi"
-msgstr "মারাঠি"
 
 #: components/screens/DirectConversationScreen.tsx:433
 msgid "Mark as read"
@@ -357,7 +309,7 @@ msgstr "পঠিত হিসেবে চিহ্নিত করুন"
 msgid "Member of contact lists"
 msgstr "যোগাযোগের তালিকায় থাকা সদস্য"
 
-#: components/screens/ContactListScreen.tsx:186
+#: components/screens/ContactListScreen.tsx:187
 msgid "Members"
 msgstr "সদস্য"
 
@@ -365,7 +317,7 @@ msgstr "সদস্য"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:211
+#: components/ui/MessageCompose.tsx:212
 msgid "Modify message"
 msgstr "বার্তা পরিবর্তন করুন"
 
@@ -373,16 +325,16 @@ msgstr "বার্তা পরিবর্তন করুন"
 msgid "New article"
 msgstr "নতুন নিবন্ধ"
 
-#: components/ui/MessageCompose.tsx:157
+#: components/ui/MessageCompose.tsx:158
 msgid "New draft"
 msgstr "নতুন খসড়া"
 
 #: components/screens/DirectConversationScreen.tsx:462
-#: components/screens/DirectConversationScreen.tsx:545
+#: components/screens/DirectConversationScreen.tsx:546
 msgid "Next occurrence"
 msgstr "পরবর্তী মিল"
 
-#: components/screens/ProfileDeepLinkScreen.tsx:104
+#: components/screens/ProfileDeepLinkScreen.tsx:103
 #: components/screens/SelectAccountScreen.tsx:98
 msgid "No accounts on this device"
 msgstr "এই ডিভাইসে কোনো অ্যাকাউন্ট নেই"
@@ -391,46 +343,46 @@ msgstr "এই ডিভাইসে কোনো অ্যাকাউন্ট
 msgid "No articles"
 msgstr "কোনো নিবন্ধ নেই"
 
-#: components/screens/ContactChangesHistoryScreen.tsx:103
+#: components/screens/ContactChangesHistoryScreen.tsx:100
 msgid "No changes yet"
 msgstr "এখন পর্যন্ত কোনো পরিবর্তন হয়নি"
 
-#: components/screens/ContactScreen.tsx:256
+#: components/screens/ContactScreen.tsx:258
 msgid "No connected devices"
 msgstr "কোনো সংযুক্ত ডিভাইস নেই।"
 
-#: components/screens/ContactListsScreen.tsx:136
-#: components/screens/ContactScreen.tsx:338
+#: components/screens/ContactListsScreen.tsx:133
+#: components/screens/ContactScreen.tsx:339
 msgid "No contact lists"
 msgstr "যোগাযোগের তালিকা উপলব্ধ নেই"
 
-#: components/screens/ContactListScreen.tsx:250
+#: components/screens/ContactListScreen.tsx:251
 msgid "No contacts"
 msgstr "কোনো পরিচিত ব্যক্তি নেই"
 
 #: components/screens/DirectConversationScreen.tsx:332
-#: components/screens/DirectMessagesScreen.tsx:218
+#: components/screens/DirectMessagesScreen.tsx:217
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
 msgid "No messages"
 msgstr "কোনো বার্তা নেই"
 
-#: components/screens/ContactListScreen.tsx:250
-#: components/screens/ContactListsScreen.tsx:126
-#: components/screens/ContactScreen.tsx:337
-#: components/screens/DirectMessagesScreen.tsx:214
+#: components/screens/ContactListScreen.tsx:251
+#: components/screens/ContactListsScreen.tsx:124
+#: components/screens/ContactScreen.tsx:338
+#: components/screens/DirectMessagesScreen.tsx:213
 msgid "No results found"
 msgstr "কোনো ফলাফল পাওয়া যায়নি"
 
-#: components/screens/ContactScreen.tsx:222
+#: components/screens/ContactScreen.tsx:223
 msgid "Not a valid account id"
 msgstr "বৈধ অ্যাকাউন্ট আইডি নয়"
 
-#: components/screens/GroupScreen.tsx:149
+#: components/screens/GroupScreen.tsx:150
 msgid "Not a valid group id"
 msgstr "বৈধ গ্রুপ আইডি নয়"
 
-#: components/screens/ExportAccountScreen.tsx:105
+#: components/screens/ExportAccountScreen.tsx:102
 msgid "NOTE: every export has it's own password!"
 msgstr "দ্রষ্টব্য: প্রতিটি রপ্তানির নিজস্ব পাসওয়ার্ড রয়েছে!"
 
@@ -438,19 +390,19 @@ msgstr "দ্রষ্টব্য: প্রতিটি রপ্তানি
 msgid "Open profile"
 msgstr "প্রোফাইল খুলুন"
 
-#: components/screens/ProfileDeepLinkScreen.tsx:57
+#: components/screens/ProfileDeepLinkScreen.tsx:55
 msgid "Open with account"
 msgstr "অ্যাকাউন্ট দিয়ে খুলুন"
 
-#: components/screens/ExportAccountScreen.tsx:92
+#: components/screens/ExportAccountScreen.tsx:88
 msgid "Password"
 msgstr "পাসওয়ার্ড"
 
-#: components/screens/ImportAccountScreen.tsx:114
+#: components/screens/ImportAccountScreen.tsx:117
 msgid "Paste here exported account secret"
 msgstr "এখানে রপ্তানি করা অ্যাকাউন্ট সিক্রেট পেস্ট করুন"
 
-#: components/screens/ContactScreen.tsx:217
+#: components/screens/ContactScreen.tsx:218
 msgid "Paste the account id your contact shared with you"
 msgstr "আপনার যোগাযোগ যে অ্যাকাউন্ট আইডি শেয়ার করেছে তা পেস্ট করুন"
 
@@ -458,17 +410,13 @@ msgstr "আপনার যোগাযোগ যে অ্যাকাউন্
 msgid "Places"
 msgstr "স্থানসমূহ"
 
-#: components/screens/DeviceSettingsScreen.tsx:63
-msgid "Portuguese"
-msgstr "পর্তুগিজ"
-
 #: components/screens/DirectConversationScreen.tsx:398
-#: components/screens/DirectConversationScreen.tsx:519
+#: components/screens/DirectConversationScreen.tsx:520
 msgid "Previous occurrence"
 msgstr "পূর্ববর্তী মিল"
 
-#: components/screens/AccountScreen.tsx:256
-#: components/screens/ContactScreen.tsx:365
+#: components/screens/AccountScreen.tsx:257
+#: components/screens/ContactScreen.tsx:366
 #: components/ui/BottomTabNavigation.tsx:64
 msgid "Profile"
 msgstr "প্রোফাইল"
@@ -485,17 +433,13 @@ msgstr "সরান"
 msgid "Remove account from this device"
 msgstr "এই ডিভাইস থেকে অ্যাকাউন্ট সরান"
 
-#: components/screens/ContactListScreen.tsx:233
+#: components/screens/ContactListScreen.tsx:235
 msgid "Remove contact from list"
 msgstr "তালিকা থেকে संपर्क हटाएं"
 
-#: components/screens/ContactScreen.tsx:328
+#: components/screens/ContactScreen.tsx:329
 msgid "Remove from contact list"
 msgstr "যোগাযোগের তালিকা থেকে সরিয়ে দিন"
-
-#: components/screens/DeviceSettingsScreen.tsx:65
-msgid "Russian"
-msgstr "রাশিয়ান"
 
 #: components/screens/AccountScreen.tsx:117
 #: components/screens/ContactListScreen.tsx:152
@@ -505,27 +449,28 @@ msgstr "রাশিয়ান"
 msgid "Save changes"
 msgstr "পরিবর্তন সংরক্ষণ করুন"
 
-#: components/ui/MessageCompose.tsx:173
+#: components/ui/MessageCompose.tsx:174
 msgid "Save draft"
 msgstr "খসড়া সংরক্ষণ করুন"
 
-#: components/screens/ContactListsScreen.tsx:79
+#: components/screens/ContactListsScreen.tsx:78
 #: components/screens/DirectConversationScreen.tsx:353
-#: components/screens/DirectMessagesScreen.tsx:112
+#: components/screens/DirectMessagesScreen.tsx:111
+#: components/ui/Select.tsx:139
 msgid "Search"
 msgstr "অনুসন্ধান"
 
 #: components/screens/ContactListsScreen.tsx:47
-#: components/screens/ContactScreen.tsx:290
+#: components/screens/ContactScreen.tsx:291
 msgid "Search contact lists"
 msgstr "যোগাযোগের তালিকা অনুসন্ধান করুন"
 
-#: components/screens/ContactListScreen.tsx:191
+#: components/screens/ContactListScreen.tsx:193
 #: components/screens/DirectMessagesScreen.tsx:80
 msgid "Search contacts"
 msgstr "যোগাযোগের তালিকা অনুসন্ধান করুন"
 
-#: components/ui/MessageCompose.tsx:191
+#: components/ui/MessageCompose.tsx:192
 msgid "Send message"
 msgstr "বার্তা পাঠান"
 
@@ -545,11 +490,7 @@ msgstr "মানচিত্রে দেখান"
 msgid "Show QR code"
 msgstr "QR কোড দেখান"
 
-#: components/screens/DeviceSettingsScreen.tsx:57
-msgid "Spanish"
-msgstr "স্প্যানিশ"
-
-#: components/ui/MessageCompose.tsx:134
+#: components/ui/MessageCompose.tsx:135
 msgid "Stop editing draft"
 msgstr "নকশার সম্পাদনা বন্ধ করুন"
 
@@ -558,50 +499,42 @@ msgstr "নকশার সম্পাদনা বন্ধ করুন"
 msgid "Stop searching"
 msgstr "অনুসন্ধান বন্ধ করুন"
 
-#: components/screens/DeviceSettingsScreen.tsx:115
+#: components/screens/DeviceSettingsScreen.tsx:121
+msgid "System default"
+msgstr "সিস্টেমের ডিফল্ট"
+
+#: components/screens/DeviceSettingsScreen.tsx:116
 msgid "System default ({languageName})"
 msgstr "সিস্টেম ডিফল্ট ({languageName})"
 
-#: components/screens/DeviceSettingsScreen.tsx:141
+#: components/screens/DeviceSettingsScreen.tsx:147
 msgid "System default ({themeName})"
 msgstr "সিস্টেম ডিফল্ট ({themeName})"
-
-#: components/screens/DeviceSettingsScreen.tsx:81
-msgid "Tamil"
-msgstr "তামিল"
 
 #: components/screens/AccountScreen.tsx:151
 msgid "Tap to change"
 msgstr "পরিবর্তন করতে ট্যাপ করুন"
 
-#: components/screens/DeviceSettingsScreen.tsx:75
-msgid "Telugu"
-msgstr "তেলুগু"
-
-#: components/screens/ImportAccountScreen.tsx:100
+#: components/screens/ImportAccountScreen.tsx:102
 msgid "The one you typed in during export"
 msgstr "রপ্তানির সময় যা টাইপ করেছিলেন"
 
-#: components/screens/DeviceSettingsScreen.tsx:120
+#: components/screens/DeviceSettingsScreen.tsx:126
 msgid "Theme"
 msgstr "থিম"
 
-#: components/screens/ContactScreen.tsx:234
+#: components/screens/ContactScreen.tsx:236
 msgid "This name is only visible to you"
 msgstr "এই নামটি শুধুমাত্র আপনার কাছে দৃশ্যমান"
 
-#: components/screens/AccountScreen.tsx:163
-#: components/screens/ImportAccountScreen.tsx:86
+#: components/screens/AccountScreen.tsx:164
+#: components/screens/ImportAccountScreen.tsx:87
 msgid "This name is only visible to you on this device"
 msgstr "এই নামটি শুধুমাত্র এই ডিভাইসে আপনার কাছে দৃশ্যমান"
 
 #: components/screens/AccountScreen.tsx:150
 msgid "This will your avatar forever, choose wisely"
 msgstr "এটি চিরকালের জন্য আপনার অবতার হবে, বুদ্ধিমত্তার সাথে বেছে নিন"
-
-#: components/screens/DeviceSettingsScreen.tsx:71
-msgid "Turkish"
-msgstr "তুর্কি"
 
 #: components/screens/DirectConversationScreen.tsx:483
 msgid "Unread messages"
@@ -611,19 +544,11 @@ msgstr "অপঠিত বার্তা"
 msgid "Update article"
 msgstr "নিবন্ধ আপডেট করুন"
 
-#: components/screens/DeviceSettingsScreen.tsx:87
-msgid "Urdu"
-msgstr "উর্দু"
-
 #: components/screens/AccountScreen.tsx:61
 msgid "Use another account"
 msgstr "অন্য অ্যাকাউন্ট ব্যবহার করুন"
 
-#: components/screens/DeviceSettingsScreen.tsx:69
-msgid "Vietnamese"
-msgstr "ভিয়েতনামি"
-
-#: components/screens/ExportAccountScreen.tsx:101
+#: components/screens/ExportAccountScreen.tsx:98
 msgid "Will be needed to import later"
 msgstr "পরে আমদানির জন্য প্রয়োজন হবে"
 
@@ -631,6 +556,6 @@ msgstr "পরে আমদানির জন্য প্রয়োজন �
 msgid "Write a message"
 msgstr "একটি বার্তা লিখুন"
 
-#: components/screens/ExportAccountScreen.tsx:82
+#: components/screens/ExportAccountScreen.tsx:80
 msgid "You can send or store this exported text to import the account on other devices"
 msgstr "অন্য ডিভাইসে অ্যাকাউন্ট আমদানি করতে এই রপ্তানি করা টেক্সট পাঠাতে বা সংরক্ষণ করতে পারেন"

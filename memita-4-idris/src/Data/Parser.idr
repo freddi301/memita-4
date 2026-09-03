@@ -4,14 +4,14 @@ import Data.List1
 
 %default total
 
-export
+public export
 data Parser : Type -> Type -> Type where
   Err : Parser x y
   End : y -> Parser x y
   One : (x -> Parser x y) -> Parser x y
   Alt : List (Parser x y) -> Parser x y
 
-export
+public export
 parse : Parser x y -> List x -> List y 
 parse (End y) [] = [y]
 parse (One f) (x :: xs) = parse (f x) xs
@@ -19,77 +19,78 @@ parse (Alt []) xs = []
 parse (Alt (p :: ps)) xs = parse p xs ++ parse (Alt ps) xs
 parse _ _ = []
 
-export
+public export
 throw : Parser x y
 throw = Err
 
-export
+public export
 pure : y -> Parser x y
 pure y = End y
 
-export
+public export
 any : Parser x x
 any = One End
 
-export
+public export
 (<|>) : Parser x y -> Parser x y -> Parser x y
 l <|> r = Alt [l, r]
 
-export
+public export
 (>>=) : Parser x y -> (y -> Parser x z) -> Parser x z
 Err >>= f = Err
 End y >>= f = f y
 One k >>= f = One $ \x => k x >>= f
 Alt ps >>= f = Alt (bindAlt ps) where
+  public export
   bindAlt : List (Parser x y) -> List (Parser x z)
   bindAlt [] = []
   bindAlt (p :: ps) = (p >>= f) :: bindAlt ps
 
-export
+public export
 (>>) : Parser x y -> Parser x z -> Parser x z
 l >> r = l >>= \_ => r
 
-export
+public export
 (<$>) : (y -> z) -> Parser x y -> Parser x z
 f <$> p = p >>= \y => pure (f y)
 
-export
+public export
 (<&>) : Parser x y -> (y -> z) -> Parser x z
 (<&>) = flip (<$>)
 
-export
+public export
 is : (x -> Bool) -> Parser x x
 is p = any >>= \x => if p x then pure x else throw
 
-export
+public export
 optional : Parser x y -> Parser x (Maybe y)
 optional p = (p <&> Just) <|> pure Nothing
 
-export
-recursive : {default 1000 n: Nat} -> (Parser x y -> Parser x y) -> Parser x y
-recursive {n = Z} f = throw
-recursive {n = S k} f = let p = f (recursive {n = k} f) in p
+public export
+recursive : (n : Nat) -> (Parser x y -> Parser x y) -> Parser x y
+recursive Z f = throw
+recursive (S k) f = let p = f (recursive k f) in p
 
-export
+public export
 many : Parser x y -> Parser x (List y)
-many p = recursive $ \many => (do y <- p; ys <- many; pure (y :: ys)) <|> pure []
+many p = recursive 1000 $ \many => (do y <- p; ys <- many; pure (y :: ys)) <|> pure []
 
-export
+public export
 some : Parser x y -> Parser x (List1 y)
 some p = do y <- p; ys <- many p; pure (y ::: ys)
 
-export
+public export
 separatedBy : Parser x y -> Parser x z -> Parser x (List y)
 separatedBy p sep = (do y <- p; ys <- many (sep >> p); pure (y :: ys)) <|> pure []
 
-export
+public export
 exact : Ord x => List x -> Parser x ()
 exact [] = pure ()
 exact (c :: cs) = do
   x <- any
   if x == c then exact cs else throw
 
-export
+public export
 lineEnd : Parser Char ()
 lineEnd = (exact $ ['\r', '\n']) <|> (exact ['\n'])
 
@@ -97,7 +98,7 @@ lineEnd = (exact $ ['\r', '\n']) <|> (exact ['\n'])
 
 data MyTree = Leaf Char | Branch MyTree MyTree
 myTree : Parser Char MyTree
-myTree = recursive tree where
+myTree = recursive 10 tree where
   tree self = leaf <|> branch where
     leaf = is isAlpha <&> Leaf
     branch : Parser Char MyTree
@@ -107,8 +108,6 @@ TreeTest1 = parse myTree (unpack "(a,(b,c))")
 TreeTest2Expected = [Branch (Leaf 'a') (Branch (Leaf 'b') (Leaf 'c'))]
 TreeTestProof : TreeTest1 = TreeTest2Expected
 TreeTestProof = Refl
-
---
 
 Con : Parser x x
 Con = any

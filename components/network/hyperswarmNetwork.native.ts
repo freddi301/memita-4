@@ -1,1 +1,1 @@
-export const hyperswarmNetworkFactory = null
+export const hyperswarmNetworkFactory = null;

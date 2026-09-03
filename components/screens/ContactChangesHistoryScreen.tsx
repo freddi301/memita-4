@@ -39,12 +39,7 @@ export function ContactChangesHistoryScreen({
         <Text
           style={[
             theme.textStyle,
-            {
-              fontWeight: "bold",
-              flexGrow: 1,
-              paddingTop: 10,
-              marginLeft: 8,
-            },
+            { fontWeight: "bold", flexGrow: 1, paddingTop: 10, marginLeft: 8 },
           ]}
         >
           {t`Changes history`}

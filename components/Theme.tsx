@@ -113,9 +113,7 @@ export function useTheme() {
     textInputStyle(value: string) {
       return [
         baseTextInputStyle,
-        {
-          color: value ? themeProps.textColor : themeProps.secondaryTextColor,
-        },
+        { color: value ? themeProps.textColor : themeProps.secondaryTextColor },
       ];
     },
   };

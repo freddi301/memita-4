@@ -6,7 +6,7 @@ import { useLocalSearchParams } from "expo-router";
 import { isEqual } from "lodash";
 import { useEffect, useMemo, useState } from "react";
 import { BackHandler, Platform } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { patchFlatListProps } from "react-native-web-refresh-control";
 import {
   registerForPushNotificationsAsync,
@@ -14,6 +14,7 @@ import {
 } from "../components/notifications";
 import { RouterRoot } from "../components/Routing";
 import { SelectAccountScreen } from "../components/screens/SelectAccountScreen";
+import { GlobalWebScrollbarStyle } from "../components/ui/GlobalWebScrollbarStyle";
 import {
   accountIdFromAccountSecret,
   accountIdFromString,
@@ -118,6 +119,7 @@ export function createApp({ storage }: { storage: StorageInterface }) {
     const theme = useTheme();
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: theme.backgroundColor }}>
+        <GlobalWebScrollbarStyle />
         {children}
       </SafeAreaView>
     );
@@ -147,27 +149,29 @@ export function createApp({ storage }: { storage: StorageInterface }) {
     useDisableBack();
 
     return (
-      <FeApiContext value={api}>
-        <QueryClientProvider client={queryClient}>
-          <Memitai18n i18n={i18n}>
-            <LayoutWrapper>
-              <RouterRoot
-                initial={<SelectAccountScreen />}
-                overrideScreen={
-                  validContactId && !ignoreOverride ? (
-                    <ProfileDeepLinkScreen
-                      contactId={validContactId}
-                      onDone={() => {
-                        setIgnoreOverride(true);
-                      }}
-                    />
-                  ) : null
-                }
-              />
-            </LayoutWrapper>
-          </Memitai18n>
-        </QueryClientProvider>
-      </FeApiContext>
+      <SafeAreaProvider>
+        <FeApiContext value={api}>
+          <QueryClientProvider client={queryClient}>
+            <Memitai18n i18n={i18n}>
+              <LayoutWrapper>
+                <RouterRoot
+                  initial={<SelectAccountScreen />}
+                  overrideScreen={
+                    validContactId && !ignoreOverride ? (
+                      <ProfileDeepLinkScreen
+                        contactId={validContactId}
+                        onDone={() => {
+                          setIgnoreOverride(true);
+                        }}
+                      />
+                    ) : null
+                  }
+                />
+              </LayoutWrapper>
+            </Memitai18n>
+          </QueryClientProvider>
+        </FeApiContext>
+      </SafeAreaProvider>
     );
   };
   return { Main, api };
