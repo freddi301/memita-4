@@ -9,4 +9,14 @@ jest.mock(
   () => require("react-native-safe-area-context/jest/mock").default,
 );
 
+jest.mock("expo-video", () => ({
+  useVideoPlayer: () => ({ play: jest.fn(), pause: jest.fn() }),
+  VideoView: () => null,
+}));
+
+jest.mock("expo-audio", () => ({
+  useAudioPlayer: () => ({ play: jest.fn(), pause: jest.fn() }),
+  useAudioPlayerStatus: () => ({ playing: false, currentTime: 0, duration: 0 }),
+}));
+
 setUpTests();

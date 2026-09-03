@@ -96,7 +96,14 @@ export function Select<T = string>({
           paddingTop: 6,
         })}
       </Pressable>
-      <Modal visible={isOpen} transparent animationType="fade">
+      <Modal
+        visible={isOpen}
+        transparent
+        animationType="fade"
+        onRequestClose={() => {
+          setIsOpen(false);
+        }}
+      >
         <Pressable
           style={[
             {

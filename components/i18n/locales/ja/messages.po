@@ -42,7 +42,7 @@ msgstr "すべてのメッセージ"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "秘密をインポートできる人は、そのアカウントに永遠にフルアクセスできます！"
 
-#: components/ui/MessageCompose.tsx:109
+#: components/ui/MessageCompose.tsx:108
 msgid "Attach file"
 msgstr "ファイルを添付"
 
@@ -161,7 +161,7 @@ msgstr "新しいグループを作成"
 msgid "Dark"
 msgstr "ダーク"
 
-#: components/ui/MessageCompose.tsx:228
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "削除"
 
@@ -317,7 +317,7 @@ msgstr "メンバー"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:212
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "メッセージを変更"
 
@@ -325,7 +325,7 @@ msgstr "メッセージを変更"
 msgid "New article"
 msgstr "新しい記事"
 
-#: components/ui/MessageCompose.tsx:158
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "新しい下書き"
 
@@ -425,7 +425,7 @@ msgstr "プロフィール"
 msgid "Profile ID copied to clipboard"
 msgstr "プロフィールIDをクリップボードにコピーしました"
 
-#: components/ui/MessageCompose.tsx:72
+#: components/ui/MessageCompose.tsx:71
 msgid "Remove"
 msgstr "削除"
 
@@ -449,14 +449,14 @@ msgstr "連絡先リストから削除"
 msgid "Save changes"
 msgstr "変更を保存"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "下書きを保存"
 
 #: components/screens/ContactListsScreen.tsx:78
 #: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:111
-#: components/ui/Select.tsx:139
+#: components/ui/Select.tsx:146
 msgid "Search"
 msgstr "検索"
 
@@ -470,7 +470,7 @@ msgstr "連絡先リストを検索する"
 msgid "Search contacts"
 msgstr "連絡先を検索する"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "メッセージを送信"
 
@@ -490,7 +490,7 @@ msgstr "地図で表示"
 msgid "Show QR code"
 msgstr "QRコードを表示"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:134
 msgid "Stop editing draft"
 msgstr "ドラフトの編集を停止"
 
@@ -552,7 +552,7 @@ msgstr "別のアカウントを使用"
 msgid "Will be needed to import later"
 msgstr "後でインポートするために必要です"
 
-#: components/ui/MessageCompose.tsx:114
+#: components/ui/MessageCompose.tsx:113
 msgid "Write a message"
 msgstr "メッセージを書く"
 

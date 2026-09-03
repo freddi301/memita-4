@@ -42,7 +42,7 @@ msgstr "All messages"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "Anyone who is able to import the secret will have full access to the account forever!"
 
-#: components/ui/MessageCompose.tsx:109
+#: components/ui/MessageCompose.tsx:108
 msgid "Attach file"
 msgstr "Attach file"
 
@@ -161,7 +161,7 @@ msgstr "Create new group"
 msgid "Dark"
 msgstr "Dark"
 
-#: components/ui/MessageCompose.tsx:228
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "Delete"
 
@@ -317,7 +317,7 @@ msgstr "Members"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:212
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "Modify message"
 
@@ -325,7 +325,7 @@ msgstr "Modify message"
 msgid "New article"
 msgstr "New article"
 
-#: components/ui/MessageCompose.tsx:158
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "New draft"
 
@@ -425,7 +425,7 @@ msgstr "Profile"
 msgid "Profile ID copied to clipboard"
 msgstr "Profile ID copied to clipboard"
 
-#: components/ui/MessageCompose.tsx:72
+#: components/ui/MessageCompose.tsx:71
 msgid "Remove"
 msgstr "Remove"
 
@@ -449,14 +449,14 @@ msgstr "Remove from contact list"
 msgid "Save changes"
 msgstr "Save changes"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "Save draft"
 
 #: components/screens/ContactListsScreen.tsx:78
 #: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:111
-#: components/ui/Select.tsx:139
+#: components/ui/Select.tsx:146
 msgid "Search"
 msgstr "Search"
 
@@ -470,7 +470,7 @@ msgstr "Search contact lists"
 msgid "Search contacts"
 msgstr "Search contacts"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "Send message"
 
@@ -490,7 +490,7 @@ msgstr "Show on map"
 msgid "Show QR code"
 msgstr "Show QR code"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:134
 msgid "Stop editing draft"
 msgstr "Stop editing draft"
 
@@ -552,7 +552,7 @@ msgstr "Use another account"
 msgid "Will be needed to import later"
 msgstr "Will be needed to import later"
 
-#: components/ui/MessageCompose.tsx:114
+#: components/ui/MessageCompose.tsx:113
 msgid "Write a message"
 msgstr "Write a message"
 

@@ -49,7 +49,9 @@
       "expo-localization",
       "expo-web-browser",
       "expo-document-picker",
-      "react-native-quick-crypto"
+      "react-native-quick-crypto",
+      "expo-video",
+      "expo-audio"
     ],
     "experiments": { "typedRoutes": false, "reactCompiler": true }
   }

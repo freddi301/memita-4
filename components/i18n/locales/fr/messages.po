@@ -42,7 +42,7 @@ msgstr "Tous les messages"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "Quiconque peut importer le secret aura un accès complet au compte pour toujours !"
 
-#: components/ui/MessageCompose.tsx:109
+#: components/ui/MessageCompose.tsx:108
 msgid "Attach file"
 msgstr "Joindre un fichier"
 
@@ -161,7 +161,7 @@ msgstr "Créer un nouveau groupe"
 msgid "Dark"
 msgstr "Sombre"
 
-#: components/ui/MessageCompose.tsx:228
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -317,7 +317,7 @@ msgstr "Membres"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:212
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "Modifier le message"
 
@@ -325,7 +325,7 @@ msgstr "Modifier le message"
 msgid "New article"
 msgstr "Nouvel article"
 
-#: components/ui/MessageCompose.tsx:158
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "Nouveau brouillon"
 
@@ -425,7 +425,7 @@ msgstr "Profil"
 msgid "Profile ID copied to clipboard"
 msgstr "L'ID de profil a été copié dans le presse-papiers"
 
-#: components/ui/MessageCompose.tsx:72
+#: components/ui/MessageCompose.tsx:71
 msgid "Remove"
 msgstr "Supprimer"
 
@@ -449,14 +449,14 @@ msgstr "Supprimer de la liste de contacts"
 msgid "Save changes"
 msgstr "Enregistrer les modifications"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "Enregistrer le brouillon"
 
 #: components/screens/ContactListsScreen.tsx:78
 #: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:111
-#: components/ui/Select.tsx:139
+#: components/ui/Select.tsx:146
 msgid "Search"
 msgstr "Rechercher"
 
@@ -470,7 +470,7 @@ msgstr "Rechercher dans les listes de contacts"
 msgid "Search contacts"
 msgstr "Rechercher des contacts"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "Envoyer le message"
 
@@ -490,7 +490,7 @@ msgstr "Afficher sur la carte"
 msgid "Show QR code"
 msgstr "Afficher le code QR"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:134
 msgid "Stop editing draft"
 msgstr "Arrêter de modifier la version brouillon"
 
@@ -552,7 +552,7 @@ msgstr "Utiliser un autre compte"
 msgid "Will be needed to import later"
 msgstr "Sera nécessaire pour importer plus tard"
 
-#: components/ui/MessageCompose.tsx:114
+#: components/ui/MessageCompose.tsx:113
 msgid "Write a message"
 msgstr "Écrire un message"
 

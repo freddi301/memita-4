@@ -42,7 +42,7 @@ msgstr "所有消息"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "任何能够导入密钥的人将永久拥有对该账户的完全访问权限！"
 
-#: components/ui/MessageCompose.tsx:109
+#: components/ui/MessageCompose.tsx:108
 msgid "Attach file"
 msgstr "附加文件"
 
@@ -161,7 +161,7 @@ msgstr "创建新群组"
 msgid "Dark"
 msgstr "深色"
 
-#: components/ui/MessageCompose.tsx:228
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "删除"
 
@@ -317,7 +317,7 @@ msgstr "成员"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:212
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "修改消息"
 
@@ -325,7 +325,7 @@ msgstr "修改消息"
 msgid "New article"
 msgstr "新文章"
 
-#: components/ui/MessageCompose.tsx:158
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "新草稿"
 
@@ -425,7 +425,7 @@ msgstr "个人资料"
 msgid "Profile ID copied to clipboard"
 msgstr "个人资料 ID 已复制到剪贴板"
 
-#: components/ui/MessageCompose.tsx:72
+#: components/ui/MessageCompose.tsx:71
 msgid "Remove"
 msgstr "移除"
 
@@ -449,14 +449,14 @@ msgstr "从联系人列表中移除"
 msgid "Save changes"
 msgstr "保存更改"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "保存草稿"
 
 #: components/screens/ContactListsScreen.tsx:78
 #: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:111
-#: components/ui/Select.tsx:139
+#: components/ui/Select.tsx:146
 msgid "Search"
 msgstr "搜索"
 
@@ -470,7 +470,7 @@ msgstr "搜索联系人列表"
 msgid "Search contacts"
 msgstr "搜索联系人"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "发送消息"
 
@@ -490,7 +490,7 @@ msgstr "在地图上显示"
 msgid "Show QR code"
 msgstr "显示二维码"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:134
 msgid "Stop editing draft"
 msgstr "停止编辑草稿"
 
@@ -552,7 +552,7 @@ msgstr "使用其他账户"
 msgid "Will be needed to import later"
 msgstr "稍后导入时将需要此密码"
 
-#: components/ui/MessageCompose.tsx:114
+#: components/ui/MessageCompose.tsx:113
 msgid "Write a message"
 msgstr "写一条消息"
 

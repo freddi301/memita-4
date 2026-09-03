@@ -1,11 +1,13 @@
 review features secion, normalize items -> transform into tests
 do not send draft messages
+fix editing an existing message
 dont accept future timestamps
 do not replicate deleted stuff? (ponder)
 enforce data size limits (max file size, max number and size of messages, max attachments)
 add confirm prompt for destructive actions
 add cryptography, account + device signature
 add whitelist recipients
+fix when ataching big files now the screen is frozen
 in hyperswarm disconnect from devices not in conctact list
 add confirm prompts for destrucive actions (remove account, delete contact)
 check frontend performance

@@ -42,7 +42,7 @@ msgstr "అన్ని సందేశాలు"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "రహస్యాన్ని దిగుమతి చేయగలిగిన ఎవరైనా ఖాతాకు శాశ్వతంగా పూర్తి యాక్సెస్ పొందుతారు!"
 
-#: components/ui/MessageCompose.tsx:109
+#: components/ui/MessageCompose.tsx:108
 msgid "Attach file"
 msgstr "ఫైల్ జోడించు"
 
@@ -161,7 +161,7 @@ msgstr "కొత్త గుంపు సృష్టించు"
 msgid "Dark"
 msgstr "చీకటి"
 
-#: components/ui/MessageCompose.tsx:228
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "తొలగించు"
 
@@ -317,7 +317,7 @@ msgstr "సభ్యులు"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:212
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "సందేశాన్ని మార్చు"
 
@@ -325,7 +325,7 @@ msgstr "సందేశాన్ని మార్చు"
 msgid "New article"
 msgstr "కొత్త వ్యాసం"
 
-#: components/ui/MessageCompose.tsx:158
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "కొత్త ముసాయిదా"
 
@@ -425,7 +425,7 @@ msgstr "ప్రొఫైల్"
 msgid "Profile ID copied to clipboard"
 msgstr "ప్రొఫైల్ ID క్లిప్‌బోర్డ్‌కి కాపీ చేయబడింది"
 
-#: components/ui/MessageCompose.tsx:72
+#: components/ui/MessageCompose.tsx:71
 msgid "Remove"
 msgstr "తొలగించు"
 
@@ -449,14 +449,14 @@ msgstr "సంప్రదింపు జాబితా నుండి తొ
 msgid "Save changes"
 msgstr "మార్పులు సేవ్ చేయి"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "ముసాయిదా సేవ్ చేయి"
 
 #: components/screens/ContactListsScreen.tsx:78
 #: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:111
-#: components/ui/Select.tsx:139
+#: components/ui/Select.tsx:146
 msgid "Search"
 msgstr "శోధించు"
 
@@ -470,7 +470,7 @@ msgstr "సంప్రదింపు జాబితాలను శోధి�
 msgid "Search contacts"
 msgstr "సంప్రదించగల వారిని వెతకండి"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "సందేశం పంపు"
 
@@ -490,7 +490,7 @@ msgstr "మ్యాప్‌లో చూపు"
 msgid "Show QR code"
 msgstr "QR కోడ్ చూపు"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:134
 msgid "Stop editing draft"
 msgstr "సవరణలను ఆపండి"
 
@@ -552,7 +552,7 @@ msgstr "మరో ఖాతా ఉపయోగించు"
 msgid "Will be needed to import later"
 msgstr "తర్వాత దిగుమతి చేయడానికి అవసరం అవుతుంది"
 
-#: components/ui/MessageCompose.tsx:114
+#: components/ui/MessageCompose.tsx:113
 msgid "Write a message"
 msgstr "ఒక సందేశం రాయండి"
 

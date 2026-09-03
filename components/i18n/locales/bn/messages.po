@@ -42,7 +42,7 @@ msgstr "সমস্ত বার্তা"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "যে কেউ এই সিক্রেট আমদানি করতে পারবেন তিনি চিরকালের জন্য অ্যাকাউন্টে সম্পূর্ণ অ্যাক্সেস পাবেন!"
 
-#: components/ui/MessageCompose.tsx:109
+#: components/ui/MessageCompose.tsx:108
 msgid "Attach file"
 msgstr "ফাইল সংযুক্ত করুন"
 
@@ -161,7 +161,7 @@ msgstr "নতুন গ্রুপ তৈরি করুন"
 msgid "Dark"
 msgstr "অন্ধকার"
 
-#: components/ui/MessageCompose.tsx:228
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "মুছুন"
 
@@ -317,7 +317,7 @@ msgstr "সদস্য"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:212
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "বার্তা পরিবর্তন করুন"
 
@@ -325,7 +325,7 @@ msgstr "বার্তা পরিবর্তন করুন"
 msgid "New article"
 msgstr "নতুন নিবন্ধ"
 
-#: components/ui/MessageCompose.tsx:158
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "নতুন খসড়া"
 
@@ -425,7 +425,7 @@ msgstr "প্রোফাইল"
 msgid "Profile ID copied to clipboard"
 msgstr "প্রোফাইল আইডি ক্লিপবোর্ডে কপি করা হয়েছে"
 
-#: components/ui/MessageCompose.tsx:72
+#: components/ui/MessageCompose.tsx:71
 msgid "Remove"
 msgstr "সরান"
 
@@ -449,14 +449,14 @@ msgstr "যোগাযোগের তালিকা থেকে সরিয়
 msgid "Save changes"
 msgstr "পরিবর্তন সংরক্ষণ করুন"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "খসড়া সংরক্ষণ করুন"
 
 #: components/screens/ContactListsScreen.tsx:78
 #: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:111
-#: components/ui/Select.tsx:139
+#: components/ui/Select.tsx:146
 msgid "Search"
 msgstr "অনুসন্ধান"
 
@@ -470,7 +470,7 @@ msgstr "যোগাযোগের তালিকা অনুসন্ধা�
 msgid "Search contacts"
 msgstr "যোগাযোগের তালিকা অনুসন্ধান করুন"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "বার্তা পাঠান"
 
@@ -490,7 +490,7 @@ msgstr "মানচিত্রে দেখান"
 msgid "Show QR code"
 msgstr "QR কোড দেখান"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:134
 msgid "Stop editing draft"
 msgstr "নকশার সম্পাদনা বন্ধ করুন"
 
@@ -552,7 +552,7 @@ msgstr "অন্য অ্যাকাউন্ট ব্যবহার কর
 msgid "Will be needed to import later"
 msgstr "পরে আমদানির জন্য প্রয়োজন হবে"
 
-#: components/ui/MessageCompose.tsx:114
+#: components/ui/MessageCompose.tsx:113
 msgid "Write a message"
 msgstr "একটি বার্তা লিখুন"
 

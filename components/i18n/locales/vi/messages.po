@@ -42,7 +42,7 @@ msgstr "Tất cả các tin nhắn"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "Bất kỳ ai có thể nhập khóa bí mật sẽ có toàn quyền truy cập vào tài khoản mãi mãi!"
 
-#: components/ui/MessageCompose.tsx:109
+#: components/ui/MessageCompose.tsx:108
 msgid "Attach file"
 msgstr "Đính kèm tệp"
 
@@ -161,7 +161,7 @@ msgstr "Tạo nhóm mới"
 msgid "Dark"
 msgstr "Tối"
 
-#: components/ui/MessageCompose.tsx:228
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "Xóa"
 
@@ -317,7 +317,7 @@ msgstr "Thành viên"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:212
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "Chỉnh sửa tin nhắn"
 
@@ -325,7 +325,7 @@ msgstr "Chỉnh sửa tin nhắn"
 msgid "New article"
 msgstr "Bài viết mới"
 
-#: components/ui/MessageCompose.tsx:158
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "Bản nháp mới"
 
@@ -425,7 +425,7 @@ msgstr "Hồ sơ"
 msgid "Profile ID copied to clipboard"
 msgstr "Đã sao chép ID hồ sơ vào clipboard"
 
-#: components/ui/MessageCompose.tsx:72
+#: components/ui/MessageCompose.tsx:71
 msgid "Remove"
 msgstr "Xóa"
 
@@ -449,14 +449,14 @@ msgstr "Xóa khỏi danh sách liên hệ"
 msgid "Save changes"
 msgstr "Lưu thay đổi"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "Lưu bản nháp"
 
 #: components/screens/ContactListsScreen.tsx:78
 #: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:111
-#: components/ui/Select.tsx:139
+#: components/ui/Select.tsx:146
 msgid "Search"
 msgstr "Tìm kiếm"
 
@@ -470,7 +470,7 @@ msgstr "Tìm kiếm danh sách liên hệ"
 msgid "Search contacts"
 msgstr "Tìm kiếm liên hệ"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "Gửi tin nhắn"
 
@@ -490,7 +490,7 @@ msgstr "Hiển thị trên bản đồ"
 msgid "Show QR code"
 msgstr "Hiển thị mã QR"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:134
 msgid "Stop editing draft"
 msgstr "Dừng chỉnh sửa bản nháp"
 
@@ -552,7 +552,7 @@ msgstr "Sử dụng tài khoản khác"
 msgid "Will be needed to import later"
 msgstr "Sẽ cần để nhập sau"
 
-#: components/ui/MessageCompose.tsx:114
+#: components/ui/MessageCompose.tsx:113
 msgid "Write a message"
 msgstr "Viết tin nhắn"
 

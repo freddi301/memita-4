@@ -42,7 +42,7 @@ msgstr "모든 메시지"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "비밀을 가져올 수 있는 사람은 누구든 영원히 계정에 전체 액세스할 수 있습니다!"
 
-#: components/ui/MessageCompose.tsx:109
+#: components/ui/MessageCompose.tsx:108
 msgid "Attach file"
 msgstr "파일 첨부"
 
@@ -161,7 +161,7 @@ msgstr "새 그룹 만들기"
 msgid "Dark"
 msgstr "어두운"
 
-#: components/ui/MessageCompose.tsx:228
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "삭제"
 
@@ -317,7 +317,7 @@ msgstr "멤버"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:212
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "메시지 수정"
 
@@ -325,7 +325,7 @@ msgstr "메시지 수정"
 msgid "New article"
 msgstr "새 게시물"
 
-#: components/ui/MessageCompose.tsx:158
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "새 초안"
 
@@ -425,7 +425,7 @@ msgstr "프로필"
 msgid "Profile ID copied to clipboard"
 msgstr "프로필 ID가 클립보드에 복사되었습니다"
 
-#: components/ui/MessageCompose.tsx:72
+#: components/ui/MessageCompose.tsx:71
 msgid "Remove"
 msgstr "제거"
 
@@ -449,14 +449,14 @@ msgstr "연락처 목록에서 삭제"
 msgid "Save changes"
 msgstr "변경 사항 저장"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "초안 저장"
 
 #: components/screens/ContactListsScreen.tsx:78
 #: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:111
-#: components/ui/Select.tsx:139
+#: components/ui/Select.tsx:146
 msgid "Search"
 msgstr "검색"
 
@@ -470,7 +470,7 @@ msgstr "연락처 목록 검색"
 msgid "Search contacts"
 msgstr "연락처 검색"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "메시지 보내기"
 
@@ -490,7 +490,7 @@ msgstr "지도에서 보기"
 msgid "Show QR code"
 msgstr "QR 코드 보기"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:134
 msgid "Stop editing draft"
 msgstr "초안 편집 중단"
 
@@ -552,7 +552,7 @@ msgstr "다른 계정 사용"
 msgid "Will be needed to import later"
 msgstr "나중에 가져오기에 필요합니다"
 
-#: components/ui/MessageCompose.tsx:114
+#: components/ui/MessageCompose.tsx:113
 msgid "Write a message"
 msgstr "메시지를 작성하세요"
 

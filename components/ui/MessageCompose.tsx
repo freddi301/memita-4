@@ -2,7 +2,7 @@ import { useLingui } from "@lingui/react/macro";
 import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
 import { useEffect, useState } from "react";
-import { Platform, Pressable, ScrollView, TextInput, View } from "react-native";
+import { Platform, ScrollView, TextInput, View } from "react-native";
 import { ContentAddress, storeFile } from "../store/fileStore";
 import { useTheme } from "../Theme";
 import { AttachmentPreview } from "./AttachmentPreview";
@@ -47,19 +47,18 @@ export function MessageCompose({
         {files.map((file, index) => {
           const isSelected = index === selectedFileIndex;
           return (
-            <Pressable
-              key={index}
-              onLongPress={() => {
-                setSelectedFileIndex(index);
-              }}
-              style={{
-                position: "relative",
-                borderBottomWidth: 1,
-                borderRightWidth: 1,
-                borderColor: theme.separatorColor,
-              }}
-            >
-              <AttachmentPreview file={file} />
+            <View key={index} style={{ position: "relative" }}>
+              <AttachmentPreview
+                file={file}
+                onLongPress={() => {
+                  setSelectedFileIndex(index);
+                }}
+                style={{
+                  borderBottomWidth: 1,
+                  borderRightWidth: 1,
+                  borderColor: theme.separatorColor,
+                }}
+              />
               {isSelected && (
                 <View style={{ position: "absolute", top: 0, right: 0 }}>
                   <ScreenLink
@@ -73,7 +72,7 @@ export function MessageCompose({
                   />
                 </View>
               )}
-            </Pressable>
+            </View>
           );
         })}
       </ScrollView>

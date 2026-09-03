@@ -42,7 +42,7 @@ msgstr "सर्व संदेश"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "जो कोणी गुप्त माहिती आयात करू शकतो त्याला खात्यावर कायमचे संपूर्ण प्रवेश मिळेल!"
 
-#: components/ui/MessageCompose.tsx:109
+#: components/ui/MessageCompose.tsx:108
 msgid "Attach file"
 msgstr "फाईल जोडा"
 
@@ -161,7 +161,7 @@ msgstr "नवीन गट तयार करा"
 msgid "Dark"
 msgstr "गडद"
 
-#: components/ui/MessageCompose.tsx:228
+#: components/ui/MessageCompose.tsx:227
 msgid "Delete"
 msgstr "हटवा"
 
@@ -317,7 +317,7 @@ msgstr "सदस्य"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:212
+#: components/ui/MessageCompose.tsx:211
 msgid "Modify message"
 msgstr "संदेश बदला"
 
@@ -325,7 +325,7 @@ msgstr "संदेश बदला"
 msgid "New article"
 msgstr "नवीन लेख"
 
-#: components/ui/MessageCompose.tsx:158
+#: components/ui/MessageCompose.tsx:157
 msgid "New draft"
 msgstr "नवीन मसुदा"
 
@@ -425,7 +425,7 @@ msgstr "प्रोफाइल"
 msgid "Profile ID copied to clipboard"
 msgstr "प्रोफाइल आयडी क्लिपबोर्डवर कॉपी केला"
 
-#: components/ui/MessageCompose.tsx:72
+#: components/ui/MessageCompose.tsx:71
 msgid "Remove"
 msgstr "काढा"
 
@@ -449,14 +449,14 @@ msgstr "संपर्कातून काढून टाका"
 msgid "Save changes"
 msgstr "बदल जतन करा"
 
-#: components/ui/MessageCompose.tsx:174
+#: components/ui/MessageCompose.tsx:173
 msgid "Save draft"
 msgstr "मसुदा जतन करा"
 
 #: components/screens/ContactListsScreen.tsx:78
 #: components/screens/DirectConversationScreen.tsx:353
 #: components/screens/DirectMessagesScreen.tsx:111
-#: components/ui/Select.tsx:139
+#: components/ui/Select.tsx:146
 msgid "Search"
 msgstr "शोधा"
 
@@ -470,7 +470,7 @@ msgstr "संपर्क याद्या शोधा"
 msgid "Search contacts"
 msgstr "संपर्कांची शोधा"
 
-#: components/ui/MessageCompose.tsx:192
+#: components/ui/MessageCompose.tsx:191
 msgid "Send message"
 msgstr "संदेश पाठवा"
 
@@ -490,7 +490,7 @@ msgstr "नकाशावर दाखवा"
 msgid "Show QR code"
 msgstr "QR कोड दाखवा"
 
-#: components/ui/MessageCompose.tsx:135
+#: components/ui/MessageCompose.tsx:134
 msgid "Stop editing draft"
 msgstr "ड्राफ्ट संपादन करणे थांबवा"
 
@@ -552,7 +552,7 @@ msgstr "दुसरे खाते वापरा"
 msgid "Will be needed to import later"
 msgstr "नंतर आयात करण्यासाठी आवश्यक असेल"
 
-#: components/ui/MessageCompose.tsx:114
+#: components/ui/MessageCompose.tsx:113
 msgid "Write a message"
 msgstr "संदेश लिहा"
 
