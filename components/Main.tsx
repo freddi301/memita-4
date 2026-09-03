@@ -6,7 +6,11 @@ import { useLocalSearchParams } from "expo-router";
 import { isEqual } from "lodash";
 import { useEffect, useMemo, useState } from "react";
 import { BackHandler, Platform } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import {
+  initialWindowMetrics,
+  SafeAreaProvider,
+  SafeAreaView,
+} from "react-native-safe-area-context";
 import { patchFlatListProps } from "react-native-web-refresh-control";
 import {
   registerForPushNotificationsAsync,
@@ -149,7 +153,7 @@ export function createApp({ storage }: { storage: StorageInterface }) {
     useDisableBack();
 
     return (
-      <SafeAreaProvider>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
         <FeApiContext value={api}>
           <QueryClientProvider client={queryClient}>
             <Memitai18n i18n={i18n}>

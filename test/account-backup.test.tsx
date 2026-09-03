@@ -1,4 +1,4 @@
-import { render, userEvent } from "@testing-library/react-native";
+import { render, userEvent, waitFor } from "@testing-library/react-native";
 import * as Clipboard from "expo-clipboard";
 import { Alert } from "react-native";
 import { createTestApp } from "./utils/createTestApp";
@@ -38,7 +38,9 @@ test("user can export and import account", async () => {
     );
     await exportUser.press(await exportScreen.findByText("Confirm export"));
 
-    expect(clipboardSpy).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(clipboardSpy).toHaveBeenCalled();
+    });
     expect(alertSpy).toHaveBeenCalledWith(
       "Exported account secret copied to clipboard",
     );
@@ -51,7 +53,7 @@ test("user can export and import account", async () => {
 
     await importUser.press(await importScreen.findByText("Import account"));
     await importUser.type(
-      importScreen.getByPlaceholderText(
+      await importScreen.findByPlaceholderText(
         "This name is only visible to you on this device",
       ),
       "Alice Imported",
@@ -105,6 +107,9 @@ test("user sees error when importing with wrong password", async () => {
     );
     await exportUser.press(await exportScreen.findByText("Confirm export"));
 
+    await waitFor(() => {
+      expect(clipboardSpy).toHaveBeenCalled();
+    });
     const exportedPayload = clipboardContent;
 
     const { Main: ImportMain } = await createTestApp();
@@ -113,7 +118,7 @@ test("user sees error when importing with wrong password", async () => {
 
     await importUser.press(await importScreen.findByText("Import account"));
     await importUser.type(
-      importScreen.getByPlaceholderText(
+      await importScreen.findByPlaceholderText(
         "This name is only visible to you on this device",
       ),
       "Alice Imported",
@@ -128,7 +133,11 @@ test("user sees error when importing with wrong password", async () => {
     );
     await importUser.press(await importScreen.findByText("Confirm import"));
 
-    expect(alertSpy).toHaveBeenCalledWith("Invalid account secret or password");
+    await waitFor(() => {
+      expect(alertSpy).toHaveBeenCalledWith(
+        "Invalid account secret or password",
+      );
+    });
     expect(importScreen.queryByText("Account settings")).toBeNull();
   } finally {
     clipboardSpy.mockRestore();
