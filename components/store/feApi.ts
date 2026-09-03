@@ -12,7 +12,7 @@ export type MemitaMutation<Params> = (
   p: Params,
 ) => (apiContext: FeApiContextType) => Promise<void>;
 
-type FeApiContextType = {
+export type FeApiContextType = {
   appStorage: QueuedStorageInterface<AppStoredData>;
   store: StoreOutInterface<DataItem>;
 };

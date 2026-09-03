@@ -111,6 +111,7 @@ export function DirectMessagesScreen({
                   placeholder={t`Search`}
                   autoCapitalize="none"
                   autoCorrect={false}
+                  autoFocus
                 />
               </View>
             );

@@ -91,8 +91,13 @@ export const getDeviceId: MemitaQuery<
 > =
   ({ accountId }) =>
   async ({ appStorage }) => {
+    if (!accountId) return undefined;
     const current = await appStorage.read();
-    return accountId ? getDeviceIdByAccountId(accountId, current) : undefined;
+    try {
+      return getDeviceIdByAccountId(accountId, current);
+    } catch {
+      return undefined;
+    }
   };
 
 export function getDeviceIdByAccountId(

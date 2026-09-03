@@ -105,7 +105,7 @@ msgstr "సంప్రదింపు ఖాతా ID"
 msgid "Contact list name"
 msgstr "సంప్రదింపుల జాబితా పేరు"
 
-#: components/screens/DirectMessagesScreen.tsx:124
+#: components/screens/DirectMessagesScreen.tsx:125
 msgid "Contact lists"
 msgstr "సంప్రదించవలసిన జాబితాలు"
 
@@ -213,7 +213,7 @@ msgstr "సంప్రదింపు సవరించు"
 msgid "Edit date"
 msgstr "తేదీ సవరించు"
 
-#: components/screens/DirectConversationScreen.tsx:375
+#: components/screens/DirectConversationScreen.tsx:505
 msgid "Edit message"
 msgstr "సందేశాన్ని సవరించండి"
 
@@ -259,7 +259,7 @@ msgstr "వ్యాసాలకు వెళ్ళు"
 msgid "Go to conversation"
 msgstr "సంభాషణకు వెళ్ళు"
 
-#: components/screens/DirectConversationScreen.tsx:173
+#: components/screens/DirectConversationScreen.tsx:216
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "సందేశాలకు వెళ్ళు"
@@ -289,6 +289,10 @@ msgstr "చెల్లని ఖాతా రహస్యం లేదా ప�
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "ఇద్దరు వ్యక్తులు అవసరం. చాటింగ్ ప్రారంభించడానికి, ఒకరినొకరు కాంటాక్ట్‌లుగా చేర్చుకోండి!"
 
+#: components/screens/DirectConversationScreen.tsx:444
+msgid "Jump to date"
+msgstr "తేదీకి వెళ్లండి"
+
 #: components/screens/DeviceSettingsScreen.tsx:101
 msgid "Language"
 msgstr "భాష"
@@ -301,7 +305,7 @@ msgstr "వెలుతురు"
 msgid "Location"
 msgstr "స్థానం"
 
-#: components/screens/DirectConversationScreen.tsx:433
+#: components/screens/DirectConversationScreen.tsx:563
 msgid "Mark as read"
 msgstr "చదివినట్లు గుర్తించు"
 
@@ -329,8 +333,8 @@ msgstr "కొత్త వ్యాసం"
 msgid "New draft"
 msgstr "కొత్త ముసాయిదా"
 
-#: components/screens/DirectConversationScreen.tsx:462
-#: components/screens/DirectConversationScreen.tsx:546
+#: components/screens/DirectConversationScreen.tsx:592
+#: components/screens/DirectConversationScreen.tsx:677
 msgid "Next occurrence"
 msgstr "తదుపరి సారి"
 
@@ -351,7 +355,7 @@ msgstr "ఏ మార్పులు జరగలేదు"
 msgid "No connected devices"
 msgstr "కనెక్ట్ చేయబడిన పరికరాలు ఏవీ లేవు"
 
-#: components/screens/ContactListsScreen.tsx:133
+#: components/screens/ContactListsScreen.tsx:134
 #: components/screens/ContactScreen.tsx:339
 msgid "No contact lists"
 msgstr "సంప్రదింపు జాబితాలు లేవు"
@@ -360,17 +364,18 @@ msgstr "సంప్రదింపు జాబితాలు లేవు"
 msgid "No contacts"
 msgstr "సంప్రదించగల వ్యక్తులు లేరు"
 
-#: components/screens/DirectConversationScreen.tsx:332
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
+#: components/ui/JumpToDateCalendar.tsx:143
 msgid "No messages"
 msgstr "సందేశాలు లేవు"
 
 #: components/screens/ContactListScreen.tsx:251
-#: components/screens/ContactListsScreen.tsx:124
+#: components/screens/ContactListsScreen.tsx:125
 #: components/screens/ContactScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "ఏ ఫలితాలు కనుగొనబడలేదు"
 
@@ -410,8 +415,8 @@ msgstr "మీ సంప్రదింపు మీతో పంచుకున
 msgid "Places"
 msgstr "స్థలాలు"
 
-#: components/screens/DirectConversationScreen.tsx:398
-#: components/screens/DirectConversationScreen.tsx:520
+#: components/screens/DirectConversationScreen.tsx:528
+#: components/screens/DirectConversationScreen.tsx:651
 msgid "Previous occurrence"
 msgstr "మునుపటి సారి"
 
@@ -454,7 +459,7 @@ msgid "Save draft"
 msgstr "ముసాయిదా సేవ్ చేయి"
 
 #: components/screens/ContactListsScreen.tsx:78
-#: components/screens/DirectConversationScreen.tsx:353
+#: components/screens/DirectConversationScreen.tsx:483
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -536,7 +541,7 @@ msgstr "ఈ పేరు ఈ పరికరంలో మీకు మాత్�
 msgid "This will your avatar forever, choose wisely"
 msgstr "ఇది మీ అవతారం శాశ్వతంగా ఉంటుంది, తెలివిగా ఎంచుకోండి"
 
-#: components/screens/DirectConversationScreen.tsx:483
+#: components/screens/DirectConversationScreen.tsx:613
 msgid "Unread messages"
 msgstr "చదవని సందేశాలు"
 

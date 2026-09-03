@@ -18,6 +18,7 @@ create more efficient database
 ensure data is safe in the database if device is stolen
 security audit
 mitigate denial of service
+bug: fix on direct conversation screen, when bigger text and more messages, the messages layout breaks, differently on andoird and electrton
 
 refactor so that entities
 Message - for DM, group message, articles, events

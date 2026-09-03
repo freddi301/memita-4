@@ -105,7 +105,7 @@ msgstr "معرّف حساب جهة الاتصال"
 msgid "Contact list name"
 msgstr "اسم قائمة جهات الاتصال"
 
-#: components/screens/DirectMessagesScreen.tsx:124
+#: components/screens/DirectMessagesScreen.tsx:125
 msgid "Contact lists"
 msgstr "قوائم جهات الاتصال"
 
@@ -213,7 +213,7 @@ msgstr "تعديل جهة الاتصال"
 msgid "Edit date"
 msgstr "تعديل التاريخ"
 
-#: components/screens/DirectConversationScreen.tsx:375
+#: components/screens/DirectConversationScreen.tsx:505
 msgid "Edit message"
 msgstr "عدّل الرسالة"
 
@@ -259,7 +259,7 @@ msgstr "الذهاب إلى المقالات"
 msgid "Go to conversation"
 msgstr "الذهاب إلى المحادثة"
 
-#: components/screens/DirectConversationScreen.tsx:173
+#: components/screens/DirectConversationScreen.tsx:216
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "الذهاب إلى الرسائل"
@@ -289,6 +289,10 @@ msgstr "سر الحساب أو كلمة المرور غير صالحة"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "يتطلب الأمر شخصين. أضفوا بعضكما البعض كجهات اتصال لبدء الدردشة!"
 
+#: components/screens/DirectConversationScreen.tsx:444
+msgid "Jump to date"
+msgstr "انتقل إلى التاريخ"
+
 #: components/screens/DeviceSettingsScreen.tsx:101
 msgid "Language"
 msgstr "اللغة"
@@ -301,7 +305,7 @@ msgstr "فاتح"
 msgid "Location"
 msgstr "الموقع"
 
-#: components/screens/DirectConversationScreen.tsx:433
+#: components/screens/DirectConversationScreen.tsx:563
 msgid "Mark as read"
 msgstr "تحديد كمقروء"
 
@@ -329,8 +333,8 @@ msgstr "مقال جديد"
 msgid "New draft"
 msgstr "مسودة جديدة"
 
-#: components/screens/DirectConversationScreen.tsx:462
-#: components/screens/DirectConversationScreen.tsx:546
+#: components/screens/DirectConversationScreen.tsx:592
+#: components/screens/DirectConversationScreen.tsx:677
 msgid "Next occurrence"
 msgstr "التكرار التالي"
 
@@ -351,7 +355,7 @@ msgstr "لم يتم إجراء أي تغييرات حتى الآن"
 msgid "No connected devices"
 msgstr "لا توجد أجهزة متصلة"
 
-#: components/screens/ContactListsScreen.tsx:133
+#: components/screens/ContactListsScreen.tsx:134
 #: components/screens/ContactScreen.tsx:339
 msgid "No contact lists"
 msgstr "قائمة جهات الاتصال غير متوفرة"
@@ -360,17 +364,18 @@ msgstr "قائمة جهات الاتصال غير متوفرة"
 msgid "No contacts"
 msgstr "لا يوجد جهات اتصال"
 
-#: components/screens/DirectConversationScreen.tsx:332
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
+#: components/ui/JumpToDateCalendar.tsx:143
 msgid "No messages"
 msgstr "لا توجد رسائل"
 
 #: components/screens/ContactListScreen.tsx:251
-#: components/screens/ContactListsScreen.tsx:124
+#: components/screens/ContactListsScreen.tsx:125
 #: components/screens/ContactScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "لم يتم العثور على أي نتائج"
 
@@ -410,8 +415,8 @@ msgstr "الصق معرّف الحساب الذي شاركه معك جهة ال�
 msgid "Places"
 msgstr "الأماكن"
 
-#: components/screens/DirectConversationScreen.tsx:398
-#: components/screens/DirectConversationScreen.tsx:520
+#: components/screens/DirectConversationScreen.tsx:528
+#: components/screens/DirectConversationScreen.tsx:651
 msgid "Previous occurrence"
 msgstr "التكرار السابق"
 
@@ -454,7 +459,7 @@ msgid "Save draft"
 msgstr "حفظ المسودة"
 
 #: components/screens/ContactListsScreen.tsx:78
-#: components/screens/DirectConversationScreen.tsx:353
+#: components/screens/DirectConversationScreen.tsx:483
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -536,7 +541,7 @@ msgstr "هذا الاسم مرئي لك فقط على هذا الجهاز"
 msgid "This will your avatar forever, choose wisely"
 msgstr "سيكون هذا صورتك الرمزية إلى الأبد، اختر بحكمة"
 
-#: components/screens/DirectConversationScreen.tsx:483
+#: components/screens/DirectConversationScreen.tsx:613
 msgid "Unread messages"
 msgstr "الرسائل غير المقروءة"
 

@@ -105,7 +105,7 @@ msgstr "ID akun kontak"
 msgid "Contact list name"
 msgstr "Nama daftar kontak"
 
-#: components/screens/DirectMessagesScreen.tsx:124
+#: components/screens/DirectMessagesScreen.tsx:125
 msgid "Contact lists"
 msgstr "Daftar kontak"
 
@@ -213,7 +213,7 @@ msgstr "Sunting kontak"
 msgid "Edit date"
 msgstr "Sunting tanggal"
 
-#: components/screens/DirectConversationScreen.tsx:375
+#: components/screens/DirectConversationScreen.tsx:505
 msgid "Edit message"
 msgstr "Sunting pesan"
 
@@ -259,7 +259,7 @@ msgstr "Menyang artikel"
 msgid "Go to conversation"
 msgstr "Menyang obrolan"
 
-#: components/screens/DirectConversationScreen.tsx:173
+#: components/screens/DirectConversationScreen.tsx:216
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "Menyang pesan"
@@ -289,6 +289,10 @@ msgstr "Rahasia akun utawa sandi ora valid"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "Butuh dua orang. Tambahkan satu sama lain sebagai kontak untuk mulai mengobrol!"
 
+#: components/screens/DirectConversationScreen.tsx:444
+msgid "Jump to date"
+msgstr "Pindah menyandang tanggal"
+
 #: components/screens/DeviceSettingsScreen.tsx:101
 msgid "Language"
 msgstr "Basa"
@@ -301,7 +305,7 @@ msgstr "Padhang"
 msgid "Location"
 msgstr "Lokasi"
 
-#: components/screens/DirectConversationScreen.tsx:433
+#: components/screens/DirectConversationScreen.tsx:563
 msgid "Mark as read"
 msgstr "Tandai wis diwaca"
 
@@ -329,8 +333,8 @@ msgstr "Artikel anyar"
 msgid "New draft"
 msgstr "Draf anyar"
 
-#: components/screens/DirectConversationScreen.tsx:462
-#: components/screens/DirectConversationScreen.tsx:546
+#: components/screens/DirectConversationScreen.tsx:592
+#: components/screens/DirectConversationScreen.tsx:677
 msgid "Next occurrence"
 msgstr "Kejadian sabanjure"
 
@@ -351,7 +355,7 @@ msgstr "Masih belum ada perubahan"
 msgid "No connected devices"
 msgstr "Tidak ada perangkat yang terhubung"
 
-#: components/screens/ContactListsScreen.tsx:133
+#: components/screens/ContactListsScreen.tsx:134
 #: components/screens/ContactScreen.tsx:339
 msgid "No contact lists"
 msgstr "Tidak ada daftar kontak"
@@ -360,17 +364,18 @@ msgstr "Tidak ada daftar kontak"
 msgid "No contacts"
 msgstr "Tidak ada kontak"
 
-#: components/screens/DirectConversationScreen.tsx:332
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
+#: components/ui/JumpToDateCalendar.tsx:143
 msgid "No messages"
 msgstr "Ora ana pesan"
 
 #: components/screens/ContactListScreen.tsx:251
-#: components/screens/ContactListsScreen.tsx:124
+#: components/screens/ContactListsScreen.tsx:125
 #: components/screens/ContactScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "Tidak ketemu hasil"
 
@@ -410,8 +415,8 @@ msgstr "Tempel ID akun sing dikirim kontak marang sampeyan"
 msgid "Places"
 msgstr "Panggonan"
 
-#: components/screens/DirectConversationScreen.tsx:398
-#: components/screens/DirectConversationScreen.tsx:520
+#: components/screens/DirectConversationScreen.tsx:528
+#: components/screens/DirectConversationScreen.tsx:651
 msgid "Previous occurrence"
 msgstr "Kejadian sadurunge"
 
@@ -454,7 +459,7 @@ msgid "Save draft"
 msgstr "Simpen draf"
 
 #: components/screens/ContactListsScreen.tsx:78
-#: components/screens/DirectConversationScreen.tsx:353
+#: components/screens/DirectConversationScreen.tsx:483
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -536,7 +541,7 @@ msgstr "Jeneng iki mung katon kanggo sampeyan ing piranti iki"
 msgid "This will your avatar forever, choose wisely"
 msgstr "Iki bakal dadi avatar sampeyan selawase, piliha kanthi wicaksana"
 
-#: components/screens/DirectConversationScreen.tsx:483
+#: components/screens/DirectConversationScreen.tsx:613
 msgid "Unread messages"
 msgstr "Pesan durung diwaca"
 

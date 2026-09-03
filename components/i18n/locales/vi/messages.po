@@ -105,7 +105,7 @@ msgstr "ID tài khoản liên lạc"
 msgid "Contact list name"
 msgstr "Tên danh sách liên hệ"
 
-#: components/screens/DirectMessagesScreen.tsx:124
+#: components/screens/DirectMessagesScreen.tsx:125
 msgid "Contact lists"
 msgstr "Danh sách liên hệ"
 
@@ -213,7 +213,7 @@ msgstr "Chỉnh sửa liên lạc"
 msgid "Edit date"
 msgstr "Chỉnh sửa ngày"
 
-#: components/screens/DirectConversationScreen.tsx:375
+#: components/screens/DirectConversationScreen.tsx:505
 msgid "Edit message"
 msgstr "Chỉnh sửa tin nhắn"
 
@@ -259,7 +259,7 @@ msgstr "Đến bài viết"
 msgid "Go to conversation"
 msgstr "Đến cuộc trò chuyện"
 
-#: components/screens/DirectConversationScreen.tsx:173
+#: components/screens/DirectConversationScreen.tsx:216
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "Đến tin nhắn"
@@ -289,6 +289,10 @@ msgstr "Khóa bí mật hoặc mật khẩu tài khoản không hợp lệ"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "Cần có hai người. Thêm người kia vào danh sách liên hệ của bạn để bắt đầu trò chuyện!"
 
+#: components/screens/DirectConversationScreen.tsx:444
+msgid "Jump to date"
+msgstr "Nhảy đến ngày"
+
 #: components/screens/DeviceSettingsScreen.tsx:101
 msgid "Language"
 msgstr "Ngôn ngữ"
@@ -301,7 +305,7 @@ msgstr "Sáng"
 msgid "Location"
 msgstr "Vị trí"
 
-#: components/screens/DirectConversationScreen.tsx:433
+#: components/screens/DirectConversationScreen.tsx:563
 msgid "Mark as read"
 msgstr "Đánh dấu là đã đọc"
 
@@ -329,8 +333,8 @@ msgstr "Bài viết mới"
 msgid "New draft"
 msgstr "Bản nháp mới"
 
-#: components/screens/DirectConversationScreen.tsx:462
-#: components/screens/DirectConversationScreen.tsx:546
+#: components/screens/DirectConversationScreen.tsx:592
+#: components/screens/DirectConversationScreen.tsx:677
 msgid "Next occurrence"
 msgstr "Lần xuất hiện tiếp theo"
 
@@ -351,7 +355,7 @@ msgstr "Chưa có thay đổi nào"
 msgid "No connected devices"
 msgstr "Không có thiết bị nào được kết nối"
 
-#: components/screens/ContactListsScreen.tsx:133
+#: components/screens/ContactListsScreen.tsx:134
 #: components/screens/ContactScreen.tsx:339
 msgid "No contact lists"
 msgstr "Không có danh sách liên hệ"
@@ -360,17 +364,18 @@ msgstr "Không có danh sách liên hệ"
 msgid "No contacts"
 msgstr "Không có liên hệ"
 
-#: components/screens/DirectConversationScreen.tsx:332
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
+#: components/ui/JumpToDateCalendar.tsx:143
 msgid "No messages"
 msgstr "Không có tin nhắn"
 
 #: components/screens/ContactListScreen.tsx:251
-#: components/screens/ContactListsScreen.tsx:124
+#: components/screens/ContactListsScreen.tsx:125
 #: components/screens/ContactScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "Không tìm thấy kết quả"
 
@@ -410,8 +415,8 @@ msgstr "Dán ID tài khoản mà liên lạc của bạn đã chia sẻ"
 msgid "Places"
 msgstr "Địa điểm"
 
-#: components/screens/DirectConversationScreen.tsx:398
-#: components/screens/DirectConversationScreen.tsx:520
+#: components/screens/DirectConversationScreen.tsx:528
+#: components/screens/DirectConversationScreen.tsx:651
 msgid "Previous occurrence"
 msgstr "Lần xuất hiện trước"
 
@@ -454,7 +459,7 @@ msgid "Save draft"
 msgstr "Lưu bản nháp"
 
 #: components/screens/ContactListsScreen.tsx:78
-#: components/screens/DirectConversationScreen.tsx:353
+#: components/screens/DirectConversationScreen.tsx:483
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -536,7 +541,7 @@ msgstr "Tên này chỉ hiển thị với bạn trên thiết bị này"
 msgid "This will your avatar forever, choose wisely"
 msgstr "Đây sẽ là avatar của bạn mãi mãi, hãy chọn thật khôn ngoan"
 
-#: components/screens/DirectConversationScreen.tsx:483
+#: components/screens/DirectConversationScreen.tsx:613
 msgid "Unread messages"
 msgstr "Tin nhắn chưa đọc"
 

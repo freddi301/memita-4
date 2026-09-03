@@ -105,7 +105,7 @@ msgstr "رابطہ اکاؤنٹ آئی ڈی"
 msgid "Contact list name"
 msgstr "تماسوں کی فہرست کا نام"
 
-#: components/screens/DirectMessagesScreen.tsx:124
+#: components/screens/DirectMessagesScreen.tsx:125
 msgid "Contact lists"
 msgstr "تماس کے اعداد و شمار"
 
@@ -213,7 +213,7 @@ msgstr "رابطے میں ترمیم کریں"
 msgid "Edit date"
 msgstr "تاریخ میں ترمیم کریں"
 
-#: components/screens/DirectConversationScreen.tsx:375
+#: components/screens/DirectConversationScreen.tsx:505
 msgid "Edit message"
 msgstr "پیغام کو تبدیل کریں"
 
@@ -259,7 +259,7 @@ msgstr "مضامین پر جائیں"
 msgid "Go to conversation"
 msgstr "گفتگو پر جائیں"
 
-#: components/screens/DirectConversationScreen.tsx:173
+#: components/screens/DirectConversationScreen.tsx:216
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "پیغامات پر جائیں"
@@ -289,6 +289,10 @@ msgstr "غلط اکاؤنٹ راز یا پاس ورڈ"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "یہ دو افراد کے لیے ہے۔ ایک دوسرے کو رابطہ کے طور پر شامل کریں اور شروع کریں!"
 
+#: components/screens/DirectConversationScreen.tsx:444
+msgid "Jump to date"
+msgstr "تاریخ پر جائیں"
+
 #: components/screens/DeviceSettingsScreen.tsx:101
 msgid "Language"
 msgstr "زبان"
@@ -301,7 +305,7 @@ msgstr "روشن"
 msgid "Location"
 msgstr "مقام"
 
-#: components/screens/DirectConversationScreen.tsx:433
+#: components/screens/DirectConversationScreen.tsx:563
 msgid "Mark as read"
 msgstr "پڑھا ہوا نشان کریں"
 
@@ -329,8 +333,8 @@ msgstr "نیا مضمون"
 msgid "New draft"
 msgstr "نیا مسودہ"
 
-#: components/screens/DirectConversationScreen.tsx:462
-#: components/screens/DirectConversationScreen.tsx:546
+#: components/screens/DirectConversationScreen.tsx:592
+#: components/screens/DirectConversationScreen.tsx:677
 msgid "Next occurrence"
 msgstr "اگلی موجودگی"
 
@@ -351,7 +355,7 @@ msgstr "اب تک کوئی تبدیلی نہیں ہوئی۔"
 msgid "No connected devices"
 msgstr "کوئی منسلک آلات نہیں"
 
-#: components/screens/ContactListsScreen.tsx:133
+#: components/screens/ContactListsScreen.tsx:134
 #: components/screens/ContactScreen.tsx:339
 msgid "No contact lists"
 msgstr "کسی بھی رابطہ کی فہرستیں نہیں"
@@ -360,17 +364,18 @@ msgstr "کسی بھی رابطہ کی فہرستیں نہیں"
 msgid "No contacts"
 msgstr "کوئی رابطہ نہیں"
 
-#: components/screens/DirectConversationScreen.tsx:332
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
+#: components/ui/JumpToDateCalendar.tsx:143
 msgid "No messages"
 msgstr "کوئی پیغام نہیں"
 
 #: components/screens/ContactListScreen.tsx:251
-#: components/screens/ContactListsScreen.tsx:124
+#: components/screens/ContactListsScreen.tsx:125
 #: components/screens/ContactScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "کوئی نتیجہ نہیں ملا"
 
@@ -410,8 +415,8 @@ msgstr "وہ اکاؤنٹ آئی ڈی چسپاں کریں جو آپ کے راب�
 msgid "Places"
 msgstr "مقامات"
 
-#: components/screens/DirectConversationScreen.tsx:398
-#: components/screens/DirectConversationScreen.tsx:520
+#: components/screens/DirectConversationScreen.tsx:528
+#: components/screens/DirectConversationScreen.tsx:651
 msgid "Previous occurrence"
 msgstr "پچھلی موجودگی"
 
@@ -454,7 +459,7 @@ msgid "Save draft"
 msgstr "مسودہ محفوظ کریں"
 
 #: components/screens/ContactListsScreen.tsx:78
-#: components/screens/DirectConversationScreen.tsx:353
+#: components/screens/DirectConversationScreen.tsx:483
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -536,7 +541,7 @@ msgstr "یہ نام اس ڈیوائس پر صرف آپ کو نظر آتا ہے"
 msgid "This will your avatar forever, choose wisely"
 msgstr "یہ ہمیشہ کے لیے آپ کا اوتار ہوگا، عقلمندی سے چنیں"
 
-#: components/screens/DirectConversationScreen.tsx:483
+#: components/screens/DirectConversationScreen.tsx:613
 msgid "Unread messages"
 msgstr "نہ پڑھے گئے پیغامات"
 

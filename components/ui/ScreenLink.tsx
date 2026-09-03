@@ -1,6 +1,6 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { Fragment, ReactNode, useState } from "react";
-import { Pressable, StyleProp, Text, ViewStyle } from "react-native";
+import { Keyboard, Pressable, StyleProp, Text, ViewStyle } from "react-native";
 import { To, useRouterContext } from "../Routing";
 import { useTheme } from "../Theme";
 import { Icon } from "./Icon";
@@ -76,8 +76,9 @@ export function ScreenLink({
         if (isDisabled) {
           return;
         }
+        Keyboard.dismiss();
         setIsPerforming(true);
-        navigate({
+        void navigate({
           to,
           onDone() {
             setIsPerforming(false);

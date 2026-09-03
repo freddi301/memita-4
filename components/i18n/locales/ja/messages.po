@@ -105,7 +105,7 @@ msgstr "連絡先アカウントID"
 msgid "Contact list name"
 msgstr "連絡先リストの名前"
 
-#: components/screens/DirectMessagesScreen.tsx:124
+#: components/screens/DirectMessagesScreen.tsx:125
 msgid "Contact lists"
 msgstr "連絡先リスト"
 
@@ -213,7 +213,7 @@ msgstr "連絡先を編集"
 msgid "Edit date"
 msgstr "日付を編集"
 
-#: components/screens/DirectConversationScreen.tsx:375
+#: components/screens/DirectConversationScreen.tsx:505
 msgid "Edit message"
 msgstr "メッセージを編集する"
 
@@ -259,7 +259,7 @@ msgstr "記事へ移動"
 msgid "Go to conversation"
 msgstr "会話へ移動"
 
-#: components/screens/DirectConversationScreen.tsx:173
+#: components/screens/DirectConversationScreen.tsx:216
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "メッセージへ移動"
@@ -289,6 +289,10 @@ msgstr "アカウントシークレットまたはパスワードが無効です
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "お互いに連絡先として追加すると、チャットを開始できます！"
 
+#: components/screens/DirectConversationScreen.tsx:444
+msgid "Jump to date"
+msgstr "日付へ移動する"
+
 #: components/screens/DeviceSettingsScreen.tsx:101
 msgid "Language"
 msgstr "言語"
@@ -301,7 +305,7 @@ msgstr "ライト"
 msgid "Location"
 msgstr "場所"
 
-#: components/screens/DirectConversationScreen.tsx:433
+#: components/screens/DirectConversationScreen.tsx:563
 msgid "Mark as read"
 msgstr "既読にする"
 
@@ -329,8 +333,8 @@ msgstr "新しい記事"
 msgid "New draft"
 msgstr "新しい下書き"
 
-#: components/screens/DirectConversationScreen.tsx:462
-#: components/screens/DirectConversationScreen.tsx:546
+#: components/screens/DirectConversationScreen.tsx:592
+#: components/screens/DirectConversationScreen.tsx:677
 msgid "Next occurrence"
 msgstr "次の一致"
 
@@ -351,7 +355,7 @@ msgstr "現時点では変更はありません"
 msgid "No connected devices"
 msgstr "接続されているデバイスはありません。"
 
-#: components/screens/ContactListsScreen.tsx:133
+#: components/screens/ContactListsScreen.tsx:134
 #: components/screens/ContactScreen.tsx:339
 msgid "No contact lists"
 msgstr "連絡先リストはありません"
@@ -360,17 +364,18 @@ msgstr "連絡先リストはありません"
 msgid "No contacts"
 msgstr "連絡先がありません"
 
-#: components/screens/DirectConversationScreen.tsx:332
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
+#: components/ui/JumpToDateCalendar.tsx:143
 msgid "No messages"
 msgstr "メッセージがありません"
 
 #: components/screens/ContactListScreen.tsx:251
-#: components/screens/ContactListsScreen.tsx:124
+#: components/screens/ContactListsScreen.tsx:125
 #: components/screens/ContactScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "検索結果はありません"
 
@@ -410,8 +415,8 @@ msgstr "連絡先が共有したアカウントIDを貼り付けてください"
 msgid "Places"
 msgstr "場所"
 
-#: components/screens/DirectConversationScreen.tsx:398
-#: components/screens/DirectConversationScreen.tsx:520
+#: components/screens/DirectConversationScreen.tsx:528
+#: components/screens/DirectConversationScreen.tsx:651
 msgid "Previous occurrence"
 msgstr "前の一致"
 
@@ -454,7 +459,7 @@ msgid "Save draft"
 msgstr "下書きを保存"
 
 #: components/screens/ContactListsScreen.tsx:78
-#: components/screens/DirectConversationScreen.tsx:353
+#: components/screens/DirectConversationScreen.tsx:483
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -536,7 +541,7 @@ msgstr "この名前はこのデバイスであなただけに表示されます
 msgid "This will your avatar forever, choose wisely"
 msgstr "これがあなたのアバターになります。慎重に選んでください"
 
-#: components/screens/DirectConversationScreen.tsx:483
+#: components/screens/DirectConversationScreen.tsx:613
 msgid "Unread messages"
 msgstr "未読メッセージ"
 

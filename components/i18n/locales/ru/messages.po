@@ -105,7 +105,7 @@ msgstr "ID аккаунта контакта"
 msgid "Contact list name"
 msgstr "Имя списка контактов"
 
-#: components/screens/DirectMessagesScreen.tsx:124
+#: components/screens/DirectMessagesScreen.tsx:125
 msgid "Contact lists"
 msgstr "Список контактов"
 
@@ -213,7 +213,7 @@ msgstr "Редактировать контакт"
 msgid "Edit date"
 msgstr "Редактировать дату"
 
-#: components/screens/DirectConversationScreen.tsx:375
+#: components/screens/DirectConversationScreen.tsx:505
 msgid "Edit message"
 msgstr "Редактировать сообщение"
 
@@ -259,7 +259,7 @@ msgstr "Перейти к статьям"
 msgid "Go to conversation"
 msgstr "Перейти к разговору"
 
-#: components/screens/DirectConversationScreen.tsx:173
+#: components/screens/DirectConversationScreen.tsx:216
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "Перейти к сообщениям"
@@ -289,6 +289,10 @@ msgstr "Неверный секрет аккаунта или пароль"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "Для начала чата необходимо, чтобы у вас были контакты друг у друга. Добавьте друг друга в контакты, чтобы начать общение!"
 
+#: components/screens/DirectConversationScreen.tsx:444
+msgid "Jump to date"
+msgstr "Перейти к дате"
+
 #: components/screens/DeviceSettingsScreen.tsx:101
 msgid "Language"
 msgstr "Язык"
@@ -301,7 +305,7 @@ msgstr "Светлая"
 msgid "Location"
 msgstr "Местоположение"
 
-#: components/screens/DirectConversationScreen.tsx:433
+#: components/screens/DirectConversationScreen.tsx:563
 msgid "Mark as read"
 msgstr "Отметить как прочитанное"
 
@@ -329,8 +333,8 @@ msgstr "Новая статья"
 msgid "New draft"
 msgstr "Новый черновик"
 
-#: components/screens/DirectConversationScreen.tsx:462
-#: components/screens/DirectConversationScreen.tsx:546
+#: components/screens/DirectConversationScreen.tsx:592
+#: components/screens/DirectConversationScreen.tsx:677
 msgid "Next occurrence"
 msgstr "Следующее совпадение"
 
@@ -351,7 +355,7 @@ msgstr "Пока никаких изменений"
 msgid "No connected devices"
 msgstr "Нет подключенных устройств"
 
-#: components/screens/ContactListsScreen.tsx:133
+#: components/screens/ContactListsScreen.tsx:134
 #: components/screens/ContactScreen.tsx:339
 msgid "No contact lists"
 msgstr "Отсутствуют списки контактов"
@@ -360,17 +364,18 @@ msgstr "Отсутствуют списки контактов"
 msgid "No contacts"
 msgstr "Нет контактов"
 
-#: components/screens/DirectConversationScreen.tsx:332
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
+#: components/ui/JumpToDateCalendar.tsx:143
 msgid "No messages"
 msgstr "Нет сообщений"
 
 #: components/screens/ContactListScreen.tsx:251
-#: components/screens/ContactListsScreen.tsx:124
+#: components/screens/ContactListsScreen.tsx:125
 #: components/screens/ContactScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "Не найдено результатов"
 
@@ -410,8 +415,8 @@ msgstr "Вставьте ID аккаунта, которым поделился 
 msgid "Places"
 msgstr "Места"
 
-#: components/screens/DirectConversationScreen.tsx:398
-#: components/screens/DirectConversationScreen.tsx:520
+#: components/screens/DirectConversationScreen.tsx:528
+#: components/screens/DirectConversationScreen.tsx:651
 msgid "Previous occurrence"
 msgstr "Предыдущее совпадение"
 
@@ -454,7 +459,7 @@ msgid "Save draft"
 msgstr "Сохранить черновик"
 
 #: components/screens/ContactListsScreen.tsx:78
-#: components/screens/DirectConversationScreen.tsx:353
+#: components/screens/DirectConversationScreen.tsx:483
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -536,7 +541,7 @@ msgstr "Это имя видно только вам на этом устрой�
 msgid "This will your avatar forever, choose wisely"
 msgstr "Это будет вашим аватаром навсегда, выбирайте мудро"
 
-#: components/screens/DirectConversationScreen.tsx:483
+#: components/screens/DirectConversationScreen.tsx:613
 msgid "Unread messages"
 msgstr "Непрочитанные сообщения"
 

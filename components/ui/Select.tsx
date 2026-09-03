@@ -110,7 +110,9 @@ export function Select<T = string>({
               justifyContent: "center",
               alignItems: "center",
               height:
-                Dimensions.get("window").height - keyboardHeight - insets.top,
+                Dimensions.get("window").height -
+                keyboardHeight -
+                (keyboardHeight ? insets.top : 0),
               backgroundColor: theme.overlayBackgroundColor,
               position: "relative",
             },
@@ -130,9 +132,7 @@ export function Select<T = string>({
                   keyboardHeight -
                   insets.top -
                   insets.bottom -
-                  16,
-
-                paddingTop: 8,
+                  40,
               },
             ]}
           >
@@ -150,7 +150,7 @@ export function Select<T = string>({
                 autoFocus
                 style={[
                   theme.textInputStyle(searchText),
-                  { paddingHorizontal: 16, paddingBottom: 8 },
+                  { paddingHorizontal: 16, paddingBottom: 8, marginTop: 8 },
                 ]}
               />
             )}

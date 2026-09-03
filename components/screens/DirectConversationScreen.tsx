@@ -2,6 +2,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { useLingui } from "@lingui/react/macro";
 import {
   Fragment,
+  use,
   useCallback,
   useEffect,
   useLayoutEffect,
@@ -10,6 +11,7 @@ import {
 } from "react";
 import {
   FlatList,
+  Modal,
   Pressable,
   Text,
   TextInput,
@@ -17,6 +19,8 @@ import {
   ViewToken,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+// TEMPORARY: remove along with the seeding effect below.
+import { generateJumpToDateMessages } from "../../test/direct-conversation-jump-to-date.test";
 import { AccountId } from "../cryptography/cryptography";
 import { getContact } from "../queries/contacts";
 import {
@@ -26,10 +30,12 @@ import {
 } from "../queries/directMessages";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
+import { FeApiContext } from "../store/feApi";
 import { ContentAddress } from "../store/fileStore";
 import { useTheme } from "../Theme";
 import { AttachmentPreview } from "../ui/AttachmentPreview";
 import { CryptoAvatar } from "../ui/CryptoAvatar";
+import { JumpToDateCalendar } from "../ui/JumpToDateCalendar";
 import { MessageCompose } from "../ui/MessageCompose";
 import { ScreenLink } from "../ui/ScreenLink";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
@@ -46,6 +52,7 @@ export function DirectConversationScreen({
 }) {
   const { t } = useLingui();
   const theme = useTheme();
+  const feApi = use(FeApiContext);
 
   const account = useMemitaQuery(getContact, {
     accountId,
@@ -117,6 +124,14 @@ export function DirectConversationScreen({
     },
   ).layouts;
 
+  // TEMPORARY: seed jump-to-date test data on emulators. Remove this effect
+  // once manual testing of that feature is done.
+  useEffect(() => {
+    if (conversation.length > 0) return;
+    void generateJumpToDateMessages({ accountId, contactId, api: feApi });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // TODO maybe save permanently current viewing by converstaion on device
 
   // restore scroll position on mount
@@ -136,6 +151,34 @@ export function DirectConversationScreen({
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const [isJumpToDateButtonVisible, setIsJumpToDateButtonVisible] =
+    useState(false);
+  const [isJumpToDateModalOpen, setIsJumpToDateModalOpen] = useState(false);
+  const jumpToDateHideTimer = useRef<ReturnType<typeof setTimeout>>(null);
+
+  const showJumpToDateButtonTemporarily = useCallback(() => {
+    setIsJumpToDateButtonVisible(true);
+    if (jumpToDateHideTimer.current) {
+      clearTimeout(jumpToDateHideTimer.current);
+    }
+    jumpToDateHideTimer.current = setTimeout(() => {
+      setIsJumpToDateButtonVisible(false);
+    }, 3000);
+  }, []);
+
+  const closeJumpToDateModal = useCallback(() => {
+    setIsJumpToDateModalOpen(false);
+    showJumpToDateButtonTemporarily();
+  }, [showJumpToDateButtonTemporarily]);
+
+  useEffect(() => {
+    return () => {
+      if (jumpToDateHideTimer.current) {
+        clearTimeout(jumpToDateHideTimer.current);
+      }
+    };
   }, []);
 
   const [createdDraft, setCreatedDraft] = useState<{ createdAt: Timestamp }>();
@@ -184,155 +227,242 @@ export function DirectConversationScreen({
           </Text>
         </ScreenLink>
       </View>
-      <FlatList
-        ref={flatListRef}
-        data={conversation}
-        onLayout={(event) => {
-          setFlatListHeight(event.nativeEvent.layout.height);
-        }}
-        getItemLayout={(data, index) => conversationItemLayouts[index]!}
-        onViewableItemsChanged={useCallback(
-          ({
-            viewableItems,
-          }: {
-            viewableItems: Array<ViewToken<(typeof conversation)[number]>>;
-            changed: Array<ViewToken<(typeof conversation)[number]>>;
-          }) => {
-            const currentItem = viewableItems.at(-1)?.item;
-            if (currentItem) {
-              setCurrentViewingMessageId({
-                senderId: currentItem.senderId,
-                receiverId: currentItem.receiverId,
-                createdAt: currentItem.createdAt,
-              });
-            }
-          },
-          [],
-        )}
-        viewabilityConfig={{ itemVisiblePercentThreshold: 100 }}
-        style={{ flex: 1 }}
-        contentContainerStyle={{
-          flexGrow: 1,
-          paddingTop: initialEmptySpaceHeight,
-        }}
-        renderItem={({ item }) => {
-          const isCurrentViewingMessage =
-            currentViewingMessageId &&
-            item.createdAt === currentViewingMessageId.createdAt &&
-            item.senderId === currentViewingMessageId.senderId &&
-            item.receiverId === currentViewingMessageId.receiverId;
-          return (
-            <Pressable
-              style={{
-                backgroundColor:
-                  item.createdAt === toModifyMessage?.createdAt
-                    ? theme.selectedItemBackgroundColor
+      <View style={{ flex: 1, position: "relative" }}>
+        <FlatList
+          ref={flatListRef}
+          testID="direct-conversation-message-list"
+          data={conversation}
+          onLayout={(event) => {
+            setFlatListHeight(event.nativeEvent.layout.height);
+          }}
+          onScroll={showJumpToDateButtonTemporarily}
+          scrollEventThrottle={16}
+          getItemLayout={(data, index) => conversationItemLayouts[index]!}
+          onViewableItemsChanged={useCallback(
+            ({
+              viewableItems,
+            }: {
+              viewableItems: Array<ViewToken<(typeof conversation)[number]>>;
+              changed: Array<ViewToken<(typeof conversation)[number]>>;
+            }) => {
+              const currentItem = viewableItems.at(-1)?.item;
+              if (currentItem) {
+                setCurrentViewingMessageId({
+                  senderId: currentItem.senderId,
+                  receiverId: currentItem.receiverId,
+                  createdAt: currentItem.createdAt,
+                });
+              }
+            },
+            [],
+          )}
+          viewabilityConfig={{ itemVisiblePercentThreshold: 100 }}
+          style={{ flex: 1 }}
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingTop: initialEmptySpaceHeight,
+          }}
+          renderItem={({ item }) => {
+            const isCurrentViewingMessage =
+              currentViewingMessageId &&
+              item.createdAt === currentViewingMessageId.createdAt &&
+              item.senderId === currentViewingMessageId.senderId &&
+              item.receiverId === currentViewingMessageId.receiverId;
+            return (
+              <Pressable
+                style={{
+                  backgroundColor:
+                    item.createdAt === toModifyMessage?.createdAt
+                      ? theme.selectedItemBackgroundColor
+                      : theme.backgroundColor,
+                  borderRadius: 8,
+                  paddingHorizontal: 7,
+                  marginVertical: itemVerticalMarginHalf,
+                  overflow: "hidden",
+                  borderWidth: itemVerticalBorderWidth,
+                  // TODO add search and current viewing message color to theme colors
+                  borderColor: isCurrentViewingMessage
+                    ? "purple"
                     : theme.backgroundColor,
-                borderRadius: 8,
-                paddingHorizontal: 7,
-                marginVertical: itemVerticalMarginHalf,
-                overflow: "hidden",
-                borderWidth: itemVerticalBorderWidth,
-                // TODO add search and current viewing message color to theme colors
-                borderColor: isCurrentViewingMessage
-                  ? "purple"
-                  : theme.backgroundColor,
-              }}
-            >
-              <View style={{ flexDirection: "row", gap: 8 }}>
-                <CryptoAvatar accountId={accountId} contactId={item.senderId} />
-                <View style={{ flexGrow: 1 }}>
-                  <View style={{ flexDirection: "row", gap: 8 }}>
-                    <Text style={[theme.textStyle, { fontWeight: "bold" }]}>
-                      {item.senderId === accountId
-                        ? (account?.name ?? "")
-                        : item.senderId === contactId
-                          ? (contact?.name ?? "")
-                          : ""}
-                    </Text>
-                    <View style={{ flexGrow: 1 }} />
-                    <Text style={theme.secondaryTextStyle}>
-                      {new Date(item.createdAt).toLocaleString()}
-                    </Text>
-                    <FontAwesome
-                      name={item.isDraft ? "sticky-note" : "check"}
-                      size={14}
-                      color={
-                        item.isDraft
-                          ? "yellow"
-                          : item.didRead
-                            ? theme.linkTextColor
-                            : item.receiverId === accountId && !item.didRead
-                              ? "orange"
-                              : theme.backgroundColor
-                      }
-                    />
-                  </View>
-                  <Text style={theme.textStyle}>
-                    {toolbarState.type === "search"
-                      ? item.content
-                          .split(new RegExp(`(${toolbarState.text})`, "i"))
-                          .map((part, index) => {
-                            const isMatch =
-                              part.toLowerCase() ===
-                              toolbarState.text.toLowerCase();
-                            return (
-                              <Text
-                                key={index}
-                                style={{
-                                  backgroundColor: isMatch
-                                    ? "lightgreen"
-                                    : undefined,
-                                  color: isMatch ? "black" : undefined,
-                                  fontWeight: isMatch ? "bold" : undefined,
-                                }}
-                              >
-                                {part}
-                              </Text>
-                            );
-                          })
-                      : item.content}
-                  </Text>
-                </View>
-              </View>
-              {item.attachments.length > 0 && (
-                <ScrollView
-                  horizontal
-                  style={{
-                    marginHorizontal: -7,
-                    marginBottom: -5,
-                    marginTop: 8,
-                  }}
-                >
-                  {item.attachments.map((file, index) => (
-                    <View
-                      key={index}
-                      style={{
-                        borderTopWidth: 1,
-                        borderBottomWidth: 1,
-                        borderRightWidth: 1,
-                        borderColor: theme.separatorColor,
-                      }}
-                    >
-                      <AttachmentPreview file={file} />
+                }}
+              >
+                <View style={{ flexDirection: "row", gap: 8 }}>
+                  <CryptoAvatar
+                    accountId={accountId}
+                    contactId={item.senderId}
+                  />
+                  <View style={{ flexGrow: 1 }}>
+                    <View style={{ flexDirection: "row", gap: 8 }}>
+                      <Text style={[theme.textStyle, { fontWeight: "bold" }]}>
+                        {item.senderId === accountId
+                          ? (account?.name ?? "")
+                          : item.senderId === contactId
+                            ? (contact?.name ?? "")
+                            : ""}
+                      </Text>
+                      <View style={{ flexGrow: 1 }} />
+                      <Text style={theme.secondaryTextStyle}>
+                        {new Date(item.createdAt).toLocaleString()}
+                      </Text>
+                      <FontAwesome
+                        name={item.isDraft ? "sticky-note" : "check"}
+                        size={14}
+                        color={
+                          item.isDraft
+                            ? "yellow"
+                            : item.didRead
+                              ? theme.linkTextColor
+                              : item.receiverId === accountId && !item.didRead
+                                ? "orange"
+                                : theme.backgroundColor
+                        }
+                      />
                     </View>
-                  ))}
-                </ScrollView>
-              )}
-            </Pressable>
-          );
-        }}
-        ListEmptyComponent={() => (
-          <Text
-            style={[
-              theme.secondaryTextStyle,
-              { textAlign: "center", marginTop: -theme.lineHeight * 2 },
-            ]}
+                    <Text style={theme.textStyle}>
+                      {toolbarState.type === "search"
+                        ? item.content
+                            .split(new RegExp(`(${toolbarState.text})`, "i"))
+                            .map((part, index) => {
+                              const isMatch =
+                                part.toLowerCase() ===
+                                toolbarState.text.toLowerCase();
+                              return (
+                                <Text
+                                  key={index}
+                                  style={{
+                                    backgroundColor: isMatch
+                                      ? "lightgreen"
+                                      : undefined,
+                                    color: isMatch ? "black" : undefined,
+                                    fontWeight: isMatch ? "bold" : undefined,
+                                  }}
+                                >
+                                  {part}
+                                </Text>
+                              );
+                            })
+                        : item.content}
+                    </Text>
+                  </View>
+                </View>
+                {item.attachments.length > 0 && (
+                  <ScrollView
+                    horizontal
+                    style={{
+                      marginHorizontal: -7,
+                      marginBottom: -5,
+                      marginTop: 8,
+                    }}
+                  >
+                    {item.attachments.map((file, index) => (
+                      <View
+                        key={index}
+                        style={{
+                          borderTopWidth: 1,
+                          borderBottomWidth: 1,
+                          borderRightWidth: 1,
+                          borderColor: theme.separatorColor,
+                        }}
+                      >
+                        <AttachmentPreview file={file} />
+                      </View>
+                    ))}
+                  </ScrollView>
+                )}
+              </Pressable>
+            );
+          }}
+          ListEmptyComponent={() => (
+            <Text
+              style={[
+                theme.secondaryTextStyle,
+                { textAlign: "center", marginTop: -theme.lineHeight * 2 },
+              ]}
+            >
+              {t`No messages`}
+            </Text>
+          )}
+        />
+        {isJumpToDateButtonVisible && (
+          <Pressable
+            onPress={() => setIsJumpToDateModalOpen(true)}
+            style={{
+              position: "absolute",
+              top: 8,
+              right: 0,
+              width: 40,
+              height: 40,
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: theme.backgroundBackColor,
+              borderColor: theme.borderColor,
+              borderTopWidth: 1,
+              borderBottomWidth: 1,
+              borderLeftWidth: 1,
+              borderTopLeftRadius: 8,
+              borderBottomLeftRadius: 8,
+            }}
           >
-            {t`No messages`}
-          </Text>
+            <FontAwesome
+              name="calendar"
+              size={18}
+              color={theme.linkTextColor}
+              aria-label="calendar"
+            />
+          </Pressable>
         )}
-      />
+      </View>
+      <Modal
+        visible={isJumpToDateModalOpen}
+        transparent
+        animationType="fade"
+        onRequestClose={closeJumpToDateModal}
+      >
+        <Pressable
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: theme.overlayBackgroundColor,
+          }}
+          onPress={closeJumpToDateModal}
+        >
+          <View
+            style={{
+              backgroundColor: theme.backgroundColor,
+              borderRadius: 8,
+              gap: 8,
+              minWidth: 250,
+            }}
+          >
+            <Text
+              style={[
+                theme.textStyle,
+                { fontWeight: "bold", textAlign: "center", margin: 16 },
+              ]}
+            >
+              {t`Jump to date`}
+            </Text>
+            <JumpToDateCalendar
+              currentTimestamp={
+                currentViewingMessage?.createdAt ?? nowTimestamp()
+              }
+              messages={conversation}
+              onChange={(timestamp) => {
+                const index = conversation.findIndex(
+                  (item) => item.createdAt >= timestamp,
+                );
+                if (index >= 0) {
+                  flatListRef.current?.scrollToIndex({
+                    index,
+                    viewPosition: 1.0,
+                  });
+                }
+              }}
+            />
+          </View>
+        </Pressable>
+      </Modal>
       {(() => {
         switch (toolbarState.type) {
           case "didRead": {
@@ -492,6 +622,7 @@ export function DirectConversationScreen({
                   onChangeText={(text) =>
                     setToolbarState({ type: "search", text })
                   }
+                  autoFocus
                 />
                 <ScreenLink
                   to={(() => {

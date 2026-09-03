@@ -27,3 +27,24 @@ test("user deletes an account", async () => {
   ).toBeVisible();
   expect(screen.queryByText("Molly")).toBeNull();
 });
+
+test("user deletes the only account", async () => {
+  const { Main, api } = await createTestApp();
+
+  await addAccount({ accountSecret: generateAccountSecret(), name: "Molly" })(
+    api,
+  );
+
+  const user = userEvent.setup();
+  const screen = await render(<Main />);
+
+  await user.press(await screen.findByText("Molly"));
+  await user.press(await findIcon(screen, "user"));
+  await user.press(await screen.findByText("Account settings"));
+  await user.press(await findIcon(screen, "trash"));
+
+  expect(
+    await screen.findByText("Memita", {}, { timeout: 15000 }),
+  ).toBeVisible();
+  expect(screen.queryByText("Molly")).toBeNull();
+});

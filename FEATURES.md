@@ -1,18 +1,10 @@
 # Direct messages
 
 - [x] message list
-  - [x] no messages screen
-  - [x] view messages
-  - [x] infinite scroll
-  - [ ] view message date time
-  - [ ] truncate long messages
-  - [ ] jump to date
   - [ ] select multiple messages
   - [ ] swipe right to reply on message
-- [x] send message
-  - [x] copy text
+  - [ ] copy text
 - [x] edit / delete message (longpress)
-- [x] navigation buttons for unread messages (up, didread, down)
 - [x] drafts
   - [ ] auto save drafts on interval or screen change
 - [ ] reactions (single character emoji) (double tap)
@@ -39,8 +31,6 @@
 - [ ] braodcast lists (send same message to multiple contacts)
 - [ ] save scroll state
 - [x] text search
-  - [x] empty search state
-  - [x] jump to result
   - [ ] filter by media type
   - [ ] filter by date
 - [ ] message sync status
@@ -89,8 +79,6 @@
 - [ ] text search
 
 # Calls
-
-# Attachments
 
 # Articles
 

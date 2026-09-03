@@ -78,6 +78,7 @@ export function ContactListsScreen({ accountId }: { accountId: AccountId }) {
                   placeholder={t`Search`}
                   autoCapitalize="none"
                   autoCorrect={false}
+                  autoFocus
                 />
               </View>
             );

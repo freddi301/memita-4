@@ -105,7 +105,7 @@ msgstr "联系人账户 ID"
 msgid "Contact list name"
 msgstr "联系人列表名称"
 
-#: components/screens/DirectMessagesScreen.tsx:124
+#: components/screens/DirectMessagesScreen.tsx:125
 msgid "Contact lists"
 msgstr "联系人列表"
 
@@ -213,7 +213,7 @@ msgstr "编辑联系人"
 msgid "Edit date"
 msgstr "编辑日期"
 
-#: components/screens/DirectConversationScreen.tsx:375
+#: components/screens/DirectConversationScreen.tsx:505
 msgid "Edit message"
 msgstr "编辑消息"
 
@@ -259,7 +259,7 @@ msgstr "前往文章"
 msgid "Go to conversation"
 msgstr "前往对话"
 
-#: components/screens/DirectConversationScreen.tsx:173
+#: components/screens/DirectConversationScreen.tsx:216
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "前往消息"
@@ -289,6 +289,10 @@ msgstr "账户密钥或密码无效"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "需要双方共同参与。请互相添加为联系人，即可开始聊天！"
 
+#: components/screens/DirectConversationScreen.tsx:444
+msgid "Jump to date"
+msgstr "跳转至日期"
+
 #: components/screens/DeviceSettingsScreen.tsx:101
 msgid "Language"
 msgstr "语言"
@@ -301,7 +305,7 @@ msgstr "浅色"
 msgid "Location"
 msgstr "位置"
 
-#: components/screens/DirectConversationScreen.tsx:433
+#: components/screens/DirectConversationScreen.tsx:563
 msgid "Mark as read"
 msgstr "标记为已读"
 
@@ -329,8 +333,8 @@ msgstr "新文章"
 msgid "New draft"
 msgstr "新草稿"
 
-#: components/screens/DirectConversationScreen.tsx:462
-#: components/screens/DirectConversationScreen.tsx:546
+#: components/screens/DirectConversationScreen.tsx:592
+#: components/screens/DirectConversationScreen.tsx:677
 msgid "Next occurrence"
 msgstr "下一个匹配"
 
@@ -351,7 +355,7 @@ msgstr "目前还没有更改"
 msgid "No connected devices"
 msgstr "未连接任何设备。"
 
-#: components/screens/ContactListsScreen.tsx:133
+#: components/screens/ContactListsScreen.tsx:134
 #: components/screens/ContactScreen.tsx:339
 msgid "No contact lists"
 msgstr "无联系人列表"
@@ -360,17 +364,18 @@ msgstr "无联系人列表"
 msgid "No contacts"
 msgstr "未添加联系人"
 
-#: components/screens/DirectConversationScreen.tsx:332
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
+#: components/ui/JumpToDateCalendar.tsx:143
 msgid "No messages"
 msgstr "没有消息"
 
 #: components/screens/ContactListScreen.tsx:251
-#: components/screens/ContactListsScreen.tsx:124
+#: components/screens/ContactListsScreen.tsx:125
 #: components/screens/ContactScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "未找到结果"
 
@@ -410,8 +415,8 @@ msgstr "粘贴联系人与您共享的账户 ID"
 msgid "Places"
 msgstr "地点"
 
-#: components/screens/DirectConversationScreen.tsx:398
-#: components/screens/DirectConversationScreen.tsx:520
+#: components/screens/DirectConversationScreen.tsx:528
+#: components/screens/DirectConversationScreen.tsx:651
 msgid "Previous occurrence"
 msgstr "上一个匹配"
 
@@ -454,7 +459,7 @@ msgid "Save draft"
 msgstr "保存草稿"
 
 #: components/screens/ContactListsScreen.tsx:78
-#: components/screens/DirectConversationScreen.tsx:353
+#: components/screens/DirectConversationScreen.tsx:483
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -536,7 +541,7 @@ msgstr "此名称仅在此设备上对您可见"
 msgid "This will your avatar forever, choose wisely"
 msgstr "这将永久成为您的头像，请谨慎选择"
 
-#: components/screens/DirectConversationScreen.tsx:483
+#: components/screens/DirectConversationScreen.tsx:613
 msgid "Unread messages"
 msgstr "未读消息"
 

@@ -105,7 +105,7 @@ msgstr "संपर्क खाते आयडी"
 msgid "Contact list name"
 msgstr "संपर्क यादीचे नाव"
 
-#: components/screens/DirectMessagesScreen.tsx:124
+#: components/screens/DirectMessagesScreen.tsx:125
 msgid "Contact lists"
 msgstr "संपर्क याद्या"
 
@@ -213,7 +213,7 @@ msgstr "संपर्क संपादित करा"
 msgid "Edit date"
 msgstr "तारीख संपादित करा"
 
-#: components/screens/DirectConversationScreen.tsx:375
+#: components/screens/DirectConversationScreen.tsx:505
 msgid "Edit message"
 msgstr "संदेश संपादित करा"
 
@@ -259,7 +259,7 @@ msgstr "लेखांकडे जा"
 msgid "Go to conversation"
 msgstr "संभाषणाकडे जा"
 
-#: components/screens/DirectConversationScreen.tsx:173
+#: components/screens/DirectConversationScreen.tsx:216
 #: components/screens/GroupConversationScreen.tsx:46
 msgid "Go to messages"
 msgstr "संदेशांकडे जा"
@@ -289,6 +289,10 @@ msgstr "अवैध खाते रहस्य किंवा पासव�
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "यासाठी दोघांची आवश्यकता आहे. गप्पा सुरू करण्यासाठी, एकमेकांना संपर्क म्हणून जोडा!"
 
+#: components/screens/DirectConversationScreen.tsx:444
+msgid "Jump to date"
+msgstr "तारीखावर जा"
+
 #: components/screens/DeviceSettingsScreen.tsx:101
 msgid "Language"
 msgstr "भाषा"
@@ -301,7 +305,7 @@ msgstr "उजळ"
 msgid "Location"
 msgstr "स्थान"
 
-#: components/screens/DirectConversationScreen.tsx:433
+#: components/screens/DirectConversationScreen.tsx:563
 msgid "Mark as read"
 msgstr "वाचले म्हणून चिन्हांकित करा"
 
@@ -329,8 +333,8 @@ msgstr "नवीन लेख"
 msgid "New draft"
 msgstr "नवीन मसुदा"
 
-#: components/screens/DirectConversationScreen.tsx:462
-#: components/screens/DirectConversationScreen.tsx:546
+#: components/screens/DirectConversationScreen.tsx:592
+#: components/screens/DirectConversationScreen.tsx:677
 msgid "Next occurrence"
 msgstr "पुढील जुळणी"
 
@@ -351,7 +355,7 @@ msgstr "आत्ता कोणताही बदल नाही"
 msgid "No connected devices"
 msgstr "जोडलेले कोणतेही उपकरण नाही"
 
-#: components/screens/ContactListsScreen.tsx:133
+#: components/screens/ContactListsScreen.tsx:134
 #: components/screens/ContactScreen.tsx:339
 msgid "No contact lists"
 msgstr "संपर्क याद्या नाहीत"
@@ -360,17 +364,18 @@ msgstr "संपर्क याद्या नाहीत"
 msgid "No contacts"
 msgstr "कोणतेही संपर्क"
 
-#: components/screens/DirectConversationScreen.tsx:332
-#: components/screens/DirectMessagesScreen.tsx:217
+#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:98
 #: components/screens/GroupMessagesScreen.tsx:56
+#: components/ui/JumpToDateCalendar.tsx:143
 msgid "No messages"
 msgstr "कोणतेही संदेश नाहीत"
 
 #: components/screens/ContactListScreen.tsx:251
-#: components/screens/ContactListsScreen.tsx:124
+#: components/screens/ContactListsScreen.tsx:125
 #: components/screens/ContactScreen.tsx:338
-#: components/screens/DirectMessagesScreen.tsx:213
+#: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "कोणतीही परिणाम आढळले नाहीत"
 
@@ -410,8 +415,8 @@ msgstr "तुमच्या संपर्काने शेअर केल
 msgid "Places"
 msgstr "ठिकाणे"
 
-#: components/screens/DirectConversationScreen.tsx:398
-#: components/screens/DirectConversationScreen.tsx:520
+#: components/screens/DirectConversationScreen.tsx:528
+#: components/screens/DirectConversationScreen.tsx:651
 msgid "Previous occurrence"
 msgstr "मागील जुळणी"
 
@@ -454,7 +459,7 @@ msgid "Save draft"
 msgstr "मसुदा जतन करा"
 
 #: components/screens/ContactListsScreen.tsx:78
-#: components/screens/DirectConversationScreen.tsx:353
+#: components/screens/DirectConversationScreen.tsx:483
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -536,7 +541,7 @@ msgstr "हे नाव या डिव्हाइसवर फक्त त�
 msgid "This will your avatar forever, choose wisely"
 msgstr "हे कायमचे तुमचे अवतार असेल, शहाणपणाने निवडा"
 
-#: components/screens/DirectConversationScreen.tsx:483
+#: components/screens/DirectConversationScreen.tsx:613
 msgid "Unread messages"
 msgstr "न वाचलेले संदेश"
 
