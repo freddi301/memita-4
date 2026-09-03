@@ -37,13 +37,15 @@ export function ContactChangesHistoryScreen({
         />
         <CryptoAvatar accountId={accountId} contactId={contactId} />
         <Text
-          style={{
-            ...theme.textStyle,
-            fontWeight: "bold",
-            flexGrow: 1,
-            paddingTop: 10,
-            marginLeft: 8,
-          }}
+          style={[
+            theme.textStyle,
+            {
+              fontWeight: "bold",
+              flexGrow: 1,
+              paddingTop: 10,
+              marginLeft: 8,
+            },
+          ]}
         >
           {t`Changes history`}
         </Text>
@@ -61,15 +63,15 @@ export function ContactChangesHistoryScreen({
                 color={item.deleted ? "red" : "green"}
               />
               <View style={{ flexGrow: 1 }} />
-              <Text style={{ ...theme.secondaryTextStyle }}>
+              <Text style={theme.secondaryTextStyle}>
                 {new Date(item.timestamp).toLocaleString()}
               </Text>
             </View>
             <View style={{ gap: 2 }}>
-              <Text style={{ ...theme.secondaryTextStyle, fontWeight: "bold" }}>
+              <Text style={[theme.secondaryTextStyle, { fontWeight: "bold" }]}>
                 {t`Contact name`}
               </Text>
-              <Text style={{ ...theme.textStyle }}>{item.name}</Text>
+              <Text style={theme.textStyle}>{item.name}</Text>
             </View>
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 8 }}
@@ -80,11 +82,13 @@ export function ContactChangesHistoryScreen({
                 color={theme.secondaryTextColor}
               />
               <Text
-                style={{
-                  ...theme.secondaryTextStyle,
-                  flexShrink: 1,
-                  width: Platform.OS === "web" ? "90%" : undefined,
-                }}
+                style={[
+                  theme.secondaryTextStyle,
+                  {
+                    flexShrink: 1,
+                    width: Platform.OS === "web" ? "90%" : undefined,
+                  },
+                ]}
               >
                 {deviceIdToString(item.deviceId)}
               </Text>
@@ -93,12 +97,10 @@ export function ContactChangesHistoryScreen({
         )}
         ListEmptyComponent={() => (
           <Text
-            style={{
-              ...theme.secondaryTextStyle,
-              textAlign: "center",
-              paddingTop: 24,
-              paddingHorizontal: 16,
-            }}
+            style={[
+              theme.secondaryTextStyle,
+              { textAlign: "center", paddingTop: 24, paddingHorizontal: 16 },
+            ]}
           >
             {t`No changes yet`}
           </Text>

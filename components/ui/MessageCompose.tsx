@@ -112,6 +112,7 @@ export function MessageCompose({
           value={text}
           onChangeText={setText}
           placeholder={t`Write a message`}
+          placeholderTextColor={theme.secondaryTextColor}
           multiline
           numberOfLines={Platform.OS === "web" ? 1 : undefined}
           style={[

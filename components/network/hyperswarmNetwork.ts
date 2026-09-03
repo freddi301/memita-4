@@ -13,7 +13,8 @@ import {
 } from "../cryptography/cryptography";
 import { type NetworkFactory } from "../store/store";
 
-const isTest = process.env.NODE_ENV === "test";
+const isTest =
+  typeof process !== "undefined" && process.env.NODE_ENV === "test";
 
 export const hyperswarmNetworkFactory: NetworkFactory = ({
   connected,

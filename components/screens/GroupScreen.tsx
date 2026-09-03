@@ -141,6 +141,7 @@ export function GroupScreen({
                 value={groupIdInput}
                 onChangeText={setContactIdInput}
                 style={theme.textInputStyle(groupIdInput)}
+                placeholderTextColor={theme.secondaryTextColor}
                 autoCapitalize="none"
                 autoCorrect={false}
               />
@@ -158,13 +159,14 @@ export function GroupScreen({
             value={nameInput}
             onChangeText={setNameInput}
             style={theme.textInputStyle(nameInput)}
+            placeholderTextColor={theme.secondaryTextColor}
           />
           {nameInput !== nameOriginal ? (
             <Text
-              style={{
-                ...theme.secondaryTextStyle,
-                textDecorationLine: "line-through",
-              }}
+              style={[
+                theme.secondaryTextStyle,
+                { textDecorationLine: "line-through" },
+              ]}
             >
               {nameOriginal || " "}
             </Text>

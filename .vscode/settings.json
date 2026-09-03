@@ -11,5 +11,6 @@
       "matchCommandLine": true
     },
     "true": true
-  }
+  },
+  "editor.formatOnSave": true
 }

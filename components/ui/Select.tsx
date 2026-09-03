@@ -16,6 +16,7 @@ export function Select<T = string>({
   renderValue?(value: T): React.ReactNode;
   renderOption?(option: T): React.ReactNode;
   styleOverrides?: { flexGrow1?: boolean };
+  valueSearchableText?(value: T): string;
 }) {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
@@ -62,10 +63,12 @@ export function Select<T = string>({
           <ScrollView
             style={[
               {
+                flexGrow: 0,
                 backgroundColor: theme.backgroundColor,
                 borderRadius: 8,
                 minWidth: 200,
                 margin: 16,
+                paddingVertical: 8,
               },
             ]}
           >

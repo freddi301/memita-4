@@ -487,6 +487,7 @@ export function DirectConversationScreen({
                     theme.textInputStyle(toolbarState.text),
                     { paddingBottom: 5, flexGrow: 1 },
                   ]}
+                  placeholderTextColor={theme.secondaryTextColor}
                   value={toolbarState.text}
                   onChangeText={(text) =>
                     setToolbarState({ type: "search", text })

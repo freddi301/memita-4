@@ -37,7 +37,10 @@
           "dark": { "backgroundColor": "#000000" }
         }
       ],
-      ["expo-build-properties", { "android": { "minSdkVersion": 29 } }],
+      [
+        "expo-build-properties",
+        { "android": { "minSdkVersion": 29, "buildToolsVersion": "35.0.0" } }
+      ],
       "expo-notifications",
       "@maplibre/maplibre-react-native",
       "@react-native-community/datetimepicker",

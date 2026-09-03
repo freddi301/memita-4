@@ -57,7 +57,7 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
                   label={t`Edit article`}
                 />
               ) : null}
-              <Text style={{ ...theme.secondaryTextStyle }}>
+              <Text style={theme.secondaryTextStyle}>
                 {new Date(item.createdAt).toLocaleString()}
               </Text>
             </View>
@@ -68,7 +68,7 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
                   color={theme.secondaryTextColor}
                   size={18}
                 />
-                <Text style={{ ...theme.secondaryTextStyle }}>
+                <Text style={theme.secondaryTextStyle}>
                   {new Date(item.date.timestamp).toLocaleString()}
                   {/*  {" - "} {new Date(
                     item.date.timestamp + item.date.duration
@@ -76,13 +76,13 @@ export function ArticlesScreen({ accountId }: { accountId: AccountId }) {
                 </Text>
               </View>
             )}
-            <Text style={{ ...theme.textStyle }}>{item.content}</Text>
+            <Text style={theme.textStyle}>{item.content}</Text>
           </View>
         )}
         style={{ flex: 1, marginVertical: 8 }}
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={() => (
-          <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
+          <Text style={[theme.secondaryTextStyle, { textAlign: "center" }]}>
             {t`No articles`}
           </Text>
         )}

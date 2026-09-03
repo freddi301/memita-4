@@ -158,14 +158,15 @@ export function ContactListScreen({
           value={nameInput}
           onChangeText={setNameInput}
           style={theme.textInputStyle(nameInput)}
+          placeholderTextColor={theme.secondaryTextColor}
           placeholder={t`Enter a name for this contact list`}
         />
         {nameInput !== nameOriginal && nameOriginal ? (
           <Text
-            style={{
-              ...theme.secondaryTextStyle,
-              textDecorationLine: "line-through",
-            }}
+            style={[
+              theme.secondaryTextStyle,
+              { textDecorationLine: "line-through" },
+            ]}
           >
             {nameOriginal}
           </Text>
@@ -188,12 +189,13 @@ export function ContactListScreen({
                 value={searchText}
                 onChangeText={setSearchText}
                 style={theme.textInputStyle(searchText)}
+                placeholderTextColor={theme.secondaryTextColor}
                 placeholder={t`Search contacts`}
                 autoCapitalize="none"
                 autoCorrect={false}
               />
             </View>
-            <Text style={{ ...theme.textStyle }}>{memberContacts.length}</Text>
+            <Text style={theme.textStyle}>{memberContacts.length}</Text>
           </View>
           <FlatList
             data={visibleContacts}
@@ -214,7 +216,7 @@ export function ContactListScreen({
                     accountId={accountId}
                     contactId={item.contactId}
                   />
-                  <Text style={{ ...theme.textStyle, flex: 1 }}>
+                  <Text style={[theme.textStyle, { flex: 1 }]}>
                     {item.name}
                   </Text>
                   <ScreenLink
@@ -241,11 +243,10 @@ export function ContactListScreen({
             contentContainerStyle={{ flexGrow: 1 }}
             ListEmptyComponent={
               <Text
-                style={{
-                  ...theme.secondaryTextStyle,
-                  textAlign: "center",
-                  paddingVertical: 16,
-                }}
+                style={[
+                  theme.secondaryTextStyle,
+                  { textAlign: "center", paddingVertical: 16 },
+                ]}
               >
                 {normalizedSearchText ? t`No results found` : t`No contacts`}
               </Text>

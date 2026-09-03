@@ -78,14 +78,14 @@ export function GroupConversationScreen({
                 justifyContent: "space-between",
               }}
             >
-              <Text style={{ ...theme.textStyle, fontWeight: "bold" }}>
+              <Text style={[theme.textStyle, { fontWeight: "bold" }]}>
                 {item.senderName}
               </Text>
               <Text style={theme.secondaryTextStyle}>
                 {new Date(item.createdAt).toLocaleString()}
               </Text>
             </View>
-            <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
+            <Text style={[theme.textStyle, { paddingHorizontal: 16 }]}>
               {item.content}
             </Text>
           </Pressable>
@@ -94,7 +94,7 @@ export function GroupConversationScreen({
         contentContainerStyle={{ flexGrow: 1 }}
         ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
         ListEmptyComponent={() => (
-          <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
+          <Text style={[theme.secondaryTextStyle, { textAlign: "center" }]}>
             {t`No messages`}
           </Text>
         )}

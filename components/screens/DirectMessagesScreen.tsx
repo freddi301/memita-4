@@ -103,12 +103,11 @@ export function DirectMessagesScreen({
                   onChangeText={(text) => {
                     setToolbarState({ type: "search", text });
                   }}
-                  style={{
-                    ...theme.textInputStyle(toolbarState.text),
-                    flexGrow: 1,
-                    marginRight: 16,
-                    paddingBottom: 6,
-                  }}
+                  style={[
+                    theme.textInputStyle(toolbarState.text),
+                    { flexGrow: 1, marginRight: 16, paddingBottom: 6 },
+                  ]}
+                  placeholderTextColor={theme.secondaryTextColor}
                   placeholder={t`Search`}
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -210,11 +209,11 @@ export function DirectMessagesScreen({
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={() =>
           toolbarState.type === "search" ? (
-            <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
+            <Text style={[theme.secondaryTextStyle, { textAlign: "center" }]}>
               {t`No results found`}
             </Text>
           ) : (
-            <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
+            <Text style={[theme.secondaryTextStyle, { textAlign: "center" }]}>
               {t`No messages`}
             </Text>
           )

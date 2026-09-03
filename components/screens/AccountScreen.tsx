@@ -146,7 +146,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
           {!accountId && (
             <View style={{ flex: 1 }}>
               <Text
-                style={{ ...theme.textStyle, flex: 1 }}
+                style={[theme.textStyle, { flex: 1 }]}
               >{t`This will your avatar forever, choose wisely`}</Text>
               <Text style={theme.secondaryTextStyle}>{t`Tap to change`}</Text>
             </View>
@@ -154,20 +154,21 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
           <Text
-            style={{ ...theme.secondaryTextStyle, fontWeight: "bold" }}
+            style={[theme.secondaryTextStyle, { fontWeight: "bold" }]}
           >{t`Account name`}</Text>
           <TextInput
             value={nameInput}
             onChangeText={setNameInput}
             style={theme.textInputStyle(nameInput)}
+            placeholderTextColor={theme.secondaryTextColor}
             placeholder={t`This name is only visible to you on this device`}
           />
           {nameInput !== nameOriginal ? (
             <Text
-              style={{
-                ...theme.secondaryTextStyle,
-                textDecorationLine: "line-through",
-              }}
+              style={[
+                theme.secondaryTextStyle,
+                { textDecorationLine: "line-through" },
+              ]}
             >
               {nameOriginal || " "}
             </Text>
@@ -186,9 +187,9 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
               }}
             >
               <Text
-                style={{ ...theme.secondaryTextStyle, fontWeight: "bold" }}
+                style={[theme.secondaryTextStyle, { fontWeight: "bold" }]}
               >{t`Account ID`}</Text>
-              <Text style={{ ...theme.textStyle }}>{accountId}</Text>
+              <Text style={theme.textStyle}>{accountId}</Text>
             </View>
             <ScreenLink
               to={
@@ -217,7 +218,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
               }}
             >
               <Text
-                style={{ ...theme.secondaryTextStyle, fontWeight: "bold" }}
+                style={[theme.secondaryTextStyle, { fontWeight: "bold" }]}
               >{t`Device ID`}</Text>
               <Text style={theme.textStyle}>{deviceId}</Text>
             </View>

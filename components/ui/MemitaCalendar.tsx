@@ -79,7 +79,7 @@ export function MemitaCalendar({ events }: { events: Array<EventPayload> }) {
                 scaleY={scaleY}
               >
                 <Text
-                  style={{ ...theme.secondaryTextStyle, textAlign: "right" }}
+                  style={[theme.secondaryTextStyle, { textAlign: "right" }]}
                 >
                   {new Date(dayStart).toLocaleString("default", {
                     day: "2-digit",

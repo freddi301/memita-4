@@ -64,13 +64,10 @@ export function DateTimeInput({
   return (
     <View style={{ flexDirection: "row" }}>
       <TextInput
-        style={{
-          ...theme.textInputStyle(
-            value ? new Date(value).toLocaleString() : "",
-          ),
-          flexGrow: 1,
-          marginHorizontal: 16,
-        }}
+        style={[
+          theme.textInputStyle(value ? new Date(value).toLocaleString() : ""),
+          { flexGrow: 1, marginHorizontal: 16 },
+        ]}
         value={value ? new Date(value).toLocaleString() : ""}
         readOnly
       />

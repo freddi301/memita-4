@@ -212,6 +212,7 @@ export function ContactScreen({
                 value={contactIdInput}
                 onChangeText={setContactIdInput}
                 style={theme.textInputStyle(contactIdInput)}
+                placeholderTextColor={theme.secondaryTextColor}
                 autoCapitalize="none"
                 autoCorrect={false}
                 placeholder={t`Paste the account id your contact shared with you`}
@@ -231,14 +232,15 @@ export function ContactScreen({
             value={nameInput}
             onChangeText={setNameInput}
             style={theme.textInputStyle(nameInput)}
+            placeholderTextColor={theme.secondaryTextColor}
             placeholder={t`This name is only visible to you`}
           />
           {nameInput !== nameOriginal ? (
             <Text
-              style={{
-                ...theme.secondaryTextStyle,
-                textDecorationLine: "line-through",
-              }}
+              style={[
+                theme.secondaryTextStyle,
+                { textDecorationLine: "line-through" },
+              ]}
             >
               {nameOriginal || " "}
             </Text>
@@ -258,12 +260,10 @@ export function ContactScreen({
           </View>
         )}
         <Text
-          style={{
-            ...theme.textStyle,
-            paddingHorizontal: 16,
-            paddingVertical: 8,
-            color: "orange",
-          }}
+          style={[
+            theme.textStyle,
+            { paddingHorizontal: 16, paddingVertical: 8, color: "orange" },
+          ]}
         >
           {t`It takes two. Add each other as contacts to start chatting!`}
         </Text>
@@ -287,12 +287,13 @@ export function ContactScreen({
                   value={contactListSearchText}
                   onChangeText={setContactListSearchText}
                   style={theme.textInputStyle(contactListSearchText)}
+                  placeholderTextColor={theme.secondaryTextColor}
                   placeholder={t`Search contact lists`}
                   autoCapitalize="none"
                   autoCorrect={false}
                 />
               </View>
-              <Text style={{ ...theme.textStyle, paddingRight: 16 }}>
+              <Text style={[theme.textStyle, { paddingRight: 16 }]}>
                 {memberContactListsCount}
               </Text>
             </View>
@@ -309,7 +310,7 @@ export function ContactScreen({
                     paddingLeft: 16,
                   }}
                 >
-                  <Text style={{ ...theme.textStyle, flex: 1 }}>
+                  <Text style={[theme.textStyle, { flex: 1 }]}>
                     {item.name}
                   </Text>
                   <ScreenLink

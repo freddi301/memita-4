@@ -33,7 +33,7 @@ export function ImportAccountScreen() {
           hideLabel
           label={t`Back to account selection`}
         />
-        <Text style={{ ...theme.textStyle, fontWeight: "bold", paddingTop: 2 }}>
+        <Text style={[theme.textStyle, { fontWeight: "bold", paddingTop: 2 }]}>
           {t`Import account`}
         </Text>
         <View style={{ flexGrow: 1 }} />
@@ -76,24 +76,26 @@ export function ImportAccountScreen() {
         }
       >
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={{ ...theme.secondaryTextStyle, fontWeight: "bold" }}>
+          <Text style={[theme.secondaryTextStyle, { fontWeight: "bold" }]}>
             {t`Account name`}
           </Text>
           <TextInput
             value={nameInput}
             onChangeText={setNameInput}
             style={theme.textInputStyle(nameInput)}
+            placeholderTextColor={theme.secondaryTextColor}
             placeholder={t`This name is only visible to you on this device`}
           />
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={{ ...theme.secondaryTextStyle, fontWeight: "bold" }}>
+          <Text style={[theme.secondaryTextStyle, { fontWeight: "bold" }]}>
             {t`Export password`}
           </Text>
           <TextInput
             value={passwordInput}
             onChangeText={setPasswordInput}
             style={theme.textInputStyle(passwordInput)}
+            placeholderTextColor={theme.secondaryTextColor}
             secureTextEntry
             autoCapitalize="none"
             autoCorrect={false}
@@ -101,13 +103,14 @@ export function ImportAccountScreen() {
           />
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={{ ...theme.secondaryTextStyle, fontWeight: "bold" }}>
+          <Text style={[theme.secondaryTextStyle, { fontWeight: "bold" }]}>
             {t`Exported account secret`}
           </Text>
           <TextInput
             value={encryptedInput}
             onChangeText={setEncryptedInput}
             style={theme.textInputStyle(encryptedInput)}
+            placeholderTextColor={theme.secondaryTextColor}
             multiline
             autoCapitalize="none"
             autoCorrect={false}

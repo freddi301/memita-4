@@ -39,12 +39,10 @@ export function ExportAccountScreen({ accountId }: { accountId: AccountId }) {
         />
         <CryptoAvatar accountId={accountId} contactId={accountId} />
         <Text
-          style={{
-            ...theme.textStyle,
-            fontWeight: "bold",
-            paddingTop: 2,
-            paddingLeft: 16,
-          }}
+          style={[
+            theme.textStyle,
+            { fontWeight: "bold", paddingTop: 2, paddingLeft: 16 },
+          ]}
         >
           {t`Export account`}
         </Text>
@@ -78,30 +76,31 @@ export function ExportAccountScreen({ accountId }: { accountId: AccountId }) {
         }
       >
         <View style={{ gap: 8, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={{ ...theme.secondaryTextStyle }}>
+          <Text style={theme.secondaryTextStyle}>
             {t`You can send or store this exported text to import the account on other devices`}
           </Text>
           <Text
-            style={{ ...theme.textStyle, fontWeight: "bold", color: "red" }}
+            style={[theme.textStyle, { fontWeight: "bold", color: "red" }]}
           >
             {t`Anyone who is able to import the secret will have full access to the account forever!`}
           </Text>
         </View>
         <View style={{ gap: 2, paddingHorizontal: 16, paddingVertical: 8 }}>
-          <Text style={{ ...theme.secondaryTextStyle, fontWeight: "bold" }}>
+          <Text style={[theme.secondaryTextStyle, { fontWeight: "bold" }]}>
             {t`Password`}
           </Text>
           <TextInput
             value={passwordInput}
             onChangeText={setPasswordInput}
             style={theme.textInputStyle(passwordInput)}
+            placeholderTextColor={theme.secondaryTextColor}
             secureTextEntry
             autoCapitalize="none"
             autoCorrect={false}
             placeholder={t`Will be needed to import later`}
           />
           <Text
-            style={{ ...theme.textStyle, color: "orange" }}
+            style={[theme.textStyle, { color: "orange" }]}
           >{t`NOTE: every export has it's own password!`}</Text>
         </View>
       </ScrollView>

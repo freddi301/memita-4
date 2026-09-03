@@ -29,15 +29,14 @@ export function PlacesScreen({ accountId }: { accountId: AccountId }) {
       </View>
       <View style={{ flexGrow: 1 }}>
         <Text
-          style={{
-            ...theme.textStyle,
-            fontWeight: "bold",
-            paddingHorizontal: 16,
-          }}
+          style={[
+            theme.textStyle,
+            { fontWeight: "bold", paddingHorizontal: 16 },
+          ]}
         >
           {currentPlace?.contactName}
         </Text>
-        <Text style={{ ...theme.textStyle, paddingHorizontal: 16 }}>
+        <Text style={[theme.textStyle, { paddingHorizontal: 16 }]}>
           {currentPlace?.content}
         </Text>
       </View>

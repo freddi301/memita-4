@@ -206,6 +206,7 @@ export function ProfileScreen({
               value={bioInput}
               onChangeText={setBioInput}
               style={[theme.textInputStyle(bioInput), { maxHeight: "100%" }]}
+              placeholderTextColor={theme.secondaryTextColor}
               multiline
             />
           ) : (

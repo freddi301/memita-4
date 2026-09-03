@@ -35,7 +35,7 @@ export function ProfileDeepLinkScreen({
           hideLabel
           label={t`Back`}
         />
-        <Text style={{ ...theme.textStyle, fontWeight: "bold", paddingTop: 2 }}>
+        <Text style={[theme.textStyle, { fontWeight: "bold", paddingTop: 2 }]}>
           {t`Open profile`}
         </Text>
       </View>
@@ -47,12 +47,10 @@ export function ProfileDeepLinkScreen({
         <Text style={theme.textStyle}>{contactId}</Text>
       </View>
       <Text
-        style={{
-          ...theme.textStyle,
-          paddingHorizontal: 16,
-          paddingVertical: 8,
-          fontWeight: "bold",
-        }}
+        style={[
+          theme.textStyle,
+          { paddingHorizontal: 16, paddingVertical: 8, fontWeight: "bold" },
+        ]}
       >
         {t`Open with account`}
       </Text>
@@ -82,12 +80,14 @@ export function ProfileDeepLinkScreen({
               contactId={item.accountId}
             />
             <Text
-              style={{
-                ...theme.textStyle,
-                color: theme.linkTextColor,
-                fontWeight: "bold",
-                paddingTop: 10,
-              }}
+              style={[
+                theme.textStyle,
+                {
+                  color: theme.linkTextColor,
+                  fontWeight: "bold",
+                  paddingTop: 10,
+                },
+              ]}
             >
               {item.name}
             </Text>
@@ -95,11 +95,10 @@ export function ProfileDeepLinkScreen({
         )}
         ListEmptyComponent={
           <Text
-            style={{
-              ...theme.secondaryTextStyle,
-              padding: 16,
-              textAlign: "center",
-            }}
+            style={[
+              theme.secondaryTextStyle,
+              { padding: 16, textAlign: "center" },
+            ]}
           >
             {t`No accounts on this device`}
           </Text>

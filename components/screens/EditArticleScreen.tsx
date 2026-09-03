@@ -55,11 +55,11 @@ export function EditArticleScreen({
           label={t`Go to articles`}
         />
         {createdAt ? (
-          <Text style={{ ...theme.textStyle, flexGrow: 1 }}>
+          <Text style={[theme.textStyle, { flexGrow: 1 }]}>
             {new Date(createdAt).toLocaleString()}
           </Text>
         ) : (
-          <Text style={{ ...theme.secondaryTextStyle, flexGrow: 1 }}>
+          <Text style={[theme.secondaryTextStyle, { flexGrow: 1 }]}>
             {t`New article`}
           </Text>
         )}
@@ -134,7 +134,7 @@ export function EditArticleScreen({
       </View>
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
         <View style={{ gap: 2, paddingVertical: 8 }}>
-          <Text style={{ ...theme.secondaryTextStyle, paddingHorizontal: 16 }}>
+          <Text style={[theme.secondaryTextStyle, { paddingHorizontal: 16 }]}>
             {t`Event`}
           </Text>
           <DateTimeInput
@@ -147,14 +147,15 @@ export function EditArticleScreen({
             value={contentInput}
             onChangeText={setContentInput}
             style={theme.textInputStyle(contentInput)}
+            placeholderTextColor={theme.secondaryTextColor}
             multiline
           />
           {contentInput !== contentOriginal ? (
             <Text
-              style={{
-                ...theme.secondaryTextStyle,
-                textDecorationLine: "line-through",
-              }}
+              style={[
+                theme.secondaryTextStyle,
+                { textDecorationLine: "line-through" },
+              ]}
             >
               {contentOriginal || " "}
             </Text>

@@ -43,7 +43,7 @@ export function GroupMessagesScreen({ accountId }: { accountId: AccountId }) {
               styleOverride={{ flexGrow: 1 }}
             />
             {item.lastMessageCreatedAt ? (
-              <Text style={{ ...theme.textStyle, paddingRight: 16 }}>
+              <Text style={[theme.textStyle, { paddingRight: 16 }]}>
                 {new Date(item.lastMessageCreatedAt).toLocaleString()}
               </Text>
             ) : null}
@@ -52,7 +52,7 @@ export function GroupMessagesScreen({ accountId }: { accountId: AccountId }) {
         style={{ flex: 1, marginVertical: 8 }}
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={() => (
-          <Text style={{ ...theme.secondaryTextStyle, textAlign: "center" }}>
+          <Text style={[theme.secondaryTextStyle, { textAlign: "center" }]}>
             {t`No messages`}
           </Text>
         )}
