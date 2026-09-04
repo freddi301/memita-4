@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: components/screens/DirectConversationScreen.tsx:257
+msgid "{selectedCount} selected"
+msgstr "{নির্বাচিত_সংখ্যা} নির্বাচিত"
+
 #: components/screens/AccountScreen.tsx:183
 msgid "Account ID"
 msgstr "অ্যাকাউন্ট আইডি"
@@ -38,6 +42,10 @@ msgstr "যোগাযোগের তালিকায় যুক্ত কর
 #: components/screens/ContactListsScreen.tsx:40
 msgid "All messages"
 msgstr "সমস্ত বার্তা"
+
+#: components/screens/DirectConversationScreen.tsx:309
+msgid "Answer"
+msgstr "উত্তর"
 
 #: components/screens/ExportAccountScreen.tsx:83
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
@@ -123,6 +131,10 @@ msgstr "যোগাযোগের তালিকা"
 msgid "Contact name"
 msgstr "যোগাযোগের নাম"
 
+#: components/screens/DirectConversationScreen.tsx:288
+msgid "Copied to clipboard"
+msgstr "ক্লিপবোর্ডে কপি করা হয়েছে"
+
 #: components/screens/AccountScreen.tsx:196
 msgid "Copy account id to clipboard"
 msgstr "অ্যাকাউন্ট আইডি ক্লিপবোর্ডে কপি করুন"
@@ -130,6 +142,10 @@ msgstr "অ্যাকাউন্ট আইডি ক্লিপবোর্�
 #: components/screens/AccountScreen.tsx:227
 msgid "Copy device id to clipboard"
 msgstr "ডিভাইস আইডি ক্লিপবোর্ডে কপি করুন"
+
+#: components/screens/DirectConversationScreen.tsx:294
+msgid "Copy text"
+msgstr "টেক্সটটি কপি করুন"
 
 #: components/screens/AccountScreen.tsx:104
 msgid "Create account"
@@ -170,6 +186,7 @@ msgstr "নতুন গ্রুপ তৈরি করুন"
 msgid "Dark"
 msgstr "অন্ধকার"
 
+#: components/screens/DirectConversationScreen.tsx:329
 #: components/ui/MessageCompose.tsx:278
 msgid "Delete"
 msgstr "মুছুন"
@@ -223,10 +240,6 @@ msgstr "যোগাযোগ সম্পাদনা করুন"
 msgid "Edit date"
 msgstr "তারিখ সম্পাদনা করুন"
 
-#: components/screens/DirectConversationScreen.tsx:506
-msgid "Edit message"
-msgstr "বার্তা সম্পাদনা করুন"
-
 #: components/ui/DateTimeInput.tsx:88
 msgid "Edit time"
 msgstr "সময় সম্পাদনা করুন"
@@ -265,6 +278,10 @@ msgstr "রপ্তানি করা অ্যাকাউন্ট সিক
 msgid "Exported account secret copied to clipboard"
 msgstr "রপ্তানি করা অ্যাকাউন্ট সিক্রেট ক্লিপবোর্ডে কপি করা হয়েছে"
 
+#: components/screens/DirectConversationScreen.tsx:302
+msgid "Forward"
+msgstr "জাগানো"
+
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
 msgstr "নিবন্ধে যান"
@@ -273,7 +290,7 @@ msgstr "নিবন্ধে যান"
 msgid "Go to conversation"
 msgstr "কথোপকথনে যান"
 
-#: components/screens/DirectConversationScreen.tsx:209
+#: components/screens/DirectConversationScreen.tsx:225
 #: components/screens/GroupConversationScreen.tsx:49
 msgid "Go to messages"
 msgstr "বার্তায় যান"
@@ -303,7 +320,7 @@ msgstr "অবৈধ অ্যাকাউন্ট সিক্রেট বা
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "চ্যাট শুরু করার জন্য, একে অপরের সাথে যোগাযোগ করুন এবং একে অপরকে \"যোগাযোগ\" হিসেবে যুক্ত করুন!"
 
-#: components/screens/DirectConversationScreen.tsx:444
+#: components/screens/DirectConversationScreen.tsx:564
 msgid "Jump to date"
 msgstr "তারিখের দিকে যান"
 
@@ -319,7 +336,7 @@ msgstr "আলো"
 msgid "Location"
 msgstr "অবস্থান"
 
-#: components/screens/DirectConversationScreen.tsx:564
+#: components/screens/DirectConversationScreen.tsx:662
 msgid "Mark as read"
 msgstr "পঠিত হিসেবে চিহ্নিত করুন"
 
@@ -334,6 +351,10 @@ msgstr "সদস্য"
 #: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
+
+#: components/screens/DirectConversationScreen.tsx:277
+msgid "Modify"
+msgstr "পরিবর্তন করুন"
 
 #: components/ui/MessageCompose.tsx:262
 msgid "Modify message"
@@ -351,8 +372,8 @@ msgstr "নতুন নিবন্ধ"
 msgid "New draft"
 msgstr "নতুন খসড়া"
 
-#: components/screens/DirectConversationScreen.tsx:593
-#: components/screens/DirectConversationScreen.tsx:678
+#: components/screens/DirectConversationScreen.tsx:691
+#: components/screens/DirectConversationScreen.tsx:776
 msgid "Next occurrence"
 msgstr "পরবর্তী মিল"
 
@@ -382,7 +403,7 @@ msgstr "যোগাযোগের তালিকা উপলব্ধ নে
 msgid "No contacts"
 msgstr "কোনো পরিচিত ব্যক্তি নেই"
 
-#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectConversationScreen.tsx:502
 #: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:103
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -433,8 +454,8 @@ msgstr "আপনার যোগাযোগ যে অ্যাকাউন্
 msgid "Places"
 msgstr "স্থানসমূহ"
 
-#: components/screens/DirectConversationScreen.tsx:529
-#: components/screens/DirectConversationScreen.tsx:652
+#: components/screens/DirectConversationScreen.tsx:627
+#: components/screens/DirectConversationScreen.tsx:750
 msgid "Previous occurrence"
 msgstr "পূর্ববর্তী মিল"
 
@@ -477,7 +498,7 @@ msgid "Save draft"
 msgstr "খসড়া সংরক্ষণ করুন"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:484
+#: components/screens/DirectConversationScreen.tsx:604
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -518,6 +539,10 @@ msgstr "QR কোড দেখান"
 msgid "Stop searching"
 msgstr "অনুসন্ধান বন্ধ করুন"
 
+#: components/screens/DirectConversationScreen.tsx:255
+msgid "Stop selecting"
+msgstr "নির্বাচন বন্ধ করুন"
+
 #: components/screens/DeviceSettingsScreen.tsx:121
 msgid "System default"
 msgstr "সিস্টেমের ডিফল্ট"
@@ -555,7 +580,7 @@ msgstr "এই নামটি শুধুমাত্র এই ডিভা�
 msgid "This will your avatar forever, choose wisely"
 msgstr "এটি চিরকালের জন্য আপনার অবতার হবে, বুদ্ধিমত্তার সাথে বেছে নিন"
 
-#: components/screens/DirectConversationScreen.tsx:614
+#: components/screens/DirectConversationScreen.tsx:712
 msgid "Unread messages"
 msgstr "অপঠিত বার্তা"
 

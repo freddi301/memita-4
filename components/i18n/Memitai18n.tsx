@@ -57,40 +57,40 @@ const loadMessages = memoizeSimple(async (language: Language) => {
       return (await import("./locales/en/messages")).messages;
     case "zh":
       return (await import("./locales/zh/messages")).messages;
-    case "es":
-      return (await import("./locales/es/messages")).messages;
-    case "hi":
-      return (await import("./locales/hi/messages")).messages;
-    case "bn":
-      return (await import("./locales/bn/messages")).messages;
-    case "pt":
-      return (await import("./locales/pt/messages")).messages;
-    case "ru":
-      return (await import("./locales/ru/messages")).messages;
-    case "ja":
-      return (await import("./locales/ja/messages")).messages;
-    case "vi":
-      return (await import("./locales/vi/messages")).messages;
-    case "tr":
-      return (await import("./locales/tr/messages")).messages;
-    case "mr":
-      return (await import("./locales/mr/messages")).messages;
-    case "te":
-      return (await import("./locales/te/messages")).messages;
-    case "ko":
-      return (await import("./locales/ko/messages")).messages;
-    case "fr":
-      return (await import("./locales/fr/messages")).messages;
-    case "ta":
-      return (await import("./locales/ta/messages")).messages;
-    case "ar":
-      return (await import("./locales/ar/messages")).messages;
-    case "de":
-      return (await import("./locales/de/messages")).messages;
-    case "ur":
-      return (await import("./locales/ur/messages")).messages;
-    case "jv":
-      return (await import("./locales/jv/messages")).messages;
+    // case "es":
+    //   return (await import("./locales/es/messages")).messages;
+    // case "hi":
+    //   return (await import("./locales/hi/messages")).messages;
+    // case "bn":
+    //   return (await import("./locales/bn/messages")).messages;
+    // case "pt":
+    //   return (await import("./locales/pt/messages")).messages;
+    // case "ru":
+    //   return (await import("./locales/ru/messages")).messages;
+    // case "ja":
+    //   return (await import("./locales/ja/messages")).messages;
+    // case "vi":
+    //   return (await import("./locales/vi/messages")).messages;
+    // case "tr":
+    //   return (await import("./locales/tr/messages")).messages;
+    // case "mr":
+    //   return (await import("./locales/mr/messages")).messages;
+    // case "te":
+    //   return (await import("./locales/te/messages")).messages;
+    // case "ko":
+    //   return (await import("./locales/ko/messages")).messages;
+    // case "fr":
+    //   return (await import("./locales/fr/messages")).messages;
+    // case "ta":
+    //   return (await import("./locales/ta/messages")).messages;
+    // case "ar":
+    //   return (await import("./locales/ar/messages")).messages;
+    // case "de":
+    //   return (await import("./locales/de/messages")).messages;
+    // case "ur":
+    //   return (await import("./locales/ur/messages")).messages;
+    // case "jv":
+    //   return (await import("./locales/jv/messages")).messages;
     case "it":
       return (await import("./locales/it/messages")).messages;
     // case "th":

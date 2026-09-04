@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: components/screens/DirectConversationScreen.tsx:257
+msgid "{selectedCount} selected"
+msgstr "{numeroSelezionati} selezionati"
+
 #: components/screens/AccountScreen.tsx:183
 msgid "Account ID"
 msgstr "ID account"
@@ -38,6 +42,10 @@ msgstr "Aggiungi alla lista contatti"
 #: components/screens/ContactListsScreen.tsx:40
 msgid "All messages"
 msgstr "Tutti i messaggi"
+
+#: components/screens/DirectConversationScreen.tsx:309
+msgid "Answer"
+msgstr "Risposta"
 
 #: components/screens/ExportAccountScreen.tsx:83
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
@@ -123,6 +131,10 @@ msgstr "Elenco contatti"
 msgid "Contact name"
 msgstr "Nome contatto"
 
+#: components/screens/DirectConversationScreen.tsx:288
+msgid "Copied to clipboard"
+msgstr "Copiato negli appunti"
+
 #: components/screens/AccountScreen.tsx:196
 msgid "Copy account id to clipboard"
 msgstr "Copia ID account negli appunti"
@@ -130,6 +142,10 @@ msgstr "Copia ID account negli appunti"
 #: components/screens/AccountScreen.tsx:227
 msgid "Copy device id to clipboard"
 msgstr "Copia ID dispositivo negli appunti"
+
+#: components/screens/DirectConversationScreen.tsx:294
+msgid "Copy text"
+msgstr "Copia testo"
 
 #: components/screens/AccountScreen.tsx:104
 msgid "Create account"
@@ -170,6 +186,7 @@ msgstr "Crea nuovo gruppo"
 msgid "Dark"
 msgstr "Scuro"
 
+#: components/screens/DirectConversationScreen.tsx:329
 #: components/ui/MessageCompose.tsx:278
 msgid "Delete"
 msgstr "Elimina"
@@ -223,10 +240,6 @@ msgstr "Modifica contatto"
 msgid "Edit date"
 msgstr "Modifica data"
 
-#: components/screens/DirectConversationScreen.tsx:506
-msgid "Edit message"
-msgstr "Modifica messaggio"
-
 #: components/ui/DateTimeInput.tsx:88
 msgid "Edit time"
 msgstr "Modifica ora"
@@ -265,6 +278,10 @@ msgstr "Segreto account esportato"
 msgid "Exported account secret copied to clipboard"
 msgstr "Segreto account esportato copiato negli appunti"
 
+#: components/screens/DirectConversationScreen.tsx:302
+msgid "Forward"
+msgstr "Invia"
+
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
 msgstr "Vai agli articoli"
@@ -273,7 +290,7 @@ msgstr "Vai agli articoli"
 msgid "Go to conversation"
 msgstr "Vai alla conversazione"
 
-#: components/screens/DirectConversationScreen.tsx:209
+#: components/screens/DirectConversationScreen.tsx:225
 #: components/screens/GroupConversationScreen.tsx:49
 msgid "Go to messages"
 msgstr "Vai ai messaggi"
@@ -303,7 +320,7 @@ msgstr "Segreto account o password non validi"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "Servono due. Aggiungetevi come contatti per iniziare a chattare!"
 
-#: components/screens/DirectConversationScreen.tsx:444
+#: components/screens/DirectConversationScreen.tsx:564
 msgid "Jump to date"
 msgstr "Vai alla data"
 
@@ -319,7 +336,7 @@ msgstr "Chiaro"
 msgid "Location"
 msgstr "Posizione"
 
-#: components/screens/DirectConversationScreen.tsx:564
+#: components/screens/DirectConversationScreen.tsx:662
 msgid "Mark as read"
 msgstr "Segna come letto"
 
@@ -334,6 +351,10 @@ msgstr "Utenti"
 #: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
+
+#: components/screens/DirectConversationScreen.tsx:277
+msgid "Modify"
+msgstr "Modifica"
 
 #: components/ui/MessageCompose.tsx:262
 msgid "Modify message"
@@ -351,8 +372,8 @@ msgstr "Nuovo articolo"
 msgid "New draft"
 msgstr "Nuova bozza"
 
-#: components/screens/DirectConversationScreen.tsx:593
-#: components/screens/DirectConversationScreen.tsx:678
+#: components/screens/DirectConversationScreen.tsx:691
+#: components/screens/DirectConversationScreen.tsx:776
 msgid "Next occurrence"
 msgstr "Occorrenza successiva"
 
@@ -382,7 +403,7 @@ msgstr "Nessuna lista di contatti"
 msgid "No contacts"
 msgstr "Nessun contatto"
 
-#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectConversationScreen.tsx:502
 #: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:103
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -433,8 +454,8 @@ msgstr "Incolla l'ID account che il tuo contatto ha condiviso con te"
 msgid "Places"
 msgstr "Luoghi"
 
-#: components/screens/DirectConversationScreen.tsx:529
-#: components/screens/DirectConversationScreen.tsx:652
+#: components/screens/DirectConversationScreen.tsx:627
+#: components/screens/DirectConversationScreen.tsx:750
 msgid "Previous occurrence"
 msgstr "Occorrenza precedente"
 
@@ -477,7 +498,7 @@ msgid "Save draft"
 msgstr "Salva bozza"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:484
+#: components/screens/DirectConversationScreen.tsx:604
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -518,6 +539,10 @@ msgstr "Mostra codice QR"
 msgid "Stop searching"
 msgstr "Interrompi la ricerca"
 
+#: components/screens/DirectConversationScreen.tsx:255
+msgid "Stop selecting"
+msgstr "Interrompi la selezione"
+
 #: components/screens/DeviceSettingsScreen.tsx:121
 msgid "System default"
 msgstr "Impostazioni predefinite del sistema"
@@ -555,7 +580,7 @@ msgstr "Questo nome è visibile solo a te su questo dispositivo"
 msgid "This will your avatar forever, choose wisely"
 msgstr "Questo sarà il tuo avatar per sempre, scegli con saggezza"
 
-#: components/screens/DirectConversationScreen.tsx:614
+#: components/screens/DirectConversationScreen.tsx:712
 msgid "Unread messages"
 msgstr "Messaggi non letti"
 

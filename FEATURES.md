@@ -1,16 +1,5 @@
 # Direct messages
 
-- [x] message list
-  - [ ] select multiple messages
-    - [ ] modify
-    - [ ] delete
-    - [ ] forward
-    - [ ] answer
-    - [ ] copy?
-  - [ ] swipe right to reply on message
-  - [ ] copy text
-- [x] edit / delete message
-- [ ] auto save drafts on interval or screen change
 - [ ] reactions (single character emoji) (double tap)
 - [ ] edit history
 - [ ] contact mentions
@@ -32,6 +21,7 @@
     - [ ] live location
     - [ ] camera inline
     - [ ] audio inline
+- [ ] auto save drafts on interval or screen change
 - [ ] videocall
 - [ ] braodcast lists (send same message to multiple contacts)
 - [ ] save scroll state
@@ -71,28 +61,9 @@
 
 # Group messages
 
-- [ ] drafts (maybe as state)
-- [ ] edit history
-- [ ] reply / mention previous
-- [ ] attachments
-  - [ ] files
-  - [ ] images
-  - [ ] videos
-  - [ ] audios
-  - [ ] static location
-  - [ ] live location
-- [ ] videocall
-- [ ] text search
-
 # Calls
 
 # Articles
-
-- [ ] edit history
-- [ ] reply / mention previous
-- [ ] attachments files/images/videos/audios
-- [ ] text search
-      [ ] where-i-left in audio and video and maybe others (for tv series for example)
 
 # Places
 

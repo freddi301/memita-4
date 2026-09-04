@@ -1,8 +1,8 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { useLingui } from "@lingui/react/macro";
+import * as Clipboard from "expo-clipboard";
 import {
   Fragment,
-  use,
   useCallback,
   useEffect,
   useLayoutEffect,
@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import {
+  Alert,
   FlatList,
   Modal,
   Pressable,
@@ -28,7 +29,6 @@ import {
 } from "../queries/directMessages";
 import { nowTimestamp, Timestamp } from "../queries/Timestamp";
 import { useMemitaMutation, useMemitaQuery } from "../store/dataApi";
-import { FeApiContext } from "../store/feApi";
 import { ContentAddress } from "../store/fileStore";
 import { useTheme } from "../Theme";
 import { AttachmentPreview } from "../ui/AttachmentPreview";
@@ -50,7 +50,6 @@ export function DirectConversationScreen({
 }) {
   const { t } = useLingui();
   const theme = useTheme();
-  const feApi = use(FeApiContext);
 
   const account = useMemitaQuery(getContact, {
     accountId,
@@ -81,6 +80,23 @@ export function DirectConversationScreen({
   >({ type: "didRead" });
 
   const [isEditFullScreen, setIsEditFullScreen] = useState(false);
+
+  const [selectedMessageKeys, setSelectedMessageKeys] = useState<Set<string>>(
+    new Set(),
+  );
+  const selectedCount = selectedMessageKeys.size;
+  const toggleMessageSelection = (item: (typeof conversation)[number]) => {
+    const key = messageKey(item);
+    setSelectedMessageKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
+    });
+  };
 
   const [currentViewingMessageId, setCurrentViewingMessageId] = useState<
     | { senderId: AccountId; receiverId: AccountId; createdAt: Timestamp }
@@ -221,6 +237,99 @@ export function DirectConversationScreen({
           </ScreenLink>
         </View>
       )}
+      {!isEditFullScreen && selectedCount > 0 && (
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            borderBottomWidth: 1,
+            borderColor: theme.separatorColor,
+          }}
+        >
+          <ScreenLink
+            to={async () => {
+              setSelectedMessageKeys(new Set());
+            }}
+            icon="times"
+            hideLabel
+            label={t`Stop selecting`}
+          />
+          <Text style={[theme.textStyle]}>{t`${selectedCount} selected`}</Text>
+          <View style={{ flexGrow: 1 }} />
+          {selectedCount === 1 && (
+            <ScreenLink
+              to={async () => {
+                const selected = conversation.find((item) =>
+                  selectedMessageKeys.has(messageKey(item)),
+                );
+                if (selected) {
+                  setToModifyMessage({
+                    createdAt: selected.createdAt,
+                    isDraft: selected.isDraft,
+                    content: selected.content,
+                    attachments: selected.attachments,
+                  });
+                }
+                setSelectedMessageKeys(new Set());
+              }}
+              icon="edit"
+              hideLabel
+              label={t`Modify`}
+            />
+          )}
+          {selectedCount === 1 && (
+            <ScreenLink
+              to={async () => {
+                const selected = conversation.find((item) =>
+                  selectedMessageKeys.has(messageKey(item)),
+                );
+                if (selected) {
+                  await Clipboard.setStringAsync(selected.content);
+                  Alert.alert(t`Copied to clipboard`);
+                }
+                setSelectedMessageKeys(new Set());
+              }}
+              icon="copy"
+              hideLabel
+              label={t`Copy text`}
+            />
+          )}
+          <ScreenLink
+            // TODO implement forwarding the selected message(s)
+            to={undefined}
+            icon="share-square-o"
+            hideLabel={selectedCount === 1}
+            label={t`Forward`}
+          />
+          <ScreenLink
+            // TODO implement replying to the selected message
+            to={undefined}
+            icon="quote-left"
+            hideLabel={selectedCount === 1}
+            label={t`Answer`}
+          />
+          <ScreenLink
+            to={async () => {
+              for (const item of conversation) {
+                if (selectedMessageKeys.has(messageKey(item))) {
+                  await update({
+                    senderId: item.senderId,
+                    receiverId: item.receiverId,
+                    createdAt: item.createdAt,
+                    isDraft: item.isDraft,
+                    content: "",
+                    attachments: [],
+                  });
+                }
+              }
+              setSelectedMessageKeys(new Set());
+            }}
+            icon="trash"
+            hideLabel
+            label={t`Delete`}
+          />
+        </View>
+      )}
       <View
         style={{
           flex: 1,
@@ -268,15 +377,22 @@ export function DirectConversationScreen({
               item.createdAt === currentViewingMessageId.createdAt &&
               item.senderId === currentViewingMessageId.senderId &&
               item.receiverId === currentViewingMessageId.receiverId;
+            const isSelected = selectedMessageKeys.has(messageKey(item));
             return (
               <Pressable
+                onLongPress={() => toggleMessageSelection(item)}
+                onPress={() => {
+                  if (selectedCount > 0) {
+                    toggleMessageSelection(item);
+                  }
+                }}
                 style={{
                   backgroundColor:
-                    item.createdAt === toModifyMessage?.createdAt
+                    isSelected || item.createdAt === toModifyMessage?.createdAt
                       ? theme.selectedItemBackgroundColor
                       : theme.backgroundColor,
                   borderRadius: 8,
-                  paddingHorizontal: 7,
+                  paddingRight: 7,
                   marginVertical: itemVerticalMarginHalf,
                   overflow: "hidden",
                   borderWidth: itemVerticalBorderWidth,
@@ -284,6 +400,10 @@ export function DirectConversationScreen({
                   borderColor: isCurrentViewingMessage
                     ? "purple"
                     : theme.backgroundColor,
+                  borderLeftWidth: 7,
+                  borderLeftColor: isSelected
+                    ? theme.linkTextColor
+                    : "transparent",
                 }}
               >
                 <View style={{ flexDirection: "row", gap: 8 }}>
@@ -482,28 +602,6 @@ export function DirectConversationScreen({
                     icon="eye"
                     hideLabel
                     label={t`Search`}
-                  />
-                  <View style={{ flexGrow: 1 }} />
-                  <ScreenLink
-                    to={(() => {
-                      if (
-                        currentViewingMessage &&
-                        currentViewingMessage.senderId === accountId &&
-                        !toModifyMessage
-                      ) {
-                        return async () => {
-                          setToModifyMessage({
-                            createdAt: currentViewingMessage.createdAt,
-                            isDraft: currentViewingMessage.isDraft,
-                            content: currentViewingMessage.content,
-                            attachments: currentViewingMessage.attachments,
-                          });
-                        };
-                      }
-                    })()}
-                    icon="edit"
-                    hideLabel
-                    label={t`Edit message`}
                   />
                   <View style={{ flexGrow: 1 }} />
                   <ScreenLink
@@ -763,4 +861,12 @@ export function DirectConversationScreen({
       />
     </Fragment>
   );
+}
+
+function messageKey(item: {
+  senderId: AccountId;
+  receiverId: AccountId;
+  createdAt: Timestamp;
+}): `${AccountId}-${AccountId}-${Timestamp}` {
+  return `${item.senderId}-${item.receiverId}-${item.createdAt}`;
 }

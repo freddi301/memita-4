@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: components/screens/DirectConversationScreen.tsx:257
+msgid "{selectedCount} selected"
+msgstr "{số lượng đã chọn} đã được chọn"
+
 #: components/screens/AccountScreen.tsx:183
 msgid "Account ID"
 msgstr "ID tài khoản"
@@ -38,6 +42,10 @@ msgstr "Thêm vào danh sách liên hệ"
 #: components/screens/ContactListsScreen.tsx:40
 msgid "All messages"
 msgstr "Tất cả các tin nhắn"
+
+#: components/screens/DirectConversationScreen.tsx:309
+msgid "Answer"
+msgstr "Trả lời"
 
 #: components/screens/ExportAccountScreen.tsx:83
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
@@ -123,6 +131,10 @@ msgstr "Danh sách liên hệ"
 msgid "Contact name"
 msgstr "Tên liên lạc"
 
+#: components/screens/DirectConversationScreen.tsx:288
+msgid "Copied to clipboard"
+msgstr "Sao chép vào bộ nhớ tạm thời"
+
 #: components/screens/AccountScreen.tsx:196
 msgid "Copy account id to clipboard"
 msgstr "Sao chép ID tài khoản vào clipboard"
@@ -130,6 +142,10 @@ msgstr "Sao chép ID tài khoản vào clipboard"
 #: components/screens/AccountScreen.tsx:227
 msgid "Copy device id to clipboard"
 msgstr "Sao chép ID thiết bị vào clipboard"
+
+#: components/screens/DirectConversationScreen.tsx:294
+msgid "Copy text"
+msgstr "Sao chép văn bản"
 
 #: components/screens/AccountScreen.tsx:104
 msgid "Create account"
@@ -170,6 +186,7 @@ msgstr "Tạo nhóm mới"
 msgid "Dark"
 msgstr "Tối"
 
+#: components/screens/DirectConversationScreen.tsx:329
 #: components/ui/MessageCompose.tsx:278
 msgid "Delete"
 msgstr "Xóa"
@@ -223,10 +240,6 @@ msgstr "Chỉnh sửa liên lạc"
 msgid "Edit date"
 msgstr "Chỉnh sửa ngày"
 
-#: components/screens/DirectConversationScreen.tsx:506
-msgid "Edit message"
-msgstr "Chỉnh sửa tin nhắn"
-
 #: components/ui/DateTimeInput.tsx:88
 msgid "Edit time"
 msgstr "Chỉnh sửa giờ"
@@ -265,6 +278,10 @@ msgstr "Khóa bí mật tài khoản đã xuất"
 msgid "Exported account secret copied to clipboard"
 msgstr "Đã sao chép khóa bí mật tài khoản vào clipboard"
 
+#: components/screens/DirectConversationScreen.tsx:302
+msgid "Forward"
+msgstr "Gửi"
+
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
 msgstr "Đến bài viết"
@@ -273,7 +290,7 @@ msgstr "Đến bài viết"
 msgid "Go to conversation"
 msgstr "Đến cuộc trò chuyện"
 
-#: components/screens/DirectConversationScreen.tsx:209
+#: components/screens/DirectConversationScreen.tsx:225
 #: components/screens/GroupConversationScreen.tsx:49
 msgid "Go to messages"
 msgstr "Đến tin nhắn"
@@ -303,7 +320,7 @@ msgstr "Khóa bí mật hoặc mật khẩu tài khoản không hợp lệ"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "Cần có hai người. Thêm người kia vào danh sách liên hệ của bạn để bắt đầu trò chuyện!"
 
-#: components/screens/DirectConversationScreen.tsx:444
+#: components/screens/DirectConversationScreen.tsx:564
 msgid "Jump to date"
 msgstr "Nhảy đến ngày"
 
@@ -319,7 +336,7 @@ msgstr "Sáng"
 msgid "Location"
 msgstr "Vị trí"
 
-#: components/screens/DirectConversationScreen.tsx:564
+#: components/screens/DirectConversationScreen.tsx:662
 msgid "Mark as read"
 msgstr "Đánh dấu là đã đọc"
 
@@ -334,6 +351,10 @@ msgstr "Thành viên"
 #: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
+
+#: components/screens/DirectConversationScreen.tsx:277
+msgid "Modify"
+msgstr "Sửa đổi"
 
 #: components/ui/MessageCompose.tsx:262
 msgid "Modify message"
@@ -351,8 +372,8 @@ msgstr "Bài viết mới"
 msgid "New draft"
 msgstr "Bản nháp mới"
 
-#: components/screens/DirectConversationScreen.tsx:593
-#: components/screens/DirectConversationScreen.tsx:678
+#: components/screens/DirectConversationScreen.tsx:691
+#: components/screens/DirectConversationScreen.tsx:776
 msgid "Next occurrence"
 msgstr "Lần xuất hiện tiếp theo"
 
@@ -382,7 +403,7 @@ msgstr "Không có danh sách liên hệ"
 msgid "No contacts"
 msgstr "Không có liên hệ"
 
-#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectConversationScreen.tsx:502
 #: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:103
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -433,8 +454,8 @@ msgstr "Dán ID tài khoản mà liên lạc của bạn đã chia sẻ"
 msgid "Places"
 msgstr "Địa điểm"
 
-#: components/screens/DirectConversationScreen.tsx:529
-#: components/screens/DirectConversationScreen.tsx:652
+#: components/screens/DirectConversationScreen.tsx:627
+#: components/screens/DirectConversationScreen.tsx:750
 msgid "Previous occurrence"
 msgstr "Lần xuất hiện trước"
 
@@ -477,7 +498,7 @@ msgid "Save draft"
 msgstr "Lưu bản nháp"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:484
+#: components/screens/DirectConversationScreen.tsx:604
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -518,6 +539,10 @@ msgstr "Hiển thị mã QR"
 msgid "Stop searching"
 msgstr "Dừng tìm kiếm"
 
+#: components/screens/DirectConversationScreen.tsx:255
+msgid "Stop selecting"
+msgstr "Dừng chọn"
+
 #: components/screens/DeviceSettingsScreen.tsx:121
 msgid "System default"
 msgstr "Cài đặt mặc định của hệ thống"
@@ -555,7 +580,7 @@ msgstr "Tên này chỉ hiển thị với bạn trên thiết bị này"
 msgid "This will your avatar forever, choose wisely"
 msgstr "Đây sẽ là avatar của bạn mãi mãi, hãy chọn thật khôn ngoan"
 
-#: components/screens/DirectConversationScreen.tsx:614
+#: components/screens/DirectConversationScreen.tsx:712
 msgid "Unread messages"
 msgstr "Tin nhắn chưa đọc"
 

@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: components/screens/DirectConversationScreen.tsx:257
+msgid "{selectedCount} selected"
+msgstr "தேர்ந்தெடுக்கப்பட்ட எண்ணிக்கை {selectedCount}"
+
 #: components/screens/AccountScreen.tsx:183
 msgid "Account ID"
 msgstr "கணக்கு ID"
@@ -38,6 +42,10 @@ msgstr "தொடர்பு பட்டியலில் சேர்"
 #: components/screens/ContactListsScreen.tsx:40
 msgid "All messages"
 msgstr "அனைத்து செய்திகளும்"
+
+#: components/screens/DirectConversationScreen.tsx:309
+msgid "Answer"
+msgstr "பதில்"
 
 #: components/screens/ExportAccountScreen.tsx:83
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
@@ -123,6 +131,10 @@ msgstr "தொடர்புப் பெயர்களின் பட்ட�
 msgid "Contact name"
 msgstr "தொடர்பு பெயர்"
 
+#: components/screens/DirectConversationScreen.tsx:288
+msgid "Copied to clipboard"
+msgstr "நகலெடுக்கப்பட்டது"
+
 #: components/screens/AccountScreen.tsx:196
 msgid "Copy account id to clipboard"
 msgstr "கணக்கு IDஐ கிளிப்போர்டுக்கு நகலெடுக்கவும்"
@@ -130,6 +142,10 @@ msgstr "கணக்கு IDஐ கிளிப்போர்டுக்க�
 #: components/screens/AccountScreen.tsx:227
 msgid "Copy device id to clipboard"
 msgstr "சாதன IDஐ கிளிப்போர்டுக்கு நகலெடுக்கவும்"
+
+#: components/screens/DirectConversationScreen.tsx:294
+msgid "Copy text"
+msgstr "உரையை நகலெடுக்க"
 
 #: components/screens/AccountScreen.tsx:104
 msgid "Create account"
@@ -170,6 +186,7 @@ msgstr "புதிய குழுவை உருவாக்கவும்"
 msgid "Dark"
 msgstr "இருண்ட"
 
+#: components/screens/DirectConversationScreen.tsx:329
 #: components/ui/MessageCompose.tsx:278
 msgid "Delete"
 msgstr "நீக்கு"
@@ -223,10 +240,6 @@ msgstr "தொடர்பை திருத்தவும்"
 msgid "Edit date"
 msgstr "தேதியை திருத்தவும்"
 
-#: components/screens/DirectConversationScreen.tsx:506
-msgid "Edit message"
-msgstr "செய்தியை திருத்து"
-
 #: components/ui/DateTimeInput.tsx:88
 msgid "Edit time"
 msgstr "நேரத்தை திருத்தவும்"
@@ -265,6 +278,10 @@ msgstr "ஏற்றுமதி செய்யப்பட்ட கணக்�
 msgid "Exported account secret copied to clipboard"
 msgstr "ஏற்றுமதி செய்யப்பட்ட கணக்கு ரகசியம் கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
+#: components/screens/DirectConversationScreen.tsx:302
+msgid "Forward"
+msgstr "அனுப்பு"
+
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
 msgstr "கட்டுரைகளுக்கு செல்லவும்"
@@ -273,7 +290,7 @@ msgstr "கட்டுரைகளுக்கு செல்லவும்"
 msgid "Go to conversation"
 msgstr "உரையாடலுக்கு செல்லவும்"
 
-#: components/screens/DirectConversationScreen.tsx:209
+#: components/screens/DirectConversationScreen.tsx:225
 #: components/screens/GroupConversationScreen.tsx:49
 msgid "Go to messages"
 msgstr "செய்திகளுக்கு செல்லவும்"
@@ -303,7 +320,7 @@ msgstr "தவறான கணக்கு ரகசியம் அல்லத
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "இரண்டு நபர்கள் தேவை. அரட்டைப் பழக்கத்தைத் தொடங்க, ஒருவரை ஒருவர் தொடர்புகளாகச் சேர்க்கவும்!"
 
-#: components/screens/DirectConversationScreen.tsx:444
+#: components/screens/DirectConversationScreen.tsx:564
 msgid "Jump to date"
 msgstr "தேதியைத் தேர்ந்தெடுக்க"
 
@@ -319,7 +336,7 @@ msgstr "வெளிர்"
 msgid "Location"
 msgstr "இடம்"
 
-#: components/screens/DirectConversationScreen.tsx:564
+#: components/screens/DirectConversationScreen.tsx:662
 msgid "Mark as read"
 msgstr "படிக்கப்பட்டதாக குறிக்கவும்"
 
@@ -334,6 +351,10 @@ msgstr "உறுப்பினர்கள்"
 #: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
+
+#: components/screens/DirectConversationScreen.tsx:277
+msgid "Modify"
+msgstr "மாற்றவும்"
 
 #: components/ui/MessageCompose.tsx:262
 msgid "Modify message"
@@ -351,8 +372,8 @@ msgstr "புதிய கட்டுரை"
 msgid "New draft"
 msgstr "புதிய வரைவு"
 
-#: components/screens/DirectConversationScreen.tsx:593
-#: components/screens/DirectConversationScreen.tsx:678
+#: components/screens/DirectConversationScreen.tsx:691
+#: components/screens/DirectConversationScreen.tsx:776
 msgid "Next occurrence"
 msgstr "அடுத்த நிகழ்வு"
 
@@ -382,7 +403,7 @@ msgstr "தொடர்புப் பட்டியல்கள் எது�
 msgid "No contacts"
 msgstr "எந்த தொடர்புகளும் இல்லை"
 
-#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectConversationScreen.tsx:502
 #: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:103
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -433,8 +454,8 @@ msgstr "உங்கள் தொடர்பு உங்களுடன் ப
 msgid "Places"
 msgstr "இடங்கள்"
 
-#: components/screens/DirectConversationScreen.tsx:529
-#: components/screens/DirectConversationScreen.tsx:652
+#: components/screens/DirectConversationScreen.tsx:627
+#: components/screens/DirectConversationScreen.tsx:750
 msgid "Previous occurrence"
 msgstr "முந்தைய நிகழ்வு"
 
@@ -477,7 +498,7 @@ msgid "Save draft"
 msgstr "வரைவை சேமிக்கவும்"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:484
+#: components/screens/DirectConversationScreen.tsx:604
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -518,6 +539,10 @@ msgstr "QR குறியீட்டை காட்டு"
 msgid "Stop searching"
 msgstr "தேடலை நிறுத்து"
 
+#: components/screens/DirectConversationScreen.tsx:255
+msgid "Stop selecting"
+msgstr "தேர்ந்தெடுப்பதை நிறுத்து"
+
 #: components/screens/DeviceSettingsScreen.tsx:121
 msgid "System default"
 msgstr "இயல்பு நிலை"
@@ -555,7 +580,7 @@ msgstr "இந்த பெயர் இந்த சாதனத்தில்
 msgid "This will your avatar forever, choose wisely"
 msgstr "இது உங்கள் அவதாரமாக என்றும் இருக்கும், புத்திசாலித்தனமாக தேர்ந்தெடுங்கள்"
 
-#: components/screens/DirectConversationScreen.tsx:614
+#: components/screens/DirectConversationScreen.tsx:712
 msgid "Unread messages"
 msgstr "படிக்காத செய்திகள்"
 

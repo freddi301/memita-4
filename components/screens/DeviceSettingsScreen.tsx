@@ -28,40 +28,40 @@ export function DeviceSettingsScreen() {
         return "🇬🇧 English";
       case "zh":
         return "🇨🇳 中文";
-      case "es":
-        return "🇪🇸 Español";
-      case "hi":
-        return "🇮🇳 हिन्दी";
-      case "bn":
-        return "🇧🇩 বাংলা";
-      case "pt":
-        return "🇵🇹 Português";
-      case "ru":
-        return "🇷🇺 Русский";
-      case "ja":
-        return "🇯🇵 日本語";
-      case "vi":
-        return "🇻🇳 Tiếng Việt";
-      case "tr":
-        return "🇹🇷 Türkçe";
-      case "mr":
-        return "🇮🇳 मराठी";
-      case "te":
-        return "🇮🇳 తెలుగు";
-      case "ko":
-        return "🇰🇷 한국어";
-      case "fr":
-        return "🇫🇷 Français";
-      case "ta":
-        return "🇱🇰 தமிழ்";
-      case "ar":
-        return "🇸🇦 العربية";
-      case "de":
-        return "🇩🇪 Deutsch";
-      case "ur":
-        return "🇵🇰 اردو";
-      case "jv":
-        return "🇮🇩 Basa Jawa";
+      // case "es":
+      //   return "🇪🇸 Español";
+      // case "hi":
+      //   return "🇮🇳 हिन्दी";
+      // case "bn":
+      //   return "🇧🇩 বাংলা";
+      // case "pt":
+      //   return "🇵🇹 Português";
+      // case "ru":
+      //   return "🇷🇺 Русский";
+      // case "ja":
+      //   return "🇯🇵 日本語";
+      // case "vi":
+      //   return "🇻🇳 Tiếng Việt";
+      // case "tr":
+      //   return "🇹🇷 Türkçe";
+      // case "mr":
+      //   return "🇮🇳 मराठी";
+      // case "te":
+      //   return "🇮🇳 తెలుగు";
+      // case "ko":
+      //   return "🇰🇷 한국어";
+      // case "fr":
+      //   return "🇫🇷 Français";
+      // case "ta":
+      //   return "🇱🇰 தமிழ்";
+      // case "ar":
+      //   return "🇸🇦 العربية";
+      // case "de":
+      //   return "🇩🇪 Deutsch";
+      // case "ur":
+      //   return "🇵🇰 اردو";
+      // case "jv":
+      //   return "🇮🇩 Basa Jawa";
       case "it":
         return "🇮🇹 Italiano";
       // case "th":

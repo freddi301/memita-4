@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: components/screens/DirectConversationScreen.tsx:257
+msgid "{selectedCount} selected"
+msgstr "{jumlah_terpilih} dipilih"
+
 #: components/screens/AccountScreen.tsx:183
 msgid "Account ID"
 msgstr "ID Akun"
@@ -38,6 +42,10 @@ msgstr "Tambah ke daftar kontak"
 #: components/screens/ContactListsScreen.tsx:40
 msgid "All messages"
 msgstr "Semua pesan"
+
+#: components/screens/DirectConversationScreen.tsx:309
+msgid "Answer"
+msgstr "Jawaban"
 
 #: components/screens/ExportAccountScreen.tsx:83
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
@@ -123,6 +131,10 @@ msgstr "Daftar kontak"
 msgid "Contact name"
 msgstr "Jeneng kontak"
 
+#: components/screens/DirectConversationScreen.tsx:288
+msgid "Copied to clipboard"
+msgstr "Disalin ke papan klip"
+
 #: components/screens/AccountScreen.tsx:196
 msgid "Copy account id to clipboard"
 msgstr "Salin ID akun menyang clipboard"
@@ -130,6 +142,10 @@ msgstr "Salin ID akun menyang clipboard"
 #: components/screens/AccountScreen.tsx:227
 msgid "Copy device id to clipboard"
 msgstr "Salin ID piranti menyang clipboard"
+
+#: components/screens/DirectConversationScreen.tsx:294
+msgid "Copy text"
+msgstr "Salin teks"
 
 #: components/screens/AccountScreen.tsx:104
 msgid "Create account"
@@ -170,6 +186,7 @@ msgstr "Gawe grup anyar"
 msgid "Dark"
 msgstr "Peteng"
 
+#: components/screens/DirectConversationScreen.tsx:329
 #: components/ui/MessageCompose.tsx:278
 msgid "Delete"
 msgstr "Busak"
@@ -223,10 +240,6 @@ msgstr "Sunting kontak"
 msgid "Edit date"
 msgstr "Sunting tanggal"
 
-#: components/screens/DirectConversationScreen.tsx:506
-msgid "Edit message"
-msgstr "Sunting pesan"
-
 #: components/ui/DateTimeInput.tsx:88
 msgid "Edit time"
 msgstr "Sunting wektu"
@@ -265,6 +278,10 @@ msgstr "Rahasia akun sing diekspor"
 msgid "Exported account secret copied to clipboard"
 msgstr "Rahasia akun sing diekspor disalin menyang clipboard"
 
+#: components/screens/DirectConversationScreen.tsx:302
+msgid "Forward"
+msgstr "Kirim"
+
 #: components/screens/EditArticleScreen.tsx:55
 msgid "Go to articles"
 msgstr "Menyang artikel"
@@ -273,7 +290,7 @@ msgstr "Menyang artikel"
 msgid "Go to conversation"
 msgstr "Menyang obrolan"
 
-#: components/screens/DirectConversationScreen.tsx:209
+#: components/screens/DirectConversationScreen.tsx:225
 #: components/screens/GroupConversationScreen.tsx:49
 msgid "Go to messages"
 msgstr "Menyang pesan"
@@ -303,7 +320,7 @@ msgstr "Rahasia akun utawa sandi ora valid"
 msgid "It takes two. Add each other as contacts to start chatting!"
 msgstr "Butuh dua orang. Tambahkan satu sama lain sebagai kontak untuk mulai mengobrol!"
 
-#: components/screens/DirectConversationScreen.tsx:444
+#: components/screens/DirectConversationScreen.tsx:564
 msgid "Jump to date"
 msgstr "Pindah menyandang tanggal"
 
@@ -319,7 +336,7 @@ msgstr "Padhang"
 msgid "Location"
 msgstr "Lokasi"
 
-#: components/screens/DirectConversationScreen.tsx:564
+#: components/screens/DirectConversationScreen.tsx:662
 msgid "Mark as read"
 msgstr "Tandai wis diwaca"
 
@@ -334,6 +351,10 @@ msgstr "Anggota"
 #: components/screens/SelectAccountScreen.tsx:47
 msgid "Memita"
 msgstr "Memita"
+
+#: components/screens/DirectConversationScreen.tsx:277
+msgid "Modify"
+msgstr "Ubah"
 
 #: components/ui/MessageCompose.tsx:262
 msgid "Modify message"
@@ -351,8 +372,8 @@ msgstr "Artikel anyar"
 msgid "New draft"
 msgstr "Draf anyar"
 
-#: components/screens/DirectConversationScreen.tsx:593
-#: components/screens/DirectConversationScreen.tsx:678
+#: components/screens/DirectConversationScreen.tsx:691
+#: components/screens/DirectConversationScreen.tsx:776
 msgid "Next occurrence"
 msgstr "Kejadian sabanjure"
 
@@ -382,7 +403,7 @@ msgstr "Tidak ada daftar kontak"
 msgid "No contacts"
 msgstr "Tidak ada kontak"
 
-#: components/screens/DirectConversationScreen.tsx:382
+#: components/screens/DirectConversationScreen.tsx:502
 #: components/screens/DirectMessagesScreen.tsx:218
 #: components/screens/GroupConversationScreen.tsx:103
 #: components/screens/GroupMessagesScreen.tsx:56
@@ -433,8 +454,8 @@ msgstr "Tempel ID akun sing dikirim kontak marang sampeyan"
 msgid "Places"
 msgstr "Panggonan"
 
-#: components/screens/DirectConversationScreen.tsx:529
-#: components/screens/DirectConversationScreen.tsx:652
+#: components/screens/DirectConversationScreen.tsx:627
+#: components/screens/DirectConversationScreen.tsx:750
 msgid "Previous occurrence"
 msgstr "Kejadian sadurunge"
 
@@ -477,7 +498,7 @@ msgid "Save draft"
 msgstr "Simpen draf"
 
 #: components/screens/ContactListsScreen.tsx:79
-#: components/screens/DirectConversationScreen.tsx:484
+#: components/screens/DirectConversationScreen.tsx:604
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
@@ -518,6 +539,10 @@ msgstr "Tampilake kode QR"
 msgid "Stop searching"
 msgstr "Berhenti mencari"
 
+#: components/screens/DirectConversationScreen.tsx:255
+msgid "Stop selecting"
+msgstr "Berhenti memilih"
+
 #: components/screens/DeviceSettingsScreen.tsx:121
 msgid "System default"
 msgstr "Pengaturan bawaan sistem"
@@ -555,7 +580,7 @@ msgstr "Jeneng iki mung katon kanggo sampeyan ing piranti iki"
 msgid "This will your avatar forever, choose wisely"
 msgstr "Iki bakal dadi avatar sampeyan selawase, piliha kanthi wicaksana"
 
-#: components/screens/DirectConversationScreen.tsx:614
+#: components/screens/DirectConversationScreen.tsx:712
 msgid "Unread messages"
 msgstr "Pesan durung diwaca"
 
