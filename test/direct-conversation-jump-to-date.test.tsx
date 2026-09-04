@@ -16,7 +16,7 @@ import { FeApiContextType } from "../components/store/feApi";
 import { createTestApp } from "./utils/createTestApp";
 import { findIcon } from "./utils/findIcon";
 
-export async function generateJumpToDateMessages({
+async function generateJumpToDateMessages({
   accountId,
   contactId,
   api,

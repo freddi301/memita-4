@@ -22,12 +22,7 @@ test("user can export and import account", async () => {
     const exportScreen = await render(<ExportMain />);
 
     await exportUser.press(await exportScreen.findByText("Create new account"));
-    await exportUser.type(
-      exportScreen.getByPlaceholderText(
-        "This name is only visible to you on this device",
-      ),
-      "Alice",
-    );
+    await exportUser.type(exportScreen.getByLabelText("Account name"), "Alice");
     await exportUser.press(await findIcon(exportScreen, "save"));
     await exportUser.press(await exportScreen.findByText("Account settings"));
     await exportUser.press(await exportScreen.findByText("Export account"));
@@ -92,12 +87,7 @@ test("user sees error when importing with wrong password", async () => {
     const exportScreen = await render(<ExportMain />);
 
     await exportUser.press(await exportScreen.findByText("Create new account"));
-    await exportUser.type(
-      exportScreen.getByPlaceholderText(
-        "This name is only visible to you on this device",
-      ),
-      "Alice",
-    );
+    await exportUser.type(exportScreen.getByLabelText("Account name"), "Alice");
     await exportUser.press(await findIcon(exportScreen, "save"));
     await exportUser.press(await exportScreen.findByText("Account settings"));
     await exportUser.press(await exportScreen.findByText("Export account"));

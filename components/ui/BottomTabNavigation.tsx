@@ -5,6 +5,7 @@ import { ArticlesScreen } from "../screens/ArticlesScreen";
 import { DirectMessagesScreen } from "../screens/DirectMessagesScreen";
 import { EventsScreen } from "../screens/EventsScreen";
 import { GroupMessagesScreen } from "../screens/GroupMessagesScreen";
+import { MultimediaScreen } from "../screens/MultimediaScreen";
 import { PlacesScreen } from "../screens/PlacesScreen";
 import { ProfileScreen } from "../screens/ProfileScreen";
 import { ScreenLink } from "./ScreenLink";
@@ -40,6 +41,12 @@ export function BottomTabNavigation({
         icon="newspaper-o"
         hideLabel
         label="newspaper"
+      />
+      <ScreenLink
+        to={enabled ? <MultimediaScreen accountId={accountId} /> : undefined}
+        icon="film"
+        hideLabel
+        label={t`Multimedia`}
       />
       <ScreenLink
         to={enabled ? <EventsScreen accountId={accountId} /> : undefined}

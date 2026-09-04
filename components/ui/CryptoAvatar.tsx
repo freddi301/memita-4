@@ -5,7 +5,6 @@ import { View } from "react-native";
 import { SvgXml } from "react-native-svg";
 import { AccountId } from "../cryptography/cryptography";
 import { FeApiContext } from "../store/feApi";
-import { useTheme } from "../Theme";
 
 export function CryptoAvatar({
   accountId,
@@ -54,8 +53,7 @@ export function CryptoAvatar({
 }
 
 function Avatar({ accountId }: { accountId: AccountId }) {
-  const theme = useTheme();
-  const size = theme.lineHeight * 2;
+  const size = 44;
   const svg = useMemo(
     () => createAvatar(funEmoji, { seed: accountId, size: size }).toString(),
     [accountId, size],

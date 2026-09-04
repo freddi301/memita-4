@@ -2,14 +2,19 @@
 
 - [x] message list
   - [ ] select multiple messages
+    - [ ] modify
+    - [ ] delete
+    - [ ] forward
+    - [ ] answer
+    - [ ] copy?
   - [ ] swipe right to reply on message
   - [ ] copy text
-- [x] edit / delete message (longpress)
-- [x] drafts
-  - [ ] auto save drafts on interval or screen change
+- [x] edit / delete message
+- [ ] auto save drafts on interval or screen change
 - [ ] reactions (single character emoji) (double tap)
 - [ ] edit history
-- [ ] reply / mention previous7
+- [ ] contact mentions
+- [ ] quote/reply, multiple, slice of text
 - [ ] forward
 - [ ] attachments
   - [ ] limits
@@ -62,6 +67,7 @@
 - [ ] organize in lists
 - [ ] membership managment
 - [ ] text search
+- [ ] threads as group lists (zulip style, group is for access, topic is for organizing)
 
 # Group messages
 
@@ -101,3 +107,10 @@
 # File sharing
 
 - [ ] torrent like, with privacy settings
+
+# General
+
+- [ ] mini apps (like: wechat, webxdc)
+- [ ] ephemeral content (disappearing messages, stories, might be implemented with TTL on normal content)
+- [ ] offline first like briar, bluetooth, wifidirect, tor
+- [ ] detect if on secure connection or vpn or anynizing network

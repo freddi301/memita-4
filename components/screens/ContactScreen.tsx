@@ -333,7 +333,12 @@ export function ContactScreen({
                 </View>
               )}
               ListEmptyComponent={
-                <Text style={theme.secondaryTextStyle}>
+                <Text
+                  style={[
+                    theme.secondaryTextStyle,
+                    { marginHorizontal: 16, marginVertical: 8 },
+                  ]}
+                >
                   {normalizedContactListSearchText
                     ? t`No results found`
                     : t`No contact lists`}

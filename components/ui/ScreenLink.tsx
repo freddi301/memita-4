@@ -98,7 +98,8 @@ export function ScreenLink({
                 flexDirection: "row",
                 gap: 8,
                 alignItems: "center",
-                minHeight: 36,
+                minHeight: 44,
+                minWidth: 44,
               },
               styleOverride,
             ]

@@ -36,73 +36,81 @@ export function GroupConversationScreen({
     undefined | { createdAt: Timestamp; content: string }
   >();
 
+  const [isEditFullScreen, setIsEditFullScreen] = useState(false);
+
   return (
     <Fragment>
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <ScreenLink
-          to={<GroupMessagesScreen accountId={accountId} />}
-          icon="arrow-left"
-          hideLabel
-          label={t`Go to messages`}
-        />
-        <ScreenLink
-          to={<GroupScreen accountId={accountId} groupId={groupId} />}
-          icon="user"
-          label={group?.name ?? ""}
-          styleOverride={{ flexGrow: 1 }}
-        />
-      </View>
-      <FlatList
-        data={conversation}
-        renderItem={({ item }) => (
-          <Pressable
-            onLongPress={() => {
-              setToModifyMessage(
-                item.createdAt === toModifyMessage?.createdAt &&
-                  item.senderId === accountId
-                  ? undefined
-                  : { createdAt: item.createdAt, content: item.content },
-              );
-            }}
-            style={{
-              backgroundColor:
-                item.createdAt === toModifyMessage?.createdAt
-                  ? theme.selectedItemBackgroundColor
-                  : undefined,
-            }}
-          >
-            <View
+      {!isEditFullScreen && (
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <ScreenLink
+            to={<GroupMessagesScreen accountId={accountId} />}
+            icon="arrow-left"
+            hideLabel
+            label={t`Go to messages`}
+          />
+          <ScreenLink
+            to={<GroupScreen accountId={accountId} groupId={groupId} />}
+            icon="user"
+            label={group?.name ?? ""}
+            styleOverride={{ flexGrow: 1 }}
+          />
+        </View>
+      )}
+      {!isEditFullScreen && (
+        <FlatList
+          data={conversation}
+          renderItem={({ item }) => (
+            <Pressable
+              onLongPress={() => {
+                setToModifyMessage(
+                  item.createdAt === toModifyMessage?.createdAt &&
+                    item.senderId === accountId
+                    ? undefined
+                    : { createdAt: item.createdAt, content: item.content },
+                );
+              }}
               style={{
-                flexDirection: "row",
-                paddingHorizontal: 16,
-                justifyContent: "space-between",
+                backgroundColor:
+                  item.createdAt === toModifyMessage?.createdAt
+                    ? theme.selectedItemBackgroundColor
+                    : undefined,
               }}
             >
-              <Text style={[theme.textStyle, { fontWeight: "bold" }]}>
-                {item.senderName}
+              <View
+                style={{
+                  flexDirection: "row",
+                  paddingHorizontal: 16,
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text style={[theme.textStyle, { fontWeight: "bold" }]}>
+                  {item.senderName}
+                </Text>
+                <Text style={theme.secondaryTextStyle}>
+                  {new Date(item.createdAt).toLocaleString()}
+                </Text>
+              </View>
+              <Text style={[theme.textStyle, { paddingHorizontal: 16 }]}>
+                {item.content}
               </Text>
-              <Text style={theme.secondaryTextStyle}>
-                {new Date(item.createdAt).toLocaleString()}
-              </Text>
-            </View>
-            <Text style={[theme.textStyle, { paddingHorizontal: 16 }]}>
-              {item.content}
+            </Pressable>
+          )}
+          style={{ flex: 1, marginVertical: 8 }}
+          contentContainerStyle={{ flexGrow: 1 }}
+          ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
+          ListEmptyComponent={() => (
+            <Text style={[theme.secondaryTextStyle, { textAlign: "center" }]}>
+              {t`No messages`}
             </Text>
-          </Pressable>
-        )}
-        style={{ flex: 1, marginVertical: 8 }}
-        contentContainerStyle={{ flexGrow: 1 }}
-        ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
-        ListEmptyComponent={() => (
-          <Text style={[theme.secondaryTextStyle, { textAlign: "center" }]}>
-            {t`No messages`}
-          </Text>
-        )}
-        refreshing={false}
-        onRefresh={refreshMemitaQueries}
-      />
+          )}
+          refreshing={false}
+          onRefresh={refreshMemitaQueries}
+        />
+      )}
       <MessageCompose
         toModify={undefined}
+        isEditFullScreen={isEditFullScreen}
+        setIsEditFullScreen={setIsEditFullScreen}
         onUpdate={async ({ content }) => {
           await send({
             createdAt: toModifyMessage?.createdAt ?? nowTimestamp(),

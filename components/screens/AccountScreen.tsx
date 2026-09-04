@@ -63,19 +63,6 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
         <View style={{ flexDirection: "row" }}>
           <ScreenLink
             to={
-              !canSave && accountId !== undefined && deviceId !== undefined
-                ? async () => {
-                    await remove({ accountId });
-                    return <SelectAccountScreen />;
-                  }
-                : undefined
-            }
-            icon="trash"
-            hideLabel
-            label={t`Remove account from this device`}
-          />
-          <ScreenLink
-            to={
               canSave
                 ? async () => {
                     setNameInput(nameOriginal);
@@ -161,7 +148,7 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             onChangeText={setNameInput}
             style={theme.textInputStyle(nameInput)}
             placeholderTextColor={theme.secondaryTextColor}
-            placeholder={t`This name is only visible to you on this device`}
+            aria-label={t`Account name`}
           />
           {nameInput !== nameOriginal ? (
             <Text
@@ -173,6 +160,11 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
               {nameOriginal || " "}
             </Text>
           ) : null}
+          {!accountId && (
+            <Text style={theme.secondaryTextStyle}>
+              {t`This name is only visible to you on this device`}
+            </Text>
+          )}
         </View>
         {accountId && (
           <View
@@ -245,6 +237,20 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
             }
             icon="upload"
             label={t`Export account`}
+          />
+        )}
+        {accountId && (
+          <ScreenLink
+            to={
+              !canSave && deviceId !== undefined
+                ? async () => {
+                    await remove({ accountId });
+                    return <SelectAccountScreen />;
+                  }
+                : undefined
+            }
+            icon="trash"
+            label={t`Remove account from this device`}
           />
         )}
       </ScrollView>

@@ -13,11 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: components/screens/AccountScreen.tsx:191
+#: components/screens/AccountScreen.tsx:183
 msgid "Account ID"
 msgstr "ఖాతా ID"
 
-#: components/screens/AccountScreen.tsx:158
+#: components/screens/AccountScreen.tsx:145
+#: components/screens/AccountScreen.tsx:151
 #: components/screens/ImportAccountScreen.tsx:80
 msgid "Account name"
 msgstr "ఖాతా పేరు"
@@ -34,7 +35,7 @@ msgstr "సంప్రదింపు వ్యక్తిని జాబి�
 msgid "Add to contact list"
 msgstr "సంప్రదింపు జాబితాకు చేర్చండి"
 
-#: components/screens/ContactListsScreen.tsx:39
+#: components/screens/ContactListsScreen.tsx:40
 msgid "All messages"
 msgstr "అన్ని సందేశాలు"
 
@@ -42,7 +43,7 @@ msgstr "అన్ని సందేశాలు"
 msgid "Anyone who is able to import the secret will have full access to the account forever!"
 msgstr "రహస్యాన్ని దిగుమతి చేయగలిగిన ఎవరైనా ఖాతాకు శాశ్వతంగా పూర్తి యాక్సెస్ పొందుతారు!"
 
-#: components/ui/MessageCompose.tsx:108
+#: components/ui/MessageCompose.tsx:125
 msgid "Attach file"
 msgstr "ఫైల్ జోడించు"
 
@@ -84,6 +85,14 @@ msgstr "మార్పుల చరిత్ర"
 msgid "Clear date"
 msgstr "తేదీ తొలగించు"
 
+#: components/ui/MessageCompose.tsx:166
+msgid "Collapse editor"
+msgstr "ఎడిటర్‌ను కుదించు"
+
+#: components/screens/WorkInProgressScreen.tsx:34
+msgid "Coming soon"
+msgstr "త్వరలో అందుబాటులో ఉంటుంది"
+
 #: components/screens/ExportAccountScreen.tsx:68
 msgid "Confirm export"
 msgstr "ఎగుమతిని నిర్ధారించు"
@@ -114,15 +123,15 @@ msgstr "సంప్రదించవలసిన జాబితాలు"
 msgid "Contact name"
 msgstr "సంప్రదింపు పేరు"
 
-#: components/screens/AccountScreen.tsx:204
+#: components/screens/AccountScreen.tsx:196
 msgid "Copy account id to clipboard"
 msgstr "ఖాతా IDని క్లిప్‌బోర్డ్‌కి కాపీ చేయి"
 
-#: components/screens/AccountScreen.tsx:235
+#: components/screens/AccountScreen.tsx:227
 msgid "Copy device id to clipboard"
 msgstr "పరికర IDని క్లిప్‌బోర్డ్‌కి కాపీ చేయి"
 
-#: components/screens/AccountScreen.tsx:117
+#: components/screens/AccountScreen.tsx:104
 msgid "Create account"
 msgstr "ఖాతా సృష్టించు"
 
@@ -137,7 +146,7 @@ msgid "Create contact"
 msgstr "సంప్రదింపు సృష్టించు"
 
 #: components/screens/ContactListScreen.tsx:152
-#: components/screens/ContactListsScreen.tsx:53
+#: components/screens/ContactListsScreen.tsx:54
 msgid "Create contact list"
 msgstr "సంప్రదింపు జాబితాను సృష్టించండి"
 
@@ -161,7 +170,7 @@ msgstr "కొత్త గుంపు సృష్టించు"
 msgid "Dark"
 msgstr "చీకటి"
 
-#: components/ui/MessageCompose.tsx:227
+#: components/ui/MessageCompose.tsx:278
 msgid "Delete"
 msgstr "తొలగించు"
 
@@ -178,7 +187,7 @@ msgstr "సంప్రదింపు తొలగించు"
 msgid "Delete contact list"
 msgstr "సంప్రదింపు జాబితాను తొలగించు"
 
-#: components/screens/AccountScreen.tsx:222
+#: components/screens/AccountScreen.tsx:214
 msgid "Device ID"
 msgstr "పరికర ID"
 
@@ -186,18 +195,19 @@ msgstr "పరికర ID"
 msgid "Device Settings"
 msgstr "పరికర సెట్టింగులు"
 
-#: components/screens/ContactScreen.tsx:356
+#: components/screens/ContactScreen.tsx:361
 #: components/screens/ProfileScreen.tsx:228
-#: components/ui/BottomTabNavigation.tsx:30
+#: components/ui/BottomTabNavigation.tsx:31
 msgid "Direct messages"
 msgstr "నేరు సందేశాలు"
 
-#: components/screens/AccountScreen.tsx:87
+#: components/screens/AccountScreen.tsx:74
 #: components/screens/ContactListScreen.tsx:118
 #: components/screens/ContactScreen.tsx:152
 #: components/screens/EditArticleScreen.tsx:95
 #: components/screens/GroupScreen.tsx:91
 #: components/screens/ProfileScreen.tsx:168
+#: components/ui/MessageCompose.tsx:178
 msgid "Discard changes"
 msgstr "మార్పులు రద్దు చేయి"
 
@@ -213,7 +223,7 @@ msgstr "సంప్రదింపు సవరించు"
 msgid "Edit date"
 msgstr "తేదీ సవరించు"
 
-#: components/screens/DirectConversationScreen.tsx:505
+#: components/screens/DirectConversationScreen.tsx:506
 msgid "Edit message"
 msgstr "సందేశాన్ని సవరించండి"
 
@@ -229,11 +239,15 @@ msgstr "ఈ సంప్రదింపుల జాబితాకు ఒక �
 msgid "Event"
 msgstr "కార్యక్రమం"
 
-#: components/ui/BottomTabNavigation.tsx:48
+#: components/ui/BottomTabNavigation.tsx:55
 msgid "Events"
 msgstr "కార్యక్రమాలు"
 
-#: components/screens/AccountScreen.tsx:247
+#: components/ui/MessageCompose.tsx:166
+msgid "Expand editor"
+msgstr "ఎడిటర్ ను విస్తరించండి"
+
+#: components/screens/AccountScreen.tsx:239
 #: components/screens/ExportAccountScreen.tsx:47
 msgid "Export account"
 msgstr "ఖాతా ఎగుమతి చేయి"
@@ -259,8 +273,8 @@ msgstr "వ్యాసాలకు వెళ్ళు"
 msgid "Go to conversation"
 msgstr "సంభాషణకు వెళ్ళు"
 
-#: components/screens/DirectConversationScreen.tsx:216
-#: components/screens/GroupConversationScreen.tsx:46
+#: components/screens/DirectConversationScreen.tsx:209
+#: components/screens/GroupConversationScreen.tsx:49
 msgid "Go to messages"
 msgstr "సందేశాలకు వెళ్ళు"
 
@@ -268,7 +282,7 @@ msgstr "సందేశాలకు వెళ్ళు"
 msgid "Group id"
 msgstr "గుంపు ID"
 
-#: components/ui/BottomTabNavigation.tsx:36
+#: components/ui/BottomTabNavigation.tsx:37
 msgid "Group messages"
 msgstr "గుంపు సందేశాలు"
 
@@ -305,7 +319,7 @@ msgstr "వెలుతురు"
 msgid "Location"
 msgstr "స్థానం"
 
-#: components/screens/DirectConversationScreen.tsx:563
+#: components/screens/DirectConversationScreen.tsx:564
 msgid "Mark as read"
 msgstr "చదివినట్లు గుర్తించు"
 
@@ -321,25 +335,29 @@ msgstr "సభ్యులు"
 msgid "Memita"
 msgstr "Memita"
 
-#: components/ui/MessageCompose.tsx:211
+#: components/ui/MessageCompose.tsx:262
 msgid "Modify message"
 msgstr "సందేశాన్ని మార్చు"
+
+#: components/ui/BottomTabNavigation.tsx:49
+msgid "Multimedia"
+msgstr "మల్టీమీడియా"
 
 #: components/screens/EditArticleScreen.tsx:63
 msgid "New article"
 msgstr "కొత్త వ్యాసం"
 
-#: components/ui/MessageCompose.tsx:157
+#: components/ui/MessageCompose.tsx:200
 msgid "New draft"
 msgstr "కొత్త ముసాయిదా"
 
-#: components/screens/DirectConversationScreen.tsx:592
-#: components/screens/DirectConversationScreen.tsx:677
+#: components/screens/DirectConversationScreen.tsx:593
+#: components/screens/DirectConversationScreen.tsx:678
 msgid "Next occurrence"
 msgstr "తదుపరి సారి"
 
 #: components/screens/ProfileDeepLinkScreen.tsx:103
-#: components/screens/SelectAccountScreen.tsx:98
+#: components/screens/SelectAccountScreen.tsx:100
 msgid "No accounts on this device"
 msgstr "ఈ పరికరంలో ఖాతాలు లేవు"
 
@@ -355,8 +373,8 @@ msgstr "ఏ మార్పులు జరగలేదు"
 msgid "No connected devices"
 msgstr "కనెక్ట్ చేయబడిన పరికరాలు ఏవీ లేవు"
 
-#: components/screens/ContactListsScreen.tsx:134
-#: components/screens/ContactScreen.tsx:339
+#: components/screens/ContactListsScreen.tsx:135
+#: components/screens/ContactScreen.tsx:344
 msgid "No contact lists"
 msgstr "సంప్రదింపు జాబితాలు లేవు"
 
@@ -366,15 +384,15 @@ msgstr "సంప్రదించగల వ్యక్తులు లేర�
 
 #: components/screens/DirectConversationScreen.tsx:382
 #: components/screens/DirectMessagesScreen.tsx:218
-#: components/screens/GroupConversationScreen.tsx:98
+#: components/screens/GroupConversationScreen.tsx:103
 #: components/screens/GroupMessagesScreen.tsx:56
 #: components/ui/JumpToDateCalendar.tsx:143
 msgid "No messages"
 msgstr "సందేశాలు లేవు"
 
 #: components/screens/ContactListScreen.tsx:251
-#: components/screens/ContactListsScreen.tsx:125
-#: components/screens/ContactScreen.tsx:338
+#: components/screens/ContactListsScreen.tsx:126
+#: components/screens/ContactScreen.tsx:343
 #: components/screens/DirectMessagesScreen.tsx:214
 msgid "No results found"
 msgstr "ఏ ఫలితాలు కనుగొనబడలేదు"
@@ -411,18 +429,18 @@ msgstr "ఇక్కడ ఎగుమతి చేసిన ఖాతా రహ�
 msgid "Paste the account id your contact shared with you"
 msgstr "మీ సంప్రదింపు మీతో పంచుకున్న ఖాతా IDని అతికించండి"
 
-#: components/ui/BottomTabNavigation.tsx:54
+#: components/ui/BottomTabNavigation.tsx:61
 msgid "Places"
 msgstr "స్థలాలు"
 
-#: components/screens/DirectConversationScreen.tsx:528
-#: components/screens/DirectConversationScreen.tsx:651
+#: components/screens/DirectConversationScreen.tsx:529
+#: components/screens/DirectConversationScreen.tsx:652
 msgid "Previous occurrence"
 msgstr "మునుపటి సారి"
 
-#: components/screens/AccountScreen.tsx:257
-#: components/screens/ContactScreen.tsx:366
-#: components/ui/BottomTabNavigation.tsx:64
+#: components/screens/AccountScreen.tsx:263
+#: components/screens/ContactScreen.tsx:371
+#: components/ui/BottomTabNavigation.tsx:71
 msgid "Profile"
 msgstr "ప్రొఫైల్"
 
@@ -430,11 +448,11 @@ msgstr "ప్రొఫైల్"
 msgid "Profile ID copied to clipboard"
 msgstr "ప్రొఫైల్ ID క్లిప్‌బోర్డ్‌కి కాపీ చేయబడింది"
 
-#: components/ui/MessageCompose.tsx:71
+#: components/ui/MessageCompose.tsx:86
 msgid "Remove"
 msgstr "తొలగించు"
 
-#: components/screens/AccountScreen.tsx:75
+#: components/screens/AccountScreen.tsx:253
 msgid "Remove account from this device"
 msgstr "ఈ పరికరం నుండి ఖాతా తొలగించు"
 
@@ -446,7 +464,7 @@ msgstr "జాబితా నుండి సంప్రదింపు వ్
 msgid "Remove from contact list"
 msgstr "సంప్రదింపు జాబితా నుండి తొలగించు"
 
-#: components/screens/AccountScreen.tsx:117
+#: components/screens/AccountScreen.tsx:104
 #: components/screens/ContactListScreen.tsx:152
 #: components/screens/ContactScreen.tsx:187
 #: components/screens/GroupScreen.tsx:123
@@ -454,18 +472,18 @@ msgstr "సంప్రదింపు జాబితా నుండి తొ
 msgid "Save changes"
 msgstr "మార్పులు సేవ్ చేయి"
 
-#: components/ui/MessageCompose.tsx:173
+#: components/ui/MessageCompose.tsx:221
 msgid "Save draft"
 msgstr "ముసాయిదా సేవ్ చేయి"
 
-#: components/screens/ContactListsScreen.tsx:78
-#: components/screens/DirectConversationScreen.tsx:483
+#: components/screens/ContactListsScreen.tsx:79
+#: components/screens/DirectConversationScreen.tsx:484
 #: components/screens/DirectMessagesScreen.tsx:111
 #: components/ui/Select.tsx:146
 msgid "Search"
 msgstr "శోధించు"
 
-#: components/screens/ContactListsScreen.tsx:47
+#: components/screens/ContactListsScreen.tsx:48
 #: components/screens/ContactScreen.tsx:291
 msgid "Search contact lists"
 msgstr "సంప్రదింపు జాబితాలను శోధించండి"
@@ -475,7 +493,7 @@ msgstr "సంప్రదింపు జాబితాలను శోధి�
 msgid "Search contacts"
 msgstr "సంప్రదించగల వారిని వెతకండి"
 
-#: components/ui/MessageCompose.tsx:191
+#: components/ui/MessageCompose.tsx:242
 msgid "Send message"
 msgstr "సందేశం పంపు"
 
@@ -495,11 +513,7 @@ msgstr "మ్యాప్‌లో చూపు"
 msgid "Show QR code"
 msgstr "QR కోడ్ చూపు"
 
-#: components/ui/MessageCompose.tsx:134
-msgid "Stop editing draft"
-msgstr "సవరణలను ఆపండి"
-
-#: components/screens/ContactListsScreen.tsx:66
+#: components/screens/ContactListsScreen.tsx:67
 #: components/screens/DirectMessagesScreen.tsx:99
 msgid "Stop searching"
 msgstr "శోధనను ఆపండి"
@@ -516,7 +530,7 @@ msgstr "సిస్టమ్ డిఫాల్ట్ ({languageName})"
 msgid "System default ({themeName})"
 msgstr "సిస్టమ్ డిఫాల్ట్ ({themeName})"
 
-#: components/screens/AccountScreen.tsx:151
+#: components/screens/AccountScreen.tsx:138
 msgid "Tap to change"
 msgstr "మార్చడానికి నొక్కండి"
 
@@ -532,16 +546,16 @@ msgstr "థీమ్"
 msgid "This name is only visible to you"
 msgstr "ఈ పేరు మీకు మాత్రమే కనిపిస్తుంది"
 
-#: components/screens/AccountScreen.tsx:164
+#: components/screens/AccountScreen.tsx:165
 #: components/screens/ImportAccountScreen.tsx:87
 msgid "This name is only visible to you on this device"
 msgstr "ఈ పేరు ఈ పరికరంలో మీకు మాత్రమే కనిపిస్తుంది"
 
-#: components/screens/AccountScreen.tsx:150
+#: components/screens/AccountScreen.tsx:137
 msgid "This will your avatar forever, choose wisely"
 msgstr "ఇది మీ అవతారం శాశ్వతంగా ఉంటుంది, తెలివిగా ఎంచుకోండి"
 
-#: components/screens/DirectConversationScreen.tsx:613
+#: components/screens/DirectConversationScreen.tsx:614
 msgid "Unread messages"
 msgstr "చదవని సందేశాలు"
 
@@ -557,7 +571,7 @@ msgstr "మరో ఖాతా ఉపయోగించు"
 msgid "Will be needed to import later"
 msgstr "తర్వాత దిగుమతి చేయడానికి అవసరం అవుతుంది"
 
-#: components/ui/MessageCompose.tsx:113
+#: components/ui/MessageCompose.tsx:141
 msgid "Write a message"
 msgstr "ఒక సందేశం రాయండి"
 

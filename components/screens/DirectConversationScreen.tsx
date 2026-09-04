@@ -19,8 +19,6 @@ import {
   ViewToken,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-// TEMPORARY: remove along with the seeding effect below.
-import { generateJumpToDateMessages } from "../../test/direct-conversation-jump-to-date.test";
 import { AccountId } from "../cryptography/cryptography";
 import { getContact } from "../queries/contacts";
 import {
@@ -82,6 +80,8 @@ export function DirectConversationScreen({
     { type: "search"; text: string } | { type: "didRead" }
   >({ type: "didRead" });
 
+  const [isEditFullScreen, setIsEditFullScreen] = useState(false);
+
   const [currentViewingMessageId, setCurrentViewingMessageId] = useState<
     | { senderId: AccountId; receiverId: AccountId; createdAt: Timestamp }
     | undefined
@@ -123,14 +123,6 @@ export function DirectConversationScreen({
       layouts: [] as Array<{ length: number; offset: number; index: number }>,
     },
   ).layouts;
-
-  // TEMPORARY: seed jump-to-date test data on emulators. Remove this effect
-  // once manual testing of that feature is done.
-  useEffect(() => {
-    if (conversation.length > 0) return;
-    void generateJumpToDateMessages({ accountId, contactId, api: feApi });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   // TODO maybe save permanently current viewing by converstaion on device
 
@@ -202,32 +194,40 @@ export function DirectConversationScreen({
 
   return (
     <Fragment>
+      {!isEditFullScreen && (
+        <View
+          style={{
+            flexDirection: "row",
+            borderBottomWidth: 1,
+            borderColor: theme.separatorColor,
+          }}
+        >
+          <ScreenLink
+            to={<DirectMessagesScreen accountId={accountId} />}
+            icon="arrow-left"
+            hideLabel
+            label={t`Go to messages`}
+          />
+          <ScreenLink
+            to={<ProfileScreen accountId={accountId} contactId={contactId} />}
+            styleOverride={{ flexDirection: "row", flexGrow: 1 }}
+          >
+            <CryptoAvatar accountId={accountId} contactId={contactId} />
+            <Text
+              style={[theme.linkTextStyle, { paddingLeft: 16, paddingTop: 10 }]}
+            >
+              {contact?.name ?? ""}
+            </Text>
+          </ScreenLink>
+        </View>
+      )}
       <View
         style={{
-          flexDirection: "row",
-          borderBottomWidth: 1,
-          borderColor: theme.separatorColor,
+          flex: 1,
+          position: "relative",
+          display: isEditFullScreen ? "none" : "flex",
         }}
       >
-        <ScreenLink
-          to={<DirectMessagesScreen accountId={accountId} />}
-          icon="arrow-left"
-          hideLabel
-          label={t`Go to messages`}
-        />
-        <ScreenLink
-          to={<ProfileScreen accountId={accountId} contactId={contactId} />}
-          styleOverride={{ flexDirection: "row", flexGrow: 1 }}
-        >
-          <CryptoAvatar accountId={accountId} contactId={contactId} />
-          <Text
-            style={[theme.linkTextStyle, { paddingLeft: 16, paddingTop: 10 }]}
-          >
-            {contact?.name ?? ""}
-          </Text>
-        </ScreenLink>
-      </View>
-      <View style={{ flex: 1, position: "relative" }}>
         <FlatList
           ref={flatListRef}
           testID="direct-conversation-message-list"
@@ -463,226 +463,229 @@ export function DirectConversationScreen({
           </View>
         </Pressable>
       </Modal>
-      {(() => {
-        switch (toolbarState.type) {
-          case "didRead": {
-            return (
-              <View
-                style={{
-                  flexDirection: "row",
-                  borderTopWidth: 1,
-                  borderColor: theme.separatorColor,
-                }}
-              >
-                <ScreenLink
-                  to={async () => {
-                    setToolbarState({ type: "search", text: "" });
+      {!isEditFullScreen &&
+        (() => {
+          switch (toolbarState.type) {
+            case "didRead": {
+              return (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    borderTopWidth: 1,
+                    borderColor: theme.separatorColor,
                   }}
-                  icon="eye"
-                  hideLabel
-                  label={t`Search`}
-                />
-                <View style={{ flexGrow: 1 }} />
-                <ScreenLink
-                  to={(() => {
-                    if (
-                      currentViewingMessage &&
-                      currentViewingMessage.senderId === accountId &&
-                      !toModifyMessage
-                    ) {
-                      return async () => {
-                        setToModifyMessage({
-                          createdAt: currentViewingMessage.createdAt,
-                          isDraft: currentViewingMessage.isDraft,
-                          content: currentViewingMessage.content,
-                          attachments: currentViewingMessage.attachments,
-                        });
-                      };
+                >
+                  <ScreenLink
+                    to={async () => {
+                      setToolbarState({ type: "search", text: "" });
+                    }}
+                    icon="eye"
+                    hideLabel
+                    label={t`Search`}
+                  />
+                  <View style={{ flexGrow: 1 }} />
+                  <ScreenLink
+                    to={(() => {
+                      if (
+                        currentViewingMessage &&
+                        currentViewingMessage.senderId === accountId &&
+                        !toModifyMessage
+                      ) {
+                        return async () => {
+                          setToModifyMessage({
+                            createdAt: currentViewingMessage.createdAt,
+                            isDraft: currentViewingMessage.isDraft,
+                            content: currentViewingMessage.content,
+                            attachments: currentViewingMessage.attachments,
+                          });
+                        };
+                      }
+                    })()}
+                    icon="edit"
+                    hideLabel
+                    label={t`Edit message`}
+                  />
+                  <View style={{ flexGrow: 1 }} />
+                  <ScreenLink
+                    to={(() => {
+                      const previous = conversation.findLastIndex(
+                        (item, i) =>
+                          i < currentViewingMessageIndex &&
+                          item.didRead === false &&
+                          item.receiverId === accountId,
+                      );
+                      if (previous >= 0) {
+                        return async () => {
+                          setToolbarState({ type: "didRead" });
+                          flatListRef.current?.scrollToIndex({
+                            index: previous,
+                            viewPosition: 1.0,
+                          });
+                        };
+                      }
+                    })()}
+                    icon="arrow-up"
+                    hideLabel
+                    label={t`Previous occurrence`}
+                  />
+                  <ScreenLink
+                    to={(() => {
+                      const current = conversation[currentViewingMessageIndex];
+                      if (current && current.receiverId === accountId) {
+                        return async () => {
+                          await didRead({
+                            senderId: current.senderId,
+                            receiverId: current.receiverId,
+                            createdAt: current.createdAt,
+                            didRead: !current.didRead,
+                          });
+                          const next = conversation.findIndex(
+                            (item, i) =>
+                              i > currentViewingMessageIndex &&
+                              item.didRead === false &&
+                              item.receiverId === accountId,
+                          );
+                          if (
+                            next >= 0 &&
+                            next === currentViewingMessageIndex + 1 &&
+                            current.didRead === false
+                          ) {
+                            setToolbarState({ type: "didRead" });
+                            flatListRef.current?.scrollToIndex({
+                              index: next,
+                              viewPosition: 1.0,
+                            });
+                          }
+                        };
+                      }
+                    })()}
+                    icon="check"
+                    hideLabel
+                    label={t`Mark as read`}
+                    color={
+                      conversation[currentViewingMessageIndex]
+                        ? conversation[currentViewingMessageIndex].didRead
+                          ? "orange"
+                          : theme.linkTextColor
+                        : theme.secondaryTextColor
                     }
-                  })()}
-                  icon="edit"
-                  hideLabel
-                  label={t`Edit message`}
-                />
-                <View style={{ flexGrow: 1 }} />
-                <ScreenLink
-                  to={(() => {
-                    const previous = conversation.findLastIndex(
-                      (item, i) =>
-                        i < currentViewingMessageIndex &&
-                        item.didRead === false &&
-                        item.receiverId === accountId,
-                    );
-                    if (previous >= 0) {
-                      return async () => {
-                        setToolbarState({ type: "didRead" });
-                        flatListRef.current?.scrollToIndex({
-                          index: previous,
-                          viewPosition: 1.0,
-                        });
-                      };
-                    }
-                  })()}
-                  icon="arrow-up"
-                  hideLabel
-                  label={t`Previous occurrence`}
-                />
-                <ScreenLink
-                  to={(() => {
-                    const current = conversation[currentViewingMessageIndex];
-                    if (current && current.receiverId === accountId) {
-                      return async () => {
-                        await didRead({
-                          senderId: current.senderId,
-                          receiverId: current.receiverId,
-                          createdAt: current.createdAt,
-                          didRead: !current.didRead,
-                        });
-                        const next = conversation.findIndex(
-                          (item, i) =>
-                            i > currentViewingMessageIndex &&
-                            item.didRead === false &&
-                            item.receiverId === accountId,
-                        );
-                        if (
-                          next >= 0 &&
-                          next === currentViewingMessageIndex + 1 &&
-                          current.didRead === false
-                        ) {
+                  />
+                  <ScreenLink
+                    to={(() => {
+                      const next = conversation.findIndex(
+                        (item, i) =>
+                          i > currentViewingMessageIndex &&
+                          item.didRead === false &&
+                          item.receiverId === accountId,
+                      );
+                      if (next >= 0) {
+                        return async () => {
                           setToolbarState({ type: "didRead" });
                           flatListRef.current?.scrollToIndex({
                             index: next,
                             viewPosition: 1.0,
                           });
-                        }
-                      };
-                    }
-                  })()}
-                  icon="check"
-                  hideLabel
-                  label={t`Mark as read`}
-                  color={
-                    conversation[currentViewingMessageIndex]
-                      ? conversation[currentViewingMessageIndex].didRead
-                        ? "orange"
-                        : theme.linkTextColor
-                      : theme.secondaryTextColor
-                  }
-                />
-                <ScreenLink
-                  to={(() => {
-                    const next = conversation.findIndex(
-                      (item, i) =>
-                        i > currentViewingMessageIndex &&
-                        item.didRead === false &&
-                        item.receiverId === accountId,
-                    );
-                    if (next >= 0) {
-                      return async () => {
-                        setToolbarState({ type: "didRead" });
-                        flatListRef.current?.scrollToIndex({
-                          index: next,
-                          viewPosition: 1.0,
-                        });
-                      };
-                    }
-                  })()}
-                  icon="arrow-down"
-                  hideLabel
-                  label={t`Next occurrence`}
-                />
-              </View>
-            );
-          }
-          case "search": {
-            return (
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "flex-end",
-                  borderTopWidth: 1,
-                  borderColor: theme.separatorColor,
-                }}
-              >
-                <ScreenLink
-                  to={async () => {
-                    setToolbarState({ type: "didRead" });
+                        };
+                      }
+                    })()}
+                    icon="arrow-down"
+                    hideLabel
+                    label={t`Next occurrence`}
+                  />
+                </View>
+              );
+            }
+            case "search": {
+              return (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "flex-end",
+                    borderTopWidth: 1,
+                    borderColor: theme.separatorColor,
                   }}
-                  icon="search"
-                  hideLabel
-                  label={t`Unread messages`}
-                />
-                <TextInput
-                  style={[
-                    theme.textInputStyle(toolbarState.text),
-                    { paddingBottom: 5, flexGrow: 1 },
-                  ]}
-                  placeholderTextColor={theme.secondaryTextColor}
-                  value={toolbarState.text}
-                  onChangeText={(text) =>
-                    setToolbarState({ type: "search", text })
-                  }
-                  autoFocus
-                />
-                <ScreenLink
-                  to={(() => {
-                    const previous = conversation.findLastIndex(
-                      (item, i) =>
-                        i < currentViewingMessageIndex &&
-                        item.content
-                          .toLowerCase()
-                          .includes(toolbarState.text.toLowerCase()),
-                    );
-                    if (previous >= 0 && toolbarState.text.length > 0) {
-                      return async () => {
-                        setToolbarState({
-                          type: "search",
-                          text: toolbarState.text,
-                        });
-                        flatListRef.current?.scrollToIndex({
-                          index: previous,
-                          viewPosition: 1.0,
-                        });
-                      };
+                >
+                  <ScreenLink
+                    to={async () => {
+                      setToolbarState({ type: "didRead" });
+                    }}
+                    icon="search"
+                    hideLabel
+                    label={t`Unread messages`}
+                  />
+                  <TextInput
+                    style={[
+                      theme.textInputStyle(toolbarState.text),
+                      { paddingBottom: 5, flexGrow: 1 },
+                    ]}
+                    placeholderTextColor={theme.secondaryTextColor}
+                    value={toolbarState.text}
+                    onChangeText={(text) =>
+                      setToolbarState({ type: "search", text })
                     }
-                  })()}
-                  icon="arrow-up"
-                  hideLabel
-                  label={t`Previous occurrence`}
-                />
-                <ScreenLink
-                  to={(() => {
-                    const next = conversation.findIndex(
-                      (item, i) =>
-                        i > currentViewingMessageIndex &&
-                        item.content
-                          .toLowerCase()
-                          .includes(toolbarState.text.toLowerCase()),
-                    );
-                    if (next >= 0 && toolbarState.text.length > 0) {
-                      return async () => {
-                        setToolbarState({
-                          type: "search",
-                          text: toolbarState.text,
-                        });
-                        flatListRef.current?.scrollToIndex({
-                          index: next,
-                          viewPosition: 1.0,
-                        });
-                      };
-                    }
-                  })()}
-                  icon="arrow-down"
-                  hideLabel
-                  label={t`Next occurrence`}
-                />
-              </View>
-            );
+                    autoFocus
+                  />
+                  <ScreenLink
+                    to={(() => {
+                      const previous = conversation.findLastIndex(
+                        (item, i) =>
+                          i < currentViewingMessageIndex &&
+                          item.content
+                            .toLowerCase()
+                            .includes(toolbarState.text.toLowerCase()),
+                      );
+                      if (previous >= 0 && toolbarState.text.length > 0) {
+                        return async () => {
+                          setToolbarState({
+                            type: "search",
+                            text: toolbarState.text,
+                          });
+                          flatListRef.current?.scrollToIndex({
+                            index: previous,
+                            viewPosition: 1.0,
+                          });
+                        };
+                      }
+                    })()}
+                    icon="arrow-up"
+                    hideLabel
+                    label={t`Previous occurrence`}
+                  />
+                  <ScreenLink
+                    to={(() => {
+                      const next = conversation.findIndex(
+                        (item, i) =>
+                          i > currentViewingMessageIndex &&
+                          item.content
+                            .toLowerCase()
+                            .includes(toolbarState.text.toLowerCase()),
+                      );
+                      if (next >= 0 && toolbarState.text.length > 0) {
+                        return async () => {
+                          setToolbarState({
+                            type: "search",
+                            text: toolbarState.text,
+                          });
+                          flatListRef.current?.scrollToIndex({
+                            index: next,
+                            viewPosition: 1.0,
+                          });
+                        };
+                      }
+                    })()}
+                    icon="arrow-down"
+                    hideLabel
+                    label={t`Next occurrence`}
+                  />
+                </View>
+              );
+            }
           }
-        }
-      })()}
+        })()}
       <MessageCompose
         toModify={toModifyMessage}
+        isEditFullScreen={isEditFullScreen}
+        setIsEditFullScreen={setIsEditFullScreen}
         onUpdate={async ({ content, attachments, isDraft }) => {
           if (!toModifyMessage && isDraft) {
             // create draft

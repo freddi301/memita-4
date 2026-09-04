@@ -71,6 +71,8 @@ export function SelectAccountScreen() {
                 paddingHorizontal: 8,
                 gap: 8,
                 marginVertical: 4,
+                minHeight: 44,
+                alignItems: "center",
               },
             ]}
           >

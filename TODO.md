@@ -1,5 +1,10 @@
 review features secion, normalize items -> transform into tests
+refactor articles screen to mixed feed: articles/microblog + images/carousels + short Videos
+features to replicate for personal messaging: whatsapp, wechat, fb messenger, telegram, snapchat, matrix elementm, briar, delta chat, jami
 do not send draft messages
+fetures to replicate for team messaging: teams, discord, slack, rocket chat, mattermost, zulip
+features from email and email clients
+do message details and modification history
 fix editing an existing message
 dont accept future timestamps
 do not replicate deleted stuff? (ponder)

@@ -36,6 +36,7 @@ export function ContactListsScreen({ accountId }: { accountId: AccountId }) {
                 <ScreenLink
                   to={<DirectMessagesScreen accountId={accountId} />}
                   icon="arrow-left"
+                  hideLabel
                   label={t`All messages`}
                 />
                 <ScreenLink
@@ -102,13 +103,13 @@ export function ContactListsScreen({ accountId }: { accountId: AccountId }) {
                 marginVertical: 4,
                 gap: 8,
                 flexGrow: 1,
+                minHeight: 44,
+                alignItems: "center",
               }}
             >
-              <View style={{ flexGrow: 1 }}>
-                <Text style={[theme.linkTextStyle, { flexGrow: 1 }]}>
-                  {item.name}
-                </Text>
-              </View>
+              <Text style={[theme.linkTextStyle, { flexGrow: 1 }]}>
+                {item.name}
+              </Text>
             </ScreenLink>
           </View>
         )}

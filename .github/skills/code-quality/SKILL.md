@@ -48,3 +48,7 @@ All <ScreenLink/> with label and no children should have an icon. stop, point ou
 ## Form field like layouts
 
 for <View><Text/><Input/></View> groups, check if the view has the style like in theme.formFieldContainerStyle, if so refactor
+
+## Jest tests
+
+Strongly prefer queries by proprity listed here https://testing-library.com/docs/queries/about/

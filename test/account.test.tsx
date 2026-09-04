@@ -21,12 +21,7 @@ test("user can create an account and lands on profile", async () => {
   await user.press(await screen.findByText("Create new account"));
   expect(await screen.findByText("Account name")).toBeVisible();
 
-  await user.type(
-    screen.getByPlaceholderText(
-      "This name is only visible to you on this device",
-    ),
-    "Alice",
-  );
+  await user.type(screen.getByLabelText("Account name"), "Alice");
 
   await user.press(await findIcon(screen, "save"));
 
