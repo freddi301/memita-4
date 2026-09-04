@@ -111,6 +111,9 @@ export function GroupConversationScreen({
         toModify={undefined}
         isEditFullScreen={isEditFullScreen}
         setIsEditFullScreen={setIsEditFullScreen}
+        attachmentPreviewBack={
+          <GroupConversationScreen accountId={accountId} groupId={groupId} />
+        }
         onUpdate={async ({ content }) => {
           await send({
             createdAt: toModifyMessage?.createdAt ?? nowTimestamp(),

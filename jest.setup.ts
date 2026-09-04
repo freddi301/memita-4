@@ -22,4 +22,6 @@ jest.mock("expo-audio", () => ({
   useAudioPlayerStatus: () => ({ playing: false, currentTime: 0, duration: 0 }),
 }));
 
+jest.mock("react-native-webview", () => ({ WebView: () => null }));
+
 setUpTests();

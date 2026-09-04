@@ -484,7 +484,15 @@ export function DirectConversationScreen({
                           borderColor: theme.separatorColor,
                         }}
                       >
-                        <AttachmentPreview file={file} />
+                        <AttachmentPreview
+                          file={file}
+                          back={
+                            <DirectConversationScreen
+                              accountId={accountId}
+                              contactId={contactId}
+                            />
+                          }
+                        />
                       </View>
                     ))}
                   </ScrollView>
@@ -784,6 +792,12 @@ export function DirectConversationScreen({
         toModify={toModifyMessage}
         isEditFullScreen={isEditFullScreen}
         setIsEditFullScreen={setIsEditFullScreen}
+        attachmentPreviewBack={
+          <DirectConversationScreen
+            accountId={accountId}
+            contactId={contactId}
+          />
+        }
         onUpdate={async ({ content, attachments, isDraft }) => {
           if (!toModifyMessage && isDraft) {
             // create draft

@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
 import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { Platform, ScrollView, TextInput, View } from "react-native";
 import { ContentAddress, storeFile } from "../store/fileStore";
 import { useTheme } from "../Theme";
@@ -22,12 +22,14 @@ export function MessageCompose({
   onCancel,
   isEditFullScreen,
   setIsEditFullScreen,
+  attachmentPreviewBack,
 }: {
   toModify: MessageShape | undefined;
   onUpdate(params: MessageShape): Promise<void>;
   onCancel(): void;
   isEditFullScreen: boolean;
   setIsEditFullScreen(value: boolean): void;
+  attachmentPreviewBack: ReactNode;
 }) {
   const theme = useTheme();
   const { t } = useLingui();
@@ -65,6 +67,7 @@ export function MessageCompose({
           <View key={index} style={{ position: "relative" }}>
             <AttachmentPreview
               file={file}
+              back={attachmentPreviewBack}
               onLongPress={() => {
                 setSelectedFileIndex(index);
               }}
