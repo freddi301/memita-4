@@ -1,4 +1,7 @@
+import { notifyManager } from "@tanstack/react-query";
 import { setUpTests } from "react-native-reanimated";
+
+notifyManager.setScheduler((callback) => callback());
 
 jest.mock("react-native-worklets", () =>
   require("react-native-worklets/lib/module/mock"),

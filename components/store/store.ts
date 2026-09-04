@@ -244,16 +244,16 @@ export function createStore<StoreItem>({
   });
 
   let isStopped = false;
-  const timeoutIds = new Set<ReturnType<typeof setTimeout>>();
+  const pendingSleeps = new Map<ReturnType<typeof setTimeout>, () => void>();
 
   async function sleep(ms: number) {
     if (isStopped) return;
     await new Promise<void>((resolve) => {
       const timeoutId = setTimeout(() => {
-        timeoutIds.delete(timeoutId);
+        pendingSleeps.delete(timeoutId);
         resolve();
       }, ms);
-      timeoutIds.add(timeoutId);
+      pendingSleeps.set(timeoutId, resolve);
     });
   }
 
@@ -277,7 +277,7 @@ export function createStore<StoreItem>({
     await sleep(1000);
     await startStopDevices();
   }
-  void startStopDevices();
+  const startStopDevicesLoop = startStopDevices();
 
   async function heartbeat() {
     if (isStopped) return;
@@ -294,7 +294,7 @@ export function createStore<StoreItem>({
     await sleep(1000);
     await heartbeat();
   }
-  void heartbeat();
+  const heartbeatLoop = heartbeat();
 
   // TODO leave topics
   async function joinLeaveTopics() {
@@ -311,7 +311,7 @@ export function createStore<StoreItem>({
     await sleep(1000);
     await joinLeaveTopics();
   }
-  void joinLeaveTopics();
+  const joinLeaveTopicsLoop = joinLeaveTopics();
 
   const fanoutNewItem = async (item: StoreItem) => {
     const ownedAccountsByDevice = await getOwnedAccountsByDevice();
@@ -357,13 +357,21 @@ export function createStore<StoreItem>({
     },
     async stop() {
       isStopped = true;
-      for (const timeoutId of timeoutIds) {
+      for (const [timeoutId, resolve] of pendingSleeps) {
         clearTimeout(timeoutId);
+        resolve();
       }
-      timeoutIds.clear();
-      for (const deviceId of await network.getStartedDevices()) {
-        await network.stop(deviceId);
-      }
+      pendingSleeps.clear();
+      await Promise.all([
+        startStopDevicesLoop,
+        heartbeatLoop,
+        joinLeaveTopicsLoop,
+      ]);
+      await Promise.all(
+        (await network.getStartedDevices()).map((deviceId) =>
+          network.stop(deviceId),
+        ),
+      );
     },
   };
 }

@@ -16,7 +16,7 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "knip": "knip",
-    "test": "jest",
+    "test": "node run-jest-strict.js",
     "coverage": "jest --coverage",
     "lint-staged": "lint-staged",
     "ai-translate": "tsx ./update-translations.ts",
@@ -137,7 +137,7 @@
   },
   "lint-staged": {
     "./**/*.{ts,tsx,js,jsx}": [
-      "jest --findRelatedTests --coverage --coverageThreshold='{\"global\":{\"lines\":100,\"functions\":100,\"statements\":100}}' --ci"
+      "node run-jest-strict.js --findRelatedTests --coverage --coverageThreshold='{\"global\":{\"lines\":100,\"functions\":100,\"statements\":100}}' --ci"
     ]
   },
   "devDependencies": {
