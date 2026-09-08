@@ -240,6 +240,8 @@ export function AccountScreen({ accountId }: { accountId?: AccountId }) {
           />
         )}
         {accountId && (
+          // TODO open modal explaining what is gonna happen
+          // TODO make it hard to delete account accidnetally
           <ScreenLink
             to={
               !canSave && deviceId !== undefined

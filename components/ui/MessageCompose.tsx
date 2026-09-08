@@ -39,6 +39,9 @@ export function MessageCompose({
     // TODO fix, it resets textarea content when navigatin away and then back in
     // maybe fix skippable when implementing properunsaved work managment
     setText(toModify?.content ?? "");
+    if (toModify?.content !== undefined) {
+      textInputRef.current?.focus();
+    }
   }, [toModify?.content]);
 
   const [files, setFiles] = useState<
@@ -201,6 +204,7 @@ export function MessageCompose({
           icon="sticky-note"
           hideLabel
           label={t`New draft`}
+          closeMobileKeyboard={false}
         />
       );
     } else if (toModify.isDraft && text !== toModify.content) {
@@ -243,6 +247,7 @@ export function MessageCompose({
           icon="send"
           hideLabel
           label={t`Send message`}
+          closeMobileKeyboard={false}
         />
       );
     } else if (!toModify.isDraft) {

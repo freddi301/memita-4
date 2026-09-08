@@ -18,11 +18,13 @@ export function ScreenLink({
   children,
   styleOverride,
   description,
+  closeMobileKeyboard = true,
 }: {
   to: To;
   color?: string;
   styleOverride?: StyleProp<ViewStyle>;
   description?: ReactNode;
+  closeMobileKeyboard?: boolean;
 } & (
   | {
       label: string;
@@ -68,6 +70,7 @@ export function ScreenLink({
   return (
     <Pressable
       accessibilityRole="button"
+      accessibilityLabel={label}
       ref={tooltip.referenceRef}
       onLongPress={
         children ? (description ? tooltip.open : undefined) : tooltip.open
@@ -76,7 +79,9 @@ export function ScreenLink({
         if (isDisabled) {
           return;
         }
-        Keyboard.dismiss();
+        if (closeMobileKeyboard) {
+          Keyboard.dismiss();
+        }
         setIsPerforming(true);
         void navigate({
           to,

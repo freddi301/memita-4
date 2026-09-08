@@ -149,6 +149,38 @@ export const getDirectMessages: MemitaQuery<
     return directMessagesList({ accountId, contactId })(all);
   };
 
+export const getDirectMessageHistory: MemitaQuery<
+  { senderId: AccountId; receiverId: AccountId; createdAt: Timestamp },
+  Array<{
+    content: string;
+    attachments: Array<{ name: string; hash: ContentAddress }>;
+    isDraft: boolean;
+    timestamp: Timestamp;
+  }>
+> =
+  ({ senderId, receiverId, createdAt }) =>
+  async ({ appStorage }) => {
+    const current = await appStorage.read();
+    const all = current.data;
+    return orderBy(
+      all
+        .filter((item) => item.type === "DirectMessageUpdate")
+        .filter(
+          (update) =>
+            update.senderId === senderId &&
+            update.receiverId === receiverId &&
+            update.createdAt === createdAt,
+        ),
+      (update) => update.timestamp,
+      "asc",
+    ).map((update) => ({
+      content: update.content,
+      attachments: update.attachments,
+      isDraft: update.isDraft,
+      timestamp: update.timestamp,
+    }));
+  };
+
 export const DidReadDirectMessageUpdateSchema = z.object({
   type: z.literal("DidReadDirectMessageUpdate"),
   senderId: z.string(),

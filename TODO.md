@@ -4,7 +4,6 @@ features to replicate for personal messaging: whatsapp, wechat, fb messenger, te
 do not send draft messages
 fetures to replicate for team messaging: teams, discord, slack, rocket chat, mattermost, zulip
 features from email and email clients
-do message details and modification history
 fix editing an existing message
 dont accept future timestamps
 do not replicate deleted stuff? (ponder)
@@ -13,6 +12,14 @@ add confirm prompt for destructive actions
 add cryptography, account + device signature
 add whitelist recipients
 fix when ataching big files now the screen is frozen
+implement @hyperswarm/dht-relay and hyperswarm relayThrough
+implement jami dhtnet (ConnectionManager for trusted peers)
+implement webrtc stun turn ice (libwebrtc)
+implement LAN discovery (simply being on the same network)
+implement multipeer on ios
+implement libp2p for desktop (rust library version)
+implement tor connectivity
+implement mainline dht connectivity (qbittorrent libtorrent rasterbar BEP55 DEP10)
 in hyperswarm disconnect from devices not in conctact list
 add confirm prompts for destrucive actions (remove account, delete contact)
 check frontend performance

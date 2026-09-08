@@ -36,10 +36,13 @@ import { CryptoAvatar } from "../ui/CryptoAvatar";
 import { JumpToDateCalendar } from "../ui/JumpToDateCalendar";
 import { MessageCompose } from "../ui/MessageCompose";
 import { ScreenLink } from "../ui/ScreenLink";
+import { DirectMessageDetailsScreen } from "./DirectMessageDetailsScreen";
 import { DirectMessagesScreen } from "./DirectMessagesScreen";
 import { ProfileScreen } from "./ProfileScreen";
 
+// TODO refactor to smaller files
 // TODO profile with lot of messages how search and did red navigation performs
+// TODO show the date time nicer. shorter version, maybe with sticky dates
 
 export function DirectConversationScreen({
   accountId,
@@ -85,6 +88,10 @@ export function DirectConversationScreen({
     new Set(),
   );
   const selectedCount = selectedMessageKeys.size;
+  const selectedMessage =
+    selectedCount === 1
+      ? conversation.find((item) => selectedMessageKeys.has(messageKey(item)))
+      : undefined;
   const toggleMessageSelection = (item: (typeof conversation)[number]) => {
     const key = messageKey(item);
     setSelectedMessageKeys((prev) => {
@@ -254,8 +261,41 @@ export function DirectConversationScreen({
             hideLabel
             label={t`Stop selecting`}
           />
-          <Text style={[theme.textStyle]}>{t`${selectedCount} selected`}</Text>
+          <ScreenLink
+            label={String(selectedCount)}
+            to={async () => {
+              const selected = conversation
+                .map((item, index) => ({ item, index }))
+                .filter(({ item }) =>
+                  selectedMessageKeys.has(messageKey(item)),
+                );
+              if (selected.length === 0) return;
+              const next =
+                selected.find(
+                  ({ index }) => index > currentViewingMessageIndex,
+                ) ?? selected[0]!;
+              flatListRef.current?.scrollToIndex({
+                index: next.index,
+                viewPosition: 1.0,
+              });
+            }}
+            closeMobileKeyboard={false}
+          ></ScreenLink>
           <View style={{ flexGrow: 1 }} />
+          {selectedMessage && (
+            <ScreenLink
+              to={
+                <DirectMessageDetailsScreen
+                  accountId={accountId}
+                  contactId={contactId}
+                  createdAt={selectedMessage.createdAt}
+                />
+              }
+              icon="info-circle"
+              hideLabel
+              label={t`Message detail`}
+            />
+          )}
           {selectedCount === 1 && (
             <ScreenLink
               to={async () => {
@@ -311,6 +351,9 @@ export function DirectConversationScreen({
           <ScreenLink
             to={async () => {
               for (const item of conversation) {
+                // TODO check that the delete works both for messages sent by me and others
+                // TODO if is sent by me, mark as deleted, the content should be not stored on my or others device
+                // TODO if is ent by others, mark it as deleted for mysel, ensure i am not persisting the content anymore
                 if (selectedMessageKeys.has(messageKey(item))) {
                   await update({
                     senderId: item.senderId,

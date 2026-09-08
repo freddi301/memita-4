@@ -237,6 +237,7 @@ Propose from the lowest-numbered tier that still has gaps. Mix tiers only if Tie
 - Before proposing, cross-check **all correlated test files** — never duplicate a scenario already covered anywhere
 - Match the nesting/grouping style of the template block from Step 2
 - Write proposals into the file whose **concern best matches** the tier being filled (e.g. new journeys go into the `.journey.` file if it exists)
+- Strongly prefer queries by proprity listed here https://testing-library.com/docs/queries/about/
 
 ### Example output shape (adapt to actual template style)
 

@@ -15,7 +15,7 @@ msgstr ""
 
 #: components/screens/DirectConversationScreen.tsx:257
 msgid "{selectedCount} selected"
-msgstr "{निवडलेले आयटमची संख्या} निवडले"
+msgstr "{selectedCount} निवडले"
 
 #: components/screens/AccountScreen.tsx:183
 msgid "Account ID"

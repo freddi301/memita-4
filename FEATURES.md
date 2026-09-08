@@ -1,10 +1,8 @@
 # Direct messages
 
-- [ ] reactions (single character emoji) (double tap)
-- [ ] edit history
-- [ ] contact mentions
 - [ ] quote/reply, multiple, slice of text
 - [ ] forward
+- [ ] reactions (single character emoji) (double tap)
 - [ ] attachments
   - [ ] limits
   - [ ] upload progress indicator
@@ -23,15 +21,15 @@
     - [ ] audio inline
 - [ ] auto save drafts on interval or screen change
 - [ ] videocall
+- [ ] contact mentions
 - [ ] braodcast lists (send same message to multiple contacts)
 - [ ] save scroll state
-- [x] text search
-  - [ ] filter by media type
-  - [ ] filter by date
+- [ ] filter by media type
+- [ ] filter by date
+- [ ] filter by tags
 - [ ] message sync status
   - [ ] sent (on which devices)
   - [ ] delivered (on which devices)
-  - [x] read receipt
 - [ ] notifications
   - [ ] fire notificaiton on arrival
   - [ ] notification settings for given contact direct messages
@@ -41,6 +39,7 @@
 - [ ] disappearing messages
 - [ ] stickers gif support
 - [ ] media gallery
+- [ ] the "media gallery" should also be collaboritve file workspace, like ms teams
 - [ ] message scheduling (send at a given time)
 - [ ] connect to ai (only local)
 - [ ] ai search (only local, just to generate the filters)
@@ -56,14 +55,17 @@
 
 - [ ] organize in lists
 - [ ] membership managment
-- [ ] text search
 - [ ] threads as group lists (zulip style, group is for access, topic is for organizing)
 
 # Group messages
 
+- [ ] same features as single messages
+
 # Calls
 
 # Articles
+
+- [ ] same features as single messages
 
 # Places
 
