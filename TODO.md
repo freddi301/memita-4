@@ -4,7 +4,6 @@ features to replicate for personal messaging: whatsapp, wechat, fb messenger, te
 do not send draft messages
 fetures to replicate for team messaging: teams, discord, slack, rocket chat, mattermost, zulip
 features from email and email clients
-fix editing an existing message
 dont accept future timestamps
 do not replicate deleted stuff? (ponder)
 enforce data size limits (max file size, max number and size of messages, max attachments)
@@ -40,6 +39,7 @@ Biography - for Profile and places
 
 # More
 
+- [ ] let the user choose avatr for their contact (it will replace the cryptoavatar, also update info on account creation screen)
 - [ ] while editing a message, dont let user do anything to inadvertently lose chages
 - [ ] contact presence status (off by default, research carefully bhow to implement)
 - [ ] send invite to download app

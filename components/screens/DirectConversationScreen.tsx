@@ -464,6 +464,14 @@ export function DirectConversationScreen({
                             : ""}
                       </Text>
                       <View style={{ flexGrow: 1 }} />
+                      {item.isModified && (
+                        <FontAwesome
+                          name="pencil"
+                          size={14}
+                          color={theme.secondaryTextColor}
+                          aria-label="pencil"
+                        />
+                      )}
                       <Text style={theme.secondaryTextStyle}>
                         {new Date(item.createdAt).toLocaleString()}
                       </Text>

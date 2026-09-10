@@ -106,7 +106,10 @@ export function directMessagesList({
                 update.receiverId === accountId),
           ),
         (update) => [update.senderId, update.receiverId, update.createdAt],
-        (updates) => maxBy(updates, (update) => update.timestamp),
+        (updates) => ({
+          ...maxBy(updates, (update) => update.timestamp),
+          isModified: updates.length > 1,
+        }),
       ).filter(
         (update) => update.content !== "" || update.attachments.length > 0,
       ),
@@ -120,6 +123,7 @@ export function directMessagesList({
         isDraft: messageUpdate.isDraft,
         content: messageUpdate.content,
         attachments: messageUpdate.attachments,
+        isModified: messageUpdate.isModified,
         didRead: didReadLatest({
           senderId: messageUpdate.senderId,
           receiverId: messageUpdate.receiverId,
@@ -139,6 +143,7 @@ export const getDirectMessages: MemitaQuery<
     isDraft: boolean;
     content: string;
     attachments: Array<{ name: string; hash: ContentAddress }>;
+    isModified: boolean;
     didRead: boolean;
   }>
 > =

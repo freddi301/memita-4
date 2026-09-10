@@ -13,6 +13,7 @@ import { ScreenLink } from "../ui/ScreenLink";
 import { DirectConversationScreen } from "./DirectConversationScreen";
 
 // TODO show also other history items like: did read toggles, delivery times to devices
+// TODO show text diff view
 
 export function DirectMessageDetailsScreen({
   accountId,
