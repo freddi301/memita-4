@@ -2,12 +2,12 @@ import { render, userEvent } from "@testing-library/react-native";
 import {
   accountIdFromAccountSecret,
   generateAccountSecret,
-} from "../components/cryptography/cryptography";
-import { addAccount } from "../components/queries/accounts";
-import { updateContact } from "../components/queries/contacts";
-import { updateDirectMessage } from "../components/queries/directMessages";
-import { nowTimestamp } from "../components/queries/Timestamp";
-import { createTestApp } from "./utils/createTestApp";
+} from "../../components/cryptography/cryptography";
+import { addAccount } from "../../components/queries/accounts";
+import { updateContact } from "../../components/queries/contacts";
+import { updateDirectMessage } from "../../components/queries/directMessages";
+import { nowTimestamp } from "../../components/queries/Timestamp";
+import { createTestApp } from "../utils/createTestApp";
 
 test("user opens a conversation and sees previously sent and received messages in chronological order", async () => {
   const { Main, api } = await createTestApp();

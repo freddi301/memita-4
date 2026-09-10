@@ -1,8 +1,8 @@
 import { render, userEvent } from "@testing-library/react-native";
-import { generateAccountSecret } from "../components/cryptography/cryptography";
-import { addAccount, getAccounts } from "../components/queries/accounts";
-import { createTestApp } from "./utils/createTestApp";
-import { findIcon } from "./utils/findIcon";
+import { generateAccountSecret } from "../../components/cryptography/cryptography";
+import { addAccount, getAccounts } from "../../components/queries/accounts";
+import { createTestApp } from "../utils/createTestApp";
+import { findIcon } from "../utils/findIcon";
 
 test("no accounts are shown on first app launch", async () => {
   const { Main } = await createTestApp();

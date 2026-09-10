@@ -4,17 +4,17 @@ import {
   AccountId,
   accountIdFromAccountSecret,
   generateAccountSecret,
-} from "../components/cryptography/cryptography";
-import { addAccount } from "../components/queries/accounts";
-import { updateContact } from "../components/queries/contacts";
+} from "../../components/cryptography/cryptography";
+import { addAccount } from "../../components/queries/accounts";
+import { updateContact } from "../../components/queries/contacts";
 import {
   getDirectMessages,
   updateDirectMessage,
-} from "../components/queries/directMessages";
-import { TimestampSchema } from "../components/queries/Timestamp";
-import { FeApiContextType } from "../components/store/feApi";
-import { createTestApp } from "./utils/createTestApp";
-import { findIcon } from "./utils/findIcon";
+} from "../../components/queries/directMessages";
+import { TimestampSchema } from "../../components/queries/Timestamp";
+import { FeApiContextType } from "../../components/store/feApi";
+import { createTestApp } from "../utils/createTestApp";
+import { findIcon } from "../utils/findIcon";
 
 async function generateJumpToDateMessages({
   accountId,

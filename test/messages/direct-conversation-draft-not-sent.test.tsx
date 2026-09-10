@@ -2,11 +2,11 @@ import { render, userEvent } from "@testing-library/react-native";
 import {
   accountIdFromAccountSecret,
   generateAccountSecret,
-} from "../components/cryptography/cryptography";
-import { addAccount } from "../components/queries/accounts";
-import { updateContact } from "../components/queries/contacts";
-import { createTestApp } from "./utils/createTestApp";
-import { findIconButton } from "./utils/findIcon";
+} from "../../components/cryptography/cryptography";
+import { addAccount } from "../../components/queries/accounts";
+import { updateContact } from "../../components/queries/contacts";
+import { createTestApp } from "../utils/createTestApp";
+import { findIconButton } from "../utils/findIcon";
 
 // TODO reenable when properly implemented networking
 test.skip("a draft direct message is not delivered to the recipient", async () => {

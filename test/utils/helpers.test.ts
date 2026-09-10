@@ -1,4 +1,4 @@
-import { groupBy, maxBy, orderBy } from "../components/queries/helpers";
+import { groupBy, maxBy, orderBy } from "../../components/queries/helpers";
 
 test("groupBy returns a single group when all items share the same key", () => {
   const result = groupBy(

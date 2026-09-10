@@ -1,8 +1,8 @@
 import { render, userEvent, waitFor } from "@testing-library/react-native";
 import * as Clipboard from "expo-clipboard";
 import { Alert } from "react-native";
-import { createTestApp } from "./utils/createTestApp";
-import { findIcon } from "./utils/findIcon";
+import { createTestApp } from "../utils/createTestApp";
+import { findIcon } from "../utils/findIcon";
 
 test("user can export and import account", async () => {
   let clipboardContent = "";

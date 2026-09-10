@@ -4,7 +4,7 @@ import { Icon } from "../../components/ui/Icon";
 
 type IconName = keyof typeof FontAwesome.glyphMap;
 
-export function iconGlyph(name: IconName) {
+function iconGlyph(name: IconName) {
   const glyph = FontAwesome.glyphMap[name];
   return typeof glyph === "number" ? String.fromCharCode(glyph) : glyph;
 }

@@ -1,8 +1,8 @@
 import { render, userEvent } from "@testing-library/react-native";
-import { generateAccountSecret } from "../components/cryptography/cryptography";
-import { addAccount } from "../components/queries/accounts";
-import { createTestApp } from "./utils/createTestApp";
-import { findIcon } from "./utils/findIcon";
+import { generateAccountSecret } from "../../components/cryptography/cryptography";
+import { addAccount } from "../../components/queries/accounts";
+import { createTestApp } from "../utils/createTestApp";
+import { findIcon } from "../utils/findIcon";
 
 test("user deletes an account", async () => {
   const { Main, api } = await createTestApp();

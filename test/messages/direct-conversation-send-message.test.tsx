@@ -2,11 +2,11 @@ import { render, userEvent } from "@testing-library/react-native";
 import {
   accountIdFromAccountSecret,
   generateAccountSecret,
-} from "../components/cryptography/cryptography";
-import { addAccount } from "../components/queries/accounts";
-import { updateContact } from "../components/queries/contacts";
-import { createTestApp } from "./utils/createTestApp";
-import { findIcon } from "./utils/findIcon";
+} from "../../components/cryptography/cryptography";
+import { addAccount } from "../../components/queries/accounts";
+import { updateContact } from "../../components/queries/contacts";
+import { createTestApp } from "../utils/createTestApp";
+import { findIcon } from "../utils/findIcon";
 
 test("user types a message and sends it, the message appears in the conversation", async () => {
   const { Main, api } = await createTestApp();
